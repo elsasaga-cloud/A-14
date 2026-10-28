@@ -27,7 +27,7 @@ class FifteenMinuteValidationTests(unittest.TestCase):
         )
 
     def test_all_stocks_have_complete_21_session_bars(self) -> None:
-        self.assertEqual(14, len(ANALYZER.STOCKS))
+        self.assertEqual(15, len(ANALYZER.STOCKS))
         for stock in ANALYZER.STOCKS:
             directory = ANALYZER.DEFAULT_OUTPUT / stock.stem
             raw_path = directory / f"{stock.code}_15min_raw.csv"
@@ -83,7 +83,7 @@ class FifteenMinuteValidationTests(unittest.TestCase):
         metadata = self.metadata
         self.assertEqual(21, metadata["sessions"])
         self.assertLess(metadata["first_session"], metadata["latest_session"])
-        self.assertEqual(70, len(metadata["files"]))
+        self.assertEqual(75, len(metadata["files"]))
         expected = {
             path.relative_to(ROOT).as_posix()
             for path in ANALYZER.DEFAULT_OUTPUT.glob("*/*")

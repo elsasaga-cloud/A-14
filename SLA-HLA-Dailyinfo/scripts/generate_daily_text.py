@@ -209,6 +209,17 @@ STOCKS = (
         ),
     ),
     Stock(
+        code="000568",
+        name="泸州老窖",
+        total_shares=1_471_941_963,
+        floating_shares=1_471_060_100,
+        book_value_per_share=31.07,
+        profit_bases=(
+            ProfitBasis("0000-00-00", 10_831_000_000.00),
+        ),
+        actions=(),
+    ),
+    Stock(
         code="600690",
         name="海尔智家",
         total_shares=9_377_629_650,
