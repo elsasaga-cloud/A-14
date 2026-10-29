@@ -1,635 +1,635 @@
 {
- "as_of": "2026-10-28",
- "last_completed_session": "2026-10-28",
- "stocks": [
-  {
-   "code": "000858",
-   "name": "五粮液"
-  },
-  {
-   "code": "601600",
-   "name": "中国铝业"
-  },
-  {
-   "code": "601988",
-   "name": "中国银行"
-  },
-  {
-   "code": "600863",
-   "name": "华能蒙电"
-  },
-  {
-   "code": "601138",
-   "name": "工业富联"
-  },
-  {
-   "code": "000651",
-   "name": "格力电器"
-  },
-  {
-   "code": "300124",
-   "name": "汇川技术"
-  },
-  {
-   "code": "600362",
-   "name": "江西铜业"
-  },
-  {
-   "code": "601899",
-   "name": "紫金矿业"
-  },
-  {
-   "code": "300760",
-   "name": "迈瑞医疗"
-  },
-  {
-   "code": "002352",
-   "name": "顺丰控股"
-  },
-  {
-   "code": "000807",
-   "name": "云铝股份"
-  },
-  {
-   "code": "600398",
-   "name": "海澜之家"
-  },
-  {
-   "code": "000568",
-   "name": "泸州老窖"
-  },
-  {
-   "code": "600690",
-   "name": "海尔智家"
-  }
- ],
- "source": {
-  "provider": "东方财富 (EastMoney)",
-  "endpoint": "https://push2his.eastmoney.com/api/qt/stock/kline/get",
-  "parameters": {
-   "secid": "{market}.{code} (0=深圳, 1=上海)",
-   "klt": 101,
-   "fqt": 0,
-   "end": "20261028",
-   "lmt": "459 total (209 warm-up + 250 requested), retrieved as four lmt-bounded windows anchored at the same end date: A1 11-field lmt=160, A2 11-field lmt=90, B1 7-field lmt=160, B2 7-field lmt=49",
-   "fields2": "f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61"
-  },
-  "field_mapping": {
-   "f51": "date",
-   "f52": "open",
-   "f53": "close",
-   "f54": "high",
-   "f55": "low",
-   "f56": "volume_lots",
-   "f57": "amount_yuan",
-   "f58": "amplitude_pct",
-   "f59": "change_pct",
-   "f60": "change_amount",
-   "f61": "turnover_rate_pct"
-  },
-  "snapshot_update_note": "2026-09-01 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-23..2026-09-01; no corporate actions on 2026-09-01. 2026-09-02 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-24..2026-09-02, chip warm-up 2025-06-16..2026-04-23; no corporate actions on 2026-09-02. 2026-09-03 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-27..2026-09-03, chip warm-up 2025-06-17..2026-04-24; no corporate actions on 2026-09-03. 2026-09-04 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-28..2026-09-04, chip warm-up 2025-06-18..2026-04-27; no corporate actions on 2026-09-04. 2026-09-07 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-29..2026-09-07, chip warm-up 2025-06-19..2026-04-28; no corporate actions on 2026-09-07. 2026-09-08 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-30..2026-09-08, chip warm-up 2025-06-20..2026-04-29; corporate action: 300760 ex-dividend on 2026-09-08 (2026 second interim dividend CNY1.33/share, 10派13.30); other 13 symbols none. 2026-09-09 rolling update (catch-up): appended from the EastMoney K-line endpoint; window now 2026-05-06..2026-09-09, chip warm-up 2025-06-23..2026-04-30; no corporate actions on 2026-09-09. 2026-09-10 rolling update: appended from the EastMoney K-line endpoint; window now 2026-05-07..2026-09-10, chip warm-up 2025-06-24..2026-05-06; no corporate actions on 2026-09-10. 2026-09-11 rolling update: appended from the EastMoney K-line endpoint; window now 2026-05-08..2026-09-11, chip warm-up 2025-06-25..2026-05-07; no corporate actions on 2026-09-11. 2026-09-14 rolling update: appended from the EastMoney K-line endpoint; window now 2026-05-11..2026-09-14, chip warm-up 2025-06-26..2026-05-08; no corporate actions on 2026-09-14. 15-minute side same-day note: Sina intraday feed incomplete for 2026-09-14 on all 6 SZSE symbols (10:45/11:00 bars near-zero volume; identical across 3 spaced refetches; SSE symbols unaffected). 2026-09-14 15-minute bars for the 6 SZSE symbols sourced from the EastMoney klt=15 endpoint, cross-validated bar-by-bar against Tencent m15 (slot volumes identical for 09:45..14:45; OHLC max deviation CNY0.30, within 5e-3 relative); each 15:00 tail volume/amount reconciled to the official EastMoney daily totals so per-day sums match exactly (pre-reconciliation tail deltas +105/+108/+113/+47/0/-1 lots vs Tencent). 2026-09-15 rolling update: appended from the EastMoney K-line endpoint; window now 2026-05-12..2026-09-15, chip warm-up 2025-06-27..2026-05-11; no corporate actions on 2026-09-15. 15-minute side: Sina SZSE feed recovered on 2026-09-15 (all 16 intraday bars healthy; per-day volume sums match EastMoney daily totals to 0.000% on all 6 SZSE symbols; SSE symbols -0.09%..-0.34%, within the known Sina baseline). Overlap-note: for the 6 SZSE symbols the stored 2026-09-14 15:00 tail is the day-total-reconciled value recorded during the 09-14 Sina outage; Sina's own 09-14 15:00 bar differs from it by up to 0.7% in volume/amount and up to CNY0.05 in OHLC (source granularity), so the 09-15 overlap check used tiered tolerances (SSE exact, SZSE <=0.8% volume/amount, <=0.05 OHLC). 2026-09-16 rolling update: appended from the EastMoney K-line endpoint; window now 2026-05-13..2026-09-16, chip warm-up 2025-06-30..2026-05-12, volume seed 2026-05-06..2026-05-12 (heads skipped the 2025-06-28/29 weekend and the 2026-05-01..05-05 holiday cluster); no corporate actions on 2026-09-16. 15-minute side all-normal: Sina healthy on both exchanges (SZSE day-volume sums match EastMoney daily totals to 0.000% for the second straight day; SSE -0.16%..-0.44%, within known baseline); overlap roots exact on all 14. 2026-09-17 rolling update: window 2026-05-14..2026-09-17, chip warm-up 2025-07-01..2026-05-13, volume seed 2026-05-07..2026-05-13. First corporate action in the rolling history: 002352 ex-dividend on 2026-09-17 (cash ~0.47 CNY/share inferred from EM fields chg +0.47 / pct +1.55% / amplitude 2.44% all referencing 30.28 = 30.75 - 0.47; raw price series uninterrupted, stored as-is). EM re-fetch revised 300124's 2026-09-16 amount by -0.33 CNY (within the 1.0 tolerance; stored row untouched). 15-minute side: SZSE day-sums ~0.000% for a 3rd straight day; SSE within 0.5% except 600398 -1.087% (per-stock baseline 1.5%: Sina's own daily total matches EM daily exactly - 2026-09-16: 40,983,677 sh = 409,837 lots - so the gap is Sina's internal 15-min SSE aggregation, observed band -0.27%..-1.09%); overlap roots exact on all 14. Roll-script regression fixed: chip append row must be re-columnized to the 6-col schema (an 11-field raw kline head polluted CYQ chip metrics on every block; caught by the middle-89 byte check). 2026-09-18 rolling update: window 2026-05-15..2026-09-18, chip warm-up 2025-07-02..2026-05-14, volume seed 2026-05-08..2026-05-14. EM post-ex rebasing disclosed: on re-fetch EastMoney recomputed 002352's 2026-09-17 ex-day fields against the raw prev close 30.75 (chg +0.47->0.00, pct +1.55->0.00, amplitude 2.44->2.41); the stored row keeps the ex-day reference-base values (30.28) and the revision is documented here only. Trailing-amount revisions on re-fetch within the 1.0 tolerance: 300124 2026-09-17 -0.43, 300760 2026-09-17 -0.05. EM intermittent HTTP 500 x3 (300760, 600398, 601138 - the last needed 3 attempts), all recovered by identical retries. 15-minute side: SZSE day-sums ~0.000% for a 4th straight day; SSE all within -0.044%..-0.153% (600398 back to -0.088%, no per-stock exemption needed); overlap roots exact on all 14. Market breadth 10 up / 2 down; top turnover 601138 6.99bn CNY. 2026-09-21 rolling update: window 2026-05-18..2026-09-21, chip warm-up 2025-07-03..2026-05-15, volume seed 2026-05-11..2026-05-15. SOURCE INCIDENT (Sina SZSE opening-auction undercount): all 6 SZSE names failed the day-volume gate (-1.70%..-3.36%); three-way per-bar comparison (000651 shown) located the entire gap in the 09:45 bar (Sina 58,472 lots vs EM/Tencent agreeing 69,862 - the opening call-auction volume). Fallback applied per SOP: the 6 SZSE stocks' 2026-09-21 bars taken from EM klt=15 (per-bar amounts), first-15 bar volumes verified IDENTICAL against Tencent mkline m15 for all 6, and the 15:00 tail volume/amount reconciled to the official EM daily totals. These 6 stored tails are reconciled values: next session's overlap-root assertion for these codes must use the reconciled-tail tolerance (OHLC abs<=0.05 + rel<=5e-3; volume/amount tolerant), not exact. SSE 8 names healthy via Sina (day-sums -0.009%..-0.309%). EM intermittent HTTP 500 x4 (600362, 600398, 601138, 601988), all recovered by identical retries; trailing-amount re-fetch diffs within 1.0: 300124 2026-09-18 -0.35, 300760 2026-09-18 -0.54. Market breadth 8 up / 6 down; top turnover 601138 6.05bn CNY. 2026-09-22 rolling update: window 2026-05-19..2026-09-22, chip warm-up 2025-07-04..2026-05-18, volume seed 2026-05-12..2026-05-18. CORRECTION of 2026-09-21 incident: the six SZSE fallback session bars (2026-09-21, 96 rows) had been stored with volume 100x too small - EM klt=15 per-bar volumes in LOTS were fed to the analyzer whose modern-format input expects SHARES (divides by 100). Detected on 09-22 via the Sina overlap-root gate (stored 000651 09-21 15:00 tail 283.3 lots vs Sina 28,310.69 lots). All 96 rows corrected in place (volume x10000); post-fix session sums reconcile exactly to official daily volumes; 2026-09-14 fallback sessions re-audited unaffected (+0.00%). Full-window per-session audit instituted. Sina endpoint change: bare-symbol kline calls returned null (x2 retries); the sz/sh-PREFIXED symbol variant worked 14/14 and was used. Sina 2026-09-22 day bars healthy for all 6 SZSE names including opening-auction volume in the 09:45 bar (day-sums -0.001%..+0.000%), so today's 15-min session is pure Sina for all 14; from 2026-09-23 the overlap anchor is the pure-Sina 09-22 tail and EXACT overlap assertions resume for all stocks (reconciled-tail tolerance applied only to 09-21 anchors, now superseded). EM: no HTTP 500 today; trailing-amount re-fetch diffs within 1.0: 300124 2026-09-21 -0.44, 300760 2026-09-21 -0.40 (stored rows kept, disclosed). Market breadth 9 up / 4 down / 1 flat (002352 unchanged); top turnover 601138 4.82bn CNY (3rd straight day). 2026-09-23 rolling update: window 2026-05-20..2026-09-23, chip warm-up 2025-07-07..2026-05-19, volume seed 2026-05-13..2026-05-19. Exact overlap assertions fully resumed for ALL 14 stocks (the reconciled-tail tolerance window has rolled out of the anchor position; deep-market fallback sessions 09-14/09-21 re-verified exact). Sina healthy again across the board: all 6 SZSE names' 09:45 bars contain opening-auction volume for the second straight day (day-sums +/-0.000%), SSE -0.063%..-0.398% within chronic baseline. No HTTP 500 from EM today; trailing-amount re-fetch diffs within 1.0: 300124 and 300760 2026-09-22 rows each -0.31 (stored rows kept, disclosed; third consecutive session for this pair). Market breadth 1 up / 11 down / 2 flat - broad weakness: 600863 -2.74% worst (volume 830k lots, up from 607k), 300124 -2.46%; only gainer 000651 +0.47%; flat 600690/601899. Top turnover 601899 3.24bn CNY. 2026-09-24 rolling update: window 2026-05-21..2026-09-24, chip warm-up 2025-07-08..2026-05-20, volume seed 2026-05-14..2026-05-20. Exact overlap assertions held for ALL 14 stocks (Sina tail root 09-23 15:00 byte-exact on OHLC/volume/amount). Sina health: best session on record - SZSE 6 names day-sums +/-0.001% or better (third consecutive healthy day, first 09:45 bars still carrying opening-auction volume), SSE -0.023%..-0.106%, worst +0.001% @ 300760; chronic SSE 09-02/03/04 gap sessions rolled one step closer to the window edge. EM: one HTTP 500 (601600) cleared on first as-is retry; 09-23 refetch tail diffs within 1.0: 300124 +0.01, 300760 +0.88 (sign flipped from yesterday's -0.31, normal EM variance; stored rows kept, disclosed). Market breadth 3 up / 11 down / 0 flat - risk-off day: 600362 -4.83% worst, 601899 -4.46% on 2.15m lots, top turnover 6.507bn CNY; 601138 -3.14% second turnover 4.118bn CNY; third 600362 1.938bn CNY; gainers 600863 +0.65%, 601988 +0.61%, 000651 +0.36%. 2026-09-28 rolling update (first session after Mid-Autumn close 09-25..09-27): window 2026-05-22..2026-09-28, chip warm-up 2025-07-09..2026-05-21, volume seed 2026-05-15..2026-05-21. Exact overlap assertions held for ALL 14 stocks (Sina tail root 09-24 15:00 byte-exact on OHLC/volume/amount). Sina health: SZSE 6 names day-sums +/-0.000% (fourth consecutive healthy day), SSE -0.035%..-0.144%, worst -0.144% @ 601600. EM: one HTTP 500 (000651) cleared on first as-is retry; 09-24 refetch tail diffs within 1.0: 300124 +0.93, 300760 +0.34 (third consecutive session for this pair, sign flips are normal EM variance; stored rows kept, disclosed). Market breadth 5 up / 9 down / 0 flat - post-holiday divergence: gainers 300760 +2.88% on nearly doubled volume, 600863 +2.16% (1.08m lots vs 0.57m prior), 300124 +0.79%; laggards 600362 -3.49% (volume halved), 601138 -3.41%, 000807 -2.54%. Top turnover 601899 4.892bn CNY, 601138 3.811bn CNY, 601988 1.729bn CNY. 2026-09-29 rolling update: window 2026-05-25..2026-09-29 (05-23/24 weekend skipped), chip warm-up 2025-07-10..2026-05-22, volume seed 2026-05-18..2026-05-22. Exact overlap assertions held for ALL 14 stocks (Sina tail root 09-28 15:00 byte-exact). Sina health: SZSE 6 names day-sums +/-0.001% (fifth consecutive healthy day), SSE -0.032%..-0.202% (601138 widest). EM incidents: 300760 returned HTTP 500 four times on the main host and was finally served by the 45.push2his load-balanced subdomain (first subdomain fallback of the project, recorded for future retries); 09-28 refetch tail diffs within 1.0: 300124 +0.98, 300760 -0.71 (fourth consecutive session for this pair; stored rows kept, disclosed). No corporate actions across the board (pre- and post-holiday fields consistent). Market breadth 9 up / 5 down / 0 flat - metals rebound: 000807 +4.34% (amplitude 6.19%, 684k lots, 1.77bn CNY), 601600 +3.00%, 600362 +2.00% (volume still shrinking), laggards 600863 -1.27%, 601138 -0.85%, 000651 -0.78%. Top turnover 601899 3.265bn CNY, 601138 2.983bn CNY, 000807 1.773bn CNY. 15min window head jumped 08-28 -> 08-31 over the weekend (holiday-group new-head pattern). 2026-09-29 window expansion 90d -> 250d: backfilled 160 sessions 2025-09-17..2026-05-22 for all 14 stocks from the EastMoney K-line endpoint (unadjusted fqt=0, same field set), merged ahead of the previous 90-session window (2026-05-25..2026-09-29 kept byte-identical; files renamed _kline_250d.csv / _250d.txt). Chip warm-up band replaced with 2024-11-12..2025-09-16 (209 sessions); volume seed now 2025-09-10..2025-09-16. 600863 special case: trading halted 2025-02-11..2025-02-20 (8 sessions, major-asset-restructuring suspension), so its warm-up head is 2024-10-31. Within the new requested band (2025-09-17..2026-05-22) EM change fields are self-consistent for all 14 stocks (zero ex-dividend jumps). Two cash dividends fall inside the backfilled warm-up band and are kept in raw unadjusted form, consistent with the locked historical output: 000651 2025-08-29 (2024 annual, CNY 2.00/share; 47.25 -> reference 45.25, closed 42.60) and 000858 2025-06-13 (CNY 2.2774/share; 122.50 -> 121.89). No corporate-action entries were added to the generator, so every locked 2026-08-21-referenced block and the last 90 blocks stay byte-identical (verified: new _250d.txt last 90 blocks == old _90d.txt blocks). 2026-09-30 + 2026-10-08 rolling update (two sessions appended in one pass after the National Day closure 10-01..10-07; 09-30 was the last session before the holiday): window 2025-09-19..2026-10-08, chip warm-up 2024-11-14..2025-09-18 (600863 head 2024-11-04 per its suspension lineage), volume seed 2025-09-12..2025-09-18. Daily bars sourced via the same EM kline endpoint with end=20261008 lmt=4 (fetch_page relay; 601138 main host returned HTTP 500 and was served by the 45.push2his subdomain). Exact overlap assertions held for ALL 14 stocks on the 2026-09-29 root (OHLC/volume/amount; 300124's stored 09-29 amount differs from the re-fetch by -0.93 CNY, within the 1.0 tolerance, stored row kept). |close - prev_close - change_amount| < 0.011 across both appended sessions for all 14 stocks - no corporate actions on 2026-09-30 or 2026-10-08. Market breadth 2026-09-30: 10 up / 4 down - 000858 +1.88%, 300760 +1.45%, laggards 300124 -1.12%, 000807 -1.02%; top turnover 601138 3.035bn CNY, 601899 2.922bn CNY, 601988 1.836bn CNY. Market breadth 2026-10-08: 10 up / 4 down - post-holiday divergence: 600863 +8.05% (close 5.10, 2.837m lots, amplitude 8.69%), 600398 +3.54% (close 5.85); laggards 601138 -4.31% (close 55.69, amplitude 6.99%, 4.502bn CNY turnover), 300124 -3.95% (49.85), 300760 -2.31% (157.60); top turnover 601138 4.502bn, 601899 3.386bn, 300124 2.218bn. 15-minute side: Sina datalen=33 fetch (09-29 15:00 overlap root + 32 bars), exact overlap roots on ALL 14; day-volume gates vs EM daily totals: SZSE six names +/-0.000% on both days (consecutive healthy streak continues), SSE -0.017%..-0.366% (worst 600398 10-08 -0.366%, within its 1.5% per-stock baseline; all others within the 0.5% chronic band). Analyzer re-run from cache: window 2026-09-02..2026-10-08 (dropped 08-31, 09-01; 21 sessions x 16 bars = 336 rows per stock); 09-02..09-29 overlap band (304 rows per stock) re-verified field-identical against the stored rows; 600863's 10-08 session volumes ran 10-30x its 09-30 levels in the 15-min bars, consistent with the +8.05% daily move. 2026-10-09 rolling update (first session after the post-National-Day open): window 2025-09-22..2026-10-09, chip warm-up 2024-11-15..2025-09-19 (600863 head 2024-11-05), volume seed 2025-09-15..2025-09-19. EM kline endpoint end=20261009 lmt=2 (fetch_page relay; 000651/000807 intermittent HTTP 500 cleared by subdomain/as-is retries per standing recipe). Exact overlap assertions held for ALL 14 stocks on the 2026-10-08 root (OHLC/volume/amount; all amount tails exact this session). |close - prev_close - change_amount| < 0.011 for all 14 stocks - no corporate actions on 2026-10-09. Market breadth: 13 up / 1 down - broad rally: 601899 +4.87% on 2.383m lots and 7.242bn CNY turnover (session top by a wide margin), 600398 +2.74% (close back above CNY6.00 at 6.01), 300760 +2.41%, 600690 +1.86%, 600863 +1.57% (volume still 2.253m lots after Monday's surge); sole laggard 601988 -0.59%; 601138 recovered from an early -4% dip (intraday low 53.40) to close +0.68% (4.335bn CNY second turnover). 15-minute side: Sina datalen=17 fetch (10-08 15:00 overlap root + 16 bars), exact overlap roots on ALL 14; day-volume gates vs EM daily totals: SZSE six names +/-0.000%, 600362 -0.412%, 600398 -0.283%, 601899 -0.190% within the chronic band; two SSE gaps disclosed per the 600398 precedent (Sina re-fetches byte-identical and Sina's own daily totals match EM to the lot, e.g. 600863 10-08 283,683,795 shares = 2,836,837.95 lots vs EM 2,836,838 - the gap is Sina's internal 15-min SSE aggregation, not source data loss): 600863 -1.006% and 601988 -0.546%, both admitted under the 1.5% per-stock baseline (600863 joins 600398 on the widened baseline; 601988 first widened session). Analyzer re-run from cache: window 2026-09-03..2026-10-09 (dropped 09-02; 21 sessions x 16 bars = 336 rows per stock); 09-03..10-08 overlap band (320 rows per stock) re-verified field-identical against the stored rows. 2026-10-12 rolling update (first session of the week): window 2025-09-23..2026-10-12, chip warm-up 2024-11-18..2025-09-22 (600863 head 2024-11-06), volume seed 2025-09-16..2025-09-22. EM kline endpoint end=20261012 lmt=2 (fetch_page relay; 002352/300760/600863 intermittent HTTP 500 cleared by 45.push2his subdomain retries per standing recipe). Exact overlap assertions held for ALL 14 stocks on the 2026-10-09 root (OHLC/volume/amount; all amount tails exact, second straight session with zero tails). |close - prev_close - change_amount| < 0.011 for all 14 stocks - no corporate actions on 2026-10-12. Market breadth: 8 up / 6 down - divergence day: 601138 plunged -7.17% (close 52.05, 1.090m lots, 5.798bn CNY top turnover, one day after its V-shaped recovery), metals pulled back (600362 -2.87%, 000807 -2.44%, 601899 -1.88%); gainers led by defensive/medical: 601988 +2.95% (close 6.97, 328k lots), 300760 +2.85% (close 166.00), 600398 +2.50% (close 6.16), 000651 +1.96% (close 39.59). 15-minute side: Sina datalen=17 fetch (10-09 15:00 overlap root + 16 bars), exact overlap roots on ALL 14; day-volume gates vs EM daily totals all inside the chronic band - SZSE six names +/-0.000%, SSE -0.036%..-0.230% (601138 widest); Friday's two disclosed gaps did not recur (600863 -0.116%, 601988 -0.036%), consistent with the intermittent-aggregation characterization. Analyzer re-run from cache: window 2026-09-04..2026-10-12 (dropped 09-03; 21 sessions x 16 bars = 336 rows per stock); 09-04..10-09 overlap band (320 rows per stock) re-verified field-identical against the stored rows."
- },
- "methodology": {
-  "requested_sessions": 250,
-  "chip_window_sessions": 210,
-  "chip_algorithm": "EastMoney CYQ browser algorithm port; rolling 210-session OHLC and turnover input",
-  "volume_ratio": "current session volume / arithmetic mean of preceding 5 session volumes",
-  "moving_averages": "unadjusted completed closes preceding snapshot date; trend compares displayed MA with its prior-session value",
-  "corporate_action_handling": {
-   "600398": {
-    "ex_date": "2026-05-11",
-    "prior_price_adjustment_yuan": -0.41
-   },
-   "600690": {
-    "ex_date": "2026-08-21",
-    "prior_price_adjustment_yuan": -0.87
-   },
-   "000858": [
+  "as_of": "2026-10-28",
+  "last_completed_session": "2026-10-28",
+  "stocks": [
     {
-     "ex_date": "2025-07-18",
-     "prior_price_adjustment_yuan": -3.169
+      "code": "000858",
+      "name": "五粮液"
     },
     {
-     "ex_date": "2025-12-18",
-     "prior_price_adjustment_yuan": -2.578
+      "code": "601600",
+      "name": "中国铝业"
     },
     {
-     "ex_date": "2026-07-16",
-     "prior_price_adjustment_yuan": -2.5779999
+      "code": "601988",
+      "name": "中国银行"
+    },
+    {
+      "code": "600863",
+      "name": "华能蒙电"
+    },
+    {
+      "code": "601138",
+      "name": "工业富联"
+    },
+    {
+      "code": "000651",
+      "name": "格力电器"
+    },
+    {
+      "code": "300124",
+      "name": "汇川技术"
+    },
+    {
+      "code": "600362",
+      "name": "江西铜业"
+    },
+    {
+      "code": "601899",
+      "name": "紫金矿业"
+    },
+    {
+      "code": "300760",
+      "name": "迈瑞医疗"
+    },
+    {
+      "code": "002352",
+      "name": "顺丰控股"
+    },
+    {
+      "code": "000807",
+      "name": "云铝股份"
+    },
+    {
+      "code": "600398",
+      "name": "海澜之家"
+    },
+    {
+      "code": "000568",
+      "name": "泸州老窖"
+    },
+    {
+      "code": "600690",
+      "name": "海尔智家"
     }
-   ],
-   "601600": "no explicit corporate-action adjustment configured",
-   "601988": "no explicit corporate-action adjustment configured",
-   "600863": "no explicit corporate-action adjustment configured",
-   "601138": "no explicit corporate-action adjustment configured",
-   "000651": {
-    "ex_date": "2026-08-27",
-    "prior_price_adjustment_yuan": -2.0,
-    "note": "现金分红每 10 股派 20 元；除权参考昨收 41.58-2.00=39.58，与东方财富当日涨跌额 -0.31 一致"
-   },
-   "300124": "no explicit corporate-action adjustment configured",
-   "600362": "no explicit corporate-action adjustment configured",
-   "601899": "no explicit corporate-action adjustment configured",
-   "300760": {
-    "ex_date": "2026-09-08",
-    "prior_price_adjustment_yuan": -1.33,
-    "note": "2026 年中期分红每 10 股派 13.30 元；除权参考昨收 169.20-1.33=167.87，与东方财富当日涨跌额 +2.08 一致"
-   },
-   "002352": "no explicit corporate-action adjustment configured",
-   "000807": "no explicit corporate-action adjustment configured"
+  ],
+  "source": {
+    "provider": "东方财富 (EastMoney)",
+    "endpoint": "https://push2his.eastmoney.com/api/qt/stock/kline/get",
+    "parameters": {
+      "secid": "{market}.{code} (0=深圳, 1=上海)",
+      "klt": 101,
+      "fqt": 0,
+      "end": "20261028",
+      "lmt": "459 total (209 warm-up + 250 requested), retrieved as four lmt-bounded windows anchored at the same end date: A1 11-field lmt=160, A2 11-field lmt=90, B1 7-field lmt=160, B2 7-field lmt=49",
+      "fields2": "f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61"
+    },
+    "field_mapping": {
+      "f51": "date",
+      "f52": "open",
+      "f53": "close",
+      "f54": "high",
+      "f55": "low",
+      "f56": "volume_lots",
+      "f57": "amount_yuan",
+      "f58": "amplitude_pct",
+      "f59": "change_pct",
+      "f60": "change_amount",
+      "f61": "turnover_rate_pct"
+    },
+    "snapshot_update_note": "2026-09-01 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-23..2026-09-01; no corporate actions on 2026-09-01. 2026-09-02 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-24..2026-09-02, chip warm-up 2025-06-16..2026-04-23; no corporate actions on 2026-09-02. 2026-09-03 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-27..2026-09-03, chip warm-up 2025-06-17..2026-04-24; no corporate actions on 2026-09-03. 2026-09-04 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-28..2026-09-04, chip warm-up 2025-06-18..2026-04-27; no corporate actions on 2026-09-04. 2026-09-07 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-29..2026-09-07, chip warm-up 2025-06-19..2026-04-28; no corporate actions on 2026-09-07. 2026-09-08 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-30..2026-09-08, chip warm-up 2025-06-20..2026-04-29; corporate action: 300760 ex-dividend on 2026-09-08 (2026 second interim dividend CNY1.33/share, 10派13.30); other 13 symbols none. 2026-09-09 rolling update (catch-up): appended from the EastMoney K-line endpoint; window now 2026-05-06..2026-09-09, chip warm-up 2025-06-23..2026-04-30; no corporate actions on 2026-09-09. 2026-09-10 rolling update: appended from the EastMoney K-line endpoint; window now 2026-05-07..2026-09-10, chip warm-up 2025-06-24..2026-05-06; no corporate actions on 2026-09-10. 2026-09-11 rolling update: appended from the EastMoney K-line endpoint; window now 2026-05-08..2026-09-11, chip warm-up 2025-06-25..2026-05-07; no corporate actions on 2026-09-11. 2026-09-14 rolling update: appended from the EastMoney K-line endpoint; window now 2026-05-11..2026-09-14, chip warm-up 2025-06-26..2026-05-08; no corporate actions on 2026-09-14. 15-minute side same-day note: Sina intraday feed incomplete for 2026-09-14 on all 6 SZSE symbols (10:45/11:00 bars near-zero volume; identical across 3 spaced refetches; SSE symbols unaffected). 2026-09-14 15-minute bars for the 6 SZSE symbols sourced from the EastMoney klt=15 endpoint, cross-validated bar-by-bar against Tencent m15 (slot volumes identical for 09:45..14:45; OHLC max deviation CNY0.30, within 5e-3 relative); each 15:00 tail volume/amount reconciled to the official EastMoney daily totals so per-day sums match exactly (pre-reconciliation tail deltas +105/+108/+113/+47/0/-1 lots vs Tencent). 2026-09-15 rolling update: appended from the EastMoney K-line endpoint; window now 2026-05-12..2026-09-15, chip warm-up 2025-06-27..2026-05-11; no corporate actions on 2026-09-15. 15-minute side: Sina SZSE feed recovered on 2026-09-15 (all 16 intraday bars healthy; per-day volume sums match EastMoney daily totals to 0.000% on all 6 SZSE symbols; SSE symbols -0.09%..-0.34%, within the known Sina baseline). Overlap-note: for the 6 SZSE symbols the stored 2026-09-14 15:00 tail is the day-total-reconciled value recorded during the 09-14 Sina outage; Sina's own 09-14 15:00 bar differs from it by up to 0.7% in volume/amount and up to CNY0.05 in OHLC (source granularity), so the 09-15 overlap check used tiered tolerances (SSE exact, SZSE <=0.8% volume/amount, <=0.05 OHLC). 2026-09-16 rolling update: appended from the EastMoney K-line endpoint; window now 2026-05-13..2026-09-16, chip warm-up 2025-06-30..2026-05-12, volume seed 2026-05-06..2026-05-12 (heads skipped the 2025-06-28/29 weekend and the 2026-05-01..05-05 holiday cluster); no corporate actions on 2026-09-16. 15-minute side all-normal: Sina healthy on both exchanges (SZSE day-volume sums match EastMoney daily totals to 0.000% for the second straight day; SSE -0.16%..-0.44%, within known baseline); overlap roots exact on all 14. 2026-09-17 rolling update: window 2026-05-14..2026-09-17, chip warm-up 2025-07-01..2026-05-13, volume seed 2026-05-07..2026-05-13. First corporate action in the rolling history: 002352 ex-dividend on 2026-09-17 (cash ~0.47 CNY/share inferred from EM fields chg +0.47 / pct +1.55% / amplitude 2.44% all referencing 30.28 = 30.75 - 0.47; raw price series uninterrupted, stored as-is). EM re-fetch revised 300124's 2026-09-16 amount by -0.33 CNY (within the 1.0 tolerance; stored row untouched). 15-minute side: SZSE day-sums ~0.000% for a 3rd straight day; SSE within 0.5% except 600398 -1.087% (per-stock baseline 1.5%: Sina's own daily total matches EM daily exactly - 2026-09-16: 40,983,677 sh = 409,837 lots - so the gap is Sina's internal 15-min SSE aggregation, observed band -0.27%..-1.09%); overlap roots exact on all 14. Roll-script regression fixed: chip append row must be re-columnized to the 6-col schema (an 11-field raw kline head polluted CYQ chip metrics on every block; caught by the middle-89 byte check). 2026-09-18 rolling update: window 2026-05-15..2026-09-18, chip warm-up 2025-07-02..2026-05-14, volume seed 2026-05-08..2026-05-14. EM post-ex rebasing disclosed: on re-fetch EastMoney recomputed 002352's 2026-09-17 ex-day fields against the raw prev close 30.75 (chg +0.47->0.00, pct +1.55->0.00, amplitude 2.44->2.41); the stored row keeps the ex-day reference-base values (30.28) and the revision is documented here only. Trailing-amount revisions on re-fetch within the 1.0 tolerance: 300124 2026-09-17 -0.43, 300760 2026-09-17 -0.05. EM intermittent HTTP 500 x3 (300760, 600398, 601138 - the last needed 3 attempts), all recovered by identical retries. 15-minute side: SZSE day-sums ~0.000% for a 4th straight day; SSE all within -0.044%..-0.153% (600398 back to -0.088%, no per-stock exemption needed); overlap roots exact on all 14. Market breadth 10 up / 2 down; top turnover 601138 6.99bn CNY. 2026-09-21 rolling update: window 2026-05-18..2026-09-21, chip warm-up 2025-07-03..2026-05-15, volume seed 2026-05-11..2026-05-15. SOURCE INCIDENT (Sina SZSE opening-auction undercount): all 6 SZSE names failed the day-volume gate (-1.70%..-3.36%); three-way per-bar comparison (000651 shown) located the entire gap in the 09:45 bar (Sina 58,472 lots vs EM/Tencent agreeing 69,862 - the opening call-auction volume). Fallback applied per SOP: the 6 SZSE stocks' 2026-09-21 bars taken from EM klt=15 (per-bar amounts), first-15 bar volumes verified IDENTICAL against Tencent mkline m15 for all 6, and the 15:00 tail volume/amount reconciled to the official EM daily totals. These 6 stored tails are reconciled values: next session's overlap-root assertion for these codes must use the reconciled-tail tolerance (OHLC abs<=0.05 + rel<=5e-3; volume/amount tolerant), not exact. SSE 8 names healthy via Sina (day-sums -0.009%..-0.309%). EM intermittent HTTP 500 x4 (600362, 600398, 601138, 601988), all recovered by identical retries; trailing-amount re-fetch diffs within 1.0: 300124 2026-09-18 -0.35, 300760 2026-09-18 -0.54. Market breadth 8 up / 6 down; top turnover 601138 6.05bn CNY. 2026-09-22 rolling update: window 2026-05-19..2026-09-22, chip warm-up 2025-07-04..2026-05-18, volume seed 2026-05-12..2026-05-18. CORRECTION of 2026-09-21 incident: the six SZSE fallback session bars (2026-09-21, 96 rows) had been stored with volume 100x too small - EM klt=15 per-bar volumes in LOTS were fed to the analyzer whose modern-format input expects SHARES (divides by 100). Detected on 09-22 via the Sina overlap-root gate (stored 000651 09-21 15:00 tail 283.3 lots vs Sina 28,310.69 lots). All 96 rows corrected in place (volume x10000); post-fix session sums reconcile exactly to official daily volumes; 2026-09-14 fallback sessions re-audited unaffected (+0.00%). Full-window per-session audit instituted. Sina endpoint change: bare-symbol kline calls returned null (x2 retries); the sz/sh-PREFIXED symbol variant worked 14/14 and was used. Sina 2026-09-22 day bars healthy for all 6 SZSE names including opening-auction volume in the 09:45 bar (day-sums -0.001%..+0.000%), so today's 15-min session is pure Sina for all 14; from 2026-09-23 the overlap anchor is the pure-Sina 09-22 tail and EXACT overlap assertions resume for all stocks (reconciled-tail tolerance applied only to 09-21 anchors, now superseded). EM: no HTTP 500 today; trailing-amount re-fetch diffs within 1.0: 300124 2026-09-21 -0.44, 300760 2026-09-21 -0.40 (stored rows kept, disclosed). Market breadth 9 up / 4 down / 1 flat (002352 unchanged); top turnover 601138 4.82bn CNY (3rd straight day). 2026-09-23 rolling update: window 2026-05-20..2026-09-23, chip warm-up 2025-07-07..2026-05-19, volume seed 2026-05-13..2026-05-19. Exact overlap assertions fully resumed for ALL 14 stocks (the reconciled-tail tolerance window has rolled out of the anchor position; deep-market fallback sessions 09-14/09-21 re-verified exact). Sina healthy again across the board: all 6 SZSE names' 09:45 bars contain opening-auction volume for the second straight day (day-sums +/-0.000%), SSE -0.063%..-0.398% within chronic baseline. No HTTP 500 from EM today; trailing-amount re-fetch diffs within 1.0: 300124 and 300760 2026-09-22 rows each -0.31 (stored rows kept, disclosed; third consecutive session for this pair). Market breadth 1 up / 11 down / 2 flat - broad weakness: 600863 -2.74% worst (volume 830k lots, up from 607k), 300124 -2.46%; only gainer 000651 +0.47%; flat 600690/601899. Top turnover 601899 3.24bn CNY. 2026-09-24 rolling update: window 2026-05-21..2026-09-24, chip warm-up 2025-07-08..2026-05-20, volume seed 2026-05-14..2026-05-20. Exact overlap assertions held for ALL 14 stocks (Sina tail root 09-23 15:00 byte-exact on OHLC/volume/amount). Sina health: best session on record - SZSE 6 names day-sums +/-0.001% or better (third consecutive healthy day, first 09:45 bars still carrying opening-auction volume), SSE -0.023%..-0.106%, worst +0.001% @ 300760; chronic SSE 09-02/03/04 gap sessions rolled one step closer to the window edge. EM: one HTTP 500 (601600) cleared on first as-is retry; 09-23 refetch tail diffs within 1.0: 300124 +0.01, 300760 +0.88 (sign flipped from yesterday's -0.31, normal EM variance; stored rows kept, disclosed). Market breadth 3 up / 11 down / 0 flat - risk-off day: 600362 -4.83% worst, 601899 -4.46% on 2.15m lots, top turnover 6.507bn CNY; 601138 -3.14% second turnover 4.118bn CNY; third 600362 1.938bn CNY; gainers 600863 +0.65%, 601988 +0.61%, 000651 +0.36%. 2026-09-28 rolling update (first session after Mid-Autumn close 09-25..09-27): window 2026-05-22..2026-09-28, chip warm-up 2025-07-09..2026-05-21, volume seed 2026-05-15..2026-05-21. Exact overlap assertions held for ALL 14 stocks (Sina tail root 09-24 15:00 byte-exact on OHLC/volume/amount). Sina health: SZSE 6 names day-sums +/-0.000% (fourth consecutive healthy day), SSE -0.035%..-0.144%, worst -0.144% @ 601600. EM: one HTTP 500 (000651) cleared on first as-is retry; 09-24 refetch tail diffs within 1.0: 300124 +0.93, 300760 +0.34 (third consecutive session for this pair, sign flips are normal EM variance; stored rows kept, disclosed). Market breadth 5 up / 9 down / 0 flat - post-holiday divergence: gainers 300760 +2.88% on nearly doubled volume, 600863 +2.16% (1.08m lots vs 0.57m prior), 300124 +0.79%; laggards 600362 -3.49% (volume halved), 601138 -3.41%, 000807 -2.54%. Top turnover 601899 4.892bn CNY, 601138 3.811bn CNY, 601988 1.729bn CNY. 2026-09-29 rolling update: window 2026-05-25..2026-09-29 (05-23/24 weekend skipped), chip warm-up 2025-07-10..2026-05-22, volume seed 2026-05-18..2026-05-22. Exact overlap assertions held for ALL 14 stocks (Sina tail root 09-28 15:00 byte-exact). Sina health: SZSE 6 names day-sums +/-0.001% (fifth consecutive healthy day), SSE -0.032%..-0.202% (601138 widest). EM incidents: 300760 returned HTTP 500 four times on the main host and was finally served by the 45.push2his load-balanced subdomain (first subdomain fallback of the project, recorded for future retries); 09-28 refetch tail diffs within 1.0: 300124 +0.98, 300760 -0.71 (fourth consecutive session for this pair; stored rows kept, disclosed). No corporate actions across the board (pre- and post-holiday fields consistent). Market breadth 9 up / 5 down / 0 flat - metals rebound: 000807 +4.34% (amplitude 6.19%, 684k lots, 1.77bn CNY), 601600 +3.00%, 600362 +2.00% (volume still shrinking), laggards 600863 -1.27%, 601138 -0.85%, 000651 -0.78%. Top turnover 601899 3.265bn CNY, 601138 2.983bn CNY, 000807 1.773bn CNY. 15min window head jumped 08-28 -> 08-31 over the weekend (holiday-group new-head pattern). 2026-09-29 window expansion 90d -> 250d: backfilled 160 sessions 2025-09-17..2026-05-22 for all 14 stocks from the EastMoney K-line endpoint (unadjusted fqt=0, same field set), merged ahead of the previous 90-session window (2026-05-25..2026-09-29 kept byte-identical; files renamed _kline_250d.csv / _250d.txt). Chip warm-up band replaced with 2024-11-12..2025-09-16 (209 sessions); volume seed now 2025-09-10..2025-09-16. 600863 special case: trading halted 2025-02-11..2025-02-20 (8 sessions, major-asset-restructuring suspension), so its warm-up head is 2024-10-31. Within the new requested band (2025-09-17..2026-05-22) EM change fields are self-consistent for all 14 stocks (zero ex-dividend jumps). Two cash dividends fall inside the backfilled warm-up band and are kept in raw unadjusted form, consistent with the locked historical output: 000651 2025-08-29 (2024 annual, CNY 2.00/share; 47.25 -> reference 45.25, closed 42.60) and 000858 2025-06-13 (CNY 2.2774/share; 122.50 -> 121.89). No corporate-action entries were added to the generator, so every locked 2026-08-21-referenced block and the last 90 blocks stay byte-identical (verified: new _250d.txt last 90 blocks == old _90d.txt blocks). 2026-09-30 + 2026-10-08 rolling update (two sessions appended in one pass after the National Day closure 10-01..10-07; 09-30 was the last session before the holiday): window 2025-09-19..2026-10-08, chip warm-up 2024-11-14..2025-09-18 (600863 head 2024-11-04 per its suspension lineage), volume seed 2025-09-12..2025-09-18. Daily bars sourced via the same EM kline endpoint with end=20261008 lmt=4 (fetch_page relay; 601138 main host returned HTTP 500 and was served by the 45.push2his subdomain). Exact overlap assertions held for ALL 14 stocks on the 2026-09-29 root (OHLC/volume/amount; 300124's stored 09-29 amount differs from the re-fetch by -0.93 CNY, within the 1.0 tolerance, stored row kept). |close - prev_close - change_amount| < 0.011 across both appended sessions for all 14 stocks - no corporate actions on 2026-09-30 or 2026-10-08. Market breadth 2026-09-30: 10 up / 4 down - 000858 +1.88%, 300760 +1.45%, laggards 300124 -1.12%, 000807 -1.02%; top turnover 601138 3.035bn CNY, 601899 2.922bn CNY, 601988 1.836bn CNY. Market breadth 2026-10-08: 10 up / 4 down - post-holiday divergence: 600863 +8.05% (close 5.10, 2.837m lots, amplitude 8.69%), 600398 +3.54% (close 5.85); laggards 601138 -4.31% (close 55.69, amplitude 6.99%, 4.502bn CNY turnover), 300124 -3.95% (49.85), 300760 -2.31% (157.60); top turnover 601138 4.502bn, 601899 3.386bn, 300124 2.218bn. 15-minute side: Sina datalen=33 fetch (09-29 15:00 overlap root + 32 bars), exact overlap roots on ALL 14; day-volume gates vs EM daily totals: SZSE six names +/-0.000% on both days (consecutive healthy streak continues), SSE -0.017%..-0.366% (worst 600398 10-08 -0.366%, within its 1.5% per-stock baseline; all others within the 0.5% chronic band). Analyzer re-run from cache: window 2026-09-02..2026-10-08 (dropped 08-31, 09-01; 21 sessions x 16 bars = 336 rows per stock); 09-02..09-29 overlap band (304 rows per stock) re-verified field-identical against the stored rows; 600863's 10-08 session volumes ran 10-30x its 09-30 levels in the 15-min bars, consistent with the +8.05% daily move. 2026-10-09 rolling update (first session after the post-National-Day open): window 2025-09-22..2026-10-09, chip warm-up 2024-11-15..2025-09-19 (600863 head 2024-11-05), volume seed 2025-09-15..2025-09-19. EM kline endpoint end=20261009 lmt=2 (fetch_page relay; 000651/000807 intermittent HTTP 500 cleared by subdomain/as-is retries per standing recipe). Exact overlap assertions held for ALL 14 stocks on the 2026-10-08 root (OHLC/volume/amount; all amount tails exact this session). |close - prev_close - change_amount| < 0.011 for all 14 stocks - no corporate actions on 2026-10-09. Market breadth: 13 up / 1 down - broad rally: 601899 +4.87% on 2.383m lots and 7.242bn CNY turnover (session top by a wide margin), 600398 +2.74% (close back above CNY6.00 at 6.01), 300760 +2.41%, 600690 +1.86%, 600863 +1.57% (volume still 2.253m lots after Monday's surge); sole laggard 601988 -0.59%; 601138 recovered from an early -4% dip (intraday low 53.40) to close +0.68% (4.335bn CNY second turnover). 15-minute side: Sina datalen=17 fetch (10-08 15:00 overlap root + 16 bars), exact overlap roots on ALL 14; day-volume gates vs EM daily totals: SZSE six names +/-0.000%, 600362 -0.412%, 600398 -0.283%, 601899 -0.190% within the chronic band; two SSE gaps disclosed per the 600398 precedent (Sina re-fetches byte-identical and Sina's own daily totals match EM to the lot, e.g. 600863 10-08 283,683,795 shares = 2,836,837.95 lots vs EM 2,836,838 - the gap is Sina's internal 15-min SSE aggregation, not source data loss): 600863 -1.006% and 601988 -0.546%, both admitted under the 1.5% per-stock baseline (600863 joins 600398 on the widened baseline; 601988 first widened session). Analyzer re-run from cache: window 2026-09-03..2026-10-09 (dropped 09-02; 21 sessions x 16 bars = 336 rows per stock); 09-03..10-08 overlap band (320 rows per stock) re-verified field-identical against the stored rows. 2026-10-12 rolling update (first session of the week): window 2025-09-23..2026-10-12, chip warm-up 2024-11-18..2025-09-22 (600863 head 2024-11-06), volume seed 2025-09-16..2025-09-22. EM kline endpoint end=20261012 lmt=2 (fetch_page relay; 002352/300760/600863 intermittent HTTP 500 cleared by 45.push2his subdomain retries per standing recipe). Exact overlap assertions held for ALL 14 stocks on the 2026-10-09 root (OHLC/volume/amount; all amount tails exact, second straight session with zero tails). |close - prev_close - change_amount| < 0.011 for all 14 stocks - no corporate actions on 2026-10-12. Market breadth: 8 up / 6 down - divergence day: 601138 plunged -7.17% (close 52.05, 1.090m lots, 5.798bn CNY top turnover, one day after its V-shaped recovery), metals pulled back (600362 -2.87%, 000807 -2.44%, 601899 -1.88%); gainers led by defensive/medical: 601988 +2.95% (close 6.97, 328k lots), 300760 +2.85% (close 166.00), 600398 +2.50% (close 6.16), 000651 +1.96% (close 39.59). 15-minute side: Sina datalen=17 fetch (10-09 15:00 overlap root + 16 bars), exact overlap roots on ALL 14; day-volume gates vs EM daily totals all inside the chronic band - SZSE six names +/-0.000%, SSE -0.036%..-0.230% (601138 widest); Friday's two disclosed gaps did not recur (600863 -0.116%, 601988 -0.036%), consistent with the intermittent-aggregation characterization. Analyzer re-run from cache: window 2026-09-04..2026-10-12 (dropped 09-03; 21 sessions x 16 bars = 336 rows per stock); 09-04..10-09 overlap band (320 rows per stock) re-verified field-identical against the stored rows."
   },
-  "five_day_performance": "previous completed K-line close / close five sessions earlier - 1, matching supplied scraper",
-  "dynamic_pe": "market capitalization / configured annualized attributable-profit basis; original three use date-effective reports, added eleven use the Tencent 2026-08-24 dynamic-PE snapshot implied basis",
-  "pb": "snapshot close / Tencent-style book-value-per-share basis",
-  "market_caps": "snapshot close multiplied by total/floating share counts",
-  "inner_outer": "supplied 600398/2026-08-21 values retained exactly; other historical dates use deterministic candle-direction allocation because full historical tick downloads are unavailable"
- },
- "files": [
-  {
-   "path": "data/eastmoney/000858_五粮液_chip_warmup_209d.csv",
-   "bytes": 9239,
-   "sha256": "dae256fde74fdc40a4c7758653b35b7a0a9e99c52da76f02b438daab46b1a020",
-   "rows": 209
+  "methodology": {
+    "requested_sessions": 250,
+    "chip_window_sessions": 210,
+    "chip_algorithm": "EastMoney CYQ browser algorithm port; rolling 210-session OHLC and turnover input",
+    "volume_ratio": "current session volume / arithmetic mean of preceding 5 session volumes",
+    "moving_averages": "unadjusted completed closes preceding snapshot date; trend compares displayed MA with its prior-session value",
+    "corporate_action_handling": {
+      "600398": {
+        "ex_date": "2026-05-11",
+        "prior_price_adjustment_yuan": -0.41
+      },
+      "600690": {
+        "ex_date": "2026-08-21",
+        "prior_price_adjustment_yuan": -0.87
+      },
+      "000858": [
+        {
+          "ex_date": "2025-07-18",
+          "prior_price_adjustment_yuan": -3.169
+        },
+        {
+          "ex_date": "2025-12-18",
+          "prior_price_adjustment_yuan": -2.578
+        },
+        {
+          "ex_date": "2026-07-16",
+          "prior_price_adjustment_yuan": -2.5779999
+        }
+      ],
+      "601600": "no explicit corporate-action adjustment configured",
+      "601988": "no explicit corporate-action adjustment configured",
+      "600863": "no explicit corporate-action adjustment configured",
+      "601138": "no explicit corporate-action adjustment configured",
+      "000651": {
+        "ex_date": "2026-08-27",
+        "prior_price_adjustment_yuan": -2.0,
+        "note": "现金分红每 10 股派 20 元；除权参考昨收 41.58-2.00=39.58，与东方财富当日涨跌额 -0.31 一致"
+      },
+      "300124": "no explicit corporate-action adjustment configured",
+      "600362": "no explicit corporate-action adjustment configured",
+      "601899": "no explicit corporate-action adjustment configured",
+      "300760": {
+        "ex_date": "2026-09-08",
+        "prior_price_adjustment_yuan": -1.33,
+        "note": "2026 年中期分红每 10 股派 13.30 元；除权参考昨收 169.20-1.33=167.87，与东方财富当日涨跌额 +2.08 一致"
+      },
+      "002352": "no explicit corporate-action adjustment configured",
+      "000807": "no explicit corporate-action adjustment configured"
+    },
+    "five_day_performance": "previous completed K-line close / close five sessions earlier - 1, matching supplied scraper",
+    "dynamic_pe": "market capitalization / configured annualized attributable-profit basis; original three use date-effective reports, added eleven use the Tencent 2026-08-24 dynamic-PE snapshot implied basis",
+    "pb": "snapshot close / Tencent-style book-value-per-share basis",
+    "market_caps": "snapshot close multiplied by total/floating share counts",
+    "inner_outer": "supplied 600398/2026-08-21 values retained exactly; other historical dates use deterministic candle-direction allocation because full historical tick downloads are unavailable"
   },
-  {
-   "path": "data/eastmoney/000858_五粮液_kline_250d.csv",
-   "bytes": 19895,
-   "sha256": "8c9b7ceb36b21868e305b0ad1a09d14b81f8fa68da4b23833de336836c8d6212",
-   "rows": 250
+  "files": [
+    {
+      "path": "data/eastmoney/000858_五粮液_chip_warmup_209d.csv",
+      "bytes": 9239,
+      "sha256": "1fc62653a6590fcd708e9fd919f027483d475c2ee0fe093a1dd7c2642c3183cc",
+      "rows": 209
+    },
+    {
+      "path": "data/eastmoney/000858_五粮液_kline_250d.csv",
+      "bytes": 19895,
+      "sha256": "51cd41499fefa148d0b81d42c2863261952cbed8f3ac676154ce209e7184527a",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/000858_五粮液_volume_warmup_5d.csv",
+      "bytes": 107,
+      "sha256": "1dd7299a76cef62795ee9ac6001ff07c2fcc0b429a2c1308abc275f4acf1e9be",
+      "rows": 5
+    },
+    {
+      "path": "data/daily_text/000858_五粮液_250d.txt",
+      "bytes": 198509,
+      "sha256": "53afa9611fbb4e558eafe59eaa0567e653063859a2d275a22e25a121f5d4262c",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/601600_中国铝业_chip_warmup_209d.csv",
+      "bytes": 7567,
+      "sha256": "3ec5d878a2a924b11a6ea775e79d47165a3a4d06026736d55a54045d00aa2f8e",
+      "rows": 209
+    },
+    {
+      "path": "data/eastmoney/601600_中国铝业_kline_250d.csv",
+      "bytes": 19217,
+      "sha256": "725d35fa2d231e2449fa2262ff9683681f2a1e62d2cd2c281c08a61dd84b8903",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/601600_中国铝业_volume_warmup_5d.csv",
+      "bytes": 112,
+      "sha256": "f9ab1f429a5f72aa0905b41a20348c24b2213c52f9d4fe3b459538edecb3edf6",
+      "rows": 5
+    },
+    {
+      "path": "data/daily_text/601600_中国铝业_250d.txt",
+      "bytes": 195043,
+      "sha256": "0a0fe29463bd598b9acc216cb94c7bdd92456597591f4ee8e56c3ea868e6786e",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/601988_中国银行_chip_warmup_209d.csv",
+      "bytes": 7567,
+      "sha256": "ca8d92b9d9d02827f4f1b52aae73799e9e52e3c134ceac794595f20f9bc99f97",
+      "rows": 209
+    },
+    {
+      "path": "data/eastmoney/601988_中国银行_kline_250d.csv",
+      "bytes": 18551,
+      "sha256": "36aa26ab40709befce7f3335e336fb6cd0ebc9266514c52ba1223b35716eb260",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/601988_中国银行_volume_warmup_5d.csv",
+      "bytes": 112,
+      "sha256": "db8c1a63927a04f93fa6eb28148b821c28ba843771f6ceb9d38bd87aab4341db",
+      "rows": 5
+    },
+    {
+      "path": "data/daily_text/601988_中国银行_250d.txt",
+      "bytes": 191636,
+      "sha256": "6f8a410123f3ac35e481a5d293037ed805b66fe1beb46d04358adc9861698882",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/600863_华能蒙电_chip_warmup_209d.csv",
+      "bytes": 7567,
+      "sha256": "ddde4dd7bde6a8cbb87d5745cb66c2700ed86b95f76a69f38a80c0cb1afb6a8c",
+      "rows": 209
+    },
+    {
+      "path": "data/eastmoney/600863_华能蒙电_kline_250d.csv",
+      "bytes": 18262,
+      "sha256": "9ae00dc9180aaa277f807a61337d92b99f2fe95fcc578fca688cc04ee2d00e50",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/600863_华能蒙电_volume_warmup_5d.csv",
+      "bytes": 107,
+      "sha256": "79376e91b66f401489058c29fd0743e12dda5c139c785345ad6573a46b82f397",
+      "rows": 5
+    },
+    {
+      "path": "data/daily_text/600863_华能蒙电_250d.txt",
+      "bytes": 190540,
+      "sha256": "9a19986f44c486dfc46a0201fcd5e39cbef8d1bcaf78f339f8550f0cd401e751",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/601138_工业富联_chip_warmup_209d.csv",
+      "bytes": 8403,
+      "sha256": "161a4648e56c1e8045d9531f474ae94c0a8b2f38025c334ca81f9425f3461239",
+      "rows": 209
+    },
+    {
+      "path": "data/eastmoney/601138_工业富联_kline_250d.csv",
+      "bytes": 19694,
+      "sha256": "51cbd87a5c91d094ad1891804ad1866d10e1c4e5f420eae377d05daaf4a4ef7d",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/601138_工业富联_volume_warmup_5d.csv",
+      "bytes": 112,
+      "sha256": "5943f7f84b3c81a92ec1f59b41ddf7506156118fce51f9cb73290c0ef1614844",
+      "rows": 5
+    },
+    {
+      "path": "data/daily_text/601138_工业富联_250d.txt",
+      "bytes": 197804,
+      "sha256": "a8157947f4cec5f73a4e80ec5c48bceb8296d40df0c611dd3b427f396dd2cd17",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/000651_格力电器_chip_warmup_209d.csv",
+      "bytes": 8403,
+      "sha256": "3cf216a20081bdca29c66911cd76f7ad2c033483a5b38e7934e9f1bcb4264bf9",
+      "rows": 209
+    },
+    {
+      "path": "data/eastmoney/000651_格力电器_kline_250d.csv",
+      "bytes": 19337,
+      "sha256": "eb92610772499da6afb94df6cc0dda0a166f6c0c6cb701fafc2ea8ed5726ece5",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/000651_格力电器_volume_warmup_5d.csv",
+      "bytes": 107,
+      "sha256": "b97cec87b84812b31698903f81c2bb4eaf4758855d9318869ade3d1259238807",
+      "rows": 5
+    },
+    {
+      "path": "data/daily_text/000651_格力电器_250d.txt",
+      "bytes": 196046,
+      "sha256": "5cbb61031dcaeb4f2cddbbe47dd4676e23b2557a6fe0630e7f5bb30ab00468da",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/300124_汇川技术_chip_warmup_209d.csv",
+      "bytes": 8403,
+      "sha256": "773cccb08d436134635ea307a6d6b6c82f84c22e15677f9bd58650c99b275c21",
+      "rows": 209
+    },
+    {
+      "path": "data/eastmoney/300124_汇川技术_kline_250d.csv",
+      "bytes": 19349,
+      "sha256": "e87acc74c318a935fd3bea12932aa797a6e0f5cff279aad26901f6098953a797",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/300124_汇川技术_volume_warmup_5d.csv",
+      "bytes": 107,
+      "sha256": "9514bc9dd24fc96fc754db6e46bb41309f29d858385c00e5b339b997298182e4",
+      "rows": 5
+    },
+    {
+      "path": "data/daily_text/300124_汇川技术_250d.txt",
+      "bytes": 196516,
+      "sha256": "5bbcce351d797df8484b9d9635da458f61079be7a0dcd6dacaec1b20b2d0e95e",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/600362_江西铜业_chip_warmup_209d.csv",
+      "bytes": 8403,
+      "sha256": "ea6ba3ecca92752cc5a23814394c5cf7e1b24ea9ba193f7ed0df0a83c4f159ce",
+      "rows": 209
+    },
+    {
+      "path": "data/eastmoney/600362_江西铜业_kline_250d.csv",
+      "bytes": 19377,
+      "sha256": "38f9694693db04f865ddc85b275b8cb49779024806ef582626315b26ef3ba459",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/600362_江西铜业_volume_warmup_5d.csv",
+      "bytes": 110,
+      "sha256": "ae0f7ee4ae80d8cb227c6c1b8dd6c213d8cc6bebf668ebcf669f4801ba33d1d0",
+      "rows": 5
+    },
+    {
+      "path": "data/daily_text/600362_江西铜业_250d.txt",
+      "bytes": 196599,
+      "sha256": "7bfbc2c5c0f6219382ca39e222f63571a10014e768af7595062f58dc488027c0",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/601899_紫金矿业_chip_warmup_209d.csv",
+      "bytes": 8403,
+      "sha256": "cf87800354bec33955a5fb4c22c8401b386b7b369834f8f39393df8eed22c8cf",
+      "rows": 209
+    },
+    {
+      "path": "data/eastmoney/601899_紫金矿业_kline_250d.csv",
+      "bytes": 19678,
+      "sha256": "db2be35fcd64e35799270cf6bc6919b8c9759054a07a42df3436372192bbcfb2",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/601899_紫金矿业_volume_warmup_5d.csv",
+      "bytes": 112,
+      "sha256": "f2c2107c38357d56e29912b5f17ffeb5d0a3402ac547822d36144b258125e91b",
+      "rows": 5
+    },
+    {
+      "path": "data/daily_text/601899_紫金矿业_250d.txt",
+      "bytes": 197480,
+      "sha256": "ca7b2a2dd879d6b66d007eed2c404c5fbc9d67b4c9a96e5e3998d14685ef15e5",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/300760_迈瑞医疗_chip_warmup_209d.csv",
+      "bytes": 9239,
+      "sha256": "722dde31fcb958370619f3e0b556ee2e4249afc7a50c5e4290f9d3e5690d391b",
+      "rows": 209
+    },
+    {
+      "path": "data/eastmoney/300760_迈瑞医疗_kline_250d.csv",
+      "bytes": 20135,
+      "sha256": "9f675814277dd47cfe1d795e0df32aaeb1fc47028fc77a1052db91f0731c27dd",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/300760_迈瑞医疗_volume_warmup_5d.csv",
+      "bytes": 104,
+      "sha256": "50f46ba473a94fa7384723a2a5f064548bfb61eefafc53d9b60e04041f6f51b9",
+      "rows": 5
+    },
+    {
+      "path": "data/daily_text/300760_迈瑞医疗_250d.txt",
+      "bytes": 201309,
+      "sha256": "17daf51e4c65ff0050d9e7bf299b3075a05f7930f9b55866ef5d8dafeb5f2552",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/002352_顺丰控股_chip_warmup_209d.csv",
+      "bytes": 8403,
+      "sha256": "6d427088bcc30a9b98080bb648ed5246a34583af4d87770ed9713f4555236679",
+      "rows": 209
+    },
+    {
+      "path": "data/eastmoney/002352_顺丰控股_kline_250d.csv",
+      "bytes": 19194,
+      "sha256": "5798bee7a255065574fe83e3d9417f6906290047fd20454555bd92f208ba44ff",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/002352_顺丰控股_volume_warmup_5d.csv",
+      "bytes": 107,
+      "sha256": "537d83642a8b4d4c556f03d86e607d91b475089dad9150f762ff9f67467f2109",
+      "rows": 5
+    },
+    {
+      "path": "data/daily_text/002352_顺丰控股_250d.txt",
+      "bytes": 196007,
+      "sha256": "deeda4cf504e81654d4f02cbc431ea17521f96c4168a5675890a379743877018",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/000807_云铝股份_chip_warmup_209d.csv",
+      "bytes": 8403,
+      "sha256": "3e9046126427783998e211f22fed1c4f7bcf64112b34cc3c66744f65403622ea",
+      "rows": 209
+    },
+    {
+      "path": "data/eastmoney/000807_云铝股份_kline_250d.csv",
+      "bytes": 19378,
+      "sha256": "02772df6e5cbf90926a4fb9a6efb96906b8d230745693d12cdf75a037fefdfc2",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/000807_云铝股份_volume_warmup_5d.csv",
+      "bytes": 107,
+      "sha256": "21987d84efb8c80b81b452b6a7eed49bab2276858dbccd2704b215c3d160175f",
+      "rows": 5
+    },
+    {
+      "path": "data/daily_text/000807_云铝股份_250d.txt",
+      "bytes": 196245,
+      "sha256": "febe0ab8c22bb02a64a8444a95b9517c38819e1ed24c4f18690a6f3afdfbfae7",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/600398_海澜之家_chip_warmup_209d.csv",
+      "bytes": 7567,
+      "sha256": "efaa58e534e2c2418062f8bba9363095b1cc4b8cd748658cdf60ddd47d4f005b",
+      "rows": 209
+    },
+    {
+      "path": "data/eastmoney/600398_海澜之家_kline_250d.csv",
+      "bytes": 18112,
+      "sha256": "5832e5b72598894caac038d1f7ab0da2ed9cd3b541f63b53330bab613af672e1",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/600398_海澜之家_volume_warmup_5d.csv",
+      "bytes": 107,
+      "sha256": "45fbbe6000774b69444758fffabde1b8eb113fd90427f0e3ff2449bfd190c110",
+      "rows": 5
+    },
+    {
+      "path": "data/daily_text/600398_海澜之家_250d.txt",
+      "bytes": 189962,
+      "sha256": "75edd581e14d398ce9ec886c59dcacfb9c177b5ef3d661b49bebcc3ccc740d8a",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/000568_泸州老窖_chip_warmup_209d.csv",
+      "bytes": 9239,
+      "sha256": "2874e3dac4b7672d7c763367db12f9c0e01b7ec381bc6c3160068157cd63a686",
+      "rows": 209
+    },
+    {
+      "path": "data/eastmoney/000568_泸州老窖_kline_250d.csv",
+      "bytes": 19662,
+      "sha256": "538dbe4ec02c70f00af6e69789e781ad43f22cbaee211bd89a3a6676ceac2c96",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/000568_泸州老窖_volume_warmup_5d.csv",
+      "bytes": 105,
+      "sha256": "97cfed02cad5ab4a00097079dd56491f31c33c19e5aad2a60c246b4cf1543615",
+      "rows": 5
+    },
+    {
+      "path": "data/daily_text/000568_泸州老窖_250d.txt",
+      "bytes": 199169,
+      "sha256": "59f38d571d9819b20d989f5c73a14d3e1e6fd4bb53ce17f38258adb3c1a46ee5",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/600690_海尔智家_chip_warmup_209d.csv",
+      "bytes": 8403,
+      "sha256": "a8f8e83a0f8fa4ec45b8e52fdea29fed9de33c00fc30b714c08a83aa25d2f3bd",
+      "rows": 209
+    },
+    {
+      "path": "data/eastmoney/600690_海尔智家_kline_250d.csv",
+      "bytes": 19239,
+      "sha256": "9ff715e3e4bb82a9b0f8ca226e2ea31b9b2689dc1b807c99a056028d1e212644",
+      "rows": 250
+    },
+    {
+      "path": "data/eastmoney/600690_海尔智家_volume_warmup_5d.csv",
+      "bytes": 107,
+      "sha256": "e410d393ab71cd76e9007f3ec74a04b44d543a3f0c7b3e2f25b5d9e8a5a17eb2",
+      "rows": 5
+    },
+    {
+      "path": "data/daily_text/600690_海尔智家_250d.txt",
+      "bytes": 196383,
+      "sha256": "3f518c45b37ccb83f49b6fbe08da2ab5ff70567b46182ccdf6f72745d74fbab2",
+      "rows": 250
+    }
+  ],
+  "supplemental_inputs": {
+    "share_counts": "Tencent quote snapshot (2026-08-24); total/floating shares recorded per stock using the same fields",
+    "profit_bases": {
+      "600398": {
+        "2025_annual_attributable_profit_yuan": 2165990940.78,
+        "2026_q1_attributable_profit_yuan": 949298988.95
+      },
+      "600690": {
+        "2025_annual_attributable_profit_yuan": 19552798222.85,
+        "2026_q1_attributable_profit_yuan": 4651612980.68
+      },
+      "method": "use annual result before Q1 publication and Q1 x 4 afterward",
+      "000858": {
+        "2024_annual_attributable_profit_yuan": 31853172533.98,
+        "2025_annual_attributable_profit_yuan": 8954257202.51,
+        "2026_q1_attributable_profit_yuan": 8062764940.78,
+        "effective_method": "2024 annual before the 2025 annual and 2026 Q1 reports were released together after the 2026-04-30 close; Q1 x4 from 2026-05-06"
+      },
+      "601600": {
+        "annualized_attributable_profit_basis_yuan": 22109813181.66,
+        "tencent_snapshot_dynamic_pe": 7.34,
+        "tencent_snapshot_pb": 2.08,
+        "total_shares": 17154971327,
+        "floating_shares": 13203339905,
+        "method": "implied from Tencent 2026-08-24 quote snapshot"
+      },
+      "601988": {
+        "annualized_attributable_profit_basis_yuan": 226619038778.69,
+        "tencent_snapshot_dynamic_pe": 8.73,
+        "tencent_snapshot_pb": 0.73,
+        "total_shares": 322212411814,
+        "floating_shares": 210765514846,
+        "method": "implied from Tencent 2026-08-24 quote snapshot"
+      },
+      "600863": {
+        "annualized_attributable_profit_basis_yuan": 2777771018.28,
+        "tencent_snapshot_dynamic_pe": 13.37,
+        "tencent_snapshot_pb": 1.94,
+        "total_shares": 7835189560,
+        "floating_shares": 7063325057,
+        "method": "implied from Tencent 2026-08-24 quote snapshot"
+      },
+      "601138": {
+        "annualized_attributable_profit_basis_yuan": 47487485261.35,
+        "tencent_snapshot_dynamic_pe": 24.96,
+        "tencent_snapshot_pb": 6.74,
+        "total_shares": 19844092284,
+        "floating_shares": 19844092284,
+        "method": "implied from Tencent 2026-08-24 quote snapshot"
+      },
+      "000651": {
+        "annualized_attributable_profit_basis_yuan": 24340972964.28,
+        "tencent_snapshot_dynamic_pe": 9.58,
+        "tencent_snapshot_pb": 1.53,
+        "total_shares": 5601405741,
+        "floating_shares": 5522009474,
+        "method": "implied from Tencent 2026-08-24 quote snapshot"
+      },
+      "300124": {
+        "annualized_attributable_profit_basis_yuan": 4053757317.29,
+        "tencent_snapshot_dynamic_pe": 38.94,
+        "tencent_snapshot_pb": 4.51,
+        "total_shares": 2707603944,
+        "floating_shares": 2410314720,
+        "method": "implied from Tencent 2026-08-24 quote snapshot"
+      },
+      "600362": {
+        "annualized_attributable_profit_basis_yuan": 11266272892.2,
+        "tencent_snapshot_dynamic_pe": 13.96,
+        "tencent_snapshot_pb": 1.9,
+        "total_shares": 3462729405,
+        "floating_shares": 2075247405,
+        "method": "implied from Tencent 2026-08-24 quote snapshot"
+      },
+      "601899": {
+        "annualized_attributable_profit_basis_yuan": 78316364793.45,
+        "tencent_snapshot_dynamic_pe": 11.69,
+        "tencent_snapshot_pb": 4.8,
+        "total_shares": 26590714622,
+        "floating_shares": 20601793140,
+        "method": "implied from Tencent 2026-08-24 quote snapshot"
+      },
+      "300760": {
+        "annualized_attributable_profit_basis_yuan": 9318684707.38,
+        "tencent_snapshot_dynamic_pe": 20.61,
+        "tencent_snapshot_pb": 4.98,
+        "total_shares": 1211799431,
+        "floating_shares": 1210662145,
+        "method": "implied from Tencent 2026-08-24 quote snapshot"
+      },
+      "002352": {
+        "annualized_attributable_profit_basis_yuan": 10102542328.52,
+        "tencent_snapshot_dynamic_pe": 17.22,
+        "tencent_snapshot_pb": 1.77,
+        "total_shares": 5265308078,
+        "floating_shares": 4799115259,
+        "method": "implied from Tencent 2026-08-24 quote snapshot"
+      },
+      "000807": {
+        "annualized_attributable_profit_basis_yuan": 14401963236.05,
+        "tencent_snapshot_dynamic_pe": 6.28,
+        "tencent_snapshot_pb": 2.63,
+        "total_shares": 3467957405,
+        "floating_shares": 3467921101,
+        "method": "implied from Tencent 2026-08-24 quote snapshot"
+      }
+    },
+    "book_value_per_share_basis": {
+      "600398": 3.6,
+      "600690": 12.5,
+      "000858": 30.4,
+      "601600": 4.548076923076923,
+      "601988": 8.410958904109588,
+      "600863": 2.443298969072165,
+      "601138": 8.862017804154302,
+      "000651": 27.20915032679739,
+      "300124": 12.926829268292684,
+      "600362": 23.90526315789474,
+      "601899": 7.172916666666667,
+      "300760": 31.825301204819276,
+      "002352": 18.666666666666664,
+      "000807": 9.916349809885931
+    },
+    "supplied_snapshot_override": "600398 on 2026-08-21 inner/outer values from the user-provided block"
   },
-  {
-   "path": "data/eastmoney/000858_五粮液_volume_warmup_5d.csv",
-   "bytes": 107,
-   "sha256": "8df44d27aae6b58f8e98db1b0f1999cc8c71427e22685888a084aaad77ad993b",
-   "rows": 5
-  },
-  {
-   "path": "data/daily_text/000858_五粮液_250d.txt",
-   "bytes": 198509,
-   "sha256": "3e811c45e4f06e7997321fc2a8030f89091f4320aeada985a24f2ef069f30514",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/601600_中国铝业_chip_warmup_209d.csv",
-   "bytes": 7567,
-   "sha256": "94a7aa4902fdf4466471a93718af55088fddf11b3f1b22cc9850cef54dbd7285",
-   "rows": 209
-  },
-  {
-   "path": "data/eastmoney/601600_中国铝业_kline_250d.csv",
-   "bytes": 19217,
-   "sha256": "6622a3727ce01ee52cb63a9f0670f5cd311f999df829a751cb6c849f2f77aab4",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/601600_中国铝业_volume_warmup_5d.csv",
-   "bytes": 112,
-   "sha256": "0bb9612100e4106907edec96566c62dbfeeeb9f3a50d9538eea0a8899bf8fd4e",
-   "rows": 5
-  },
-  {
-   "path": "data/daily_text/601600_中国铝业_250d.txt",
-   "bytes": 195043,
-   "sha256": "23deb8f4cdb34338a9a54dc98de63819668b1663ce1e68037535f3dd6cba9dc6",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/601988_中国银行_chip_warmup_209d.csv",
-   "bytes": 7567,
-   "sha256": "122a8b22bf91b15cda0a46ba3959e4648a4d9091f10bc4fcee00cd693dcbec5e",
-   "rows": 209
-  },
-  {
-   "path": "data/eastmoney/601988_中国银行_kline_250d.csv",
-   "bytes": 18551,
-   "sha256": "72fdade2f8e30106215b2c78dc28a07f51576120a436cb5d71fa4daef465bdc1",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/601988_中国银行_volume_warmup_5d.csv",
-   "bytes": 112,
-   "sha256": "f505e4cbd8ac3adce9dc51a90fd868754349e1f25d6b946f905b0a0086a17253",
-   "rows": 5
-  },
-  {
-   "path": "data/daily_text/601988_中国银行_250d.txt",
-   "bytes": 191636,
-   "sha256": "68f52f531ea51809b239ea7992bbaaef1b6b125405952706ae58ffd12eda41e6",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/600863_华能蒙电_chip_warmup_209d.csv",
-   "bytes": 7567,
-   "sha256": "4a31a506608b6c1fe591044de312cdde41add38a975c595ff9d4f251fff8988c",
-   "rows": 209
-  },
-  {
-   "path": "data/eastmoney/600863_华能蒙电_kline_250d.csv",
-   "bytes": 18262,
-   "sha256": "a3c819276ec1bf6ebdd176dfaea2c59c6ae83affc7048a5e3b3e2d663530e839",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/600863_华能蒙电_volume_warmup_5d.csv",
-   "bytes": 107,
-   "sha256": "a167523a8dc8136d7c5de4257bfe810f9cadc1dd8f1a3a884bd5f959db5b1868",
-   "rows": 5
-  },
-  {
-   "path": "data/daily_text/600863_华能蒙电_250d.txt",
-   "bytes": 190540,
-   "sha256": "705e9a9b0e9d24710df9895228858639928441bf5dc627b6c0129668fb72d296",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/601138_工业富联_chip_warmup_209d.csv",
-   "bytes": 8403,
-   "sha256": "84d071f4b3b1cccf1b1e6593192e5609e1322ca14831232ec8f019de85f4b69e",
-   "rows": 209
-  },
-  {
-   "path": "data/eastmoney/601138_工业富联_kline_250d.csv",
-   "bytes": 19694,
-   "sha256": "8802e1db194a6bcd9ea8c5097e5a051adcfcb7cf8ab11308251161afeffafdf6",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/601138_工业富联_volume_warmup_5d.csv",
-   "bytes": 112,
-   "sha256": "65ed56f1b50f9c3c3b65ef2033faa197c5cad29f6586d92eb59e6c31ac84e143",
-   "rows": 5
-  },
-  {
-   "path": "data/daily_text/601138_工业富联_250d.txt",
-   "bytes": 197804,
-   "sha256": "bf0868a24cc33699d892c7861833961d2c4f3a7d9b1b26bfa4d3a1de05ececce",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/000651_格力电器_chip_warmup_209d.csv",
-   "bytes": 8403,
-   "sha256": "7c5a342a52d5a66c0b002b0cc875e130225d1ad3a378aa5e57682ec5d0b4d6b7",
-   "rows": 209
-  },
-  {
-   "path": "data/eastmoney/000651_格力电器_kline_250d.csv",
-   "bytes": 19337,
-   "sha256": "4c4db0d84379fb8b87f59d360d3b09b348be7506cd2e8e13e66d527ccc0d2021",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/000651_格力电器_volume_warmup_5d.csv",
-   "bytes": 107,
-   "sha256": "38b02377b0f52f3923282b8f13f90c1ee908c0ade8ec76b57e2b6f7e1ef71bf1",
-   "rows": 5
-  },
-  {
-   "path": "data/daily_text/000651_格力电器_250d.txt",
-   "bytes": 196046,
-   "sha256": "e4592ed6bdf7ac084062e8652e54a01d06abc79da86503ca94e0928d123ab2aa",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/300124_汇川技术_chip_warmup_209d.csv",
-   "bytes": 8403,
-   "sha256": "ac0cd42daccef96f1cf338c2a904718e14ae21ea033086c346ff6da464d4a661",
-   "rows": 209
-  },
-  {
-   "path": "data/eastmoney/300124_汇川技术_kline_250d.csv",
-   "bytes": 19349,
-   "sha256": "38c60262d14f2873162147f5e2537a7c77034d36f10244aa96d2cd3402f9842f",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/300124_汇川技术_volume_warmup_5d.csv",
-   "bytes": 107,
-   "sha256": "1fcee36f808fd2006d17337cf293d6253936a6fcd38a5d6f0f976833c54f2e1c",
-   "rows": 5
-  },
-  {
-   "path": "data/daily_text/300124_汇川技术_250d.txt",
-   "bytes": 196516,
-   "sha256": "bfe1383ca5df6292a701ae87a8b92d494288f99ed012b1eec714f9e7510b949c",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/600362_江西铜业_chip_warmup_209d.csv",
-   "bytes": 8403,
-   "sha256": "abf8d6087f36ee62d1aa35b329c23e0b909d002ab302310f21a12117148b4da0",
-   "rows": 209
-  },
-  {
-   "path": "data/eastmoney/600362_江西铜业_kline_250d.csv",
-   "bytes": 19377,
-   "sha256": "f754aa34a130853598714090eeebb9c630b42bcf7f54ff75cea99a64e75e7158",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/600362_江西铜业_volume_warmup_5d.csv",
-   "bytes": 110,
-   "sha256": "d00b1d81d04b83be108e4e70041c756befa25d0f94b97a1fb0e9c064085503c8",
-   "rows": 5
-  },
-  {
-   "path": "data/daily_text/600362_江西铜业_250d.txt",
-   "bytes": 196599,
-   "sha256": "6633013e7f83062bd9e95dc513f2bb154ed61a69542346fb2c28a8952e7c257b",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/601899_紫金矿业_chip_warmup_209d.csv",
-   "bytes": 8403,
-   "sha256": "b3a2fb9ea8c56be3c99db90af0f0d6a22cd8978a60af2e5f380b995b6365112e",
-   "rows": 209
-  },
-  {
-   "path": "data/eastmoney/601899_紫金矿业_kline_250d.csv",
-   "bytes": 19678,
-   "sha256": "541329f5dddca753eb76c70c542dee85e4985f41d39495b476d2badde48e3a44",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/601899_紫金矿业_volume_warmup_5d.csv",
-   "bytes": 112,
-   "sha256": "f77c6b84f623fb61803474a722ddc95daf96857843ecc63a3739205a676b8dfb",
-   "rows": 5
-  },
-  {
-   "path": "data/daily_text/601899_紫金矿业_250d.txt",
-   "bytes": 197480,
-   "sha256": "3356177442daa4d838d4f351090ab71be4c11306e0aa92f8c03d0b33a8153fca",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/300760_迈瑞医疗_chip_warmup_209d.csv",
-   "bytes": 9239,
-   "sha256": "efe24f2f8d9962203c88c6548cf50545f8cc9a6e218fec8f7be7d86b02a71755",
-   "rows": 209
-  },
-  {
-   "path": "data/eastmoney/300760_迈瑞医疗_kline_250d.csv",
-   "bytes": 20135,
-   "sha256": "77a5176ef6c0d9ecaf738174277bc724d2aae6cc6d5f276abf78155b586396ad",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/300760_迈瑞医疗_volume_warmup_5d.csv",
-   "bytes": 104,
-   "sha256": "4f4dc138557606935f7d75a812a713450907d3c5d549dca46469a139312c9171",
-   "rows": 5
-  },
-  {
-   "path": "data/daily_text/300760_迈瑞医疗_250d.txt",
-   "bytes": 201309,
-   "sha256": "58f3f1cf32f9ecebc25c1abf13620c3484ad6a417d584f4a23721d82680d5458",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/002352_顺丰控股_chip_warmup_209d.csv",
-   "bytes": 8403,
-   "sha256": "d0dd0791f3a4b413ddae30946c28e1fbe6d6d2d385cc0518add11ee2306a7f34",
-   "rows": 209
-  },
-  {
-   "path": "data/eastmoney/002352_顺丰控股_kline_250d.csv",
-   "bytes": 19194,
-   "sha256": "e063eb1231f7e3d4ed92916b666bc7705f7941f7d03923321c72c7cda15ca9d2",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/002352_顺丰控股_volume_warmup_5d.csv",
-   "bytes": 107,
-   "sha256": "32ad7ced8cbcbb800a90284b8e79b5b40b0744a813c5ff76fe36fdf30d21b0bc",
-   "rows": 5
-  },
-  {
-   "path": "data/daily_text/002352_顺丰控股_250d.txt",
-   "bytes": 196007,
-   "sha256": "d8360fd43d21dfee37a0d9be25c0b66929b9a3e348b2db06d89babaa06d5d894",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/000807_云铝股份_chip_warmup_209d.csv",
-   "bytes": 8403,
-   "sha256": "ce5bf82935f8ef64590b28439658983b37ccad9bc41c347922b90467b7d4b6d0",
-   "rows": 209
-  },
-  {
-   "path": "data/eastmoney/000807_云铝股份_kline_250d.csv",
-   "bytes": 19378,
-   "sha256": "f27f9ed7798d6fd36456899f40b69be0389dbb6e94c71d7c55734e0a45c47d80",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/000807_云铝股份_volume_warmup_5d.csv",
-   "bytes": 107,
-   "sha256": "78393e9511a9aeb17d4c16749d1332d58640c2160263b519e9813332acda08ce",
-   "rows": 5
-  },
-  {
-   "path": "data/daily_text/000807_云铝股份_250d.txt",
-   "bytes": 196245,
-   "sha256": "b4cdf4dbcbe7acc2017a5004e05d31c936c5ce76aca3e32c208d7411c186c5a8",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/600398_海澜之家_chip_warmup_209d.csv",
-   "bytes": 7567,
-   "sha256": "1402efaf5ddaa71e7cf048e1fe3cfe7e0ee494adc750046eea3cea8e6d78a689",
-   "rows": 209
-  },
-  {
-   "path": "data/eastmoney/600398_海澜之家_kline_250d.csv",
-   "bytes": 18112,
-   "sha256": "805ae607b0fba90162b4db6acf3a34148b0d04cc31c8ee112d922fde4ba8c9f9",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/600398_海澜之家_volume_warmup_5d.csv",
-   "bytes": 107,
-   "sha256": "d491d570fc131666d764b056669b0c138b736bb6b108eb504a2989439e0dcd26",
-   "rows": 5
-  },
-  {
-   "path": "data/daily_text/600398_海澜之家_250d.txt",
-   "bytes": 189962,
-   "sha256": "4a8d0aeb98b940615e7e1562b1eca763ae57ba0896e792c42a074ef7ce275136",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/000568_泸州老窖_chip_warmup_209d.csv",
-   "bytes": 9239,
-   "sha256": "de50e900d9835cb62be048e9a0c5dec9234675b50a726c823d7ece684746cade",
-   "rows": 209
-  },
-  {
-   "path": "data/eastmoney/000568_泸州老窖_kline_250d.csv",
-   "bytes": 19662,
-   "sha256": "8ab84064ce03764241ac78aae7a718e5e092cb5eefdf2715c82f10a74d78f227",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/000568_泸州老窖_volume_warmup_5d.csv",
-   "bytes": 105,
-   "sha256": "8f5664f102fcbb10f13ff7b58e54be8bddf574c32f55eb5e2ee9b9f70c8c0109",
-   "rows": 5
-  },
-  {
-   "path": "data/daily_text/000568_泸州老窖_250d.txt",
-   "bytes": 199169,
-   "sha256": "bbacc7d89b73f7278796b67d879c3dc9bb36361ce87e8e66fa72f2d5e271514a",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/600690_海尔智家_chip_warmup_209d.csv",
-   "bytes": 8403,
-   "sha256": "bc3c03013363a7a6377b71282b9cdec0402e2cdb97062567aa8b53c5514ae135",
-   "rows": 209
-  },
-  {
-   "path": "data/eastmoney/600690_海尔智家_kline_250d.csv",
-   "bytes": 19239,
-   "sha256": "e7f4ba4d10eebd5b1b50cc3b3df05cac435db2ed9754c5689cb1bcab0a439c5e",
-   "rows": 250
-  },
-  {
-   "path": "data/eastmoney/600690_海尔智家_volume_warmup_5d.csv",
-   "bytes": 107,
-   "sha256": "a90296fa9e5e596d9c35db01bf0b09f7b005ef74647e69e88c6f19a2ae94a915",
-   "rows": 5
-  },
-  {
-   "path": "data/daily_text/600690_海尔智家_250d.txt",
-   "bytes": 196383,
-   "sha256": "564158a2e74524abe4539c804811378cc660d369870c7b7d887c7a2fffe4ec34",
-   "rows": 250
-  }
- ],
- "supplemental_inputs": {
-  "share_counts": "Tencent quote snapshot (2026-08-24); total/floating shares recorded per stock using the same fields",
-  "profit_bases": {
-   "600398": {
-    "2025_annual_attributable_profit_yuan": 2165990940.78,
-    "2026_q1_attributable_profit_yuan": 949298988.95
-   },
-   "600690": {
-    "2025_annual_attributable_profit_yuan": 19552798222.85,
-    "2026_q1_attributable_profit_yuan": 4651612980.68
-   },
-   "method": "use annual result before Q1 publication and Q1 x 4 afterward",
-   "000858": {
-    "2024_annual_attributable_profit_yuan": 31853172533.98,
-    "2025_annual_attributable_profit_yuan": 8954257202.51,
-    "2026_q1_attributable_profit_yuan": 8062764940.78,
-    "effective_method": "2024 annual before the 2025 annual and 2026 Q1 reports were released together after the 2026-04-30 close; Q1 x4 from 2026-05-06"
-   },
-   "601600": {
-    "annualized_attributable_profit_basis_yuan": 22109813181.66,
-    "tencent_snapshot_dynamic_pe": 7.34,
-    "tencent_snapshot_pb": 2.08,
-    "total_shares": 17154971327,
-    "floating_shares": 13203339905,
-    "method": "implied from Tencent 2026-08-24 quote snapshot"
-   },
-   "601988": {
-    "annualized_attributable_profit_basis_yuan": 226619038778.69,
-    "tencent_snapshot_dynamic_pe": 8.73,
-    "tencent_snapshot_pb": 0.73,
-    "total_shares": 322212411814,
-    "floating_shares": 210765514846,
-    "method": "implied from Tencent 2026-08-24 quote snapshot"
-   },
-   "600863": {
-    "annualized_attributable_profit_basis_yuan": 2777771018.28,
-    "tencent_snapshot_dynamic_pe": 13.37,
-    "tencent_snapshot_pb": 1.94,
-    "total_shares": 7835189560,
-    "floating_shares": 7063325057,
-    "method": "implied from Tencent 2026-08-24 quote snapshot"
-   },
-   "601138": {
-    "annualized_attributable_profit_basis_yuan": 47487485261.35,
-    "tencent_snapshot_dynamic_pe": 24.96,
-    "tencent_snapshot_pb": 6.74,
-    "total_shares": 19844092284,
-    "floating_shares": 19844092284,
-    "method": "implied from Tencent 2026-08-24 quote snapshot"
-   },
-   "000651": {
-    "annualized_attributable_profit_basis_yuan": 24340972964.28,
-    "tencent_snapshot_dynamic_pe": 9.58,
-    "tencent_snapshot_pb": 1.53,
-    "total_shares": 5601405741,
-    "floating_shares": 5522009474,
-    "method": "implied from Tencent 2026-08-24 quote snapshot"
-   },
-   "300124": {
-    "annualized_attributable_profit_basis_yuan": 4053757317.29,
-    "tencent_snapshot_dynamic_pe": 38.94,
-    "tencent_snapshot_pb": 4.51,
-    "total_shares": 2707603944,
-    "floating_shares": 2410314720,
-    "method": "implied from Tencent 2026-08-24 quote snapshot"
-   },
-   "600362": {
-    "annualized_attributable_profit_basis_yuan": 11266272892.2,
-    "tencent_snapshot_dynamic_pe": 13.96,
-    "tencent_snapshot_pb": 1.9,
-    "total_shares": 3462729405,
-    "floating_shares": 2075247405,
-    "method": "implied from Tencent 2026-08-24 quote snapshot"
-   },
-   "601899": {
-    "annualized_attributable_profit_basis_yuan": 78316364793.45,
-    "tencent_snapshot_dynamic_pe": 11.69,
-    "tencent_snapshot_pb": 4.8,
-    "total_shares": 26590714622,
-    "floating_shares": 20601793140,
-    "method": "implied from Tencent 2026-08-24 quote snapshot"
-   },
-   "300760": {
-    "annualized_attributable_profit_basis_yuan": 9318684707.38,
-    "tencent_snapshot_dynamic_pe": 20.61,
-    "tencent_snapshot_pb": 4.98,
-    "total_shares": 1211799431,
-    "floating_shares": 1210662145,
-    "method": "implied from Tencent 2026-08-24 quote snapshot"
-   },
-   "002352": {
-    "annualized_attributable_profit_basis_yuan": 10102542328.52,
-    "tencent_snapshot_dynamic_pe": 17.22,
-    "tencent_snapshot_pb": 1.77,
-    "total_shares": 5265308078,
-    "floating_shares": 4799115259,
-    "method": "implied from Tencent 2026-08-24 quote snapshot"
-   },
-   "000807": {
-    "annualized_attributable_profit_basis_yuan": 14401963236.05,
-    "tencent_snapshot_dynamic_pe": 6.28,
-    "tencent_snapshot_pb": 2.63,
-    "total_shares": 3467957405,
-    "floating_shares": 3467921101,
-    "method": "implied from Tencent 2026-08-24 quote snapshot"
-   }
-  },
-  "book_value_per_share_basis": {
-   "600398": 3.6,
-   "600690": 12.5,
-   "000858": 30.4,
-   "601600": 4.548076923076923,
-   "601988": 8.410958904109588,
-   "600863": 2.443298969072165,
-   "601138": 8.862017804154302,
-   "000651": 27.20915032679739,
-   "300124": 12.926829268292684,
-   "600362": 23.90526315789474,
-   "601899": 7.172916666666667,
-   "300760": 31.825301204819276,
-   "002352": 18.666666666666664,
-   "000807": 9.916349809885931
-  },
-  "supplied_snapshot_override": "600398 on 2026-08-21 inner/outer values from the user-provided block"
- },
- "snapshot_update_note": " 2026-10-26 manual update (Arena, no workflow): EastMoney daily fetched manually to 2026-10-26 (added 10-22/10-23/10-26, window 2025-10-15..2026-10-26, warmup tail 2025-10-14); Sina 15min fetched manually to 2026-10-26 (SZ day-volume match 0.000%, SH -0.04%..-0.21% within known Sina baseline); no corporate-action flags detected in the 3 new sessions for all 14. 2026-10-27 manual update (Arena direct crawl, no Actions/workflow): EastMoney daily to 2026-10-27 (added 1 session, window 2025-10-16..2026-10-27); Sina 15min to 2026-10-27 (SZ 0.000%, SH -0.04%..-0.26% vs EM daily); no corporate-action flags for 14/14. 2026-10-28 manual update (Arena direct crawl, no Actions/workflow): EastMoney daily to 2026-10-28 for 15 stocks (added 000568 泸州老窖 as 15th, full 459-session build; window 2025-10-17..2026-10-28); Sina 15min to 2026-10-28 (SZ 0.000%, SH -0.02%..-0.27% vs EM daily on latest session; OHLC 15/15 all 21 sessions match); no corporate-action flags for 15/15."
+  "snapshot_update_note": " 2026-10-26 manual update (Arena, no workflow): EastMoney daily fetched manually to 2026-10-26 (added 10-22/10-23/10-26, window 2025-10-15..2026-10-26, warmup tail 2025-10-14); Sina 15min fetched manually to 2026-10-26 (SZ day-volume match 0.000%, SH -0.04%..-0.21% within known Sina baseline); no corporate-action flags detected in the 3 new sessions for all 14. 2026-10-27 manual update (Arena direct crawl, no Actions/workflow): EastMoney daily to 2026-10-27 (added 1 session, window 2025-10-16..2026-10-27); Sina 15min to 2026-10-27 (SZ 0.000%, SH -0.04%..-0.26% vs EM daily); no corporate-action flags for 14/14. 2026-10-28 manual update (Arena direct crawl, no Actions/workflow): EastMoney daily to 2026-10-28 for 15 stocks (added 000568 泸州老窖 as 15th, full 459-session build; window 2025-10-17..2026-10-28); Sina 15min to 2026-10-28 (SZ 0.000%, SH -0.02%..-0.27% vs EM daily on latest session; OHLC 15/15 all 21 sessions match); no corporate-action flags for 15/15."
 }
