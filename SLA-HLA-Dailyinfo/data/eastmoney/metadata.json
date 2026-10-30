@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-10-28",
-  "last_completed_session": "2026-10-28",
+  "as_of": "2026-10-30",
+  "last_completed_session": "2026-10-30",
   "stocks": [
     {
       "code": "000858",
@@ -148,361 +148,361 @@
     {
       "path": "data/eastmoney/000858_五粮液_chip_warmup_209d.csv",
       "bytes": 9239,
-      "sha256": "1fc62653a6590fcd708e9fd919f027483d475c2ee0fe093a1dd7c2642c3183cc",
+      "sha256": "cb33aaf2d7c57926a2f23e57ac75ac5ec6099e76dade2d54b53862af4e70a9c7",
       "rows": 209
     },
     {
       "path": "data/eastmoney/000858_五粮液_kline_250d.csv",
-      "bytes": 19895,
-      "sha256": "51cd41499fefa148d0b81d42c2863261952cbed8f3ac676154ce209e7184527a",
+      "bytes": 19885,
+      "sha256": "7ffd8007548a4514e471b045d8bc77b7b1342b5ba88e987cd95fe116c4083cd8",
       "rows": 250
     },
     {
       "path": "data/eastmoney/000858_五粮液_volume_warmup_5d.csv",
       "bytes": 107,
-      "sha256": "1dd7299a76cef62795ee9ac6001ff07c2fcc0b429a2c1308abc275f4acf1e9be",
+      "sha256": "1717c99e936710990aedebb2aff59bce14c7fb4f03690689bee4a0305830b2ff",
       "rows": 5
     },
     {
       "path": "data/daily_text/000858_五粮液_250d.txt",
-      "bytes": 198509,
-      "sha256": "53afa9611fbb4e558eafe59eaa0567e653063859a2d275a22e25a121f5d4262c",
+      "bytes": 198471,
+      "sha256": "435ec09a9ad8e1705fe8c19a52f7f8d4d86544ce699e67a7f8957929c3a6eaa5",
       "rows": 250
     },
     {
       "path": "data/eastmoney/601600_中国铝业_chip_warmup_209d.csv",
       "bytes": 7567,
-      "sha256": "3ec5d878a2a924b11a6ea775e79d47165a3a4d06026736d55a54045d00aa2f8e",
+      "sha256": "38aadfe903eb76d6fc6a1db79f4bc220467c0f5e2a1df507e08f1172218cdb64",
       "rows": 209
     },
     {
       "path": "data/eastmoney/601600_中国铝业_kline_250d.csv",
-      "bytes": 19217,
-      "sha256": "725d35fa2d231e2449fa2262ff9683681f2a1e62d2cd2c281c08a61dd84b8903",
+      "bytes": 19215,
+      "sha256": "9ff7f02956ac9cc76efeffdd731a60beb4f22d33585933386a3c344c806ac65c",
       "rows": 250
     },
     {
       "path": "data/eastmoney/601600_中国铝业_volume_warmup_5d.csv",
       "bytes": 112,
-      "sha256": "f9ab1f429a5f72aa0905b41a20348c24b2213c52f9d4fe3b459538edecb3edf6",
+      "sha256": "acad699f35f0dbe615a55b2fa232f6663ec4e1f06e1322bc0fba04c30e5eaaa2",
       "rows": 5
     },
     {
       "path": "data/daily_text/601600_中国铝业_250d.txt",
-      "bytes": 195043,
-      "sha256": "0a0fe29463bd598b9acc216cb94c7bdd92456597591f4ee8e56c3ea868e6786e",
+      "bytes": 195042,
+      "sha256": "164ca156b9262d962f5474214179d5ae7f4befaadc786b77db9f48819cf24527",
       "rows": 250
     },
     {
       "path": "data/eastmoney/601988_中国银行_chip_warmup_209d.csv",
       "bytes": 7567,
-      "sha256": "ca8d92b9d9d02827f4f1b52aae73799e9e52e3c134ceac794595f20f9bc99f97",
+      "sha256": "347f047614a9d38019529d27d26db2566a6f7bd829747be536e6a539a113adf9",
       "rows": 209
     },
     {
       "path": "data/eastmoney/601988_中国银行_kline_250d.csv",
       "bytes": 18551,
-      "sha256": "36aa26ab40709befce7f3335e336fb6cd0ebc9266514c52ba1223b35716eb260",
+      "sha256": "17b7c1ae34fe9e47e67699a4f8f8f6999a4952127718528bb96d35dfa3a28610",
       "rows": 250
     },
     {
       "path": "data/eastmoney/601988_中国银行_volume_warmup_5d.csv",
       "bytes": 112,
-      "sha256": "db8c1a63927a04f93fa6eb28148b821c28ba843771f6ceb9d38bd87aab4341db",
+      "sha256": "ebcc990206765644f4fe5ecbc112be75adc5e700ba2d3a8b4a8e1a3e4bd5770d",
       "rows": 5
     },
     {
       "path": "data/daily_text/601988_中国银行_250d.txt",
-      "bytes": 191636,
-      "sha256": "6f8a410123f3ac35e481a5d293037ed805b66fe1beb46d04358adc9861698882",
+      "bytes": 191640,
+      "sha256": "fafd178c67f0f9fc586585483c95266607f5bdc6c863bb196e4f4fa21862fa65",
       "rows": 250
     },
     {
       "path": "data/eastmoney/600863_华能蒙电_chip_warmup_209d.csv",
       "bytes": 7567,
-      "sha256": "ddde4dd7bde6a8cbb87d5745cb66c2700ed86b95f76a69f38a80c0cb1afb6a8c",
+      "sha256": "95eb365c91751fc09b2c1f71c820d4b60e32236b1ccd8c3fd4a0094f7f5df5e3",
       "rows": 209
     },
     {
       "path": "data/eastmoney/600863_华能蒙电_kline_250d.csv",
       "bytes": 18262,
-      "sha256": "9ae00dc9180aaa277f807a61337d92b99f2fe95fcc578fca688cc04ee2d00e50",
+      "sha256": "b3fd8e41b24bb11c4758a214cb16073158d5c9df5fd5c9e3aa13325b2a4fe445",
       "rows": 250
     },
     {
       "path": "data/eastmoney/600863_华能蒙电_volume_warmup_5d.csv",
       "bytes": 107,
-      "sha256": "79376e91b66f401489058c29fd0743e12dda5c139c785345ad6573a46b82f397",
+      "sha256": "96c451937e67b3a28ef930b80e75be94be18b6d7b4aba5e99f5d16af2c46cc7d",
       "rows": 5
     },
     {
       "path": "data/daily_text/600863_华能蒙电_250d.txt",
-      "bytes": 190540,
-      "sha256": "9a19986f44c486dfc46a0201fcd5e39cbef8d1bcaf78f339f8550f0cd401e751",
+      "bytes": 190542,
+      "sha256": "70c3d5efffb44e838f267bbb3cb34708c5b5c79452f8b2a0a9156add1de104f3",
       "rows": 250
     },
     {
       "path": "data/eastmoney/601138_工业富联_chip_warmup_209d.csv",
       "bytes": 8403,
-      "sha256": "161a4648e56c1e8045d9531f474ae94c0a8b2f38025c334ca81f9425f3461239",
+      "sha256": "a439a6a6bbf957b40c7443a21e121f9dcbe1e8d2a90adbb85c632b34c9c192d7",
       "rows": 209
     },
     {
       "path": "data/eastmoney/601138_工业富联_kline_250d.csv",
-      "bytes": 19694,
-      "sha256": "51cbd87a5c91d094ad1891804ad1866d10e1c4e5f420eae377d05daaf4a4ef7d",
+      "bytes": 19696,
+      "sha256": "86195a2ceebd2b4b8450df0bd478506d9577d30309ab12a798208eb7fb9fd943",
       "rows": 250
     },
     {
       "path": "data/eastmoney/601138_工业富联_volume_warmup_5d.csv",
       "bytes": 112,
-      "sha256": "5943f7f84b3c81a92ec1f59b41ddf7506156118fce51f9cb73290c0ef1614844",
+      "sha256": "a1dc04e8cd285e6b8b0ac01bc4ca32a970fff859298860f0678d9ee815657ba2",
       "rows": 5
     },
     {
       "path": "data/daily_text/601138_工业富联_250d.txt",
-      "bytes": 197804,
-      "sha256": "a8157947f4cec5f73a4e80ec5c48bceb8296d40df0c611dd3b427f396dd2cd17",
+      "bytes": 197799,
+      "sha256": "d5dac8f03a686e8db4f318ba54f0457ed40156d242e46d563ca1cbe66784b1ac",
       "rows": 250
     },
     {
       "path": "data/eastmoney/000651_格力电器_chip_warmup_209d.csv",
       "bytes": 8403,
-      "sha256": "3cf216a20081bdca29c66911cd76f7ad2c033483a5b38e7934e9f1bcb4264bf9",
+      "sha256": "491551ed8ad0bcfbb505ea22e632f6bcab901c1045760bd04cf71109181ef7db",
       "rows": 209
     },
     {
       "path": "data/eastmoney/000651_格力电器_kline_250d.csv",
-      "bytes": 19337,
-      "sha256": "eb92610772499da6afb94df6cc0dda0a166f6c0c6cb701fafc2ea8ed5726ece5",
+      "bytes": 19335,
+      "sha256": "442fce0278d99ccb3d63b6544b47434d6f7551e191fd0b8006028d7a97020351",
       "rows": 250
     },
     {
       "path": "data/eastmoney/000651_格力电器_volume_warmup_5d.csv",
       "bytes": 107,
-      "sha256": "b97cec87b84812b31698903f81c2bb4eaf4758855d9318869ade3d1259238807",
+      "sha256": "cc189532c312e42a6048e6e84e5186bf2d2a37d33c8b004a4b1e5b6fb12c201f",
       "rows": 5
     },
     {
       "path": "data/daily_text/000651_格力电器_250d.txt",
-      "bytes": 196046,
-      "sha256": "5cbb61031dcaeb4f2cddbbe47dd4676e23b2557a6fe0630e7f5bb30ab00468da",
+      "bytes": 196045,
+      "sha256": "2cf79c8cab033e80ce49e4d90eb26c34f17b2291b157630d33631dbca6dec1cd",
       "rows": 250
     },
     {
       "path": "data/eastmoney/300124_汇川技术_chip_warmup_209d.csv",
       "bytes": 8403,
-      "sha256": "773cccb08d436134635ea307a6d6b6c82f84c22e15677f9bd58650c99b275c21",
+      "sha256": "ace98b7eb06380a5e6ee4d36293d9cb60996bad55960eb4b9ffd9c64b7c9c7cc",
       "rows": 209
     },
     {
       "path": "data/eastmoney/300124_汇川技术_kline_250d.csv",
       "bytes": 19349,
-      "sha256": "e87acc74c318a935fd3bea12932aa797a6e0f5cff279aad26901f6098953a797",
+      "sha256": "82e02f17918fd0e56cf048c1c1641c6c6aade5ffb62dc70e85ef62c09c9b9dc6",
       "rows": 250
     },
     {
       "path": "data/eastmoney/300124_汇川技术_volume_warmup_5d.csv",
       "bytes": 107,
-      "sha256": "9514bc9dd24fc96fc754db6e46bb41309f29d858385c00e5b339b997298182e4",
+      "sha256": "fd2df2d298945aa0f2d8f64c26b301462135225d71e1dcd5133f6dd12c6adeed",
       "rows": 5
     },
     {
       "path": "data/daily_text/300124_汇川技术_250d.txt",
       "bytes": 196516,
-      "sha256": "5bbcce351d797df8484b9d9635da458f61079be7a0dcd6dacaec1b20b2d0e95e",
+      "sha256": "3eec3df88f53a621a8c6321a14a9f10c3951cd1b06c616096f00591cc5790e55",
       "rows": 250
     },
     {
       "path": "data/eastmoney/600362_江西铜业_chip_warmup_209d.csv",
       "bytes": 8403,
-      "sha256": "ea6ba3ecca92752cc5a23814394c5cf7e1b24ea9ba193f7ed0df0a83c4f159ce",
+      "sha256": "409b7b1273c191eda88b031e7fc0af56b30e588b27375925a64bd4e0bb26a91b",
       "rows": 209
     },
     {
       "path": "data/eastmoney/600362_江西铜业_kline_250d.csv",
       "bytes": 19377,
-      "sha256": "38f9694693db04f865ddc85b275b8cb49779024806ef582626315b26ef3ba459",
+      "sha256": "cdd48dba9afdbb0b845b1b285fc72ff865c5f5f0820a8e9591623b2037804337",
       "rows": 250
     },
     {
       "path": "data/eastmoney/600362_江西铜业_volume_warmup_5d.csv",
-      "bytes": 110,
-      "sha256": "ae0f7ee4ae80d8cb227c6c1b8dd6c213d8cc6bebf668ebcf669f4801ba33d1d0",
+      "bytes": 108,
+      "sha256": "e16c9fba606cc1b0437f16e3d3ea6137d0a471cea684079caaa69561a5083fe1",
       "rows": 5
     },
     {
       "path": "data/daily_text/600362_江西铜业_250d.txt",
-      "bytes": 196599,
-      "sha256": "7bfbc2c5c0f6219382ca39e222f63571a10014e768af7595062f58dc488027c0",
+      "bytes": 196595,
+      "sha256": "457bcb92ec73f0a36b824b0fd3d84163e5ab1bc9e430144fd95ee7149b2a73f5",
       "rows": 250
     },
     {
       "path": "data/eastmoney/601899_紫金矿业_chip_warmup_209d.csv",
       "bytes": 8403,
-      "sha256": "cf87800354bec33955a5fb4c22c8401b386b7b369834f8f39393df8eed22c8cf",
+      "sha256": "6113237becaa37e07b40c9b9e19fdc93852bd4f2d059faa0eb2d999e7e68669e",
       "rows": 209
     },
     {
       "path": "data/eastmoney/601899_紫金矿业_kline_250d.csv",
-      "bytes": 19678,
-      "sha256": "db2be35fcd64e35799270cf6bc6919b8c9759054a07a42df3436372192bbcfb2",
+      "bytes": 19676,
+      "sha256": "c78a87f0a0ea15edd7a70fd1627b47c77daec103803aa37215906cc8fb22ec3b",
       "rows": 250
     },
     {
       "path": "data/eastmoney/601899_紫金矿业_volume_warmup_5d.csv",
       "bytes": 112,
-      "sha256": "f2c2107c38357d56e29912b5f17ffeb5d0a3402ac547822d36144b258125e91b",
+      "sha256": "93e3f9acbb4d16c08cda4c7350075307744d235f9380b94834e215d3837ca3b8",
       "rows": 5
     },
     {
       "path": "data/daily_text/601899_紫金矿业_250d.txt",
-      "bytes": 197480,
-      "sha256": "ca7b2a2dd879d6b66d007eed2c404c5fbc9d67b4c9a96e5e3998d14685ef15e5",
+      "bytes": 197471,
+      "sha256": "c02781e5f31838904ef086dda8c0e670a878941c8822863d37f1e3770d1eb536",
       "rows": 250
     },
     {
       "path": "data/eastmoney/300760_迈瑞医疗_chip_warmup_209d.csv",
       "bytes": 9239,
-      "sha256": "722dde31fcb958370619f3e0b556ee2e4249afc7a50c5e4290f9d3e5690d391b",
+      "sha256": "1b9b60e5f3c75c1ccfd293545e72ee3c5f7ede374ca1fc2ea1490399ef039a97",
       "rows": 209
     },
     {
       "path": "data/eastmoney/300760_迈瑞医疗_kline_250d.csv",
-      "bytes": 20135,
-      "sha256": "9f675814277dd47cfe1d795e0df32aaeb1fc47028fc77a1052db91f0731c27dd",
+      "bytes": 20133,
+      "sha256": "d8caa17e290208c0430e262055d62ba3da7d449421847e80554b2100109dc72f",
       "rows": 250
     },
     {
       "path": "data/eastmoney/300760_迈瑞医疗_volume_warmup_5d.csv",
-      "bytes": 104,
-      "sha256": "50f46ba473a94fa7384723a2a5f064548bfb61eefafc53d9b60e04041f6f51b9",
+      "bytes": 103,
+      "sha256": "ecf0e11673aca8f82f6ae464b300663c17c06ba0e43b7942625152a74825c88a",
       "rows": 5
     },
     {
       "path": "data/daily_text/300760_迈瑞医疗_250d.txt",
       "bytes": 201309,
-      "sha256": "17daf51e4c65ff0050d9e7bf299b3075a05f7930f9b55866ef5d8dafeb5f2552",
+      "sha256": "0bdd076b17c1b622ea94e9bbf4c1e7c6a44dc12069217ea5f43045d938d98a4e",
       "rows": 250
     },
     {
       "path": "data/eastmoney/002352_顺丰控股_chip_warmup_209d.csv",
       "bytes": 8403,
-      "sha256": "6d427088bcc30a9b98080bb648ed5246a34583af4d87770ed9713f4555236679",
+      "sha256": "6219fbe6d5045eb6c1594cb857d52472c47baa21e958ce3777c87336e5d96506",
       "rows": 209
     },
     {
       "path": "data/eastmoney/002352_顺丰控股_kline_250d.csv",
-      "bytes": 19194,
-      "sha256": "5798bee7a255065574fe83e3d9417f6906290047fd20454555bd92f208ba44ff",
+      "bytes": 19192,
+      "sha256": "1216ed6a3e74aa7fded3fee89bc882fc7b21a4e7b85b7ef518e4cfce73f21a4d",
       "rows": 250
     },
     {
       "path": "data/eastmoney/002352_顺丰控股_volume_warmup_5d.csv",
       "bytes": 107,
-      "sha256": "537d83642a8b4d4c556f03d86e607d91b475089dad9150f762ff9f67467f2109",
+      "sha256": "1b457342dc45ce839db8a306cd88b272b6a00897830284e387c753b9a19fa2d0",
       "rows": 5
     },
     {
       "path": "data/daily_text/002352_顺丰控股_250d.txt",
-      "bytes": 196007,
-      "sha256": "deeda4cf504e81654d4f02cbc431ea17521f96c4168a5675890a379743877018",
+      "bytes": 196006,
+      "sha256": "33b3f3ebeb8027bf915739c1353df1de29be705e5d11c0e6bb7526513a78dc5f",
       "rows": 250
     },
     {
       "path": "data/eastmoney/000807_云铝股份_chip_warmup_209d.csv",
       "bytes": 8403,
-      "sha256": "3e9046126427783998e211f22fed1c4f7bcf64112b34cc3c66744f65403622ea",
+      "sha256": "2d4b4563c8aff5fde906841240499a82ced0fd957f7857255d3a89d538561c19",
       "rows": 209
     },
     {
       "path": "data/eastmoney/000807_云铝股份_kline_250d.csv",
-      "bytes": 19378,
-      "sha256": "02772df6e5cbf90926a4fb9a6efb96906b8d230745693d12cdf75a037fefdfc2",
+      "bytes": 19377,
+      "sha256": "7ff85f95e63d1cf3c574fe2362d813b75eefc0cb632bfa5d536f1e9de3cb9f9d",
       "rows": 250
     },
     {
       "path": "data/eastmoney/000807_云铝股份_volume_warmup_5d.csv",
       "bytes": 107,
-      "sha256": "21987d84efb8c80b81b452b6a7eed49bab2276858dbccd2704b215c3d160175f",
+      "sha256": "9e1ebf1323453de70ac6919bda3b15bb040ee44e2c1122cbb4681bc3ee3ff545",
       "rows": 5
     },
     {
       "path": "data/daily_text/000807_云铝股份_250d.txt",
-      "bytes": 196245,
-      "sha256": "febe0ab8c22bb02a64a8444a95b9517c38819e1ed24c4f18690a6f3afdfbfae7",
+      "bytes": 196241,
+      "sha256": "414d4a536dde3b5ab89a85c4b6ed46bb805a67a35a2c4df5001a226558a3aa64",
       "rows": 250
     },
     {
       "path": "data/eastmoney/600398_海澜之家_chip_warmup_209d.csv",
       "bytes": 7567,
-      "sha256": "efaa58e534e2c2418062f8bba9363095b1cc4b8cd748658cdf60ddd47d4f005b",
+      "sha256": "e5107cca7f7c59e1e03b9962d3c654b2240f38344e9d20e680b3da19aa412a2e",
       "rows": 209
     },
     {
       "path": "data/eastmoney/600398_海澜之家_kline_250d.csv",
-      "bytes": 18112,
-      "sha256": "5832e5b72598894caac038d1f7ab0da2ed9cd3b541f63b53330bab613af672e1",
+      "bytes": 18110,
+      "sha256": "012ca701b32670eb2208377676d017abce8ec832183994342244f27320385bf0",
       "rows": 250
     },
     {
       "path": "data/eastmoney/600398_海澜之家_volume_warmup_5d.csv",
       "bytes": 107,
-      "sha256": "45fbbe6000774b69444758fffabde1b8eb113fd90427f0e3ff2449bfd190c110",
+      "sha256": "9993c72992e6075f1a7b66f571c1d2589fc5e055b08114e191ea5c86e91b523b",
       "rows": 5
     },
     {
       "path": "data/daily_text/600398_海澜之家_250d.txt",
-      "bytes": 189962,
-      "sha256": "75edd581e14d398ce9ec886c59dcacfb9c177b5ef3d661b49bebcc3ccc740d8a",
+      "bytes": 189959,
+      "sha256": "85595a106a521c4d1805f161cff375f96d2bdca2cf24b2369d742d32f72b9086",
       "rows": 250
     },
     {
       "path": "data/eastmoney/000568_泸州老窖_chip_warmup_209d.csv",
       "bytes": 9239,
-      "sha256": "2874e3dac4b7672d7c763367db12f9c0e01b7ec381bc6c3160068157cd63a686",
+      "sha256": "97fa96d5542cee7000b0a85f390dd58169056e8b18387105df6f643c4ae06a5e",
       "rows": 209
     },
     {
       "path": "data/eastmoney/000568_泸州老窖_kline_250d.csv",
-      "bytes": 19662,
-      "sha256": "538dbe4ec02c70f00af6e69789e781ad43f22cbaee211bd89a3a6676ceac2c96",
+      "bytes": 19652,
+      "sha256": "f0c8153de4fc30b0d531512f2ab4ed7893f3e4d4c1f3b954206c398e6d379b8b",
       "rows": 250
     },
     {
       "path": "data/eastmoney/000568_泸州老窖_volume_warmup_5d.csv",
       "bytes": 105,
-      "sha256": "97cfed02cad5ab4a00097079dd56491f31c33c19e5aad2a60c246b4cf1543615",
+      "sha256": "612f367595cdd334e57ac59b9fa801115dbd449ea6b2afc2c74eac53518e238c",
       "rows": 5
     },
     {
       "path": "data/daily_text/000568_泸州老窖_250d.txt",
-      "bytes": 199169,
-      "sha256": "59f38d571d9819b20d989f5c73a14d3e1e6fd4bb53ce17f38258adb3c1a46ee5",
+      "bytes": 199128,
+      "sha256": "0c2ac017ceba471d113e5ed9579d5550aec6e08c3354984e7a95177534bf7090",
       "rows": 250
     },
     {
       "path": "data/eastmoney/600690_海尔智家_chip_warmup_209d.csv",
       "bytes": 8403,
-      "sha256": "a8f8e83a0f8fa4ec45b8e52fdea29fed9de33c00fc30b714c08a83aa25d2f3bd",
+      "sha256": "b35b62701aeedd079fc15f5d4f6498e992ef7577e20699622d531c75cd132731",
       "rows": 209
     },
     {
       "path": "data/eastmoney/600690_海尔智家_kline_250d.csv",
-      "bytes": 19239,
-      "sha256": "9ff715e3e4bb82a9b0f8ca226e2ea31b9b2689dc1b807c99a056028d1e212644",
+      "bytes": 19237,
+      "sha256": "f93db57d04edbcea81b9894671adc28529581b202b2d5ba2a3959b3b0f894482",
       "rows": 250
     },
     {
       "path": "data/eastmoney/600690_海尔智家_volume_warmup_5d.csv",
       "bytes": 107,
-      "sha256": "e410d393ab71cd76e9007f3ec74a04b44d543a3f0c7b3e2f25b5d9e8a5a17eb2",
+      "sha256": "aa3aa240f89dcaa4f3558e54c81d1abd2088e058d17e9b9e3acdd587ce560594",
       "rows": 5
     },
     {
       "path": "data/daily_text/600690_海尔智家_250d.txt",
-      "bytes": 196383,
-      "sha256": "3f518c45b37ccb83f49b6fbe08da2ab5ff70567b46182ccdf6f72745d74fbab2",
+      "bytes": 196381,
+      "sha256": "37a2a1fa0d08bdab825f3f4d5ea870b44f115897c504938af0c961d347eb8733",
       "rows": 250
     }
   ],
@@ -631,5 +631,5 @@
     },
     "supplied_snapshot_override": "600398 on 2026-08-21 inner/outer values from the user-provided block"
   },
-  "snapshot_update_note": " 2026-10-26 manual update (Arena, no workflow): EastMoney daily fetched manually to 2026-10-26 (added 10-22/10-23/10-26, window 2025-10-15..2026-10-26, warmup tail 2025-10-14); Sina 15min fetched manually to 2026-10-26 (SZ day-volume match 0.000%, SH -0.04%..-0.21% within known Sina baseline); no corporate-action flags detected in the 3 new sessions for all 14. 2026-10-27 manual update (Arena direct crawl, no Actions/workflow): EastMoney daily to 2026-10-27 (added 1 session, window 2025-10-16..2026-10-27); Sina 15min to 2026-10-27 (SZ 0.000%, SH -0.04%..-0.26% vs EM daily); no corporate-action flags for 14/14. 2026-10-28 manual update (Arena direct crawl, no Actions/workflow): EastMoney daily to 2026-10-28 for 15 stocks (added 000568 泸州老窖 as 15th, full 459-session build; window 2025-10-17..2026-10-28); Sina 15min to 2026-10-28 (SZ 0.000%, SH -0.02%..-0.27% vs EM daily on latest session; OHLC 15/15 all 21 sessions match); no corporate-action flags for 15/15."
+  "snapshot_update_note": " 2026-10-26 manual update (Arena, no workflow): EastMoney daily fetched manually to 2026-10-26 (added 10-22/10-23/10-26, window 2025-10-15..2026-10-26, warmup tail 2025-10-14); Sina 15min fetched manually to 2026-10-26 (SZ day-volume match 0.000%, SH -0.04%..-0.21% within known Sina baseline); no corporate-action flags detected in the 3 new sessions for all 14. 2026-10-27 manual update (Arena direct crawl, no Actions/workflow): EastMoney daily to 2026-10-27 (added 1 session, window 2025-10-16..2026-10-27); Sina 15min to 2026-10-27 (SZ 0.000%, SH -0.04%..-0.26% vs EM daily); no corporate-action flags for 14/14. 2026-10-28 manual update (Arena direct crawl, no Actions/workflow): EastMoney daily to 2026-10-28 for 15 stocks (added 000568 泸州老窖 as 15th, full 459-session build; window 2025-10-17..2026-10-28); Sina 15min to 2026-10-28 (SZ 0.000%, SH -0.02%..-0.27% vs EM daily on latest session; OHLC 15/15 all 21 sessions match); no corporate-action flags for 15/15. 2026-10-30 manual update (Arena direct crawl, no Actions/workflow): EastMoney daily to 2026-10-30 for 15 stocks (window 2025-10-21..2026-10-30, chip warm-up 2024-12-06..2025-10-20; 600863 head 2024-11-26); EastMoney's 000807 2026-10-30 change_pct/change_amount/amplitude arrived stale (referenced 25.09) - OHLC verified against Sina 15-minute aggregation and the three derived fields recomputed vs the 25.98 prior close (-2.39%/-0.62/2.81). Sina 15min to 2026-10-30 (window 2026-09-24..2026-10-30, 21 sessions x 16 bars); latest-session OHLC 15/15 match EastMoney daily, day-volume sums exact on SZ names and within -0.01% on SH names (known Sina SH aggregation baseline). No corporate-action flags for 15/15. Market breadth 9 up / 6 down; top turnover 601138 4.631bn CNY."
 }
