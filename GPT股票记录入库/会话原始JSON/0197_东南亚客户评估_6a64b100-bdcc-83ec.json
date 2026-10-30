@@ -1,0 +1,1195 @@
+{
+  "conversation_id": "6a64b100-bdcc-83ec-9589-c92bdbbcf2fb",
+  "conversation_template_id": null,
+  "create_time": 1784983810.491656,
+  "current_node": "e2dcaa26-fa01-4f95-bd03-038c31eb2d4c",
+  "default_model_slug": "auto",
+  "id": "6a64b100-bdcc-83ec-9589-c92bdbbcf2fb",
+  "is_archived": false,
+  "is_do_not_remember": false,
+  "is_read_only": null,
+  "is_starred": null,
+  "is_study_mode": false,
+  "mapping": {
+    "006f5565-54c0-4ca8-bdd8-df61b9eae12b": {
+      "id": "006f5565-54c0-4ca8-bdd8-df61b9eae12b",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "assistant"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "## nana-tech.net\n30%  B  \n泰国网络设备供应商/分销商，官网有Managed Switch产品分类，交换机为主营产品之一，但公司规模、成立年份、客户结构未确认  \n建议发送PoE/L2+ Managed Switch产品线，强调Marvell方案稳定性、OEM定制能力、ERPS/IGMP/VLAN等功能  \nL2+管理交换机、24口PoE交换机、10G SFP+汇聚交换机  \n官网直接展示Managed Switch分类，交换机不是纯配套产品；但未发现OEM/ODM、项目案例、中国供应链合作品牌信息，需进一步确认 citeturn0search0\n\n\n## Winner Intertech\n35%  B  \n泰国工业IoT解决方案商/分销商，主营工业网络、工业计算、自动化相关产品，服务电力、油气、智能城市、铁路等行业  \n可尝试工业PoE/工业交换机替代或补充方案，重点强调稳定性、交期、定制能力，但不要主推轨交专用场景  \n工业PoE交换机、工业L2管理交换机、光纤上联工业交换机  \n官网显示主营Industrial Network、Industrial IoT，并销售Moxa、N-net等工业品牌，说明工业网络采购经验强；但Moxa属于强势工业品牌，切入难度较高，且部分铁路/关键行业可能有认证要求 citeturn0search2turn0search4\n\n\n## Accessofranco\n25%  B  \n菲律宾/东南亚网络设备分销商，销售Maiwe工业交换机、PoE交换机等产品，属于工业网络分销角色  \n发送工业交换机替代方案，强调中国供应链优势、OEM能力、交期以及Marvell方案稳定性  \n工业PoE交换机、工业千兆交换机、L2+管理交换机  \n官网存在Maiwe Industrial Ethernet Switch/PoE产品页面，说明交换机相关业务明确；但客户规模、合作品牌范围、采购模式未确认\n\n\n## Sysnet Center\n30%  B  \n泰国网络设备电商/分销商，主营企业网络设备，销售BDCOM L3交换机、10G汇聚交换机等，偏分销渠道  \n建议从价格补充和OEM贴牌方向切入，推广24/48口PoE、10G汇聚产品，避免直接竞争BDCOM核心网络产品  \nL3汇聚交换机、10G SFP+交换机、24口PoE交换机  \n官网销售BDCOM S3900 L3 10G系列，具备企业网交换机销售能力；但已有亚洲品牌供应链，需要寻找价格、交期或定制差异化切入口 citeturn0search0turn0search5\n\n\n## HSTN\n15%  C  \n核心销售Ruckus高端网络设备，偏品牌代理/企业网络方案，供应商体系可能较严格  \n交换机涉及高端WiFi/园区网络生态，存在红灯品牌属性，不适合作为重点开发目标\n\n\n## switchcongnghiep.com\n35%  B  \n越南工业交换机垂直网站，主营工业网络设备，业务方向与工业Ethernet高度匹配  \n建议推广工业PoE、工业L2管理交换机，重点强调中国供应链、快速交付和OEM能力  \n工业交换机、工业PoE交换机、光纤上联交换机  \n网站名称和产品方向高度匹配工业交换机市场，但公司规模、品牌代理情况、中国供应链合作情况未确认\n\n\n## Riverplus IIoT\n25%  B  \n工业物联网方案商，主营IIoT网络设备和工业通信产品，交换机属于核心方案组件之一  \n可尝试作为工业网络补充供应商，强调可靠性、定制功能和长期供货  \n工业级交换机、工业PoE交换机、L2管理交换机  \n官网明确展示Industrial Ethernet Switch产品线，场景匹配度较高；但公司规模、已有品牌体系、采购开放度未确认\n\n\n## SATS Digital\n30%  B  \n网络设备供应商/分销商，销售Gigabit Industrial Switch等产品，交换机业务明确  \n推广工业千兆交换机和PoE产品，强调价格优势、OEM贴牌和快速交付  \n工业交换机、工业PoE交换机、8/16口工业交换机  \n官网存在工业交换机产品页面，符合目标客户画像；但未确认是否自主品牌、是否已有中国供应商 citeturn0search2\n\n\n## iFocusShop\n20%  C  \n主要销售Genata品牌产品，属于渠道销售，交换机相关但更偏单品牌零售/分销  \n已有Genata（中国供应链品牌）合作痕迹，但供应链替换需要明显价格或产品差异\n\n\n## SSWM CCTV Shop\n15%  C  \n核心业务偏CCTV配件（电源、硬盘等），交换机不是核心产品线  \n可偶尔推广PoE交换机SKU，但不属于重点开发客户\n"
+          ]
+        },
+        "create_time": 1784983812.120028,
+        "id": "006f5565-54c0-4ca8-bdd8-df61b9eae12b",
+        "metadata": {
+          "content_references": [
+            {
+              "alt": "([Sysnet Center](https://sysnetcenter.com/bdcom-s3900-l3-10g-series?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "Sysnet Center",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 0,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "BDCom S3900 L3 Switch Port 10Gbps Series",
+                  "url": "https://sysnetcenter.com/bdcom-s3900-l3-10g-series?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "([winnerintertech.com](https://www.winnerintertech.com/?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "winnerintertech.com",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 2,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    },
+                    {
+                      "ref_index": 4,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [
+                    {
+                      "attribution": "winnerintertech.com",
+                      "pub_date": null,
+                      "snippet": "",
+                      "title": "Contact Us",
+                      "url": "https://www.winnerintertech.com/contactus?utm_source=chatgpt.com"
+                    }
+                  ],
+                  "title": "Winner Intertech",
+                  "url": "https://www.winnerintertech.com/?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "([Sysnet Center](https://sysnetcenter.com/bdcom-s3900-l3-10g-series?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "Sysnet Center",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 0,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    },
+                    {
+                      "ref_index": 5,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [
+                    {
+                      "attribution": "Sysnet Center",
+                      "pub_date": null,
+                      "snippet": "",
+                      "title": "BDCOM",
+                      "url": "https://sysnetcenter.com/brand/bdcom?utm_source=chatgpt.com"
+                    }
+                  ],
+                  "title": "BDCom S3900 L3 Switch Port 10Gbps Series",
+                  "url": "https://sysnetcenter.com/bdcom-s3900-l3-10g-series?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "([winnerintertech.com](https://www.winnerintertech.com/?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "winnerintertech.com",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 2,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Winner Intertech",
+                  "url": "https://www.winnerintertech.com/?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "",
+              "has_images": false,
+              "prefix": null,
+              "prompt_text": null,
+              "sources": [
+                {
+                  "attribution": "Sysnet Center",
+                  "title": "BDCom S3900 L3 Switch Port 10Gbps Series",
+                  "url": "https://sysnetcenter.com/bdcom-s3900-l3-10g-series?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "winnerintertech.com",
+                  "title": "Winner Intertech",
+                  "url": "https://www.winnerintertech.com/?utm_source=chatgpt.com"
+                }
+              ],
+              "type": "sources_footnote"
+            }
+          ],
+          "model_slug": "gpt-5-5",
+          "parent_id": "19e212db-ac26-4b11-bbb5-ef9061e73e73",
+          "search_result_groups": [
+            {
+              "domain": "sysnetcenter.com",
+              "entries": [
+                {
+                  "attribution": "sysnetcenter.com",
+                  "snippet": "Network Switch  Image: BDCOM Network Switch  NETWORK SWITCH  BDCom S2900 L3-lite Series is a next-generation aggregation 10GE switch introduced by BDCOM. It is targeted at the IP MAN(metropolitan are...",
+                  "title": "BDCOM Network Switch",
+                  "url": "https://sysnetcenter.com/bdcom-network-switch?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "sysnetcenter.com",
+                  "snippet": "BDCOM S3900-48T6X L3 MANAGED GIGABIT 48 PORT, 6 PORT SFP+  แบรนด์ BDCOM  คะแนน  กรุณาช่วย Review สินค้า  BDCom S3900-48T6X L3 Managed 48 Port Gigabit, 6 Port SFP+ รองรับ VLAN, STP, IGMP Snooping, Sta...",
+                  "title": "BDCom S3900-48T6X L3 Managed Gigabit 48 Port, 6 Port SFP+",
+                  "url": "https://sysnetcenter.com/bdcom-/bdcom-s3900-48t6x-l3-managed-gigabit-48-port-6-sfp-plus?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "sysnetcenter.com",
+                  "snippet": "รายการสินค้าตามแบรนด์ BDCOM  BDCOM  Shanghai Baud Data Communication Co.,Ltd (BDCOM) ซึ่งก่อตั้งขึ้นในปี 2537 ปัจจุบันเป็นหนึ่งในซัพพลายเออร์ชั้นนำของจีนด้านโซลูชันระบบเครือข่ายและการสื่อสาร BDCOM คิ...",
+                  "title": "BDCOM",
+                  "url": "https://sysnetcenter.com/brand/bdcom?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "winnerintertech.com",
+              "entries": [
+                {
+                  "attribution": "winnerintertech.com",
+                  "snippet": "CONTACT US  ข้อความของคุณถูกส่งเรียบร้อยแล้ว  ชื่อ * [Input]  อีเมล * [Input]  เบอร์โทรศัพท์ * [Input]  ข้อความ *  [Input]  กรุณากรอกตัวเลขผลลัพธ์จากด้านบน  [Input] ฉันรับทราบและยอมรับ นโยบายความเป็น...",
+                  "title": "Contact Us",
+                  "url": "https://www.winnerintertech.com/contactus?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "winnerintertech.com",
+                  "snippet": "สินค้าทั้งหมด  เรียงตาม    [Select]  [Input] [Input]  ตัวกรอง  ไม่พบสินค้า  ไม่พบสินค้า  CONTACT US  Image  Winner Intertech company.  La Uniq tower , 2nd Floor, Soi Thetsaban Rangsan Nuea, Khwaeng L...",
+                  "title": "สินค้าทั้งหมด",
+                  "url": "https://www.winnerintertech.com/category?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "winnerintertech.com",
+                  "snippet": "WINNER INTERTECH JOIN MANUFACTURING EXPO 2025  Last updated: 27 มิ.ย. 2568  |  2434 จำนวนผู้เข้าชม  |  Image: Winner Intertech Join Manufacturing Expo 2025   พบกับ Winner Intertech ผู้นำเข้าและจัดจำห...",
+                  "title": "Winner Intertech Join Manufacturing Expo 2025",
+                  "url": "https://www.winnerintertech.com/content/29643/winner-intertech-join-manufacturing-expo-2025-?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "winnerintertech.com",
+                  "snippet": "Image  Image  Image  Image  Production Line Monitoring The modern production line monitoring system facilitates the need of remote monitoring that allows supervisors to see what is happening on a fac...",
+                  "title": "Smart Factory",
+                  "url": "https://www.winnerintertech.com/smartfactory?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "winnerintertech.com",
+                  "snippet": "NEWS  Adder KVM and Winner Intertech Join defense & security 2025  27 พ.ย. 2568  Adder KVM ร่วมกับ บริษัท วินเนอร์อินเตอร์เทค จำกัด เข้าร่วม \"defense & security 2025\" ศูนย์แสดงสินค้าและการประชุมอิมแพ...",
+                  "title": "news",
+                  "url": "https://www.winnerintertech.com/categorycontent/5952/news?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "na-tec.co.jp",
+              "entries": [
+                {
+                  "attribution": "na-tec.co.jp",
+                  "snippet": "会社概要  Company Overview  会社概要  商号  株式会社ナテック  創業開始日  2003年7月1日  本社所在地  〒113-0034　東京都文京区湯島一丁目2-4　BIZCORE御茶ノ水5階 地図（GoogleMAP）  電話番号  03-3255-8601  FAX番号  03-3255-8606  資本金  1億円  従業員  31名  事業内容  各種電子部品の開発...",
+                  "title": "会社概要 | 株式会社ナテック",
+                  "url": "https://www.na-tec.co.jp/company/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "na-tec.co.jp",
+                  "snippet": "お問い合わせInquiries  * English * 日本語   小さくとも 「キラリ」と光り続ける企業を目指して  A SMALL BUT THE UNIQUE COMPANY  SCR0LL  株式会社ナテックグループは、高度なアプリケーション技術と、全世界に亘るエレクトロニクス部品のマーケティングチャネルを背景に、お客様に、真に有効な電子部品と付加価値を提供する技術商社です。  株式会...",
+                  "title": "株式会社ナテック｜光学系部品・材料を中心に展開する技術商社",
+                  "url": "https://www.na-tec.co.jp/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "na-tec.co.jp",
+                  "snippet": "MANAGEMENT POLICY  Management Policy  MANAGEMENT POLICY  Twenty years have quickly passed since our establishment in 2003. During this time, we have flexibly steered our business in response to chang...",
+                  "title": "Management Policy | Natec Corporation",
+                  "url": "https://www.na-tec.co.jp/en/group/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "na-tec.co.jp",
+                  "snippet": "COMPANY OVERVIEW  COMPANY OVERVIEW  Company Name  NATEC Corporation  Established  July 1, 2003  Business Site  〒113-0034 BIZCORE OCHANOMIZU 5F 1-2-4 Yushima Bunkyo-ku Tokyo 113-0034, Japan MAP（Google...",
+                  "title": "Company Overview | Natec Corporation",
+                  "url": "https://www.na-tec.co.jp/en/company/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "winning-ind.com",
+              "entries": [
+                {
+                  "attribution": "winning-ind.com",
+                  "snippet": "COMBINATION SWITCH MANUFACTURER TAIWAN  ANTIQUE & CLASSIC CAR PARTS  Image: op-250724-03547.webp  IGNITION SWITCH ASSEMBLY  Image: op-250724-03549.webp  IGNITION SWITCH / IGNITION CABLE SWITCH  Image...",
+                  "title": "WINNING Industrial Co., Ltd. | OEM & Aftermarket Auto Electronic Parts Manufacturer in Taiwan",
+                  "url": "https://www.winning-ind.com/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "winning-ind.com",
+                  "snippet": "VIDEO  iframe  COMPANY  Image: op-260521-04201-430x0.png  WINNING Industrial Co., Ltd was founded in Changhua, Taiwan since 1979. WINNING is specialized in manufacturing auto switches and sensors: Co...",
+                  "title": "WINNING Industrial Co., Ltd. | OEM & Aftermarket Auto Electronic Parts Manufacturer in Taiwan",
+                  "url": "https://www.winning-ind.com/en/page-2143/Company.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "winning-ind.com",
+                  "snippet": "Antique & Classic Car  Oil cap / oil filter cap  Indicator Switch  Ignition Switch Assembly  Ignition Switch / Ignition Cable Switch  Ignition Lock Cylinder  Temperature Switch  Oil Pressure Switch...",
+                  "title": "WINNING Industrial Co., Ltd. | OEM & Aftermarket Auto Electronic Parts Manufacturer in Taiwan",
+                  "url": "https://www.winning-ind.com/en?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "winning-ind.com",
+                  "snippet": "WINNING INDUSTRIAL CO., LTD.  * Home * Company Profile * Product Line * News * Contact Us  HOME / COMPANY PROFILE  COMPANY PROFILE    WINNING INDUSTRIAL CO., LTD.  Image: a-260521-04187.png  WINNING...",
+                  "title": "WINNING Industrial Co., Ltd. | Automotive Switch & Sensor Manufacturer in Taiwan - System.Func`2[AsianNetCore.WebBuilder.Web.Areas.DOs.RequestModels.DOsRequestModel,System.String]",
+                  "url": "https://www.winning-ind.com/en/2-844/a/Company.html?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "manatec.co.jp",
+              "entries": [
+                {
+                  "attribution": "manatec.co.jp",
+                  "snippet": "MENU  * NEWS * マナテックの強み * 事業内容 * 会社情報 * お問い合わせ * 採用情報 * 協力業者様向け  株式会社マナテック  * Image: 快テキ、変えテク、マナテック。 * Image: 快テキ、変えテク、マナテック。 * Image: 快テキ、変えテク、マナテック。  * NEWS  *     * 2026年6月24日令和8年度安全衛生大会を開催しました  *...",
+                  "title": "株式会社マナテック",
+                  "url": "https://manatec.co.jp/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "manatec.co.jp",
+                  "snippet": "TOP MESSAGE  社長挨拶  和を重んじて　豊かな社会創り地域の発展に貢献するマナテックへ。  私たちは、2017年から「株式会社マナテック」となり、長野県全域を活動拠点とし、総合エンジニアリング商社として、常にお客様と共に歩んで参りました。 今後も社員全員の力を結集して、付加価値の高い商品・サービスの提供を追求してまいります。これからさらにデジタル技術が進歩した超スマート社会を迎え、市...",
+                  "title": "会社情報 | 株式会社マナテック",
+                  "url": "https://manatec.co.jp/profile/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "winning-etech.com",
+              "entries": [
+                {
+                  "attribution": "winning-etech.com",
+                  "snippet": "INDUSTRIAL MACHINE MANUFACTURER & EXPORTER | DONGGUAN WINNING ELECTRONIC TECHNOLOGY CO. , LTD  Image: Dongguan Winning Electronic Technology Co. , Ltd  More Than 25  Years of Experience  About Us  WH...",
+                  "title": "Industrial Machine Manufacturer & Exporter | Dongguan Winning Electronic Technology Co. , Ltd",
+                  "url": "https://www.winning-etech.com/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "manuals.plus",
+              "entries": [
+                {
+                  "attribution": "manuals.plus",
+                  "snippet": "MAIWE INDUSTRIAL ETHERNET SWITCH USER MANUAL  Contents[Button: Hide]  1. 1Packing list 2. 2Product description 3. 3Interface description 4. 4Hardware Installation 5. 5Log in WEB Page 6. 6Specificatio...",
+                  "title": "Maiwe Industrial Ethernet Switch User Manual - Manuals+",
+                  "url": "https://manuals.plus/maiwe/industrial-ethernet-switch-manual-4?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "manuals.plus",
+                  "snippet": "MAIWE MIEN2205 INDUSTRIAL ETHERNET SWITCH USER MANUAL  Contents[Button: Hide]  1. 1Packing list 2. 2Product description 3. 3Interface description 4. 4Hardware installation 5. 5Order guide 6. 6Pledge...",
+                  "title": "maiwe MIEN2205 Industrial Ethernet Switch User Manual - Manuals+",
+                  "url": "https://manuals.plus/maiwe/mien2205-industrial-ethernet-switch-manual?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "manuals.plus",
+                  "snippet": "MAIWE MISCOM8028GX-4XGF-16GF-8GC INDUSTRIAL ETHERNET SWITCH USER MANUAL  Contents[Button: Hide]  1. 1Packing list 2. 2Product description 3. 3Interface description 4. 4Hardware Installation 5. 5Log i...",
+                  "title": "Maiwe MISCOM8028GX-4XGF-16GF-8GC Industrial Ethernet Switch User Manual - Manuals+",
+                  "url": "https://manuals.plus/maiwe/miscom8028gx-4xgf-16gf-8gc-industrial-ethernet-switch-manual?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "manuals.plus",
+                  "snippet": "MAIWE MIEN2216 INDUSTRIAL ETHERNET SWITCH USER MANUAL  Contents[Button: Hide]  1. 1Packing List 2. 2Product Overview 3. 3Port and Size 4. 4Hardware installation 5. 5Log in to the WEB interface 6. 6Sp...",
+                  "title": "Maiwe MIEN2216 Industrial Ethernet Switch User Manual - Manuals+",
+                  "url": "https://manuals.plus/maiwe/mien2216-industrial-ethernet-switch-manual?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "manuals.plus",
+                  "snippet": "MAIWE MIEN2208 UNMANAGED INDUSTRIAL ETHERNET SWITCH  Image: Maiwe-MIEN2208-Unmanaged-Industrial-Ethernet-Switch-PRODUCT-IMAGE  TRADEMARK  This trademark is owned by Wuhan Maiwe Communication Co., Ltd...",
+                  "title": "Maiwe MIEN2208 Unmanaged Industrial Ethernet Switch User Manual - Manuals+",
+                  "url": "https://manuals.plus/maiwe/mien2208-unmanaged-industrial-ethernet-switch-manual?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "nakatech.com",
+              "entries": [
+                {
+                  "attribution": "nakatech.com",
+                  "snippet": "INNOVATIVE SOLUTIONS  A STRATEGIC TECHNOLOGY PARTNER FOR YOUR BUSINESS SUCCESS  Image: LogosetWeb and Digital AssetsPNGTWP_Long_Island_Portrait_2025  Image: LOGO_twp_single_long_island_2024@2x  UNLEA...",
+                  "title": "IT Solutions, IT Services by IT Experts - Technology Solutions Company | NAKA",
+                  "url": "https://nakatech.com/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "nakatech.com",
+                  "snippet": "HOW INTELLIGENT NETWORK HELP YOUR BUSINESS?  The exponential proliferation of linked devices, bandwidth-intensive apps, and data traffic puts traditional network infrastructures under new strain. We...",
+                  "title": "Intelligent Network Solutions and Services Company - Naka",
+                  "url": "https://nakatech.com/solutions/intelligent-network/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "bdcom.cn",
+              "entries": [
+                {
+                  "attribution": "bdcom.cn",
+                  "snippet": "L3 MANAGED GIGABIT/10G STACKABLE SWITCH  S3900 Switching family comes with advanced functionality and first-rate performance,6 x 10G uplink ports and a broad range of downlink options along with dual...",
+                  "title": "L3 Managed Gigabit/10G Stackable Switch - 存放 - BDCOM Networking Solutions, Connecting a Better World",
+                  "url": "https://bdcom.cn/switch1/56.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "bdcom.cn",
+                  "snippet": "INTERRUPTOR APILABLE GESTIONADO L3 GIGABIT/10G  La familia de switches S3900 cuenta con funcionalidades avanzadas y un rendimiento de primera categoría, con 6 puertos ascendentes de 10G y una amplia...",
+                  "title": "Interruptor apilable gestionado L3 Gigabit/10G - 列表 - BDCOM",
+                  "url": "https://es.bdcom.cn/switch1/56.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "bdcom.cn",
+                  "snippet": "INTERRUPTOR POE+ GIGABIT/10G GESTIONADO L3  El modelo PoE de BDCOM S3900 es un dispositivo gestionado completamente en la Capa 3 con una gran variedad de funciones y una calidad de hardware líder en...",
+                  "title": "Interruptor PoE+ Gigabit/10G gestionado L3 - 列表 - BDCOM",
+                  "url": "https://es.bdcom.cn/switch1/40.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "bdcom.cn",
+                  "snippet": "Serie BDCOM S5700-P Switch Ethernet Multi-Gigabit PoE, orientado para la próxima generación de red metropolitana IP, red de gran campus y red empresarial. Aprende más  >Producto>Switch  Switch  Una f...",
+                  "title": "Switch - BDCOM",
+                  "url": "https://es.bdcom.cn/switch/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "bdcom.cn",
+                  "snippet": "CONVERGENCE NETWORK SOLUTIONS:  * Telecom-grade Reliability: High-performance redundant hardware architecture combined with uninterrupted upgrades, forwarding, graceful restart, and redundancy protect...",
+                  "title": "Medical Industry Network Solutions - 列表 - BDCOM Networking Solutions, Connecting a Better World",
+                  "url": "https://bdcom.cn/healthcare1/4.html?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "nantec.jp",
+              "entries": [
+                {
+                  "attribution": "nantec.jp",
+                  "snippet": "私たちについて  About Us  ナンテックは 工場の心臓を創る会社  工場の製造過程で必要な蒸気・水・空気を生み出す機器を設置し、工場全体にいきわたらせ工場の製造を円滑に行えるようにする会社です。サービス・メンテナンスや環境部門にも力を入れており、機器の修理・メンテナンスや工場から出る排水を浄化する機器なども取り扱っており、製造工場のトータルカンパニーとして事業を行っています。  Imag...",
+                  "title": "私たちについて | ナンテック株式会社",
+                  "url": "https://nantec.jp/aboutus/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "manualspro.net",
+              "entries": [
+                {
+                  "attribution": "manualspro.net",
+                  "snippet": "MAIWE ADMAS2208P-M12-8TPOE INDUSTRIAL ETHERNET SWITCH USER MANUAL  June 13, 2024 maiwe  Table of Contents  * Packing list * Product description * Interface description * Hardware installation * Speci...",
+                  "title": "Maiwe Admas2208P-M12-8TPOE Industrial Ethernet Switch User Manual",
+                  "url": "https://manualspro.net/230740-maiwe-admas2208p-m12-8tpoe-industrial-ethernet-switch-user-manual?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "manualsee.com",
+              "entries": [
+                {
+                  "attribution": "manualsee.com",
+                  "snippet": "MAIWE INDUSTRIAL ETHERNET SWITCH USER MANUAL  Image: Maiwe Industrial Ethernet Switch User Manual On this page  * Packing list * Product description * Interface description * Hardware Installation *...",
+                  "title": "Maiwe Industrial Ethernet Switch User Manual (+ pdf download)",
+                  "url": "https://manualsee.com/blog/w35RvfpJP.html?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "dataforthai.com",
+              "entries": [
+                {
+                  "attribution": "dataforthai.com",
+                  "snippet": "บริษัท วินเนอร์ อินเตอร์เทค จำกัด  WINNER INTERTECH COMPANY LIMITED  ทะเบียน 0125564033689 ธุรกิจ ประกอบกิจการนำเข้า ส่งออก จำหน่าย เครื่องวิทยุคมนาคม ระบบคอมพิวเตอร์ ระบบไฟฟ้า อุปกรณ์อิเล็กทรอนิกส์...",
+                  "title": "ข้อมูล บริษัท วินเนอร์ อินเตอร์เทค จำกัด",
+                  "url": "https://www.dataforthai.com/company/0125564033689/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "manualzz.com",
+              "entries": [
+                {
+                  "attribution": "manualzz.com",
+                  "snippet": "MAIWE MIEN2205 INDUSTRIAL ETHERNET SWITCH USER MANUAL  Maiwe MIEN2205 is an industrial Ethernet switch designed for harsh environments. It features 5*10/100Base-T(X) RJ45 ports. Supports automatic MD...",
+                  "title": "maiwe MIEN2205 Industrial Ethernet Switch User Manual | Manualzz",
+                  "url": "https://manualzz.com/doc/70256944/maiwe-mien2205-industrial-ethernet-switch-user-manual?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "manualzz.com",
+                  "snippet": "MAIWE MIEN1203-F INDUSTRIAL ETHERNET SWITCH USER MANUAL  maiwe MIEN1203-F is an industrial Ethernet switch with 3 100M Ethernet ports (1100M fiber port and 2100M copper ports). It is designed for use...",
+                  "title": "maiwe MIEN1203-F Industrial Ethernet Switch User Manual | Manualzz",
+                  "url": "https://manualzz.com/doc/70256959/maiwe-mien1203-f-industrial-ethernet-switch-user-manual?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "7sys.jp",
+              "entries": [
+                {
+                  "attribution": "7sys.jp",
+                  "snippet": "弊社がシステム導入経験をもとにして開発した 生産管理・販売管理・原価管理システムです!  独自開発したWEBアプリケーション用フレームワークによる圧倒的な使い易さで、 必要な機能をできるだけシンプルに開発しました。 マスタ設定も容易で、ExcelへのダウンロードやExcelからのアップロードもボタンひとつで実行できます。   「7GRID」導入事例  株式会社サンデリックフーズ 7Grid Ve...",
+                  "title": "管理システムなら静岡県浜松市のNANAシステム開発株式会社",
+                  "url": "https://www.7sys.jp/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "device.report",
+              "entries": [
+                {
+                  "attribution": "device.report",
+                  "snippet": "MAIWE INDUSTRIAL ETHERNET SWITCH USER MANUAL  Image: Maiwe Logo Industrial Ethernet Switch User ManualImage: Maiwe Industrial Ethernet Switch - PictureMISCOM8028-4GF/MISCOM8028-4GF-4F MISCOM8028-4GF-...",
+                  "title": "Maiwe Industrial Ethernet Switch User Manual",
+                  "url": "https://device.report/manual/5705128?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "device.report",
+                  "snippet": "Items  | Quantity  | Remarks Industrial Ethernet Switch  | 1PCS  | User Manual  | 1PCS  |  PRODUCT DESCRIPTION  This series of switches are unmanaged din-rail industrial Ethernet switches. MIEN2205 s...",
+                  "title": "maiwe MIEN2205 Industrial Ethernet Switch User Manual",
+                  "url": "https://device.report/manual/3812342?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "eso.co.th",
+              "entries": [
+                {
+                  "attribution": "eso.co.th",
+                  "snippet": "* Image: MIEN2205 / Industrial Ethernet Switch  * Image: MIEN2205 / Industrial Ethernet Switch  * Image: MIEN2205 / Industrial Ethernet Switch  * Image: MIEN2205 / Industrial Ethernet Switch  MIEN220...",
+                  "title": "MIEN2205 / Industrial Ethernet Switch",
+                  "url": "https://www.eso.co.th/product/185037-181240/mien2205-switch?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "natec1886.co.jp",
+              "entries": [
+                {
+                  "attribution": "natec1886.co.jp",
+                  "snippet": "OUR COMPANY 会社案内  * HOME * 会社案内  Image: 会社案内  代表挨拶  Greeting  ナテックは1886年（明治19年）の創業以来、ねじの分野に特化して参りました。  自動車業界を始めとして、OA機器・家電・アミューズメント・住宅関連・医療機器・産業機器等、幅広い分野に製品提供してきており多くのお客様に安全・安心してご使用頂けた賜物と考えております。  古く...",
+                  "title": "会社案内 - 株式会社ナテック",
+                  "url": "https://natec1886.co.jp/company/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "e-natec.co.jp",
+              "entries": [
+                {
+                  "attribution": "e-natec.co.jp",
+                  "snippet": "機械設計・機械組立・画像処理・計測ソフト・電気回路設計・シーケンス制御　他   TOP ナテックの強み 会社案内 製品紹介 採用情報   * 仕事の流れ * 社員の声 * 新卒・キャリア採用 * エントリーフォーム お問い合わせ  Image  Image  Image   Image: ナテックの強み  設計・製造・加工・組み立ての一貫した生産技術と、 新しい発想と創意工夫で、日々高度化するお客...",
+                  "title": "株式会社ナテック",
+                  "url": "https://www.e-natec.co.jp/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "alief-dz.com",
+              "entries": [
+                {
+                  "attribution": "alief-dz.com",
+                  "snippet": "BDCOM S3900 SERIES L3 AGGREGATION 10G SWITCHES  The new generation of  aggregation 10G switches for metropolitan area networks, campus networks and enterprise networks. The series has four models tha...",
+                  "title": "BDCOM S3900 series L3 aggregation 10G switches - Alief",
+                  "url": "https://www.alief-dz.com/produit/bdcom-s3900/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "itbazar.com.bd",
+              "entries": [
+                {
+                  "attribution": "itbazar.com.bd",
+                  "snippet": "Image  Image  Image  Image  BDCOM SWITCH S2928EF-2AC L3 MANAGED SWITCH  (0 reviews)  Product Inquiry  Add to wishlist Add to compare  Brand BDCOM  Inhouse product  Message Seller  * * *  Price  ৳52,0...",
+                  "title": "BDCOM Switch S2928EF",
+                  "url": "https://www.itbazar.com.bd/product/bdcom-switch-s2928ef-2ac-l3-managed-switch?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "otech.com.bd",
+              "entries": [
+                {
+                  "attribution": "otech.com.bd",
+                  "snippet": "BDCOM S3900-24S8T6X 24-PORT GIGABIT SFP 8-PORT GIGABIT RJ45 WITH 6-PORT 10G SFP+ L3 STACKABLE MANAGED SWITCH  Image: BDCOM S3900-24S8T6X 24-Port Gigabit SFP 8-Port Gigabit RJ45 with 6-Port 10G SFP+ L...",
+                  "title": "BDCOM S3900-24S8T6X 24G SFP + 8G RJ45 + 6 10G SFP+ Layer 3 Stackable Switch | OTECH BD",
+                  "url": "https://www.otech.com.bd/bdcom-s3900-24s8t6x-24-port-gigabit-sfp-8-port-gigabit-rj45-with-6-port-10g-sfp-l3-stackable-managed-switch?utm_source=chatgpt.com"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "parent": "27ea7a8d-43e3-493b-a6bc-9b66985d55d0"
+    },
+    "27ea7a8d-43e3-493b-a6bc-9b66985d55d0": {
+      "id": "27ea7a8d-43e3-493b-a6bc-9b66985d55d0",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "user"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "区块一：我司背景（固定不变）\n\n我是中国大陆的一个交换机贸易公司，信息如下\n\n产品\n1 接入层\nMarvell方案为主，Realtek方案为辅：CCTV交换机、商业/工业PoE交换机（8/16/24/48口）、L2+管理型交换机\n\n核心：https://www.smartbyte-switch.com/\n主要采用了Marvell芯片\n也在推，非核心：https://www.hruitech.com/\n\n主要用了Realtek芯片，算是补充一些产品型号以及用于给价格有要求的客户\n\n2 汇聚/核心层\nCENTEC芯片方案：L3交换机、10G SFP+汇聚、核心交换机\n\n核心层的就一个供应商：https://hohunet.com/\n\n整体model list还是比较齐全的\n\n\n优势\n1 功能强：支持ERPS环网、PoE++、IGMP Snooping、VLAN、QoS\n性能很稳定，我们ACCESS交换机主要是Marvell方案的\n同时供应商这也在大力优化feature list，上边提到的3个供应商对于研发投入都非常大，技术实力很强，同时平常的技术支持（售前售后）都挺好的\n\n2 价格优：与台湾同行差别不大，但性价比更高\n请注意，是和台湾同行比\n但和大陆同行比就一般了，参考劣势中的第一点\n但也不是没得玩，可以推广\n\n3 可定制：支持OEM/ODM贴牌，硬件上都可以搞\n支持管理功能/界面的深度定制，是深度，而不是像大多数同行一样简单定制\n芯片有很多库存，长期稳定供货且交期快\n\n劣势\n1 我是一个贸易商，SOHO，是拿我供应商产品来卖，供应商的产品质量和技术支持是极强的，但我肯定是受制于他们给我的价格来加利润的，给我100，我最多卖130了，比较被动\n\n2 我们不做云管理，不做轨交交换机，不做IP67这些交换机，消费级/家用路由不做\n比如，如果客户里有主营轨交的，基本就PASS了\n\n3 我的官网不行，效果看着很差，在一定程度上不太容易获得客户信任\n\n4 认证，我们只有CE/RoHS/FCC/Reach/UKCA，不过这基本足够应对绝大部分国家了\n没有UL\n具体行业认证比如轨交的\n或E-mark或某些国家准入时的强制认证（比如韩国的KC）\n\n\n\n目标客户\n1 品牌商/方案商（有OEM/ODM需求）→ 最优先\n如上述提到的，我们支持不同的定制服务\n如果客户偏技术一些：考虑深度定制，比如一些功能 管理UI等，我们优势很大（很多深圳同行没我们的实力，一些大厂可能不愿意做=数量 ROI等）\n这是核心差异化，也是我的核心卖点\n\n2 明显有从中国进口的经验或者合作供应商，比如Utepo/ONV/UNIPOE/HRUI/Scodeno等\n在和台湾品牌合作的也是可以的，比如Oring, Planet, Edgecore Networks等\n因为我是长期在通信行业，这些是长期的潜力客户，慢慢跟进即可\n\n3 分销商/电商（卖现成品牌，要现货标品）→ 可跟\n这个OK的，上述提到了，可OEM，有芯片库存，可以长期供应，且我们交期很快\n\n4 集成商/项目商（做CCTV/工业/园区项目）→ 可跟，最好是小项目，特别大的搞不定，在评估时，公司的规模和业务范围最好别太大，如果是很大的集团公司，我们很难拿下\n\n策略\n1 以长期跟进为主，不追求快速成单\n上述的内容已经表明了，我这个公司品牌的优势劣势很明显，非常两极化\n如果客户很在意价格 公司实力，我很吃亏\n但如果更在意我们的capability，产品的功能啥的，我们非常OK，可以说很强\n我是奔着长期跟进的，至少是长期在客户池里\n\n2 偏好项目型客户（弱化贸易商身份，聚焦方案可行性）和技术型客户（CLI/MIB/深度功能是主场）\n项目型是因为，这会弱化我的贸易商身份，因为项目主要是针对方案是否可行，价格是否OK，这个我能进行让利，优化提供的方案等\n技术型是因为我们的产品质量和技术支持是很OK的，尤其是客户要用MIB, CLI 等，这就是我们的主场，我们的功能，升级和长期支持非常OK\n\n3 长期从中国大陆进口的客户也是目标\n我已经确定一直要在通信行业里深耕了，和1中提到的一样，这些筛出来的客户总会有机会\n1次跟进不行就10次，10次不行就2年 5年\n随着我越来越专业，网站啥的都搞起来了，这些优质客户就容易成交了\n\n\n\n\n\n区块二：评估规则与输出要求（固定不变）\n\n1 基础信息核查：一定要注意从不同的渠道，越多越好！下边提及的只是示例\n\n深度评估：从客户官网，社交媒体账户，公司人数/成立年份/业务范围等进行综合评判\n理想规模：10-150人，成立3-15年，区域性/细分领域\n决策链短，对新供应商开放度高\n\n可跟规模：150-500人，有一定品牌但非行业Top\n有采购流程但不至于卡死，需要耐心\n\n谨慎规模：500人以上/上市公司/跨国集团\n供应商准入严格，审厂/认证门槛高，成交概率显著降低\n除非有明确ODM/技术定制需求，否则降一级\n\n请注意\n如果从公开信息无法确认公司规模/成立年份等次要信息，直接跳过不写，不需要标注\n但如果无法确认核心业务方向或客户角色，需标注\"核心业务未确认，建议人工介入\"\n\n2 交换机地位判断：交换机是\"主\"还是\"配菜\"?\n\n主菜：官网主推switching/PoE/managed switch/industrial ethernet/video surveillance network\n配菜：交换机只是附带，核心卖别的\n无关：纯光模块/transceiver/DAC/消费级路由，或者上述写的我们不做的类目\n\n如果客户产品线很杂（交换机+光模块+线缆+安防都有），以交换机/PoE相关产品在官网的占比，位置或相关的关键词出现频率等来判断主配菜，不要因为它同时卖光模块就判C级\n\n3 客户角色识别：客户是什么角色？\n\n方案商/品牌商：有Solutions/OEM/ODM/Customization/系统集成字样\n分销商/电商：有Shop/Stock/Wholesale/多品牌代理\n集成商/项目商：有Projects/Case Study/行业方案/工程实施\n\n4 合作商评估（重点）：尤其是有明确的中国合作商（中国大陆和台湾），有的话结论中要写出来\n\n4.1 红灯品牌（强绑定，极难切入）：Cisco、Juniper、Aruba/HPE、Fortinet，Huawei等\n→ 说明预算高、供应链封闭；不因此升A，最多维持B；若为主力合作品牌，降级处理\n\n4.2 如发现客户在卖或使用：Ruijie、Hikvision、Dahua、TP-Link、D-Link、Planet、EdgeCore、MikroTik、Moxa、ZyXEL等等\n说明客户对亚洲品牌开放，但这些品牌本身性价比已经不错，需要找差异化切入（定制、交期、某个功能）\n但请注意，我仍旧是不好进去的，因为一般供应链审核严格，而且这些厂商的产品价格，质量其实也是有保证的\n\n4.3 如果有中国大陆的合作商，那么我的优势就比4.2大多了\n比如客户在用：Utepo、ONV、HRUI、Hasivo、Genata、Elink、JHA、Wi-Tek、Scodeno、Fiberroad、3onedata、Netlink、CO-WELL/COMB、深圳白牌/无品牌等\n说明客户对深圳供应链完全开放，替换门槛最低\n我大概熟悉这些同行的价格 特点 运营方式等，可以精准切入\n所以在评估这一点时，遇到了4.2要严格把控，不能太宽松地拉高成交几率，但也不必往死里打，就比如说一定切不进去，但明显是不太容易的，就是尽量严格，但别直接全盘否定\n\n请注意下边A级条件中的\"有同行品牌痕迹\"\n\n如果是绿灯为主 + 少量黄灯 → 供应链开放，按绿灯逻辑处理\n如果是黄灯为主 + 少量绿灯 → 开放度中等，需结合其他维度\n如果是红灯出现即使只有一个 → 拉低上限，不升A；红灯为主则降级\n无任何合作商信息 → 标注\"合作商未确认\"，不因此降级，但跟进时需探查\n\n5 综合分级：注意看下方的分级标准\n\n评估时一定是要纳入上述提到的我司背景条件\n同时结合客户公司大小，产品线，当地市场的真实情况（比如一些很大的公司 我们这种小公司产品别人基本都不会看的，或者当地市场不太信任中国公司/产品等）\n就是把区块一和区块二中的所有内容都纳入综合考量\n然后再给结论\n\nA级：重点跟进，值得深挖和研究（比如KP，catalog，定制开发信等）\n\n必须满足以下至少2条\n- 交换机是主菜或核心产品线之一\n- 有OEM/ODM/定制需求迹象\n- 有绿灯品牌合作痕迹（或黄灯+其他维度极优）\n- 场景高度匹配（CCTV/工业/视频监控/园区网络）\n- 规模在理想区间（10–150人）\n\n加分项：有技术文档/CLI需求迹象、产品线与我司高度重叠、有明确的项目案例\n\nB级：可长期跟进，有一定概率成单（定期发开发信，推广热门SKUs，新品等等）\n\n满足以下情况\n- 交换机是配角但服务CCTV/企业客户\n- 分销商/电商，品牌倾向不明确\n- 规模在可跟区间，无明显红灯障碍\n- A级条件不足但有一定合作潜力\n\nC级：低优先，偶尔群发（发一些SKUs，新品等，有回复就跟，没回复就一直这么群发）\n\n核心是光模块/transceiver/DAC/AOC\n纯消费级/家用网络\n无任何交换机相关\n主营业务是我们不做的品类（轨交、IP67、云管理等）\n规模极大（500人以上）且无定制/技术需求迹象\n\n负向约束（防止误判，必须遵守）：\n- 证据不足时不得脑补结论，标注\"未确认\"\n- 不得因客户\"看起来不错\"就升级，必须有具体证据支撑\n- 不得因单一加分项（如规模合适）就给A，需多维度印证\n- 红灯品牌出现时不得升A，无论其他条件多优秀\n- 每个客户独立评估，不受前后客户影响\n\n\n\n输出格式（严格执行）\n严格按以下格式输出（5行，简洁），请注意A/B和C 级客户有不同的输出要求\n\nA/B级\n1 成交概率（结合我司情况和客户情况综合给概率）  等级：A/B\n注意这2个是写一行，毕竟结论比较简单，比如40% B\n2 客户画像：土耳其中型安防分销商，50-100人，成立10年，核心卖CCTV设备，写仔细一些\n3 跟进建议（仅A/B级）：1-2句具体行动\n比如，发送定制开发信，强调CLI支持/可OEM定制/低价替换同行/PoE++/ERPS环等等；\n4 主推产品：限1-3款，如\"24口PoE交换机、ERPS工业交换机、Centec核心\"\n5 判断依据：2-3句关键证据，来自官网/社媒等各个渠道的综合评判理由/证据\n比如官网主营CCTV，有Utepo产品在售，说明对深圳供应链开放\n\n注意前边的不要带（成交概率/客户画像/跟进建议/主推产品/判断依据），直接给结论\n如下边例子\n35%  B\n土耳其中型安防分销商，约50人，成立12年，核心代理CCTV设备，兼售网络配件\n发送PoE交换机产品线邮件，强调CCTV场景适配+可OEM贴牌+交期快\n24口PoE交换机、8口工业PoE、ERPS环网交换机\n官网有Utepo产品在售（深圳供应链开放）；LinkedIn显示50人规模；主营CCTV但交换机为配角\n\n如果是C级级别的客户，要写明原因，大概就是2~3行文字，如下例\n第一行：20%  C\n第二（三）行，写1-2个最关键的原因即可\n\n示例一：\n5%  C\n主营轨道交通交换机（EN50155），我司不做此品类\n\n示例二：\n10%  C  \n核心业务为光模块/Transceiver，官网无任何交换机产品；公司规模1200人，供应商准入门槛极高\n\n产品推荐参考\nCCTV/安防场景 → 工/商业PoE + ERPS + IGMP\n工业/现场场景 → 工业级交换机 + 性能稳定 + 产品选择丰富\n汇聚/核心场景 → Centec核心 + 10G SFP+ + L3\n分销/通用场景 → 8/16/24口PoE爆款SKU，OEM贴牌\n\n另外\n1 关于第二部分，在搜索客户时一定要注意\n不能只局限于我给你的网站链接，要深度搜索他们相关的网站，网页及相关信息\n一定一定要深度搜索\n然后进行上述内容的综合评估并给结论\n2 每个客户独立评估，不要因为前面客户的评级影响后续客户\n不要有的宽松，有的严格，所有的评估都一视同仁地按照上述标准来\n3 如果一次评估多个客户，请用客户名称/网址作为标题分隔，每个客户之间空一行\n4 如果从公开信息无法确认某个判断维度，请标注\"未确认\"，不要推测\n上述是所有的评估内容了\n\n\n区块三：本次待评估客户（每次变化）\n\nhttps://www.nana-tech.net/category/7503/managed-switch\nhttps://www.winnerintertech.com/industrial-switches\nhttps://accessofranco.com/product-brands/maiwe/industrial-ethernet-switch/poe-switches-2/\nhttps://sysnetcenter.com/bdcom-s3900-l3-10g-series\nhttps://www.hstn.co.th/en/product/58341-60808/icx-7850-48f-ruckus-high-end-aggregationcore-48-ports-25gsfp24-chassis-replacement-switch-network-system-wifi-wire-system\nhttps://switchcongnghiep.com/san-pham/\nhttps://iiot.riverplus.com/network/industrial-ethernet-switch/\nhttps://www.satsdigital.com/gigabit-industrial-switch-16ge-2sfp-uplink\nhttp://ifocusshop.com/product/genata-gnt-p9109ea/\nhttp://www.sswmcctvshop.com/products.php?cat=POWER%20SUPPLY%20%E0%B9%81%E0%B8%A5%E0%B8%B0%20HDD\r"
+          ]
+        },
+        "create_time": 1784983804.527,
+        "id": "27ea7a8d-43e3-493b-a6bc-9b66985d55d0",
+        "metadata": {
+          "serialization_metadata": {
+            "custom_symbol_offsets": []
+          }
+        }
+      },
+      "parent": "client-created-root"
+    },
+    "3a54033f-411e-44ce-9790-7b566529cc02": {
+      "id": "3a54033f-411e-44ce-9790-7b566529cc02",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "user"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "https://www.clouditnetwork.com/store/?filter_brand=lvswitch\r\n\"Bismon Co.,Ltd\r\nhttp://bismon.com/\"\r\nhttps://itk.co.th/network-switch/poe\r\nhttps://www.pctelecom.co.th/products/switch-utp7204e-poe-a1/\r\nhttps://www.eso.co.th/product/185039-181242/mien2208ge-switch\r\nhttps://alfabase.co.th/product-category/products/alfa-base/telecom-product/power-over-ethernet-poe/\r\nhttps://www.focomm-cabling.com/industrial-switch/\r\n\"www.widen.co.th\r\nhttp://www.widen.co.th/index.php?content=product\"\r\nhttp://ablelink.co.th/product_category/network/network-switch/oring/industrail-swicth\r\nhttps://www.thailandfiberoptics.com/\r\n\r\n继续"
+          ]
+        },
+        "create_time": 1784983923.062,
+        "id": "3a54033f-411e-44ce-9790-7b566529cc02",
+        "metadata": {
+          "serialization_metadata": {
+            "custom_symbol_offsets": []
+          }
+        }
+      },
+      "parent": "006f5565-54c0-4ca8-bdd8-df61b9eae12b"
+    },
+    "client-created-root": {
+      "id": "client-created-root",
+      "message": null,
+      "parent": null
+    },
+    "e2dcaa26-fa01-4f95-bd03-038c31eb2d4c": {
+      "id": "e2dcaa26-fa01-4f95-bd03-038c31eb2d4c",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "assistant"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "## Cloud IT Network\n20%  C  \n主营VoIP/IP PBX、通信设备销售，Lvswitch交换机相关信息不足，交换机不是核心业务方向  \n官网主要展示LVswitch语音通信产品，未确认交换机业务规模及网络设备采购需求，不作为重点开发对象 citeturn0search3turn0search10\n\n\n## Bismon Co.,Ltd\n45%  A  \n泰国通信网络设备分销商，成立超过20年，主营Fiber、Network Switch、Industrial Ethernet、CCTV、综合布线等，交换机属于核心产品线之一  \n发送合作开发信，重点推广工业PoE/L2+交换机，强调OEM替代、长期供货、Marvell方案稳定性；可重点研究其现有品牌替换机会  \n工业PoE交换机、L2+管理交换机、10G SFP+汇聚交换机  \n官网显示主营Ethernet Network Switch、Industrial Switch，并覆盖L2/L3 Managed、PoE、10G SFP+等产品；同时销售Aruba、Cisco等品牌，但也有自有品牌/OEM产品体系，说明具备多供应链管理能力。公司2003年成立，有System Integrator、工程项目客户，匹配度较高。citeturn0search5turn0search6turn0search8\n\n\n## ITK Thailand\n35%  B  \n泰国网络设备供应商，PoE交换机业务明确，偏企业网络和安防场景渠道  \n推广24口PoE、8口PoE、L2管理交换机，强调CCTV/企业网络应用和快速交付  \n8/16/24口PoE交换机、L2+管理交换机  \n官网存在PoE Switch产品分类，交换机业务明确；但公司规模、品牌代理情况、是否有中国供应链合作未确认\n\n\n## PC Telecom Thailand\n30%  B  \n泰国网络通信设备销售商，销售PoE交换机产品，偏分销渠道  \n建议以爆款PoE SKU切入，突出价格、库存、OEM能力，不建议直接竞争已有品牌体系  \n8口PoE交换机、16/24口PoE交换机、CCTV专用PoE交换机  \n官网存在UTP7204E PoE等交换机产品，说明有PoE市场经验；但交换机是否核心业务、公司规模及供应链情况未确认\n\n\n## ESO Thailand\n30%  B  \n泰国网络产品供应商，销售Mien2208GE等交换机产品，属于企业网络渠道  \n推广L2管理交换机、工业PoE交换机，强调功能、稳定性和定制能力  \nL2管理交换机、工业PoE交换机、10G汇聚交换机  \n官网存在交换机产品页面，但整体业务结构、客户类型、合作品牌未确认\n\n\n## Alfa Base Thailand\n25%  B  \n泰国PoE产品供应商，涉及PoE相关设备，可能服务安防/网络渠道  \n尝试推广CCTV PoE交换机和工业PoE产品，重点强调PoE++、IGMP Snooping、VLAN等功能  \n8/16/24口PoE交换机、PoE++交换机  \n官网有Power over Ethernet产品分类，但交换机占比、公司规模、采购模式未确认\n\n\n## FOCOMM Cabling\n35%  B  \n泰国网络布线和工业网络供应商，交换机属于配套网络基础设施产品  \n可从工业交换机、光纤上联交换机切入，强调与布线项目配套供应  \n工业交换机、工业PoE交换机、光纤上联交换机  \n官网存在Industrial Switch产品线，且业务与网络基础设施匹配；但交换机是否主力产品、合作品牌未确认\n\n\n## Widen Thailand\n25%  B  \n泰国网络产品供应商，产品页面包含网络设备，但交换机业务深度未确认  \n可低频跟进，发送标准SKU和新品信息  \nPoE交换机、L2管理交换机  \n官网存在Product分类，但缺少明确交换机战略定位、项目案例或OEM信息\n\n\n## Ablelink Thailand\n55%  A  \n泰国综合网络/安防/工业自动化分销商，交换机和工业网络属于重要产品线，具备项目方案能力  \n重点开发，发送工业PoE/L2+/L3方案资料，强调OEM定制、CLI/MIB支持、ERPS、PoE++，可尝试成为补充供应商  \n工业PoE交换机、L3工业交换机、10G SFP+汇聚交换机  \n官网产品覆盖Networking、Industrial Automation、Security，并销售ORING、Wi-Tek、Planet、BDCOM等品牌，说明完全开放亚洲供应链；同时有工业、Safe City、Oil & Gas等解决方案场景。ORING属于台湾工业交换机品牌，切入需要差异化，但其供应链开放度较高。citeturn0search0turn0search1turn0search7\n\n\n## Thailand Fiber Optics\n30%  B  \n泰国光通信/网络设备供应商，可能涉及交换机及光纤网络配套  \n可推广10G SFP+汇聚、光纤上联交换机，作为光网络补充供应商开发  \n10G SFP+交换机、L3汇聚交换机、工业光纤交换机  \n公司方向与光纤通信相关，存在匹配空间；但交换机是否主推、客户类型、合作品牌未确认\n\n---\n\n### 本批次优先级排序（结合我司实际）\n1. **Bismon → A（重点开发）**  \n原因：交换机产品线完整 + 工业/PoE/L3都有 + OEM意识可能存在 + 中国供应链接受度较高\n\n2. **Ablelink → A（重点开发）**  \n原因：方案型分销商 + 工业/安防场景 + 已合作多个亚洲品牌，是典型可切入客户\n\n3. **Winner Intertech（上一批）→ B偏A边缘**\n4. **FOCOMM / ITK / Sysnet Center → B长期池**\n5. **Cloud IT / SSWM CCTV类 → C低优先**\n\n本批最大的机会点不是“低价替换”，而是：\n- 替代部分台湾工业品牌（ORING、Moxa生态外围）\n- 给泰国渠道提供OEM白牌/贴牌\n- 提供Marvell方案的稳定企业PoE/L2+产品\n\n这类客户比单纯卖TP-Link、D-Link的渠道价值高很多。"
+          ]
+        },
+        "create_time": 1784983925.864491,
+        "id": "e2dcaa26-fa01-4f95-bd03-038c31eb2d4c",
+        "metadata": {
+          "content_references": [
+            {
+              "alt": "([clouditnetwork.com](https://www.clouditnetwork.com/product/lvswitches-ip-pbx800-4fxo/?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "clouditnetwork.com",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 3,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    },
+                    {
+                      "ref_index": 10,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [
+                    {
+                      "attribution": "clouditnetwork.com",
+                      "pub_date": null,
+                      "snippet": "",
+                      "title": "LVswitch FXS Gateway IAD 100-4S - Cloud It Network",
+                      "url": "https://www.clouditnetwork.com/product/lvswitch-fxs-gateway-iad-100-4s/?utm_source=chatgpt.com"
+                    }
+                  ],
+                  "title": "Lvswitches IP PBX800 4FXO - Cloud It Network",
+                  "url": "https://www.clouditnetwork.com/product/lvswitches-ip-pbx800-4fxo/?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "([Bismon](https://www.bismon.com/product.php?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "Bismon",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 5,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    },
+                    {
+                      "ref_index": 6,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    },
+                    {
+                      "ref_index": 8,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [
+                    {
+                      "attribution": "Bismon",
+                      "pub_date": null,
+                      "snippet": "",
+                      "title": "BISMON | Communication Products - Fiber Optic, Industrial Switch, UTP Cable, OTDR Thailand",
+                      "url": "https://www.bismon.com/?utm_source=chatgpt.com"
+                    },
+                    {
+                      "attribution": "Bismon",
+                      "pub_date": null,
+                      "snippet": "",
+                      "title": "About Us - BISMON | Communication Products - Fiber Optic, Industrial Switch, UTP Cable, OTDR Thailand",
+                      "url": "https://www.bismon.com/about-us.php?utm_source=chatgpt.com"
+                    }
+                  ],
+                  "title": "Products Catalogue - BISMON | Communication Products - Fiber Optic, Industrial Switch, UTP Cable, OTDR Thailand",
+                  "url": "https://www.bismon.com/product.php?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "([ablelink.co.th](https://ablelink.co.th/product-category/networking-product/?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "ablelink.co.th",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 0,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    },
+                    {
+                      "ref_index": 1,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    },
+                    {
+                      "ref_index": 7,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [
+                    {
+                      "attribution": "ablelink.co.th",
+                      "pub_date": null,
+                      "snippet": "",
+                      "title": "Product List - Ablelink",
+                      "url": "https://www.ablelink.co.th/product-list?utm_source=chatgpt.com"
+                    },
+                    {
+                      "attribution": "ablelink.co.th",
+                      "pub_date": null,
+                      "snippet": "",
+                      "title": "หน้าแรก",
+                      "url": "https://ablelink.co.th/home?utm_source=chatgpt.com"
+                    }
+                  ],
+                  "title": "Networking Product - Ablelink",
+                  "url": "https://ablelink.co.th/product-category/networking-product/?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "",
+              "has_images": false,
+              "prefix": null,
+              "prompt_text": null,
+              "sources": [
+                {
+                  "attribution": "clouditnetwork.com",
+                  "title": "Lvswitches IP PBX800 4FXO - Cloud It Network",
+                  "url": "https://www.clouditnetwork.com/product/lvswitches-ip-pbx800-4fxo/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "Bismon",
+                  "title": "Products Catalogue - BISMON | Communication Products - Fiber Optic, Industrial Switch, UTP Cable, OTDR Thailand",
+                  "url": "https://www.bismon.com/product.php?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "ablelink.co.th",
+                  "title": "Networking Product - Ablelink",
+                  "url": "https://ablelink.co.th/product-category/networking-product/?utm_source=chatgpt.com"
+                }
+              ],
+              "type": "sources_footnote"
+            }
+          ],
+          "conversation_context_citation_metadata": [
+            {
+              "citation": {
+                "alt": null,
+                "attribution": "Memory",
+                "citation_uuid": "26959f55-b765-4f4e-9842-a8b86f949bc2",
+                "conversation_context_type": "general_memory",
+                "end_idx": -1,
+                "index": 1,
+                "matched_text": "",
+                "prompt_text": null,
+                "reason": "You focus your Thailand distributor evaluation on your company’s specific switch product lines (Marvell access/PoE/L2+ and CENTEC core/L3/10G), which shapes the priorities and messaging in the assistant’s recommendations.",
+                "refs": [],
+                "snippet": "Product coverage: CCTV switches, PoE switches (8/16/24/48 ports), L2+ managed switches; Aggregation/Core: L3 switches, 10G SFP+ aggregation, CENTEC chips for core.",
+                "start_idx": -1,
+                "title": "You focus your Thailand distributor evaluation on your company’s specific switch product lines (Marvell access/PoE/L2+ and CENTEC core/L3/10G), which shapes the priorities and messaging in the assistant’s recommendations.",
+                "type": "conversation_context_citation",
+                "url": "#settings/Personalization"
+              },
+              "citation_uuid": "26959f55-b765-4f4e-9842-a8b86f949bc2",
+              "deleted": false,
+              "feedback": null
+            }
+          ],
+          "model_slug": "gpt-5-5",
+          "parent_id": "6b409fd5-b5ff-4592-b850-74a16b58e2f4",
+          "search_result_groups": [
+            {
+              "domain": "ablelink.co.th",
+              "entries": [
+                {
+                  "attribution": "ablelink.co.th",
+                  "snippet": "ประเภทสินค้า  * Security * Networking Product * Network Cabling * Fiber Media Converter * Tool and Tester * Industrial Automation * Telecom * UPS and Power Supplies * Lighting and Street Lighting * S...",
+                  "title": "Product List - Ablelink",
+                  "url": "https://www.ablelink.co.th/product-list?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "ablelink.co.th",
+                  "snippet": "SECURITY  * CCTV * Accessorie for CCTV * Fire Alarm * Hotel Lock * Digital Door Lock * Access Control * Smart Home * AutoGate/Autodoor * Parking Control * Gate Barrier * Turnstile Gate * HDMI  NETWOR...",
+                  "title": "Ablelink",
+                  "url": "https://www.ablelink.co.th/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "ablelink.co.th",
+                  "snippet": "OUR PRODUCTS  Ablelink innovates and re-innovates the most intelligent in the Internet of Things to prompt broader possibilities behind significant insights  View All  [Button: Previous]  New  TD-952...",
+                  "title": "หน้าแรก",
+                  "url": "https://ablelink.co.th/home?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "ablelink.co.th",
+                  "snippet": "OUR PRODUCTS  Ablelink innovates and re-innovates the most intelligent in the Internet of Things to prompt broader possibilities behind significant insights  View All  [Button: Previous]  New  TD-952...",
+                  "title": "Ablelink",
+                  "url": "https://ablelink.co.th/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "ablelink.co.th",
+                  "snippet": "SECURITY  * CCTV * Accessorie for CCTV * Fire Alarm * Hotel Lock * Digital Door Lock * Access Control * Smart Home * AutoGate/Autodoor * Parking Control * Gate Barrier * Turnstile Gate * HDMI  NETWOR...",
+                  "title": "Ablelink",
+                  "url": "https://ablelink.co.th/?attachment_id=2100&utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "ablelink.co.th",
+                  "snippet": "SECURITY  * CCTV * Accessorie for CCTV * Fire Alarm * Hotel Lock * Digital Door Lock * Access Control * Smart Home * AutoGate/Autodoor * Parking Control * Gate Barrier * Turnstile Gate * HDMI  NETWOR...",
+                  "title": "Ablelink",
+                  "url": "https://ablelink.co.th/?attachment_id=2146&utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "bismon.com",
+              "entries": [
+                {
+                  "attribution": "bismon.com",
+                  "snippet": "iframe ดู บริษัท บิสม่อน จำกัด ในแผนที่ขนาดใหญ่กว่า  * * *  ส่งข้อความถึงเรา SEND US A MESSAGE  กรอกรายละเอียด ทีมงานจะติดต่อกลับโดยเร็วที่สุด (ภายใน 24 ชม. ในวันทำการ) Fill in the details and our te...",
+                  "title": "Contact Us - BISMON | Communication Products - Fiber Optic, Industrial Switch, UTP Cable, OTDR Thailand",
+                  "url": "https://www.bismon.com/contact.php?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "bismon.com",
+                  "snippet": "sale@bismon.com +662-563-5000 Line office Messenger  [Input: Search Products]  (0) Login Sign Up  Line office Messenger 02-563-5000  [Input: Search Products]  (0)  Fiber Optic Commscope Rack & Cabine...",
+                  "title": "BISMON | Communication Products - Fiber Optic, Industrial Switch, UTP Cable, OTDR Thailand",
+                  "url": "https://www.bismon.com/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "bismon.com",
+                  "snippet": "ABOUT US  IMAGE  COMPANY PROFILE  บริษัท บิสม่อน จำกัด ก่อตั้งขึ้นเมื่อวันที่ 29 ตุลาคม พ.ศ. 2546 ด้วยทุนจดทะเบียน 20 ล้านบาท โดยทีมผู้เชี่ยวชาญและวิศวกรที่มีประสบการณ์ในด้านระบบเครือข่ายคอมพิวเตอร์แ...",
+                  "title": "About Us - BISMON | Communication Products - Fiber Optic, Industrial Switch, UTP Cable, OTDR Thailand",
+                  "url": "https://www.bismon.com/about-us.php?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "bismon.com",
+                  "snippet": "CONTACT  iframe ดู บริษัท บิสม่อน จำกัด ในแผนที่ขนาดใหญ่กว่า  SEND MESSAGE  [Input]  Full Name: [Input: Name *]  Your Email: [Input: Email Address *]  Phone Number: [Input: Phone Number *]  Message:...",
+                  "title": "BISMON | All of Comunication Products Terminated OTDR,Test OTDR,Fusion splice,Fiber Optic cable",
+                  "url": "https://shop.bismon.com/contact?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "bismon.com",
+                  "snippet": "2,420฿ ~~2,420฿~~  0 (0)  Wishlist  Compare  (COMMSCOPE) UTP OUTDOOR WITH SLING PE JACKET CAT.5...  4,310฿ ~~4,310฿~~  0 (0)  Wishlist  Compare  (COMMSCOPE) FTP CABLE CAT.5E,4 PAIR,WHITE,305M/BOX  3,...",
+                  "title": "BISMON | All of Comunication Products Terminated OTDR,Test OTDR,Fusion splice,Fiber Optic cable",
+                  "url": "https://shop.bismon.com/category?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "bismon.com",
+                  "snippet": "PROMOTION  ETHERNET SWITCH FOR COMMERCIAL & ENTERPRISE NETWORK  Mr.bismon     24/03/2025  เพิ่มศักยภาพเครือข่ายธุรกิจ ด้วย Ethernet Switch ประสิทธิภาพสูง เตรียมพร้อมระบบเครือข่ายของคุณให้พร้อมรับมือท...",
+                  "title": "Promotion - BISMON | Communication Products - Fiber Optic, Industrial Switch, UTP Cable, OTDR Thailand",
+                  "url": "https://www.bismon.com/promotion/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "bismon.com",
+                  "snippet": "NEWS  NEW CATALOG & PRICE LIST COMMERCIAL ETHERNET SWITCH DEC 2025  Bismon     20 December 2025  New Catalog & Price list Commercial Ethernet Switch DEC 2025 BISMON คัดเลือกสินค้าจากโรงงานที่ได้มาตรฐ...",
+                  "title": "News - BISMON | Communication Products - Fiber Optic, Industrial Switch, UTP Cable, OTDR Thailand",
+                  "url": "https://www.bismon.com/news.php?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "bismon.com",
+                  "snippet": "* HD-AHD/TVI/CVI Video Converter * Optical Performance Testing * Uninterruptible Power Supply(UPS) * Allied Telesis Switch * test1  FILTER BY PRICE  [Input] To [Input]  [Button: Search]  BRAND  [Input...",
+                  "title": "BISMON | All of Comunication Products Terminated OTDR,Test OTDR,Fusion splice,Fiber Optic cable",
+                  "url": "https://shop.bismon.com/category/Home-decoration-and-Appliance?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "bismon.com",
+                  "snippet": "BLOG  [Input: Search Here]  CATEGORIES  * Ethernet LAN Network Cable (15) * Fiber Optic Cable (26) * Ethernet Media Converter (11) * Fiber Optic Patch cord & Pigtail (5) * Wall Outdoor Cabinet for CC...",
+                  "title": "BISMON | All of Comunication Products Terminated OTDR,Test OTDR,Fusion splice,Fiber Optic cable",
+                  "url": "https://shop.bismon.com/blog?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "bismon.com",
+                  "snippet": "TERMS & CONDITION  TITLE NUMBER 1    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an u...",
+                  "title": "BISMON | All of Comunication Products Terminated OTDR,Test OTDR,Fusion splice,Fiber Optic cable",
+                  "url": "https://www.shop.bismon.com/terms?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "clouditnetwork.com",
+              "entries": [
+                {
+                  "attribution": "clouditnetwork.com",
+                  "snippet": "LVSWITCH FXS GATEWAY IAD 100-4S  * ฿3,224.00  VoIP Gateway ● 4 FXS port ● Open VPN ● IPV4 / IPV6 support  Category: Access VoIP Gateway (ATA)  LVswich FXS Gateway IAD 100-4S เป็น Gateway  FXS ขนาด 4 p...",
+                  "title": "LVswitch FXS Gateway IAD 100-4S - Cloud It Network",
+                  "url": "https://www.clouditnetwork.com/product/lvswitch-fxs-gateway-iad-100-4s/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "clouditnetwork.com",
+                  "snippet": "Filter  Showing all 5 results  [Select] [Input]  Quick View  Lvswitches IP PBX 3000  Quick View  Lvswitches IP PBX 6000  Quick View  Lvswitches IP PBX 8000  Quick View  Lvswitches IP PBX800 4FXO  ฿11,...",
+                  "title": "LVswitches IP PBX Archives - Cloud It Network",
+                  "url": "https://www.clouditnetwork.com/product-category/voip/ippbx/lvswitches-ip-pbx/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "clouditnetwork.com",
+                  "snippet": "Filter  Showing all 12 results  [Select] [Input]  Quick View  Lvswitches IP PBX 3000  Quick View  Lvswitches IP PBX 6000  Quick View  Lvswitches IP PBX 8000  Quick View  Lvswitches IP PBX800 4FXO  ฿11...",
+                  "title": "IP PBX Solution Provider by Cloud It Network",
+                  "url": "https://www.clouditnetwork.com/product-category/voip/ippbx/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "clouditnetwork.com",
+                  "snippet": "บริษัท คลาวด์ ไอที เน็ทเวิร์ค จำกัด  51/1 หมู่บ้าน มงคลนิเวศน์ ซอยงามวงศ์วาน 48 ถนนงามวงศ์วาน แขวงลาดยาว เขตจตุจักร กรุงเทพมหานคร 10900  Tel : 0914305168  email : sales@clouditnetwork.com  Line : @clo...",
+                  "title": "Contact - Cloud It Network",
+                  "url": "https://www.clouditnetwork.com/contact/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "clouditnetwork.com",
+                  "snippet": "Cloud It Network ให้บริการด้านระบบ VoIP ระบบโทรศัพท์  ครบวงจร",
+                  "title": "CloudItNetwork ผู้นำด้านระบบ VoIP และ Cloud Solution",
+                  "url": "https://www.clouditnetwork.com/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "dataforthai.com",
+              "entries": [
+                {
+                  "attribution": "dataforthai.com",
+                  "snippet": "บริษัท เอเบิลลิ้งค์(ประเทศไทย) จำกัด  ABLELINK(THAILAND) COMPANY LIMITED  ทะเบียน 0105561132341 ธุรกิจ จำหน่ายอุปกรณ์ รักษาความปลอดภัย หมวดธุรกิจ : ร้านขายปลีกสินค้าใหม่อื่นๆซึ่งมิได้จัดประเภทไว้ในทื...",
+                  "title": "ข้อมูล บริษัท เอเบิลลิ้งค์(ประเทศไทย) จำกัด",
+                  "url": "https://www.dataforthai.com/company/0105561132341/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "dataforthai.com",
+                  "snippet": "บริษัท เอเบิลลิ้งค์(ประเทศไทย) จำกัด  ABLELINK(THAILAND) COMPANY LIMITED  ดูข้อมูลผู้ประกอบการ จังหวัด  | จำนวนสาขา --- | ---  กรุงเทพมหานคร  | 1 รวม  | 1  สำนักงานใหญ่  บริษัท เอเบิลลิ้งค์(ประเทศไทย...",
+                  "title": "ข้อมูลสาขา บริษัท เอเบิลลิ้งค์(ประเทศไทย) จำกัด",
+                  "url": "https://www.dataforthai.com/company-branch/0105561132341/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "itk.co.th",
+              "entries": [
+                {
+                  "attribution": "itk.co.th",
+                  "snippet": "PLANET SWITCH  อุปกรณ์เครือข่ายประสิทธิภาพสูง แพลนเน็ต สวิตช์  Planet Switch ที่ออกแบบมาเพื่อมอบประสิทธิภาพสูงและความเชื่อถือได้ ไม่ว่าคุณจะใช้งานในสำนักงาน โรงเรียน หรือธุรกิจต่าง ๆ Planet Switch จะ...",
+                  "title": "Planet Switch - ITK จำหน่ายสินค้า IT และงานติดตั้ง",
+                  "url": "https://itk.co.th/network-switch/planet-switch.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "itk.co.th",
+                  "snippet": "ติดต่อเรา 02-460-9200  [email protected] @itk.co.th แจ้งปัญหา  ผลการค้นหา  แสดง: [Select]  [GS-4210-24P4C] PLANET 24-PORT 10/100/1000T 802.3AT POE + 4-PORT GIGABIT TP/SFP COMBO MANAGED SWITCH  28-Port...",
+                  "title": "บริการและโซลูชั่น - ITK จำหน่ายสินค้า IT และงานติดตั้ง",
+                  "url": "https://itk.co.th/?Itemid=5299&utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "itk.co.th",
+                  "snippet": "ติดต่อเรา 02-460-9200  [email protected] @itk.co.th แจ้งปัญหา   Image: สินค้าขายดี Access Point สินค้าขายดี Access Point Image: สินค้าขายดี SFP Module สินค้าขายดี SFP Module Image: สินค้าขายดี Cable ส...",
+                  "title": "หน้าแรก - ITK จำหน่ายสินค้า IT และงานติดตั้ง",
+                  "url": "https://itk.co.th/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "itk.co.th",
+                  "snippet": "ผลการค้นหา  ไม่พบสินค้า กรุณาเช็ค Partnumber อีกครั้งหรือ ติดต่อทีมงานฝ่ายขาย  * * *  1. ทางบริษัทฯ ขอสงวนสิทธิ์ในการรับผิดชอบใดๆ อันเนื่องจากข้อผิดพลาดทางการพิมพ์ (ผิด/ตก)  2. ทางบริษัทฯ ขอสงวนสิทธิ์...",
+                  "title": "บริการและโซลูชั่น - ITK จำหน่ายสินค้า IT และงานติดตั้ง",
+                  "url": "https://itk.co.th/component/eshop/search-result.html?Itemid=0&keyword=PoE&start=500&utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "itk.co.th",
+                  "snippet": "ติดต่อเรา 02-460-9200  [email protected] @itk.co.th แจ้งปัญหา  I ITK Connecting Co.,Ltd  [Button: ×]  * PRODUCT ALL  * Access Point  * Aruba Access Point  * Aruba Access Point Controller Series  * Aru...",
+                  "title": "Computer - ITK จำหน่ายสินค้า IT และงานติดตั้ง",
+                  "url": "https://itk.co.th/pc.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "itk.co.th",
+                  "snippet": "* Huawei CloudEngine S5700 Switch Series  * Huawei CloudEngine S5700S Switch Series  * Huawei CloudEngine S5700 V2 Switch Series  * Huawei CloudEngine S6700 Switch Series  * Huawei CloudEngine Data C...",
+                  "title": "หน้าแรก - ITK จำหน่ายสินค้า IT และงานติดตั้ง",
+                  "url": "https://itk.co.th/?Itemid=5294&utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "itk.co.th",
+                  "snippet": "ติดต่อเรา 02-460-9200  [email protected] @itk.co.th แจ้งปัญหา  * PRODUCT ALL  * Access Point  * Aruba Access Point  * Aruba Access Point Controller Series  * Aruba Instant Access Points (IAP) Series...",
+                  "title": "SOLUTIONS - ITK จำหน่ายสินค้า IT และงานติดตั้ง",
+                  "url": "https://itk.co.th/solutions.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "itk.co.th",
+                  "snippet": "* 1 * 2 * 3 * 4 * 5  * ##### อัพเลเวล Network ของคุณ ทำความรู้จักเทคโนโลยี PON (Passive Optical Network)  PON (Passive Optical Network) คือเทคโนโลยีการสื่อสารผ่านใยแก้วนำแสงที่ใช้ในการให้บริการอินเทอ...",
+                  "title": "blog - ITK จำหน่ายสินค้า IT และงานติดตั้ง",
+                  "url": "https://itk.co.th/blog.html?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "oringnet.com",
+              "entries": [
+                {
+                  "attribution": "oringnet.com",
+                  "snippet": "PRESS RELEASE  ORING LAUNCHES FULL-GIGABIT INDUSTRIAL ETHERNET SWITCH FOR ROLLING STOCK  Image: EN50155 certified switchWith a long-standing history in the industrial Ethernet switch market, ORing ha...",
+                  "title": "ORing Launches full-Gigabit Industrial Ethernet Switch for Rolling Stock",
+                  "url": "https://oringnet.com/en/news/press-release/oring-launches-full-gigabit-industrial-ethernet-switch-for-rolling-stock?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "oringnet.com",
+                  "snippet": "CHOOSE ORING, MAKE EXCELLENCE  20+Years Experience  5 Regional Operations  70+Channel Partners  80+Countries Served  Founded in Taiwan in 2005, ORing specializes in industrial networking and OT cyber...",
+                  "title": "Company Profile",
+                  "url": "https://oringnet.com/en/about-us/company-profile?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "line.me",
+              "entries": [
+                {
+                  "attribution": "line.me",
+                  "snippet": "ABLELINK  Friends 576  Ablelink Thailand  Bangkok Metropolis 12 ซอย สุขาภิบาล 5 ซอย 5 แยก 3 แขวงท่าแร้ง เขตบางเขน กรุงเทพมหานคร  www.ablelink.co.th/1 other items  BASIC INFO  Ablelink Thailand Co.,Ltd...",
+                  "title": "Ablelink | LINE Official Account",
+                  "url": "https://page.line.me/119mqctq?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "line.me",
+                  "snippet": "ITK.CO.TH  Friends 21,715  สินค้าและโปรโมชั่น  Bangkok Metropolis สะพานสูง 2/6 ถ. ราษฎร์พัฒนา แขวงราษฎร์พัฒนา เขตสะพานสูง กรุงเทพมหานคร  BASIC INFO  จำหน่ายสินค้าและบริการติดตั้ง  02-460-9200  itk.co....",
+                  "title": "ITK.co.th | LINE Official Account",
+                  "url": "https://page.line.me/itk.co.th?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "line.me",
+                  "snippet": "BISMON CO.,LTD  Friends 9,578  Fiber optic solution  Bangkok Metropolis Saimai 298 Moo.1, orngern, saimai  8:30 - 17:30   BASIC INFO  Communication Products  8:30 - 17:30  0-2563-5000  www.bismon.com1...",
+                  "title": "BISMON CO.,LTD | LINE Official Account",
+                  "url": "https://page.line.me/elv0382q?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "itk.group",
+              "entries": [
+                {
+                  "attribution": "itk.group",
+                  "snippet": "Full range of products for IT solutions  * Telecommunication cabinets * LAN cable and tools * SCS optical components * SCS copper components * Power supply and monitoring * Data Center Solutions  GO...",
+                  "title": "Main | Official site ITK",
+                  "url": "https://www.itk.group/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "tp-link.com",
+              "entries": [
+                {
+                  "attribution": "tp-link.com",
+                  "snippet": "TL-SG2210P V1  * TL-SG2210P V1 * TL-SG2210P V3  8-PORT GIGABIT SMART POE SWITCH WITH 2 SFP SLOTS  * Features 8 PoE ports, with total PoE power budget of 53W and useful PoE power management features *...",
+                  "title": "TL-SG2210P | 8-Port Gigabit Smart PoE Switch with 2 SFP Slots | TP-Link ประเทศไทย",
+                  "url": "https://www.tp-link.com/th/business-networking/omada-switch-poe/tl-sg2210p/v1/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "tp-link.com",
+                  "snippet": "TL-SG2210P V3.20  * TL-SG2210P V1 * TL-SG2210P V3 * TL-SG2210P V3.20 * TL-SG2210P V5  JETSTREAM 10-PORT GIGABIT SMART SWITCH WITH 8-PORT POE+  * 61 W PoE Budget: 8× 802.3af/at-compliant PoE+ ports wi...",
+                  "title": "TL-SG2210P | JetStream 10-Port Gigabit Smart Switch with 8-Port PoE+ | TP-Link ประเทศไทย",
+                  "url": "https://www.tp-link.com/th/business-networking/smart-switch/tl-sg2210p/v3.20/?app=t&utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "vpsthai.com",
+              "entries": [
+                {
+                  "attribution": "vpsthai.com",
+                  "snippet": "Bangkok · UIH Tier 3 Data Center · Since 2013  YOUR SERVERS, in the heart of Asia.  VPS and dedicated servers physically located in Bangkok, Thailand — single-digit-millisecond latency to Thai users,...",
+                  "title": "VPSThai — VPS & Dedicated Servers in Bangkok, Thailand",
+                  "url": "https://www.vpsthai.com/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "vpls.co.th",
+              "entries": [
+                {
+                  "attribution": "vpls.co.th",
+                  "snippet": "Cloud | Bare Metal Servers | Data Centers | Network Security Solutions  HomeThe VPLS Team2026-07-13T12:06:41+07:00  YOUR INFRASTRUCTURE, Elevated.  EXPERIENCE NEXT-LEVEL CLOUD AND BARE METAL SERVERS P...",
+                  "title": "Home - VPLS.co.th",
+                  "url": "https://www.vpls.co.th/en/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "vpls.co.th",
+                  "snippet": "NetworkThe VPLS Team2025-11-28T08:42:01+07:00  NETWORK SERVICES  ตั้งแต่ Data Center ไปจนถึง Cloud แล Network ภายในองค์กร VPLS มีบริการเครือข่ายครบวงจร มอบการเชื่อมต่อที่คุณต้องการ พร้อมรับประกันความ...",
+                  "title": "Network - VPLS.co.th",
+                  "url": "https://www.vpls.co.th/services/network/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "ais.th",
+              "entries": [
+                {
+                  "attribution": "ais.th",
+                  "snippet": "SIMPLIFY NETWORK MANAGEMENT WITH <SPAN CLASS=\"HERO-TITLE-EMPHASIS\">FLEXIBLE, ON-DEMAND</SPAN> CONNECTIVITY. SIMPLIFY NETWORK MANAGEMENT WITH FLEXIBLE, ON-DEMAND CONNECTIVITY.  Built on the NaaS model...",
+                  "title": "Connect X",
+                  "url": "https://aisbusinessnetwork.ais.th/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "webrate.org",
+              "entries": [
+                {
+                  "attribution": "webrate.org",
+                  "snippet": "CLOUDITNETWORK.COM CLOUDITNETWORK ผู้นำด้านระบบ VOIP และ CLOUD SOLUTION  สำหรับองค์กรยุคใหม่ ที่ต้องการความได้เปรียนในการแข่งขัน เราพร้อมแนะนำ SOLUTION ด้าน VOIP และ CLOUD ที่ตอบโจทย์ความคุ้มค่าและกา...",
+                  "title": "clouditnetwork.com ▷ CloudItNetwork ผู้นำด้านระบบ VoIP และ Cloud Solution",
+                  "url": "https://webrate.org/site/clouditnetwork.com/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "sisthai.com",
+              "entries": [
+                {
+                  "attribution": "sisthai.com",
+                  "snippet": "ARISTA  Arista Networks เป็นผู้นำด้านโซลูชันเครือข่ายแบบขับเคลื่อนด้วยข้อมูล ตั้งแต่ฝั่งผู้ใช้ถึงคลาวด์ สำหรับดาต้าเซ็นเตอร์/AI เครือข่ายแคมปัส และระบบเราติ้ง โดยมีแพลตฟอร์มที่โดดเด่นด้านระบบอัตโนมัต...",
+                  "title": "Arista | Networking Solution by SiS",
+                  "url": "https://network.sisthai.com/arista?utm_source=chatgpt.com"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "parent": "3a54033f-411e-44ce-9790-7b566529cc02"
+    }
+  },
+  "memory_scope": "global_enabled",
+  "pinned_time": null,
+  "plugin_ids": null,
+  "title": "东南亚客户评估",
+  "update_time": 1784983939.317447,
+  "voice": null
+}

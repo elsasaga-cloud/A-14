@@ -1,0 +1,8 @@
+IGS-6325-4UP2X
+Industrial L3 4-Port
+2.5GBASE-T 802.3bt
+PoE + 2-Port 10G
+SFP+ Managed
+Ethernet Switch
+©         ee        ©
+{|

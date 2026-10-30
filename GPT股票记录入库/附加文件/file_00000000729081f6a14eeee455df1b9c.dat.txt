@@ -1,0 +1,7 @@
+|            :         Cat5e or above network cable                       6
+POE IP camera
+POE media converter
+Fiber
+|                      Cat5e or above network cable                 ]
+Non-POE SFP media converter
+PC

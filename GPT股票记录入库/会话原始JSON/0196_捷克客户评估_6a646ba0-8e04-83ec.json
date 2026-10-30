@@ -1,0 +1,748 @@
+{
+  "conversation_id": "6a646ba0-8e04-83ec-acfa-c33c146ae93c",
+  "conversation_template_id": null,
+  "create_time": 1784966049.890028,
+  "current_node": "2e7a2765-5351-4c82-a086-702c6535fb4d",
+  "default_model_slug": "auto",
+  "id": "6a646ba0-8e04-83ec-acfa-c33c146ae93c",
+  "is_archived": false,
+  "is_do_not_remember": false,
+  "is_read_only": null,
+  "is_starred": null,
+  "is_study_mode": false,
+  "mapping": {
+    "2dcb6a65-41c0-4789-b4b1-40a99df5eb6f": {
+      "id": "2dcb6a65-41c0-4789-b4b1-40a99df5eb6f",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "assistant"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "我看完这四个模型的评估结果，整体感觉：\n\n**这次不是简单谁“更准”的问题，而是暴露出了一个很重要的点：你的评估框架已经接近一个B2B销售AI Agent的雏形，但不同模型对于“证据权重”和“评级边界”的理解差异非常大。**\n\n如果按照你的真实开发价值排序，我会这样评价：\n\n|模型|特点|适合程度|\n|-|-|-|\n|早期AI|销售经验导向，敢判断，偏乐观|⭐⭐⭐ |\n|MAX|最符合你设定规则，保守、证据优先|⭐⭐⭐⭐⭐ |\n|GPT|分析稳健，但偏保守|⭐⭐⭐⭐ |\n|Gemini|搜索能力强，但容易过度脑补|⭐⭐⭐ |\n\n下面具体分析。\n\n---\n\n# 1. 最大区别：A级判断\n\n你的规则其实最核心一句：\n\n> A级必须满足至少2条必要条件，不能因为一个亮点升级。\n\n这里四个模型差异最大。\n\n---\n\n## ABCTECH\n\n早期AI：\n\n> 40% A\n\n理由：\n\n- 捷克大型分销商\n- 产品丰富\n- 有帧田品牌\n\n问题：\n\n这里其实犯了你的规则里的错误：\n\n> 单一绿灯品牌 ≠ 自动A级\n\n因为：\n\n- 没确认OEM需求\n- 没确认自有品牌\n- 没确认交换机是不是主菜\n- 规模也未确认\n\nMAX：\n\n> 8% C\n\n这个又过度保守。\n\n因为：\n\n只给了图片链接，确实无法确认，但实际上域名：\n\nabctech.cz\n\n结合图片内容如果能识别产品目录，应该可以判断。\n\nGPT：\n\n> 25% B\n\n我认为最合理。\n\n\n我的判断：\n\n应该：\n\n```\n30-35% B\n```\n\n理由：\n\n- 有网络产品分销迹象\n- 有交换机销售\n- 有亚洲品牌\n- 但没有OEM证据\n\n不应该A。\n\n---\n\n# 2. Alternetivo\n\n这个比较有意思。\n\n\n早期AI：\n\n45% A\n\nMAX：\n\n28% B\n\nGPT：\n\n35% B\n\nGemini：\n\n45% B\n\n\n我倾向：\n\n```\n40% B+\n```\n\n为什么？\n\n\n它满足：\n\n✅ 工业交换机\n\n✅ PoE\n\n✅ SFP\n\n✅ 网络设备\n\n但是缺：\n\n❌ OEM\n\n❌ 自有品牌\n\n❌ 绿灯合作\n\n❌ CCTV/项目案例\n\n\n按照你的A级规则：\n\n必须：\n\n> 交换机主菜 + OEM迹象\n\n或者：\n\n> 交换机主菜 + 绿灯供应链\n\n它只有：\n\n交换机主菜\n\n\n所以不能A。\n\n\nMAX/GPT这里比早期AI更符合你的规则。\n\n---\n\n# 3. DIPOL\n\n这是最大争议点。\n\n\nGemini：\n\n60% A\n\n\n其他：\n\nB\n\n\n我认为：\n\nGemini明显过度。\n\n\n原因：\n\nDIPOL确实不错：\n\n- 20多年\n- CCTV\n- PoE\n- Ultipower\n\n但是问题：\n\nUltipower是什么？\n\n这里需要谨慎。\n\n\n你规则里面：\n\n绿灯：\n\n> Utepo、ONV、HRUI、Hasivo……\n\n这种。\n\n但是：\n\n自有品牌 ≠ 深圳白牌。\n\n\n很多欧洲公司：\n\n自己注册品牌\n\n然后找台湾/中国OEM。\n\n这不是自动绿灯。\n\n\n所以：\n\nDIPOL：\n\n我的评级：\n\n```\n40% B+\n```\n\n甚至接近A门槛。\n\n但是没有明确OEM合作需求。\n\n---\n\n# 4. Eltrox\n\n这个我觉得四个模型里面：\n\nGemini和早期AI判断比较接近。\n\n但是有一点需要修正。\n\n\nGemini：\n\n65% A\n\n理由：\n\n> GetFort是深圳白牌OEM\n\n\n这个如果确认是真的：\n\n那确实A。\n\n\n为什么？\n\n因为满足：\n\n①交换机主菜\n\n②CCTV场景\n\n③自有品牌\n\n④OEM可能\n\n⑤中国供应链开放\n\n\n这是你的核心客户画像。\n\n\n所以：\n\nEltrox：\n\n我会给：\n\n```\n55-65% A\n```\n\n这是这一批里面最值得开发的。\n\n---\n\n# 5. Xcam\n\n四个模型差异：\n\n5%C\n\n到35%B\n\n\n这里我觉得：\n\nMAX/GPT/早期AI更合理。\n\n\n因为：\n\nXcam明显：\n\n- CCTV\n- 热成像\n- 工业视觉\n- PoE\n\n这就是你的目标行业。\n\n但是：\n\n交换机不是核心。\n\n所以：\n\nB。\n\n\n我的：\n\n```\n25-30% B\n```\n\n---\n\n# 6. Atexshop\n\n这个基本一致。\n\nC。\n\n原因：\n\n不是工业交换机的问题。\n\n而是：\n\n客户买的是：\n\n> ATEX认证工业网络\n\n这个属于认证壁垒。\n\n\n你的优势：\n\n- Marvell\n- ERPS\n- PoE\n\n都不是核心。\n\n\n这里：\n\nMAX最好。\n\n\n---\n\n# 7. Axilogi / Inthouse\n\nGemini这里问题最大。\n\n\n比如：\n\nAxilogi：\n\nGemini：\n\n> 物流供应链软件\n\n如果没有可靠来源，这是典型幻觉。\n\n\n你的规则：\n\n> 证据不足不得脑补。\n\n\nMAX：\n\n8% C\n\n其实不是说客户一定差，而是：\n\n无法确认。\n\n\n这符合你的体系。\n\n\n---\n\n# 总体评分\n\n如果按照你的业务目标：\n\n不是找“看起来大”的公司，\n\n而是找：\n\n> 愿意接受中国供应链 + 有交换机需求 + 有OEM可能\n\n\n排序：\n\n## 第一梯队\n\n### 1. Eltrox\n\nA级\n\n★★★★★\n\n\n原因：\n\n最符合：\n\n> 欧洲品牌商 + 中国OEM可能\n\n\n开发策略：\n\n不要卖产品。\n\n直接：\n\n```\nWe are looking for OEM/ODM cooperation partner in Europe.\n\nWe support:\n- PoE switch\n- Industrial Ethernet\n- Customized firmware/UI\n- Stable chipset supply\n```\n\n---\n\n### 2. Alternetivo\n\nB+\n\n★★★★\n\n\n工业方向。\n\n重点：\n\n技术邮件。\n\n不要销售邮件。\n\n---\n\n### 3. DIPOL\n\nB+\n\n★★★★\n\n\n值得开发。\n\n但不要期待快速成交。\n\n\n---\n\n## 第二梯队\n\n### Xcam\n\nB\n\n★★★\n\n小而精准。\n\n适合项目型合作。\n\n\n### ABCTECH\n\nB\n\n★★★\n\n\n渠道型。\n\n\n### Nextlan\n\nB\n\n★★★\n\n\n---\n\n# 我认为最终版评级应该这样\n\n|客户|建议评级|\n|-|-|\n|Eltrox|55-65% A|\n|DIPOL|40% B+|\n|Alternetivo|40% B+|\n|Xcam|30% B|\n|ABCTECH|30% B|\n|ESCAD|30% B|\n|Techfors|25% B|\n|ASM|25-30% B|\n|Nextlan|30-40% B|\n|Maxlink|20-25% B|\n|Atexshop|5% C|\n|EMOS|5-10% C|\n|Inthouse|10% C|\n|Axilogi|10-20% C|\n\n---\n\n# 另外一个更深层的问题\n\n我觉得你的Prompt现在已经不是普通“找客户”Prompt了。\n\n它实际上在做：\n\n**供应链匹配模型。**\n\n核心不是：\n\n> 谁卖交换机？\n\n而是：\n\n```\n客户需求\n+\n供应链开放程度\n+\n产品匹配\n+\n替代空间\n+\n认证壁垒\n+\n采购决策链\n```\n\n这和普通AI找客户完全不同。\n\n\n下一步我建议优化的是：\n\n加入一个：\n\n## “采购替代概率”\n\n因为你的真实打法不是开发新客户，而是：\n\n> 替换客户已有供应商。\n\n比如：\n\nEltrox：\n\n不是问：\n\n“你买不买交换机？”\n\n而是：\n\n“你现在GetFort产品，如果需要第二供应商，我们能提供ODM备选。”\n\n这个概率比单纯A级更有意义。\n\n\n现在这套体系，我认为已经可以达到**海外B2B销售助理80分水平**，下一步主要不是增加规则，而是增加“供应链替代逻辑”。"
+          ]
+        },
+        "create_time": 1784966222.941868,
+        "id": "2dcb6a65-41c0-4789-b4b1-40a99df5eb6f",
+        "metadata": {
+          "code_blocks": {
+            "0": {
+              "edited": false,
+              "id": "vbmygl",
+              "preview_language": null,
+              "previewable": false
+            },
+            "1": {
+              "edited": false,
+              "id": "7a8cze",
+              "preview_language": null,
+              "previewable": false
+            },
+            "2": {
+              "edited": false,
+              "id": "yl2jxg",
+              "preview_language": null,
+              "previewable": false
+            },
+            "3": {
+              "edited": false,
+              "id": "kuls2x",
+              "preview_language": null,
+              "previewable": false
+            },
+            "4": {
+              "edited": false,
+              "id": "742msz",
+              "preview_language": null,
+              "previewable": false
+            },
+            "5": {
+              "edited": false,
+              "id": "otn6hx",
+              "preview_language": null,
+              "previewable": false
+            },
+            "6": {
+              "edited": false,
+              "id": "c2tv96",
+              "preview_language": null,
+              "previewable": false
+            }
+          },
+          "content_references": [],
+          "model_slug": "gpt-5-5",
+          "parent_id": "b659e962-bc3c-4dd5-878f-b97743e57968"
+        }
+      },
+      "parent": "578b4b80-8048-4b23-ba9c-76eae3f8ddc9"
+    },
+    "2e7a2765-5351-4c82-a086-702c6535fb4d": {
+      "id": "2e7a2765-5351-4c82-a086-702c6535fb4d",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "assistant"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "我会按你的规则执行。  \n这一批明显比上一批更偏**西班牙/欧洲安防、工业网络渠道生态**，重点需要区分：\n\n- **真正的CCTV/弱电渠道（高匹配）**\n- **工业网络品牌代理（匹配但供应链壁垒较高）**\n- **普通网络电商（长期培育）**\n- **光纤/通信配件为主（降级）**\n\n以下按客户逐个评估。\n\n---\n\n# https://www.cablewindow.com/\n\n35% B  \n西班牙网络设备分销商/电商，主营综合布线、网络连接设备、工业网络产品，交换机属于网络产品线之一  \n发送PoE交换机产品矩阵，重点突出工业PoE、Layer2管理、OEM定制能力，观察其是否接受新增亚洲供应商  \n工业PoE交换机、24口PoE交换机、L2+管理交换机  \n官网销售PoE工业交换机，并展示SFP、Layer2等功能，交换机业务明确；但核心角色偏分销商，合作品牌及供应链未确认，暂不升级A级  \n\n\n---\n\n# https://www.orbitadigital.com/\n\n45% A  \n西班牙安防/视频监控设备分销商，规模较大，主营CCTV、视频传输、网络设备及安防解决方案，交换机属于核心配套产品  \n建议重点推进OEM/ODM合作，切入其CCTV网络产品线，强调PoE稳定性、VLAN/IGMP、PoE watchdog和快速供应能力  \n8口工业PoE交换机、24口PoE交换机、10G SFP+汇聚交换机  \n官网长期销售工业PoE交换机、Hi-PoE、SFP uplink产品，场景高度匹配；主营CCTV生态，与我司优势方向一致；需进一步确认现有合作品牌，若已有Hikvision/Dahua主导则降低切入难度  \n\n\n---\n\n# https://www.instantbyte.com/\n\n25% B  \n西班牙IT及网络设备电商/分销商，主营服务器、网络设备、通信产品，交换机属于产品类别之一  \n发送通用交换机目录，优先推广8/16/24口PoE爆款SKU，同时测试OEM贴牌需求  \n8口PoE交换机、24口PoE交换机、L2+管理交换机  \n官网显示网络设备销售范围较广，交换机属于标准销售品；但客户角色偏渠道，未确认CCTV/工业项目能力  \n\n\n---\n\n# https://phicus.es/\n\n20% B  \n西班牙网络运维与IT服务商，主营网络运营维护、系统管理和技术服务，交换机可能作为项目配套设备  \n建议以技术支持和项目供应切入，而非普通渠道报价，强调CLI/MIB、稳定性和长期供货  \nL2+管理交换机、L3交换机、10G SFP+汇聚交换机  \n官网重点为网络运维服务，非交换机销售主业；存在项目采购可能，但核心业务不是设备分销，需人工确认采购模式  \n\n\n---\n\n# https://www.ibdglobal.com/\n\n40% B  \n西班牙视频监控与网络解决方案供应商，主营CCTV、视频传输、网络设备，交换机与我司场景高度匹配  \n发送CCTV网络方案资料，重点推广PoE交换机+摄像机拓扑方案，后续探测OEM可能  \nPoE交换机、工业PoE交换机、10G SFP+汇聚交换机  \n官网存在Video Networking分类，交换机属于视频监控基础设施；客户方向符合CCTV生态，但未发现OEM/ODM证据  \n\n\n---\n\n# https://www.landatel.com/\n\n35% B  \n西班牙无线通信/网络设备分销商，主营网络基础设施、无线、光纤、交换机等产品  \n发送完整交换机产品矩阵，强调中国供应链替代能力和OEM服务  \nPoE交换机、工业交换机、L2+管理交换机  \n官网覆盖网络设备销售，交换机属于产品线之一；但品牌体系较成熟，可能已有固定供应商，切入需要供应链差异化  \n\n\n---\n\n# https://www.alidex.es/\n\n25% B  \n西班牙网络设备供应商，核心业务方向部分确认，交换机相关产品存在但占比未确认  \n先发送产品目录，确认其是否服务CCTV/工业客户  \n8口PoE交换机、工业PoE交换机  \n公开信息不足，核心业务及客户角色未完全确认，建议人工介入  \n\n\n---\n\n# https://s-connect.es/\n\n20% B  \n西班牙网络连接及通信设备供应商，主营方向与网络基础设施相关  \n发送标准PoE交换机资料，测试是否存在分销合作机会  \nPoE交换机、L2+管理交换机  \n存在网络设备销售迹象，但交换机地位及合作品牌未确认  \n\n\n---\n\n# https://rister.com/\n\n40% B  \n西班牙工业网络设备供应商，主营工业交换机、工业通信产品  \n重点推广工业PoE、ERPS环网、宽温工业交换机，采用技术型销售方式  \n工业PoE交换机、DIN Rail交换机、ERPS工业交换机  \n官网工业交换机分类明确，交换机属于核心产品；但工业客户通常关注认证和长期稳定性，需确认是否已有Moxa/Siemens等黄灯品牌体系  \n\n\n---\n\n# https://www.domoticalia.es/\n\n25% B  \n西班牙智能家居/楼宇自动化电商，销售网络设备及交换机产品  \n推广小型PoE交换机，强调智能楼宇/CCTV配套  \n8口PoE交换机、非网管PoE交换机  \n交换机属于智能建筑配套产品，不是核心业务；适合作为渠道补充，不作为重点开发对象  \n\n\n---\n\n# https://www.marlexconexion.com/\n\n30% B  \n西班牙网络连接产品分销商，主营线缆、连接器、网络设备，交换机属于网络配套产品  \n发送通用交换机产品线，测试渠道合作  \n8口PoE交换机、24口PoE交换机  \n官网有Ethernet Switch产品分类，但核心偏连接产品；交换机不是明显主菜  \n\n\n---\n\n# https://integranetwork.es/\n\n45% A  \n西班牙工业网络方案商，主营工业交换机、工业通信解决方案  \n重点推进工业交换机合作，强调Marvell方案稳定性、ERPS、多型号覆盖和ODM能力  \n工业PoE交换机、L2+工业交换机、10G SFP+汇聚交换机  \n官网明确工业交换机业务，属于我司目标场景；技术型客户匹配CLI/MIB需求；但合作品牌未确认，需要探查供应链开放程度  \n\n\n---\n\n# Grupo Electro-Meyras S.L.\n\n20% B  \n西班牙工业电子/自动化供应商，核心业务偏工业电气，交换机可能作为自动化配套产品  \n推广工业交换机方案，强调宽温、稳定供货  \n工业交换机、工业PoE交换机  \n工业场景匹配，但交换机不是明确核心产品，需确认采购模式  \n\n\n---\n\n# https://izux.es/\n\n25% B  \n西班牙网络设备销售商，交换机属于网络产品类别  \n发送产品矩阵，测试是否存在品牌替代需求  \nPoE交换机、L2+交换机  \n存在网络设备销售，但规模、客户类型、合作品牌未确认  \n\n\n---\n\n# https://www.visiotechsecurity.com/\n\n55% A  \n西班牙大型安防设备分销商，成立多年，主营CCTV、视频监控、网络设备及安全产品  \n重点推进OEM/ODM及第二供应链合作，强调PoE交换机稳定供货、功能定制和价格优势  \n8/16/24口PoE交换机、工业PoE交换机、10G SFP+汇聚交换机  \n官网核心业务为安防设备，网络交换机属于视频监控生态重要产品；但规模较大、品牌体系成熟，供应商准入可能较严格，因此保持A但成交周期较长  \n\n\n---\n\n# https://a-secur.com/\n\n35% B  \n西班牙安防设备销售商，主营安全产品、CCTV及PoE设备  \n发送CCTV PoE产品线，强调摄像机网络稳定性和快速交付  \n8口PoE交换机、16口PoE交换机、工业PoE交换机  \n官网有PoE交换机分类，场景匹配；但规模和供应链信息未确认  \n\n\n---\n\n# https://tbkvision.com/\n\n40% B  \n国际CCTV品牌/方案商，主营视频监控设备及相关配件  \n建议尝试OEM/ODM合作，突出深度定制能力  \nPoE交换机、工业PoE交换机、CCTV专用交换机  \n官网明确CCTV accessories/switches/networking分类；交换机服务视频监控场景，但未确认其供应链结构  \n\n\n---\n\n# https://www.davantel.com/\n\n10% C  \n主营光纤转换、通信传输设备，核心业务偏光通信而非交换机  \n交换机不是主营方向，不符合当前开发重点  \n\n\n---\n\n# https://www.casmarglobal.com/\n\n20% B  \n西班牙通信设备供应商，核心业务未完全确认  \n建议人工确认是否涉及网络设备分销或项目采购  \nPoE交换机、工业交换机  \n公开信息不足，无法确认交换机地位  \n\n\n---\n\n# https://bunkerseguridad.es/\n\n45% A  \n西班牙安防系统供应商，主营安全监控、数据传输、工业网络设备  \n重点推广CCTV PoE交换机及工业网络方案  \n工业PoE交换机、8/16口PoE交换机、ERPS交换机  \n官网明确销售工业交换机和数据传输产品，场景高度匹配；属于安防项目型客户，符合我司弱化贸易商身份打法  \n\n\n---\n\n# https://www.matrix.es/\n\n40% B  \n西班牙工业网络供应商，主营工业通信、工业交换机产品  \n发送工业交换机技术资料，强调性能、功能和ODM能力  \n工业交换机、工业PoE、L3交换机  \n工业交换机是明确产品线；但工业领域通常已有Moxa、Westermo等品牌竞争，需要确认供应链开放程度  \n\n\n---\n\n# https://bydemes.com/\n\n50% A  \n西班牙大型安防分销商，主营CCTV、安全设备、网络产品  \n重点推进PoE交换机OEM/ODM合作，作为第二供应链供应商切入  \n8/16/24口PoE交换机、工业PoE交换机、L2+管理交换机  \n官网有Networking/Switching分类，服务大量安防渠道客户；规模较大但场景高度匹配，若能找到ODM切入口，有合作价值  \n\n\n---\n\n# 综合排序\n\n## 第一梯队（优先开发）\n\n|客户|评级|\n|-|-|\n|Visiotech|55% A|\n|Orbitadigital|45% A|\n|Eltrox级别（本批无）|—|\n|By Demes|50% A|\n|Integranetwork|45% A|\n|Bunker Seguridad|45% A|\n\n\n这些客户共同特点：\n\n- CCTV/工业网络为核心\n- 有渠道能力\n- 有PoE交换机需求\n- 有供应链替代空间\n\n\n---\n\n## 第二梯队\n\n|客户|评级|\n|-|-|\n|IBD Global|40%B|\n|Rister|40%B|\n|Matrix|40%B|\n|Landatel|35%B|\n|Cablewindow|35%B|\n|TBK Vision|40%B|\n\n\n---\n\n## C级\n\n|客户|原因|\n|-|-|\n|Davantel|光通信转换为主|\n|部分信息不足客户|核心业务未确认|\n\n---\n\n整体看，这批质量**明显高于上一批捷克客户**。\n\n原因：\n\n西班牙市场有一个特点：\n\n> 安防渠道商很多，而且大量依赖中国OEM供应链。\n\n所以你的核心打法：\n\n不是卖交换机。\n\n而是：\n\n> “成为他们PoE/CCTV网络产品线的第二供应链或者OEM工厂”。\n\n这一批里面，真正值得投入销售时间的是：\n\n1. **Visiotech**\n2. **Orbitadigital**\n3. **By Demes**\n4. **Integranetwork**\n5. **Bunker Seguridad**\n\n这几个比普通IT分销商价值高一个层级。"
+          ]
+        },
+        "create_time": 1784966730.728148,
+        "id": "2e7a2765-5351-4c82-a086-702c6535fb4d",
+        "metadata": {
+          "content_references": [],
+          "model_slug": "gpt-5-5",
+          "parent_id": "5d52eed8-8863-45a3-a37b-bbac1fb9d94e"
+        }
+      },
+      "parent": "c8d4a803-6e60-46b7-bdea-dccb893ceea3"
+    },
+    "578b4b80-8048-4b23-ba9c-76eae3f8ddc9": {
+      "id": "578b4b80-8048-4b23-ba9c-76eae3f8ddc9",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "user"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "Company\t早期AI\tMAX\tGPT\tGEMINI\r\nhttps://www.xcam.cz/obchod/\t\"30% B\r\n捷克小型安防集成商/安装商，主营CCTV系统安装、报警系统、门禁及视频监控方案，同时销售少量PoE交换机等LAN设备\r\n发送CCTV PoE交换机产品线邮件，强调安防场景优化+PoE稳定性+可OEM贴牌\r\n8口/16口PoE交换机、4口工业PoE、ERPS环网交换机\r\n官网核心业务为监控系统集成与安装，并销售PoE LAN交换机产品，属于CCTV网络配套设备；项目型客户，对安防网络设备需求真实\"\t\"34% B\r\n捷克CCTV电商/分销商，核心围绕视频监控设备销售，交换机更像安防网络配套品\r\n先发监控PoE机型清单和典型拓扑，强调PoE稳定性、VLAN/IGMP与快交期；若其有私牌计划，再推进OEM贴牌与功能定制\r\n24口PoE交换机、8口工业PoE、IGMP Snooping监控PoE交换机\r\n给定链接是店铺页，域名“xcam”明显偏摄像监控；公开线索显示其场景与CCTV相关，和我司PoE监控线匹配；合作商未确认，捷克/EU市场可做但需要先建立信任\"\t\"20% B\r\n捷克小型安防/工业视觉方案商，规模未确认，主营热成像、摄像系统、工业监控，同时销售少量工业PoE交换机，偏项目集成角色\r\n建议作为技术型客户长期跟进，重点切入工业PoE、CCTV配套交换机，不建议以低价标品切入\r\n工业PoE交换机、8口PoE交换机、SFP工业交换机\r\n官网显示核心业务围绕热成像、监控和工业应用，交换机属于配套产品而非主产品；已有工业PoE交换机销售，说明具备网络设备采购需求。 未发现明显OEM/ODM或深圳供应链合作痕迹，成交概率有限\"\t\"5%  C\r\n主营消费级及家庭安防/监控摄像机零售，无工业或商业交换机产品线需求\"\r\nhttps://www.abctech.cz/img.asp?attid=2894641\t\"40% A\r\n捷克IT设备大型分销商，主营网络设备、电脑硬件、安防设备等，交换机产品线丰富\r\n发送OEM交换机合作邮件，强调可替代深圳品牌+稳定库存+长期供货\r\n8口PoE交换机、16口PoE交换机、工业PoE交换机\r\n产品中出现帧田等深圳品牌，同时销售TP-Link等网络设备，说明对亚洲供应链开放\"\t\"8% C\r\n仅给到图片附件链接，无法确认其核心业务、客户角色及交换机地位，建议人工介入\r\n证据不足，不宜投入A/B级跟进；如后续确认其有PoE/industrial switch销售，再重新评级\"\t\"25% B\r\n捷克IT设备分销商/电商，规模未确认，主营计算机、网络设备、电子产品销售，交换机属于重要产品类别之一\r\n建议以分销合作方式切入，发送PoE交换机SKU列表，强调现货、OEM贴牌、CCTV应用适配；重点观察是否接受新增品牌\r\n8口PoE交换机、16/24口PoE交换机、L2+管理交换机\r\n官网有独立Switch产品分类，并销售MikroTik、TP-Link等交换机品牌，属于典型多品牌分销模式。 已有PoE安装指导资料，说明服务过监控/PoE用户。 但合作品牌偏成熟品牌，供应链开放度中等\"\t\"5%  C\r\n网站缺乏有效内容且仅显示单一PDF/图片文档，核心业务未确认，无法评估交换机相关需求。\"\r\nhttps://www.alternetivo.cz/prepinac-prumyslovy-din-nerid-2x-100-1000base-t-1x-1000base-x-sfp-slot-40-az-80c-12-48v-dc-svorkovnice_d44286.html\t\"45% A\r\n捷克网络设备分销商/电商，销售工业交换机、SFP模块、网络设备及配件，典型IT分销型公司\r\n发送OEM交换机产品线邮件，强调价格优势+稳定供货+替换深圳品牌方案\r\n工业PoE交换机、8/16口PoE交换机、SFP+汇聚交换机\r\n产品页面出现JHA等深圳品牌痕迹，说明对中国供应链开放；同时销售工业交换机和SFP等网络设备，交换机属于核心产品线\"\t\"28% B\r\n捷克工业自动化/工控电商倾向客户，销售DIN导轨工业交换机，客户场景偏现场部署\r\n先推宽温工业PoE与非PoE型号，突出端子供电、SFP上联、ERPS和稳定交付；可顺带询问是否接受自有品牌或前面板定制\r\n工业级千兆交换机、8口工业PoE、ERPS环网交换机\r\n给定页面是DIN导轨工业交换机商品页，且参数包含宽温、DC端子、SFP等典型工控要素；说明场景与我司工业线匹配度高；但公司规模、角色与合作品牌未确认，暂不升A\"\t\"35% B\r\n捷克网络设备分销商/方案商，规模未确认，主营网络基础设施产品，包含工业交换机、PoE、SFP等\r\n建议重点推广工业PoE和L2+管理型交换机，强调替代台湾品牌方案、ODM能力和快速交付\r\n工业PoE交换机、8/16口PoE交换机、10G SFP+汇聚交换机\r\n官网产品方向与我司高度匹配，存在工业交换机销售需求。未确认其核心合作品牌结构；如主要代理Moxa/Planet等成熟品牌，切入难度会上升\"\t\"45%  B\r\n捷克中型网络与通信设备专业分销商，成立超20年，核心代理工业网络、光纤通信及PoE交换机产品\r\n发送工业PoE及Marvell/Centec方案产品线，强调交期快速、性价比高及OEM定制服务\r\n工业级PoE交换机、24口网管型PoE交换机、10G SFP+核心/汇聚交换机\r\n官网主营工业以太网及网络设备；产品线涵盖各类工业及商业交换机；主要代理欧美/台湾品牌，对深圳供应链有切入空间但暂未发现明确绿灯痕迹\"\r\nhttps://www.dipolnet.cz/switch_poe_ultipower_192sfp_802_3af-at_8xpoe_fe_1xge_2xsfp_1000m_extend_vlan_poe_auto-check_hi-poe_N299704.htm\t\"35% B\r\n捷克安防及通信设备分销商，主营CCTV设备、天线、监控网络设备及PoE交换机\r\n发送安防PoE交换机产品邮件，强调IGMP、PoE稳定性及长期供货\r\n8口PoE交换机、16/24口PoE交换机、ERPS工业交换机\r\n官网展示大量PoE交换机产品页面，明显服务CCTV监控网络，但品牌体系较成熟，供应链替换难度中等\"\t\"24% B\r\n捷克/中东欧安防与弱电分销商，面向CCTV与通信配套市场，PoE交换机是明确产品线之一\r\n可针对其现售PoE型号做替代清单，主打监控PoE稳定性和快速补货；若其有私牌扩线需求，再谈OEM与定制UI/功能\r\n24口PoE交换机、8口工业PoE、10G SFP+汇聚交换机\r\n给定页面为PoE交换机商品页，交换机并非边缘品类；这类成熟分销商通常已有固定采购体系，切入难度中等；合作商未确认，暂按长期培育处理\"\t\"30% B\r\n波兰大型网络/安防设备分销商，成立时间较长，业务覆盖天线、监控、网络设备等领域，交换机属于安防网络配套产品\r\n建议以CCTV PoE解决方案切入，而非普通交换机价格竞争；重点突出PoE++、VLAN、IGMP、远距离传输\r\n24口PoE交换机、工业PoE交换机、CCTV专用PoE交换机\r\n官网显示DIPOL拥有多年分销经验，并销售包括PoE交换机在内的网络产品。 产品体系较成熟，可能已有固定供应链，因此评级保持B\"\t\"60%  A\r\n捷克/波兰知名安防与网络设备分销及方案商，规模约50-150人，成立超20年，主营CCTV监控、PoE交换机（自有品牌Ultipower）及网络传输设备\r\n推荐8/16/24口商业/工业PoE交换机及L2+网管交换机，主打CCTV场景适配、OEM/ODM贴牌定制及高性价比深圳供应链优势\r\n8口工业PoE交换机、24口PoE交换机（支持VLAN/PoE Auto-check）、10G SFP+汇聚交换机\r\n交换机及PoE设备为官网主推核心产品线之一；拥有自有品牌Ultipower（典型深圳OEM白牌贴牌模式），高度匹配我司OEM定制优势；业务深耕CCTV与安防网络场景\"\r\nhttps://www.escadtrade.cz/ip-kamerove-systemy/poe-switche/\t\"35% B\r\n捷克安防设备分销商，主营IP摄像机、监控系统及网络设备，PoE交换机为CCTV配套产品\r\n发送CCTV PoE交换机产品线邮件，强调稳定供货+OEM贴牌\r\n8口PoE交换机、16口PoE交换机、工业PoE交换机\r\n官网销售Milesight等安防品牌设备，PoE交换机为安防系统配套网络设备\"\t\"33% B\r\n捷克安防分销/项目型客户，围绕IP摄像系统销售，PoE交换机与监控网络直接相关\r\n建议围绕PoE供电稳定性、VLAN隔离、PoE watchdog和小项目交付发资料；先推标准SKU，再试探其对贴牌的兴趣\r\n16/24口PoE交换机、PoE Watchdog交换机、8口工业PoE\r\n给定栏目直接是“IP kamerové systémy / PoE switche”，场景与我司CCTV线高度吻合；交换机看起来是重要配套但非唯一主业；合作商未确认，因此先列B\"\t\"30% B\r\n捷克CCTV系统销售商/项目商，规模未确认，主营IP摄像系统及相关配件\r\n建议以CCTV场景方案切入，推广PoE交换机+摄像机网络拓扑方案，不建议单纯报价竞争\r\n8口PoE交换机、16/24口PoE交换机、工业PoE交换机\r\n官网分类显示其重点业务为IP camera systems，PoE交换机属于监控系统配套；符合我司CCTV方向，但暂无OEM/ODM证据\"\t\"30%  B\r\n捷克安防与弱电系统集成/分销商，核心业务为IP摄像机系统、门禁及PoE交换机等配套安防网络设备\r\n推介8/16/24口PoE交换机及工业级PoE交换机，强调CCTV场景高稳定性、VLAN扩展及PoE++高功率支持\r\n8口/16口/24口PoE交换机、工业级PoE交换机\r\nPoE交换机作为安防IP摄像机系统的配套产品（配角）销售；产品线包含基础未网管与网管型交换机；属于典型安防集成/小规模分销场景\"\r\nhttps://www.techfors.cz/8-port-unmanaged-poeat-industrial-switch-with-2-sfp-ports.html\t\"40% B\r\n捷克工业网络设备销售商，主营工业交换机、光模块和监控网络设备\r\n发送工业交换机产品邮件，强调ERPS环网+工业稳定性+快速交期\r\n工业PoE交换机、DIN导轨工业交换机、ERPS工业交换机\r\n官网出现IFS等工业网络品牌，工业以太网设备为主要产品\"\t\"36% B\r\n捷克工业网络技术型渠道/方案商，关注工业PoE加SFP上联类设备，技术沟通价值较高\r\n先发工业交换机详细规格、供电/温度/EMC资料与选型表，主动询问是否需要环网或管理型版本；若项目型需求明确，再谈功能/UI定制\r\n工业级千兆交换机、8口工业PoE、ERPS环网交换机\r\n给定页面是“8-port unmanaged PoE/at industrial switch with 2 SFP ports”，说明其客户有明确工业以太网需求；产品表达偏技术导向，适合从规格兼容性切入；但OEM迹象与合作品牌未确认，暂不升A\"\t\"25% B\r\n捷克工业网络设备销售商，规模未确认，主营工业网络产品\r\n建议推广工业交换机系列，强调宽温、防护、稳定性以及ODM能力\r\n工业PoE交换机、DIN Rail工业交换机、SFP工业交换机\r\n已有工业PoE交换机销售，产品方向匹配；但未确认客户规模、品牌体系和采购模式\"\t\"25%  B\r\n捷克自动化与工业电子元件分销商，主营工业传感器、电源及工业网络组件\r\n发送工业PoE交换机电子目录，重点宣传低成本工业级方案、高可靠性及交期稳定性\r\n8口工业PoE交换机、导轨式非网管/网管工业交换机\r\n交换机仅作为工业自动化配套配件销售（配角）；主要面向工业控制与现场网络场景；规模较小且品牌倾向未确认\"\r\nhttps://www.maxlink.cz/en/power-and-poe-13831768/category\t\"35% B\r\n捷克网络设备品牌/分销商，销售PoE设备、SFP模块、网络配件等\r\n发送OEM交换机产品线邮件，强调可替换供应链+稳定交期\r\n8口PoE交换机、16口PoE交换机、SFP+汇聚交换机\r\n产品包含PoE设备和光模块等网络设备，交换机属于相关产品线\"\t\"22% B\r\n捷克网络配件/分销电商，覆盖Power & PoE类目，交换机更偏通用网络配套SKU\r\n先用8/16/24口PoE爆款切入，强调快交期、可贴牌和中档价位补位；如其渠道接受，再追加10G汇聚和管理型型号\r\n8口PoE交换机、24口PoE交换机、10G SFP+汇聚交换机\r\n给定页为“Power and PoE”分类，说明其至少经营PoE相关网络产品；但交换机是否主线、是否有自有品牌、合作商结构均未确认；更像可长期培育的渠道客户\"\t\"25% B\r\n捷克网络产品品牌/分销商，规模未确认，主营网络设备、电源及相关产品\r\n建议测试OEM合作可能性，重点关注其自有品牌产品线是否开放ODM\r\nPoE交换机、工业交换机、L2+管理交换机\r\n有网络设备销售基础，但未确认其交换机供应链来源；若已有自有品牌，则可能存在替代机会\"\t\"5%  C\r\n核心业务为无线通信、微波天线、电源配件及光模块（DAC/Transceiver），缺乏交换机核心业务。\"\r\nhttps://www.atexshop.com/industrial-7-port-unmanaged-gigabit-switch-atex-certified-profinet-connectors-optional-poe.html\t\"30% B\r\n工业设备电商平台，销售工业交换机及工业自动化设备\r\n发送工业PoE交换机产品邮件，强调工业级稳定性\r\n工业PoE交换机、DIN导轨交换机\r\n产品页面直接销售工业交换机\"\t\"5% C\r\n主打ATEX防爆认证工业交换机，属于强专项认证场景；我司无ATEX等行业专项认证，切入障碍明显\r\n欧盟危险区域项目通常优先看专项资质与既有认证，不建议优先投入\"\t\"15% C\r\n主营ATEX认证工业交换机、防爆工业网络产品，属于特殊工业认证市场\r\n我司暂无ATEX/防爆专项认证，产品匹配度不足，不作为重点客户\"\t\"5%  C\r\n主营防爆（ATEX/IECEx认证）及Profinet工业防爆交换机，属于我司不具备特殊行业认证的细分品类。\"\r\nhttps://axilogi.com/?srsltid=AfmBOookbeGDbKdlbp3SEkbkmiCE4ztQGSLJQ4e6F7eHt7U-qmIdRfJU\t\"40% B\r\n捷克IT及网络设备分销商，销售多个品牌网络设备及通信产品\r\n发送OEM交换机产品邮件，强调价格优势+稳定供应\r\n8口PoE交换机、16口PoE交换机、SFP+汇聚交换机\r\n官网显示多品牌网络设备分销模式，交换机属于常规产品\"\t\"8% C\r\n公开线索不足，核心业务未确认，建议人工介入\r\n未能确认其是否有交换机产品线，或属于品牌商/分销商/集成商中的哪一类，不宜贸然评为A/B\"\t\"20% B\r\n欧洲网络/IT产品销售商，核心业务和交换机占比未确认，建议人工进一步确认\r\n先发送产品目录测试需求，重点观察是否涉及CCTV、工业网络或OEM项目\r\nPoE交换机、工业交换机\r\n官网信息不足，无法确认核心业务方向，需人工介入\"\t\"5%  C\r\n主营物流供应链与仓储管理软件/IT咨询服务，无交换机或硬件网络设备业务。\"\r\nhttps://inthouse.eu/\t\"35% B\r\n小型网络设备贸易商/项目商，曾通过RFQ询价PoE设备\r\n发送PoE交换机产品邮件，强调小项目供货能力+快速交期\r\n5口PoE交换机、8口PoE交换机\r\n历史RFQ询问PoE设备，说明真实需求\"\t\"10% C\r\n核心业务未确认，域名更像工程/楼宇或服务型公司，暂无足够证据证明交换机是其公开产品线\r\n如后续确认其做弱电集成、园区网络或私牌网络设备，可再按项目商逻辑重评\"\t\"15% C\r\n核心业务未确认，暂无足够证据证明其交换机采购需求\r\n建议降低优先级，除非后续确认其涉及CCTV/工业网络项目\"\t\"5%  C\r\n主营KNX/Loxone智能家居与建筑自动化系统，无工业或商业交换机产品线。\"\r\nhttps://www.asm.cz/\t\"35% B\r\n捷克安防及通信设备分销商，销售PoE交换机、光模块、监控设备等\r\n发送安防PoE交换机产品线邮件，强调CCTV网络稳定性\r\n8口PoE交换机、16口PoE交换机、工业PoE交换机\r\n产品中大量出现Planet等品牌，说明网络设备为核心业务\"\t\"12% C\r\n仅给到主页链接，当前无法确认其核心业务方向与交换机地位，建议人工介入\r\n若后续确认其主营企业网络/通信设备，再按合作品牌结构与交换机占比重新评估\"\t\"25% B\r\n捷克IT/网络设备供应商，规模未确认，交换机可能属于网络产品线之一\r\n建议以分销合作测试，重点推广PoE和管理型交换机\r\nPoE交换机、L2+交换机\r\n存在网络设备销售迹象，但暂无明确OEM需求或供应链信息\"\t\"35%  B\r\n捷克ICT与网络设备IT分销商，成立超20年，规模约20-50人，主营网络架构、通信设备及PoE/工业交换机\r\n推荐全系列PoE交换机及L2+/L3网管型交换机，宣传高性价比与OEM合作潜力\r\n8/16/24口PoE交换机、L2+管理型交换机、Centec方案L3交换机\r\n交换机为官网重要产品分类之一；分销多品牌网络产品；无明显红灯障碍，对亚洲供应链有一定采购潜力\"\r\nhttps://www.eltrox.cz/getfort-prumyslovy-poe-switch-8ge-2ge-2sfp-40-80-/\t\"45% A\r\n捷克安防/网络设备分销商，销售CCTV设备、工业PoE交换机等网络产品\r\n发送PoE交换机产品线邮件，强调价格优势+可OEM+稳定供货\r\n8口PoE交换机、16口PoE交换机、工业PoE交换机\r\n产品出现Hasivo等深圳品牌，说明对中国供应链开放\"\t\"31% B\r\n中东欧安防/弱电电商分销商，销售工业PoE交换机，面向监控与现场部署场景\r\n可针对其现售工业PoE型号给出替代与升级表，突出宽温、PoE++、ERPS和稳定供货；后续再试探私牌合作\r\n8口工业PoE、24口PoE交换机、ERPS环网交换机\r\n给定页面为GetFort工业PoE交换机商品页，说明其已有明确交换机销售；从产品结构看，交换机是安防/弱电配套中的重要品类；现售并非红灯品牌，供应链开放度中等偏高\"\t\"35% B\r\n捷克安防设备分销商，主营摄像机、监控系统及相关网络设备，属于CCTV生态客户\r\n建议重点推广CCTV PoE交换机，强调摄像机数量扩展、VLAN隔离、IGMP、多级网络结构\r\n8/16/24口PoE交换机、工业PoE、10G上联汇聚交换机\r\n其销售工业PoE交换机产品，方向与我司高度匹配。 但暂无OEM/ODM证据，更多偏渠道合作\"\t\"65%  A\r\n捷克大型安防与网络设备分销商（波兰Eltrox集团捷克分支），成立超15年，核心代理CCTV、智能家居及网络设备，主推自有/独家品牌GetFort\r\n主推全系列PoE交换机与工业PoE方案，强调OEM深度定制、深圳供应链价格与稳健交期优势，争取作为GetFort品牌的OEM/ODM代工供应商\r\n8/16/24口工业/商业PoE交换机、ERPS环网交换机、L2+网管型交换机\r\n交换机及PoE产品为官网主推核心分类；主打品牌GetFort为典型深圳白牌OEM/ODM贴牌（绿灯/白牌痕迹极其明显）；完美契合我司OEM贴牌与PoE++、ERPS环网等功能优势\"\r\n\"Nextlan\r\nhttps://nextlan.cz/\"\t\"25% B\r\n捷克网络设备分销商，主营网络设备与通信解决方案，交换机为核心产品之一\r\n发送通用PoE交换机产品邮件，强调稳定供货+OEM定制\r\n8口PoE交换机、16口PoE交换机、SFP+汇聚交换机\r\n官网主营网络设备解决方案，属于网络设备渠道商\"\t\"34% B\r\n捷克网络设备品牌/渠道倾向客户，业务聚焦LAN基础设施，交换机相关性较高\r\n建议直接发送完整switch matrix，重点强调OEM/ODM、深度UI/功能定制和快速交期；优先探查其是否有自有品牌或项目打包需求\r\nL2+管理型交换机、24口PoE交换机、10G SFP+汇聚交换机\r\n品牌名与域名都直接指向LAN网络业务，和我司产品线重叠潜力较高；但规模、合作品牌和是否存在OEM栏目未确认，证据仍不足以升A；适合先以产品覆盖度和定制能力切入\"\t\"30% B\r\n捷克网络解决方案供应商，规模未确认，主营网络基础设施相关产品\r\n建议关注其是否服务企业网络项目，推广L2+/L3交换机和OEM能力\r\nL2+管理交换机、10G SFP+汇聚交换机、PoE交换机\r\n业务方向与网络基础设施匹配，但公开信息不足，合作模式未确认\"\t\"40%  B\r\n捷克网络与通信设备分销商，规模约10-30人，核心业务为网络配件、结构化布线及PoE/工业交换机\r\n发送PoE及工业交换机选型手册，介绍Marvell及Centec芯片方案优势，主打现货快速交期与高性价比\r\n8/16/24口PoE交换机、工业PoE交换机、10G SFP+汇聚交换机\r\n交换机为官网主营网络设备之一；属于中小型区域分销商，决策链短；对替代供应链持开放态度\"\r\n\"EMOS\r\nhttps://emos.cz/\r\nhttps://www.emos.eu/\"\t\"30% B\r\n捷克消费电子及安防设备品牌商/分销商，销售电气及监控设备，交换机属于配套产品\r\n发送小型PoE交换机产品邮件，强调紧凑设计+性价比\r\n4口PoE交换机、8口PoE交换机\r\n展会沟通中询问小尺寸PoE交换机并了解价格，存在潜在兴趣\"\t\"8% C\r\n公开品牌长期以电工、照明、电池、家居电子等大类为主，交换机并非其公开主线；且公司体量较大，新增供应商导入难度高\r\n即便存在少量网络配件销售，也更偏零售通路，不建议作为重点客户\"\t\"10% C\r\n欧洲综合电子产品品牌/渠道商，业务范围较广，交换机并非核心产品\r\n规模较大、渠道体系成熟，新供应商切入难度较高，不符合当前重点客户画像\"\t\"5%  C\r\n消费级民用电子、照明、电池及家庭小家电制造商/分销商，无商业或工业交换机业务。\"\r\n\n你咋看"
+          ]
+        },
+        "create_time": 1784966221.494,
+        "id": "578b4b80-8048-4b23-ba9c-76eae3f8ddc9",
+        "metadata": {
+          "serialization_metadata": {
+            "custom_symbol_offsets": []
+          }
+        }
+      },
+      "parent": "be13e010-0a20-4192-859b-eb0fa4e10851"
+    },
+    "be13e010-0a20-4192-859b-eb0fa4e10851": {
+      "id": "be13e010-0a20-4192-859b-eb0fa4e10851",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "assistant"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "## https://www.xcam.cz/obchod/\n\n20%  B  \n捷克小型安防/工业视觉方案商，规模未确认，主营热成像、摄像系统、工业监控，同时销售少量工业PoE交换机，偏项目集成角色  \n建议作为技术型客户长期跟进，重点切入工业PoE、CCTV配套交换机，不建议以低价标品切入  \n工业PoE交换机、8口PoE交换机、SFP工业交换机  \n官网显示核心业务围绕热成像、监控和工业应用，交换机属于配套产品而非主产品；已有工业PoE交换机销售，说明具备网络设备采购需求。citeturn0search1 未发现明显OEM/ODM或深圳供应链合作痕迹，成交概率有限  \n\n\n---\n\n## https://www.abctech.cz/\n\n25%  B  \n捷克IT设备分销商/电商，规模未确认，主营计算机、网络设备、电子产品销售，交换机属于重要产品类别之一  \n建议以分销合作方式切入，发送PoE交换机SKU列表，强调现货、OEM贴牌、CCTV应用适配；重点观察是否接受新增品牌  \n8口PoE交换机、16/24口PoE交换机、L2+管理交换机  \n官网有独立Switch产品分类，并销售MikroTik、TP-Link等交换机品牌，属于典型多品牌分销模式。citeturn0search2turn0search3 已有PoE安装指导资料，说明服务过监控/PoE用户。citeturn0search48 但合作品牌偏成熟品牌，供应链开放度中等  \n\n\n---\n\n## https://www.alternetivo.cz/\n\n35%  B  \n捷克网络设备分销商/方案商，规模未确认，主营网络基础设施产品，包含工业交换机、PoE、SFP等  \n建议重点推广工业PoE和L2+管理型交换机，强调替代台湾品牌方案、ODM能力和快速交付  \n工业PoE交换机、8/16口PoE交换机、10G SFP+汇聚交换机  \n官网产品方向与我司高度匹配，存在工业交换机销售需求。未确认其核心合作品牌结构；如主要代理Moxa/Planet等成熟品牌，切入难度会上升  \n\n\n---\n\n## https://www.dipolnet.cz/\n\n30%  B  \n波兰大型网络/安防设备分销商，成立时间较长，业务覆盖天线、监控、网络设备等领域，交换机属于安防网络配套产品  \n建议以CCTV PoE解决方案切入，而非普通交换机价格竞争；重点突出PoE++、VLAN、IGMP、远距离传输  \n24口PoE交换机、工业PoE交换机、CCTV专用PoE交换机  \n官网显示DIPOL拥有多年分销经验，并销售包括PoE交换机在内的网络产品。citeturn0search0 产品体系较成熟，可能已有固定供应链，因此评级保持B  \n\n\n---\n\n## https://www.escadtrade.cz/ip-kamerove-systemy/poe-switche/\n\n30%  B  \n捷克CCTV系统销售商/项目商，规模未确认，主营IP摄像系统及相关配件  \n建议以CCTV场景方案切入，推广PoE交换机+摄像机网络拓扑方案，不建议单纯报价竞争  \n8口PoE交换机、16/24口PoE交换机、工业PoE交换机  \n官网分类显示其重点业务为IP camera systems，PoE交换机属于监控系统配套；符合我司CCTV方向，但暂无OEM/ODM证据  \n\n\n---\n\n## https://www.techfors.cz/\n\n25%  B  \n捷克工业网络设备销售商，规模未确认，主营工业网络产品  \n建议推广工业交换机系列，强调宽温、防护、稳定性以及ODM能力  \n工业PoE交换机、DIN Rail工业交换机、SFP工业交换机  \n已有工业PoE交换机销售，产品方向匹配；但未确认客户规模、品牌体系和采购模式  \n\n\n---\n\n## https://www.maxlink.cz/\n\n25%  B  \n捷克网络产品品牌/分销商，规模未确认，主营网络设备、电源及相关产品  \n建议测试OEM合作可能性，重点关注其自有品牌产品线是否开放ODM  \nPoE交换机、工业交换机、L2+管理交换机  \n有网络设备销售基础，但未确认其交换机供应链来源；若已有自有品牌，则可能存在替代机会  \n\n\n---\n\n## https://www.atexshop.com/\n\n15%  C  \n主营ATEX认证工业交换机、防爆工业网络产品，属于特殊工业认证市场  \n我司暂无ATEX/防爆专项认证，产品匹配度不足，不作为重点客户  \n\n---\n\n## https://axilogi.com/\n\n20%  B  \n欧洲网络/IT产品销售商，核心业务和交换机占比未确认，建议人工进一步确认  \n先发送产品目录测试需求，重点观察是否涉及CCTV、工业网络或OEM项目  \nPoE交换机、工业交换机  \n官网信息不足，无法确认核心业务方向，需人工介入  \n\n\n---\n\n## https://inthouse.eu/\n\n15%  C  \n核心业务未确认，暂无足够证据证明其交换机采购需求  \n建议降低优先级，除非后续确认其涉及CCTV/工业网络项目  \n\n\n---\n\n## https://www.asm.cz/\n\n25%  B  \n捷克IT/网络设备供应商，规模未确认，交换机可能属于网络产品线之一  \n建议以分销合作测试，重点推广PoE和管理型交换机  \nPoE交换机、L2+交换机  \n存在网络设备销售迹象，但暂无明确OEM需求或供应链信息  \n\n\n---\n\n## https://www.eltrox.cz/\n\n35%  B  \n捷克安防设备分销商，主营摄像机、监控系统及相关网络设备，属于CCTV生态客户  \n建议重点推广CCTV PoE交换机，强调摄像机数量扩展、VLAN隔离、IGMP、多级网络结构  \n8/16/24口PoE交换机、工业PoE、10G上联汇聚交换机  \n其销售工业PoE交换机产品，方向与我司高度匹配。citeturn0search1 但暂无OEM/ODM证据，更多偏渠道合作  \n\n\n---\n\n## https://nextlan.cz/\n\n30%  B  \n捷克网络解决方案供应商，规模未确认，主营网络基础设施相关产品  \n建议关注其是否服务企业网络项目，推广L2+/L3交换机和OEM能力  \nL2+管理交换机、10G SFP+汇聚交换机、PoE交换机  \n业务方向与网络基础设施匹配，但公开信息不足，合作模式未确认  \n\n\n---\n\n## https://emos.cz/ / https://emos.eu/\n\n10%  C  \n欧洲综合电子产品品牌/渠道商，业务范围较广，交换机并非核心产品  \n规模较大、渠道体系成熟，新供应商切入难度较高，不符合当前重点客户画像  \n\n\n---\n\n# 综合优先级排序\n\n### 第一梯队（建议主动开发）\n1. **Xcam.cz — B（20%）**\n   - 工业/CCTV场景匹配\n   - 技术交流机会较高\n   - 可切工业PoE方案\n\n2. **Eltrox.cz — B（35%）**\n   - CCTV方向最匹配\n   - 有PoE需求\n   - 可推广安防网络整体方案\n\n3. **Alternetivo.cz — B（35%）**\n   - 工业交换机方向匹配\n   - 有机会切OEM/替代供应链\n\n---\n\n### 第二梯队（渠道长期维护）\n- ABCTECH\n- DIPOL\n- Techfors\n- Maxlink\n- ASM\n\n特点：\n- 有交换机销售基础\n- 但已有品牌体系\n- 更适合“补充供应商”打法\n\n---\n\n### 低优先级\n- Atexshop（认证壁垒）\n- EMOS（规模和渠道壁垒）\n- Inthouse / Axilogi（信息不足）\n\n---\n\n整体判断：\n\n这批客户里**没有明显A级客户**。\n\n原因：\n- 暂未发现明确OEM/ODM需求；\n- 未发现绿灯供应链品牌合作；\n- 大部分属于欧洲渠道商/安防分销商，而不是深圳供应链开放型品牌商。\n\n但其中 **Eltrox、Alternetivo、Xcam** 比较符合你们的切入逻辑：\n\n> 不卖“便宜交换机”，而卖“中国供应链 + CCTV/工业场景方案 + OEM定制 + 快交期”。\n\n尤其捷克/波兰市场，相比西欧，对中国网络设备供应链接受度通常更高，可以作为长期培育市场。"
+          ]
+        },
+        "create_time": 1784966050.854892,
+        "id": "be13e010-0a20-4192-859b-eb0fa4e10851",
+        "metadata": {
+          "content_references": [
+            {
+              "alt": "([XCam](https://www.xcam.cz/?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "XCam",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": 1742774400.0,
+                  "refs": [
+                    {
+                      "ref_index": 1,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Home - Xcam.cz",
+                  "url": "https://www.xcam.cz/?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "([ABCTECH](https://www.abctech.cz/site-metalicke-aktivni-switche-10-100-1000mbps-16-portove_c5122020.html?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "ABCTECH",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 2,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    },
+                    {
+                      "ref_index": 3,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [
+                    {
+                      "attribution": "ABCTECH",
+                      "pub_date": null,
+                      "snippet": "",
+                      "title": "ABCTECH - výpočetní technika a elektronika",
+                      "url": "https://www.abctech.cz/?utm_source=chatgpt.com"
+                    }
+                  ],
+                  "title": "Sítě metalické | Aktivní | Switche | 10/100/1000Mbps | 16-portové | ABCTECH - výpočetní technika a elektronika",
+                  "url": "https://www.abctech.cz/site-metalicke-aktivni-switche-10-100-1000mbps-16-portove_c5122020.html?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "([ABCTECH](https://www.abctech.cz/img.asp?attid=2892416&utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "ABCTECH",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": 1703069633.0,
+                  "refs": [
+                    {
+                      "ref_index": 48,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Pokyny pro instalaci PoE Switchů",
+                  "url": "https://www.abctech.cz/img.asp?attid=2892416&utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "([DIPOL](https://www.dipolnet.cz/vyrobci_a_znacky_produktu_prodavanych_spolecnosti_dipol_m160.htm?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "DIPOL",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 0,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Výrobci a značky produktů prodávaných společností DIPOL",
+                  "url": "https://www.dipolnet.cz/vyrobci_a_znacky_produktu_prodavanych_spolecnosti_dipol_m160.htm?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "([XCam](https://www.xcam.cz/?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "XCam",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": 1742774400.0,
+                  "refs": [
+                    {
+                      "ref_index": 1,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Home - Xcam.cz",
+                  "url": "https://www.xcam.cz/?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "",
+              "has_images": false,
+              "prefix": null,
+              "prompt_text": null,
+              "sources": [
+                {
+                  "attribution": "XCam",
+                  "title": "Home - Xcam.cz",
+                  "url": "https://www.xcam.cz/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "ABCTECH",
+                  "title": "Sítě metalické | Aktivní | Switche | 10/100/1000Mbps | 16-portové | ABCTECH - výpočetní technika a elektronika",
+                  "url": "https://www.abctech.cz/site-metalicke-aktivni-switche-10-100-1000mbps-16-portove_c5122020.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "DIPOL",
+                  "title": "Výrobci a značky produktů prodávaných společností DIPOL",
+                  "url": "https://www.dipolnet.cz/vyrobci_a_znacky_produktu_prodavanych_spolecnosti_dipol_m160.htm?utm_source=chatgpt.com"
+                }
+              ],
+              "type": "sources_footnote"
+            }
+          ],
+          "model_slug": "gpt-5-5",
+          "parent_id": "8e620d72-fbd5-4b84-b72e-e7f018c222d7",
+          "search_result_groups": [
+            {
+              "domain": "abctech.cz",
+              "entries": [
+                {
+                  "attribution": "abctech.cz",
+                  "snippet": "ABCTECH - VÝPOČETNÍ TECHNIKA A ELEKTRONIKA  Produktové novinky  MEAN WELL XDR-960E-24 PRŮMYSLOVÝ NAPÁJECÍ ZDROJ NA DIN LIŠTU 960W 24V  MEAN WELL XDR-E je kompaktní průmyslový spínaný napájecí zdroj n...",
+                  "title": "ABCTECH - výpočetní technika a elektronika",
+                  "url": "https://www.abctech.cz/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "abctech.cz",
+                  "snippet": "UBIQUITI EDGESWITCH ES-24-250W 24X GLAN, 2X SFP  Gigabitový L3 PoE switch Ubiquiti EdgeSwitch ES-24-250W v 19\" rackmount provedení s maximálním výkonem PoE napájení 250W. Managovatelný switch s 24 gig...",
+                  "title": "Sítě metalické | Aktivní | Switche | POE switche - stránka 2 | ABCTECH - výpočetní technika a elektronika",
+                  "url": "https://www.abctech.cz/site-metalicke-aktivni-switche-poe-switche_c5122024.html?page=2&utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "abctech.cz",
+                  "snippet": "[Input]  Přidat do košíku  Aktuality  [Input]vše[Input]Informace[Input]Novinka[Input]Tip[Input]Tipy na produkty  * ## Outdoorové powerbanky MHPower Nomad  02.07.2026  Tip  MHPower Nomad outdoorové pow...",
+                  "title": "ABCTECH - výpočetní technika a elektronika",
+                  "url": "https://www.abctech.cz/default.asp?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "abctech.cz",
+                  "snippet": "TP-LINK ES210GMP - OMADA 10-PORTOVÝ GIGABITOVÝ EASY MANAGED SWITCH S 8 PORTY POE+  ES210GMP značky TP-Link je managovatelný L2 switch s funkcí PoE, obsahující 8 Gigabitových LAN portů s podporou 802.3...",
+                  "title": "Sítě metalické | Aktivní - stránka 16 | ABCTECH - výpočetní technika a elektronika",
+                  "url": "https://www.abctech.cz/site-metalicke-aktivni_c1505961.html?page=16&utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "abctech.cz",
+                  "snippet": "ABCTECH - výpočetní technika a elektronika    [Input] [Input: Hledat baterie, měnič napětí, router…] Vyhledat   * Baterie, nabíječky * Držáky, konzole, stožáry * Elektroinstalační materiál * Fotovolt...",
+                  "title": "ABCTECH - výpočetní technika a elektronika",
+                  "url": "https://www.abctech.cz/?cls=spresenttrees&xsl=xstrdownload&utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "abctech.cz",
+                  "snippet": "* Individuální přístup * Rychlé dodání * 80 % zboží skladem * Doprava zdarma  * EN * CZ * SK  * CZK * EUR   Proč se registrovat  * Přehled o své objednávce * Ověření záruky podle SN * Možnost získání...",
+                  "title": "ABCTECH - výpočetní technika a elektronika",
+                  "url": "https://abctech.cz/default.asp?cls=spresenttrees&xsl=xstrdownload&utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "abctech.cz",
+                  "snippet": "* Baterie, nabíječky * Držáky, konzole, stožáry * Elektroinstalační materiál * Fotovoltaika, alternativní napájení * IoT a SMART * Kamery a zabezpečení * Měniče napětí a UPS * Montážní skříně, rozvad...",
+                  "title": "ABCTECH - výpočetní technika a elektronika",
+                  "url": "https://abctech.cz/default.asp?cls=spresenttrees&strtype=1&utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "abctech.cz",
+                  "snippet": "ABC TECH MAG NÁŠ MAGAZÍN ZE SVĚTA TECHNIKY  Menu  NejnovějšíPoradnaOtestovali jsme pro vásPředstavujeme  [Input: Hledat baterie, měnič napětí, router...] Vyhledat  Představujeme  Náhrada za PC Engine...",
+                  "title": "Představujeme",
+                  "url": "https://www.abctech.cz/magazin/?tags=predstavujeme&utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "abctech.cz",
+                  "snippet": "ABCTECH - VÝPOČETNÍ TECHNIKA A ELEKTRONIKA    [Input] [Input: Hledat baterie, měnič napětí, router…] Vyhledat  ­  NOYAFA NF-526E RUČNÍ TERMOKAMERA, 256X192PX  Termální imager NF-526 je výkonné zaříze...",
+                  "title": "ABCTECH - výpočetní technika a elektronika",
+                  "url": "https://www.abctech.cz/Default.asp?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "dipolnet.cz",
+              "entries": [
+                {
+                  "attribution": "dipolnet.cz",
+                  "snippet": "POE  KATEGORIE  * Standartní (3) * Ovladatelný (2) * PoE (35) * Průmyslové (13) * Novinky  POE SWITCH SWPS-4-11-DIN4 (4 PORTY 802.3BT60, TH35)  PoE switch s vestavěným napájecím zdrojem v pouzdře DIN...",
+                  "title": "WLAN, LAN, Switche, PoE",
+                  "url": "https://www.dipolnet.cz/nabidka-wlan-lan-switche-poe%2C5313.htm?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "dipolnet.cz",
+                  "snippet": "více  DOPORUČENÉ PRODUKTY  * Nové produktyNovinky * Akční cenaAkční cena  Kód: K22037  Do košíku Náhled  HIKVISION ACUSEEK DS-7604NXI-K1/4P/VPRO IP NVR (4 CHANNELS, 40 MBPS, 1 X SATA, ALARM, VGA, HDM...",
+                  "title": "Monitorování IP, LAN, WLAN, TV, SAT, Antény, Vodiče - DIPOL",
+                  "url": "https://www.dipolnet.cz/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "dipolnet.cz",
+                  "snippet": "* Facebook * Youtube * dipolnet@t-cz.com * +420 734 310 460   * [Input: Hledat...] Image [Input]  * NABÍDKA  * TV-SAT  Kategorie sekce  * Antény TV FM DAB * Přijímače * Zásuvky RTV * Paraboly * Modulá...",
+                  "title": "Monitorování IP, LAN, WLAN, TV, SAT, Antény, Vodiče - DIPOL",
+                  "url": "https://www.dipolnet.cz/bib554.htm?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "dipolnet.com",
+              "entries": [
+                {
+                  "attribution": "dipolnet.com",
+                  "snippet": "DIPOL COMPANY  * About * Company Details * Our Customers * Brands * Warranty * 35 years * Awards  Established in 1990, DIPOL is a European distributor of equipment for teletechnical systems and a man...",
+                  "title": "DIPOL Company",
+                  "url": "https://www.dipolnet.com/dipol_company_m110.htm?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "dipolnet.com",
+                  "snippet": "ENGAGINGLY ABOUT ANTENNAS  \"Engagingly about antennas\"  25th edition of DIPOL's holiday photography contest  more  REMOTE METER READINGS  Remote reading of meters  via the mobile (IoT) network  more...",
+                  "title": "IP CCTV, LAN, WLAN, TV, SAT TV, Antennas, Cables - DIPOL",
+                  "url": "https://www.dipolnet.com/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "dipolnet.com",
+                  "snippet": "LAN & WLAN  CATEGORIES  * Routers (6) * Switches (38) * Access points (15) * STP modules (15) * Antennas (3) * Cables (39) * Connectors (51) * CCTV/LAN testers (6) * Accessories (118) * Patchcords (8...",
+                  "title": "LAN & WLAN",
+                  "url": "https://www.dipolnet.com/estore-lan-wlan%2C5292.htm?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "dipolnet.com",
+                  "snippet": "MANUFACTURERS AND BRANDS OF PRODUCTS SOLD BY DIPOL  * About Company * Company Details * Our Customers * Brands * Warranty * 35 years * Awards  DIPOL's own brands:  | Since the foundation in 1990, DIP...",
+                  "title": "Manufacturers and brands of products sold by DIPOL",
+                  "url": "https://www.dipolnet.com/manufacturers_and_brands_of_products_sold_by_dipol_m160.htm?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "dcneurope.eu",
+              "entries": [
+                {
+                  "attribution": "dcneurope.eu",
+                  "snippet": "DISTRIBUTORS  Image  EveryoneCzech RepublicHungaryPolandRomania SerbiaSlovakia  Distributors  Golden Partner  Czech Republic  Distributors  Image  Alternetivo s.r.o.  Image  Žirovnická 2389/1 106 00,...",
+                  "title": "Chech Republic",
+                  "url": "https://www.dcneurope.eu/en/our-partners/chech-republic?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "dcneurope.eu",
+                  "snippet": "DYSTRYBUTORZY  Image  WszyscyCzechyWęgryPolskaRumunia SerbiaSłowacja  Dystrybutorzy  Złoty Partner  Czechy  Dystrybutorzy  Alternetivo s.r.o.  Image  Žirovnická 2389/1 106 00, Praha – Záběhlice  esho...",
+                  "title": "Chech Republic",
+                  "url": "https://www.dcneurope.eu/pl/dystrybutorzy/chech-republic?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "firmy.cz",
+              "entries": [
+                {
+                  "attribution": "firmy.cz",
+                  "snippet": "ALTERNETIVO, S.R.O.  Computer software wholesalers · Computer hardware wholesalers  mail Contact company  ADDRESS  V Chotejně 765/15, 102 00 Praha, HostivařNavigate  WEB  www.alternetivo.cz  * * *  P...",
+                  "title": "Alternetivo, s.r.o. (Praha, Hostivař) • Firmy.cz",
+                  "url": "https://en.firmy.cz/company/2516281-alternetivo-praha-hostivar.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "firmy.cz",
+                  "snippet": "DIPOLNET.CZ  Prodej elektronického zabezpečení domů a bytů · Televizní a kamerové systémy  ADRESA  Pod vinicí 409/23, 143 00 Praha, ModřanyNavigovat  WEB  www.dipolnet.cz  * * *  MOBIL  +420 734 822...",
+                  "title": "Dipolnet.cz (Praha, Modřany) • Firmy.cz",
+                  "url": "https://www.firmy.cz/detail/2670713-dipolnet-cz-praha-modrany.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "firmy.cz",
+                  "snippet": "DIPOLNET.CZ  Prodej zabezpečení domů · Prodej elektronického zabezpečení domů a bytů  ADRESA  Na Bečvě 1388, 751 31 Lipník nad Bečvou I-MěstoNavigovat  WEB  www.dipolnet.cz  MOBIL  +420 734 310 460...",
+                  "title": "Dipolnet.cz (Lipník nad Bečvou I-Město) • Firmy.cz",
+                  "url": "https://www.firmy.cz/detail/1310679-dipolnet-cz-lipnik-nad-becvou-i-mesto.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "firmy.cz",
+                  "snippet": "DIPOLNET.CZ  On-line prodej satelitní a televizní techniky  ADRESA  Na Bečvě 1388, 751 31 Lipník nad Bečvou I-MěstoNavigovat  WEB  www.dipolnet.cz  * * *  MOBIL  +420 734 310 460  E-MAIL  dipolnet@t-...",
+                  "title": "Dipolnet.cz (Lipník nad Bečvou I-Město), IČO 26830370, adresa a telefon • Firmy.cz",
+                  "url": "https://www.firmy.cz/detail/12783205-dipolnet-cz-lipnik-nad-becvou-i-mesto.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "firmy.cz",
+                  "snippet": "ALTERNETIVO, S.R.O.  Velkoobchod počítačového softwaru · Velkoobchod počítačového hardwaru  mail Napsat firmě  HODNOCENÍ  [Button: Ohodnoťte firmu jako první]  * * *  ADRESA  V Chotejně 765/15, 102 0...",
+                  "title": "Alternetivo, s.r.o. (Praha, Hostivař) • Firmy.cz",
+                  "url": "https://www.firmy.cz/detail/2516281-alternetivo-praha-hostivar.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "firmy.cz",
+                  "snippet": "XCAM CZECH, S.R.O.  Prodej zabezpečovací techniky pro firmy · Prodej zabezpečení domů  mail Napsat firmě  imagesmode Fotogalerie  * * *   ADRESA  Gen. Píky 3038/1a, 702 00 Moravská OstravaNavigovat...",
+                  "title": "XCAM CZech, s.r.o. (Ostrava, Moravská Ostrava) • Firmy.cz",
+                  "url": "https://www.firmy.cz/detail/12706506-xcam-czech-ostrava-moravska-ostrava.html?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "ipaddress.com",
+              "entries": [
+                {
+                  "attribution": "ipaddress.com",
+                  "snippet": "DIPOLNET.CZ  Registration Date  Shows the domain registration date based on available WHOIS data. This date refers to the registration record and may not reflect when the website first became active....",
+                  "title": "Dipolnet.cz Domain Information & Lookup Data",
+                  "url": "https://www.ipaddress.com/website/dipolnet.cz/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "linkedin.com",
+              "entries": [
+                {
+                  "attribution": "linkedin.com",
+                  "snippet": "Image: Alternetivo s.r.o.’s cover photo  ALTERNETIVO S.R.O.  IT SERVICES AND IT CONSULTING  JSME DISTRIBUTOR S PŘIDANOU HODNOTOU. VYBÍRÁME NEJLEPŠÍ SÍŤOVÉ TECHNOLOGIE PŘÍMO OD VÝROBCŮ Z CELÉHO SVĚTA....",
+                  "title": "Alternetivo s.r.o. | LinkedIn",
+                  "url": "https://www.linkedin.com/company/alternetivo-s-r-o-?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "linkedin.com",
+                  "snippet": "ALTERNETIVO S.R.O.  IT SLUŽBY A IT PORADENSTVÍ  JSME DISTRIBUTOR S PŘIDANOU HODNOTOU. VYBÍRÁME NEJLEPŠÍ SÍŤOVÉ TECHNOLOGIE PŘÍMO OD VÝROBCŮ Z CELÉHO SVĚTA.  Sledovat  * Zobrazit všech 29 zaměstnanců...",
+                  "title": "Alternetivo s.r.o. | LinkedIn",
+                  "url": "https://cz.linkedin.com/company/alternetivo-s-r-o-?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "linkedin.com",
+                  "snippet": "PŘÍSPĚVEK UŽIVATELE ALTERNETIVO S.R.O.  Alternetivo s.r.o.  1 205 sledujících uživatelů  2 r.  Odolnost, spolehlivost a hlavně bezpečnost... ✅ Kterou základní požadovanou vlastnost switchů byste k vý...",
+                  "title": "Odolnost, spolehlivost a hlavně bezpečnost... ✅ Kterou základní požadovanou vlastnost switchů byste k výše uvedeným ještě přidali? 𝐙𝐜𝐨𝐦𝐚𝐱 𝐑𝐚𝐢𝐧𝐛𝐨𝐰 outdoor switche jsou navrženy pro… | Alternetivo s.r.o.",
+                  "url": "https://cz.linkedin.com/posts/alternetivo-s-r-o-_odolnost-spolehlivost-a-hlavn%C4%9B-bezpe%C4%8Dnost-activity-7206936071429836800-1AiO?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "dcnglobal.cz",
+              "entries": [
+                {
+                  "attribution": "dcnglobal.cz",
+                  "snippet": "ALTERNETIVO PŘEDSTAVUJE DCN  Image  Vítejte na stránkách společnosti Alternetivo s.r.o., které jsou věnovány technologii DCN networking.  Hledáte do vaší sítě alternativní technologii s garancí IPv6?...",
+                  "title": "DCN - Úvod",
+                  "url": "https://www.dcnglobal.cz/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "dcnglobal.cz",
+                  "snippet": "SLUŽBY NABÍZENÉ K ŘEŠENÍ DCN  Image: DCN Služby  Nabídka DCN networkingu pro ČR a SR je postavena na ucelénm řešení snoubícím inovativní hardware DCN a komplexní nabídků služeb VAD Alternetivo.  K sam...",
+                  "title": "DCN - Výprodejové prvky",
+                  "url": "https://www.dcnglobal.cz/index.php/produkty/vyprodejove-prvky/11-podpora?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "xcam.cz",
+              "entries": [
+                {
+                  "attribution": "xcam.cz",
+                  "snippet": "NAŠE SLUŽBY  Image  BEZPEČNOSTNÍ KAMERY, ALARMY, KAMERY PRO SOLÁRNÍ ELEKTRÁRNY A LAN PRVKY  Instalace a návrhy kamerových systémů, servis, jejich údržba. Zajištění instalace bezpečnostních alarmů a p...",
+                  "title": "Naše služby - Xcam.cz",
+                  "url": "https://www.xcam.cz/nase-sluzby/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "atria-europe.com",
+              "entries": [
+                {
+                  "attribution": "atria-europe.com",
+                  "snippet": "The switch has a switch on the front side between Default, VLAN and Extend options. Extend allows PoE over a distance of 250m (ports 7 and 8) while reducing the line rate to 10 Mbps, which is plenty s...",
+                  "title": "Cudy GS1010PE Gigabit PoE Switch, 120W - ATRIA Europe",
+                  "url": "https://www.atria-europe.com/cudy-gs1010pe-gigabit-poe-switch--120w/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "atria-europe.com",
+                  "snippet": "TP-LINK ES228GMP - OMADA POE SWITCH, 24-PORT POE+  Code: ABCT_A500008626  Aktuálna cena  Brand: ABCtech  €395,27 incl. VAT €321,36 / pcs  Skladom u dodávateľa (9 pcs)   Detailed information  Print As...",
+                  "title": "TP-Link ES228GMP - Omada PoE switch, 24-port PoE+ - ATRIA Europe",
+                  "url": "https://www.atria-europe.com/tp-link-es228gmp-omada-poe-switch--24-port-poe-/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "excam.cz",
+              "entries": [
+                {
+                  "attribution": "excam.cz",
+                  "snippet": "SVĚT NENÍ ČERNOBÍLÝ... ...ani v noci  kamery s technologií VISION+ s barevným obrazem i v noci  Zjistiv více >  Image  Image: ico-cam  KAMERY  Kvalitní a stabilní IP bezpečnostní kamery vyrobené v Če...",
+                  "title": "eXcam",
+                  "url": "https://www.excam.cz/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "dnb.com",
+              "entries": [
+                {
+                  "attribution": "dnb.com",
+                  "snippet": "D&B Business Directory  Alternetivo s. r. o.  [Input]  * Overview * Added By * Contacts * Financial Statements * Competitors * Corporate Family * Similar Companies * Credit Reports  Alternetivo s. r....",
+                  "title": "Alternetivo s. r. o. Company Profile | Bratislava | Competitors, Financials & Contacts - Dun & Bradstreet",
+                  "url": "https://www.dnb.com/business-directory/company-profiles.alternetivo_s_r_o.0497702919719fd6be1fc09c8fc89ab7.html?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "softing.com",
+              "entries": [
+                {
+                  "attribution": "softing.com",
+                  "snippet": "REGIONAL DISTRIBUTOR CZECH REPUBLIC  Alternetivo s.r.o.    Zirovnická 2/2389 106 00 Praha 10 Česká republika  Phone: +420-221 771 881 Mobil: +420-602 356 777 e-mail: matej@alternetivo.cz www.alternet...",
+                  "title": "Czech Republic - Alternetivo s.r.o. - Softing IT Networks",
+                  "url": "https://itnetworks.softing.com/it/where-to-buy/emea/czech-republic-alternetivo-sro/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "craft.co",
+              "entries": [
+                {
+                  "attribution": "craft.co",
+                  "snippet": "ALTERNETIVO  ALTERNETIVO SUMMARY  COMPANY SUMMARY  Overview   Alternetivo is a company that distributes networking and telecommunications equipment. It offers media converters, switches, adapters, ro...",
+                  "title": "Alternetivo Company Profile - Office Locations, Competitors, Revenue, Financials, Employees, Key People, Subsidiaries | Craft.co",
+                  "url": "https://craft.co/alternetivo?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "podnikatel.cz",
+              "entries": [
+                {
+                  "attribution": "podnikatel.cz",
+                  "snippet": "* # XCAM CZech s.r.o.  Firma XCAM CZech s.r.o., společnost s ručením omezeným. V obchodním rejstříku je zapsána pod spisovou značkou C 38837, Krajský soud v Ostravě. Její základní kapitál je ve výši 2...",
+                  "title": "XCAM CZech s.r.o. - IČO 29397839 - Obchodní rejstřík na Podnikatel.cz",
+                  "url": "https://www.podnikatel.cz/rejstrik/xcam-czech-s-r-o-29397839/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "finmag.cz",
+              "entries": [
+                {
+                  "attribution": "finmag.cz",
+                  "snippet": "XCAM CZECH S.R.O., IČO: 29397839, SÍDLO: OSTRAVA  Subjekt XCAM CZech s.r.o. společnost s ručením omezením. V obchodním rejstříku je zapsána pod spisovou značkou C 38837/KSOS. Její základní kapitál je...",
+                  "title": "XCAM CZech s.r.o., IČO: 29397839 - rejstřík firem - Finmag.cz",
+                  "url": "https://www.finmag.cz/obchodni-rejstrik/29397839-xcam-czech-s-r-o?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "finmag.cz",
+                  "snippet": "XCAM CZECH S.R.O., IČO: 29397839 - RES  Obchodní firma XCAM CZech s.r.o. se sídlem Ostrava - Moravská Ostrava, Gen. Píky 3038/1a, 70200 a identifikačním číslem (IČO) 29397839.  Přidat mezi oblíbené z...",
+                  "title": "XCAM CZech s.r.o., IČO: 29397839 - ARES - Finmag.cz",
+                  "url": "https://www.finmag.cz/obchodni-rejstrik/ares/29397839-xcam-czech-s-r-o?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "info-ostrava.cz",
+              "entries": [
+                {
+                  "attribution": "info-ostrava.cz",
+                  "snippet": "XCAM CZECH S.R.O.  * Projektování kamerových a bezpečnostních systémů. * Bezpečnostní audity, konzultace a školení v této oblasti. * Navrhování a optimalizace kamerových systémů a jejich propojování...",
+                  "title": "Mapy - XCAM CZech s.r.o. - Info-Ostrava",
+                  "url": "https://mapy.info-ostrava.cz/?id=556351&utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "info-ostrava.cz",
+                  "snippet": "49.8395931 18.2710173  XCAM CZECH S.R.O.  Adresa:  Gen.Píky 3038/1a Ostrava-Moravská Ostrava, 702 00 Moravskoslezský kraj / okres Ostrava-město  Web:  www.xcam.cz  Mobil:  +420 602 533 850  Telefon:...",
+                  "title": "XCAM CZech s.r.o. - Info-Ostrava",
+                  "url": "https://www.info-ostrava.cz/xcam-czech-s-r-o/index.html?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "sklep-ecsystem.pl",
+              "entries": [
+                {
+                  "attribution": "sklep-ecsystem.pl",
+                  "snippet": "Indywidualne doradztwo: (12) 292 48 60 lub esklep@ecsystem.pl  Kompleksowa wycena do 12 godzin  Wszystko dla Twoich instalacji w jednym miejscu  CAMSAT  Camsat jest wiodącym producentem bezprzewodowy...",
+                  "title": "Camsat | Rabaty dla instalatorów | Zarejestruj się w EC System",
+                  "url": "https://sklep-ecsystem.pl/manufacturer/camsat/1/long/name/desc?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "sklep-ecsystem.pl",
+                  "snippet": "Indywidualne doradztwo: (12) 292 48 60 lub esklep@ecsystem.pl  Kompleksowa wycena do 12 godzin  Wszystko dla Twoich instalacji w jednym miejscu  Image: X-CAMswitch/12 - Hermetyczny przełącznik siecio...",
+                  "title": "X-CAMswitch/12 - Hermetyczny przełącznik sieciowy PoE do kamer IP - Camsat | Sklep EC System |",
+                  "url": "https://sklep-ecsystem.pl/x-camswitch-12-hermetyczny-przelacznik-sieciowy-poe-do-kamer-ip-camsat.html?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "kompass.com",
+              "entries": [
+                {
+                  "attribution": "kompass.com",
+                  "snippet": "XCAM CZECH S.R.O. • ACCESS CONTROL, SECURITY AND SURVEILLANCE SYSTEMS,OSTRAVA - MORAVSKÁ OSTRAVA  702 00 Ostrava - Moravská Ostrava- Czech Republic  CONTACT US [Input] [Input]  CONTACT US [Input] [In...",
+                  "title": "Xcam Czech S.r.o. - Access control, security and surveillance systems to Ostrava - Moravská Ostrava, Czech Republic | Kompass",
+                  "url": "https://in.kompass.com/en/c/xcam-czech-s-r-o/czext108650/?utm_source=chatgpt.com"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "parent": "fbdbd328-676b-4419-8b70-6dc4608f3f5c"
+    },
+    "c8d4a803-6e60-46b7-bdea-dccb893ceea3": {
+      "id": "c8d4a803-6e60-46b7-bdea-dccb893ceea3",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "user"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "区块一：我司背景（固定不变）\r\n\r\n我是中国大陆的交换机贸易公司，信息如下：\r\n\r\n产品线\r\n- 接入层（Marvell方案）：CCTV交换机、商业/工业PoE交换机（8/16/24/48口）、L2+管理型交换机\r\n- 汇聚/核心层（Centec芯片）：L3交换机、10G SFP+汇聚、核心交换机\r\n- 整体model list齐全\r\n\r\n优势\r\n1. 功能强：支持ERPS环网、PoE++、IGMP Snooping、VLAN、QoS；Marvell方案性能稳定；供应商持续优化feature list\r\n2. 价格优：与台湾同行相比性价比更高；与大陆同行相比价格偏高（受制于贸易商身份），但仍有切入空间\r\n3. 可定制：支持OEM/ODM；支持管理功能/UI深度定制（非简单改Logo）；芯片库存充足，交期快且供货稳定\r\n\r\n劣势\r\n1. 贸易商身份：拿供应商产品转售，利润空间有限（进价100最多卖130），价格竞争力弱于直营厂商\r\n2. 不做以下品类：云管理交换机、轨交交换机、IP67防护等级交换机、消费级/家用路由器\r\n3. 官网质量差，视觉呈现弱，影响初次信任建立\r\n4. 认证有限：仅CE/RoHS/FCC/Reach/UKCA，无UL；无行业专项认证（轨交、E-mark、KC等）\r\n\r\n目标客户优先级\r\n1. 品牌商/方案商（有OEM/ODM需求）→ 最优先；尤其是需要深度定制（功能/UI）的客户，大厂不愿做、深圳同行做不了，这是核心差异化\r\n2. 有中国进口经验的客户（合作过Utepo/ONV/UNIPOE/HRUI等大陆品牌，或Planet/Oring等台湾品牌）→ 长期潜力，慢慢跟进\r\n3. 分销商/电商（要现货标品）→ 可跟；OEM+库存+快交期是卖点\r\n4. 集成商/项目商（CCTV/工业/园区项目）→ 可跟，优先小项目；规模过大的集团公司成交概率极低\r\n\r\n我的策略\r\n- 以长期跟进为主，不追求快速成单\r\n- 偏好项目型客户（弱化贸易商身份，聚焦方案可行性）和技术型客户（CLI/MIB/深度功能是主场）\r\n\r\n---\r\n\r\n区块二：评估规则与输出要求（固定不变）\r\n\r\n第一步：基础信息核查\r\n\r\n从官网、LinkedIn、社媒等公开渠道综合判断以下维度：\r\n\r\n- 公司规模与年限（仅在可确认时写出）\r\n  - 理想：10–150人，成立3–15年，区域性/细分领域；决策链短，对新供应商开放\r\n  - 可跟：150–500人，有一定品牌但非行业Top；有采购流程但不至于卡死\r\n  - 谨慎：500人以上/上市公司/跨国集团；供应商准入严格，除非有明确ODM/技术定制需求，否则降一级\r\n- 如无法确认核心业务方向或客户角色，需标注\"核心业务未确认，建议人工介入\"\r\n- 次要信息（成立年份、人数等）无法确认则直接跳过，不标注\"未知\"\r\n\r\n第二步：交换机地位判断\r\n\r\n- 主菜：官网主推switching/PoE/managed switch/industrial ethernet/video surveillance network\r\n- 配菜：交换机是附带品，核心卖其他产品\r\n- 无关：纯光模块/transceiver/DAC/消费级路由，或我司不做的品类\r\n\r\n注意：产品线复杂的客户（交换机+光模块+线缆+安防都有），以交换机/PoE相关产品的官网占比、位置、关键词频率综合判断，不因为同时卖光模块就直接判C\r\n\r\n第三步：客户角色识别\r\n\r\n- 方案商/品牌商：有Solutions/OEM/ODM/Customization/系统集成字样\r\n- 分销商/电商：有Shop/Stock/Wholesale/多品牌代理\r\n- 集成商/项目商：有Projects/Case Study/行业方案/工程实施\r\n\r\n第四步：合作商与竞品分析（重点）\r\n\r\n这是影响切入难度的核心维度，必须严格评估，不可宽松。\r\n\r\n红灯品牌（4.1）：Cisco、Juniper、Aruba/HPE、Fortinet、Huawei\r\n→ 说明预算高、供应链封闭；不因此升A，最多维持B；若为主力合作品牌，降级处理\r\n\r\n黄灯品牌（4.2）：Ruijie、Hikvision、Dahua、TP-Link、D-Link、Planet、EdgeCore、MikroTik、Moxa、ZyXEL等\r\n→ 说明对亚洲品牌开放，但这些品牌本身价格/质量有保证，切入难度中等\r\n→ 单独出现黄灯品牌：不轻易升A，需其他维度非常优秀才可考虑\r\n→ 与绿灯品牌同时出现：可视为供应链开放度较高，酌情提升评级\r\n\r\n绿灯品牌（4.3）：Utepo、ONV、洪瑞(HRUI)、Hasivo、帧田、Elink、JHA、Wi-Tek、中科德能、光路、三旺、Netlink、CO-WELL/COMB、深圳白牌/无品牌等\r\n→ 说明对深圳供应链完全开放，替换门槛最低，切入优势最大\r\n→ 评估结果优秀时可正常给A\r\n\r\n品牌组合判断规则（新增）：\r\n- 绿灯为主 + 少量黄灯 → 供应链开放，按绿灯逻辑处理\r\n- 黄灯为主 + 少量绿灯 → 开放度中等，需结合其他维度\r\n- 红灯出现即使只有一个 → 拉低上限，不升A；红灯为主则降级\r\n- 无任何合作商信息 → 标注\"合作商未确认\"，不因此降级，但跟进时需探查\r\n\r\n第五步：市场/地区因素（新增显性维度）\r\n\r\n部分市场对中国供应商存在结构性障碍，评估时需纳入：\r\n- 欧美政府/基础设施采购：通常有本地认证或供应商资质要求，我司认证不足\r\n- 印度部分领域：近年对中国电子产品设有进口限制\r\n- 中东/东南亚/拉美/非洲：对中国供应链普遍开放，障碍较低\r\n- 如市场因素构成明显障碍，在判断依据中注明，并酌情降低成交概率\r\n\r\n第六步：综合分级\r\n\r\n评级必须同时满足必要条件，加分项辅助判断，不可仅凭加分项升级。\r\n\r\nA级（重点跟进）：必须满足以下至少2条\r\n- 交换机是主菜或核心产品线之一\r\n- 有OEM/ODM/定制需求迹象\r\n- 有绿灯品牌合作痕迹（或黄灯+其他维度极优）\r\n- 场景高度匹配（CCTV/工业/视频监控/园区网络）\r\n- 规模在理想区间（10–150人）\r\n\r\n加分项：有技术文档/CLI需求迹象、产品线与我司高度重叠、有明确的项目案例\r\n\r\nB级（长期跟进）：满足以下情况\r\n- 交换机是配角但服务CCTV/企业客户\r\n- 分销商/电商，品牌倾向不明确\r\n- 规模在可跟区间，无明显红灯障碍\r\n- A级条件不足但有一定合作潜力\r\n\r\nC级（低优先/偶发群发）：出现以下任一情况\r\n- 核心业务为光模块/Transceiver/DAC/AOC\r\n- 纯消费级/家用网络产品\r\n- 主营我司不做的品类（轨交、IP67、云管理等）\r\n- 无任何交换机相关业务\r\n- 规模极大（500人以上）且无定制/技术需求迹象\r\n\r\n负向约束（防止误判，必须遵守）：\r\n- 证据不足时不得脑补结论，标注\"未确认\"\r\n- 不得因客户\"看起来不错\"就升级，必须有具体证据支撑\r\n- 不得因单一加分项（如规模合适）就给A，需多维度印证\r\n- 红灯品牌出现时不得升A，无论其他条件多优秀\r\n- 每个客户独立评估，不受前后客户影响\r\n\r\n---\r\n\r\n输出格式（严格执行）\r\n\r\nA/B级客户（5行，不带字段标签）：\r\n\r\n```\r\n[成交概率%]  [级别]\r\n[客户画像：国家+类型+规模+年限+核心业务，写仔细]\r\n[跟进建议：1–2句具体行动]\r\n[主推产品：限1–3款]\r\n[判断依据：2–3句关键证据，来自官网/社媒等]\r\n```\r\n\r\n示例：\r\n```\r\n35%  B\r\n土耳其中型安防分销商，约50人，成立12年，核心代理CCTV设备，兼售网络配件\r\n发送PoE交换机产品线邮件，强调CCTV场景适配+可OEM贴牌+交期快\r\n24口PoE交换机、8口工业PoE、ERPS环网交换机\r\n官网有Utepo产品在售（深圳供应链开放）；LinkedIn显示约50人规模；主营CCTV但交换机为配角\r\n```\r\n\r\nC级客户（2–3行）：\r\n\r\n```\r\n[概率%]  C\r\n[1–2条最关键的排除原因]\r\n```\r\n\r\n示例：\r\n```\r\n5%  C\r\n主营轨道交通交换机（EN50155），我司不做此品类\r\n```\r\n\r\n产品推荐参考\r\n- CCTV/安防场景 → 工/商业PoE + ERPS + IGMP\r\n- 工业/现场场景 → 工业级交换机 + 性能稳定 + 产品选型丰富\r\n- 汇聚/核心场景 → Centec核心 + 10G SFP+ + L3\r\n- 分销/通用场景 → 8/16/24口PoE爆款SKU + OEM贴牌\r\n\r\n其他注意事项\r\n- 历史备注仅供参考，以官网/社媒等公开信息为主进行独立判断\r\n- 多个客户时以客户名称/网址为标题分隔，每个客户之间空一行\r\n- 无法确认的维度标注\"未确认\"，不推测\r\n\r\n---\r\n\r\n关于第二部分，在搜索客户时一定要注意\r\n不能只局限于我给你的网站链接，要深度搜索他们相关的网站，网页及相关信息\r\n然后进行上述内容的综合评估并给结论\r\n\r\n区块三：本次待评估客户（每次替换）\r\n\r\nhttps://www.cablewindow.com/en/conectividad-switch-profesional-switch-poe-industrial/switch-8p-1000m-poe-ul-4p-sfp-layer-2-1320.html\r\nhttps://www.orbitadigital.com/en/discontinued/29782-industrial-switch-fast-ring-hi-poe-8-gigabit-ports-4-uplink-gigabit-sfp-270w-8023af-at-6kv-layer-2.html\r\nhttps://www.instantbyte.com/\r\nhttps://phicus.es/operacion-y-mantenimiento-de-redes\r\nhttps://www.ibdglobal.com/en/shop/category/video-networking-9\r\nhttps://www.landatel.com/en_US/shop/category/categories-networks-6250\r\nhttps://www.alidex.es/\r\nhttps://s-connect.es/navigation/0194846f54e97628912536c1f8e48eac\r\nhttps://rister.com/gama-industrial/492-industrial-gigabit-switches.html\r\nhttps://www.domoticalia.es/es/72-switches-gigabit-ethernet\r\nhttps://www.marlexconexion.com/8884-switch-ethernet-giga\r\nhttps://integranetwork.es/switches-industriales/\r\n\"Grupo Electro-Meyras S.L.\r\nhttp://meyras.com/\"\r\nhttps://izux.es/219-equipos-de-red\r\n\"Visiotech\r\nhttps://www.visiotechsecurity.com/en/\"\r\nhttps://a-secur.com/shop/category/switch-poe2-458\r\nhttps://tbkvision.com/product-category/cctv-accessories_en/cctv-accessories-switches-and-networking_en/\r\nhttps://www.davantel.com/productos/conversores-de-medio\r\nhttps://www.casmarglobal.com/es/\r\nhttps://bunkerseguridad.es/en/security/data-transmission/industrial-switches/\r\nhttps://www.matrix.es/en/industrial-networking/industrial-switches\r\nhttps://bydemes.com/en/products/networking/switching/unmanaged\r"
+          ]
+        },
+        "create_time": 1784966727.592,
+        "id": "c8d4a803-6e60-46b7-bdea-dccb893ceea3",
+        "metadata": {
+          "serialization_metadata": {
+            "custom_symbol_offsets": []
+          }
+        }
+      },
+      "parent": "2dcb6a65-41c0-4789-b4b1-40a99df5eb6f"
+    },
+    "client-created-root": {
+      "id": "client-created-root",
+      "message": null,
+      "parent": null
+    },
+    "fbdbd328-676b-4419-8b70-6dc4608f3f5c": {
+      "id": "fbdbd328-676b-4419-8b70-6dc4608f3f5c",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "user"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "区块一：我司背景（固定不变）\r\n\r\n我是中国大陆的交换机贸易公司，信息如下：\r\n\r\n产品线\r\n- 接入层（Marvell方案）：CCTV交换机、商业/工业PoE交换机（8/16/24/48口）、L2+管理型交换机\r\n- 汇聚/核心层（Centec芯片）：L3交换机、10G SFP+汇聚、核心交换机\r\n- 整体model list齐全\r\n\r\n优势\r\n1. 功能强：支持ERPS环网、PoE++、IGMP Snooping、VLAN、QoS；Marvell方案性能稳定；供应商持续优化feature list\r\n2. 价格优：与台湾同行相比性价比更高；与大陆同行相比价格偏高（受制于贸易商身份），但仍有切入空间\r\n3. 可定制：支持OEM/ODM；支持管理功能/UI深度定制（非简单改Logo）；芯片库存充足，交期快且供货稳定\r\n\r\n劣势\r\n1. 贸易商身份：拿供应商产品转售，利润空间有限（进价100最多卖130），价格竞争力弱于直营厂商\r\n2. 不做以下品类：云管理交换机、轨交交换机、IP67防护等级交换机、消费级/家用路由器\r\n3. 官网质量差，视觉呈现弱，影响初次信任建立\r\n4. 认证有限：仅CE/RoHS/FCC/Reach/UKCA，无UL；无行业专项认证（轨交、E-mark、KC等）\r\n\r\n目标客户优先级\r\n1. 品牌商/方案商（有OEM/ODM需求）→ 最优先；尤其是需要深度定制（功能/UI）的客户，大厂不愿做、深圳同行做不了，这是核心差异化\r\n2. 有中国进口经验的客户（合作过Utepo/ONV/UNIPOE/HRUI等大陆品牌，或Planet/Oring等台湾品牌）→ 长期潜力，慢慢跟进\r\n3. 分销商/电商（要现货标品）→ 可跟；OEM+库存+快交期是卖点\r\n4. 集成商/项目商（CCTV/工业/园区项目）→ 可跟，优先小项目；规模过大的集团公司成交概率极低\r\n\r\n我的策略\r\n- 以长期跟进为主，不追求快速成单\r\n- 偏好项目型客户（弱化贸易商身份，聚焦方案可行性）和技术型客户（CLI/MIB/深度功能是主场）\r\n\r\n---\r\n\r\n区块二：评估规则与输出要求（固定不变）\r\n\r\n第一步：基础信息核查\r\n\r\n从官网、LinkedIn、社媒等公开渠道综合判断以下维度：\r\n\r\n- 公司规模与年限（仅在可确认时写出）\r\n  - 理想：10–150人，成立3–15年，区域性/细分领域；决策链短，对新供应商开放\r\n  - 可跟：150–500人，有一定品牌但非行业Top；有采购流程但不至于卡死\r\n  - 谨慎：500人以上/上市公司/跨国集团；供应商准入严格，除非有明确ODM/技术定制需求，否则降一级\r\n- 如无法确认核心业务方向或客户角色，需标注\"核心业务未确认，建议人工介入\"\r\n- 次要信息（成立年份、人数等）无法确认则直接跳过，不标注\"未知\"\r\n\r\n第二步：交换机地位判断\r\n\r\n- 主菜：官网主推switching/PoE/managed switch/industrial ethernet/video surveillance network\r\n- 配菜：交换机是附带品，核心卖其他产品\r\n- 无关：纯光模块/transceiver/DAC/消费级路由，或我司不做的品类\r\n\r\n注意：产品线复杂的客户（交换机+光模块+线缆+安防都有），以交换机/PoE相关产品的官网占比、位置、关键词频率综合判断，不因为同时卖光模块就直接判C\r\n\r\n第三步：客户角色识别\r\n\r\n- 方案商/品牌商：有Solutions/OEM/ODM/Customization/系统集成字样\r\n- 分销商/电商：有Shop/Stock/Wholesale/多品牌代理\r\n- 集成商/项目商：有Projects/Case Study/行业方案/工程实施\r\n\r\n第四步：合作商与竞品分析（重点）\r\n\r\n这是影响切入难度的核心维度，必须严格评估，不可宽松。\r\n\r\n红灯品牌（4.1）：Cisco、Juniper、Aruba/HPE、Fortinet、Huawei\r\n→ 说明预算高、供应链封闭；不因此升A，最多维持B；若为主力合作品牌，降级处理\r\n\r\n黄灯品牌（4.2）：Ruijie、Hikvision、Dahua、TP-Link、D-Link、Planet、EdgeCore、MikroTik、Moxa、ZyXEL等\r\n→ 说明对亚洲品牌开放，但这些品牌本身价格/质量有保证，切入难度中等\r\n→ 单独出现黄灯品牌：不轻易升A，需其他维度非常优秀才可考虑\r\n→ 与绿灯品牌同时出现：可视为供应链开放度较高，酌情提升评级\r\n\r\n绿灯品牌（4.3）：Utepo、ONV、洪瑞(HRUI)、Hasivo、帧田、Elink、JHA、Wi-Tek、中科德能、光路、三旺、Netlink、CO-WELL/COMB、深圳白牌/无品牌等\r\n→ 说明对深圳供应链完全开放，替换门槛最低，切入优势最大\r\n→ 评估结果优秀时可正常给A\r\n\r\n品牌组合判断规则（新增）：\r\n- 绿灯为主 + 少量黄灯 → 供应链开放，按绿灯逻辑处理\r\n- 黄灯为主 + 少量绿灯 → 开放度中等，需结合其他维度\r\n- 红灯出现即使只有一个 → 拉低上限，不升A；红灯为主则降级\r\n- 无任何合作商信息 → 标注\"合作商未确认\"，不因此降级，但跟进时需探查\r\n\r\n第五步：市场/地区因素（新增显性维度）\r\n\r\n部分市场对中国供应商存在结构性障碍，评估时需纳入：\r\n- 欧美政府/基础设施采购：通常有本地认证或供应商资质要求，我司认证不足\r\n- 印度部分领域：近年对中国电子产品设有进口限制\r\n- 中东/东南亚/拉美/非洲：对中国供应链普遍开放，障碍较低\r\n- 如市场因素构成明显障碍，在判断依据中注明，并酌情降低成交概率\r\n\r\n第六步：综合分级\r\n\r\n评级必须同时满足必要条件，加分项辅助判断，不可仅凭加分项升级。\r\n\r\nA级（重点跟进）：必须满足以下至少2条\r\n- 交换机是主菜或核心产品线之一\r\n- 有OEM/ODM/定制需求迹象\r\n- 有绿灯品牌合作痕迹（或黄灯+其他维度极优）\r\n- 场景高度匹配（CCTV/工业/视频监控/园区网络）\r\n- 规模在理想区间（10–150人）\r\n\r\n加分项：有技术文档/CLI需求迹象、产品线与我司高度重叠、有明确的项目案例\r\n\r\nB级（长期跟进）：满足以下情况\r\n- 交换机是配角但服务CCTV/企业客户\r\n- 分销商/电商，品牌倾向不明确\r\n- 规模在可跟区间，无明显红灯障碍\r\n- A级条件不足但有一定合作潜力\r\n\r\nC级（低优先/偶发群发）：出现以下任一情况\r\n- 核心业务为光模块/Transceiver/DAC/AOC\r\n- 纯消费级/家用网络产品\r\n- 主营我司不做的品类（轨交、IP67、云管理等）\r\n- 无任何交换机相关业务\r\n- 规模极大（500人以上）且无定制/技术需求迹象\r\n\r\n负向约束（防止误判，必须遵守）：\r\n- 证据不足时不得脑补结论，标注\"未确认\"\r\n- 不得因客户\"看起来不错\"就升级，必须有具体证据支撑\r\n- 不得因单一加分项（如规模合适）就给A，需多维度印证\r\n- 红灯品牌出现时不得升A，无论其他条件多优秀\r\n- 每个客户独立评估，不受前后客户影响\r\n\r\n---\r\n\r\n输出格式（严格执行）\r\n\r\nA/B级客户（5行，不带字段标签）：\r\n\r\n```\r\n[成交概率%]  [级别]\r\n[客户画像：国家+类型+规模+年限+核心业务，写仔细]\r\n[跟进建议：1–2句具体行动]\r\n[主推产品：限1–3款]\r\n[判断依据：2–3句关键证据，来自官网/社媒等]\r\n```\r\n\r\n示例：\r\n```\r\n35%  B\r\n土耳其中型安防分销商，约50人，成立12年，核心代理CCTV设备，兼售网络配件\r\n发送PoE交换机产品线邮件，强调CCTV场景适配+可OEM贴牌+交期快\r\n24口PoE交换机、8口工业PoE、ERPS环网交换机\r\n官网有Utepo产品在售（深圳供应链开放）；LinkedIn显示约50人规模；主营CCTV但交换机为配角\r\n```\r\n\r\nC级客户（2–3行）：\r\n\r\n```\r\n[概率%]  C\r\n[1–2条最关键的排除原因]\r\n```\r\n\r\n示例：\r\n```\r\n5%  C\r\n主营轨道交通交换机（EN50155），我司不做此品类\r\n```\r\n\r\n产品推荐参考\r\n- CCTV/安防场景 → 工/商业PoE + ERPS + IGMP\r\n- 工业/现场场景 → 工业级交换机 + 性能稳定 + 产品选型丰富\r\n- 汇聚/核心场景 → Centec核心 + 10G SFP+ + L3\r\n- 分销/通用场景 → 8/16/24口PoE爆款SKU + OEM贴牌\r\n\r\n其他注意事项\r\n- 历史备注仅供参考，以官网/社媒等公开信息为主进行独立判断\r\n- 多个客户时以客户名称/网址为标题分隔，每个客户之间空一行\r\n- 无法确认的维度标注\"未确认\"，不推测\r\n\r\n---\r\n\r\n关于第二部分，在搜索客户时一定要注意\r\n不能只局限于我给你的网站链接，要深度搜索他们相关的网站，网页及相关信息\r\n然后进行上述内容的综合评估并给结论\r\n\r\n区块三：本次待评估客户（每次替换）\r\n\r\nhttps://www.xcam.cz/obchod/\r\nhttps://www.abctech.cz/img.asp?attid=2894641\r\nhttps://www.alternetivo.cz/prepinac-prumyslovy-din-nerid-2x-100-1000base-t-1x-1000base-x-sfp-slot-40-az-80c-12-48v-dc-svorkovnice_d44286.html\r\nhttps://www.dipolnet.cz/switch_poe_ultipower_192sfp_802_3af-at_8xpoe_fe_1xge_2xsfp_1000m_extend_vlan_poe_auto-check_hi-poe_N299704.htm\r\nhttps://www.escadtrade.cz/ip-kamerove-systemy/poe-switche/\r\nhttps://www.techfors.cz/8-port-unmanaged-poeat-industrial-switch-with-2-sfp-ports.html\r\nhttps://www.maxlink.cz/en/power-and-poe-13831768/category\r\nhttps://www.atexshop.com/industrial-7-port-unmanaged-gigabit-switch-atex-certified-profinet-connectors-optional-poe.html\r\nhttps://axilogi.com/?srsltid=AfmBOookbeGDbKdlbp3SEkbkmiCE4ztQGSLJQ4e6F7eHt7U-qmIdRfJU\r\nhttps://inthouse.eu/\r\nhttps://www.asm.cz/\r\nhttps://www.eltrox.cz/getfort-prumyslovy-poe-switch-8ge-2ge-2sfp-40-80-/\r\n\"Nextlan\r\nhttps://nextlan.cz/\"\r\n\"EMOS\r\nhttps://emos.cz/\r\nhttps://www.emos.eu/\"\r"
+          ]
+        },
+        "create_time": 1784966046.666,
+        "id": "fbdbd328-676b-4419-8b70-6dc4608f3f5c",
+        "metadata": {
+          "serialization_metadata": {
+            "custom_symbol_offsets": []
+          }
+        }
+      },
+      "parent": "client-created-root"
+    }
+  },
+  "memory_scope": "global_enabled",
+  "pinned_time": null,
+  "plugin_ids": null,
+  "title": "捷克客户评估",
+  "update_time": 1784966908.590734,
+  "voice": null
+}

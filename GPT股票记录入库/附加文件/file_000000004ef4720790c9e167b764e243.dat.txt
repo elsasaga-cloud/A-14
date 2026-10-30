@@ -1,0 +1,2583 @@
+--- page 1 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+OM5800 400G/800G DCI-BOX Stackable
+DWDM Transmission Platform
+DWDMOpticalTransmissionEquipmentManufacturer
+BigDataTransmissionOverallSolutionProvider
+IssueDate:2026-05
+ShenzhenOlycomTechnologyCo.,Ltd.
+Preface
+Overview
+ThisconfigurationguideprimarilyintroducestheproductdescriptionoftheOM5800series,includingproduct
+specifications,siteconfigurationapplications,opticalmodules,andapplicationcases.
+TargetAudience
+Thisdocumentisintendedforthefollowingengineers:
+ Networkplanningengineers
+ Hardwareinstallationengineers
+ Commissioningengineers
+ Dataconfigurationengineers
+ On-sitemaintenanceengineers
+ Systemmaintenanceengineers
+SymbolsConventions
+Thefollowingsymbolsmayappearinthisdocument,withtheirmeaningsasfollows:
+Symbol Description
+Indicates content requiring special attention. Improper operation may cause
+seriouspersonalinjury.
+Reminds users of precautions. Improper operation may lead to data loss or
+equipmentdamage.
+Highlights operations or information that require special attention to ensure
+successfuloperationorproperequipmentfunctionality.
+Providestipsortrickstosolveproblemsorsavetime.
+NOTE Supplementsandexplainsthemaintextasnecessary.
+Web:www.olycom.com.cn 1
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+Symbol | Description
+--- page 2 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+Catalog
+1.ProductSpecification...................................................................................................................................3
+1.1ProductOverview..............................................................................................................................3
+1.1.11UChassisNMUCard..........................................................................................................7
+1.1.21UChassisFANCard...........................................................................................................9
+1.1.32U/4UChassisNMUCard...................................................................................................10
+1.1.42U/4UChassisFANCard....................................................................................................12
+1.1.52UChassisEthernetInterfaceCard....................................................................................13
+1.1.64UChassisEthernetInterfaceCard....................................................................................14
+1.1.7POWERCard......................................................................................................................15
+1.2ElectricalLayerCards.....................................................................................................................16
+1.2.1T4D2....................................................................................................................................17
+1.2.2M20D1.................................................................................................................................18
+1.2.3M2H10D1.............................................................................................................................19
+1.2.4T4Q1....................................................................................................................................20
+1.2.5T4Q2....................................................................................................................................21
+1.2.6T8E2....................................................................................................................................23
+1.3.OpticalLayerCards.......................................................................................................................25
+1.3.1EDFACard..........................................................................................................................26
+1.3.2OLPCard............................................................................................................................29
+1.3.3OTDRCard.........................................................................................................................34
+1.3.4WSS091x9ROADMCard..................................................................................................35
+1.3.5OCMCard...........................................................................................................................36
+1.3.6TFFCard.............................................................................................................................37
+1.3.7PTMCard............................................................................................................................39
+1.3.8ROADMCard......................................................................................................................41
+1.3.9MUX/DeMUXCard..............................................................................................................42
+1.3.10VMux/VDmux....................................................................................................................44
+2.OpticalModules.........................................................................................................................................46
+Web:www.olycom.com.cn 2
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+--- page 3 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1. ProductSpecification
+1.1ProductOverview
+OM5800isanindustry-leadinginnovativeDCIOTNtransmissionplatformlaunchedbyOLYCOM.
+OM5800 has the characteristics of small size, large capacity service access, long distance transmission,
+Web GUI simple and convenient operation and management, reliable operation and energy saving and
+emissionreduction,whicheffectivelymeetstheneedsoflong-distanceandlargebandwidthuserdatacenter
+interconnectiontransmission.
+The OM5800 features a modular design that enables both optical-electrical decoupling for cost reduction
+andintegratedmanagementwithinthesamechassis.
+WithSDNcapabilities,itcreatesanintelligentandopennetworkarchitecture.
+The system supports the YANG model interface based on the NetConf/YANG protocol, while also offering
+multiplemanagementmethodsincludingWebGUI,CLI,NetConf,andSNMPforstreamlinedoperations.
+ProductDiagram
+Ultra-highintegration:
+1U&2UChassis,2Usupports4*1.6Tserviceslots,1U
+supports2*1.6Tserviceslots;servicecardiscompatible
+Clientside:
+SupportsGE/10GE/10GWAN/STM64/OTU2/100GE/
+OTU4/400GEetc(seethedetailsofthecardfordetails)
+Lineside:
+OM5800-1A Supports100G/200G/400G/800Gbpsperwave
+Ultralargecapacity:
+Asinglechassiscancarryupto6.4Tservicecapacity,
+reachingtheindustry-leadinglevel
+Extremesimplicityoperations:
+Flexible definition, web GUI intelligent maintenance,
+improve the operability of remote operation and
+maintenance
+Supports remote network port and serial port
+access, and supports remote cold and hot restart
+Support remote upgrade of chassis and card, remote
+OM5800-2A configuration import, and remote log download
+Whiteboxdesign:
+Support for Netconf protocols based on Yang model
+Web GUI/CLI/SNMP
+Waitfortheopenmanagementinterface,supportOpen
+API,andrealizemanagementdecoupling
+Suitablefordatacenterandmachineroom
+environment:
+Supporthotpluggingofservice/maincontroller/Ethernet
+interface/fan/powercard
+The whole machine has forward air/after air design,
+with strong heat dissipation capacity
+Master 1:1 backup, support for Gigabit Ethernet
+management, support for OSPF networking
+CompatiblewithAC/HVDC/-48Vpowersupplyfordata
+centerapplications.
+OM5800-4A
+Web:www.olycom.com.cn 3
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+--- page 4 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+FramePartition
+19-inch1Uchassis
+SlotDescription
+MachineFrame Composition Slot
+4General-purposeservicecardslots 1~4
+1 Exclusive Slots For Master control card 43
+MachineFrame
+2DedicatedPowersupplyslots 44~45
+2DedicatedFancardslots 46~47
+FramePartition
+19-inch2Uchassis
+SlotDescription
+MachineFrame Composition Slot
+8General-purposeservicecardslots 1~8
+2 Exclusive Slots For Master control card 51~52
+MachineFrame 1EthernetInterfacecard 53
+2DedicatedPowersupplyslots 54~55
+3DedicatedFancardslots 56~58
+Web:www.olycom.com.cn 4
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+MachineFrame | Composition | Slot
+MachineFrame | 4General-purposeservicecardslots | 1~4
+ | 1 Exclusive Slots For Master control card | 43
+ | 2DedicatedPowersupplyslots | 44~45
+ | 2DedicatedFancardslots | 46~47
+MachineFrame | Composition | Slot
+MachineFrame | 8General-purposeservicecardslots | 1~8
+ | 2 Exclusive Slots For Master control card | 51~52
+ | 1EthernetInterfacecard | 53
+ | 2DedicatedPowersupplyslots | 54~55
+ | 3DedicatedFancardslots | 56~58
+--- page 5 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+FramePartition
+19-inch4Uchassis
+SlotDescription
+MachineFrame Composition Slot
+16General-purposeservicecardslots 1~16
+2 Exclusive Slots For Master control card 51~52
+MachineFrame 1EthernetInterfacecard 53
+4DedicatedPowersupplyslots 54~57
+6DedicatedFancardslots 58~63
+Web:www.olycom.com.cn 5
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+MachineFrame | Composition | Slot
+MachineFrame | 16General-purposeservicecardslots | 1~16
+ | 2 Exclusive Slots For Master control card | 51~52
+ | 1EthernetInterfacecard | 53
+ | 4DedicatedPowersupplyslots | 54~57
+ | 6DedicatedFancardslots | 58~63
+--- page 6 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+ProductSpecification
+ProjectName Description
+TransmissionCapacity 96*200Gbps/60*400Gbps
+ 2U/4UChassis:dualmaster1:1backupprotection
+ 1UChassis:singlemaster
+ Management port: 2* RJ45 Gigabit Ethernet electrical port, 2*SFP
+GigabitEthernetopticalport
+NetworkManagementUnit
+1*Type-CUSBConsolePort
+MUXports:2*MuxandDemuxDeviceManagementPort
+ SupportsNetConf/yangnetworkmanagement
+ SupportsCLI/SNMP/WebGUInetworkmanagement
+200GTMUXsupportsdual2*100Gto1*200Gservices
+200GTMUXsupports20*10Gto1*200Gservices
+200GTMUXsupports10*10G+1*100Gor2*100Gto1*200Gservices
+ElectricalLayerCard 400GTMUXsupports4*100Gto1*400Gservices
+400GTMUXsupports4*100Gto2*400G(1+1protection)services
+800GTMUXsupports8*100Gto1*800Gservices
+800GTMUXsupportsdual2*400Gto1*800Gservices
+WSScard/TFFcard/OPcard /OTDRcard/OCMcard/OAcard/OLA
+OpticalLayerCard card/PTMcard/8-waveMUX/48-waveMUX/48-waveVMUX/96-wave
+MUXcard
+216mm(W)*262mm(D)*40mm(H)
+1/2ServiceCard
+107mm(W)*262mm(D)*40mm(H)
+1/4ServiceCard
+Supports16*1/4slotsor8*1/2slots
+4UChassis
+Size 442mm(W)*485mm(D)*176mm(H)
+Supports8*1/4slotsor4*1/2slots
+2UChassis
+442mm(W)*485mm(D)*88mm(H)
+Supports4*1/4slotsand2*1/2slots
+1UChassis
+442mm(W)*485mm(D)*44mm(H)
+-5℃~45℃
+Working Temperature
+Environment StorageTemperature
+-40℃~80℃
+5%~95%nocondensation
+Humidity
+Dualpower1:1backup:AC220V/highvoltageDC/-48Voptional
+PowerSource
+4U<2300W,2U <1300W; 1U <800W (based on full layer power/fan at full
+PowerDissipation
+speed),
+Web:www.olycom.com.cn 6
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+ProjectName |  | Description
+TransmissionCapacity |  | 96*200Gbps/60*400Gbps
+NetworkManagementUnit |  |  2U/4UChassis:dualmaster1:1backupprotection
+ 1UChassis:singlemaster
+ Management port: 2* RJ45 Gigabit Ethernet electrical port, 2*SFP
+GigabitEthernetopticalport
+1*Type-CUSBConsolePort
+MUXports:2*MuxandDemuxDeviceManagementPort
+ SupportsNetConf/yangnetworkmanagement
+ SupportsCLI/SNMP/WebGUInetworkmanagement
+ElectricalLayerCard |  | 200GTMUXsupportsdual2*100Gto1*200Gservices
+200GTMUXsupports20*10Gto1*200Gservices
+200GTMUXsupports10*10G+1*100Gor2*100Gto1*200Gservices
+400GTMUXsupports4*100Gto1*400Gservices
+400GTMUXsupports4*100Gto2*400G(1+1protection)services
+800GTMUXsupports8*100Gto1*800Gservices
+800GTMUXsupportsdual2*400Gto1*800Gservices
+OpticalLayerCard |  | WSScard/TFFcard/OPcard /OTDRcard/OCMcard/OAcard/OLA
+card/PTMcard/8-waveMUX/48-waveMUX/48-waveVMUX/96-wave
+MUXcard
+Size | 1/2ServiceCard | 216mm(W)*262mm(D)*40mm(H)
+ | 1/4ServiceCard | 107mm(W)*262mm(D)*40mm(H)
+ | 4UChassis | Supports16*1/4slotsor8*1/2slots
+442mm(W)*485mm(D)*176mm(H)
+ | 2UChassis | Supports8*1/4slotsor4*1/2slots
+442mm(W)*485mm(D)*88mm(H)
+ | 1UChassis | Supports4*1/4slotsand2*1/2slots
+442mm(W)*485mm(D)*44mm(H)
+Environment | Working Temperature | -5℃~45℃
+ | StorageTemperature | -40℃~80℃
+ | Humidity | 5%~95%nocondensation
+PowerSource |  | Dualpower1:1backup:AC220V/highvoltageDC/-48Voptional
+PowerDissipation |  | 4U<2300W,2U <1300W; 1U <800W (based on full layer power/fan at full
+speed),
+--- page 7 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.1.1 1UChassisNMUCard
+ProductDiagram
+ProductSpecification
+Function Description
+OccupiedSlots
+showninname43slot
+Hot-plug Support hot-swapping of primary and primary controller without
+affectingservices
+Alarm and Performance Monitoring It provides performance monitoring, single card alarm and
+performanceeventreporting.
+IndicatorLightDescription
+Name FunctionDescription
+A solid green light indicates that the device is powered on and
+STAT functioningnormally.
+(card Operating Status Indicator) If the light is off, it means the device is not powered on or is not
+workingproperly.
+A solid green light indicates that the device software is loading
+normallyandsoftwareinitializationiscomplete.
+A rapidly flashing green light indicates that the device is loading
+PROG
+softwareintotheFLASHorFPGA.
+(Single-card Software Status
+A slow flashing green light indicates that the device's card
+Indicator)
+softwareisinitializingandisintheBIOSbootphase.
+Asolid red light indicates that the software loading in the device's
+FLASHmemoryhasfailedorinitializationwasunsuccessful.
+A solid green light indicates that the device is synchronized
+correctly. The clock is operating in tracking mode (tracking an
+external source) or free oscillation mode (no external source
+SYNG(Clock Synchronization configured).）
+Status Indicator) Asolid red light indicates that the device has lost synchronization
+or is malfunctioning. An external clock source has been
+configured, but all external sources have been lost, causing the
+clocktoenterholdmodeoroscillatefreely.
+A solid green light indicates that the device is powered on and
+functioningnormally.
+Asolidredlightindicatesanemergencyalarmonthedevice.
+ALM(Single card Fault Indicator)
+Asolidyellowlightindicatesaminoralarminthedevice.
+If the light is off, it means the device is not powered on or is not
+workingproperly.
+RUN(Single Disk Operation The light flashes, indicating normal single-disk operation; the light
+Indicator light) goesout,indicatingamalfunction.
+SRV(BusinessLight) Asolid green light indicates that the device's service configuration
+Web:www.olycom.com.cn 7
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+Function | Description
+OccupiedSlots | showninname43slot
+Hot-plug | Support hot-swapping of primary and primary controller without
+affectingservices
+Alarm and Performance Monitoring | It provides performance monitoring, single card alarm and
+performanceeventreporting.
+Name | FunctionDescription
+STAT
+(card Operating Status Indicator) | A solid green light indicates that the device is powered on and
+functioningnormally.
+ | If the light is off, it means the device is not powered on or is not
+workingproperly.
+PROG
+(Single-card Software Status
+Indicator) | A solid green light indicates that the device software is loading
+normallyandsoftwareinitializationiscomplete.
+ | A rapidly flashing green light indicates that the device is loading
+softwareintotheFLASHorFPGA.
+ | A slow flashing green light indicates that the device's card
+softwareisinitializingandisintheBIOSbootphase.
+ | Asolid red light indicates that the software loading in the device's
+FLASHmemoryhasfailedorinitializationwasunsuccessful.
+SYNG(Clock Synchronization
+Status Indicator) | A solid green light indicates that the device is synchronized
+correctly. The clock is operating in tracking mode (tracking an
+external source) or free oscillation mode (no external source
+configured).）
+ | Asolid red light indicates that the device has lost synchronization
+or is malfunctioning. An external clock source has been
+configured, but all external sources have been lost, causing the
+clocktoenterholdmodeoroscillatefreely.
+ALM(Single card Fault Indicator) | A solid green light indicates that the device is powered on and
+functioningnormally.
+ | Asolidredlightindicatesanemergencyalarmonthedevice.
+ | Asolidyellowlightindicatesaminoralarminthedevice.
+ | If the light is off, it means the device is not powered on or is not
+workingproperly.
+RUN(Single Disk Operation
+Indicator light) | The light flashes, indicating normal single-disk operation; the light
+goesout,indicatingamalfunction.
+SRV(BusinessLight) | Asolid green light indicates that the device's service configuration
+--- page 8 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+is normal and there are no alarms, indicating that it is in good
+workingorder.
+A solid red light indicates an urgent alarm in the device's
+operations(suchassignalloss,frameloss,etc.).
+A solid yellow light indicates a minor alarm or a remote alarm in
+thedevice'soperation.
+InterfaceDefinition
+Interface Name TypeFunction
+SRV Servicecarddebuggingport
+Type-CInterface NMU Maincontrolcarddebuggingport
+OTG Programmingport
+SDSlot SD InsertSDcard
+RSTButton RST Resetbutton
+Access to the optical fiber transmission cable enables the
+SFP1
+aggregation of branch node network management information to
+SFPOpticalPort
+the network management center. Dual optical ports enable
+SFP2 transmissionintwodirectionsandprovide1+1protection.
+Connected to the network management computer via a network
+ETH1
+cable, the network management system manages two network
+EthernetPort interfaces, enabling cascaded management of multiple network
+elements and simultaneous transmission of network
+ETH2
+managementinformation.
+MUX1 The network management information is transmitted by
+MUXInterface connecting an external AAWG OMD48/OMD96 device via a
+MUX2 networkcable.
+Web:www.olycom.com.cn 8
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+ | is normal and there are no alarms, indicating that it is in good
+workingorder.
+ | A solid red light indicates an urgent alarm in the device's
+operations(suchassignalloss,frameloss,etc.).
+ | A solid yellow light indicates a minor alarm or a remote alarm in
+thedevice'soperation.
+Interface | Name | TypeFunction
+Type-CInterface | SRV | Servicecarddebuggingport
+ | NMU | Maincontrolcarddebuggingport
+ | OTG | Programmingport
+SDSlot | SD | InsertSDcard
+RSTButton | RST | Resetbutton
+SFPOpticalPort | SFP1 | Access to the optical fiber transmission cable enables the
+aggregation of branch node network management information to
+the network management center. Dual optical ports enable
+transmissionintwodirectionsandprovide1+1protection.
+ | SFP2 | 
+EthernetPort | ETH1 | Connected to the network management computer via a network
+cable, the network management system manages two network
+interfaces, enabling cascaded management of multiple network
+elements and simultaneous transmission of network
+managementinformation.
+ | ETH2 | 
+MUXInterface | MUX1 | The network management information is transmitted by
+connecting an external AAWG OMD48/OMD96 device via a
+networkcable.
+ | MUX2 | 
+--- page 9 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.1.2 1UChassisFANCard
+ProductDiagram
+ProductSpecification
+Function Description
+OccupiedSlots
+showninname46/47slot
+Temperature Monitoring Temperatureoftheairoutletcanbecollectedinrealtime
+The fan automatically adjusts its speed based on critical chip
+temperatures and module temperatures reported by the business card
+Automatic Speed Regulation
+toensurenormalcardoperation.Incaseofcommunicationloss,thefan
+issettomaximumspeed.
+Supportmanualspeedadjustmentfordifferentgearlevelsusingvarious
+Manual Speed Adjustment
+dutycycles
+The fan panel displays a status indicator light. A green light on
+StatusIndication continuously indicates normal operation, while a red light on
+continuouslyindicatesafault.
+The host reads and loads the electronic tag of the fan module via the
+ElectronicTags I2C bus. The tag records the production date, PN/SN, and runtime
+(calculatedfromthemomentthecardispoweredon).
+Supports alarm reporting for communication loss, fan failure, abnormal
+AlarmDetection
+speed,andsinglefanstall
+The fan card supports N:1 redundancy, enabling the system to operate
+FanRedundancy continuously for up to 96 hours under normal temperature conditions
+whenonefancardfails.
+Hot-plug support
+IndicatorLightDescription
+Name FunctionalDescription
+Thegreenlightstayson,indicatingthedeviceispoweredonandinnormalstatus.
+STAT (card Status Redalwaysonindicatesanemergencyalarm
+Indicator) The light is off, indicating the device is not powered on or is not functioning
+properly.
+Web:www.olycom.com.cn 9
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+Function | Description
+OccupiedSlots | showninname46/47slot
+Temperature Monitoring | Temperatureoftheairoutletcanbecollectedinrealtime
+Automatic Speed Regulation | The fan automatically adjusts its speed based on critical chip
+temperatures and module temperatures reported by the business card
+toensurenormalcardoperation.Incaseofcommunicationloss,thefan
+issettomaximumspeed.
+Manual Speed Adjustment | Supportmanualspeedadjustmentfordifferentgearlevelsusingvarious
+dutycycles
+StatusIndication | The fan panel displays a status indicator light. A green light on
+continuously indicates normal operation, while a red light on
+continuouslyindicatesafault.
+ElectronicTags | The host reads and loads the electronic tag of the fan module via the
+I2C bus. The tag records the production date, PN/SN, and runtime
+(calculatedfromthemomentthecardispoweredon).
+AlarmDetection | Supports alarm reporting for communication loss, fan failure, abnormal
+speed,andsinglefanstall
+FanRedundancy | The fan card supports N:1 redundancy, enabling the system to operate
+continuously for up to 96 hours under normal temperature conditions
+whenonefancardfails.
+Hot-plug | support
+Name | FunctionalDescription
+STAT (card Status
+Indicator) | Thegreenlightstayson,indicatingthedeviceispoweredonandinnormalstatus.
+ | Redalwaysonindicatesanemergencyalarm
+ | The light is off, indicating the device is not powered on or is not functioning
+properly.
+--- page 10 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.1.3 2U/4UChassisNMUCard
+ProductDiagram
+ProductSpecification
+Function Description
+OccupiedSlots
+showninname51/52slot
+1:1redundancy Dual master control configuration. The device continues to function
+normallyeveniftheprimarymastercontrolfails.
+Hot-plug Support hot-swapping of primary and primary controller without affecting
+services
+Alarm and Performance It provides performance monitoring, single card alarm and performance
+Monitoring eventreporting.
+IndicatorLightDescription
+Name FunctionDescription
+A solid green light indicates that the device is powered on and
+STAT (card Operating Status functioningnormally.
+Indicator) If the light is off, it means the device is not powered on or is not
+workingproperly.
+A solid green light indicates that the device software is loading
+normallyandsoftwareinitializationiscomplete.
+Arapidly flashing green light indicates that the device is loading
+softwareintotheFLASHorFPGA.
+PROG(Single-card Software Status
+A slow flashing green light indicates that the device's card
+Indicator)
+softwareisinitializingandisintheBIOSbootphase.
+A solid red light indicates that the software loading in the
+device's FLASH memory has failed or initialization was
+unsuccessful.
+A solid green light indicates that the device is synchronized
+correctly. The clock is operating in tracking mode (tracking an
+external source) or free oscillation mode (no external source
+SYNG(Clock Synchronization Status configured).）
+Indicator) A solid red light indicates that the device has lost
+synchronization or is malfunctioning. An external clock source
+has been configured, but all external sources have been lost,
+causingtheclocktoenterholdmodeoroscillatefreely.
+A solid green light indicates that the device is powered on and
+functioningnormally.
+ALM(Single card Fault Indicator)
+Asolidredlightindicatesanemergencyalarmonthedevice.
+Asolidyellowlightindicatesaminoralarminthedevice.
+Web:www.olycom.com.cn 10
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+Function | Description
+OccupiedSlots | showninname51/52slot
+1:1redundancy | Dual master control configuration. The device continues to function
+normallyeveniftheprimarymastercontrolfails.
+Hot-plug | Support hot-swapping of primary and primary controller without affecting
+services
+Alarm and Performance
+Monitoring | It provides performance monitoring, single card alarm and performance
+eventreporting.
+Name | FunctionDescription
+STAT (card Operating Status
+Indicator) | A solid green light indicates that the device is powered on and
+functioningnormally.
+ | If the light is off, it means the device is not powered on or is not
+workingproperly.
+PROG(Single-card Software Status
+Indicator) | A solid green light indicates that the device software is loading
+normallyandsoftwareinitializationiscomplete.
+ | Arapidly flashing green light indicates that the device is loading
+softwareintotheFLASHorFPGA.
+ | A slow flashing green light indicates that the device's card
+softwareisinitializingandisintheBIOSbootphase.
+ | A solid red light indicates that the software loading in the
+device's FLASH memory has failed or initialization was
+unsuccessful.
+SYNG(Clock Synchronization Status
+Indicator) | A solid green light indicates that the device is synchronized
+correctly. The clock is operating in tracking mode (tracking an
+external source) or free oscillation mode (no external source
+configured).）
+ | A solid red light indicates that the device has lost
+synchronization or is malfunctioning. An external clock source
+has been configured, but all external sources have been lost,
+causingtheclocktoenterholdmodeoroscillatefreely.
+ALM(Single card Fault Indicator) | A solid green light indicates that the device is powered on and
+functioningnormally.
+ | Asolidredlightindicatesanemergencyalarmonthedevice.
+ | Asolidyellowlightindicatesaminoralarminthedevice.
+--- page 11 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+If the light is off, it means the device is not powered on or is not
+workingproperly.
+RUN(Single Disk Operation Indicator The light flashes, indicating normal single-disk operation; the
+Light) lightgoesout,indicatingamalfunction.
+A solid green light indicates that the device's service
+configurationisnormalandtherearenoalarms,indicatingthatit
+isingoodworkingorder.
+SRV(BusinessLight) A solid red light indicates an urgent alarm in the device's
+operations(suchassignalloss,frameloss,etc.).
+Asolid yellow light indicates a minor alarm or a remote alarm in
+thedevice'soperation.
+Whenthelightison,thesystemisoperatingonthemaincontrol
+ACT(Main And Backup Card
+card; when the light is off, the system is operating on its backup
+Working Indicator lights)
+card.
+Web:www.olycom.com.cn 11
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+ | If the light is off, it means the device is not powered on or is not
+workingproperly.
+RUN(Single Disk Operation Indicator
+Light) | The light flashes, indicating normal single-disk operation; the
+lightgoesout,indicatingamalfunction.
+SRV(BusinessLight) | A solid green light indicates that the device's service
+configurationisnormalandtherearenoalarms,indicatingthatit
+isingoodworkingorder.
+ | A solid red light indicates an urgent alarm in the device's
+operations(suchassignalloss,frameloss,etc.).
+ | Asolid yellow light indicates a minor alarm or a remote alarm in
+thedevice'soperation.
+ACT(Main And Backup Card
+Working Indicator lights) | Whenthelightison,thesystemisoperatingonthemaincontrol
+card; when the light is off, the system is operating on its backup
+card.
+--- page 12 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.1.42U/4UChassisFANCard
+ProductDiagram
+ProductSpecification
+Name Description
+OccupiedSlots showninname56/57/58slot
+Temperature Monitoring Itcancollecttheairoutlettemperatureinrealtime.
+Manual Speed Adjustment Itsupportsmanualspeedadjustmentaccordingtodifferentdutycycles.
+Thefancardhasastatusindicatorlight.Asolidgreenlightindicates
+Status Indicator thefanisworkingproperly,whileasolidredlightindicatesafan
+malfunction.
+Thehostcomputerreadsandloadstheelectronictagofthefanmodule
+viatheI2Cbus.Theelectronictagrecordstheproductiondate,PN/SN,
+Electronic Tags
+andrunningtime(calculatedfromthestartofoperationafterthecardis
+poweredon).
+Supportsreportingofalarmsforcommunicationloss,fanfailure,
+Alarm Detection
+abnormalfanspeed,andsinglefanstall.
+ThefancardsupportsN:1backup,meaningthatevenifonefancard
+Fan Redundancy fails,thesystemcancontinuetooperatecontinuouslyfornomorethan
+96hoursatnormaltemperature.
+Hot-swap support
+IndicatorLightDescription
+Name FunctionDescription
+A solid green light indicates that the device is powered on and functioning
+STAT (card Operating normally.
+Status Indicator) Asolidredlightindicatesanemergencyalarmonthedevice.
+If the light is off, it means the device is not powered on or is not working
+properly.
+Web:www.olycom.com.cn 12
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+Name | Description
+OccupiedSlots | showninname56/57/58slot
+Temperature Monitoring | Itcancollecttheairoutlettemperatureinrealtime.
+Manual Speed Adjustment | Itsupportsmanualspeedadjustmentaccordingtodifferentdutycycles.
+Status Indicator | Thefancardhasastatusindicatorlight.Asolidgreenlightindicates
+thefanisworkingproperly,whileasolidredlightindicatesafan
+malfunction.
+Electronic Tags | Thehostcomputerreadsandloadstheelectronictagofthefanmodule
+viatheI2Cbus.Theelectronictagrecordstheproductiondate,PN/SN,
+andrunningtime(calculatedfromthestartofoperationafterthecardis
+poweredon).
+Alarm Detection | Supportsreportingofalarmsforcommunicationloss,fanfailure,
+abnormalfanspeed,andsinglefanstall.
+Fan Redundancy | ThefancardsupportsN:1backup,meaningthatevenifonefancard
+fails,thesystemcancontinuetooperatecontinuouslyfornomorethan
+96hoursatnormaltemperature.
+Hot-swap | support
+Name | FunctionDescription
+STAT (card Operating
+Status Indicator) | A solid green light indicates that the device is powered on and functioning
+normally.
+ | Asolidredlightindicatesanemergencyalarmonthedevice.
+ | If the light is off, it means the device is not powered on or is not working
+properly.
+--- page 13 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.1.52UChassisEthernetInterfaceCard
+ProductDiagram
+ProductSpecification
+Function Description
+Occupied Slots showninname53slot
+Dual Master Control Automatic S Intelligent scheduling (automatic switchover from abnormal
+witching mastercontrollertonormalmastercontroller)
+Manual Switching Thewebversionsupportsmanualswitching.
+Internet Access Two optical and two electrical ports, supporting 100Mbps and
+1000Mbpsspeeds.
+MUX Features SupportsdualMUXports,RJ45interface(I2Cprotocol)
+Interfacedefinition
+Interface Name TypeFunction
+SFP1 Access to the optical fiber transmission cable
+SFP Optical Port
+SFP2 enables the aggregation of branch node network
+management information to the network
+Connected to the network management computer
+ETH1
+via a network cable, the network management
+Ethernet Electrical Port
+system manages two network interfaces, enabling
+ETH2
+cascadedmanagementofmultiplenetwork elements
+MUX1 The network management information is transmitted
+MUX Interface
+MUX2 by connecting an external mux and demux device
+vLioanagsptrraeisgsh:t-tShwroiutcghhwneotrwkionrgkcmaboldee. (5 seconds or
+DETACH Button DETACH more); short press: Switch primary/backup NMU
+card(1second).
+Indicator Light Description
+Name FunctionDescription
+STAT A solid green light indicates that the device is powered on and functioning
+(card Operating normally.
+Asolidredlightindicatesanemergencyalarmonthedevice.
+status Indicator)
+Asolidyellowlightindicatesaminoralarminthedevice.
+Ifthelightisoff,itmeansthedeviceisnotpoweredonorisnotworkingproperly.
+SFP1 (Optical Port Green light: Data connection is normal; Red light: Data connection is abnormal;
+1 Indicator Light) Off:Noopticalmodule.
+SFP2 (Optical Port Green light: Data connection is normal; Red light: Data connection is abnormal;
+2 Indicator Light) Off:Noopticalmodule.
+AUTO On:Inautomaticmode;off:Inmanualmode.
+Web:www.olycom.com.cn 13
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+Function | Description
+Occupied Slots | showninname53slot
+Dual Master Control Automatic S
+witching | Intelligent scheduling (automatic switchover from abnormal
+mastercontrollertonormalmastercontroller)
+Manual Switching | Thewebversionsupportsmanualswitching.
+Internet Access | Two optical and two electrical ports, supporting 100Mbps and
+1000Mbpsspeeds.
+MUX Features | SupportsdualMUXports,RJ45interface(I2Cprotocol)
+Interface | Name | TypeFunction
+SFP Optical Port | SFP1 | Access to the optical fiber transmission cable
+enables the aggregation of branch node network
+ | SFP2 | 
+Ethernet Electrical Port | ETH1 | management information to the network
+Connected to the network management computer
+via a network cable, the network management
+system manages two network interfaces, enabling
+cascadedmanagementofmultiplenetwork elements
+ | ETH2 | 
+MUX Interface | MUX1 | The network management information is transmitted
+by connecting an external mux and demux device
+ | MUX2 | 
+DETACH Button | DETACH | vLioanagsptrraeisgsh:t-tShwroiutcghhwneotrwkionrgkcmaboldee. (5 seconds or
+more); short press: Switch primary/backup NMU
+card(1second).
+Name | FunctionDescription
+STAT
+(card Operating
+status Indicator) | A solid green light indicates that the device is powered on and functioning
+normally.
+ | Asolidredlightindicatesanemergencyalarmonthedevice.
+ | Asolidyellowlightindicatesaminoralarminthedevice.
+ | Ifthelightisoff,itmeansthedeviceisnotpoweredonorisnotworkingproperly.
+SFP1 (Optical Port
+1 Indicator Light) | Green light: Data connection is normal; Red light: Data connection is abnormal;
+Off:Noopticalmodule.
+SFP2 (Optical Port
+2 Indicator Light) | Green light: Data connection is normal; Red light: Data connection is abnormal;
+Off:Noopticalmodule.
+AUTO | On:Inautomaticmode;off:Inmanualmode.
+--- page 14 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.1.64UChassisEthernetInterfaceCard
+ProductDiagram
+ProductSpecification
+Function Description
+Occupied Slots showninname53slot
+Dual Master Control Automatic S Intelligent scheduling (automatic switchover from abnormal
+witching mastercontrollertonormalmastercontroller)
+Manual Switching Thewebversionsupportsmanualswitching.
+Internet Access Two optical and two electrical ports, supporting 100Mbps and
+1000Mbpsspeeds.
+MUX Features SupportsdualMUXports,RJ45interface(I2Cprotocol)
+Interfacedefinition
+Interface Name TypeFunction
+SFP1 Access to the optical fiber transmission cable
+SFP Optical Port
+SFP2 enables the aggregation of branch node network
+management information to the network
+Connected to the network management computer
+ETH1
+via a network cable, the network management
+Ethernet Electrical Port
+system manages two network interfaces, enabling
+ETH2
+cascadedmanagementofmultiplenetwork elements
+MUX1 The network management information is transmitted
+MUX Interface
+MUX2 by connecting an external mux and demux device
+vLioanagsptrraeisgsh:t-tShwroiutcghhwneotrwkionrgkcmaboldee. (5 seconds or
+DETACH Button DETACH more); short press: Switch primary/backup NMU
+card(1second).
+Indicator Light Description
+Name FunctionDescription
+STAT A solid green light indicates that the device is powered on and functioning
+(card Operating normally.
+Asolidredlightindicatesanemergencyalarmonthedevice.
+status Indicator)
+Asolidyellowlightindicatesaminoralarminthedevice.
+Ifthelightisoff,itmeansthedeviceisnotpoweredonorisnotworkingproperly.
+SFP1 (Optical Port Green light: Data connection is normal; Red light: Data connection is abnormal;
+1 Indicator Light) Off:Noopticalmodule.
+SFP2 (Optical Port Green light: Data connection is normal; Red light: Data connection is abnormal;
+2 Indicator Light) Off:Noopticalmodule.
+AUTO On:Inautomaticmode;off:Inmanualmode.
+Web:www.olycom.com.cn 14
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+Function | Description
+Occupied Slots | showninname53slot
+Dual Master Control Automatic S
+witching | Intelligent scheduling (automatic switchover from abnormal
+mastercontrollertonormalmastercontroller)
+Manual Switching | Thewebversionsupportsmanualswitching.
+Internet Access | Two optical and two electrical ports, supporting 100Mbps and
+1000Mbpsspeeds.
+MUX Features | SupportsdualMUXports,RJ45interface(I2Cprotocol)
+Interface | Name | TypeFunction
+SFP Optical Port | SFP1 | Access to the optical fiber transmission cable
+enables the aggregation of branch node network
+ | SFP2 | 
+Ethernet Electrical Port | ETH1 | management information to the network
+Connected to the network management computer
+via a network cable, the network management
+system manages two network interfaces, enabling
+cascadedmanagementofmultiplenetwork elements
+ | ETH2 | 
+MUX Interface | MUX1 | The network management information is transmitted
+by connecting an external mux and demux device
+ | MUX2 | 
+DETACH Button | DETACH | vLioanagsptrraeisgsh:t-tShwroiutcghhwneotrwkionrgkcmaboldee. (5 seconds or
+more); short press: Switch primary/backup NMU
+card(1second).
+Name | FunctionDescription
+STAT
+(card Operating
+status Indicator) | A solid green light indicates that the device is powered on and functioning
+normally.
+ | Asolidredlightindicatesanemergencyalarmonthedevice.
+ | Asolidyellowlightindicatesaminoralarminthedevice.
+ | Ifthelightisoff,itmeansthedeviceisnotpoweredonorisnotworkingproperly.
+SFP1 (Optical Port
+1 Indicator Light) | Green light: Data connection is normal; Red light: Data connection is abnormal;
+Off:Noopticalmodule.
+SFP2 (Optical Port
+2 Indicator Light) | Green light: Data connection is normal; Red light: Data connection is abnormal;
+Off:Noopticalmodule.
+AUTO | On:Inautomaticmode;off:Inmanualmode.
+--- page 15 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.1.7POWERCard
+The device employs a standard CRPS (Common Redundant Power Supply) configuration, where a single
+independent power supply unit suffices for normal operation, with load balancing when dual power supplies
+areused.Thepowersupplyunit(PSU)isavailableintwomodels:
+ PSU-AC/HDC(Supports220VACand240VHDC)
+ PSU-LDC(Supports-48VDC)
+ProductDiagram
+ProductSpecification
+Function Description
+Occupied Slots
+showninname44/45/54/55slot
+PSU-AC/HVDC:RatedAC220V,voltagerange198-242V
+Input Voltage (45Hz～65Hz)andratedHVDC240V,voltagerange192～288V
+PSU-LDC:RatedDC-48V/-60V,voltagerange-40to-72V
+1+1 Backup ThedevicecontinuestofunctionnormallyevenafterasinglePSUfails.
+Temperature Monitoring cancollecttheambienttemperatureofthepowercardinrealtime
+When the power module temperature exceeds the set threshold, it enters
+protection mode, cuts off power supply, and triggers an overheating alarm to
+Overheat Protection
+prompt cooling measures. Once the temperature drops, the module
+automaticallyresumesnormaloperation.
+The powercard hasa status indicator light.Agreenlight on indicates normal
+Status Indication
+operation,whileanorangelightonindicatesafault.
+AC220V and HVDC240V support optional IEC and China national standard
+Power Plug and Power
+plug power cords, the equipment needs to be equipped with a 10Astandard
+Cord
+powercord,andDC-48Vrequiresapowercordofnolessthan10square.
+Power Status Supportspowersupplymonitoringinon,normal,andabnormalstates
+Overvoltage and The protected state is characterized by output power shutdown and power
+Undervoltage Protection supplyinterruption,withautomaticpowerrestorationcapability.
+Supports querying real-time data such as current input and output
+Real Time Power Query
+voltage/current,withpoweraccuracy≤±4%
+Mixed Configuration
+SupportshybridconfigurationsofPSU-AC/HDCandPSU-LDC
+(optional)
+Web:www.olycom.com.cn 15
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+Function | Description
+Occupied Slots | showninname44/45/54/55slot
+Input Voltage | PSU-AC/HVDC:RatedAC220V,voltagerange198-242V
+(45Hz～65Hz)andratedHVDC240V,voltagerange192～288V
+PSU-LDC:RatedDC-48V/-60V,voltagerange-40to-72V
+1+1 Backup | ThedevicecontinuestofunctionnormallyevenafterasinglePSUfails.
+Temperature Monitoring | cancollecttheambienttemperatureofthepowercardinrealtime
+Overheat Protection | When the power module temperature exceeds the set threshold, it enters
+protection mode, cuts off power supply, and triggers an overheating alarm to
+prompt cooling measures. Once the temperature drops, the module
+automaticallyresumesnormaloperation.
+Status Indication | The powercard hasa status indicator light.Agreenlight on indicates normal
+operation,whileanorangelightonindicatesafault.
+Power Plug and Power
+Cord | AC220V and HVDC240V support optional IEC and China national standard
+plug power cords, the equipment needs to be equipped with a 10Astandard
+powercord,andDC-48Vrequiresapowercordofnolessthan10square.
+Power Status | Supportspowersupplymonitoringinon,normal,andabnormalstates
+Overvoltage and
+Undervoltage Protection | The protected state is characterized by output power shutdown and power
+supplyinterruption,withautomaticpowerrestorationcapability.
+Real Time Power Query | Supports querying real-time data such as current input and output
+voltage/current,withpoweraccuracy≤±4%
+Mixed Configuration
+(optional) | SupportshybridconfigurationsofPSU-AC/HDCandPSU-LDC
+--- page 16 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.2ElectricalLayerCards
+TheOM5800 Electrical LayerServiceCardshavethefollowing models,asshown intable.
+CardClassification CardType ProductDescription
+200GTransponderCard:
+T4D2
+Dual2*100GQSFP28clientto 1*200GCFP2linemode
+200GMuxponderCard:
+M20D1
+20*10GESFPclientto 1*200GCFP2linemode
+Electrical Layer
+M2H10D1 200GMuxponderCard:
+ServiceCards
+1*100GQSFP28+10*10GSFPclientto1*200GCFP2linemode
+2*40GQSFP+10*10GSFPclientto1*200GCFP2linemode
+2*100GQSFP28clientto1*200GCFP2linemode
+400GTransponderCard:
+T4Q1
+4*100GEclientto 1*400Gbpslinemode
+400GTransponderCard:
+T4Q2
+4*100GQSFP28clientto2*400GCFP2linemode
+Dual1*400GQSFP-DDclientto1*400GCFP2linemode
+1*400GCFP2clientto1*400GCFP2OEOrepeaterlinemode
+1*200GCFP2clientto1*200GCFP2OEOrepeaterlinemode
+1*100GCFP2clientto1*100GCFP2OEOrepeaterlinemode
+800GTransponderCard:
+T8E2
+8*100GQSFP28clientto1*800GCFP2linemode
+Dual2*400GQSFP112clientto1*800CFP2linemode
+Dual4*100GQSFP28clientto1*400CFP2linemode
+1*800GCFP2clientto1*800GCFP2OEOrepeaterlinemode
+1*400GCFP2clientto1*400GCFP2OEOrepeaterlinemode
+1*200GCFP2clientto1*200GCFP2OEOrepeaterlinemode
+1*100GCFP2clientto1*100GCFP2OEOrepeaterlinemode
+400GTransponderCard:
+T4Q4
+Quad1*400GQSFP-DDclientto1*400GbpsQSFP-DDlinemode
+(Under development)
+10GMuxponderCard:
+M8X2
+10Gmuxponderboard,8*Anyrateto2*10G
+(Under development)
+Web:www.olycom.com.cn 16
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+CardClassification | CardType | ProductDescription
+Electrical Layer
+ServiceCards | T4D2 | 200GTransponderCard:
+Dual2*100GQSFP28clientto 1*200GCFP2linemode
+ | M20D1 | 200GMuxponderCard:
+20*10GESFPclientto 1*200GCFP2linemode
+ | M2H10D1 | 200GMuxponderCard:
+1*100GQSFP28+10*10GSFPclientto1*200GCFP2linemode
+2*40GQSFP+10*10GSFPclientto1*200GCFP2linemode
+2*100GQSFP28clientto1*200GCFP2linemode
+ | T4Q1 | 400GTransponderCard:
+4*100GEclientto 1*400Gbpslinemode
+ | T4Q2 | 400GTransponderCard:
+4*100GQSFP28clientto2*400GCFP2linemode
+Dual1*400GQSFP-DDclientto1*400GCFP2linemode
+1*400GCFP2clientto1*400GCFP2OEOrepeaterlinemode
+1*200GCFP2clientto1*200GCFP2OEOrepeaterlinemode
+1*100GCFP2clientto1*100GCFP2OEOrepeaterlinemode
+ | T8E2 | 800GTransponderCard:
+8*100GQSFP28clientto1*800GCFP2linemode
+Dual2*400GQSFP112clientto1*800CFP2linemode
+Dual4*100GQSFP28clientto1*400CFP2linemode
+1*800GCFP2clientto1*800GCFP2OEOrepeaterlinemode
+1*400GCFP2clientto1*400GCFP2OEOrepeaterlinemode
+1*200GCFP2clientto1*200GCFP2OEOrepeaterlinemode
+1*100GCFP2clientto1*100GCFP2OEOrepeaterlinemode
+ | T4Q4
+(Under development) | 400GTransponderCard:
+Quad1*400GQSFP-DDclientto1*400GbpsQSFP-DDlinemode
+ | M8X2
+(Under development) | 10GMuxponderCard:
+10Gmuxponderboard,8*Anyrateto2*10G
+--- page 17 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.2.1T4D2
+Product Interface Function Illustration
+ProductSpecification
+TechnicalSpecifications Description
+OccupiedSlots 1/4slots,showninname1~8slot
+Client-sideInterface Supports4pluggableQSFP28100Gmodules
+Line-sideInterface Supports2pluggable200GCFP2DCOcoherentmodule
+ServiceType 100GE/100GEFlexE(UnwareMode)/OTU4
+ServiceMappingPath Dual2*100Gclientto1*200Glinemode:
+. 100G<->ODU4<->ODUC2<->OTUC2
+. OTU4<->ODU4<->ODUC2<->OTUC2
+Line-sideModulationFormat 200G:16QAM/QPSK
+WDMTechnology SupportDWDM:C-band50GHz96wavestunable
+FECTechnology SupportoFEC
+Client-side Ethernet RMON MonitoringSupport
+function
+Client-side Automatic Laser ShutdownSupport
+(ALS)
+LocalFault SupportsdownstreaminsertionofLocalFaultfromtheclientsideincase
+of Ethernet input loss or WDM side failure. Supports transparent
+transmissionofLocalFaultandRemoteFault.
+Loop Support
+TimeDelayMeasurement Support
+Line-sideProtectionFunction Whenswitchingoverwiththeopticalprotectioncard,theswitchovermust
+becompletedwithin50ms.
+Web:www.olycom.com.cn 17
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+TechnicalSpecifications | Description
+OccupiedSlots | 1/4slots,showninname1~8slot
+Client-sideInterface | Supports4pluggableQSFP28100Gmodules
+Line-sideInterface | Supports2pluggable200GCFP2DCOcoherentmodule
+ServiceType | 100GE/100GEFlexE(UnwareMode)/OTU4
+ServiceMappingPath | Dual2*100Gclientto1*200Glinemode:
+. 100G<->ODU4<->ODUC2<->OTUC2
+. OTU4<->ODU4<->ODUC2<->OTUC2
+Line-sideModulationFormat | 200G:16QAM/QPSK
+WDMTechnology | SupportDWDM:C-band50GHz96wavestunable
+FECTechnology | SupportoFEC
+Client-side Ethernet RMON Monitoring
+function | Support
+Client-side Automatic Laser Shutdown
+(ALS) | Support
+LocalFault | SupportsdownstreaminsertionofLocalFaultfromtheclientsideincase
+of Ethernet input loss or WDM side failure. Supports transparent
+transmissionofLocalFaultandRemoteFault.
+Loop | Support
+TimeDelayMeasurement | Support
+Line-sideProtectionFunction | Whenswitchingoverwiththeopticalprotectioncard,theswitchovermust
+becompletedwithin50ms.
+--- page 18 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.2.2M20D1
+Product Interface Function Illustration
+ProductSpecification
+TechnicalSpecifications Description
+OccupiedSots 1/2slots,showninname2/4/6/8slot
+Client-sideInterface Supports20pluggableSFP+10Gor20pluggableSFPGEmodules
+Line-sideInterface Supports1pluggable200GCFP2DCOcoherentmodule
+ServiceType 10GE/GE
+ServiceMappingPath 20*10Gclientto1*200Glinemode:
+. 10G<->ODU2<->ODUC2<->OTUC2
+Line-sideModulationFormat 200G:16QAM/QPSK
+WDMTechnology SupportDWDM:C-band50GHz96wavestunable
+FECTechnology SupportoFEC
+Client-side Ethernet RMON MonitoringSupport
+function
+Client-side Automatic Laser ShutdownSupport
+(ALS)
+LocalFault Supports downstream insertion of Local Fault from the client side in
+case of Ethernet input loss or WDM side failure. Supports transparent
+transmissionofLocalFaultandRemoteFault.
+Loop Support
+TimeDelayMeasurement Support
+Line-sideProtectionFunction When switching over with the optical protection card, the switchover
+mustbecompletedwithin50ms.
+Client-side Ethernet RMON MonitoringSupport
+function
+Web:www.olycom.com.cn 18
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+TechnicalSpecifications | Description
+OccupiedSots | 1/2slots,showninname2/4/6/8slot
+Client-sideInterface | Supports20pluggableSFP+10Gor20pluggableSFPGEmodules
+Line-sideInterface | Supports1pluggable200GCFP2DCOcoherentmodule
+ServiceType | 10GE/GE
+ServiceMappingPath | 20*10Gclientto1*200Glinemode:
+. 10G<->ODU2<->ODUC2<->OTUC2
+Line-sideModulationFormat | 200G:16QAM/QPSK
+WDMTechnology | SupportDWDM:C-band50GHz96wavestunable
+FECTechnology | SupportoFEC
+Client-side Ethernet RMON Monitoring
+function | Support
+Client-side Automatic Laser Shutdown
+(ALS) | Support
+LocalFault | Supports downstream insertion of Local Fault from the client side in
+case of Ethernet input loss or WDM side failure. Supports transparent
+transmissionofLocalFaultandRemoteFault.
+Loop | Support
+TimeDelayMeasurement | Support
+Line-sideProtectionFunction | When switching over with the optical protection card, the switchover
+mustbecompletedwithin50ms.
+Client-side Ethernet RMON Monitoring
+function | Support
+--- page 19 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.2.3M2H10D1
+Product Interface Function Illustration
+ProductSpecification
+TechnicalSpecifications Description
+OccupiedSlots 1/2slots,showninname2/4/6/8slot
+Client-sideInterface Supports2pluggableQSFP28100Gmodules
+Supports1pluggableQSFP+40Gmodules
+Supports10pluggableSFP+10Gmodules
+Line-sideInterface Supports1pluggable200GCFP2DCOcoherentmodule
+ServiceType 10GE/OTU2/STM-64/10GEWAN/40GE/100GE
+100GEFlexE(Unwaremode)/OTU4
+ServiceMappingPath 2*100Gclientto1*200Glinemode:
+. 100G<->ODU4<->ODUC2<->OTUC2
+. OTU4<->ODU4<->ODUC2<->OTUC
+1*100G+10*10Gclientto1*200Glinemode:
+. 100G<->ODU4<->ODUC2<->OTUC2
+. OTU4<->ODU4<->ODUC2<->OTUC2
+. 10G<->ODU2<->ODU4<->ODUC2<->OTUC2
+. STM64<->ODU2<->ODU4<->ODUC2<->OTUC2
+. OTU2<->ODU2<->ODU4<->ODUC2<->OTUC2
+1*40G+10*10Gclientto1*200Glinemode:
+. 40G<->ODU3<->ODU4<->ODUC2<->OTUC2
+. 10G<->ODU2<->ODU4<->ODUC2<->OTUC2
+. STM64<->ODU2<->ODU4<->ODUC2<->OTUC2
+. OTU2<->ODU2<->ODU4<->ODUC2<->OTUC2
+Line-sideModulationFormat 200G:16QAM/QPSK
+Line-sideProtectionFunction When switching over with the optical protection card, the switchover must be
+completedwithin50ms.
+LocalFault SupportsdownstreaminsertionofLocalFaultfromtheclientsideincaseofEthernet
+inputlossorWDMsidefailure.SupportstransparenttransmissionofLocalFaultand
+RemoteFault.
+Web:www.olycom.com.cn 19
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+TechnicalSpecifications | Description
+OccupiedSlots | 1/2slots,showninname2/4/6/8slot
+Client-sideInterface | Supports2pluggableQSFP28100Gmodules
+Supports1pluggableQSFP+40Gmodules
+Supports10pluggableSFP+10Gmodules
+Line-sideInterface | Supports1pluggable200GCFP2DCOcoherentmodule
+ServiceType | 10GE/OTU2/STM-64/10GEWAN/40GE/100GE
+100GEFlexE(Unwaremode)/OTU4
+ServiceMappingPath | 2*100Gclientto1*200Glinemode:
+. 100G<->ODU4<->ODUC2<->OTUC2
+. OTU4<->ODU4<->ODUC2<->OTUC
+1*100G+10*10Gclientto1*200Glinemode:
+. 100G<->ODU4<->ODUC2<->OTUC2
+. OTU4<->ODU4<->ODUC2<->OTUC2
+. 10G<->ODU2<->ODU4<->ODUC2<->OTUC2
+. STM64<->ODU2<->ODU4<->ODUC2<->OTUC2
+. OTU2<->ODU2<->ODU4<->ODUC2<->OTUC2
+1*40G+10*10Gclientto1*200Glinemode:
+. 40G<->ODU3<->ODU4<->ODUC2<->OTUC2
+. 10G<->ODU2<->ODU4<->ODUC2<->OTUC2
+. STM64<->ODU2<->ODU4<->ODUC2<->OTUC2
+. OTU2<->ODU2<->ODU4<->ODUC2<->OTUC2
+Line-sideModulationFormat | 200G:16QAM/QPSK
+Line-sideProtectionFunction | When switching over with the optical protection card, the switchover must be
+completedwithin50ms.
+LocalFault | SupportsdownstreaminsertionofLocalFaultfromtheclientsideincaseofEthernet
+inputlossorWDMsidefailure.SupportstransparenttransmissionofLocalFaultand
+RemoteFault.
+--- page 20 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.2.4T4Q1
+Product Interface Function Illustration
+ProductSpecification
+TechnicalSpecifications Description
+OccupiedSlots 1/4slots,showninname1~8slot
+Client-sideInterface Supports4pluggableQSFP28100Gmodules
+Line-sideInterface Supports1pluggable400GCFP2DCOcoherentmodule
+ServiceType 100GE
+ServiceMappingPath 4*100Gclientto1*400Glinemode:
+. 100G<->ODU4<->ODUC4<->OTUC4
+Line-sideModulationFormat 400G:16QAM/16QAM-PCS/QPSK
+WDMTechnology SupportDWDM:C-band50GHz96wavestunable
+FECTechnology SupportoFEC
+Client-side Ethernet RMON MonitoringSupport
+Function
+Client-sideAutomaticLaserShutdown(ALS)Support
+LocalFault Supports downstream insertion of Local Fault from the client side in
+caseof Ethernet inputlossorWDMsidefailure. Supports transparent
+transmissionofLocalFaultandRemoteFault.
+Loop Support
+TimeDelayMeasurement Support
+Line-sideProtectionFunction When switching over with the optical protection card, the switchover
+mustbecompletedwithin50ms.
+Web:www.olycom.com.cn 20
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+TechnicalSpecifications | Description
+OccupiedSlots | 1/4slots,showninname1~8slot
+Client-sideInterface | Supports4pluggableQSFP28100Gmodules
+Line-sideInterface | Supports1pluggable400GCFP2DCOcoherentmodule
+ServiceType | 100GE
+ServiceMappingPath | 4*100Gclientto1*400Glinemode:
+. 100G<->ODU4<->ODUC4<->OTUC4
+Line-sideModulationFormat | 400G:16QAM/16QAM-PCS/QPSK
+WDMTechnology | SupportDWDM:C-band50GHz96wavestunable
+FECTechnology | SupportoFEC
+Client-side Ethernet RMON Monitoring
+Function | Support
+Client-sideAutomaticLaserShutdown(ALS) | Support
+LocalFault | Supports downstream insertion of Local Fault from the client side in
+caseof Ethernet inputlossorWDMsidefailure. Supports transparent
+transmissionofLocalFaultandRemoteFault.
+Loop | Support
+TimeDelayMeasurement | Support
+Line-sideProtectionFunction | When switching over with the optical protection card, the switchover
+mustbecompletedwithin50ms.
+--- page 21 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.2.5T4Q2
+Product Interface Function Illustration
+ProductSpecification
+TechnicalSpecifications Description
+OccupiedSlots 1/4slots,showninname1~8slot
+Client-sideInterface Supports4pluggableQSFP28100Gmodules
+Supports2pluggableQSFP-DD400Gmodules
+Line-sideInterface Supports2pluggable400GCFP2DCOcoherentmodules
+ServiceType 100GE/100GEFlexE(UnwareMode)/OTU4/400GE
+ServiceMappingPath 4*100Gclientto1*400Glinemode:
+. 100G<->ODU4<->ODUC2<->OTUC2
+. OTU4<->ODU4<->ODUC2<->OTUC2
+Dual1*400Gclientto1*400Glinemode:
+. 400G<->ODUC4<->OTUC4
+Line-sideModulationFormat 400G:16QAM/16QAM-PCS/QPSK
+WDMTechnology SupportDWDM:C-band50GHz96wavestunable
+Web:www.olycom.com.cn 21
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+TechnicalSpecifications | Description
+OccupiedSlots | 1/4slots,showninname1~8slot
+Client-sideInterface | Supports4pluggableQSFP28100Gmodules
+Supports2pluggableQSFP-DD400Gmodules
+Line-sideInterface | Supports2pluggable400GCFP2DCOcoherentmodules
+ServiceType | 100GE/100GEFlexE(UnwareMode)/OTU4/400GE
+ServiceMappingPath | 4*100Gclientto1*400Glinemode:
+. 100G<->ODU4<->ODUC2<->OTUC2
+. OTU4<->ODU4<->ODUC2<->OTUC2
+Dual1*400Gclientto1*400Glinemode:
+. 400G<->ODUC4<->OTUC4
+Line-sideModulationFormat | 400G:16QAM/16QAM-PCS/QPSK
+WDMTechnology | SupportDWDM:C-band50GHz96wavestunable
+--- page 22 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+FECTechnology SupportoFEC
+Client-side Ethernet RMON MonitoringSupport
+function
+Client-side Automatic Laser ShutdownSupport
+(ALS)
+LocalFault Supports downstream insertion of Local Fault from the client side in
+case of Ethernet input loss or WDM side failure. Supports transparent
+transmissionofLocalFaultandRemoteFault.
+Loop Support
+TimeDelayMeasurement Support
+Web:www.olycom.com.cn 22
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+FECTechnology | SupportoFEC
+Client-side Ethernet RMON Monitoring
+function | Support
+Client-side Automatic Laser Shutdown
+(ALS) | Support
+LocalFault | Supports downstream insertion of Local Fault from the client side in
+case of Ethernet input loss or WDM side failure. Supports transparent
+transmissionofLocalFaultandRemoteFault.
+Loop | Support
+TimeDelayMeasurement | Support
+--- page 23 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.2.6T8E2
+Product Interface Function Illustration
+ProductSpecification
+TechnicalSpecifications Description
+OccupiedSlots 1/2slots,showninname2/4/6/8slot
+Client-sideInterface Supports8pluggableQSFP28100Gmodules
+Supports4pluggableQSFP112400Gmodules
+Line-sideInterface Supports2pluggable400G/800GCFP2DCOcoherentmodules
+ServiceType 100GE,100GEFlexE(Unwaremode),400GE
+Web:www.olycom.com.cn 23
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+TechnicalSpecifications | Description
+OccupiedSlots | 1/2slots,showninname2/4/6/8slot
+Client-sideInterface | Supports8pluggableQSFP28100Gmodules
+Supports4pluggableQSFP112400Gmodules
+Line-sideInterface | Supports2pluggable400G/800GCFP2DCOcoherentmodules
+ServiceType | 100GE,100GEFlexE(Unwaremode),400GE
+--- page 24 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+ServiceMappingPath 8*100Gclientto1*800Glinemode:
+. 100G<->ODU4<->ODUC8<->OTUC8
+Dual2*400Gclientto1*800Glinemode:
+. 400G<->ODUC4<->ODUC8<->OTUC8
+Dual4*100Gclientto1*400Glinemode:
+. 100G<->ODU4<->ODUC4<->OTUC4
+1*800Glineto1*800GlineOEOrepeatermode:
+. OTUC8<->ODUC8<->OTUC8
+1*400Glineto1*400GlineOEOrepeatermode:
+. OTUC4<->ODUC4<->OTUC4
+Line-sideModulationFormat 400G:16QAM-PCS/QPSK
+800G:16QAM
+WDMTechnology SupportDWDM:C-band50GHz96wavestunable
+FECTechnology SupportoFEC
+Line-sideProtectionFunction Whenswitchingoverwiththeopticalprotectioncard,theswitchovermustbe
+completedwithin50ms.
+LocalFault Supports downstreaminsertion of LocalFault from the client side in case of
+EthernetinputlossorWDMsidefailure.Supportstransparenttransmissionof
+LocalFaultandRemoteFault.
+Web:www.olycom.com.cn 24
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+ServiceMappingPath | 8*100Gclientto1*800Glinemode:
+. 100G<->ODU4<->ODUC8<->OTUC8
+Dual2*400Gclientto1*800Glinemode:
+. 400G<->ODUC4<->ODUC8<->OTUC8
+Dual4*100Gclientto1*400Glinemode:
+. 100G<->ODU4<->ODUC4<->OTUC4
+1*800Glineto1*800GlineOEOrepeatermode:
+. OTUC8<->ODUC8<->OTUC8
+1*400Glineto1*400GlineOEOrepeatermode:
+. OTUC4<->ODUC4<->OTUC4
+Line-sideModulationFormat | 400G:16QAM-PCS/QPSK
+800G:16QAM
+WDMTechnology | SupportDWDM:C-band50GHz96wavestunable
+FECTechnology | SupportoFEC
+Line-sideProtectionFunction | Whenswitchingoverwiththeopticalprotectioncard,theswitchovermustbe
+completedwithin50ms.
+LocalFault | Supports downstreaminsertion of LocalFault from the client side in case of
+EthernetinputlossorWDMsidefailure.Supportstransparenttransmissionof
+LocalFaultandRemoteFault.
+--- page 25 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.3.OpticalLayerCards
+TheOM5800 OpticalLayerService Cardshavethefollowing models,asshown intable.
+CardClassification CardType HardwareDescription
+Boosteramplifiercard
+OBACard
+Lineamplifiercard
+OLACard
+Preamplifiercard
+OPACard
+OP1Card OLP1+1Opticalline protection card
+OP2Card OLP1+1Dualopticalline protection card
+OpticalLayer
+ServiceCards OTDRCard Opticaltime-domainreflectometrymonitoring
+card,supports8ports
+NinechannelsROADM card
+WSSCard
+Optical channel monitor(frequency and optical power
+OCMCard
+monitoring)card,supports8ports
+PTMCard Timesynchronizationmodulecard
+Fixed4-wavelengthmux/demuxOADMcard
+TFFCard
+ROADMCard
+8-channel DWDMmux/demuxcard
+OMD08
+48-channel DWDMmux/demuxequipment
+OMD48
+96-channel DWDMmux/demuxequipment
+OMD96
+VMux/VDmux
+Web:www.olycom.com.cn 25
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+CardClassification | CardType | HardwareDescription
+OpticalLayer
+ServiceCards | OBACard | Boosteramplifiercard
+ | OLACard | Lineamplifiercard
+ | OPACard | Preamplifiercard
+ | OP1Card | OLP1+1Opticalline protection card
+ | OP2Card | OLP1+1Dualopticalline protection card
+ | OTDRCard | Opticaltime-domainreflectometrymonitoring
+card,supports8ports
+ | WSSCard | NinechannelsROADM card
+ | OCMCard | Optical channel monitor(frequency and optical power
+monitoring)card,supports8ports
+ | PTMCard | Timesynchronizationmodulecard
+ | TFFCard | Fixed4-wavelengthmux/demuxOADMcard
+ | ROADMCard | 
+ | OMD08 | 8-channel DWDMmux/demuxcard
+ | OMD48 | 48-channel DWDMmux/demuxequipment
+ | OMD96 | 96-channel DWDMmux/demuxequipment
+ | VMux/VDmux | 
+--- page 26 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.3.1EDFACard
+The EDFA Optical Amplifier Module delivers a versatile, low-noise solution for erbium-doped fiber amplifiers
+(EDFA).Thiscompactmoduleoperateswithconstantgain(AutomaticGainControl,AGC)andconstantoutput
+power (Automatic Power Control, APC), featuring a highly integrated design. The large-format module
+supportsdualamplifierswithtwoindependentgainunits,thecardoccupiesonly1/2standardslotcapacity.
+ProductDiagram
+ Workingwavelengthrange:1528nm~1565nm
+ Supportfor1-2amplificationchannels:BA/PA/LA,BA+PAor2LA
+ Lownoisecoefficient:typicalvalue5dB
+ Excellentgainflatness
+ ThegainsupportsVOAadjustment±5dB;
+ Threeworkingmodesareavailable:
+ AGCgainadjustable
+ APCoutputadjustable
+ ACCvoltageadjustable
+ OSC function is optional to realize remote network management
+andmonitoring
+ SupportOTDR1625interface
+ SupportMONportopticalpowermonitoring
+Representative
+PerformanceParameter LeastValue Crestvalue Unit
+value
+OperatingWavelength 1528 1565 nm
+OutputLightPower 20 dBm
+Gain 8 33 dB
+Maximum
+BA -10
+Interiorinput Output-gain
+dBm
+Power (Maximum Maximum
+PA/LA
+input-29) Output-gain
+NoiseFactor 5.0 dB
+GainFlatness 1.0 dB
+InputThreshold -34 Adjustable dBm
+Polarization-relatedLoss 0.3 dB
+Polarization-dependentGain 0.4 dB
+PolarizationModeDispersion 0.5 ps
+PumpLeakage -29 dBm
+ReturnLoss 45 dB
+Size 216(W)*262(D)*40mm(H) mm
+WorkingTemperature -10℃~60℃ ℃
+Environment StorageTemperature -40℃~80℃ ℃
+RelativeHumidity 5%~95%nocondensation
+PowerDissipation ≤30 W
+Web:www.olycom.com.cn 26
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+PerformanceParameter |  | LeastValue | Representative
+value | Crestvalue | Unit
+OperatingWavelength |  | 1528 |  | 1565 | nm
+OutputLightPower |  |  |  | 20 | dBm
+Gain |  | 8 |  | 33 | dB
+Interiorinput
+Power | BA | -10 |  | Maximum
+Output-gain | dBm
+ | PA/LA | (Maximum
+input-29) |  | Maximum
+Output-gain | 
+NoiseFactor |  |  | 5.0 |  | dB
+GainFlatness |  |  | 1.0 |  | dB
+InputThreshold |  | -34 |  | Adjustable | dBm
+Polarization-relatedLoss |  |  |  | 0.3 | dB
+Polarization-dependentGain |  |  |  | 0.4 | dB
+PolarizationModeDispersion |  |  |  | 0.5 | ps
+PumpLeakage |  |  |  | -29 | dBm
+ReturnLoss |  | 45 |  |  | dB
+Size |  | 216(W)*262(D)*40mm(H) |  |  | mm
+Environment | WorkingTemperature | -10℃~60℃ |  |  | ℃
+ | StorageTemperature | -40℃~80℃ |  |  | ℃
+ | RelativeHumidity | 5%~95%nocondensation |  |  | 
+PowerDissipation |  | ≤30 |  |  | W
+--- page 27 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.3.1.1OBA
+Product Interface Function Illustration
+1.3.1.2OLA
+Product Interface Function Illustration
+1.3.1.3OPA
+Product Interface Function Illustration
+Web:www.olycom.com.cn 27
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+--- page 28 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+InterfaceDefinition
+Interface Name Function
+LINEIN PA/LA/BAInputInterface Smallsignalopticalpowerinputport.
+SIGOUT PA/LA/BA Output EDFAamplifiedoutputopticalport.
+interface
+OTDRIN1 OTDRInputInterface OTDRsignalinputopticalport
+MONOUT Monitoringport EDFAperformance monitoringinterface, connectto
+OPMorspectrometer.
+WDMCOM COMport WDMCOMopticalport
+WDM1510 1510Signal 1510SignalLightPort
+WDM1550 1550Signal 1550SignalLightPort
+OSCOUT Monitoring channel Link SFP RX to transmit network management
+outputport information.
+RX Opticalmoduleinputport Transmitnetworkmanagementinformation
+TX Optical module output Transmitnetworkmanagementinformation
+port
+IndicatorLightDescription
+Name FunctionDescription
+A solid green light indicates that the device is powered on and
+functioningnormally.
+Asolidredlightindicatesanemergencyalarmonthedevice.
+Ared flashing light at a frequency of 1Hz indicates a major alarm in the
+STAT (Card Operating Status device.
+Indicator) Asolidyellowlightindicatesaminoralarminthedevice.
+A yellow flashing light at a frequency of 1Hz indicates a software
+malfunctioninthedevice.
+Ifthelightis off,itmeansthedeviceisnotpoweredonorisnotworking
+properly.
+A solid green light indicates that the device is powered on and
+functioningnormally.
+Asolidredlightindicatesanemergencyalarmonthedevice.
+ALM(AlarmIndicatorLight)
+Asolidyellowlightindicatesaminoralarminthedevice.
+Ifthelightis off,itmeansthedeviceisnotpoweredonorisnotworking
+properly.
+SRV(IndicatorLight) none
+Web:www.olycom.com.cn 28
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+Interface | Name | Function
+LINEIN | PA/LA/BAInputInterface | Smallsignalopticalpowerinputport.
+SIGOUT | PA/LA/BA Output
+interface | EDFAamplifiedoutputopticalport.
+OTDRIN1 | OTDRInputInterface | OTDRsignalinputopticalport
+MONOUT | Monitoringport | EDFAperformance monitoringinterface, connectto
+OPMorspectrometer.
+WDMCOM | COMport | WDMCOMopticalport
+WDM1510 | 1510Signal | 1510SignalLightPort
+WDM1550 | 1550Signal | 1550SignalLightPort
+OSCOUT | Monitoring channel
+outputport | Link SFP RX to transmit network management
+information.
+RX | Opticalmoduleinputport | Transmitnetworkmanagementinformation
+TX | Optical module output
+port | Transmitnetworkmanagementinformation
+Name | FunctionDescription
+STAT (Card Operating Status
+Indicator) | A solid green light indicates that the device is powered on and
+functioningnormally.
+ | Asolidredlightindicatesanemergencyalarmonthedevice.
+ | Ared flashing light at a frequency of 1Hz indicates a major alarm in the
+device.
+ | Asolidyellowlightindicatesaminoralarminthedevice.
+ | A yellow flashing light at a frequency of 1Hz indicates a software
+malfunctioninthedevice.
+ | Ifthelightis off,itmeansthedeviceisnotpoweredonorisnotworking
+properly.
+ALM(AlarmIndicatorLight) | A solid green light indicates that the device is powered on and
+functioningnormally.
+ | Asolidredlightindicatesanemergencyalarmonthedevice.
+ | Asolidyellowlightindicatesaminoralarminthedevice.
+ | Ifthelightis off,itmeansthedeviceisnotpoweredonorisnotworking
+properly.
+SRV(IndicatorLight) | none
+--- page 29 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.3.2OLPCard
+The Optical Line Protection (OLP) system is an innovative optical line protection subsystem developed using
+advanced dynamic synchronous optical switching technology. When unexpected fiber breakage or significant
+signal loss in optical transmission lines causes communication quality degradation or equipment failures, the
+OLP system can rapidly switch to backup lines within seconds. This ensures uninterrupted service delivery
+whileeffectivelypreventingfiberorequipmentmalfunctions,reducingrecoverytimefromhourstomilliseconds.
+TheOLPCardincludingOP1cardandOP2card.Thecardoccupiesonly1/4standardslotcapacity.
+ProductDiagram
+ Supports automatic switching between primary
+andsecondaryroutes
+ Supportmanualandautomaticmodeswitching
+ Lowswitchingtime<15ms
+ Lowinsertionloss:<5.5dB
+ Supportautomaticreturntohome
+ Supportmanualandautomaticmodesetting
+ Supportsswitchingthresholdsetting
+ Support1~2OLP1+1protection
+The optical line protection switch provides two switching modes, manual and automatic. In manual mode, the
+systemswitchestheopticalpathonlyaccordingtotheuser'scommand.
+Inautomaticmode,thesystemswitchesbasedonthedetectedpowerlevelandpresetthreshold.Inautomatic
+mode,thesystemcanbesettorecoverymodeornon-recoverymode.
+ProductSpecification
+PerformanceParameter 1+1 Unit
+OperatingWavelength 1310±50nm,1550±50nm nm
+RangeofLightPower ＋23～-50 dBm
+AccuracyofLightPower ±0.25 dB
+MeasureOpticalPowerResolution ±0.01 dB
+ReturnLoss ≥55 dB
+Polarization-relatedLoss ≤0.05 dB
+WavelengthDependentLoss ≤0.1 dB
+InsertionLoss Tx≤4dB，RX≤1.2dB dB
+SwitchingSpeed <15 ms
+Size 107(W)*262(D)*40(H) mm
+WorkingTemperature -10℃～+60℃ ℃
+Environment StorageTemperature -40℃～+85℃ ℃
+RelatedHumidity 5%~95%nocondensation
+PowerDissipation ≤15 W
+Web:www.olycom.com.cn 29
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+PerformanceParameter |  | 1+1 | Unit
+OperatingWavelength |  | 1310±50nm,1550±50nm | nm
+RangeofLightPower |  | ＋23～-50 | dBm
+AccuracyofLightPower |  | ±0.25 | dB
+MeasureOpticalPowerResolution |  | ±0.01 | dB
+ReturnLoss |  | ≥55 | dB
+Polarization-relatedLoss |  | ≤0.05 | dB
+WavelengthDependentLoss |  | ≤0.1 | dB
+InsertionLoss |  | Tx≤4dB，RX≤1.2dB | dB
+SwitchingSpeed |  | <15 | ms
+Size |  | 107(W)*262(D)*40(H) | mm
+Environment | WorkingTemperature | -10℃～+60℃ | ℃
+ | StorageTemperature | -40℃～+85℃ | ℃
+ | RelatedHumidity | 5%~95%nocondensation | 
+PowerDissipation |  | ≤15 | W
+--- page 30 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.3.2.1 OP1
+The OP1 optical line protection card is a protective device designed for optical communication lines with
+significantlossredundancy.
+Product Interface Function Illustration
+ProductSpecification
+Function Description
+OccupiedSlots
+1slots
+The1+1protectionoftwoindependentopticalsignalsisrealized.
+The system supports the protection switching recovery mode,
+BasicFunction
+threshold, waiting time and control command through the network
+management.
+According to the position of the disk, the wavelength protection,
+channel protection, multiplexing section protection and optical line
+GuardMode protectionarerealized.
+The system supports optical input detection for OTDR under
+opticallineprotection.
+IndicatorLightDescription
+Name FunctionDescription
+Asolidgreenlightindicatesthatthedeviceispoweredonand
+functioningnormally.
+STAT (Card Operating Status Indicator)
+If the light is off, it means the device is not powered on or is
+notworkingproperly.
+A solid green light indicates that the device's service
+configuration is normal and there are no alarms, indicating
+thatitisingoodworkingorder.
+SRV (Service Light) A solid red light indicates an urgent alarm in the device's
+operation(suchassignalloss,frameloss,etc.).）
+Asolid yellow light indicates a minor alarm or a remote alarm
+inthedevice'soperation.
+Asolidgreenlightindicatesthatthedeviceispoweredonand
+functioningnormally.
+Asolidredlightindicatesanemergencyalarmonthedevice.
+ALM (Alarm Indicator Light)
+Asolidyellowlightindicatesaminoralarminthedevice.
+If the light is off, it means the device is not powered on or is
+notworkingproperly.
+Web:www.olycom.com.cn 30
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+Function | Description
+OccupiedSlots | 1slots
+BasicFunction | The1+1protectionoftwoindependentopticalsignalsisrealized.
+The system supports the protection switching recovery mode,
+threshold, waiting time and control command through the network
+management.
+GuardMode | According to the position of the disk, the wavelength protection,
+channel protection, multiplexing section protection and optical line
+protectionarerealized.
+The system supports optical input detection for OTDR under
+opticallineprotection.
+Name | FunctionDescription
+STAT (Card Operating Status Indicator) | Asolidgreenlightindicatesthatthedeviceispoweredonand
+functioningnormally.
+ | If the light is off, it means the device is not powered on or is
+notworkingproperly.
+SRV (Service Light) | A solid green light indicates that the device's service
+configuration is normal and there are no alarms, indicating
+thatitisingoodworkingorder.
+ | A solid red light indicates an urgent alarm in the device's
+operation(suchassignalloss,frameloss,etc.).）
+ | Asolid yellow light indicates a minor alarm or a remote alarm
+inthedevice'soperation.
+ALM (Alarm Indicator Light) | Asolidgreenlightindicatesthatthedeviceispoweredonand
+functioningnormally.
+ | Asolidredlightindicatesanemergencyalarmonthedevice.
+ | Asolidyellowlightindicatesaminoralarminthedevice.
+ | If the light is off, it means the device is not powered on or is
+notworkingproperly.
+--- page 31 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+Auto(Working Mode Indicator Light) On:Inautomaticmode;off:Inmanualmode.
+The working mode switch button can be pressed and held to
+MODE
+switchbetweenmanualandautomaticmodes.
+DETACH Opticalswitchswitch,main/backupcircuitswitchbutton
+Note:WhenportsAandB flash,it indicatestheportisin activeuse.Ared lightflashingsignalsabnormal
+power,whileagreenlightflashingindicatesnormalpower.
+Web:www.olycom.com.cn 31
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+Auto(Working Mode Indicator Light) | On:Inautomaticmode;off:Inmanualmode.
+MODE | The working mode switch button can be pressed and held to
+switchbetweenmanualandautomaticmodes.
+DETACH | Opticalswitchswitch,main/backupcircuitswitchbutton
+--- page 32 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.3.2.2OP2
+TheOP2OpticalProtectionCardisaprotectiondevicedesignedforopticalcommunicationlineswithhighloss
+redundancy.
+Product Interface Function Illustration
+ProductSpecification
+Function Description
+OccupiedSlots
+1 slots
+The 1+1 protection of two independent optical signals is
+realized.
+BasicFunction The system supports the protection switching recovery mode,
+threshold, waiting time and control command through the
+networkmanagement.
+According to theposition of thedisk, the wavelength protection,
+channel protection, multiplexing section protection and optical
+GuardMode lineprotectionarerealized.
+The system supports optical input detection for OTDR under
+opticallineprotection.
+Indicator Light Description
+Name FunctionDescription
+Asolidgreenlightindicatesthatthedeviceispoweredonand
+functioningnormally.
+STAT (Card Operating Status Indicator)
+If the light is off, it means the device is not powered on or is
+notworkingproperly.
+A solid green light indicates that the device's service
+configuration is normal and there are no alarms, indicating
+thatitisingoodworkingorder.
+SRV (Service Light) A solid red light indicates an urgent alarm in the device's
+operations(suchassignalloss,frameloss,etc.).
+Asolid yellow light indicates a minor alarm or a remote alarm
+inthedevice'soperation.
+Asolidgreenlightindicatesthatthedeviceispoweredonand
+functioningnormally.
+ALM (Alarm Indicator Light) Asolidredlightindicatesanemergencyalarmonthedevice.
+Asolidyellowlightindicatesaminoralarminthedevice.
+Web:www.olycom.com.cn 32
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+Function | Description
+OccupiedSlots | 1 slots
+BasicFunction | The 1+1 protection of two independent optical signals is
+realized.
+The system supports the protection switching recovery mode,
+threshold, waiting time and control command through the
+networkmanagement.
+GuardMode | According to theposition of thedisk, the wavelength protection,
+channel protection, multiplexing section protection and optical
+lineprotectionarerealized.
+The system supports optical input detection for OTDR under
+opticallineprotection.
+Name | FunctionDescription
+STAT (Card Operating Status Indicator) | Asolidgreenlightindicatesthatthedeviceispoweredonand
+functioningnormally.
+ | If the light is off, it means the device is not powered on or is
+notworkingproperly.
+SRV (Service Light) | A solid green light indicates that the device's service
+configuration is normal and there are no alarms, indicating
+thatitisingoodworkingorder.
+ | A solid red light indicates an urgent alarm in the device's
+operations(suchassignalloss,frameloss,etc.).
+ | Asolid yellow light indicates a minor alarm or a remote alarm
+inthedevice'soperation.
+ALM (Alarm Indicator Light) | Asolidgreenlightindicatesthatthedeviceispoweredonand
+functioningnormally.
+ | Asolidredlightindicatesanemergencyalarmonthedevice.
+ | Asolidyellowlightindicatesaminoralarminthedevice.
+--- page 33 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+If the light is off, it means the device is not powered on or is
+notworkingproperly.
+Auto1(Working Mode Indicator Light) On:Inautomaticmode;off:Inmanualmode.
+Auto2(Working Mode Indicator Light) On:Inautomaticmode;off:Inmanualmode.
+The working mode switch button can be pressed and held to
+MODE1
+switchbetweenmanualandautomaticmodes.
+The working mode switch button can be pressed and held to
+MODE2
+switchbetweenmanualandautomaticmodes.
+DETACH1 Opticalswitchswitch,main/backupcircuitswitchbutton
+DETACH2 Opticalswitchswitch,main/backupcircuitswitchbutton
+Note: When ports A1/2 or B1/2 flash, it indicates the port is in active use. A red light flashing signals
+powerabnormality,whileagreenlightflashingindicatesnormalpower.
+Web:www.olycom.com.cn 33
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+ | If the light is off, it means the device is not powered on or is
+notworkingproperly.
+Auto1(Working Mode Indicator Light) | On:Inautomaticmode;off:Inmanualmode.
+Auto2(Working Mode Indicator Light) | On:Inautomaticmode;off:Inmanualmode.
+MODE1 | The working mode switch button can be pressed and held to
+switchbetweenmanualandautomaticmodes.
+MODE2 | The working mode switch button can be pressed and held to
+switchbetweenmanualandautomaticmodes.
+DETACH1 | Opticalswitchswitch,main/backupcircuitswitchbutton
+DETACH2 | Opticalswitchswitch,main/backupcircuitswitchbutton
+--- page 34 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.3.3 OTDR Card
+The optical cable monitoring system integrates optical cable monitoring, alarm detection, fault analysis,
+positioning, fault management, line maintenance, and network administration into a unified solution. This
+system ensures secure and efficient operation of optical fiber networks by providing 24/7 automated
+monitoring and automatic fiber switching protection. It promptly identifies sudden faults, significantly reduces
+downtime, and detects potential issues that could cause communication disruptions through early warnings,
+enabling proactive maintenance and preventing risks before they materialize. The card occupies only 1/4
+standardslotcapacity.
+ProductDiagram
+ Opticaltimedomainreflectionmonitoring
+card,occupies1/4slot
+ Supportworkingwavelength:
+1625nm±10nm
+ Supportpulsewidth:5ns~20us
+ Supportsopticalfiberpollingmonitoringin8
+directions
+ Supportreal-timeonlinemonitoring
+ProductSpecification
+PerformanceParameter Qualification Unit
+OperatingWavelength 1501or1625 nm
+OTDRDynamicRange ≥30 dB
+OTDRPulseWidthRange 0.1~20 us
+MaximumDetectionDistance ≥80 km
+OTDRLossDetectionAccuracy ±0.5 dB
+OTDRDistanceDetectionAccuracy ＜20 m
+SamplingPrecisionPulseWidthRange 0.05~8 m
+OTDREventBlindSpots ＜10 m
+OTDRAttenuationBlindZone ＜20 m
+DegreeofLinearity ±0.05 dB/dB
+MaximumOutputOpticalPower ＜17 nm
+MonitoringPort 8
+Size 107(W)*262(D)*40(H) mm
+WorkingTemperature -10℃～+60℃
+StorageTemperature -40℃～+85℃
+RelatedHumidity 5%~95%nocondensation
+PowerDissipation ≤15 w
+Web:www.olycom.com.cn 34
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+PerformanceParameter | Qualification | Unit
+OperatingWavelength | 1501or1625 | nm
+OTDRDynamicRange | ≥30 | dB
+OTDRPulseWidthRange | 0.1~20 | us
+MaximumDetectionDistance | ≥80 | km
+OTDRLossDetectionAccuracy | ±0.5 | dB
+OTDRDistanceDetectionAccuracy | ＜20 | m
+SamplingPrecisionPulseWidthRange | 0.05~8 | m
+OTDREventBlindSpots | ＜10 | m
+OTDRAttenuationBlindZone | ＜20 | m
+DegreeofLinearity | ±0.05 | dB/dB
+MaximumOutputOpticalPower | ＜17 | nm
+MonitoringPort | 8 | 
+Size | 107(W)*262(D)*40(H) | mm
+WorkingTemperature | -10℃～+60℃ | 
+StorageTemperature | -40℃～+85℃ | 
+RelatedHumidity | 5%~95%nocondensation | 
+PowerDissipation | ≤15 | w
+--- page 35 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.3.4WSS091x9ROADMCard
+The 1x9 ROADM is a compact solution designed for all network types, enabling dynamic traffic design and
+seamless wavelength routing changes. As a building block for reconfigurable 9D splitters, the 1x9 ROADM
+features nine independent ports. Port addition utilizes wavelength selection switches (WSS) to dynamically
+select from 96 DWDM channels on the ITU-T 50 GHz C-band grid for each port's input signal.The card
+occupiesonly1/4standardslotcapacity.
+ProductDiagram
+ 50/100GHzoptionalchannelspacing
+ Colorless,odorless
+ Theusercanconfigurethehighlyflexible
+control
+ HighresolutionintegratedVOA
+ Quickchannelchange
+ Integratedopticalchannelmonitoring
+ hotplug
+ SupportsintegratedBA+PAamplifiers
+PerformanceParameter Qualification Unit
+ChannelWavelength 1528.773~1566.73 nm
+ChannelSpacing 50/100 Ghz
+Ghz
+ChannelSpectrumWidth N*12.5 4≤N≤12
+ChannelPassband ＞ 0.3 nm
+InsertLossFlatness ＜0.5 dB
+(Add1~9toBAinput) 6.3 7.5 8.1 (dB)
+InsertionLoss
+(PAoutputtoDrop1~9) 6.3 7.5 8.1 (dB)
+Nearestvalues 25 dB
+ChannelSeparation
+Nonadjacentvalues 35 dB
+Polarization-relatedLoss <0.15 dB
+VOADynamic Range 0~15dB dB
+VOASets Resolution 0.1 dB
+@0~10dBdamping ±1
+VOASetprecision dB
+@>10dBdamping ±1.5
+Directivity >50 dB
+Returnloss >45 dBm
+<2dBstep ＜1400
+ResponseTime <15dBstep ＜2000 ms
+Portswitching ＜3000
+Size 216(W)*262(D)*40(H) mm
+Working
+-10℃～+60℃
+Temperature
+Storage
+-40℃～+85℃
+Temperature
+RelativeHumidity 5%~95%Non-condensing
+w
+PowerDissipation ≤80
+Web:www.olycom.com.cn 35
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+PerformanceParameter |  | Qualification |  |  |  | Unit
+ChannelWavelength |  | 1528.773~1566.73 |  |  |  | nm
+ChannelSpacing |  | 50/100 |  |  |  | Ghz
+ChannelSpectrumWidth |  | N*12.5 | 4≤N≤12 |  |  | Ghz
+ChannelPassband |  | ＞ 0.3 |  |  |  | nm
+InsertLossFlatness |  | ＜0.5 |  |  |  | dB
+InsertionLoss | (Add1~9toBAinput) | 6.3 | 7.5 |  | 8.1 | (dB)
+ | (PAoutputtoDrop1~9) | 6.3 | 7.5 |  | 8.1 | (dB)
+ChannelSeparation | Nearestvalues | 25 |  |  |  | dB
+ | Nonadjacentvalues | 35 |  |  |  | dB
+Polarization-relatedLoss |  | <0.15 |  |  |  | dB
+VOADynamic Range |  | 0~15dB |  |  |  | dB
+VOASets Resolution |  | 0.1 |  |  |  | dB
+VOASetprecision | @0~10dBdamping | ±1 |  |  |  | dB
+ | @>10dBdamping | ±1.5 |  |  |  | 
+Directivity |  | >50 |  |  |  | dB
+Returnloss |  | >45 |  |  |  | dBm
+ResponseTime |  | <2dBstep |  | ＜1400 |  | ms
+ |  | <15dBstep |  | ＜2000 |  | 
+ |  | Portswitching |  | ＜3000 |  | 
+Size | 216(W)*262(D)*40(H) |  |  |  |  | mm
+Working
+Temperature | -10℃～+60℃ |  |  |  |  | 
+Storage
+Temperature | -40℃～+85℃ |  |  |  |  | 
+RelativeHumidity | 5%~95%Non-condensing |  |  |  |  | 
+PowerDissipation | ≤80 |  |  |  |  | w
+--- page 36 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.3.5OCMCard
+TheOpticalChannelMonitoring(OCM)moduleservesasacriticalcomponentinopticaltransmissionsystems,
+providingcomprehensivemonitoringandmeasurementofDWDMwavelengthsatstrategicpointswithinoptical
+communicationnodes. ThismoduleidentifiesdiscreteDWDM wavelengthsanddelivers detailedopticalpower
+data,whilesupporting8-corefiberpowermonitoringcapabilities.
+Strategically placing modules in different locations within the optical network, combined with the flexibility and
+quality of information obtained through remote access management, provides a powerful tool for
+troubleshootingandadvancedalertpurposes.Thecardoccupiesonly1/4standardslotcapacity.
+ProductDiagram
+ Hotplug
+ 50GHzchannelintervalmonitoring
+ Thecardprovides8ports,
+ Real-timemonitoringchannelwavelength
+occupancystatus
+ Supports the selection of any port for
+opticalpowerdetection
+ Supports 8-way timed polling detection
+ Supportreal-timeonlinemonitoring
+ProductSpecification
+PerformanceParameter Qualification Unit
+WorkingWavelengthRange 1528~1567 nm
+ChannelSpacing 50/100 GHz
+PowerDetectionAccuracy ≤1dB dB
+RelativelyPowerAccuracy ±0.8 dB
+OpticalPrecision 0.1 dB
+OCMScanTime-allChannels ≤1 s
+ChannelPowerRange -40~-10 dBm
+WavelengthAccuracy ±0.1 nm
+WavelengthAccuracy 0.02 nm
+SwitchTime(maximum) 30 ms
+NumberofScans ＞1 Billion
+Size 216(W)*262(D)*40(H) mm
+WorkingTemperature -10～+60 ℃
+StorageTemperature -40～+85 ℃
+RelativeHumidity 5%~95%Non-condensing
+PowerDissipation ≤80 W
+Web:www.olycom.com.cn 36
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+PerformanceParameter | Qualification | Unit
+WorkingWavelengthRange | 1528~1567 | nm
+ChannelSpacing | 50/100 | GHz
+PowerDetectionAccuracy | ≤1dB | dB
+RelativelyPowerAccuracy | ±0.8 | dB
+OpticalPrecision | 0.1 | dB
+OCMScanTime-allChannels | ≤1 | s
+ChannelPowerRange | -40~-10 | dBm
+WavelengthAccuracy | ±0.1 | nm
+WavelengthAccuracy | 0.02 | nm
+SwitchTime(maximum) | 30 | ms
+NumberofScans | ＞1 | Billion
+Size | 216(W)*262(D)*40(H) | mm
+WorkingTemperature | -10～+60 | ℃
+StorageTemperature | -40～+85 | ℃
+RelativeHumidity | 5%~95%Non-condensing | 
+PowerDissipation | ≤80 | W
+--- page 37 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.3.6TFFCard
+Product Interface Function Illustration
+ProductSpecification
+The optical splitter multiplexer which realizes DWDM fixed wavelength channel up and down service function
+ispresented.
+Function Description
+OccupiedSlots
+1slot
+4FixedWavelengths Implementing up and down wave services for four 100GHz
+intervalchannelsat195.6/195.7/195.8/195.9THz
+PortTraversalAndExtensionCascade The EXP IN/OUT port enables cascading of TFF cards
+supporting 191.4-195.5/196.0-196.1THz wavelength services
+(excluding those defined by TFF5659), along with wavelength
+servicetraversal.
+IndicatorLightDescription
+Name FunctionDescription
+A solid green light indicates that the device is powered on and
+STAT (Card Operating Status functioningnormally.
+Indicator) If the light is off, it means the device is not powered on or is not
+workingproperly.
+Asolidgreenlightindicates thatthedevice'sserviceconfigurationis
+normal and there are no alarms, indicating that it is in good working
+order.
+SRV (Service Light) Asolid red light indicates an urgent alarm in the device's operations
+(suchassignalloss,frameloss,etc.).
+Asolid yellow light indicates a minor alarm or a remote alarm in the
+device'soperation.
+A solid green light indicates that the device is powered on and
+functioningnormally.
+Asolidredlightindicatesanemergencyalarmonthedevice.
+ALM (Alarm Indicator Light)
+Asolidyellowlightindicatesaminoralarminthedevice.
+If the light is off, it means the device is not powered on or is not
+workingproperly.
+Web:www.olycom.com.cn 37
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+Function | Description
+OccupiedSlots | 1slot
+4FixedWavelengths | Implementing up and down wave services for four 100GHz
+intervalchannelsat195.6/195.7/195.8/195.9THz
+PortTraversalAndExtensionCascade | The EXP IN/OUT port enables cascading of TFF cards
+supporting 191.4-195.5/196.0-196.1THz wavelength services
+(excluding those defined by TFF5659), along with wavelength
+servicetraversal.
+Name | FunctionDescription
+STAT (Card Operating Status
+Indicator) | A solid green light indicates that the device is powered on and
+functioningnormally.
+ | If the light is off, it means the device is not powered on or is not
+workingproperly.
+SRV (Service Light) | Asolidgreenlightindicates thatthedevice'sserviceconfigurationis
+normal and there are no alarms, indicating that it is in good working
+order.
+ | Asolid red light indicates an urgent alarm in the device's operations
+(suchassignalloss,frameloss,etc.).
+ | Asolid yellow light indicates a minor alarm or a remote alarm in the
+device'soperation.
+ALM (Alarm Indicator Light) | A solid green light indicates that the device is powered on and
+functioningnormally.
+ | Asolidredlightindicatesanemergencyalarmonthedevice.
+ | Asolidyellowlightindicatesaminoralarminthedevice.
+ | If the light is off, it means the device is not powered on or is not
+workingproperly.
+--- page 38 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+TechnicalSpecificationsofTFFCard
+Project Unit Metric Remarks
+ChannelSpacing GHz 100G Flat-toppedspectrum
+InsertionLoss(ExpIntoSigOut) dB ≤3
+InsertionLoss(SigIntoExpOut) dB ≤2
+AddtoSigOut dB ≤2
+InsertionLoss(SigIntoDrop) dB ≤2
+3dBBandwidth GHz >75
+AdjacentChannelIsolationDegree dB >25
+Co-frequencyIsolation dB >30 Dropdirection
+VOAAccuracyIndicators
+Project Unit Metric Remarks
+Operating Wavelength nm 1528～1568
+The power-off state is characterized by
+Type Bright/Latching inherent insertion loss or minimum insertion
+loss.
+Scope and Accuracy dB 0~15@0.1dB Themaximumvaluemustbeatleast15dB
+Inherent Insertion Loss dB <1 Typicalvalue:0.5dB
+＜0.3@0~8dB
+Wavelength Dependent Loss dB
+＜0.6
+@8~15dB
+Return Loss dB >40
+Polarization Dependent Loss dB <0.5
+No business shall be impaired during the
+Response Time ms <200
+adjustmentperiod
+Web:www.olycom.com.cn 38
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+Project | Unit | Metric | Remarks
+ChannelSpacing | GHz | 100G | Flat-toppedspectrum
+InsertionLoss(ExpIntoSigOut) | dB | ≤3 | 
+InsertionLoss(SigIntoExpOut) | dB | ≤2 | 
+AddtoSigOut | dB | ≤2 | 
+InsertionLoss(SigIntoDrop) | dB | ≤2 | 
+3dBBandwidth | GHz | >75 | 
+AdjacentChannelIsolationDegree | dB | >25 | 
+Co-frequencyIsolation | dB | >30 | Dropdirection
+Project | Unit | Metric | Remarks
+Operating Wavelength | nm | 1528～1568 | 
+Type |  | Bright/Latching | The power-off state is characterized by
+inherent insertion loss or minimum insertion
+loss.
+Scope and Accuracy | dB | 0~15@0.1dB | Themaximumvaluemustbeatleast15dB
+Inherent Insertion Loss | dB | <1 | Typicalvalue:0.5dB
+Wavelength Dependent Loss | dB | ＜0.3@0~8dB | 
+ |  | ＜0.6
+@8~15dB | 
+Return Loss | dB | >40 | 
+Polarization Dependent Loss | dB | <0.5 | 
+Response Time | ms | <200 | No business shall be impaired during the
+adjustmentperiod
+--- page 39 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.3.7PTMCard
+The time synchronization PTM cards, including PTM-W and PTM-E cards, each card occupies only 1/4
+standardslotcapacity.
+Product Interface Function Illustration
+WorkingPrincipleDiagramofPTM-ECard
+WorkingPrincipleDiagramofPTM-WCard
+TechnicalSpecificationsofPTM-E/PTM-WCard
+Project Unit Metric Remarks
+LINE In to C61/60 Out/In dB ≤1.3
+LINE In to SIG Out dB ≤1.3
+Insertion Loss (SIG In to LINE Out) dB ≤0.3
+Line Delay Difference (LINE In to PTPC61Out/In) ns ≤±1
+Line Delay Difference (LINE Out to PTPC60Out/In) ns ≤±1
+Indicator Light Description
+Name FunctionDescription
+A solid green light indicates that the device is powered on and functioning
+STAT (Card Operating normally.
+Status Indicator) If the light is off, it means the device is not powered on or is not working
+properly.
+Asolid green light indicates that the device's service configuration is normal
+andtherearenoalarms,indicatingthatitisingoodworkingorder.
+Asolidredlightindicatesanurgentalarminthedevice'soperations(suchas
+SRV (Service Light)
+signalloss,frameloss,etc.).
+Asolid yellowlight indicates a minoralarm or a remote alarmin the device's
+operation.
+Web:www.olycom.com.cn 39
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+Project | Unit | Metric | Remarks
+LINE In to C61/60 Out/In | dB | ≤1.3 | 
+LINE In to SIG Out | dB | ≤1.3 | 
+Insertion Loss (SIG In to LINE Out) | dB | ≤0.3 | 
+Line Delay Difference (LINE In to PTPC61Out/In) | ns | ≤±1 | 
+Line Delay Difference (LINE Out to PTPC60Out/In) | ns | ≤±1 | 
+Name | FunctionDescription
+STAT (Card Operating
+Status Indicator) | A solid green light indicates that the device is powered on and functioning
+normally.
+ | If the light is off, it means the device is not powered on or is not working
+properly.
+SRV (Service Light) | Asolid green light indicates that the device's service configuration is normal
+andtherearenoalarms,indicatingthatitisingoodworkingorder.
+ | Asolidredlightindicatesanurgentalarminthedevice'soperations(suchas
+signalloss,frameloss,etc.).
+ | Asolid yellowlight indicates a minoralarm or a remote alarmin the device's
+operation.
+--- page 40 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+A solid green light indicates that the device is powered on and functioning
+normally.
+Asolidredlightindicatesanemergencyalarmonthedevice.
+ALM (Alarm Indicator Light)
+Asolidyellowlightindicatesaminoralarminthedevice.
+If the light is off, it means the device is not powered on or is not working
+properly.
+Web:www.olycom.com.cn 40
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+ALM (Alarm Indicator Light) | A solid green light indicates that the device is powered on and functioning
+normally.
+ | Asolidredlightindicatesanemergencyalarmonthedevice.
+ | Asolidyellowlightindicatesaminoralarminthedevice.
+ | If the light is off, it means the device is not powered on or is not working
+properly.
+--- page 41 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.3.8ROADMCard
+This document specifies the requirements of a C-band distributed RAMAN amplifier. The amplifier modules
+can be operated at constant pump power ( AWC). Different wavelength pump power can be adjusted to
+achieve smooth gain spectrum for the DWDM network application. It can amplify the single channel signal, in
+ordertoachievethebestOSNR;themoduleintegratedanarrowbandfiltertosuppresstheASEpower.
+PerformanceParameter
+Parameter Min. Typical Max. Unit
+OperatingWavelength 1528 1565 nm
+OutputPower dBm
+PumpWavelength 1423 1465 nm
+Boost-RAMAN 700 mw
+Pumppower
+Pre-RAMAN 1300 mw
+Boost-RAMAN 10 dB
+Gain
+Pre-RAMAN 26 28 dB
+Boost-RAMAN 0 14
+InputPower dBm
+Pre-RAMAN -40 -20
+NoiseFigure -2 dB
+GainFlatness 2.2 2.5 dB
+Boost-RAMAN 0 Canbeadjusted dBm
+Input
+Threshold
+Pre-RAMAN -40 Canbeadjusted dBm
+PolarizationDependenceLoss dB
+PolarizationDependenceGain 0.5 dB
+PolarizationModeDispersion 0.5 ps
+ReturnLoss 45 dB
+Size 191(W)x253(D)x40(H) mm
+OperatingTemperature -5℃~55℃ ℃
+Environment StorageTemperature -40℃~75℃ ℃
+RelativeHumidity 5%~95%Non-condensing
+PowerConsumption ≤45 W
+Web:www.olycom.com.cn 41
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+Parameter |  | Min. | Typical | Max. | Unit
+OperatingWavelength |  | 1528 |  | 1565 | nm
+OutputPower |  |  |  |  | dBm
+PumpWavelength |  | 1423 |  | 1465 | nm
+Pumppower | Boost-RAMAN | 700 |  |  | mw
+ | Pre-RAMAN | 1300 |  |  | mw
+Gain | Boost-RAMAN |  | 10 |  | dB
+ | Pre-RAMAN |  | 26 | 28 | dB
+InputPower | Boost-RAMAN | 0 |  | 14 | dBm
+ | Pre-RAMAN | -40 |  | -20 | 
+NoiseFigure |  |  | -2 |  | dB
+GainFlatness |  |  | 2.2 | 2.5 | dB
+Input
+Threshold | Boost-RAMAN |  | 0 | Canbeadjusted | dBm
+ | Pre-RAMAN |  | -40 | Canbeadjusted | dBm
+PolarizationDependenceLoss |  |  |  |  | dB
+PolarizationDependenceGain |  |  |  | 0.5 | dB
+PolarizationModeDispersion |  |  |  | 0.5 | ps
+ReturnLoss |  | 45 |  |  | dB
+Size |  | 191(W)x253(D)x40(H) |  |  | mm
+Environment | OperatingTemperature | -5℃~55℃ |  |  | ℃
+ | StorageTemperature | -40℃~75℃ |  |  | ℃
+ | RelativeHumidity | 5%~95%Non-condensing |  |  | 
+PowerConsumption |  | ≤45 |  |  | W
+--- page 42 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.3.9MUX/DeMUXCard
+OMD08/48/96Card
+The passive MUX device for signal splitting operates independently of the sub-frame chassis and can be
+installedinastandard19-inchdatacabinet,withaheightof1U.
+ProductSpecification
+Function Description
+The 8/48/96-channel DWDM100GHz interval signal combining and
+splittingfunctionisrealized.
+The wavelength range of the 8/48/96th odd-numbered wave is
+BasicFunction
+1528.773nm～1566.314nminC-band.
+The odd-numbered wavelength range of 8/48/96 is C-band
+1529.163nm～1566.723nm.
+The combined wave direction: The even-numbered wave
+8/48/96-channelsingle-wavelength opticalsignalis multiplexedintoa
+single optical fiber, amplified by an amplifier disk, and then
+SplitWaveFunction
+transmittedviatheline.
+Thesplittingdirection:1multi-wavelengthopticalsignalisdividedinto
+8/48/96even-numberedwavelengths.
+The system provides an online monitoring port, which can be
+connected to a spectrometer to monitor the spectral performance of
+OnlineMonitoringFeature
+theopticalsignalsinputandoutputbythelinewithoutinterruptingthe
+service.
+WorkingPrincipleandSignalFlow
+The IN optical port receives the composite signal transmitted from the upstream station, splits it into 8/48/96
+wavelengths,andoutputsthemthroughtheD14toD61opticalportsrespectively.
+TheA14 toA61 optical ports are used to combine 48 wavelengths, and the combined signal is output through
+theOUTopticalport.
+Web:www.olycom.com.cn 42
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+Function | Description
+BasicFunction | The 8/48/96-channel DWDM100GHz interval signal combining and
+splittingfunctionisrealized.
+The wavelength range of the 8/48/96th odd-numbered wave is
+1528.773nm～1566.314nminC-band.
+The odd-numbered wavelength range of 8/48/96 is C-band
+1529.163nm～1566.723nm.
+SplitWaveFunction | The combined wave direction: The even-numbered wave
+8/48/96-channelsingle-wavelength opticalsignalis multiplexedintoa
+single optical fiber, amplified by an amplifier disk, and then
+transmittedviatheline.
+Thesplittingdirection:1multi-wavelengthopticalsignalisdividedinto
+8/48/96even-numberedwavelengths.
+OnlineMonitoringFeature | The system provides an online monitoring port, which can be
+connected to a spectrometer to monitor the spectral performance of
+theopticalsignalsinputandoutputbythelinewithoutinterruptingthe
+service.
+--- page 43 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+Project Unit Metric Remarks
+MUX
+ChannelCount Ch 8/48/96
+WavelengthCoverage nm 1528.773~
+1566.314
+SpectrumTypes flat-topped
+type
+ChannelSpacing GHz 100
+InsertionLoss dB <6
+ReturnLoss dB >40
+PolarizationDependentLoss dB <0.5
+AdjacentChannelIsolationDegree dB >15
+Non-adjacent Channel Isolation dB >30
+degree
+Maximum Difference in Insertion dB <1
+Loss Per Channel
+CentralFrequencyDeviation GHz ±2.5
+1dBMinimumSpectralwidth GHz >50
+3dBMinimumSpectralwidth GHz >75
+20dBMaximumSpectralWidth GHz <150
+MonochromaticSplittingRatio dB 16~23 Spectral
+ratio1%
+DeMUX
+ChannelCount Ch 8/48/96
+WavelengthCoverage nm 1528.773~
+1566.314
+SpectrumTypes flat-topped
+type
+ChannelSpacing GHz 100
+InsertionLoss dB <6
+ReturnLoss dB >40
+PolarizationDependentLoss dB <0.5
+AdjacentChannelIsolationDegree dB >15
+Non-adjacent Channel Isolation dB >30
+Degree
+Maximum Difference in Insertion dB <2
+Loss Per Channel
+CentralFrequencyDeviation GHz ±2.5
+1dBMinimumSpectralWidth GHz >50
+3dBMinimumSpectralWidth GHz >75
+20dBMaximumSpectralWidth GHz <150
+MonochromaticSplittingRatio dB 16~23 Spectral
+ratio1%
+Web:www.olycom.com.cn 43
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+Project | Unit | Metric | Remarks
+MUX |  |  | 
+ChannelCount | Ch | 8/48/96 | 
+WavelengthCoverage | nm | 1528.773~
+1566.314 | 
+SpectrumTypes |  | flat-topped
+type | 
+ChannelSpacing | GHz | 100 | 
+InsertionLoss | dB | <6 | 
+ReturnLoss | dB | >40 | 
+PolarizationDependentLoss | dB | <0.5 | 
+AdjacentChannelIsolationDegree | dB | >15 | 
+Non-adjacent Channel Isolation
+degree | dB | >30 | 
+Maximum Difference in Insertion
+Loss Per Channel | dB | <1 | 
+CentralFrequencyDeviation | GHz | ±2.5 | 
+1dBMinimumSpectralwidth | GHz | >50 | 
+3dBMinimumSpectralwidth | GHz | >75 | 
+20dBMaximumSpectralWidth | GHz | <150 | 
+MonochromaticSplittingRatio | dB | 16~23 | Spectral
+ratio1%
+DeMUX |  |  | 
+ChannelCount | Ch | 8/48/96 | 
+WavelengthCoverage | nm | 1528.773~
+1566.314 | 
+SpectrumTypes |  | flat-topped
+type | 
+ChannelSpacing | GHz | 100 | 
+InsertionLoss | dB | <6 | 
+ReturnLoss | dB | >40 | 
+PolarizationDependentLoss | dB | <0.5 | 
+AdjacentChannelIsolationDegree | dB | >15 | 
+Non-adjacent Channel Isolation
+Degree | dB | >30 | 
+Maximum Difference in Insertion
+Loss Per Channel | dB | <2 | 
+CentralFrequencyDeviation | GHz | ±2.5 | 
+1dBMinimumSpectralWidth | GHz | >50 | 
+3dBMinimumSpectralWidth | GHz | >75 | 
+20dBMaximumSpectralWidth | GHz | <150 | 
+MonochromaticSplittingRatio | dB | 16~23 | Spectral
+ratio1%
+--- page 44 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+1.3.10VMux/VDmux
+Project Unit Metric Remarks
+MUX
+ChannelCount Ch 48
+WavelengthCoverage nm 1528.773~
+1566.314
+SpectrumTypes flat-topped
+type
+ChannelSpacing GHz 100
+InsertionLoss dB <7
+ReturnLoss dB >40
+PolarizationDependentLoss dB <0.5
+AdjacentChannelIsolationDegree dB >15
+Non-adjacent Channel Isolation dB >30
+degree
+Maximum Difference in Insertion dB <1
+Loss Per Channel
+CentralFrequencyDeviation GHz ±2.5
+1dBMinimumSpectralwidth GHz >50
+3dBMinimumSpectralwidth GHz >75
+20dBMaximumSpectralWidth GHz <150
+MonochromaticSplittingRatio dB 16~23 Spectral
+ratio1%
+AttenuationRange dB 0~15
+AttenuationResolution dB 0.1
+Repeatabilityofattenuationsetting dB +/-0.1
+AttenuationAccuracy dB +/-0.8
+dB +/-1.2
+VOAResponseTime ms 10
+PowerOffStatus dB 10
+DeMUX
+ChannelCount Ch 48
+WavelengthCoverage nm 1528.773~
+1566.314
+SpectrumTypes flat-topped
+type
+Web:www.olycom.com.cn 44
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+Project | Unit | Metric | Remarks
+MUX |  |  | 
+ChannelCount | Ch | 48 | 
+WavelengthCoverage | nm | 1528.773~
+1566.314 | 
+SpectrumTypes |  | flat-topped
+type | 
+ChannelSpacing | GHz | 100 | 
+InsertionLoss | dB | <7 | 
+ReturnLoss | dB | >40 | 
+PolarizationDependentLoss | dB | <0.5 | 
+AdjacentChannelIsolationDegree | dB | >15 | 
+Non-adjacent Channel Isolation
+degree | dB | >30 | 
+Maximum Difference in Insertion
+Loss Per Channel | dB | <1 | 
+CentralFrequencyDeviation | GHz | ±2.5 | 
+1dBMinimumSpectralwidth | GHz | >50 | 
+3dBMinimumSpectralwidth | GHz | >75 | 
+20dBMaximumSpectralWidth | GHz | <150 | 
+MonochromaticSplittingRatio | dB | 16~23 | Spectral
+ratio1%
+AttenuationRange | dB | 0~15 | 
+AttenuationResolution | dB | 0.1 | 
+Repeatabilityofattenuationsetting | dB | +/-0.1 | 
+AttenuationAccuracy | dB | +/-0.8 | 
+ | dB | +/-1.2 | 
+VOAResponseTime | ms | 10 | 
+PowerOffStatus | dB | 10 | 
+DeMUX |  |  | 
+ChannelCount | Ch | 48 | 
+WavelengthCoverage | nm | 1528.773~
+1566.314 | 
+SpectrumTypes |  | flat-topped
+type | 
+--- page 45 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+ChannelSpacing GHz 100
+InsertionLoss dB <6
+ReturnLoss dB >40
+PolarizationDependentLoss dB <0.5
+AdjacentChannelIsolationDegree dB >15
+Non-adjacent Channel Isolation dB >30
+Degree
+Maximum Difference in Insertion dB <2
+Loss Per Channel
+CentralFrequencyDeviation GHz ±2.5
+1dBMinimumSpectralWidth GHz >50
+3dBMinimumSpectralWidth GHz >75
+20dBMaximumSpectralWidth GHz <150
+MonochromaticSplittingRatio dB 16~23 Spectral
+ratio1%
+Web:www.olycom.com.cn 45
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+ChannelSpacing | GHz | 100 | 
+InsertionLoss | dB | <6 | 
+ReturnLoss | dB | >40 | 
+PolarizationDependentLoss | dB | <0.5 | 
+AdjacentChannelIsolationDegree | dB | >15 | 
+Non-adjacent Channel Isolation
+Degree | dB | >30 | 
+Maximum Difference in Insertion
+Loss Per Channel | dB | <2 | 
+CentralFrequencyDeviation | GHz | ±2.5 | 
+1dBMinimumSpectralWidth | GHz | >50 | 
+3dBMinimumSpectralWidth | GHz | >75 | 
+20dBMaximumSpectralWidth | GHz | <150 | 
+MonochromaticSplittingRatio | dB | 16~23 | Spectral
+ratio1%
+--- page 46 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+2. OpticalModules
+Optical Module Type Specifications ApplicableCards
+SFP GESFP 1310nm 10km PTM-E, PTM-W, M20D1,M8X2
+GESFP CH6080km PTM-E, PTM-W
+PTM-E, PTM-W
+GESFP CH6180km
+SFP+ 10GSFP+ 1310nm 10km M20D1,M2H10D1
+8GSFP+ 1310nm 10km M2H10D1
+8GSFP+ 850nm 100m
+16GSFP+ 1310nm 10km M2H10D1
+16GSFP+850nm 100m
+32GSFP+ 1310nm 10km M2H10D1
+32GSFP+850nm 100m
+QSFP+ 40GQSFP+ LR4 1310nm 10km M2H10D1
+40GQSFP+SR4 850nm
+QSFP28 100GQSFP28 LR4 1310nm 10km T4Q1,T4D2, M2H10D1,T8E2
+100GQSFP28CWDM4 2km
+100GQSFP28SR4 850nm
+QSFP-DD 400GQSFP-DD LR4 1310nm 10km T4Q2,T4Q4
+400GQSFP-DD coherentDCO T4Q4
+QSFP112 400GQSFP112 LR4 1310nm 10km T8E2
+CFP2 200GCFP2 coherentDCO T4D2, M20D1,M2H10D1
+400GCFP2 coherentDCO T4Q1,T4Q2
+800GCFP2 coherentDCO T8E2
+Web:www.olycom.com.cn 46
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+Optical Module Type | Specifications | ApplicableCards
+SFP | GESFP 1310nm 10km | PTM-E, PTM-W, M20D1,M8X2
+ | GESFP CH6080km | PTM-E, PTM-W
+PTM-E, PTM-W
+ | GESFP CH6180km | 
+SFP+ | 10GSFP+ 1310nm 10km | M20D1,M2H10D1
+ | 8GSFP+ 1310nm 10km
+8GSFP+ 850nm 100m | M2H10D1
+ | 16GSFP+ 1310nm 10km
+16GSFP+850nm 100m | M2H10D1
+ | 32GSFP+ 1310nm 10km
+32GSFP+850nm 100m | M2H10D1
+QSFP+ | 40GQSFP+ LR4 1310nm 10km | M2H10D1
+ | 40GQSFP+SR4 850nm | 
+QSFP28 | 100GQSFP28 LR4 1310nm 10km | T4Q1,T4D2, M2H10D1,T8E2
+ | 100GQSFP28CWDM4 2km | 
+ | 100GQSFP28SR4 850nm | 
+QSFP-DD | 400GQSFP-DD LR4 1310nm 10km | T4Q2,T4Q4
+ | 400GQSFP-DD coherentDCO | T4Q4
+QSFP112 | 400GQSFP112 LR4 1310nm 10km | T8E2
+CFP2 | 200GCFP2 coherentDCO | T4D2, M20D1,M2H10D1
+ | 400GCFP2 coherentDCO | T4Q1,T4Q2
+ | 800GCFP2 coherentDCO | T8E2

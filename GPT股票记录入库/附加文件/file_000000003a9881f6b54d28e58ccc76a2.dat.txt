@@ -1,0 +1,19 @@
+Extend PoE IP Camera over Fiber to Remote PC
+POE MEDIA CONVERTER                                                                              NON-POE SFP MEDIA CONVERTER
+FIBER NETWORK
+Single Mode / Multi Mode
+SFP                pwr R45 (PoE)                                                                                               SFP                                RJ45
+FX Link                                                                                             =             =
+fia |           Bu       [     |        加                           Ce)                          bit i= |          rit       [        ]
+TP Link                                                                                                                 TP Link
+Fiber to 10/100/1000M Ethernet wiwith PoE                                                                            Fiber to 10/100/1000M Ethernet
+Cat5e or above                                                                                                      | Cat5e or above
+& Network Cable                                                                                —) Network Cable
+ll                                                                                                     图
+>.                                                                              “=  (;
+2        9
+LE QS
+POE IP CAMERA
+PC
+Fiber Network                                                  Network Connection
+©           (Single Mode / Multi Mode)                          Ge     (Cat5e or above)                        MED A145 Connector

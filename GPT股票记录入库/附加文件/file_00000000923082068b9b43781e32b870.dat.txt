@@ -1,0 +1,2214 @@
+"""
+Portfolio S-Matrix Calculator v3
+=================================
+Section 1: 当前持仓S矩阵（含哑铃相关性修正）
+Section 2: 调仓优化分析（S重心移动对比）
+Section 3: 技术位置快照（读取本地Excel走势数据，直接修正情景概率）
+
+V3新增逻辑：
+- 读取本地历史走势Excel（来自美股倒抓筹码脚本输出）
+- 计算State状态（果论均线排列：3/3+/粘合/空头）
+- 分析筹码结构（获利比例、平均成本、集中度）
+- 计算历史真实波动率（校验V2的σ设定）
+- 技术分析结论直接修正ABT/HPE的情景概率
+- SCHG保持V2逻辑不变（ETF，技术分析意义有限）
+
+核心逻辑：
+- 科技桶（SCHG+HPE）与防御桶（ABT）形成哑铃结构
+- 科技牛：SCHG/HPE同向上，ABT承压；科技熊：反之
+- 相关性通过DUMBBELL_RULES修正联合概率，而非独立假设
+- 技术维度是V2估值/事件驱动维度的补充，两者独立，不混用
+
+依赖安装：
+    pip install yfinance pandas numpy curl_cffi tabulate colorama openpyxl
+"""
+
+import copy
+import math
+import warnings
+from datetime import datetime, timedelta
+from itertools import product
+from typing import Optional
+
+import json
+import os
+
+import numpy as np
+import pandas as pd
+
+warnings.filterwarnings("ignore")
+
+# ─────────────────────────────────────────
+# 常量
+# ─────────────────────────────────────────
+# Beta参考值（对标普500，用于组合β估算）
+BETA_MAP = {
+    "SCHG": 1.05,
+    "ABT":  0.70,
+    "HPE":  1.30,
+    "PFE":  0.55,
+    "_OTHER": 0.0,
+}
+
+# 价格缓存文件路径（网络失败时读取上次成功价格）
+PRICE_CACHE_FILE = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "last_known_prices.json"
+)
+
+# 调仓行动阈值：ΔS%超过此值才值得操作
+ACTION_THRESHOLD_PCT = 2.0
+
+# ─────────────────────────────────────────
+# V3：本地历史走势Excel配置
+# ─────────────────────────────────────────
+# 来自美股倒抓筹码脚本输出，格式：HPE N=2000.xlsx
+# 只配置有Excel的个股（SCHG不配置，用V2逻辑）
+HIST_DATA_DIR = r"C:\Users\simon\Desktop\Stock Data Retrivel\US_stocks_Data"
+
+HIST_DATA_FILES = {
+    "HPE": "HPE N=2000.xlsx",
+    "ABT": "ABT N=2000.xlsx",
+}
+
+# State判定参数（果论均线排列）
+MA_LIST        = [5, 10, 20, 30, 50, 60, 70, 90]
+SLOPE_LOOKBACK = 5    # 斜率回看天数
+CHIP_LOOK      = 5    # 筹码趋势回看期数
+
+# ─────────────────────────────────────────
+# 颜色输出（Windows兼容）
+# ─────────────────────────────────────────
+try:
+    from colorama import Fore, Style, init
+    init(autoreset=True)
+    GREEN   = Fore.GREEN
+    RED     = Fore.RED
+    YELLOW  = Fore.YELLOW
+    CYAN    = Fore.CYAN
+    MAGENTA = Fore.MAGENTA
+    BOLD    = Style.BRIGHT
+    RESET   = Style.RESET_ALL
+except ImportError:
+    GREEN = RED = YELLOW = CYAN = MAGENTA = BOLD = RESET = ""
+
+
+# ═══════════════════════════════════════════════════════════
+# 一、持仓配置
+# ═══════════════════════════════════════════════════════════
+
+PORTFOLIO = {
+    "total_asset":  40000,
+    "currency":     "USD",
+    "last_updated": "2026-06-04",
+
+    "holdings": [
+        {
+            "ticker":   "SCHG",
+            "name":     "Schwab US Large-Cap Growth ETF",
+            "type":     "ETF",
+            "role":     "成长核心仓",
+            "strategy": "死拿",
+            "cost":     32.834,
+            "shares":   420,
+            "amount":   14700,   # 自动由 shares×price 更新，此为初始值
+        },
+        {
+            "ticker":   "ABT",
+            "name":     "Abbott Laboratories",
+            "type":     "stock",
+            "role":     "分红成长仓（哑铃防御端）",
+            "strategy": "动态管理",
+            "cost":     87.10,
+            "shares":   100,
+            "amount":   8700,
+        },
+        {
+            "ticker":   "HPE",
+            "name":     "Hewlett Packard Enterprise",
+            "type":     "stock",
+            "role":     "成长仓（哑铃科技端）",
+            "strategy": "动态管理",
+            "cost":     30.877,
+            "shares":   150,
+            "amount":   8250,
+        },
+        {
+            "ticker":   "PFE",
+            "name":     "Pfizer",
+            "type":     "stock",
+            "role":     "分红仓(视同现金)",
+            "strategy": "死拿",
+            "cost":     16.42,
+            "shares":   130,
+            "amount":   3315,
+        },
+        {
+            "ticker":   "_OTHER",
+            "name":     "其他+现金",
+            "type":     "bundle",
+            "role":     "现金等价",
+            "strategy": "死拿",
+            "cost":     None,
+            "shares":   None,
+            "amount":   5035,
+        },
+    ]
+}
+
+
+# ═══════════════════════════════════════════════════════════
+# 二、情景概率配置
+# ═══════════════════════════════════════════════════════════
+
+SCENARIOS = {
+    "SCHG": {
+        "current_price": 35.00,
+        "horizon_months": 7,
+        "ei_pct":    4.7,
+        "sigma_pct": 11.0,
+        "bucket":    "tech",     # 哑铃分桶：tech / defensive / bundle
+        "scenarios": [
+            {"label": "乐观", "target": 42.00, "return_pct":  20.0, "prob": 0.25},
+            {"label": "中性", "target": 38.50, "return_pct":  10.0, "prob": 0.45},
+            {"label": "悲观", "target": 31.50, "return_pct": -10.0, "prob": 0.30},
+        ],
+        "notes": "YTD+5.3%，AI叙事支撑，历史下半年偏强，但估值不便宜",
+    },
+    "ABT": {
+        "current_price": 87.00,
+        "horizon_months": 7,
+        "ei_pct":    9.0,
+        "sigma_pct": 16.0,
+        "bucket":    "defensive",
+        "scenarios": [
+            {"label": "乐观", "target": 120.0, "return_pct":  37.9, "prob": 0.30},
+            {"label": "中性", "target": 100.0, "return_pct":  14.9, "prob": 0.50},
+            {"label": "悲观", "target":  85.0, "return_pct":  -2.3, "prob": 0.20},
+        ],
+        "notes": "关键节点7/15 Q2财报，Libre增速是否重返15%+",
+    },
+    "HPE": {
+        "current_price": 55.00,
+        "horizon_months": 7,
+        "ei_pct":    11.0,
+        "sigma_pct": 26.4,
+        "bucket":    "tech",
+        "scenarios": [
+            {"label": "乐观", "target": 68.0, "return_pct":  23.6, "prob": 0.45},
+            {"label": "中性", "target": 65.0, "return_pct":  18.2, "prob": 0.40},
+            {"label": "悲观", "target": 50.0, "return_pct":  -9.1, "prob": 0.15},
+        ],
+        "notes": "Q2财报炸裂，积压订单翻倍，9/1为Q3财报节点",
+    },
+    "PFE": {
+        "current_price": 25.50,
+        "horizon_months": 7,
+        "ei_pct":    3.0,
+        "sigma_pct": 5.0,
+        "bucket":    "bundle",
+        "scenarios": [
+            {"label": "统一", "target": None, "return_pct": 3.0, "prob": 1.00},
+        ],
+        "notes": "死拿，视同现金，仅计入股息",
+    },
+    "_OTHER": {
+        "current_price": None,
+        "horizon_months": 7,
+        "ei_pct":    2.8,
+        "sigma_pct": 3.0,
+        "bucket":    "bundle",
+        "scenarios": [
+            {"label": "统一", "target": None, "return_pct": 2.8, "prob": 1.00},
+        ],
+        "notes": "WU+NVO+现金打包",
+    },
+}
+
+
+# ═══════════════════════════════════════════════════════════
+# 三、哑铃相关性规则
+# ═══════════════════════════════════════════════════════════
+# 逻辑：
+#   科技牛（SCHG乐观）→ HPE乐观概率上调，ABT乐观概率小幅下调（承压）
+#   科技熊（SCHG悲观）→ HPE悲观概率上调，ABT悲观概率不联动（对冲）
+#   ABT自身逻辑驱动（Libre/Exact），与科技周期相关性低
+#
+# 修正方式：对原始独立联合概率乘以修正系数
+# 系数>1 = 该组合比独立假设更可能发生
+# 系数<1 = 该组合比独立假设更不可能发生
+# 不修正 = 系数1.0（默认）
+#
+# 格式：(SCHG情景, HPE情景, ABT情景) → 修正系数
+
+DUMBBELL_RULES = {
+    # 科技同向：SCHG和HPE同向，概率增强
+    ("乐观", "乐观", "乐观"): 1.4,   # 科技全牛，ABT跟涨（少见但有）
+    ("乐观", "乐观", "中性"): 1.5,   # 科技全牛，ABT正常（最典型科技牛场景）
+    ("乐观", "乐观", "悲观"): 1.3,   # 科技全牛，ABT承压（哑铃对冲体现）
+    ("悲观", "悲观", "乐观"): 1.4,   # 科技全熊，ABT抗跌（哑铃价值体现）
+    ("悲观", "悲观", "中性"): 1.4,   # 科技全熊，ABT正常
+    ("悲观", "悲观", "悲观"): 0.6,   # 科技全熊且ABT也跌（全面崩盘，罕见）
+
+    # 科技分歧：SCHG和HPE方向相反，概率削减
+    ("乐观", "悲观", "乐观"): 0.6,
+    ("乐观", "悲观", "中性"): 0.7,
+    ("乐观", "悲观", "悲观"): 0.6,
+    ("悲观", "乐观", "乐观"): 0.6,
+    ("悲观", "乐观", "中性"): 0.7,
+    ("悲观", "乐观", "悲观"): 0.6,
+
+    # 其余组合不修正（系数1.0）
+}
+
+
+def apply_dumbbell_correction(combos_df: pd.DataFrame) -> pd.DataFrame:
+    """
+    对S矩阵的联合概率应用哑铃修正系数，然后归一化确保总概率=100%
+    """
+    def get_correction(row):
+        key = (
+            row.get("SCHG_情景", ""),
+            row.get("HPE_情景",  ""),
+            row.get("ABT_情景",  ""),
+        )
+        return DUMBBELL_RULES.get(key, 1.0)
+
+    corrections = combos_df.apply(get_correction, axis=1)
+    combos_df = combos_df.copy()
+    combos_df["联合概率%"] = combos_df["联合概率%"] * corrections
+
+    # 归一化：确保总概率=100%
+    total = combos_df["联合概率%"].sum()
+    if total > 0:
+        combos_df["联合概率%"] = (combos_df["联合概率%"] / total * 100).round(2)
+
+    return combos_df.sort_values("联合概率%", ascending=False).reset_index(drop=True)
+
+
+# ═══════════════════════════════════════════════════════════
+# 四、关键节点日历
+# ═══════════════════════════════════════════════════════════
+
+KEY_EVENTS = [
+    {
+        "date": "2026-07-15", "ticker": "ABT", "event": "Q2财报",
+        "importance": "★★★",
+        "trigger_up":   "Libre增速>15% → ABT乐观概率升至55%+，考虑加仓",
+        "trigger_down": "Libre增速<10% → 维持中性，观察",
+    },
+    {
+        "date": "2026-09-01", "ticker": "HPE", "event": "Q3财报",
+        "importance": "★★★",
+        "trigger_up":   "收入>$115B且FY27指引维持 → HPE乐观概率升至60%+",
+        "trigger_down": "需求cliff信号/积压萎缩 → 减仓50%",
+    },
+    {
+        "date": "2026-10-01", "ticker": "ABT", "event": "Q3财报",
+        "importance": "★★★",
+        "trigger_up":   "Exact整合协同效应显现 → 继续持有",
+        "trigger_down": "重大商誉减值 → 减仓50%",
+    },
+    {
+        "date": "2026-12-01", "ticker": "ABT", "event": "第55次股息宣布",
+        "importance": "★★",
+        "trigger_up":   "分红正常增长 → 确认FCF可持续",
+        "trigger_down": "FCF派息率>90% → 观察",
+    },
+    {
+        "date": "持续", "ticker": "ABT", "event": "NEC奶粉诉讼",
+        "importance": "★★",
+        "trigger_up":   "败诉<$1B → 不操作",
+        "trigger_down": "败诉>$5B → 检视减仓",
+    },
+]
+
+
+# ═══════════════════════════════════════════════════════════
+# 五、调仓方案配置
+# ═══════════════════════════════════════════════════════════
+
+REBALANCE_PLANS = [
+    {
+        "id": "P1",
+        "name": "现金全加ABT",
+        "description": "把_OTHER中$3,375现金部分全部买入ABT",
+        "condition": "当前即可执行，不依赖节点",
+        "moves": [
+            {"from": "_OTHER", "from_amount": 3375, "to": "ABT", "to_amount": 3375},
+        ],
+        "new_amounts":   {"ABT": 12075, "_OTHER": 1660},
+        "prob_override": {},
+    },
+    {
+        "id": "P2",
+        "name": "ABT财报超预期后加仓",
+        "description": "7/15 ABT Q2 Libre>15%后：现金$3,375全加ABT，ABT概率升级",
+        "condition": "需等待7/15财报触发",
+        "moves": [
+            {"from": "_OTHER", "from_amount": 3375, "to": "ABT", "to_amount": 3375},
+        ],
+        "new_amounts":   {"ABT": 12075, "_OTHER": 1660},
+        "prob_override": {
+            "ABT": [
+                {"label": "乐观", "return_pct": 37.9, "prob": 0.55},
+                {"label": "中性", "return_pct": 14.9, "prob": 0.35},
+                {"label": "悲观", "return_pct": -2.3, "prob": 0.10},
+            ]
+        },
+    },
+    {
+        "id": "P3",
+        "name": "HPE部分止盈转ABT",
+        "description": "HPE减仓30%（约$2,475），所得资金全部加仓ABT",
+        "condition": "HPE达到$65+时可考虑",
+        "moves": [
+            {"from": "HPE", "from_amount": 2475, "to": "ABT", "to_amount": 2475},
+        ],
+        "new_amounts":   {"HPE": 5775, "ABT": 11175},
+        "prob_override": {},
+    },
+    {
+        "id": "P4",
+        "name": "双管齐下（现金+HPE止盈转ABT）",
+        "description": "现金$3,375+HPE减仓$2,475，合计$5,850全加ABT",
+        "condition": "需HPE到$65+且ABT财报超预期后执行",
+        "moves": [
+            {"from": "_OTHER", "from_amount": 3375, "to": "ABT", "to_amount": 3375},
+            {"from": "HPE",    "from_amount": 2475, "to": "ABT", "to_amount": 2475},
+        ],
+        "new_amounts":   {"ABT": 14550, "HPE": 5775, "_OTHER": 1660},
+        "prob_override": {
+            "ABT": [
+                {"label": "乐观", "return_pct": 37.9, "prob": 0.55},
+                {"label": "中性", "return_pct": 14.9, "prob": 0.35},
+                {"label": "悲观", "return_pct": -2.3, "prob": 0.10},
+            ]
+        },
+    },
+    {
+        "id": "P5",
+        "name": "SCHG部分转ABT",
+        "description": "SCHG减仓$3,000转入ABT（SCHG仓位从36.8%→29.3%）",
+        "condition": "若SCHG短期回调或ABT催化剂更强时",
+        "moves": [
+            {"from": "SCHG", "from_amount": 3000, "to": "ABT", "to_amount": 3000},
+        ],
+        "new_amounts":   {"SCHG": 11700, "ABT": 11700},
+        "prob_override": {},
+    },
+]
+
+
+# ═══════════════════════════════════════════════════════════
+# 六、数据拉取层（yfinance → curl_cffi → requests）
+# ═══════════════════════════════════════════════════════════
+
+def fetch_price_yfinance(ticker: str) -> Optional[float]:
+    try:
+        import yfinance as yf
+        hist = yf.Ticker(ticker).history(period="2d")
+        if not hist.empty:
+            return float(hist["Close"].iloc[-1])
+    except Exception:
+        pass
+    return None
+
+
+def fetch_price_curl(ticker: str) -> Optional[float]:
+    try:
+        from curl_cffi import requests as cr
+        url = (f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}"
+               f"?interval=1d&range=2d")
+        resp = cr.get(url, headers={
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                          "AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
+            "Accept": "application/json",
+        }, impersonate="chrome124", timeout=8)
+        return float(resp.json()["chart"]["result"][0]["meta"]["regularMarketPrice"])
+    except Exception:
+        pass
+    return None
+
+
+def fetch_price_requests(ticker: str) -> Optional[float]:
+    try:
+        import requests
+        resp = requests.get(
+            f"https://query2.finance.yahoo.com/v8/finance/chart/{ticker}?interval=1d&range=2d",
+            headers={"User-Agent": "Mozilla/5.0 (compatible; portfolio-tool/1.0)"},
+            timeout=8,
+        )
+        return float(resp.json()["chart"]["result"][0]["meta"]["regularMarketPrice"])
+    except Exception:
+        pass
+    return None
+
+
+def _load_price_cache() -> dict:
+    """读取本地价格缓存"""
+    try:
+        if os.path.exists(PRICE_CACHE_FILE):
+            with open(PRICE_CACHE_FILE, "r") as f:
+                return json.load(f)
+    except Exception:
+        pass
+    return {}
+
+
+def _save_price_cache(cache: dict):
+    """保存价格到本地缓存"""
+    try:
+        with open(PRICE_CACHE_FILE, "w") as f:
+            json.dump(cache, f, indent=2)
+    except Exception:
+        pass
+
+
+def get_current_price(ticker: str, fallback: float = None) -> float:
+    if ticker.startswith("_"):
+        return fallback or 0.0
+    print(f"  拉取 {ticker} 实时价格...", end=" ")
+
+    cache = _load_price_cache()
+
+    for fn in [fetch_price_yfinance, fetch_price_curl, fetch_price_requests]:
+        p = fn(ticker)
+        if p and p > 0:
+            print(f"{GREEN}${p:.2f} ✓{RESET}")
+            cache[ticker] = {"price": p, "date": datetime.now().strftime("%Y-%m-%d %H:%M")}
+            _save_price_cache(cache)
+            return p
+
+    # 网络全失败：尝试读缓存
+    if ticker in cache:
+        cached_p = cache[ticker]["price"]
+        cached_d = cache[ticker]["date"]
+        print(f"{YELLOW}网络失败，使用缓存价格 ${cached_p:.2f}（{cached_d}）{RESET}")
+        return cached_p
+
+    print(f"{YELLOW}网络失败，使用配置价格 ${fallback:.2f}{RESET}")
+    return fallback or 0.0
+
+
+# ═══════════════════════════════════════════════════════════
+# 七、ETF历史分析
+# ═══════════════════════════════════════════════════════════
+
+SCHG_ANNUAL_RETURNS = {
+    2018: -4.63, 2019: 36.01, 2020: 39.14,
+    2021: 28.11, 2022: -31.80, 2023: 50.11,
+    2024: 34.95, 2025: 17.50,
+}
+
+
+def fetch_etf_history(ticker: str, years: int = 5) -> Optional[pd.DataFrame]:
+    try:
+        import yfinance as yf
+        df = yf.download(ticker, period=f"{years}y", interval="1d", progress=False)
+        if not df.empty:
+            return df
+    except Exception:
+        pass
+    try:
+        from curl_cffi import requests as cr
+        end_ts   = int(datetime.now().timestamp())
+        start_ts = int((datetime.now() - timedelta(days=years * 365)).timestamp())
+        url = (f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}"
+               f"?interval=1d&period1={start_ts}&period2={end_ts}")
+        resp = cr.get(url, headers={
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                          "AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36"
+        }, impersonate="chrome124", timeout=10)
+        result = resp.json()["chart"]["result"][0]
+        df = pd.DataFrame({
+            "Date":  pd.to_datetime(result["timestamp"], unit="s"),
+            "Close": result["indicators"]["adjclose"][0]["adjclose"],
+        }).dropna().set_index("Date")
+        return df
+    except Exception:
+        pass
+    return None
+
+
+def compute_etf_stats(ticker: str) -> dict:
+    print(f"\n{CYAN}▶ ETF分析：{ticker}{RESET}", end=" ")
+    df = fetch_etf_history(ticker)
+    if df is not None and len(df) > 100:
+        closes    = df["Close"].dropna()
+        daily_ret = closes.pct_change().dropna()
+        max_dd    = float(((closes - closes.cummax()) / closes.cummax()).min()) * 100
+        total_yrs = len(closes) / 252
+        cagr      = ((closes.iloc[-1] / closes.iloc[0]) ** (1 / total_yrs) - 1) * 100
+        ann_vol   = float(daily_ret.std() * math.sqrt(252)) * 100
+        quarterly = closes.resample("QE").last().pct_change().dropna() * 100
+        print(f"{GREEN}在线数据 {len(df)}条{RESET}")
+        return {
+            "ticker": ticker, "source": "online",
+            "data_from": str(closes.index[0].date()),
+            "data_to":   str(closes.index[-1].date()),
+            "cagr_pct": round(cagr, 2), "ann_vol_pct": round(ann_vol, 2),
+            "max_dd_pct": round(max_dd, 2),
+            "q_mean_pct": round(float(quarterly.mean()), 2),
+            "q_median_pct": round(float(quarterly.median()), 2),
+            "q_positive_pct": round(float((quarterly > 0).mean()) * 100, 1),
+            "sharpe": round((cagr - 4.3) / ann_vol, 2) if ann_vol > 0 else 0,
+        }
+    else:
+        print(f"{YELLOW}离线数据{RESET}")
+        rets = list(SCHG_ANNUAL_RETURNS.values())
+        cagr    = (np.prod([1 + r / 100 for r in rets]) ** (1 / len(rets)) - 1) * 100
+        ann_vol = float(np.std(rets))
+        return {
+            "ticker": ticker, "source": "offline",
+            "data_from": "2018(offline)", "data_to": "2025(offline)",
+            "cagr_pct": round(cagr, 2), "ann_vol_pct": round(ann_vol, 2),
+            "max_dd_pct": -34.60,
+            "q_mean_pct": 4.8, "q_median_pct": 5.2, "q_positive_pct": 66.0,
+            "sharpe": round((cagr - 4.3) / ann_vol, 2),
+            "annual_returns": SCHG_ANNUAL_RETURNS,
+        }
+
+
+# ═══════════════════════════════════════════════════════════
+# 八、S矩阵引擎
+# ═══════════════════════════════════════════════════════════
+
+def validate_scenarios(scenarios: dict) -> bool:
+    for ticker, cfg in scenarios.items():
+        total = sum(s["prob"] for s in cfg["scenarios"])
+        if abs(total - 1.0) > 0.001:
+            print(f"{RED}⚠ {ticker} 情景概率之和={total:.3f}，应为1.0{RESET}")
+            return False
+    return True
+
+
+def update_amounts_from_prices(holdings: list, current_prices: dict):
+    """用实时价格动态更新持仓金额（shares × price）"""
+    for h in holdings:
+        t = h["ticker"]
+        if t.startswith("_") or not h.get("shares"):
+            continue
+        if t in current_prices and current_prices[t] > 0:
+            h["amount"] = round(h["shares"] * current_prices[t], 0)
+
+
+def build_s_matrix(holdings: list, scenarios: dict,
+                   total_asset: float,
+                   apply_dumbbell: bool = True) -> pd.DataFrame:
+    """
+    构建S矩阵：
+    1. 穷举所有活跃标的情景组合
+    2. 计算各组合收益金额、联合概率
+    3. 可选：应用哑铃相关性修正
+    """
+    active  = [h for h in holdings if len(scenarios[h["ticker"]]["scenarios"]) > 1]
+    bundles = [h for h in holdings if len(scenarios[h["ticker"]]["scenarios"]) == 1]
+
+    bundle_gain = sum(
+        h["amount"] * scenarios[h["ticker"]]["scenarios"][0]["return_pct"] / 100
+        for h in bundles
+    )
+
+    rows = []
+    for combo in product(*[scenarios[h["ticker"]]["scenarios"] for h in active]):
+        row        = {}
+        joint_prob = 1.0
+        total_gain = bundle_gain
+
+        for h, sc in zip(active, combo):
+            gain = h["amount"] * sc["return_pct"] / 100
+            row[f"{h['ticker']}_情景"] = sc["label"]
+            row[f"{h['ticker']}_收益$"] = round(gain, 0)
+            joint_prob *= sc["prob"]
+            total_gain += gain
+
+        row["其他_收益$"] = round(bundle_gain, 0)
+        row["总收益$"]    = round(total_gain, 0)
+        row["组合终值$"]  = round(total_asset + total_gain, 0)
+        row["联合概率%"]  = round(joint_prob * 100, 2)
+        rows.append(row)
+
+    df = pd.DataFrame(rows).sort_values("联合概率%", ascending=False).reset_index(drop=True)
+
+    # 哑铃修正
+    if apply_dumbbell and all(
+        f"{t}_情景" in df.columns for t in ["SCHG", "HPE", "ABT"]
+    ):
+        df = apply_dumbbell_correction(df)
+
+    return df
+
+
+def summarize(df: pd.DataFrame, total_asset: float) -> dict:
+    targets = [50000, 47000, 45000, 43000]
+    result  = {f"prob_{t//1000}k": round(df[df["组合终值$"] >= t]["联合概率%"].sum(), 1)
+               for t in targets}
+    result["prob_loss"]    = round(df[df["组合终值$"] < total_asset]["联合概率%"].sum(), 1)
+    result["weighted_end"] = round((df["组合终值$"] * df["联合概率%"] / 100).sum(), 0)
+    result["top1_prob"]    = round(float(df.iloc[0]["联合概率%"]), 2)
+    result["top1_end"]     = int(df.iloc[0]["组合终值$"])
+    result["top1_labels"]  = {
+        t: df.iloc[0][f"{t}_情景"]
+        for t in ["SCHG", "ABT", "HPE"]
+        if f"{t}_情景" in df.columns
+    }
+    return result
+
+
+# ═══════════════════════════════════════════════════════════
+# 九、概率更新规则
+# ═══════════════════════════════════════════════════════════
+
+PROB_UPDATE_RULES = {
+    "ABT_Q2_beat": {
+        "description": "ABT Q2财报：Libre增速>15%（超预期）",
+        "updates": {"ABT": [
+            {"label": "乐观", "return_pct": 37.9, "prob": 0.50},
+            {"label": "中性", "return_pct": 14.9, "prob": 0.38},
+            {"label": "悲观", "return_pct": -2.3, "prob": 0.12},
+        ]},
+        "action": "考虑执行P1或P2方案加仓ABT",
+    },
+    "ABT_Q2_miss": {
+        "description": "ABT Q2财报：Libre增速<10%（不及预期）",
+        "updates": {"ABT": [
+            {"label": "乐观", "return_pct": 37.9, "prob": 0.15},
+            {"label": "中性", "return_pct": 14.9, "prob": 0.55},
+            {"label": "悲观", "return_pct": -2.3, "prob": 0.30},
+        ]},
+        "action": "维持观察，不加仓",
+    },
+    "HPE_Q3_beat": {
+        "description": "HPE Q3财报：收入>$115B，FY27指引维持",
+        "updates": {"HPE": [
+            {"label": "乐观", "return_pct": 23.6, "prob": 0.60},
+            {"label": "中性", "return_pct": 18.2, "prob": 0.30},
+            {"label": "悲观", "return_pct": -9.1, "prob": 0.10},
+        ]},
+        "action": "HPE继续持有，可考虑P3止盈部分转ABT",
+    },
+    "HPE_Q3_miss": {
+        "description": "HPE Q3财报：需求cliff信号，积压萎缩",
+        "updates": {"HPE": [
+            {"label": "乐观", "return_pct": 23.6, "prob": 0.20},
+            {"label": "中性", "return_pct": 18.2, "prob": 0.40},
+            {"label": "悲观", "return_pct": -9.1, "prob": 0.40},
+        ]},
+        "action": "减仓HPE 50%，资金转现金或ABT",
+    },
+}
+
+
+def apply_prob_update(rule_key: str):
+    if rule_key not in PROB_UPDATE_RULES:
+        print(f"{RED}规则 {rule_key} 不存在{RESET}")
+        return
+    rule = PROB_UPDATE_RULES[rule_key]
+    print(f"\n{CYAN}═══ 概率更新：{rule['description']} ═══{RESET}")
+    for ticker, new_scs in rule["updates"].items():
+        SCENARIOS[ticker]["scenarios"] = new_scs
+        print(f"  {ticker} → " +
+              " | ".join(f"{s['label']} {s['prob']*100:.0f}%" for s in new_scs))
+    print(f"  {YELLOW}建议操作：{rule['action']}{RESET}")
+
+
+# ═══════════════════════════════════════════════════════════
+# 十、Section 2：调仓方案分析
+# ═══════════════════════════════════════════════════════════
+
+def apply_rebalance_plan(plan: dict, base_holdings: list,
+                         base_scenarios: dict, total_asset: float) -> tuple:
+    new_holdings  = copy.deepcopy(base_holdings)
+    new_scenarios = copy.deepcopy(base_scenarios)
+
+    for t, amt in plan["new_amounts"].items():
+        for h in new_holdings:
+            if h["ticker"] == t:
+                h["amount"] = amt
+
+    for t, scs in plan.get("prob_override", {}).items():
+        new_scenarios[t]["scenarios"] = scs
+
+    df      = build_s_matrix(new_holdings, new_scenarios, total_asset)
+    summary = summarize(df, total_asset)
+    return new_holdings, new_scenarios, df, summary
+
+
+def compute_ei_sigma(holdings: list, scenarios: dict) -> tuple:
+    total = sum(h["amount"] for h in holdings) or 1
+    ei, sigma = 0.0, 0.0
+    for h in holdings:
+        w = h["amount"] / total
+        ei    += w * scenarios.get(h["ticker"], {}).get("ei_pct",    2.8)
+        sigma += w * scenarios.get(h["ticker"], {}).get("sigma_pct", 3.0)
+    return round(ei, 2), round(sigma, 2)
+
+
+# ═══════════════════════════════════════════════════════════
+# 十一、输出模块
+# ═══════════════════════════════════════════════════════════
+
+def print_divider(title: str, width: int = 58):
+    pad = max(0, width - len(title))
+    print(f"\n{BOLD}{title} {'─'*pad}{RESET}")
+
+
+def print_header():
+    print(f"\n{BOLD}{CYAN}")
+    print("╔════════════════════════════════════════════════════════╗")
+    print("║   Portfolio S-Matrix Calculator  v3                   ║")
+    print("║   组合情景矩阵 · 技术走势 · 哑铃相关性 · 调仓优化    ║")
+    print("╚════════════════════════════════════════════════════════╝")
+    print(f"{RESET}")
+    print(f"  分析日期：{datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    print(f"  总资产  ：${PORTFOLIO['total_asset']:,.0f}")
+    print(f"  分析周期：{SCENARIOS['SCHG']['horizon_months']}个月")
+    print(f"  哑铃结构：{CYAN}科技桶(SCHG+HPE) ⟷ 防御桶(ABT){RESET}")
+
+
+def print_holdings(holdings: list, current_prices: dict):
+    print_divider("── 当前持仓")
+    total_asset = PORTFOLIO["total_asset"]
+    total_val   = 0
+    for h in holdings:
+        t = h["ticker"]
+        if t.startswith("_"):
+            pct = h["amount"] / total_asset * 100
+            print(f"  {'其他+现金':<24} ${h['amount']:>7,.0f}  {pct:4.1f}%  现金等价")
+            total_val += h["amount"]
+            continue
+        cp    = current_prices.get(t, SCENARIOS[t].get("current_price") or 0)
+        cost  = h["cost"] or 0
+        pnl   = (cp - cost) / cost * 100 if cost > 0 else 0
+        pct   = h["amount"] / total_asset * 100
+        color = GREEN if pnl >= 0 else RED
+        bucket = SCENARIOS[t].get("bucket", "")
+        tag    = f"[{bucket}]" if bucket not in ("bundle",) else ""
+        print(f"  {t:<6} {h['name']:<30} ${h['amount']:>7,.0f}"
+              f"  {pct:4.1f}%  {color}{pnl:+.1f}%{RESET}  {tag}")
+        total_val += h["amount"]
+    print(f"  {'合计':<42} ${total_val:>7,.0f}")
+
+
+def print_etf_stats(stats: dict):
+    print_divider(f"── ETF历史统计：{stats['ticker']}")
+    print(f"  区间    ：{stats['data_from']} ~ {stats['data_to']}")
+    print(f"  年化收益：{GREEN}{stats['cagr_pct']:+.1f}%{RESET}  "
+          f"波动率：{stats['ann_vol_pct']:.1f}%  "
+          f"最大回撤：{RED}{stats['max_dd_pct']:.1f}%{RESET}  "
+          f"Sharpe：{stats['sharpe']:.2f}")
+    print(f"  季度均值：{stats['q_mean_pct']:+.1f}%  "
+          f"中位数：{stats['q_median_pct']:+.1f}%  "
+          f"正收益季度：{stats['q_positive_pct']:.0f}%")
+    if "annual_returns" in stats:
+        print("  年度回报：")
+        for yr, ret in stats["annual_returns"].items():
+            bar   = "█" * int(abs(ret) / 3)
+            color = GREEN if ret >= 0 else RED
+            print(f"    {yr}  {color}{ret:+6.1f}%  {bar}{RESET}")
+
+
+def print_dumbbell_info():
+    print_divider("── 哑铃结构说明")
+    print(f"  科技桶  ：SCHG + HPE（同向联动，AI/成长驱动）")
+    print(f"  防御桶  ：ABT（医疗器械，与科技周期低相关）")
+    print(f"  对冲逻辑：科技牛→SCHG/HPE涨，ABT可能承压")
+    print(f"            科技熊→SCHG/HPE跌，ABT相对抗跌")
+    print(f"  概率修正：同向情景概率×1.3~1.5，分歧情景×0.6~0.7，归一化")
+
+
+def print_s_matrix(df: pd.DataFrame, top_n: int = 12, title: str = "S矩阵"):
+    print_divider(f"── {title}（概率排序，前{top_n}）")
+    try:
+        from tabulate import tabulate
+        cols = ([c for c in df.columns if "情景" in c] +
+                [c for c in df.columns if "收益$" in c] +
+                ["总收益$", "组合终值$", "联合概率%"])
+        print(tabulate(df[cols].head(top_n), headers="keys",
+                       tablefmt="rounded_outline", floatfmt=",.0f", showindex=True))
+    except Exception:
+        print(df.head(top_n).to_string())
+
+
+def compute_cvar(df: pd.DataFrame, total_asset: float,
+                 confidence: float = 0.95) -> dict:
+    """
+    CVaR（条件风险价值）：最差(1-confidence)情景的加权平均损失。
+    直接从S矩阵情景分布计算，无需额外数据。
+    confidence=0.95 → 最差5%情景的平均损失
+    """
+    # 计算每个情景的损益
+    df2 = df.copy()
+    df2["损益$"]  = df2["组合终值$"] - total_asset
+    df2["损益率"] = df2["损益$"] / total_asset * 100
+
+    # 按损益从小到大排序（最差在前）
+    df2 = df2.sort_values("损益$").reset_index(drop=True)
+
+    # 累积概率
+    df2["累积概率"] = df2["联合概率%"].cumsum() / 100.0
+
+    # VaR：找到(1-confidence)分位点
+    threshold = 1.0 - confidence
+    var_row = df2[df2["累积概率"] >= threshold].iloc[0] if (df2["累积概率"] >= threshold).any() else df2.iloc[-1]
+    var_pct  = float(var_row["损益率"])
+    var_abs  = float(var_row["损益$"])
+
+    # CVaR：threshold以内情景的加权平均损失
+    tail = df2[df2["累积概率"] <= threshold + 0.001]
+    if tail.empty:
+        tail = df2.head(1)
+    total_tail_prob = tail["联合概率%"].sum()
+    if total_tail_prob > 0:
+        cvar_abs = float((tail["损益$"] * tail["联合概率%"]).sum() / total_tail_prob)
+        cvar_pct = float((tail["损益率"] * tail["联合概率%"]).sum() / total_tail_prob)
+    else:
+        cvar_abs = var_abs
+        cvar_pct = var_pct
+
+    return {
+        "confidence":  confidence,
+        "var_pct":     round(var_pct, 1),
+        "var_abs":     round(var_abs, 0),
+        "cvar_pct":    round(cvar_pct, 1),
+        "cvar_abs":    round(cvar_abs, 0),
+        "tail_prob":   round(total_tail_prob, 1),
+    }
+
+
+def compute_entropy(scenarios: dict) -> dict:
+    """
+    信息熵：衡量每个标的情景概率的不确定性。
+    H = -Σ p_i × log(p_i)，范围[0, log(n)]
+    H越高 → 不确定性越大 → 建议降仓/谨慎
+    H越低 → 方向越明确 → 可以更积极
+    """
+    import math as _math
+    result = {}
+    active = [t for t, cfg in scenarios.items()
+              if len(cfg["scenarios"]) > 1 and not t.startswith("_")]
+    for ticker in active:
+        probs = [s["prob"] for s in scenarios[ticker]["scenarios"] if s["prob"] > 0]
+        h = -sum(p * _math.log(p) for p in probs)
+        # 归一化到[0,1]：除以最大熵 log(n)
+        h_max = _math.log(len(probs)) if len(probs) > 1 else 1.0
+        h_norm = h / h_max
+
+        # 判断
+        if h_norm < 0.7:
+            level = f"{GREEN}低熵·方向明确{RESET}"
+        elif h_norm < 0.9:
+            level = f"{YELLOW}中熵·有一定不确定{RESET}"
+        else:
+            level = f"{RED}高熵·方向不明{RESET}"
+
+        result[ticker] = {
+            "entropy":      round(h, 3),
+            "entropy_norm": round(h_norm, 3),
+            "level":        level,
+            "probs":        probs,
+        }
+    return result
+
+
+def compute_fractional_kelly(scenarios: dict, holdings: list,
+                             total_asset: float,
+                             rf: float = 0.043) -> dict:
+    """
+    分数凯利建议仓位（参考，不作为决策）。
+    单标的简化版：f* = (p×b - q) / b × fraction
+    p = 乐观概率，b = 乐观收益/悲观损失（赔率），q = 1-p
+    fraction = 0.5（半凯利，保守）
+    动态fraction：根据State和波动率调整
+    """
+    FRACTION_DEFAULT = 0.5
+
+    result = {}
+    active = [h for h in holdings
+              if not h["ticker"].startswith("_")
+              and len(scenarios.get(h["ticker"], {}).get("scenarios", [])) > 1]
+
+    for h in active:
+        ticker = h["ticker"]
+        scs    = scenarios[ticker]["scenarios"]
+        sc_map = {s["label"]: s for s in scs}
+
+        bull = sc_map.get("乐观")
+        bear = sc_map.get("悲观")
+        if not bull or not bear:
+            continue
+
+        p = bull["prob"]
+        q = bear["prob"]
+        b_ret = bull["return_pct"] / 100.0   # 乐观收益率
+        l_ret = abs(bear["return_pct"]) / 100.0  # 悲观损失率（取绝对值）
+
+        if l_ret <= 0 or b_ret <= 0:
+            continue
+
+        # 赔率 b = 能赢多少/可能输多少
+        b = b_ret / l_ret
+
+        # 凯利分数
+        kelly_full = (p * b - q) / b
+        kelly_full = max(kelly_full, 0.0)  # 不做空
+
+        # 动态fraction：根据技术State和波动率
+        sigma = scenarios[ticker].get("sigma_pct", 20.0)
+        # State信息从scenarios里读（Section 3会写进去）
+        state_note = scenarios[ticker].get("_tech_state", "")
+        if "3+" in state_note and sigma < 25:
+            fraction = 0.6
+            frac_note = "State 3+低波动→0.6"
+        elif "粘合" in state_note or "X" in state_note:
+            fraction = 0.3
+            frac_note = "粘合/横盘→0.3"
+        elif sigma > 35:
+            fraction = 0.3
+            frac_note = "高波动→0.3"
+        else:
+            fraction = FRACTION_DEFAULT
+            frac_note = f"默认半凯利→{FRACTION_DEFAULT}"
+
+        kelly_frac   = kelly_full * fraction
+        suggest_pct  = kelly_frac * 100          # 建议仓位%
+        current_pct  = h["amount"] / total_asset * 100
+        diff_pct     = suggest_pct - current_pct
+
+        result[ticker] = {
+            "p":            round(p, 2),
+            "q":            round(q, 2),
+            "b":            round(b, 2),
+            "kelly_full":   round(kelly_full * 100, 1),
+            "fraction":     fraction,
+            "frac_note":    frac_note,
+            "kelly_frac":   round(kelly_frac * 100, 1),
+            "suggest_pct":  round(suggest_pct, 1),
+            "current_pct":  round(current_pct, 1),
+            "diff_pct":     round(diff_pct, 1),
+        }
+    return result
+
+
+def print_summary(summary: dict, total_asset: float,
+                  title: str = "概率区间汇总", ei: float = None, sigma: float = None,
+                  holdings: list = None, df: pd.DataFrame = None):
+    print_divider(f"── {title}")
+
+    # S值（期望收益率）
+    s_pct = (summary["weighted_end"] - total_asset) / total_asset * 100
+    ann_s = s_pct / SCENARIOS["SCHG"]["horizon_months"] * 12
+    print(f"  组合S值（期望收益率）：{CYAN}{s_pct:+.1f}%{RESET}"
+          f"  年化：{CYAN}{ann_s:+.1f}%{RESET}", end="")
+    if ei is not None:
+        print(f"  Eᵢ/σ：{ei:.1f}%/{sigma:.1f}%", end="")
+    print()
+
+    # 组合β
+    if holdings:
+        total_val = sum(h["amount"] for h in holdings) or 1
+        portfolio_beta = sum(
+            h["amount"] / total_val * BETA_MAP.get(h["ticker"], 0.5)
+            for h in holdings
+        )
+        beta_color = RED if portfolio_beta > 1.2 else (YELLOW if portfolio_beta > 1.0 else GREEN)
+        print(f"  组合β：{beta_color}{portfolio_beta:.2f}{RESET}"
+              f"  {'（偏进攻，大盘波动放大）' if portfolio_beta > 1.2 else '（健康）' if portfolio_beta <= 1.0 else '（轻微进攻）'}")
+
+    for target, color in [(50000, RED), (47000, YELLOW), (45000, GREEN), (43000, GREEN)]:
+        prob = summary[f"prob_{target//1000}k"]
+        bar  = "▓" * int(prob / 3)
+        print(f"  到达 ${target:,}（+${target-total_asset:,}）："
+              f"{color}{prob:5.1f}%  {bar}{RESET}")
+
+    print(f"\n  亏损概率（<${total_asset:,}）：{RED}{summary['prob_loss']:.1f}%{RESET}")
+    print(f"  加权期望终值：{CYAN}${summary['weighted_end']:,.0f}{RESET}"
+          f"  （期望收益 ${summary['weighted_end']-total_asset:+,.0f}）")
+
+    # 最差情景
+    if df is not None:
+        worst = int(df["组合终值$"].min())
+        worst_dd = (worst - total_asset) / total_asset * 100
+        print(f"  最差情景终值：{RED}${worst:,}  ({worst_dd:+.1f}%){RESET}"
+              f"  ← 所有标的同时悲观")
+
+    if summary["top1_labels"]:
+        labels = " + ".join(f"{t} {v}" for t, v in summary["top1_labels"].items())
+        print(f"\n  ★ 最高概率情景（{summary['top1_prob']:.1f}%）：{labels}")
+        print(f"    → 组合终值 ${summary['top1_end']:,}")
+
+    # 最弱环节
+    active_tickers = [t for t, cfg in SCENARIOS.items()
+                      if len(cfg["scenarios"]) > 1 and not t.startswith("_")]
+    ratios = {t: SCENARIOS[t]["ei_pct"] / max(SCENARIOS[t]["sigma_pct"], 0.1)
+              for t in active_tickers}
+    weakest = min(ratios, key=ratios.get)
+    print(f"\n  最弱环节：{YELLOW}{weakest}{RESET}"
+          f"  Eᵢ/σ = {ratios[weakest]:.2f}"
+          f"  （{SCENARIOS[weakest]['ei_pct']:.1f}% / {SCENARIOS[weakest]['sigma_pct']:.1f}%）")
+
+    # ── CVaR ──────────────────────────────────────────────
+    if df is not None:
+        cvar = compute_cvar(df, total_asset)
+        print(f"\n  {BOLD}【尾部风险 CVaR】{RESET}")
+        print(f"  VaR(95%)  ：{RED}{cvar['var_pct']:+.1f}%  "
+              f"${cvar['var_abs']:+,.0f}{RESET}"
+              f"  （5%概率损失超过此值）")
+        print(f"  CVaR(95%) ：{RED}{cvar['cvar_pct']:+.1f}%  "
+              f"${cvar['cvar_abs']:+,.0f}{RESET}"
+              f"  （极端情景下的平均损失）")
+        # CVaR预警
+        if cvar["cvar_pct"] < -15:
+            print(f"  {RED}⚠ CVaR超过-15%，尾部风险偏高，建议检查仓位集中度{RESET}")
+        elif cvar["cvar_pct"] < -10:
+            print(f"  {YELLOW}尾部风险中等（CVaR {cvar['cvar_pct']:.1f}%），可接受{RESET}")
+        else:
+            print(f"  {GREEN}尾部风险可控（CVaR {cvar['cvar_pct']:.1f}%）{RESET}")
+
+    # ── 信息熵 ─────────────────────────────────────────────
+    if holdings:
+        entropy_map = compute_entropy(SCENARIOS)
+        print(f"\n  {BOLD}【信息熵（概率不确定性）】{RESET}")
+        for ticker, ev in entropy_map.items():
+            probs_str = "/".join(f"{p*100:.0f}%" for p in ev["probs"])
+            print(f"  {ticker:<6} H={ev['entropy_norm']:.2f}  "
+                  f"（{probs_str}）  {ev['level']}")
+        # 组合熵均值
+        h_vals = [ev["entropy_norm"] for ev in entropy_map.values()]
+        h_mean = sum(h_vals) / len(h_vals) if h_vals else 0
+        if h_mean > 0.90:
+            print(f"  {RED}组合整体不确定性高（均值H={h_mean:.2f}），建议保持轻仓等待信号{RESET}")
+        elif h_mean > 0.75:
+            print(f"  {YELLOW}组合不确定性中等（均值H={h_mean:.2f}）{RESET}")
+        else:
+            print(f"  {GREEN}组合方向较明确（均值H={h_mean:.2f}）{RESET}")
+
+    # ── 分数凯利 ───────────────────────────────────────────
+    if holdings and df is not None:
+        kelly_map = compute_fractional_kelly(SCENARIOS, holdings, total_asset)
+        if kelly_map:
+            print(f"\n  {BOLD}【分数凯利建议仓位（仅参考，不作决策）】{RESET}")
+            for ticker, kv in kelly_map.items():
+                diff_color = (GREEN if abs(kv["diff_pct"]) < 3
+                              else YELLOW if abs(kv["diff_pct"]) < 8
+                              else RED)
+                diff_note  = ("✓ 接近合理" if abs(kv["diff_pct"]) < 3
+                              else "△ 轻微偏差" if abs(kv["diff_pct"]) < 8
+                              else "⚠ 偏差较大，估值框架可能支持此仓位")
+                print(f"  {ticker:<6} 赔率{kv['b']:.1f}:1  "
+                      f"全凯利{kv['kelly_full']:.1f}%  "
+                      f"分数({kv['fraction']}·{kv['frac_note']})={kv['kelly_frac']:.1f}%  "
+                      f"当前{kv['current_pct']:.1f}%  "
+                      f"差值{diff_color}{kv['diff_pct']:+.1f}%{RESET}  {diff_note}")
+            print(f"  {YELLOW}说明：凯利对概率精度敏感，概率误差±10%时建议值可能差一倍，"
+                  f"结合估值框架综合判断{RESET}")
+
+
+def print_key_events():
+    print_divider("── 关键节点日历")
+    today = datetime.now().date()
+    for ev in KEY_EVENTS:
+        try:
+            ev_date   = datetime.strptime(ev["date"], "%Y-%m-%d").date()
+            days_left = (ev_date - today).days
+            if days_left < 0:
+                status = f"{RED}已过{RESET}"
+            elif days_left <= 14:
+                status = f"{RED}⚡{days_left}天后{RESET}"
+            elif days_left <= 45:
+                status = f"{YELLOW}⚠ {days_left}天后{RESET}"
+            else:
+                status = f"{GREEN}{days_left}天后{RESET}"
+        except ValueError:
+            status = f"{YELLOW}持续监控{RESET}"
+        print(f"  {ev['importance']} [{ev['date']}] {ev['ticker']:<5} "
+              f"{ev['event']}  {status}")
+        print(f"     ↑ {ev['trigger_up']}")
+        print(f"     ↓ {ev['trigger_down']}")
+
+
+def dumbbell_balance(holdings: list, scenarios: dict) -> tuple:
+    """计算科技桶/防御桶金额和比例"""
+    tech = sum(h["amount"] for h in holdings
+               if scenarios.get(h["ticker"], {}).get("bucket") == "tech")
+    defense = sum(h["amount"] for h in holdings
+                  if scenarios.get(h["ticker"], {}).get("bucket") == "defensive")
+    ratio = tech / max(defense, 1)
+    return tech, defense, round(ratio, 2)
+
+
+def print_section2(base_summary: dict, base_holdings: list,
+                   base_scenarios: dict, total_asset: float,
+                   export_csv: bool = False):
+
+    print(f"\n{BOLD}{MAGENTA}")
+    print("╔════════════════════════════════════════════════════════╗")
+    print("║  SECTION 2 · 调仓优化 · S重心移动对比                ║")
+    print("╚════════════════════════════════════════════════════════╝")
+    print(f"{RESET}")
+
+    base_ei, base_sigma = compute_ei_sigma(base_holdings, base_scenarios)
+    base_we   = base_summary["weighted_end"]
+    base_45k  = base_summary["prob_45k"]
+    base_50k  = base_summary["prob_50k"]
+    base_spct = (base_we - total_asset) / total_asset * 100
+
+    # 哑铃平衡度
+    base_tech, base_def, base_ratio = dumbbell_balance(base_holdings, base_scenarios)
+    print(f"  哑铃平衡：科技桶 ${base_tech:,.0f} vs 防御桶 ${base_def:,.0f}"
+          f"  比例 {base_ratio:.1f}:1"
+          f"  {'（偏进攻）' if base_ratio > 2.5 else '（均衡）' if base_ratio < 1.8 else '（轻度进攻）'}\n")
+
+    # 对比表
+    print(f"  {'方案':<6} {'描述':<30} {'加权期望$':>10} {'ΔS%':>7} "
+          f"{'P(≥45K)':>8} {'P(≥50K)':>8} {'哑铃比':>7} {'行动?':>6}")
+    print("  " + "─" * 98)
+    print(f"  {'BASE':<6} {'当前持仓（不调仓）':<30} "
+          f"{base_we:>10,.0f} {'':<7} "
+          f"{base_45k:>7.1f}% {base_50k:>7.1f}%"
+          f" {base_ratio:>5.1f}:1  {'─':>6}")
+    print("  " + "─" * 98)
+
+    results       = []
+    comparison_rows = [{"方案": "BASE", "描述": "当前持仓",
+                         "加权期望$": base_we, "ΔS%": 0,
+                         "P(≥45K)%": base_45k, "P(≥50K)%": base_50k,
+                         "哑铃比": base_ratio, "行动": "─"}]
+
+    for plan in REBALANCE_PLANS:
+        new_h, new_sc, _, new_sum = apply_rebalance_plan(
+            plan, base_holdings, base_scenarios, total_asset)
+        ei, sigma = compute_ei_sigma(new_h, new_sc)
+        _, _, new_ratio = dumbbell_balance(new_h, new_sc)
+
+        new_spct  = (new_sum["weighted_end"] - total_asset) / total_asset * 100
+        delta_s   = new_spct - base_spct
+        delta_col = GREEN if delta_s > 0 else RED
+        p45_col   = GREEN if new_sum["prob_45k"] > base_45k else RED
+        p50_col   = GREEN if new_sum["prob_50k"] > base_50k else YELLOW
+        action    = f"{GREEN}✓执行{RESET}" if delta_s >= ACTION_THRESHOLD_PCT else f"{YELLOW}偏小{RESET}"
+        action_txt = "✓执行" if delta_s >= ACTION_THRESHOLD_PCT else "偏小"
+
+        print(f"  {plan['id']:<6} {plan['name']:<30} "
+              f"{new_sum['weighted_end']:>10,.0f} "
+              f"{delta_col}{delta_s:>+6.2f}%{RESET} "
+              f"{p45_col}{new_sum['prob_45k']:>7.1f}%{RESET} "
+              f"{p50_col}{new_sum['prob_50k']:>7.1f}%{RESET}"
+              f" {new_ratio:>5.1f}:1  {action}")
+
+        results.append({"plan": plan, "summary": new_sum,
+                         "ei": ei, "sigma": sigma,
+                         "delta_s": delta_s, "new_spct": new_spct,
+                         "new_ratio": new_ratio})
+        comparison_rows.append({
+            "方案": plan["id"], "描述": plan["name"],
+            "加权期望$": new_sum["weighted_end"], "ΔS%": round(delta_s, 2),
+            "P(≥45K)%": new_sum["prob_45k"], "P(≥50K)%": new_sum["prob_50k"],
+            "哑铃比": new_ratio, "行动": action_txt,
+        })
+
+    print("  " + "─" * 98)
+    print(f"  {YELLOW}行动阈值：ΔS% ≥ {ACTION_THRESHOLD_PCT:.0f}% 才值得操作{RESET}")
+
+    # 方案详情
+    print_divider("── 方案详情与S重心移动")
+    for r in results:
+        plan    = r["plan"]
+        summary = r["summary"]
+        color   = GREEN if r["delta_s"] > 0 else RED
+
+        print(f"\n  {BOLD}[{plan['id']}] {plan['name']}{RESET}")
+        print(f"  条件   ：{YELLOW}{plan['condition']}{RESET}")
+        print(f"  操作   ：" +
+              "  ".join(f"{m['from']} → {m['to']} ${m['from_amount']:,}"
+                        for m in plan["moves"]))
+        if plan.get("prob_override"):
+            for t, scs in plan["prob_override"].items():
+                print(f"  概率变化：{t}  {CYAN}" +
+                      " | ".join(f"{s['label']} {s['prob']*100:.0f}%" for s in scs) +
+                      f"{RESET}")
+        print(f"  S值    ：{base_spct:+.2f}% → {color}{r['new_spct']:+.2f}%"
+              f"  ({r['delta_s']:+.2f}%){RESET}")
+        print(f"  期望终值：${base_we:,.0f} → {color}${summary['weighted_end']:,.0f}"
+              f"  ({summary['weighted_end']-base_we:+,.0f}){RESET}")
+        print(f"  P(≥45K)：{base_45k:.1f}% → {summary['prob_45k']:.1f}%"
+              f"  P(≥50K)：{base_50k:.1f}% → {summary['prob_50k']:.1f}%")
+        print(f"  哑铃比  ：{base_ratio:.1f}:1 → {r['new_ratio']:.1f}:1"
+              f"  Eᵢ/σ：{r['ei']:.1f}% / {r['sigma']:.1f}%")
+
+    # 综合推荐
+    print_divider("── 综合推荐")
+    best_we   = max(results, key=lambda x: x["summary"]["weighted_end"])
+    best_45k  = max(results, key=lambda x: x["summary"]["prob_45k"])
+    immediate = [r for r in results if "即可" in r["plan"]["condition"]]
+
+    print(f"\n  {GREEN}▶ 期望终值最优：[{best_we['plan']['id']}] {best_we['plan']['name']}{RESET}")
+    print(f"     加权期望 ${best_we['summary']['weighted_end']:,.0f}"
+          f"  S值 {best_we['new_spct']:+.2f}%  条件：{best_we['plan']['condition']}")
+
+    print(f"\n  {GREEN}▶ P(≥45K)最高：[{best_45k['plan']['id']}] {best_45k['plan']['name']}{RESET}")
+    print(f"     P(≥45K) = {best_45k['summary']['prob_45k']:.1f}%")
+
+    if immediate:
+        best_imm = max(immediate, key=lambda x: x["summary"]["weighted_end"])
+        print(f"\n  {CYAN}▶ 立即可执行：[{best_imm['plan']['id']}] "
+              f"{best_imm['plan']['name']}{RESET}")
+        print(f"     " + "  ".join(
+            f"{m['from']} 取 ${m['from_amount']:,} → 买入 {m['to']}"
+            for m in best_imm["plan"]["moves"]))
+        print(f"     加权期望 ${best_imm['summary']['weighted_end']:,.0f}"
+              f"  P(≥45K) {best_imm['summary']['prob_45k']:.1f}%")
+
+    print(f"\n  {YELLOW}▶ 节点触发后最优路径：{RESET}")
+    print(f"     7/15 ABT Q2超预期 → 执行P2（概率升级+现金加ABT）")
+    print(f"     9/1  HPE Q3超预期 → 执行P3（HPE止盈30%转ABT）")
+    print(f"     两节点同时触发   → 执行P4（双管齐下，S重心最大化）")
+
+    print(f"\n  {RED}▶ 风险提示：{RESET}")
+    print(f"     哑铃结构已修正相关性，科技牛时ABT承压风险已计入")
+    print(f"     P3/P4涉及HPE止盈，需在HPE达到$65+时再操作")
+    print(f"     任何调仓后请更新PORTFOLIO配置并重跑脚本")
+
+    # 导出调仓对比表CSV
+    if export_csv:
+        ts    = datetime.now().strftime("%Y%m%d_%H%M")
+        fname = f"rebalance_comparison_{ts}.csv"
+        pd.DataFrame(comparison_rows).to_csv(fname, index=False, encoding="utf-8-sig")
+        print(f"\n  {GREEN}调仓对比表已导出：{fname}{RESET}")
+
+
+# ═══════════════════════════════════════════════════════════
+# 十二、主流程
+# ═══════════════════════════════════════════════════════════
+
+def main(
+    fetch_live_prices: bool = True,
+    analyze_etf_flag:  bool = True,
+    show_section2:     bool = True,
+    show_section3:     bool = True,   # V3新增：是否运行技术分析并修正概率
+    export_csv:        bool = False,
+    apply_rule:        str  = None,
+    show_top_n:        int  = 12,
+):
+    print_header()
+
+    if not validate_scenarios(SCENARIOS):
+        return
+
+    # 1. 拉实时价格
+    current_prices = {}
+    print(f"\n{BOLD}正在拉取实时价格...{RESET}")
+    for h in PORTFOLIO["holdings"]:
+        t = h["ticker"]
+        if t.startswith("_"):
+            continue
+        cp = SCENARIOS[t].get("current_price") or 0
+        current_prices[t] = get_current_price(t, fallback=cp) if fetch_live_prices else cp
+
+    # 2. 动态更新持仓金额（shares × 实时价格）
+    update_amounts_from_prices(PORTFOLIO["holdings"], current_prices)
+
+    # 3. 持仓展示
+    print_holdings(PORTFOLIO["holdings"], current_prices)
+
+    # 4. ETF分析
+    if analyze_etf_flag:
+        for h in PORTFOLIO["holdings"]:
+            if h["type"] == "ETF":
+                stats = compute_etf_stats(h["ticker"])
+                print_etf_stats(stats)
+
+    # 5. 哑铃结构说明
+    print_dumbbell_info()
+
+    # 6. 概率更新（如有，来自V2节点触发规则）
+    if apply_rule:
+        apply_prob_update(apply_rule)
+
+    # ── SECTION 3（V3新增）：技术分析 + 概率修正 ──
+    # 必须在Section 1之前运行，因为它会直接修改SCENARIOS概率
+    tech_results = {}
+    if show_section3:
+        tech_results = run_section3(current_prices)
+
+    # ── SECTION 1 ──
+    print(f"\n{BOLD}{CYAN}{'═'*58}")
+    title1 = "SECTION 1 · S矩阵（哑铃修正 + 技术概率修正）" if show_section3 else "SECTION 1 · 当前持仓 S矩阵（含哑铃相关性修正）"
+    print(f"  {title1}")
+    print(f"{'═'*58}{RESET}")
+
+    df      = build_s_matrix(PORTFOLIO["holdings"], SCENARIOS,
+                             PORTFOLIO["total_asset"], apply_dumbbell=True)
+    summary = summarize(df, PORTFOLIO["total_asset"])
+    ei, sigma = compute_ei_sigma(PORTFOLIO["holdings"], SCENARIOS)
+
+    print_s_matrix(df, top_n=show_top_n, title="S矩阵（哑铃修正后）")
+    print_summary(summary, PORTFOLIO["total_asset"],
+                  title="概率区间汇总（当前）", ei=ei, sigma=sigma,
+                  holdings=PORTFOLIO["holdings"], df=df)
+    print_key_events()
+
+    # ── SECTION 2 ──
+    if show_section2:
+        print_section2(summary, PORTFOLIO["holdings"],
+                       SCENARIOS, PORTFOLIO["total_asset"],
+                       export_csv=export_csv)
+    # 7. 导出S矩阵CSV
+    if export_csv:
+        ts    = datetime.now().strftime("%Y%m%d_%H%M")
+        fname = f"s_matrix_{ts}.csv"
+        df.to_csv(fname, index=False, encoding="utf-8-sig")
+        print(f"\n  {GREEN}S矩阵已导出：{fname}{RESET}")
+
+    print(f"\n{BOLD}{GREEN}══ 分析完成 ══{RESET}\n")
+    return df, summary
+
+
+# ═══════════════════════════════════════════════════════════
+# 十四、V3 Section 3：技术位置快照引擎
+# ═══════════════════════════════════════════════════════════
+
+# ── 14.1 数据补齐层（缺的补，不缺不补）────────────────────
+
+def _fetch_new_bars_yfinance(ticker: str, after_date: str) -> Optional[pd.DataFrame]:
+    """yfinance拉after_date之后的新K线"""
+    try:
+        import yfinance as yf
+        t = yf.Ticker(ticker)
+        hist = t.history(period="30d")
+        if hist.empty:
+            return None
+        hist = hist.reset_index()
+        date_col = "Date" if "Date" in hist.columns else "Datetime"
+        df = pd.DataFrame({
+            "日期":   pd.to_datetime(hist[date_col]).dt.strftime("%Y-%m-%d"),
+            "开盘":   hist["Open"].astype(float),
+            "收盘":   hist["Close"].astype(float),
+            "最高":   hist["High"].astype(float),
+            "最低":   hist["Low"].astype(float),
+            "成交量": hist["Volume"].astype(float),
+        })
+        df = df[df["日期"] > after_date].reset_index(drop=True)
+        return df if not df.empty else None
+    except Exception:
+        return None
+
+
+def _fetch_new_bars_curl(ticker: str, after_date: str) -> Optional[pd.DataFrame]:
+    """curl_cffi绕过TLS指纹拉新K线"""
+    try:
+        from curl_cffi import requests as cr
+        url = (f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}"
+               f"?interval=1d&range=30d")
+        resp = cr.get(url, headers={
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                          "AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
+            "Accept": "application/json",
+        }, impersonate="chrome124", timeout=10)
+        data = resp.json()
+        result = data["chart"]["result"][0]
+        timestamps = result["timestamp"]
+        q = result["indicators"]["quote"][0]
+        rows = []
+        for i, ts in enumerate(timestamps):
+            d = datetime.fromtimestamp(ts).strftime("%Y-%m-%d")
+            if d <= after_date:
+                continue
+            rows.append({
+                "日期":   d,
+                "开盘":   float(q["open"][i])   if q["open"][i]   else None,
+                "收盘":   float(q["close"][i])  if q["close"][i]  else None,
+                "最高":   float(q["high"][i])   if q["high"][i]   else None,
+                "最低":   float(q["low"][i])    if q["low"][i]    else None,
+                "成交量": float(q["volume"][i]) if q["volume"][i] else None,
+            })
+        df = pd.DataFrame(rows).dropna(subset=["收盘"])
+        return df if not df.empty else None
+    except Exception:
+        return None
+
+
+def _fetch_new_bars_akshare(ticker: str, after_date: str) -> Optional[pd.DataFrame]:
+    """akshare腾讯源兜底"""
+    try:
+        import akshare as ak
+        raw = ak.stock_us_daily(symbol=ticker.upper(), adjust="qfq")
+        if raw is None or raw.empty:
+            return None
+        raw["date"] = pd.to_datetime(raw["date"]).dt.strftime("%Y-%m-%d")
+        raw = raw[raw["date"] > after_date]
+        if raw.empty:
+            return None
+        df = pd.DataFrame({
+            "日期":   raw["date"].values,
+            "开盘":   raw["open"].astype(float).values,
+            "收盘":   raw["close"].astype(float).values,
+            "最高":   raw["high"].astype(float).values,
+            "最低":   raw["low"].astype(float).values,
+            "成交量": raw["volume"].astype(float).values,
+        })
+        return df
+    except Exception:
+        return None
+
+
+def fetch_new_bars(ticker: str, after_date: str) -> tuple:
+    """
+    多源串行拉after_date之后的新K线。
+    返回 (DataFrame或None, 数据源标注)
+    """
+    for fn, src in [
+        (_fetch_new_bars_yfinance, "yfinance"),
+        (_fetch_new_bars_curl,     "curl_cffi"),
+        (_fetch_new_bars_akshare,  "akshare"),
+    ]:
+        try:
+            df = fn(ticker, after_date)
+            if df is not None and not df.empty:
+                return df, src
+        except Exception:
+            continue
+    return None, ""
+
+
+def _supplement_derived_cols(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    对新补入的行重新计算：
+    成交额 / 振幅 / 换手率（粗估）/ MA5~MA90 / 筹码8列
+    使用完整df（含历史行）来保证均线计算正确。
+    """
+    df = df.copy().reset_index(drop=True)
+    n  = len(df)
+
+    # 成交额
+    if "成交额" not in df.columns:
+        df["成交额"] = 0.0
+    mask_no_amt = df["成交额"].isna() | (df["成交额"] == 0)
+    df.loc[mask_no_amt, "成交额"] = (
+        df.loc[mask_no_amt, "收盘"] * df.loc[mask_no_amt, "成交量"]
+    )
+
+    # 振幅 = (最高-最低)/前收 × 100
+    if "振幅" not in df.columns:
+        df["振幅"] = np.nan
+    prev_close = df["收盘"].shift(1)
+    mask_no_amp = df["振幅"].isna()
+    df.loc[mask_no_amp, "振幅"] = (
+        (df.loc[mask_no_amp, "最高"] - df.loc[mask_no_amp, "最低"])
+        / prev_close.loc[mask_no_amp].replace(0, np.nan) * 100
+    ).round(2)
+
+    # 5日涨幅
+    if "5日涨幅" not in df.columns:
+        df["5日涨幅"] = np.nan
+    close_5ago = df["收盘"].shift(5).replace(0, np.nan)
+    mask_no_5d = df["5日涨幅"].isna()
+    df.loc[mask_no_5d, "5日涨幅"] = (
+        (df.loc[mask_no_5d, "收盘"] - close_5ago.loc[mask_no_5d])
+        / close_5ago.loc[mask_no_5d] * 100
+    ).round(2)
+
+    # 换手率：用成交量/前60日均量粗估（与倒抓筹码脚本一致）
+    if "换手率" not in df.columns:
+        df["换手率"] = np.nan
+    mask_no_turn = df["换手率"].isna()
+    if mask_no_turn.any():
+        avg_vol = df["成交量"].rolling(60, min_periods=5).mean().replace(0, np.nan)
+        df.loc[mask_no_turn, "换手率"] = (
+            df.loc[mask_no_turn, "成交量"] / avg_vol.loc[mask_no_turn]
+        ).clip(0, 5).round(4)
+
+    # 量比
+    if "量比" not in df.columns:
+        df["量比"] = np.nan
+    prev5_avg = df["成交量"].shift(1).rolling(5, min_periods=2).mean().replace(0, np.nan)
+    mask_no_qr = df["量比"].isna()
+    df.loc[mask_no_qr, "量比"] = (
+        df.loc[mask_no_qr, "成交量"] / prev5_avg.loc[mask_no_qr]
+    ).round(2)
+
+    # 均线 MA5~MA90（整列重算，保证新行正确）
+    closes = df["收盘"].values.astype(float)
+    for ma_n in [5, 10, 20, 30, 40, 50, 60, 70, 80, 90]:
+        col = f"MA{ma_n}"
+        arr = np.full(n, np.nan)
+        for i in range(ma_n - 1, n):
+            arr[i] = float(np.mean(closes[i - ma_n + 1: i + 1]))
+        df[col] = np.round(arr, 2)
+
+    # 筹码：只对新行做增量滚动更新（和倒抓筹码脚本同构）
+    df = _update_chip_incremental(df)
+
+    return df
+
+
+def _update_chip_incremental(df: pd.DataFrame,
+                              range_days: int = 250,
+                              n_bins:     int = 1000,
+                              decay_k:    float = 1.0) -> pd.DataFrame:
+    """
+    对没有筹码数据的行做增量滚动更新。
+    有数据的行直接跳过（不缺不补）。
+    简化版三角分布，与倒抓筹码脚本逻辑一致。
+    """
+    chip_cols = ["获利比例", "平均成本",
+                 "90%成本-低", "90%成本-高", "90%集中度",
+                 "70%成本-低", "70%成本-高", "70%集中度"]
+    for c in chip_cols:
+        if c not in df.columns:
+            df[c] = np.nan
+
+    highs  = pd.to_numeric(df["最高"],  errors="coerce").fillna(0).values.astype(np.float64)
+    lows   = pd.to_numeric(df["最低"],  errors="coerce").fillna(0).values.astype(np.float64)
+    closes = pd.to_numeric(df["收盘"],  errors="coerce").fillna(0).values.astype(np.float64)
+    turns  = np.clip(
+        pd.to_numeric(df["换手率"], errors="coerce").fillna(0).values.astype(np.float64)
+        * decay_k, 0.0, 1.0)
+    vwaps  = (highs + lows + closes) / 3.0
+
+    p_min = lows[lows > 0].min() * 0.9 if (lows > 0).any() else closes.min() * 0.9
+    p_max = highs.max() * 1.1
+    grid  = np.linspace(p_min, p_max, n_bins)
+
+    n = len(df)
+    # 找最后一个有筹码数据的行，从它之后开始增量计算
+    last_chip_idx = -1
+    profit_arr = pd.to_numeric(df["获利比例"], errors="coerce").values
+    for i in range(n - 1, -1, -1):
+        if not np.isnan(profit_arr[i]):
+            last_chip_idx = i
+            break
+
+    # 如果全都没有数据，从头算；否则从last_chip_idx+1开始
+    start_idx = last_chip_idx + 1
+    if start_idx >= n:
+        return df  # 全部都有数据，不补
+
+    # 需要一个初始chip分布：若有历史数据则用最后一个有数据行重建
+    chip = np.zeros(n_bins)
+    if last_chip_idx >= 0:
+        # 用最近range_days行重建chip分布
+        seg_start = max(0, last_chip_idx - range_days + 1)
+        for j in range(seg_start, last_chip_idx + 1):
+            lo, hi, pk = lows[j], highs[j], vwaps[j]
+            t = turns[j]
+            if hi <= 0 or lo <= 0:
+                w = np.zeros(n_bins)
+                w[int(np.clip(np.searchsorted(grid, closes[j]), 0, n_bins-1))] = 1.0
+            else:
+                pk  = min(max(pk, lo), hi)
+                w   = np.zeros(n_bins)
+                left  = (grid >= lo) & (grid <= pk)
+                right = (grid > pk)  & (grid <= hi)
+                if pk > lo:
+                    w[left]  = (grid[left]  - lo) / (pk - lo)
+                else:
+                    w[left]  = 1.0
+                if hi > pk:
+                    w[right] = (hi - grid[right]) / (hi - pk)
+                else:
+                    w[right] = 1.0
+                s = w.sum()
+                if s > 0:
+                    w /= s
+            chip = chip * (1.0 - t) + w * t
+        s = chip.sum()
+        if s > 0:
+            chip /= s
+
+    # 从start_idx开始逐行增量更新
+    for idx in range(start_idx, n):
+        lo, hi, pk = lows[idx], highs[idx], vwaps[idx]
+        t = turns[idx]
+        if hi <= 0 or lo <= 0:
+            w = np.zeros(n_bins)
+            w[int(np.clip(np.searchsorted(grid, closes[idx]), 0, n_bins-1))] = 1.0
+        else:
+            pk  = min(max(pk, lo), hi)
+            w   = np.zeros(n_bins)
+            left  = (grid >= lo) & (grid <= pk)
+            right = (grid > pk)  & (grid <= hi)
+            if pk > lo:
+                w[left]  = (grid[left]  - lo) / (pk - lo)
+            else:
+                w[left]  = 1.0
+            if hi > pk:
+                w[right] = (hi - grid[right]) / (hi - pk)
+            else:
+                w[right] = 1.0
+            s = w.sum()
+            if s > 0:
+                w /= s
+        chip = chip * (1.0 - t) + w * t
+        s = chip.sum()
+        if s <= 0:
+            continue
+        chip_norm = chip / s
+
+        C   = closes[idx]
+        cdf = np.cumsum(chip_norm)
+
+        df.at[idx, "获利比例"] = round(float(chip_norm[grid < C].sum() * 100), 2)
+        df.at[idx, "平均成本"] = round(float(np.dot(grid, chip_norm)), 2)
+
+        def band(pct):
+            lo_q = (1.0 - pct) / 2.0
+            hi_q = 1.0 - lo_q
+            li = int(np.clip(np.searchsorted(cdf, lo_q), 0, n_bins-1))
+            hi_i = int(np.clip(np.searchsorted(cdf, hi_q), 0, n_bins-1))
+            lp, hp = float(grid[li]), float(grid[hi_i])
+            conc = (hp - lp) / (hp + lp) * 100 if (hp + lp) > 0 else 0.0
+            return round(lp, 2), round(hp, 2), round(conc, 2)
+
+        l9, h9, c9 = band(0.90)
+        l7, h7, c7 = band(0.70)
+        df.at[idx, "90%成本-低"] = l9
+        df.at[idx, "90%成本-高"] = h9
+        df.at[idx, "90%集中度"]  = c9
+        df.at[idx, "70%成本-低"] = l7
+        df.at[idx, "70%成本-高"] = h7
+        df.at[idx, "70%集中度"]  = c7
+
+    return df
+
+
+def load_hist_excel(ticker: str) -> Optional[pd.DataFrame]:
+    """
+    读取本地Excel，自动补齐到最新交易日（缺的补，不缺不补）。
+    数据源：yfinance → curl_cffi → akshare 串行降级。
+    补完后重新计算均线、振幅、换手率、筹码。
+    """
+    fname = HIST_DATA_FILES.get(ticker)
+    if not fname:
+        return None
+    fpath = os.path.join(HIST_DATA_DIR, fname)
+    if not os.path.exists(fpath):
+        print(f"  {YELLOW}[V3] {ticker} Excel未找到：{fpath}{RESET}")
+        return None
+    try:
+        df = pd.read_excel(fpath, header=3, engine="openpyxl")
+        df.columns = [str(c).strip() for c in df.columns]
+        if "日期" not in df.columns:
+            print(f"  {YELLOW}[V3] {ticker} Excel缺少'日期'列{RESET}")
+            return None
+        df["日期"] = pd.to_datetime(df["日期"], errors="coerce").dt.strftime("%Y-%m-%d")
+        df = df.dropna(subset=["日期"]).sort_values("日期").reset_index(drop=True)
+        num_cols = [c for c in df.columns if c != "日期"]
+        for c in num_cols:
+            df[c] = pd.to_numeric(df[c], errors="coerce")
+
+        last_date = df["日期"].iloc[-1]
+        today_str = datetime.now().strftime("%Y-%m-%d")
+        print(f"  {GREEN}[V3] {ticker} Excel加载：{len(df)}行，最新{last_date}{RESET}", end="")
+
+        # 检查是否需要补数据
+        if last_date >= today_str:
+            print(f"  已是最新，无需补充")
+            return df
+
+        # 尝试补新行
+        print(f"  → 尝试补充{last_date}之后的数据...", end="")
+        new_bars, src = fetch_new_bars(ticker, last_date)
+
+        if new_bars is not None and not new_bars.empty:
+            print(f" {GREEN}补入{len(new_bars)}行（{src}）{RESET}")
+            # 合并新行（只补基础OHLCV，派生列后面重算）
+            new_bars["成交额"] = 0.0
+            new_bars["振幅"]   = np.nan
+            new_bars["换手率"] = np.nan
+            new_bars["量比"]   = np.nan
+            for c in ["5日涨幅"] + [f"MA{n}" for n in [5,10,20,30,40,50,60,70,80,90]] + \
+                     ["获利比例","平均成本","90%成本-低","90%成本-高","90%集中度",
+                      "70%成本-低","70%成本-高","70%集中度"]:
+                new_bars[c] = np.nan
+            # 对齐列
+            for c in df.columns:
+                if c not in new_bars.columns:
+                    new_bars[c] = np.nan
+            new_bars = new_bars[[c for c in df.columns if c in new_bars.columns]]
+            df = pd.concat([df, new_bars], ignore_index=True)
+            df = df.sort_values("日期").drop_duplicates("日期").reset_index(drop=True)
+            # 重新计算派生列（只补新行，历史行有数据的不覆盖）
+            df = _supplement_derived_cols(df)
+            print(f"  {GREEN}[V3] {ticker} 补充完成，现有{len(df)}行，最新{df['日期'].iloc[-1]}{RESET}")
+        else:
+            print(f" {YELLOW}无新数据（休市或网络失败），使用Excel现有数据{RESET}")
+
+        return df
+
+    except Exception as e:
+        print(f"  {RED}[V3] {ticker} Excel读取失败：{repr(e)[:100]}{RESET}")
+        return None
+
+
+# ── 14.2 均线与斜率计算 ─────────────────────────────────────
+
+def _ma(closes: list, n: int, end_idx: int = -1) -> Optional[float]:
+    if end_idx == -1:
+        end_idx = len(closes) - 1
+    if end_idx + 1 < n:
+        return None
+    seg = closes[end_idx + 1 - n: end_idx + 1]
+    return float(np.mean(seg))
+
+
+def _slope(closes: list, n: int, lookback: int = SLOPE_LOOKBACK) -> Optional[float]:
+    """MA斜率：(MA_今 - MA_N天前) / MA_N天前"""
+    end = len(closes) - 1
+    ma_now  = _ma(closes, n, end)
+    ma_prev = _ma(closes, n, end - lookback)
+    if ma_now is None or ma_prev is None or ma_prev == 0:
+        return None
+    return (ma_now - ma_prev) / ma_prev
+
+
+def compute_mas(closes: list) -> dict:
+    end = len(closes) - 1
+    return {n: _ma(closes, n, end) for n in MA_LIST}
+
+
+# ── 14.3 果论State状态机 ──────────────────────────────────
+
+def detect_state(P: float, mas: dict) -> tuple:
+    """
+    果论均线排列State判定。
+    返回 (state_label, description, gate)
+    gate: True=多头放行 / False=不放行 / None=观察
+    """
+    ma10 = mas.get(10)
+    ma30 = mas.get(30)
+    ma50 = mas.get(50)
+    ma60 = mas.get(60)
+    ma70 = mas.get(70)
+    ma90 = mas.get(90)
+    ma5  = mas.get(5)
+    ma20 = mas.get(20)
+
+    if any(v is None for v in [ma30, ma60, ma90]):
+        return ("数据不足", "K线不足，无法判定MA30/60/90", None)
+
+    # State 3+（完整多头）
+    if (ma5 and ma10 and ma20 and ma50 and ma70 and
+            P > ma5 > ma10 > ma20 > ma30 > ma50 > ma70 > ma90):
+        return ("3+", "完整多头排列 P>MA5>MA10>MA20>MA30>MA50>MA70>MA90", True)
+
+    # State 3（基础多头）
+    if P > ma30 > ma60 > ma90:
+        if ma10 and P > ma10:
+            return ("3", "结构性多头 P>MA10>MA30>MA60>MA90", True)
+        return ("3", "结构性多头 P>MA30>MA60>MA90", True)
+
+    # State 0（空头）
+    if P < ma30 and ma30 < ma60 and ma60 < ma90:
+        return ("0", "结构性空头 P<MA30<MA60<MA90，趋势向下", False)
+
+    # 粘合检测（均线收敛）
+    valid_mas = [v for v in [ma10, ma20, ma30, ma50, ma60] if v is not None]
+    if valid_mas and P > 0:
+        gaps = [abs(P - m) / P for m in valid_mas]
+        max_gap = max(gaps)
+        if max_gap < 0.03:
+            return ("粘合", f"均线高度收敛（最大偏离{max_gap*100:.1f}%），方向待选择", None)
+
+    # State X（混合/横盘）
+    return ("X", "均线结构混乱或横盘，趋势未确认", None)
+
+
+# ── 14.4 筹码分析 ────────────────────────────────────────
+
+def analyze_chip(df: pd.DataFrame, P: float) -> dict:
+    """从Excel最后一行读取筹码数据，计算结构判断"""
+    chip_cols = {
+        "获利比例":  "获利比例",
+        "平均成本":  "平均成本",
+        "低90":     "90%成本-低",
+        "高90":     "90%成本-高",
+        "集中90":   "90%集中度",
+        "低70":     "70%成本-低",
+        "高70":     "70%成本-高",
+        "集中70":   "70%集中度",
+    }
+    result = {}
+    last = df.iloc[-1]
+
+    for key, col in chip_cols.items():
+        if col in df.columns:
+            v = last.get(col)
+            result[key] = float(v) if pd.notna(v) else None
+        else:
+            result[key] = None
+
+    # 成本趋势（近CHIP_LOOK期）
+    if "平均成本" in df.columns:
+        seg = df["平均成本"].dropna().tail(CHIP_LOOK).tolist()
+        if len(seg) >= 2:
+            chg = (seg[-1] - seg[0]) / seg[0] if seg[0] > 0 else 0
+            result["成本趋势"] = "上移" if chg > 0.01 else ("下移" if chg < -0.01 else "稳定")
+            result["成本趋势变化"] = round(chg * 100, 2)
+        else:
+            result["成本趋势"] = "数据不足"
+            result["成本趋势变化"] = None
+
+    # 集中度趋势
+    if "70%集中度" in df.columns:
+        seg = df["70%集中度"].dropna().tail(CHIP_LOOK).tolist()
+        if len(seg) >= 2:
+            result["集中度趋势"] = "集中" if seg[-1] < seg[0] * 0.9 else (
+                "发散" if seg[-1] > seg[0] * 1.1 else "稳定")
+        else:
+            result["集中度趋势"] = "数据不足"
+
+    # 价格vs平均成本
+    avg = result.get("平均成本")
+    if avg and avg > 0:
+        result["价格vs成本"] = round((P / avg - 1) * 100, 2)
+
+    return result
+
+
+# ── 14.5 真实波动率计算 ───────────────────────────────────
+
+def compute_real_volatility(df: pd.DataFrame) -> dict:
+    """从振幅数据计算年化真实波动率，用于校验V2的σ设定"""
+    result = {}
+
+    # 方法1：用振幅列（如有）
+    if "振幅" in df.columns:
+        amp = df["振幅"].dropna()
+        if len(amp) >= 20:
+            # 振幅是日内高低相对前收的百分比，近似日波动
+            # 年化：振幅均值 × sqrt(252) 作为粗估
+            daily_vol = amp.tail(252).mean() / 100  # 转为小数
+            result["振幅法年化波动率"] = round(daily_vol * math.sqrt(252) * 100, 1)
+
+    # 方法2：用收盘价日收益率（更标准）
+    if "收盘" in df.columns:
+        closes = df["收盘"].dropna()
+        if len(closes) >= 20:
+            ret = closes.pct_change().dropna()
+            # 近1年
+            ann_vol_1y = float(ret.tail(252).std() * math.sqrt(252) * 100)
+            # 近6个月
+            ann_vol_6m = float(ret.tail(126).std() * math.sqrt(252) * 100)
+            result["1年年化波动率"]  = round(ann_vol_1y, 1)
+            result["6月年化波动率"]  = round(ann_vol_6m, 1)
+            result["推荐σ设定"]      = round(ann_vol_1y * 0.7, 1)  # 7个月折算
+
+    return result
+
+
+# ── 14.6 历史价格分位 ────────────────────────────────────
+
+def compute_price_position(df: pd.DataFrame, P: float) -> dict:
+    """计算当前价格在历史区间中的分位"""
+    result = {}
+    if "收盘" not in df.columns:
+        return result
+    closes = df["收盘"].dropna()
+
+    for label, n in [("1年", 252), ("6月", 126), ("3月", 63)]:
+        seg = closes.tail(n)
+        if len(seg) < 10:
+            continue
+        hi, lo = float(seg.max()), float(seg.min())
+        pct = (P - lo) / (hi - lo) * 100 if hi > lo else 50.0
+        result[f"{label}区间"] = f"${lo:.2f}~${hi:.2f}"
+        result[f"{label}分位"] = round(pct, 1)
+        result[f"距{label}高"] = round((P / hi - 1) * 100, 1)
+        result[f"距{label}低"] = round((P / lo - 1) * 100, 1)
+
+    return result
+
+
+# ── 14.7 MA距离分析 ──────────────────────────────────────
+
+def compute_ma_gaps(P: float, mas: dict, df: pd.DataFrame) -> dict:
+    """计算价格与各均线的偏离，以及均线斜率"""
+    result = {}
+    closes_list = df["收盘"].dropna().tolist() if "收盘" in df.columns else []
+
+    for n in [10, 20, 30, 50, 90]:
+        m = mas.get(n)
+        if m and m > 0:
+            gap = (P - m) / m * 100
+            result[f"Gap_MA{n}"] = round(gap, 2)
+            # 斜率
+            if closes_list:
+                sl = _slope(closes_list, n)
+                result[f"斜率_MA{n}"] = round(sl * 100, 3) if sl is not None else None
+
+    return result
+
+
+# ── 14.8 技术分析→概率修正核心逻辑 ───────────────────────
+
+def derive_tech_prob_adjustment(
+    ticker: str,
+    state: str,
+    gate: Optional[bool],
+    chip: dict,
+    vol: dict,
+    pos: dict,
+    ma_gaps: dict,
+    current_price: float,
+    v2_scenarios: list,
+) -> tuple:
+    """
+    基于技术分析，给出修正后的三情景概率。
+    逻辑：
+    - State 3+/3（多头）→ 维持或上调乐观概率
+    - 粘合 → 降低乐观，上调中性（方向未定）
+    - State 0（空头）→ 大幅下调乐观，上调悲观
+    - 筹码获利比例高 → 上方套牢压力大，略降乐观
+    - 价格在历史高分位 → 略降乐观
+    返回 (new_scenarios, reason_lines)
+    """
+    # 读取V2基础概率
+    base = {s["label"]: s["prob"] for s in v2_scenarios}
+    p_bull = base.get("乐观", 0.30)
+    p_mid  = base.get("中性", 0.50)
+    p_bear = base.get("悲观", 0.20)
+
+    reasons = []
+    reasons.append(f"  V2基础概率：乐观{p_bull*100:.0f}% / 中性{p_mid*100:.0f}% / 悲观{p_bear*100:.0f}%")
+
+    # ── State调整 ──
+    if state == "3+":
+        p_bull = min(p_bull + 0.15, 0.65)
+        p_bear = max(p_bear - 0.10, 0.05)
+        reasons.append(f"  State 3+（完整多头）→ 乐观+15% 悲观-10%")
+    elif state == "3":
+        p_bull = min(p_bull + 0.08, 0.55)
+        p_bear = max(p_bear - 0.05, 0.08)
+        reasons.append(f"  State 3（基础多头）→ 乐观+8% 悲观-5%")
+    elif state == "粘合":
+        p_bull = max(p_bull - 0.08, 0.15)
+        p_mid  = min(p_mid  + 0.10, 0.65)
+        p_bear = min(p_bear + 0.03, 0.30)
+        reasons.append(f"  State 粘合（方向未定）→ 乐观-8% 中性+10%")
+    elif state == "0":
+        p_bull = max(p_bull - 0.15, 0.08)
+        p_bear = min(p_bear + 0.15, 0.40)
+        reasons.append(f"  State 0（空头）→ 乐观-15% 悲观+15%")
+    elif state == "X":
+        p_bull = max(p_bull - 0.05, 0.15)
+        p_mid  = min(p_mid  + 0.05, 0.60)
+        reasons.append(f"  State X（横盘）→ 乐观-5% 中性+5%")
+    else:
+        reasons.append(f"  State {state}（数据不足）→ 概率不调整")
+
+    # ── 筹码调整 ──
+    profit = chip.get("获利比例")
+    cost_trend = chip.get("成本趋势", "稳定")
+    conc_trend = chip.get("集中度趋势", "稳定")
+
+    if profit is not None:
+        if profit > 75:
+            p_bull = max(p_bull - 0.05, 0.10)
+            reasons.append(f"  筹码获利比例{profit:.0f}%（高位套牢压力大）→ 乐观-5%")
+        elif profit < 25:
+            p_bull = min(p_bull + 0.05, 0.65)
+            reasons.append(f"  筹码获利比例{profit:.0f}%（低位筹码轻盈）→ 乐观+5%")
+
+    if cost_trend == "上移" and conc_trend == "集中":
+        p_bull = min(p_bull + 0.03, 0.65)
+        reasons.append(f"  筹码成本上移+集中（健康吸筹）→ 乐观+3%")
+    elif cost_trend == "下移":
+        p_bull = max(p_bull - 0.03, 0.10)
+        reasons.append(f"  筹码成本下移（资金离场）→ 乐观-3%")
+
+    # ── 位置调整 ──
+    pos_1y = pos.get("1年分位")
+    if pos_1y is not None:
+        if pos_1y > 80:
+            p_bull = max(p_bull - 0.03, 0.10)
+            reasons.append(f"  价格在1年{pos_1y:.0f}%分位（历史高位）→ 乐观-3%")
+        elif pos_1y < 20:
+            p_bull = min(p_bull + 0.03, 0.65)
+            reasons.append(f"  价格在1年{pos_1y:.0f}%分位（历史低位）→ 乐观+3%")
+
+    # ── 归一化 ──
+    total = p_bull + p_mid + p_bear
+    if total > 0:
+        p_bull /= total
+        p_mid  /= total
+        p_bear /= total
+
+    p_bull = round(p_bull, 2)
+    p_bear = round(p_bear, 2)
+    p_mid  = round(1.0 - p_bull - p_bear, 2)
+
+    # 取出原始return_pct（不变，只改prob）
+    ret_map = {s["label"]: s["return_pct"] for s in v2_scenarios}
+
+    new_scenarios = [
+        {"label": "乐观", "return_pct": ret_map["乐观"], "prob": p_bull},
+        {"label": "中性", "return_pct": ret_map["中性"], "prob": p_mid},
+        {"label": "悲观", "return_pct": ret_map["悲观"], "prob": p_bear},
+    ]
+
+    reasons.append(
+        f"  技术修正后：乐观{p_bull*100:.0f}% / 中性{p_mid*100:.0f}% / 悲观{p_bear*100:.0f}%"
+    )
+
+    return new_scenarios, reasons
+
+
+# ── 14.9 Section 3完整输出 ───────────────────────────────
+
+def run_section3(current_prices: dict) -> dict:
+    """
+    执行Section 3：读取Excel → 技术分析 → 修正SCENARIOS概率
+    返回 tech_results dict（供main展示）
+    直接修改全局SCENARIOS（ABT/HPE）
+    """
+    print(f"\n{BOLD}{CYAN}")
+    print("╔════════════════════════════════════════════════════════╗")
+    print("║  SECTION 3 · 技术位置快照 · 走势数据驱动概率修正     ║")
+    print("╚════════════════════════════════════════════════════════╝")
+    print(f"{RESET}")
+    print(f"  {YELLOW}说明：技术分析是V2估值/事件驱动的补充维度，不替代。")
+    print(f"        黑天鹅/财报/宏观冲击仍可打破技术走势判断。{RESET}\n")
+
+    tech_results = {}
+
+    for ticker in ["ABT", "HPE"]:
+        cp = current_prices.get(ticker, SCENARIOS[ticker].get("current_price") or 0)
+        if cp <= 0:
+            print(f"  {RED}[V3] {ticker} 无有效价格，跳过{RESET}")
+            continue
+
+        print(f"{BOLD}{'─'*58}{RESET}")
+        print(f"{BOLD}  {ticker}  当前价：${cp:.2f}{RESET}")
+
+        df = load_hist_excel(ticker)
+        if df is None or len(df) < 90:
+            print(f"  {YELLOW}数据不足（<90行），技术分析跳过，SCENARIOS不修改{RESET}")
+            continue
+
+        closes = df["收盘"].dropna().tolist()
+        mas    = compute_mas(closes)
+
+        # State
+        state, state_desc, gate = detect_state(cp, mas)
+        gate_str = (f"{GREEN}✓多头放行{RESET}" if gate is True else
+                    f"{RED}✗未放行{RESET}"    if gate is False else
+                    f"{YELLOW}○观察{RESET}")
+        print(f"\n  【均线State】{BOLD}{state}{RESET}  {gate_str}")
+        print(f"    {state_desc}")
+
+        # 关键均线列表
+        print(f"    均线位置：", end="")
+        for n in [5, 10, 20, 30, 50, 90]:
+            m = mas.get(n)
+            if m:
+                diff = (cp - m) / m * 100
+                color = GREEN if diff > 0 else RED
+                print(f"MA{n}:{color}{diff:+.1f}%{RESET}  ", end="")
+        print()
+
+        # 筹码
+        chip = analyze_chip(df, cp)
+        print(f"\n  【筹码结构】")
+        if chip.get("获利比例") is not None:
+            profit = chip["获利比例"]
+            p_color = RED if profit > 70 else (GREEN if profit < 30 else YELLOW)
+            print(f"    获利比例：{p_color}{profit:.1f}%{RESET}  "
+                  f"平均成本：${chip.get('平均成本', 0):.2f}  "
+                  f"价格vs成本：{chip.get('价格vs成本', 0):+.1f}%")
+            print(f"    90%成本区：${chip.get('低90', 0):.2f}~${chip.get('高90', 0):.2f}  "
+                  f"集中度{chip.get('集中90', 0):.1f}%")
+            print(f"    70%成本区：${chip.get('低70', 0):.2f}~${chip.get('高70', 0):.2f}  "
+                  f"集中度{chip.get('集中70', 0):.1f}%")
+            print(f"    成本趋势：{chip.get('成本趋势','—')}  "
+                  f"集中度趋势：{chip.get('集中度趋势','—')}")
+        else:
+            print(f"    {YELLOW}筹码数据缺失{RESET}")
+
+        # 价格分位
+        pos = compute_price_position(df, cp)
+        print(f"\n  【历史分位】")
+        for label in ["1年", "6月", "3月"]:
+            k = f"{label}分位"
+            if k in pos:
+                pct = pos[k]
+                c = RED if pct > 75 else (GREEN if pct < 25 else YELLOW)
+                print(f"    {label}：{c}{pct:.0f}%分位{RESET}  "
+                      f"区间{pos.get(f'{label}区间','—')}  "
+                      f"距高{pos.get(f'距{label}高',0):+.1f}%  "
+                      f"距低{pos.get(f'距{label}低',0):+.1f}%")
+
+        # 波动率
+        vol = compute_real_volatility(df)
+        v2_sigma = SCENARIOS[ticker].get("sigma_pct", 0)
+        print(f"\n  【波动率校验】")
+        if "1年年化波动率" in vol:
+            real_vol = vol["1年年化波动率"]
+            diff_vol = real_vol - v2_sigma
+            v_color  = RED if abs(diff_vol) > 5 else GREEN
+            print(f"    真实1年年化波动率：{real_vol:.1f}%  "
+                  f"V2设定σ：{v2_sigma:.1f}%  "
+                  f"差值：{v_color}{diff_vol:+.1f}%{RESET}")
+            if vol.get("推荐σ设定"):
+                print(f"    推荐σ（7月折算）：{vol['推荐σ设定']:.1f}%"
+                      f"{'  ⚠️ 建议更新V2配置' if abs(diff_vol) > 5 else ''}")
+
+        # ── 概率修正 ──
+        print(f"\n  【技术概率修正】")
+        ma_gaps = compute_ma_gaps(cp, mas, df)
+        v2_sc   = SCENARIOS[ticker]["scenarios"]
+        new_sc, reasons = derive_tech_prob_adjustment(
+            ticker, state, gate, chip, vol, pos, ma_gaps, cp, v2_sc
+        )
+        for r in reasons:
+            print(r)
+
+        # 直接更新SCENARIOS（这是V3核心：技术分析修正概率）
+        SCENARIOS[ticker]["scenarios"] = new_sc
+        # 记录tech_state供分数凯利动态fraction使用
+        SCENARIOS[ticker]["_tech_state"] = state
+        # 同步更新Eᵢ（用加权期望收益近似）
+        weighted_ret = sum(s["prob"] * s["return_pct"] for s in new_sc)
+        SCENARIOS[ticker]["ei_pct"] = round(weighted_ret * 0.7, 1)  # 折扣系数0.7
+
+        new_bull = new_sc[0]["prob"]
+        new_mid  = new_sc[1]["prob"]
+        new_bear = new_sc[2]["prob"]
+        print(f"\n  {GREEN}✓ SCENARIOS已更新：{ticker} "
+              f"乐观{new_bull*100:.0f}% / 中性{new_mid*100:.0f}% / 悲观{new_bear*100:.0f}%{RESET}")
+
+        tech_results[ticker] = {
+            "state": state, "gate": gate,
+            "chip": chip, "vol": vol, "pos": pos,
+            "new_probs": (new_bull, new_mid, new_bear),
+        }
+
+    print(f"\n{BOLD}{'─'*58}{RESET}")
+    print(f"  {CYAN}Section 3完成 → 以上技术修正概率已生效，S矩阵将用更新后概率计算{RESET}")
+
+    return tech_results
+
+
+# ═══════════════════════════════════════════════════════════
+# 十五、V3入口
+# ═══════════════════════════════════════════════════════════
+
+if __name__ == "__main__":
+
+    df, summary = main(
+        fetch_live_prices=True,   # True=联网拉实时价格
+        analyze_etf_flag=True,    # True=分析SCHG历史数据
+        show_section2=True,       # True=显示调仓优化分析
+        show_section3=True,       # True=读取Excel走势，技术分析修正概率（V3核心）
+        export_csv=False,         # True=导出S矩阵CSV
+        apply_rule=None,          # 节点触发后填入：
+                                  # "ABT_Q2_beat" / "ABT_Q2_miss"
+                                  # "HPE_Q3_beat" / "HPE_Q3_miss"
+        show_top_n=12,
+    )
+
+    # ── 节点触发后取消注释 ──
+    # df, summary = main(apply_rule="ABT_Q2_beat")
+    # df, summary = main(apply_rule="HPE_Q3_beat")
+
+之前搞过这个代码 它的内在逻辑其实就是基于S矩阵的风险收益组合来的

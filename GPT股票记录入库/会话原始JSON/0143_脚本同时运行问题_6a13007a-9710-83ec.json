@@ -1,0 +1,486 @@
+{
+  "conversation_id": "6a13007a-9710-83ec-b492-320e0a16c515",
+  "conversation_template_id": null,
+  "create_time": 1779630203.90984,
+  "current_node": "d094a3fc-2ff0-4e28-81ef-7ccaf4afb6e8",
+  "default_model_slug": "auto",
+  "id": "6a13007a-9710-83ec-b492-320e0a16c515",
+  "is_archived": false,
+  "is_do_not_remember": false,
+  "is_read_only": null,
+  "is_starred": null,
+  "is_study_mode": false,
+  "mapping": {
+    "22a66629-778d-4d5c-be53-15e9927413c3": {
+      "id": "22a66629-778d-4d5c-be53-15e9927413c3",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "user"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "我是想同样的时间里跑2个代码 因为一些代码花费的时间很久 2 3个小时\n能一起跑吗 还是必须后台自动运行才可以 才不会冲突？"
+          ]
+        },
+        "create_time": 1779630259.109,
+        "id": "22a66629-778d-4d5c-be53-15e9927413c3",
+        "metadata": {
+          "serialization_metadata": {
+            "custom_symbol_offsets": []
+          }
+        }
+      },
+      "parent": "cd32b905-d9dd-4821-a9e4-7c515d2fc082"
+    },
+    "36e27706-f71b-4f3a-92f3-4ac420ed68f4": {
+      "id": "36e27706-f71b-4f3a-92f3-4ac420ed68f4",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "user"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "把所有的PY备份，非覆盖式备份   已完成：目前我有几个网盘 会自动覆盖已有文件\r\n目前也上传到了谷歌云盘 这个是非覆盖式的\r\n\r\n所有的代码应该保证可以有2层，同时爬出一样的结果，防止某个失效\n\n其他的我还需要加强啥"
+          ]
+        },
+        "create_time": 1779675098.746,
+        "id": "36e27706-f71b-4f3a-92f3-4ac420ed68f4",
+        "metadata": {
+          "serialization_metadata": {
+            "custom_symbol_offsets": []
+          }
+        }
+      },
+      "parent": "9a6f6ea9-ba40-4e52-b4d3-76cb38a8aca9"
+    },
+    "8604137d-ff8c-4c0a-90e7-f81a9a78d3ff": {
+      "id": "8604137d-ff8c-4c0a-90e7-f81a9a78d3ff",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "user"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "能不能2个脚本一起跑？ 我看terminal那会冲突？"
+          ]
+        },
+        "create_time": 1779630195.317,
+        "id": "8604137d-ff8c-4c0a-90e7-f81a9a78d3ff",
+        "metadata": {
+          "serialization_metadata": {
+            "custom_symbol_offsets": []
+          }
+        }
+      },
+      "parent": "client-created-root"
+    },
+    "9a6f6ea9-ba40-4e52-b4d3-76cb38a8aca9": {
+      "id": "9a6f6ea9-ba40-4e52-b4d3-76cb38a8aca9",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "assistant"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "可以一起跑，不必须后台。\n\n核心点是：\n\n> 只要不是抢同一个资源，两个长时间运行的代码完全可以同时跑。\n\n例如：\n\n- 一个在抓A股\n- 一个在处理港股\n- 一个在下载数据\n- 一个在做回测\n\n都可以同时运行几个小时。\n\n---\n\n## 最简单的方法\n\n你开两个 terminal：\n\n### Terminal 1\n\n```bash\npython a.py\n```\n\n### Terminal 2\n\n```bash\npython b.py\n```\n\n这样就是同时运行。\n\n这是最正常的做法。\n\n---\n\n## 那为什么很多人会用后台运行？\n\n因为：\n\n### 前台运行的问题\n\n如果：\n\n- 关闭 terminal\n- 电脑休眠\n- SSH断开\n- VPS连接断开\n\n程序可能一起没了。\n\n所以长期任务才会：\n\n- nohup\n- screen\n- tmux\n- systemd\n- supervisor\n- docker\n\n这些是“守护运行”。\n\n不是因为不能同时运行。\n\n---\n\n## 你现在真正要注意的是“资源冲突”\n\n不是 terminal 冲突。\n\n---\n\n# 哪些东西会冲突\n\n## 1）同一个输出文件\n\n例如：\n\n```python\nsave to data.csv\n```\n\n两个程序都写这个。\n\n会炸。\n\n---\n\n## 2）同一个 sqlite\n\nsqlite 很容易：\n\n```text\ndatabase is locked\n```\n\n长期多脚本并发不太行。\n\n解决：\n\n- PostgreSQL\n- MySQL\n- 或拆库\n\n---\n\n## 3）内存占用\n\n如果两个脚本：\n\n- 都开 pandas\n- 都开浏览器\n- 都 Selenium\n\n电脑可能直接卡死。\n\n特别：\n\n- Playwright\n- Chrome\n- AI模型\n- 大DataFrame\n\n非常吃内存。\n\n---\n\n## 4）API限流\n\n这个最常见。\n\n例如：\n\n- 东方财富\n- tushare\n- Yahoo\n- Binance\n\n两个脚本同时狂请求。\n\n会：\n\n- 429\n- ban\n- 风控\n\n---\n\n# 推荐你现在的方式\n\n如果你只是：\n\n> “两个脚本都要跑2~3小时”\n\n那：\n\n## 直接两个 terminal 即可\n\n例如：\n\n```bash\n# terminal 1\npython cn_stock.py\n```\n\n```bash\n# terminal 2\npython hk_stock.py\n```\n\n完全没问题。\n\n---\n\n# 如果你怕关闭terminal\n\n那用：\n\n## Linux / Mac\n\n```bash\nnohup python a.py > a.log 2>&1 &\n```\n\n或者：\n\n```bash\ntmux\n```\n\n这是专业长期运行方案。\n\n---\n\n# Windows\n\n推荐：\n\n## PowerShell\n\n开两个窗口即可。\n\n或者：\n\n```powershell\nStart-Process python a.py\nStart-Process python b.py\n```\n\n---\n\n# 真正专业的长期方案（以后）\n\n等你后面系统复杂了。\n\n你会开始进入：\n\n- multiprocessing\n- asyncio\n- celery\n- redis queue\n- docker compose\n- kubernetes\n\n阶段。\n\n但你现在还没必要。"
+          ]
+        },
+        "create_time": 1779630260.376213,
+        "id": "9a6f6ea9-ba40-4e52-b4d3-76cb38a8aca9",
+        "metadata": {
+          "code_blocks": {
+            "0": {
+              "edited": false,
+              "id": "fbsy65",
+              "preview_language": null,
+              "previewable": false
+            },
+            "1": {
+              "edited": false,
+              "id": "wwja1k",
+              "preview_language": null,
+              "previewable": false
+            },
+            "2": {
+              "edited": false,
+              "id": "0jh30u",
+              "preview_language": null,
+              "previewable": false
+            },
+            "3": {
+              "edited": false,
+              "id": "vll4ts",
+              "preview_language": null,
+              "previewable": false
+            },
+            "4": {
+              "edited": false,
+              "id": "873iky",
+              "preview_language": null,
+              "previewable": false
+            },
+            "5": {
+              "edited": false,
+              "id": "iybcap",
+              "preview_language": null,
+              "previewable": false
+            },
+            "6": {
+              "edited": false,
+              "id": "4h0bhk",
+              "preview_language": null,
+              "previewable": false
+            },
+            "7": {
+              "edited": false,
+              "id": "vccigy",
+              "preview_language": null,
+              "previewable": false
+            },
+            "8": {
+              "edited": false,
+              "id": "12hau5",
+              "preview_language": null,
+              "previewable": false
+            }
+          },
+          "content_references": [],
+          "conversation_context_citation_metadata": [
+            {
+              "citation": {
+                "alt": null,
+                "attribution": "Past chat",
+                "citation_uuid": "061b78de-7bf7-40eb-b4bb-13eaa7c2cc8d",
+                "conversation_context_type": "past_conversation",
+                "conversation_title": "量化抓取优化建议",
+                "end_idx": -1,
+                "index": 0,
+                "matched_text": "",
+                "prompt_text": null,
+                "pub_date": 1779516196.854804,
+                "reason": null,
+                "refs": [],
+                "snippet": "2. tushare 3. yfinance 4. 东方财富 API",
+                "start_idx": -1,
+                "title": "量化抓取优化建议",
+                "type": "conversation_context_citation",
+                "url": "/c/6a114320-41b4-83ec-a8c6-786fae7d53ca"
+              },
+              "citation_uuid": "061b78de-7bf7-40eb-b4bb-13eaa7c2cc8d",
+              "deleted": false,
+              "feedback": null
+            }
+          ],
+          "model_slug": "gpt-5-5",
+          "parent_id": "22a66629-778d-4d5c-be53-15e9927413c3"
+        }
+      },
+      "parent": "22a66629-778d-4d5c-be53-15e9927413c3"
+    },
+    "cd32b905-d9dd-4821-a9e4-7c515d2fc082": {
+      "id": "cd32b905-d9dd-4821-a9e4-7c515d2fc082",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "assistant"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "能，但要看你说的“冲突”是哪一种。\n\n一般有几种情况：\n\n---\n\n### 1）两个 Python 脚本同时运行 —— 完全可以\n比如：\n\n```bash\npython a.py\npython b.py\n```\n\n如果你是在同一个 terminal 直接顺序执行，那第一个没结束前，第二个当然跑不了。\n\n正确方式：\n\n```bash\n# terminal 1\npython a.py\n\n# terminal 2\npython b.py\n```\n\n或者后台运行：\n\n```bash\npython a.py &\npython b.py &\n```\n\n---\n\n### 2）你看到“terminal 冲突”\n大概率是以下问题：\n\n#### （1）抢同一个文件\n例如：\n\n- 都写 `data.csv`\n- 都写 `log.txt`\n- 都写 sqlite 数据库\n\n这会：\n\n- 文件锁\n- 覆盖\n- 写入错乱\n\n解决：\n\n```python\n# 不同输出目录\nlogs/a/\nlogs/b/\n```\n\n或者：\n\n```python\nf\"log_{symbol}.txt\"\n```\n\n---\n\n#### （2）抢同一个端口\n比如：\n\n```python\napp.run(port=5000)\n```\n\n两个脚本都占 `5000`\n\n那第二个一定报：\n\n```bash\nAddress already in use\n```\n\n解决：\n\n```python\n5000\n5001\n5002\n```\n\n---\n\n#### （3）共用一个 session / browser\n如果你：\n\n- Selenium\n- Playwright\n- Chrome user-data-dir\n\n同时用同一个 profile：\n\n```bash\n--user-data-dir=chrome_data\n```\n\n就容易冲突。\n\n解决：\n\n```bash\nchrome_data_1\nchrome_data_2\n```\n\n---\n\n#### （4）抢 API 频率\n你之前不是在搞长期抓取架构吗。\n\n如果两个脚本：\n\n- 同时请求 akshare\n- 同时请求 tushare\n- 同时请求东方财富接口\n\n可能触发：\n\n- rate limit\n- ban\n- 风控\n\n这不是 terminal 冲突，是数据源冲突。\n\n解决：\n\n- 请求队列\n- asyncio\n- redis queue\n- 中央调度器\n\n---\n\n### 3）长期运行系统里，正确方式其实不是“两个 terminal”\n而是：\n\n## 一个主调度 + 多 worker\n\n例如：\n\n```text\nscheduler.py\n ├── stock_worker.py\n ├── hk_worker.py\n ├── us_worker.py\n └── news_worker.py\n```\n\n由主程序统一调度。\n\n这才是长期稳定方案。\n\n---\n\n### 4）你现在最可能的问题\n结合你前面一直在聊的量化抓取系统。\n\n你大概率是：\n\n- 一个脚本抓 A 股\n- 一个脚本抓港股\n- 同时写数据库/缓存\n\n然后发现：\n\n- terminal 输出混乱\n- 文件被覆盖\n- session 被抢\n- API 限流\n\n这不是“不能一起跑”。\n\n而是：\n\n> 你已经开始进入“多进程系统设计”阶段了。\n\n这其实是好事。说明你已经不是单脚本思维了。"
+          ]
+        },
+        "create_time": 1779630203.82473,
+        "id": "cd32b905-d9dd-4821-a9e4-7c515d2fc082",
+        "metadata": {
+          "code_blocks": {
+            "0": {
+              "edited": false,
+              "id": "uy1odu",
+              "preview_language": null,
+              "previewable": false
+            },
+            "1": {
+              "edited": false,
+              "id": "dt6xif",
+              "preview_language": null,
+              "previewable": false
+            },
+            "10": {
+              "edited": false,
+              "id": "euwbfl",
+              "preview_language": null,
+              "previewable": false
+            },
+            "2": {
+              "edited": false,
+              "id": "vztpul",
+              "preview_language": null,
+              "previewable": false
+            },
+            "3": {
+              "edited": false,
+              "id": "a0wl26",
+              "preview_language": null,
+              "previewable": false
+            },
+            "4": {
+              "edited": false,
+              "id": "i1lz3n",
+              "preview_language": null,
+              "previewable": false
+            },
+            "5": {
+              "edited": false,
+              "id": "vf398z",
+              "preview_language": null,
+              "previewable": false
+            },
+            "6": {
+              "edited": false,
+              "id": "29rgnw",
+              "preview_language": null,
+              "previewable": false
+            },
+            "7": {
+              "edited": false,
+              "id": "43v19q",
+              "preview_language": null,
+              "previewable": false
+            },
+            "8": {
+              "edited": false,
+              "id": "9mgge1",
+              "preview_language": null,
+              "previewable": false
+            },
+            "9": {
+              "edited": false,
+              "id": "2cusua",
+              "preview_language": null,
+              "previewable": false
+            }
+          },
+          "content_references": [],
+          "conversation_context_citation_metadata": [
+            {
+              "citation": {
+                "alt": null,
+                "attribution": "Past chat",
+                "citation_uuid": "17c3aaa3-f441-4ece-9199-4bdb54681a68",
+                "conversation_context_type": "past_conversation",
+                "conversation_title": "量化抓取优化建议",
+                "end_idx": -1,
+                "index": 0,
+                "matched_text": "",
+                "prompt_text": null,
+                "pub_date": 1779516196.854804,
+                "reason": null,
+                "refs": [],
+                "snippet": "这是一个长期运行的",
+                "start_idx": -1,
+                "title": "量化抓取优化建议",
+                "type": "conversation_context_citation",
+                "url": "/c/6a114320-41b4-83ec-a8c6-786fae7d53ca"
+              },
+              "citation_uuid": "17c3aaa3-f441-4ece-9199-4bdb54681a68",
+              "deleted": false,
+              "feedback": null
+            }
+          ],
+          "model_slug": "gpt-5-5",
+          "parent_id": "ca32a01f-2f84-487b-961e-436c967c32e3"
+        }
+      },
+      "parent": "8604137d-ff8c-4c0a-90e7-f81a9a78d3ff"
+    },
+    "client-created-root": {
+      "id": "client-created-root",
+      "message": null,
+      "parent": null
+    },
+    "d094a3fc-2ff0-4e28-81ef-7ccaf4afb6e8": {
+      "id": "d094a3fc-2ff0-4e28-81ef-7ccaf4afb6e8",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "assistant"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "你现在这个思路已经开始接近“小型长期运行系统”了，不再只是“写几个脚本”。\n\n你已经意识到两个非常关键的东西：\n\n1. 代码资产本身需要备份  \n2. 数据源和抓取逻辑需要冗余\n\n这两个其实比“写代码”本身更重要。\n\n你现在已经有：\n\n- 多网盘备份\n- Google Drive 非覆盖备份\n- 双抓取逻辑冗余\n\n这些方向是对的。\n\n但如果你想把这个系统真正长期化、工程化，还缺几个关键层。\n\n---\n\n# 你现在最该加强的几个地方\n\n---\n\n# 1）Git 版本控制（非常重要）\n\n你现在还像是：\n\n```text\nstrategy_final.py\nstrategy_final2.py\nstrategy_final_real.py\nstrategy_final_real_fixed.py\n```\n\n这种阶段。\n\n长期一定会崩。\n\n---\n\n## 必须进入：\n\n# Git\n\n例如：\n\n```bash\ngit init\ngit add .\ngit commit -m \"add hk crawler\"\n```\n\n这样你能：\n\n- 回滚\n- 看历史\n- 对比修改\n- 防止误删\n- 多机器同步\n\n---\n\n## 最重要的是：\n\n### “你终于知道自己改了什么”\n\n很多人长期系统最后崩：\n\n不是代码坏了。\n\n而是：\n\n> 不知道哪次改动导致坏掉。\n\n---\n\n## 最推荐：\n\n### 私有 GitHub 仓库\n或者：\n\n- GitLab\n- Gitea\n- 本地 Git server\n\n---\n\n# 2）日志系统（超级重要）\n\n你现在可能：\n\n```python\nprint(\"success\")\n```\n\n这不够。\n\n长期系统必须：\n\n# logging\n\n例如：\n\n```python\nimport logging\n```\n\n输出：\n\n```text\n2026-05-25 09:11:22\nA-share fetch success\n```\n\n并且：\n\n- 自动写日志\n- 自动分日期\n- 自动轮转\n\n---\n\n## 因为：\n\n2个月后：\n\n你根本不记得：\n\n- 哪天开始坏\n- 哪个接口失效\n- 哪次更新导致异常\n\n日志是系统的“黑匣子”。\n\n---\n\n# 3）异常自动重试\n\n这是爬虫/量化系统核心。\n\n必须防：\n\n- timeout\n- 429\n- connection reset\n- JSON decode\n- DNS失败\n\n---\n\n## 推荐：\n\n```python\nretry\ntenacity\n```\n\n例如：\n\n```python\n@retry(stop=stop_after_attempt(5))\n```\n\n---\n\n# 4）健康检查（很关键）\n\n你现在可能：\n\n```text\n脚本还在运行\n```\n\n但实际上：\n\n- 卡死了\n- 死循环了\n- 接口返回空数据\n- 数据不更新了\n\n这叫：\n\n# “假活着”\n\n非常常见。\n\n---\n\n## 所以要：\n\n### heartbeat\n\n例如：\n\n```text\nlast_update.txt\n```\n\n定时更新时间。\n\n或者：\n\n- Telegram通知\n- 企业微信\n- 邮件报警\n\n---\n\n# 5）配置文件分离（重要）\n\n不要：\n\n```python\nAPI_KEY = \"xxx\"\n```\n\n写死。\n\n长期必须：\n\n```text\nconfig.yaml\n.env\nsettings.json\n```\n\n---\n\n## 因为未来：\n\n你会：\n\n- 多机器\n- 多环境\n- 多账户\n- 多API\n\n---\n\n# 6）数据落地规范化（很重要）\n\n很多人最后最大问题：\n\n> 数据越来越多，但无法管理。\n\n---\n\n## 推荐结构：\n\n```text\n/data\n    /a_share\n    /hk_share\n    /us_share\n/logs\n/config\n/scripts\n/backups\n```\n\n---\n\n# 7）数据校验（极其重要）\n\n很多人：\n\n以为抓到了。\n\n实际上：\n\n```text\nnull\n0\nempty dataframe\n```\n\n也保存了。\n\n最后回测全错。\n\n---\n\n## 必须：\n\n抓完后验证：\n\n```python\nif df.empty:\n```\n\n或者：\n\n```python\nif volume == 0:\n```\n\n---\n\n# 8）接口失效自动切换（你已经意识到了）\n\n你刚说的：\n\n> 两层同时爬一样结果\n\n这是非常专业的思路。\n\n例如：\n\n```text\nPrimary:\n    akshare\n\nBackup:\n    tushare\n```\n\n---\n\n## 更进一步：\n\n自动 fallback：\n\n```python\ntry:\n    akshare\nexcept:\n    tushare\n```\n\n---\n\n# 9）定时调度（后面会进入）\n\n未来别手动运行。\n\n进入：\n\n## Linux\n\n```text\ncron\nsystemd\n```\n\n## Windows\n\n```text\nTask Scheduler\n```\n\n---\n\n# 10）环境冻结（极其重要）\n\n未来你一定遇到：\n\n```text\n昨天还能跑\n今天全炸\n```\n\n因为：\n\n```bash\npip install -U\n```\n\n升级依赖了。\n\n---\n\n## 必须：\n\n```bash\npip freeze > requirements.txt\n```\n\n或者：\n\n```text\npoetry\nconda\nuv\n```\n\n---\n\n# 你现在其实已经开始进入：\n\n## “个人量化基础设施”\n\n阶段了。\n\n很多人一直停留在：\n\n```text\n写个脚本\n跑一下\n结束\n```\n\n而你已经开始考虑：\n\n- 冗余\n- 容灾\n- 长期运行\n- 数据可靠性\n- 备份\n- 接口失效\n\n这已经是系统思维了。\n\n---\n\n你下一阶段真正要建立的是：\n\n# “可长期维护性”\n\n因为：\n\n长期系统最大的敌人不是不会写。\n\n而是：\n\n## 时间。"
+          ]
+        },
+        "create_time": 1779675099.656881,
+        "id": "d094a3fc-2ff0-4e28-81ef-7ccaf4afb6e8",
+        "metadata": {
+          "code_blocks": {
+            "0": {
+              "edited": false,
+              "id": "vmh1n8",
+              "preview_language": null,
+              "previewable": false
+            },
+            "1": {
+              "edited": false,
+              "id": "ha2mhc",
+              "preview_language": null,
+              "previewable": false
+            },
+            "10": {
+              "edited": false,
+              "id": "59gw27",
+              "preview_language": null,
+              "previewable": false
+            },
+            "11": {
+              "edited": false,
+              "id": "3753om",
+              "preview_language": null,
+              "previewable": false
+            },
+            "12": {
+              "edited": false,
+              "id": "7sksoa",
+              "preview_language": null,
+              "previewable": false
+            },
+            "13": {
+              "edited": false,
+              "id": "e8dawt",
+              "preview_language": null,
+              "previewable": false
+            },
+            "14": {
+              "edited": false,
+              "id": "fgr1n9",
+              "preview_language": null,
+              "previewable": false
+            },
+            "15": {
+              "edited": false,
+              "id": "46uchh",
+              "preview_language": null,
+              "previewable": false
+            },
+            "16": {
+              "edited": false,
+              "id": "dlh2bt",
+              "preview_language": null,
+              "previewable": false
+            },
+            "17": {
+              "edited": false,
+              "id": "5waw1a",
+              "preview_language": null,
+              "previewable": false
+            },
+            "18": {
+              "edited": false,
+              "id": "mkehts",
+              "preview_language": null,
+              "previewable": false
+            },
+            "19": {
+              "edited": false,
+              "id": "fnijiv",
+              "preview_language": null,
+              "previewable": false
+            },
+            "2": {
+              "edited": false,
+              "id": "6qmo9t",
+              "preview_language": null,
+              "previewable": false
+            },
+            "20": {
+              "edited": false,
+              "id": "pw3n3m",
+              "preview_language": null,
+              "previewable": false
+            },
+            "21": {
+              "edited": false,
+              "id": "tn1vqz",
+              "preview_language": null,
+              "previewable": false
+            },
+            "22": {
+              "edited": false,
+              "id": "idd8lx",
+              "preview_language": null,
+              "previewable": false
+            },
+            "23": {
+              "edited": false,
+              "id": "p98edo",
+              "preview_language": null,
+              "previewable": false
+            },
+            "3": {
+              "edited": false,
+              "id": "b4khxy",
+              "preview_language": null,
+              "previewable": false
+            },
+            "4": {
+              "edited": false,
+              "id": "zz7p3c",
+              "preview_language": null,
+              "previewable": false
+            },
+            "5": {
+              "edited": false,
+              "id": "olzwnb",
+              "preview_language": null,
+              "previewable": false
+            },
+            "6": {
+              "edited": false,
+              "id": "f72dk4",
+              "preview_language": null,
+              "previewable": false
+            },
+            "7": {
+              "edited": false,
+              "id": "6dxn1c",
+              "preview_language": null,
+              "previewable": false
+            },
+            "8": {
+              "edited": false,
+              "id": "htonv2",
+              "preview_language": null,
+              "previewable": false
+            },
+            "9": {
+              "edited": false,
+              "id": "vau2bt",
+              "preview_language": null,
+              "previewable": false
+            }
+          },
+          "content_references": [],
+          "model_slug": "gpt-5-5",
+          "parent_id": "6f5537fc-6390-4650-a279-4deef50c5d05"
+        }
+      },
+      "parent": "36e27706-f71b-4f3a-92f3-4ac420ed68f4"
+    }
+  },
+  "memory_scope": "global_enabled",
+  "pinned_time": null,
+  "plugin_ids": null,
+  "title": "脚本同时运行问题",
+  "update_time": 1779675128.820117,
+  "voice": null
+}

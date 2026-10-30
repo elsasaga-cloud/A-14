@@ -1,0 +1,461 @@
+{
+  "conversation_id": "6760f4e3-9bcc-8004-b302-0807b19532e4",
+  "conversation_template_id": null,
+  "create_time": 1734407396.615173,
+  "current_node": "27cf625c-7260-423e-bd9f-05b317805112",
+  "default_model_slug": "auto",
+  "id": "6760f4e3-9bcc-8004-b302-0807b19532e4",
+  "is_archived": true,
+  "is_do_not_remember": null,
+  "is_read_only": null,
+  "is_starred": null,
+  "is_study_mode": false,
+  "mapping": {
+    "27cf625c-7260-423e-bd9f-05b317805112": {
+      "id": "27cf625c-7260-423e-bd9f-05b317805112",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "assistant"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "**Company Profile: Shenzhen Olycom Technology Co., Ltd.**  \n\n**Overview**  \nShenzhen Olycom Technology Co., Ltd., established in 2003, is a leading Chinese manufacturer and provider of fiber optic communication and industrial networking solutions. With nearly two decades of experience, Olycom specializes in high-performance equipment for data transmission, industrial networking, and optical communications. The company’s products are widely used in various industries, including telecommunications, industrial automation, video surveillance, transportation, and smart city projects.  \n\nOlycom’s extensive product portfolio includes **industrial Ethernet switches**, **PoE switches**, fiber optic converters, and advanced **Dense Wavelength Division Multiplexing (DWDM)** devices. With ISO9001-certified facilities and a strong commitment to innovation and quality, Olycom serves customers in over 120 countries worldwide.  \n\n---\n\n**Industrial Ethernet Switches**  \nOlycom’s industrial switches are designed to withstand harsh environments and ensure reliable, uninterrupted connectivity. These switches are ideal for industrial automation, outdoor deployments, and mission-critical networks. Key features include:  \n- **Rugged Design**: Industrial-grade construction with IP-rated enclosures to operate under extreme temperatures, vibrations, and humidity.  \n- **Redundant Power Supply**: Support for wide voltage inputs (12V-48V DC) with redundancy to ensure power reliability.  \n- **High Performance**: Options include **managed and unmanaged industrial Ethernet switches** supporting gigabit and fast Ethernet, providing real-time data transmission for industrial networks.  \n- **Enhanced Security**: Managed switches incorporate advanced features such as VLAN, QoS, and network redundancy protocols (RSTP, MSTP, ERPS) for enhanced stability.  \n\nOlycom’s industrial switches are widely deployed in manufacturing plants, transportation networks, power utilities, and IoT-based smart infrastructures.  \n\n---\n\n**DWDM Equipment**  \nOlycom’s **DWDM (Dense Wavelength Division Multiplexing)** devices are designed to maximize the capacity of optical fiber networks by enabling the simultaneous transmission of multiple data channels over a single fiber. These devices are critical for building high-capacity and scalable communication networks. Key features include:  \n- **High Channel Capacity**: Support for multiple wavelengths (up to 96 channels) to optimize fiber utilization.  \n- **Low Signal Loss**: Precision engineering ensures minimal signal attenuation for long-distance data transmission.  \n- **Versatile Devices**: Olycom offers **DWDM multiplexers, demultiplexers**, and **optical add-drop multiplexers (OADMs)** for flexible network configurations.  \n- **Scalability**: DWDM solutions are easily scalable, making them ideal for expanding metro and long-haul networks.  \n- **Cost-Efficient**: By increasing the capacity of existing fiber infrastructure, Olycom’s DWDM equipment minimizes the need for additional physical fibers, reducing operational costs.  \n\nThese solutions are widely adopted by telecom operators, data centers, and enterprises seeking to enhance their optical network performance and bandwidth capacity.  \n\n---\n\n**Commitment to Quality and Global Reach**  \nOlycom Technology combines cutting-edge technology with rigorous quality control to deliver products that meet global standards. The company maintains a strong focus on research and development, ensuring its solutions remain at the forefront of fiber optic and networking technologies.  \n\nWith a growing presence in international markets, Shenzhen Olycom Technology Co., Ltd. continues to provide reliable, high-performance solutions for modern communication and industrial applications.  \n\n**Website**: [www.olycom.com.cn](http://www.olycom.com.cn)  \n"
+          ]
+        },
+        "create_time": 1734420549.534007,
+        "id": "27cf625c-7260-423e-bd9f-05b317805112",
+        "metadata": {
+          "content_references": [],
+          "model_slug": "gpt-4o",
+          "parent_id": "aaa24a08-6e51-42e1-a711-dd922dd2d3b7"
+        }
+      },
+      "parent": "aaa24a08-6e51-42e1-a711-dd922dd2d3b7"
+    },
+    "49c70811-95c0-4d4d-80a6-551bf2cafb74": {
+      "id": "49c70811-95c0-4d4d-80a6-551bf2cafb74",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "assistant"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "tlwmShenzhen Olycom Technology Co., Ltd.Shenzhen Olycom Technology Co., Ltd.\n\nShenzhen Olycom Technology Co., Ltd., established in 2003, is a Chinese manufacturer specializing in fiber optic transmission equipment. The company offers a range of products, including industrial Ethernet switches, fiber media converters, PoE switches, and WDM/OTN transmission systems. citeturn0search3\n\n**PoE Switches:**\n\nOlycom's Power over Ethernet (PoE) switches are designed to deliver both data and electrical power to devices like IP cameras and wireless access points over a single Ethernet cable. These switches comply with IEEE 802.3af/at standards, providing up to 30W per port. Notably, their industrial-grade PoE switches feature built-in voltage boosters, accommodating a wide input voltage range of 12-48V DC, making them suitable for applications in outdoor environments and industrial automation. citeturn0search6\n\n**DWDM Equipment:**\n\nOlycom's Dense Wavelength Division Multiplexing (DWDM) equipment enables the transmission of multiple data channels over a single optical fiber by assigning each channel a unique wavelength. This technology significantly enhances the capacity of optical networks without the need for additional fibers. Their DWDM product line includes multiplexers, demultiplexers, and optical add-drop multiplexers, which are integral components for building scalable and efficient optical communication networks. citeturn0search7\n\nWith a commitment to quality and innovation, Shenzhen Olycom Technology Co., Ltd. serves clients across various industries, including telecommunications, CCTV surveillance, and industrial automation, extending its reach to over 120 countries worldwide. citeturn0search3 "
+          ]
+        },
+        "create_time": 1734407406.680039,
+        "id": "49c70811-95c0-4d4d-80a6-551bf2cafb74",
+        "metadata": {
+          "content_references": [
+            {
+              "alt": "# [Shenzhen Olycom Technology Co., Ltd.](https://www.google.com/maps/search/Shenzhen+Olycom+Technology+Co.%2C+Ltd.)\n",
+              "breadcrumbs": [
+                "google.com",
+                "Shenzhen Olycom Technology Co., Ltd."
+              ],
+              "display_title": "Shenzhen Olycom Technology Co., Ltd.",
+              "page_title": "Shenzhen Olycom Technology Co., Ltd.",
+              "prompt_text": null,
+              "snippet": null,
+              "type": "tldr",
+              "url": "https://www.google.com/maps/search/Shenzhen+Olycom+Technology+Co.%2C+Ltd.",
+              "used_as_navigation": null
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": "([Industrial Network Switch](https://www.industrialnetworkswitch.com/aboutus.html?utm_source=chatgpt.com))",
+              "attribution": "Industrial Network Switch",
+              "attributions": null,
+              "prompt_text": null,
+              "pub_date": null,
+              "snippet": "We are Shenzhen OLYCOM technology Co., Ltd., established in 2003 as a manufacturer of fiber optic transmission equipment.",
+              "title": "China Shenzhen Olycom Technology Co., Ltd. manufacturer profile",
+              "type": "webpage",
+              "url": "https://www.industrialnetworkswitch.com/aboutus.html?utm_source=chatgpt.com"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": "([Olycom](https://www.olycom.com.cn/article-5496643764350668.html?utm_source=chatgpt.com))",
+              "attribution": "Olycom",
+              "attributions": null,
+              "prompt_text": null,
+              "pub_date": null,
+              "snippet": "The Olycom's 12-48V PoE boost industrial-grade switch can provide 12-48V DC voltage. Each PoE port can provide a maximum power output of 30W.",
+              "title": "Olycom's Industrial POE Network Switch",
+              "type": "webpage",
+              "url": "https://www.olycom.com.cn/article-5496643764350668.html?utm_source=chatgpt.com"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": "([Industrial Network Switch](https://www.industrialnetworkswitch.com/?utm_source=chatgpt.com))",
+              "attribution": "Industrial Network Switch",
+              "attributions": null,
+              "prompt_text": null,
+              "pub_date": null,
+              "snippet": "Shenzhen Olycom Technology Co., Ltd. · 5 Port Unmanaged POE Switch Gigabit Ethernet Uplink 120W Rugged Mini Case · 10 Port Cloud Managed Gigabit Industrial Switch ...",
+              "title": "China Industrial Network Switch & Industrial Managed Ethernet ...",
+              "type": "webpage",
+              "url": "https://www.industrialnetworkswitch.com/?utm_source=chatgpt.com"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": "([Industrial Network Switch](https://www.industrialnetworkswitch.com/aboutus.html?utm_source=chatgpt.com))",
+              "attribution": "Industrial Network Switch",
+              "attributions": null,
+              "prompt_text": null,
+              "pub_date": null,
+              "snippet": "We are Shenzhen OLYCOM technology Co., Ltd., established in 2003 as a manufacturer of fiber optic transmission equipment.",
+              "title": "China Shenzhen Olycom Technology Co., Ltd. manufacturer profile",
+              "type": "webpage",
+              "url": "https://www.industrialnetworkswitch.com/aboutus.html?utm_source=chatgpt.com"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": "",
+              "has_images": false,
+              "prompt_text": null,
+              "sources": [
+                {
+                  "attribution": "Industrial Network Switch",
+                  "title": "China Shenzhen Olycom Technology Co., Ltd. manufacturer profile",
+                  "url": "https://www.industrialnetworkswitch.com/aboutus.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "Olycom",
+                  "title": "Olycom's Industrial POE Network Switch",
+                  "url": "https://www.olycom.com.cn/article-5496643764350668.html?utm_source=chatgpt.com"
+                }
+              ],
+              "type": "sources_footnote"
+            }
+          ],
+          "image_results": [],
+          "message_locale": "en-US",
+          "model_slug": "gpt-4o",
+          "parent_id": "725d1eaa-2fd4-4549-ab8e-e8d480fe7ec3",
+          "search_result_groups": [
+            {
+              "domain": "alibaba.com",
+              "entries": [
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "Shenzhen Olycom Technology Co., Ltd. Products:Industrial Fiber Switch,WDM Series,POE Fiber Switch,Fiber Media Converter,SFP Transceiver.",
+                  "title": "Shenzhen Olycom Technology Co., Ltd.: Company Overview",
+                  "url": "https://olycom.en.alibaba.com/"
+                },
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "IM-FP888GW is the 10/100/1000 Mbps industrial POE fiber switch, comply with IEEE802.3af/at power on POE IP cameras through the Ethernet cable, ...",
+                  "title": "Gigabit Managed Industrial Ethernet Switch 8 Port POE ... - Alibaba",
+                  "url": "https://www.alibaba.com/product-detail/Gigabit-Managed-Industrial-Ethernet-Switch-8_1600396196224.html"
+                }
+              ]
+            },
+            {
+              "domain": "olycom.com.cn",
+              "entries": [
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "We are Shenzhen OLYCOM technology Co., Ltd., established in 2001 as a manufacturer of fiber optic transmission equipment ... POE network switch (TA709-PSE-FE).",
+                  "title": "POE Switch-Shenzhen OLYCOM technology Co., Ltd.",
+                  "url": "https://en.olycom.com.cn/product/product_list/21.html"
+                },
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "We are Shenzhen OLYCOM technology Co., Ltd., established in 2001 as a manufacturer of fiber optic transmission equipment. Our main product are HD Video ...",
+                  "title": "Shenzhen OLYCOM technology Co., Ltd.",
+                  "url": "https://en.olycom.com.cn/"
+                },
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "The Olycom's 12-48V PoE boost industrial-grade switch can provide 12-48V DC voltage. Each PoE port can provide a maximum power output of 30W.",
+                  "title": "Olycom's Industrial POE Network Switch",
+                  "url": "https://www.olycom.com.cn/article-5496643764350668.html"
+                },
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "We are Shenzhen OLYCOM technology Co., Ltd., established in 2001 as a manufacturer of fiber optic transmission equipment. Our main product are HD Video ...",
+                  "title": "About us - Shenzhen OLYCOM technology Co., Ltd.",
+                  "url": "https://en.olycom.com.cn/article/about_us.html"
+                },
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "The main products are industrial fiber switches, industrial POE switches, industrial managed switches, WDM/OTN transmission series, optical cable detection ...",
+                  "title": "About Us - OLYCOM",
+                  "url": "https://www.olycom.com.cn/en/about-us.html"
+                }
+              ]
+            },
+            {
+              "domain": "industrialnetworkswitch.com",
+              "entries": [
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "We are Shenzhen OLYCOM technology Co., Ltd., established in 2003 as a manufacturer of fiber optic transmission equipment.",
+                  "title": "China Shenzhen Olycom Technology Co., Ltd. manufacturer profile",
+                  "url": "https://www.industrialnetworkswitch.com/aboutus.html"
+                },
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "We provide solutions and services of industrial Ethernet switch, fiber to copper media conversion, Ethernet networking, CCTV video surveillance, CWDM DWDM ...",
+                  "title": "China Shenzhen Olycom Technology Co., Ltd. manufacturer profile",
+                  "url": "https://www.industrialnetworkswitch.com/aboutus-more.html"
+                },
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "Shenzhen Olycom Technology Co., Ltd. · 5 Port Unmanaged POE Switch Gigabit Ethernet Uplink 120W Rugged Mini Case · 10 Port Cloud Managed Gigabit Industrial Switch ...",
+                  "title": "China Industrial Network Switch & Industrial Managed Ethernet ...",
+                  "url": "https://www.industrialnetworkswitch.com/"
+                }
+              ]
+            },
+            {
+              "domain": "made-in-china.com",
+              "entries": [
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "Shenzhen Olycom Technology Co., Ltd., is a fiber optic transmission equipment manufacturer in China. Our areas of specialty are Fiber Optic Transmission ...",
+                  "title": "Shenzhen Olycom Technology Co., Ltd.: Industrial Fiber Switch ...",
+                  "url": "https://szolycom.en.made-in-china.com/"
+                },
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "Product Description IM-PC111FE series is the 10/100Mbps industrial POE fiber switch, comply with IEEE802.3af/at, power on POE IP cameras through the Ethernet ...",
+                  "title": "Shenzhen Video Transceiver products, Shenzhen Video ...",
+                  "url": "https://shenzhen.made-in-china.com/suppliers/video-transceiver-211.html"
+                }
+              ]
+            },
+            {
+              "domain": "signalhire.com",
+              "entries": [
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "We are Shenzhen OLYCOM technology Co., Ltd., established in 2001 as a manufacturer of fiber optic transmission equipment. -What we do. We manufa... Show more.",
+                  "title": "Shenzhen Olycom Technology Co., Ltd. Overview | SignalHire ...",
+                  "url": "https://www.signalhire.com/companies/shenzhen-olycom-technology-co-ltd"
+                }
+              ]
+            },
+            {
+              "domain": "tradekey.com",
+              "entries": [
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "Shenzhen Olycom Technology Co., Ltd., is a fiber optic transmission equipment manufacturer in China. Our areas of specialty are Fiber Optic Transmission ...",
+                  "title": "Shenzhen Olycom Technology Co., Ltd, China - Tradekey",
+                  "url": "https://www.tradekey.com/profile_view/uid/6624542.htm"
+                }
+              ]
+            },
+            {
+              "domain": "everychina.com",
+              "entries": [
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "Shenzhen Olycom Technology Co., Ltd. product list provides High-Performance Industrial Managed POE Switch With 10 Ports And 90W Power Output products at ...",
+                  "title": "Shenzhen Olycom Technology Co., Ltd. products list provides High ...",
+                  "url": "https://biz.everychina.com/industrialmanagedethernetswitch-r/list/page28.html"
+                }
+              ]
+            },
+            {
+              "domain": "facebook.com",
+              "entries": [
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "Manufacturer of Industrial Ethernet Switch, WDM/OTN System, PoE Switch, Ethernet/Video Fiber Converter",
+                  "title": "Shenzhen Olycom Technology Co., Ltd. - Facebook",
+                  "url": "https://www.facebook.com/olycomsimon/"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "parent": "aaa29020-c6a9-4281-a2e1-6c4eaf9ec270"
+    },
+    "aaa135dc-d92f-4481-8d4f-2be27eacd60d": {
+      "id": "aaa135dc-d92f-4481-8d4f-2be27eacd60d",
+      "message": null,
+      "parent": null
+    },
+    "aaa24a08-6e51-42e1-a711-dd922dd2d3b7": {
+      "id": "aaa24a08-6e51-42e1-a711-dd922dd2d3b7",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "user"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "write me a profile about Shenzhen Olycom technology company, be sure to including industrial switches and dwdm devices in your answer"
+          ]
+        },
+        "create_time": 1734420535.985079,
+        "id": "aaa24a08-6e51-42e1-a711-dd922dd2d3b7",
+        "metadata": {
+          "serialization_metadata": {
+            "custom_symbol_offsets": []
+          }
+        }
+      },
+      "parent": "49c70811-95c0-4d4d-80a6-551bf2cafb74"
+    },
+    "aaa29020-c6a9-4281-a2e1-6c4eaf9ec270": {
+      "id": "aaa29020-c6a9-4281-a2e1-6c4eaf9ec270",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "user"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "write me a profile about Shenzhen Olycom Technology Co., Ltd.. please include detailed description about poe switch and dwdm equipment"
+          ]
+        },
+        "create_time": 1734407396.621924,
+        "id": "aaa29020-c6a9-4281-a2e1-6c4eaf9ec270",
+        "metadata": {
+          "serialization_metadata": {
+            "custom_symbol_offsets": []
+          }
+        }
+      },
+      "parent": "aaa135dc-d92f-4481-8d4f-2be27eacd60d"
+    }
+  },
+  "memory_scope": "global_enabled",
+  "pinned_time": null,
+  "plugin_ids": null,
+  "title": "Olycom PoE DWDM Overview",
+  "update_time": 1745318815.156556,
+  "voice": null
+}

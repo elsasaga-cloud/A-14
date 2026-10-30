@@ -1,0 +1,10 @@
+Connection Oiagram
+
+Sky End
+Drone                            Camera              OoM610-1VTITWT
+
+|         |
+        =        i!            ;
+e
+Ground Workstation           RE            Fiber Optic Barrel
+Ground End

@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saga Telecom — Marvell AC5 Platform Switches</title>
+<style>
+  :root{
+    --ink:#1a1a18;
+    --paper:#f1efe9;
+    --paper-deep:#e8e4da;
+    --rule:#1a1a18;
+    --rule-light:#b9b3a4;
+    --accent:#8a2e1f;
+    --accent-dim:#b5573f;
+    --green-ok:#2f4d2a;
+    --mono:"Courier New", Courier, monospace;
+    --serif:"Times New Roman", Times, serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--serif);
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.5;
+    font-size:17px;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+
+  /* PAGE SWITCHING */
+  .page{display:none;}
+  .page.active{display:block;}
+
+  /* ============ TOP STRIP ============ */
+  .topstrip{
+    background:var(--ink); color:var(--paper);
+    font-family:var(--mono); font-size:12px; letter-spacing:0.06em;
+    padding:6px 0;
+  }
+  .topstrip .wrap{display:flex; justify-content:space-between; align-items:center;}
+  .topstrip span{opacity:0.75;}
+
+  /* ============ HEADER ============ */
+  header{
+    border-bottom:3px double var(--rule);
+    background:var(--paper);
+    position:sticky; top:0; z-index:50;
+  }
+  .headbar{display:flex; justify-content:space-between; align-items:flex-end; padding:22px 0 14px;}
+  .brandmark{display:flex; align-items:baseline; gap:14px; cursor:pointer; text-decoration:none;}
+  .brandmark .mark{
+    width:40px; height:40px; border:2px solid var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-weight:bold; font-size:15px; flex-shrink:0;
+  }
+  .brandmark h1{font-size:26px; font-weight:700; letter-spacing:0.01em;}
+  .brandmark .tagline{
+    font-family:var(--mono); font-size:11px; letter-spacing:0.08em;
+    color:#555; text-transform:uppercase; margin-top:2px;
+  }
+  nav ul{list-style:none; display:flex; gap:28px; font-size:14px; font-family:var(--mono); letter-spacing:0.03em;}
+  nav button.navlink{
+    background:none; border:none; cursor:pointer;
+    font-family:var(--mono); font-size:14px; letter-spacing:0.03em; color:var(--ink);
+    text-decoration:none; border-bottom:1px solid transparent; padding-bottom:3px;
+    transition:border-color .15s;
+  }
+  nav button.navlink:hover, nav button.navlink:focus-visible{border-color:var(--accent); outline:none;}
+  nav button.navlink.current{border-color:var(--ink);}
+
+  /* ============ BREADCRUMB ============ */
+  .breadcrumb{
+    font-family:var(--mono); font-size:12px; color:#666;
+    padding:14px 0; border-bottom:1px solid var(--rule-light);
+  }
+  .breadcrumb button{
+    background:none; border:none; cursor:pointer; padding:0;
+    font-family:var(--mono); font-size:12px; color:var(--accent); text-decoration:none;
+  }
+  .breadcrumb button:hover{text-decoration:underline;}
+
+  /* ============ HERO ============ */
+  .hero{border-bottom:1px solid var(--rule); padding:64px 0 56px; position:relative;}
+  .hero-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:end;}
+  .hero-eyebrow{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--accent); margin-bottom:18px; display:flex; align-items:center; gap:10px;
+  }
+  .hero-eyebrow::before{content:""; width:26px; height:1px; background:var(--accent); display:inline-block;}
+  .hero h2{font-size:50px; line-height:1.08; font-weight:700; letter-spacing:-0.01em; margin-bottom:24px;}
+  .hero h2 em{font-style:italic; color:var(--accent);}
+  .hero p.lede{font-size:18px; line-height:1.6; color:#3a3a36; max-width:56ch; margin-bottom:28px;}
+  .hero-cta{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono); font-size:13px; letter-spacing:0.04em; text-decoration:none;
+    padding:13px 24px; display:inline-block; border:1.5px solid var(--ink);
+    transition:background .15s, color .15s; cursor:pointer; background:none;
+  }
+  .btn-solid{background:var(--ink); color:var(--paper);}
+  .btn-solid:hover{background:var(--accent); border-color:var(--accent);}
+  .btn-outline:hover{background:var(--ink); color:var(--paper);}
+
+  .hero-panel{border:1.5px solid var(--ink); background:var(--paper-deep); padding:26px 24px;}
+  .hero-panel .panel-label{
+    font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.1em;
+    color:#555; border-bottom:1px solid var(--rule-light); padding-bottom:10px; margin-bottom:14px;
+  }
+  .spec-line{display:flex; justify-content:space-between; font-size:14px; padding:7px 0; border-bottom:1px dotted var(--rule-light); gap:12px;}
+  .spec-line:last-child{border-bottom:none;}
+  .spec-line dt{color:#555;}
+  .spec-line dd{font-family:var(--mono); font-weight:bold; text-align:right;}
+
+  /* ============ SECTION ============ */
+  .section{padding:64px 0; border-bottom:1px solid var(--rule);}
+  .section.tight{padding:48px 0;}
+  .section.no-border{border-bottom:none;}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:36px; gap:24px; flex-wrap:wrap;}
+  .section-tag{font-family:var(--mono); font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin-bottom:8px;}
+  .section-head h3{font-size:32px; font-weight:700; letter-spacing:-0.01em;}
+  .section-head .section-note{font-size:14px; color:#555; max-width:40ch; text-align:right;}
+  .lead-text{font-size:17px; color:#3a3a36; max-width:72ch; line-height:1.65; margin-bottom:8px;}
+
+  /* ============ PLATFORM SPLIT ============ */
+  .platform-grid{display:grid; grid-template-columns:1fr 1fr; gap:0; border:1.5px solid var(--ink);}
+  .platform-card{padding:32px 30px; position:relative;}
+  .platform-card + .platform-card{border-left:1.5px solid var(--ink);}
+  .platform-card .pc-chip{font-family:var(--mono); font-size:12px; color:#555; margin-bottom:6px;}
+  .platform-card h4{font-size:24px; font-weight:700; margin-bottom:6px;}
+  .platform-card .pc-sub{font-size:14px; color:#555; margin-bottom:20px; font-style:italic;}
+  .platform-card ul{list-style:none;}
+  .platform-card li{font-size:14.5px; padding:8px 0 8px 22px; position:relative; border-bottom:1px dotted var(--rule-light);}
+  .platform-card li:last-child{border-bottom:none;}
+  .platform-card li::before{content:"—"; position:absolute; left:0; top:8px; color:var(--accent); font-weight:bold;}
+  .platform-card.l3 .pc-chip, .platform-card.l3 li::before{color:#555;}
+  .platform-card.l3{background:#e9e6df;}
+  .pc-cta{margin-top:24px; font-family:var(--mono); font-size:12.5px;}
+  .pc-cta button{background:none; border:none; cursor:pointer; font-family:var(--mono); font-size:12.5px; color:var(--ink); text-decoration:underline; text-underline-offset:3px; padding:0;}
+
+  /* ============ TABLE ============ */
+  table.ledger{width:100%; border-collapse:collapse; font-size:14.5px;}
+  table.ledger caption{text-align:left; font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:#555; margin-bottom:10px;}
+  table.ledger th{
+    text-align:left; font-family:var(--mono); font-size:11.5px; text-transform:uppercase; letter-spacing:0.05em;
+    font-weight:bold; border-bottom:1.5px solid var(--ink); padding:10px 12px; background:var(--paper-deep);
+  }
+  table.ledger th:not(:first-child){text-align:center;}
+  table.ledger td{padding:10px 12px; border-bottom:1px solid var(--rule-light);}
+  table.ledger td:not(:first-child){text-align:center; font-family:var(--mono);}
+  table.ledger tr:hover td{background:rgba(138,46,31,0.04);}
+  .tick{color:var(--green-ok); font-weight:bold;}
+  .cross{color:#999;}
+
+  /* ============ MARKETS / CARDS ============ */
+  .markets-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:var(--ink); border:1px solid var(--ink);}
+  .markets-grid.cols-4{grid-template-columns:repeat(4, 1fr);}
+  .market-card{background:var(--paper); padding:28px 24px;}
+  .market-card .mk-num{font-family:var(--mono); font-size:12px; color:var(--accent); margin-bottom:14px;}
+  .market-card h5{font-size:18px; font-weight:700; margin-bottom:10px;}
+  .market-card p{font-size:13.8px; color:#444; line-height:1.55;}
+
+  /* ============ STACK DIAGRAM ============ */
+  .stack-diagram{border:1.5px solid var(--ink); background:var(--paper-deep);}
+  .stack-layer{padding:16px 22px; border-bottom:1px solid var(--rule-light); display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;}
+  .stack-layer:last-child{border-bottom:none;}
+  .stack-layer .sl-name{font-weight:700; font-size:15px;}
+  .stack-layer .sl-detail{font-family:var(--mono); font-size:12.5px; color:#555;}
+  .stack-layer.accent{background:rgba(138,46,31,0.07);}
+
+  /* ============ POSITION BARS ============ */
+  .position-row{display:grid; grid-template-columns:200px 1fr; gap:24px; padding:20px 0; border-bottom:1px solid var(--rule-light); align-items:start;}
+  .position-row:last-child{border-bottom:none;}
+  .position-row .pos-axis{font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:var(--accent); padding-top:3px;}
+  .position-row .pos-bar{height:8px; background:var(--rule-light); position:relative; margin-bottom:10px;}
+  .position-row .pos-fill{height:100%; background:var(--accent);}
+  .position-row p{font-size:14px; color:#444; line-height:1.55;}
+
+  /* ============ AUDIENCE GRID ============ */
+  .audience-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:0; border:1.5px solid var(--ink);}
+  .audience-card{padding:26px 26px; border-bottom:1px solid var(--rule-light); border-right:1px solid var(--rule-light);}
+  .audience-card:nth-child(2n){border-right:none;}
+  .audience-card:nth-last-child(-n+2){border-bottom:none;}
+  .audience-card .aud-role{font-family:var(--mono); font-size:11.5px; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent); margin-bottom:10px;}
+  .audience-card h5{font-size:17px; font-weight:700; margin-bottom:10px;}
+  .audience-card p{font-size:13.8px; color:#444; line-height:1.6;}
+
+  /* ============ FOOTER ============ */
+  footer{background:var(--ink); color:var(--paper); padding:48px 0 28px;}
+  .footer-grid{display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:36px; margin-bottom:36px;}
+  footer h6{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:#a89c8a; margin-bottom:14px;}
+  footer ul{list-style:none; font-size:13.5px;}
+  footer li{padding:5px 0; opacity:0.85;}
+  footer button{background:none; border:none; cursor:pointer; padding:0; color:inherit; font-family:var(--serif); font-size:13.5px; text-decoration:none; text-align:left;}
+  footer a{text-decoration:none;}
+  footer a:hover, footer button:hover{text-decoration:underline;}
+  .footer-brand p{font-size:14px; color:#cfc8ba; max-width:34ch; line-height:1.6;}
+  .footer-bottom{
+    border-top:1px solid #444038; padding-top:18px; display:flex; justify-content:space-between;
+    font-family:var(--mono); font-size:11.5px; color:#a89c8a; flex-wrap:wrap; gap:10px;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:880px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero h2{font-size:34px;}
+    .platform-grid{grid-template-columns:1fr;}
+    .platform-card + .platform-card{border-left:none; border-top:1.5px solid var(--ink);}
+    .markets-grid, .markets-grid.cols-4{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    nav ul{display:none;}
+    table.ledger{font-size:12.5px;}
+    .audience-grid{grid-template-columns:1fr;}
+    .audience-card{border-right:none !important;}
+    .audience-card:nth-last-child(-n+2){border-bottom:1px solid var(--rule-light);}
+    .audience-card:last-child{border-bottom:none;}
+    .position-row{grid-template-columns:1fr;}
+  }
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<div class="topstrip">
+  <div class="wrap">
+    <span>MARVELL PRESTERA SYSTEMS PARTNER</span>
+    <span>FEATURE LIST REV. 7.5 &nbsp;·&nbsp; ISSUED 2026</span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap headbar">
+    <button class="brandmark" onclick="gotoPage('home')" style="border:none; background:none; cursor:pointer; padding:0;">
+      <div class="mark">ST</div>
+      <div style="text-align:left;">
+        <h1>Saga Telecom</h1>
+        <div class="tagline">Commercial &amp; Industrial Ethernet · Built on Marvell AC5</div>
+      </div>
+    </button>
+    <nav>
+      <ul>
+        <li><button class="navlink" data-page="home" onclick="gotoPage('home')">Home</button></li>
+        <li><button class="navlink" data-page="platforms" onclick="gotoPage('platforms')">Platforms</button></li>
+        <li><button class="navlink" data-page="ecosystem" onclick="gotoPage('ecosystem')">Marvell Ecosystem</button></li>
+        <li><button class="navlink" data-page="contact" onclick="gotoPage('contact')">Contact</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- =========================================================
+     PAGE: HOME
+========================================================= -->
+<div class="page active" id="page-home">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="hero-eyebrow">L2+ / L3 Switching Platforms</div>
+        <h2>Switching hardware, <em>specified</em> &mdash; not just sold.</h2>
+        <p class="lede">Saga Telecom builds commercial and industrial Ethernet switches on the Marvell AC5 silicon family. Every feature on this site is drawn directly from our shipping firmware feature list &mdash; what you read here is what you can put in a bid.</p>
+        <div class="hero-cta">
+          <button class="btn btn-solid" onclick="gotoPage('home','features')">View Feature Ledger</button>
+          <button class="btn btn-outline" onclick="gotoPage('ecosystem')">Why Marvell AC5</button>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="panel-label">Platform Snapshot — Rev. 7.5</div>
+        <dl>
+          <div class="spec-line"><dt>Primary chipset</dt><dd>Marvell 98DX2515/2518</dd></div>
+          <div class="spec-line"><dt>Class</dt><dd>AC5 Lite — L2+</dd></div>
+          <div class="spec-line"><dt>MAC table</dt><dd>16K entries</dd></div>
+          <div class="spec-line"><dt>VLAN range</dt><dd>1–4094</dd></div>
+          <div class="spec-line"><dt>IPv6 services</dt><dd>DHCPv6 / MLD</dd></div>
+          <div class="spec-line"><dt>Multicast routing</dt><dd>IGMP v1–v3, PIM-SM</dd></div>
+          <div class="spec-line"><dt>Ring protection</dt><dd>G.8032, &lt;20ms</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="platforms-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-tag">Two Platforms, Two Disciplines</div>
+          <h3>Choose the layer your network actually needs.</h3>
+        </div>
+        <p class="section-note">We don't pad a single SKU with both. L2+ and L3 are engineered, tested, and supported as separate platforms.</p>
+      </div>
+
+      <div class="platform-grid">
+        <div class="platform-card l2">
+          <div class="pc-chip">MARVELL 98DX2515 / 98DX2518 — AC5 LITE</div>
+          <h4>L2+ Access Platform</h4>
+          <div class="pc-sub">Our primary line. Built for volume deployment.</div>
+          <ul>
+            <li>Private VLAN &amp; multi-tenant isolation</li>
+            <li>Full IPv6 service stack — DHCPv6 server / relay / snooping, MLD snooping</li>
+            <li>IGMP v1/v2/v3 with PIM-SM multicast routing</li>
+            <li>ERPS G.8032 ring protection, sub-20ms convergence</li>
+            <li>LLDP-MED auto-provisioning for phones &amp; APs</li>
+            <li>CPU Protect Policy (CPP) &amp; time-based ACLs</li>
+          </ul>
+          <div class="pc-cta"><button onclick="gotoPage('home','features')">See full L2+ ledger →</button></div>
+        </div>
+        <div class="platform-card l3">
+          <div class="pc-chip">MARVELL 98DX336S / 98DX2538 — PC3 / AC5+</div>
+          <h4>L3 Routing Platform</h4>
+          <div class="pc-sub">For projects that require a full routing stack.</div>
+          <ul>
+            <li>Static routing, RIP, OSPFv2, IS-IS, BGP4</li>
+            <li>ECMP &amp; VRRP for routed redundancy</li>
+            <li>Hardware-offloaded ACL, QoS, LACP</li>
+            <li>IPv4 unicast forwarding at wire speed</li>
+          </ul>
+          <div class="pc-cta"><button onclick="gotoPage('contact')">Request L3 specification sheet →</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-tag">Rev. 7.4 → 7.5 Delta</div>
+          <h3>What changed, stated plainly.</h3>
+        </div>
+        <p class="section-note">No marketing language on this table — this is the ledger we hand to procurement teams.</p>
+      </div>
+
+      <table class="ledger">
+        <caption>L2+ Platform (AC5 Lite) — Selected Capabilities, Rev. 7.4 vs Rev. 7.5</caption>
+        <thead><tr><th>Feature</th><th>Rev. 7.4</th><th>Rev. 7.5</th></tr></thead>
+        <tbody>
+          <tr><td>Private VLAN</td><td class="cross">—</td><td class="tick">✓</td></tr>
+          <tr><td>DHCPv6 Server / Relay / Snooping</td><td class="cross">—</td><td class="tick">✓</td></tr>
+          <tr><td>MLD Snooping</td><td class="cross">—</td><td class="tick">✓</td></tr>
+          <tr><td>IGMP v1 / v2 / v3</td><td class="cross">—</td><td class="tick">✓</td></tr>
+          <tr><td>PIM-SM Multicast Routing</td><td class="cross">—</td><td class="tick">✓</td></tr>
+          <tr><td>LLDP-MED</td><td class="cross">—</td><td class="tick">✓</td></tr>
+          <tr><td>CPU Protect Policy (CPP)</td><td class="cross">—</td><td class="tick">✓</td></tr>
+          <tr><td>ACL Time Range</td><td class="cross">—</td><td class="tick">✓</td></tr>
+          <tr><td>Dedicated Management Interface</td><td class="cross">—</td><td class="tick">✓</td></tr>
+          <tr><td>ERPS G.8032 (&lt;20ms)</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+          <tr><td>MSTP / RSTP / STP</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+          <tr><td>802.1X + RADIUS + TACACS+</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section tight" id="markets">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-tag">Where It Ships</div>
+          <h3>Built for environments, not benchmarks.</h3>
+        </div>
+      </div>
+      <div class="markets-grid">
+        <div class="market-card">
+          <div class="mk-num">01 / Campus &amp; Enterprise</div>
+          <h5>Multi-Tenant Buildings</h5>
+          <p>Private VLAN and per-port MAC enforcement for office buildings and business parks running shared infrastructure across independent tenants.</p>
+        </div>
+        <div class="market-card">
+          <div class="mk-num">02 / Hospitality &amp; Education</div>
+          <h5>Video &amp; IPTV Distribution</h5>
+          <p>Full IGMP and PIM-SM multicast routing for hotel IPTV, lecture-hall AV, and surveillance backbones that need to move video efficiently.</p>
+        </div>
+        <div class="market-card">
+          <div class="mk-num">03 / Emerging ISP &amp; Municipal</div>
+          <h5>IPv6-Ready Access</h5>
+          <p>DHCPv6 server, relay, and snooping built in for operators and municipal networks under IPv6 compliance mandates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section no-border tight">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-tag">Behind the Platform</div>
+          <h3>Why we build on Marvell AC5.</h3>
+        </div>
+        <p class="section-note">Single-chip integration, mainline Linux, and a development path that doesn't lock you in.</p>
+      </div>
+      <button class="btn btn-outline" onclick="gotoPage('ecosystem')">Read the platform brief →</button>
+    </div>
+  </section>
+
+</div>
+
+<!-- =========================================================
+     PAGE: PLATFORMS
+========================================================= -->
+<div class="page" id="page-platforms">
+  <div class="breadcrumb"><div class="wrap"><button onclick="gotoPage('home')">Home</button> / Platforms</div></div>
+
+  <section class="section no-border" style="padding-top:64px;">
+    <div class="wrap">
+      <div class="section-tag">Product Line</div>
+      <h3 style="font-size:32px; font-weight:700; margin-bottom:16px;">L2+ &amp; L3 Switch Platforms</h3>
+      <p class="lead-text" style="margin-bottom:40px;">Detailed per-model specifications — port counts, PoE options, mounting, and datasheets — are being finalized for this page. The current platform overview and full feature ledger are available now.</p>
+
+      <div class="platform-grid">
+        <div class="platform-card l2">
+          <div class="pc-chip">MARVELL 98DX2515 / 98DX2518 — AC5 LITE</div>
+          <h4>L2+ Access Platform</h4>
+          <div class="pc-sub">Our primary line. Built for volume deployment.</div>
+          <ul>
+            <li>Private VLAN &amp; multi-tenant isolation</li>
+            <li>Full IPv6 service stack</li>
+            <li>IGMP v1/v2/v3 with PIM-SM</li>
+            <li>ERPS G.8032 ring protection</li>
+            <li>LLDP-MED auto-provisioning</li>
+          </ul>
+          <div class="pc-cta"><button onclick="gotoPage('home','features')">See full L2+ ledger →</button></div>
+        </div>
+        <div class="platform-card l3">
+          <div class="pc-chip">MARVELL 98DX336S / 98DX2538 — PC3 / AC5+</div>
+          <h4>L3 Routing Platform</h4>
+          <div class="pc-sub">For projects that require a full routing stack.</div>
+          <ul>
+            <li>Static routing, RIP, OSPFv2, IS-IS, BGP4</li>
+            <li>ECMP &amp; VRRP</li>
+            <li>Hardware-offloaded ACL, QoS, LACP</li>
+          </ul>
+          <div class="pc-cta"><button onclick="gotoPage('contact')">Request L3 specification sheet →</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- =========================================================
+     PAGE: ECOSYSTEM
+========================================================= -->
+<div class="page" id="page-ecosystem">
+  <div class="breadcrumb"><div class="wrap"><button onclick="gotoPage('home')">Home</button> / Marvell Ecosystem</div></div>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="hero-eyebrow">Platform Brief</div>
+        <h2>One chip, one Linux, <em>no detours</em>.</h2>
+        <p class="lede">Marvell AC5 puts the CPU, the switch engine, and the high-speed interfaces on a single piece of silicon, running a Linux your team already knows. That's the whole pitch — everything below explains what it means for the people who actually build, sell, and buy the product.</p>
+        <div class="hero-cta">
+          <button class="btn btn-solid" onclick="scrollToId('audience')">Find your role</button>
+          <button class="btn btn-outline" onclick="scrollToId('stack')">See the software stack</button>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="panel-label">AC5 / AC5+ At a Glance</div>
+        <dl>
+          <div class="spec-line"><dt>CPU</dt><dd>ARM Cortex-A55, 64-bit</dd></div>
+          <div class="spec-line"><dt>Process node</dt><dd>12nm</dd></div>
+          <div class="spec-line"><dt>Switching capacity</dt><dd>100–200+ Gbps</dd></div>
+          <div class="spec-line"><dt>Max port speed</dt><dd>10G (AC5) / 25G (AC5+)</dd></div>
+          <div class="spec-line"><dt>Kernel support</dt><dd>Linux 5.x / 6.x mainline</dd></div>
+          <div class="spec-line"><dt>Open ecosystem</dt><dd>switchdev, SAI, SONiC*</dd></div>
+          <div class="spec-line"><dt>Typical power</dt><dd>8–12W</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-tag">01 — Hardware</div>
+          <h3>Single-chip integration.</h3>
+        </div>
+        <p class="section-note">What most competing platforms split across a switch ASIC and a separate CPU, AC5 does on one die.</p>
+      </div>
+
+      <p class="lead-text">Many enterprise-class switch platforms pair a switching ASIC with an external CPU connected over PCIe — two power rails, two thermal budgets, two bill-of-materials line items, and a signal-integrity problem between them. AC5 integrates the ARM Cortex-A55 CPU complex, the packet processing engine, the SerDes, and the DDR controller into a single SoC.</p>
+
+      <div class="markets-grid" style="margin-top:32px;">
+        <div class="market-card">
+          <div class="mk-num">Bill of Materials</div>
+          <h5>Fewer parts, simpler power</h5>
+          <p>No external CPU and no second memory subsystem to spec, source, or qualify. Power design typically simplifies from three or four rails down to one or two.</p>
+        </div>
+        <div class="market-card">
+          <div class="mk-num">Board Real Estate</div>
+          <h5>Smaller, tighter layouts</h5>
+          <p>Removing a CPU-to-switch PCIe link and its associated components frees board area — relevant for compact 1U designs and DIN-rail industrial enclosures alike.</p>
+        </div>
+        <div class="market-card">
+          <div class="mk-num">Thermal</div>
+          <h5>Passive cooling, most configurations</h5>
+          <p>Typical power draw in the 8–12W range means a large share of deployments run fanless — a meaningful factor for industrial and outdoor-cabinet installs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="stack">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-tag">02 — Software</div>
+          <h3>A Linux your engineers already know.</h3>
+        </div>
+        <p class="section-note">64-bit, mainline kernel, two development paths depending on how deep you need to go.</p>
+      </div>
+
+      <p class="lead-text">AC5 runs standard 64-bit Linux on mainline kernel 5.x and 6.x. The <code>prestera</code> driver is merged upstream — there's no proprietary OS to learn and no closed toolchain gating day-one development.</p>
+
+      <div class="stack-diagram" style="margin-top:32px;">
+        <div class="stack-layer accent"><div class="sl-name">Application Layer</div><div class="sl-detail">SONiC (AC5+) · OpenWrt · ONL · Commercial NOS</div></div>
+        <div class="stack-layer"><div class="sl-name">Abstraction Layer</div><div class="sl-detail">SAI · switchdev · standard iproute2 / bridge / tc</div></div>
+        <div class="stack-layer"><div class="sl-name">CPSS SDK</div><div class="sl-detail">L2/L3/FDB · QoS/ACL/Policer · Port &amp; SerDes management</div></div>
+        <div class="stack-layer"><div class="sl-name">Linux Kernel</div><div class="sl-detail">5.x / 6.x mainline · prestera driver · device tree</div></div>
+        <div class="stack-layer"><div class="sl-name">Boot</div><div class="sl-detail">ARM Trusted Firmware · U-Boot · Secure Boot</div></div>
+      </div>
+
+      <div class="audience-grid" style="margin-top:32px;">
+        <div class="audience-card">
+          <div class="aud-role">switchdev mode</div>
+          <h5>Standard Linux networking tools</h5>
+          <p>Configure the switch with <code>ip link</code>, <code>bridge</code>, and <code>tc</code> — the same commands used on any Linux box. Fast to prototype, familiar to any Linux-literate team.</p>
+        </div>
+        <div class="audience-card">
+          <div class="aud-role">CPSS mode</div>
+          <h5>Full-featured vendor SDK</h5>
+          <p>Complete API coverage across L2, L3, ACL, QoS, and mirroring, with a Lua CLI for live chip-state inspection. The two modes can be combined in the same product.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-tag">03 — Positioning</div>
+          <h3>Where AC5 sits in the market.</h3>
+        </div>
+        <p class="section-note">Not the cheapest silicon, and not the highest-capacity. The balance point for enterprise-class L2/L3.</p>
+      </div>
+
+      <div class="position-row">
+        <div class="pos-axis">Cost</div>
+        <div>
+          <div class="pos-bar"><div class="pos-fill" style="width:55%;"></div></div>
+          <p>Mid-range chip pricing, positioned above entry-level SOHO silicon and below high-end data-center-class switch ASICs. The relevant comparison is total bill-of-materials, not chip price alone — single-chip integration narrows or closes the gap against platforms that require an external CPU.</p>
+        </div>
+      </div>
+      <div class="position-row">
+        <div class="pos-axis">Routing &amp; ACL Depth</div>
+        <div>
+          <div class="pos-bar"><div class="pos-fill" style="width:70%;"></div></div>
+          <p>Full hardware-accelerated L3 forwarding with route and ACL table sizes built for enterprise procurement requirements, not just basic L2/L3 checkbox compliance.</p>
+        </div>
+      </div>
+      <div class="position-row">
+        <div class="pos-axis">Software Openness</div>
+        <div>
+          <div class="pos-bar"><div class="pos-fill" style="width:85%;"></div></div>
+          <p>Mainline Linux kernel support and an open development path through switchdev and SAI — the AC5+ variant carries official SONiC platform support.</p>
+        </div>
+      </div>
+      <div class="position-row">
+        <div class="pos-axis">Power Efficiency</div>
+        <div>
+          <div class="pos-bar"><div class="pos-fill" style="width:75%;"></div></div>
+          <p>12nm process node keeps typical power in the single-digit-to-low-teens watt range — relevant for fanless industrial enclosures and dense rack deployments alike.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="audience">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-tag">04 — By Role</div>
+          <h3>What matters to your team.</h3>
+        </div>
+        <p class="section-note">Four functions, four different reasons the platform choice matters.</p>
+      </div>
+
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="aud-role">Hardware Engineering</div>
+          <h5>Less board, less power budget</h5>
+          <p>Single-chip integration removes the external CPU and its supporting memory subsystem, simplifying power design and reducing board area. Complete reference designs — schematic and PCB layout — are available as a starting point rather than a ground-up build.</p>
+        </div>
+        <div class="audience-card">
+          <div class="aud-role">Software Engineering</div>
+          <h5>Standard tools, two development modes</h5>
+          <p>64-bit mainline Linux means existing tooling and engineering knowledge transfer directly. Teams can start with switchdev for rapid prototyping and move to the full CPSS SDK as feature requirements deepen — no platform migration required.</p>
+        </div>
+        <div class="audience-card">
+          <div class="aud-role">Product Management</div>
+          <h5>One platform, many SKUs</h5>
+          <p>A single hardware reference design and software base can cover multiple port-count and PoE configurations across a product line, reducing the incremental engineering cost of each new SKU and shortening the path from kickoff to production.</p>
+        </div>
+        <div class="audience-card">
+          <div class="aud-role">Procurement &amp; Supply Chain</div>
+          <h5>Stable platform, formal lifecycle process</h5>
+          <p>AC5 is Marvell's current-generation platform with an expected multi-year production lifecycle and a formal end-of-life notification process, supporting longer-term product roadmap planning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tight">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-tag">05 — Application Fit</div>
+          <h3>Where this platform makes sense.</h3>
+        </div>
+      </div>
+      <div class="markets-grid cols-4">
+        <div class="market-card">
+          <div class="mk-num">Good Fit</div>
+          <h5>SMB / Enterprise Access</h5>
+          <p>Full L2/L3 feature depth at a board cost and power footprint suited to volume access-layer deployment.</p>
+        </div>
+        <div class="market-card">
+          <div class="mk-num">Good Fit</div>
+          <h5>Industrial &amp; Outdoor</h5>
+          <p>Fanless-capable power envelope and a hardened boot chain (Secure Boot, ARM Trusted Firmware) for cabinet and DIN-rail installs.</p>
+        </div>
+        <div class="market-card">
+          <div class="mk-num">Good Fit</div>
+          <h5>IPv6 &amp; Multicast Access</h5>
+          <p>Full DHCPv6 service stack and IGMP/PIM-SM multicast routing for IPv6 migration projects and video-heavy access networks.</p>
+        </div>
+        <div class="market-card">
+          <div class="mk-num">By Design</div>
+          <h5>Access &amp; Edge, Not Spine/Leaf</h5>
+          <p>We build exclusively on the access and aggregation tier — 1G/10G port speeds at 100–200 Gbps switching capacity. We do not offer 25G/100G data-center spine or leaf platforms; that is a deliberate scope, not a gap.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section no-border tight">
+    <div class="wrap" style="text-align:center; padding:24px 0;">
+      <p style="font-family:var(--mono); font-size:12px; color:#888; margin-bottom:18px;">*SONiC platform support applies to AC5+ (98DX35xx). Consult current Marvell and SONiC community documentation for platform-specific status.</p>
+      <button class="btn btn-solid" onclick="gotoPage('contact')">Talk to our team</button>
+    </div>
+  </section>
+</div>
+
+<!-- =========================================================
+     PAGE: CONTACT
+========================================================= -->
+<div class="page" id="page-contact">
+  <div class="breadcrumb"><div class="wrap"><button onclick="gotoPage('home')">Home</button> / Contact</div></div>
+
+  <section class="section no-border" style="padding-top:64px;">
+    <div class="wrap">
+      <div class="section-tag">Get In Touch</div>
+      <h3 style="font-size:32px; font-weight:700; margin-bottom:24px;">Request a datasheet or technical call</h3>
+      <div class="hero-panel" style="max-width:480px;">
+        <div class="panel-label">Saga Telecom — Contact</div>
+        <dl>
+          <div class="spec-line"><dt>Web</dt><dd>www.sagatelecom.com.cn</dd></div>
+          <div class="spec-line"><dt>Sales</dt><dd>sales@sagatelecom.com.cn</dd></div>
+          <div class="spec-line"><dt>Location</dt><dd>Shenzhen, China</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h6>Saga Telecom</h6>
+        <p>Commercial and industrial Ethernet switches engineered on the Marvell AC5 platform family.</p>
+      </div>
+      <div>
+        <h6>Platforms</h6>
+        <ul>
+          <li><button onclick="gotoPage('home','platforms-section')">L2+ Access</button></li>
+          <li><button onclick="gotoPage('home','platforms-section')">L3 Routing</button></li>
+          <li><button onclick="gotoPage('home','features')">Feature Ledger</button></li>
+          <li><button onclick="gotoPage('ecosystem')">Marvell Ecosystem</button></li>
+        </ul>
+      </div>
+      <div>
+        <h6>Resources</h6>
+        <ul>
+          <li><button onclick="gotoPage('contact')">Request Datasheet</button></li>
+          <li><button onclick="gotoPage('contact')">Firmware Notes</button></li>
+          <li><button onclick="gotoPage('contact')">Technical Contact</button></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 SAGA TELECOM. ALL SPECIFICATIONS SUBJECT TO REVISION.</span>
+      <span>MARVELL AND PRESTERA ARE TRADEMARKS OF MARVELL TECHNOLOGY, INC.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+function gotoPage(pageId, scrollId){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + pageId).classList.add('active');
+  document.querySelectorAll('.navlink').forEach(n => n.classList.remove('current'));
+  const navBtn = document.querySelector('.navlink[data-page="' + pageId + '"]');
+  if(navBtn) navBtn.classList.add('current');
+  window.scrollTo(0,0);
+  if(scrollId){
+    setTimeout(() => {
+      const el = document.getElementById(scrollId);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    }, 50);
+  }
+}
+function scrollToId(id){
+  const el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+</script>
+
+</body>
+</html>

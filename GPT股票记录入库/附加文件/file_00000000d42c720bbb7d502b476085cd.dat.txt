@@ -1,0 +1,14 @@
+[GEMINI Networking Solutions Roadimap."*?
+Networking Solutions Roadmap
+A Scalable Path from Access to Core
+Phase 1                                                                                      Phase 2
+Access Foundation                                                      Aggregation & Core Expansion
+|                                                                                     |
+Architectural Continuity
+Fas
+pray                                    iy                                         Y
+WT                                                 ie                           TL |
+Ny                        _ Management & Stability _                    n'a
+= hybers 2: —— —  CENTEO 一一
+ba bmarvere                    a      这个图换一下?
+感觉差点意思 不过也不知道换啥好

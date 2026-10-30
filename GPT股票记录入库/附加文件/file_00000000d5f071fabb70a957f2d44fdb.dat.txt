@@ -1,0 +1,1526 @@
+# ============================================================
+# HPE Covered Call 策略分析系统 - 完整版 v4
+# 新增: Excel输出格式化
+#   - 全局: Times New Roman, 字号10, 左对齐
+#   - 列宽: 自动适配内容
+#   - 回测sheet: 开仓日/到期日列宽=20
+# ============================================================
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
+from matplotlib.colors import LinearSegmentedColormap
+import warnings
+import yfinance as yf
+from datetime import datetime
+import os
+from openpyxl import load_workbook
+from openpyxl.styles import Font, Alignment, PatternFill, Border, Side
+from openpyxl.utils import get_column_letter
+
+warnings.filterwarnings('ignore')
+plt.rcParams['font.sans-serif'] = ['Microsoft YaHei', 'SimHei', 'Arial Unicode MS']
+plt.rcParams['axes.unicode_minus'] = False
+
+# ============================================================
+# 0. 配置区
+# ============================================================
+CONFIG = {
+    'file_path'   : r'C:\Users\simon\Desktop\Stock Data Retrivel\US_stocks_Data\HPE N=3000.xlsx',
+    'output_dir'  : r'C:\Users\simon\Desktop',
+    'ticker'      : 'HPE',
+    'shares_held' : 800,
+    'cost_basis'  : None,
+
+    'known_earnings': [
+        '2025-09-04', '2025-06-04', '2025-03-06',
+        '2024-12-04', '2024-09-05', '2024-06-04', '2024-03-06',
+        '2023-12-05', '2023-09-06', '2023-06-06', '2023-03-01',
+        '2022-11-29', '2022-08-30', '2022-06-01', '2022-03-01',
+        '2021-12-01', '2021-09-01', '2021-06-01', '2021-03-02',
+        '2020-11-24', '2020-08-25', '2020-06-02', '2020-02-25',
+        '2019-11-26', '2019-08-27', '2019-06-04', '2019-02-26',
+    ],
+
+    'earnings_tolerance_days'  : 2,
+    'event_vol_ratio_threshold': 1.8,
+    'event_return_threshold'   : 4.0,
+
+    'cc_dte_list' : [7, 14, 21, 30, 45],
+    'cc_otm_list' : [1, 2, 3, 4, 5, 7, 10],
+    'cc_itm_list' : [1, 2, 3],
+}
+
+print("=" * 80)
+print("  HPE Covered Call 策略分析系统  v4")
+print(f"  运行时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+print("=" * 80)
+
+
+# ============================================================
+# 1. 读取 & 清洗数据
+# ============================================================
+print("\n【第1步】读取Excel数据...")
+
+def load_and_clean_data(file_path: str) -> pd.DataFrame:
+    try:
+        df = pd.read_excel(file_path, skiprows=3)
+    except FileNotFoundError:
+        raise FileNotFoundError(f"找不到文件: {file_path}")
+
+    df.columns = df.columns.str.strip()
+    df = df.dropna(how='all').reset_index(drop=True)
+
+    required_cols = ['日期', '开盘', '收盘', '最高', '最低', '成交量']
+    missing = [c for c in required_cols if c not in df.columns]
+    if missing:
+        raise ValueError(f"Excel缺少必需列: {missing}\n实际列名: {df.columns.tolist()}")
+
+    df['日期'] = pd.to_datetime(df['日期'], errors='coerce')
+    df = df.dropna(subset=['日期'])
+    df = df.sort_values('日期').reset_index(drop=True)
+
+    # 所有非日期列强制转数值
+    for col in df.columns:
+        if col == '日期':
+            continue
+        df[col] = pd.to_numeric(df[col], errors='coerce')
+
+    # 衍生列
+    df['日收益率']   = df['收盘'].pct_change() * 100
+    df['日涨跌额']   = df['收盘'].diff()
+    df['真实振幅']   = (df['最高'] - df['最低']) / df['收盘'].shift(1) * 100
+    df['log收益率']  = np.log(df['收盘'] / df['收盘'].shift(1)) * 100
+    df['相对成交量'] = df['成交量'] / df['成交量'].rolling(20).mean()
+
+    print(f"  ✅ 数据读取成功")
+    print(f"  日期范围: {df['日期'].min().strftime('%Y-%m-%d')} ~ "
+          f"{df['日期'].max().strftime('%Y-%m-%d')}")
+    print(f"  总行数  : {len(df)}")
+    print(f"  列数    : {len(df.columns)}")
+    return df
+
+df            = load_and_clean_data(CONFIG['file_path'])
+current_price = float(df['收盘'].iloc[-1])
+cost_basis    = CONFIG['cost_basis'] if CONFIG['cost_basis'] else current_price
+print(f"  最新收盘价: ${current_price:.2f}")
+
+
+# ============================================================
+# 2. 交易日分类
+# ============================================================
+print("\n【第2步】交易日分类...")
+
+def build_event_set(df, vol_thresh, ret_thresh):
+    tmp = df.copy()
+    tmp['_vol_ma20']    = tmp['成交量'].rolling(20).mean()
+    tmp['_vol_ratio20'] = tmp['成交量'] / tmp['_vol_ma20']
+    mask = (tmp['_vol_ratio20'] > vol_thresh) & (tmp['日收益率'].abs() > ret_thresh)
+    return set(tmp.loc[mask, '日期'])
+
+known_earnings_dt = [pd.to_datetime(d) for d in CONFIG['known_earnings']]
+auto_event_set    = build_event_set(
+    df,
+    CONFIG['event_vol_ratio_threshold'],
+    CONFIG['event_return_threshold'],
+)
+
+def classify_day(date, known_earnings_dt, auto_event_set, tol=2):
+    for ed in known_earnings_dt:
+        if abs((date - ed).days) <= tol:
+            return '财报日'
+    if date in auto_event_set:
+        return '突发事件日'
+    return '常规日'
+
+df['交易日类型'] = df['日期'].apply(
+    lambda d: classify_day(d, known_earnings_dt, auto_event_set,
+                           CONFIG['earnings_tolerance_days'])
+)
+
+tc = df['交易日类型'].value_counts()
+print(f"  财报日    : {tc.get('财报日', 0)} 天")
+print(f"  突发事件日: {tc.get('突发事件日', 0)} 天")
+print(f"  常规日    : {tc.get('常规日', 0)} 天")
+
+
+# ============================================================
+# 3. 实时期权数据
+# ============================================================
+print("\n【第3步】获取实时期权数据 (IV)...")
+
+def fetch_option_data(ticker_str, current_price):
+    result = {
+        'success'       : False,
+        'current_iv'    : None,
+        'options_dates' : [],
+        'call_chain'    : None,
+        'ex_div_date'   : None,
+        'dividend_yield': None,
+    }
+    try:
+        tk   = yf.Ticker(ticker_str)
+        info = tk.info
+        result['dividend_yield'] = info.get('dividendYield', None)
+
+        ex_raw = info.get('exDividendDate', None)
+        if ex_raw is not None:
+            try:
+                if isinstance(ex_raw, (int, float)):
+                    result['ex_div_date'] = datetime.utcfromtimestamp(ex_raw).strftime('%Y-%m-%d')
+                else:
+                    result['ex_div_date'] = pd.to_datetime(ex_raw).strftime('%Y-%m-%d')
+            except Exception:
+                result['ex_div_date'] = None
+
+        opt_dates = tk.options
+        result['options_dates'] = list(opt_dates)
+
+        if opt_dates:
+            iv_list = []
+            for exp_date in opt_dates[:3]:
+                chain = tk.option_chain(exp_date)
+                calls = chain.calls.dropna(subset=['impliedVolatility']).copy()
+                atm   = calls[
+                    (calls['strike'] >= current_price * 0.95) &
+                    (calls['strike'] <= current_price * 1.05)
+                ]
+                if not atm.empty:
+                    iv_list.extend(atm['impliedVolatility'].tolist())
+                    if result['call_chain'] is None:
+                        result['call_chain']           = calls.copy()
+                        result['call_chain']['expiry'] = exp_date
+
+            if iv_list:
+                result['current_iv'] = float(np.mean(iv_list)) * 100
+                result['success']    = True
+
+        print(f"  ✅ IV获取成功: {result['current_iv']:.1f}%")
+        if result['ex_div_date']:
+            print(f"  除息日  : {result['ex_div_date']}")
+        if result['dividend_yield']:
+            print(f"  股息率  : {result['dividend_yield']*100:.2f}%")
+
+    except Exception as e:
+        print(f"  ⚠️  IV获取失败 ({e}), 将使用历史波动率替代")
+
+    return result
+
+option_data = fetch_option_data(CONFIG['ticker'], current_price)
+
+
+# ============================================================
+# 4. 历史波动率
+# ============================================================
+print("\n【第4步】历史波动率分析...")
+
+for w in [10, 20, 30, 60, 90, 120]:
+    df[f'HV{w}'] = df['日收益率'].rolling(w).std() * np.sqrt(252) / 100
+
+normal_returns   = df.loc[df['交易日类型'] == '常规日', '日收益率'].dropna()
+normal_hv_annual = float(normal_returns.std() * np.sqrt(252) / 100)
+
+hv20_last_raw = df['HV20'].iloc[-1]
+hv20_last     = float(hv20_last_raw) if not pd.isna(hv20_last_raw) else normal_hv_annual
+hv60_last_raw = df['HV60'].iloc[-1]
+hv60_last     = float(hv60_last_raw) if not pd.isna(hv60_last_raw) else normal_hv_annual
+
+if option_data['success'] and option_data['current_iv'] is not None:
+    current_iv = float(option_data['current_iv'])
+else:
+    current_iv = hv20_last * 100
+
+hv20_pct    = hv20_last * 100
+iv_hv_ratio = current_iv / hv20_pct if hv20_pct > 0 else 1.0
+hv20_series = df['HV20'].dropna()
+iv_rank     = float((hv20_series < current_iv / 100).mean() * 100)
+
+print(f"  当前IV (ATM) : {current_iv:.1f}%")
+print(f"  20日HV       : {hv20_pct:.1f}%")
+print(f"  60日HV       : {hv60_last*100:.1f}%")
+print(f"  IV/HV 比     : {iv_hv_ratio:.2f}")
+print(f"  IV Rank      : {iv_rank:.0f}%ile")
+print(f"  常规日年化HV : {normal_hv_annual*100:.1f}%")
+
+
+# ============================================================
+# 5. 完整股性分析
+# ============================================================
+print("\n" + "=" * 80)
+print("【第5步】完整股性分析")
+print("=" * 80)
+
+# ── 5-A ──────────────────────────────────────────────────────
+print("\n▶ 5-A 各类型交易日收益率统计")
+print("-" * 60)
+
+stats_records = []
+for day_type in ['常规日', '财报日', '突发事件日']:
+    subset = df.loc[df['交易日类型'] == day_type, '日收益率'].dropna()
+    if len(subset) == 0:
+        continue
+    rec = {
+        '类型'      : day_type,
+        '天数'      : len(subset),
+        '均值%'     : float(subset.mean()),
+        '中位数%'   : float(subset.median()),
+        '标准差%'   : float(subset.std()),
+        '最大涨%'   : float(subset.max()),
+        '最大跌%'   : float(subset.min()),
+        '上涨概率%' : float((subset > 0).mean() * 100),
+        '涨>2%概率' : float((subset > 2).mean() * 100),
+        '跌>2%概率' : float((subset < -2).mean() * 100),
+        '涨>5%概率' : float((subset > 5).mean() * 100),
+        '跌>5%概率' : float((subset < -5).mean() * 100),
+    }
+    stats_records.append(rec)
+    print(f"\n  {day_type} (n={len(subset)})")
+    for k, v in rec.items():
+        if k != '类型':
+            print(f"    {k:<12}: {v:>8.3f}")
+
+stats_df = pd.DataFrame(stats_records).set_index('类型')
+
+# ── 5-B ──────────────────────────────────────────────────────
+print("\n▶ 5-B 周度 / 月度统计")
+print("-" * 60)
+
+df['_year_week'] = (
+    df['日期'].dt.isocalendar().year.astype(str) + '-W' +
+    df['日期'].dt.isocalendar().week.astype(str).str.zfill(2)
+)
+weekly = (
+    df.groupby('_year_week', sort=True)
+    .agg(
+        日期         =('日期',       'last'),
+        开盘         =('开盘',       'first'),
+        收盘         =('收盘',       'last'),
+        最高         =('最高',       'max'),
+        最低         =('最低',       'min'),
+        has_earnings =('交易日类型', lambda x: (x == '财报日').any()),
+    )
+    .reset_index(drop=True)
+)
+weekly['周收益率'] = (weekly['收盘'] / weekly['开盘'] - 1) * 100
+weekly['周振幅']   = (weekly['最高'] / weekly['最低'] - 1) * 100
+
+df['_month'] = df['日期'].dt.to_period('M')
+monthly = (
+    df.groupby('_month', sort=True)
+    .agg(
+        日期         =('日期',       'last'),
+        开盘         =('开盘',       'first'),
+        收盘         =('收盘',       'last'),
+        最高         =('最高',       'max'),
+        最低         =('最低',       'min'),
+        has_earnings =('交易日类型', lambda x: (x == '财报日').any()),
+    )
+    .reset_index(drop=True)
+)
+monthly['月收益率'] = (monthly['收盘'] / monthly['开盘'] - 1) * 100
+monthly['月振幅']   = (monthly['最高'] / monthly['最低'] - 1) * 100
+
+for label, data, col in [('周度', weekly, '周收益率'), ('月度', monthly, '月收益率')]:
+    s      = data[col].dropna()
+    s_noer = data.loc[~data['has_earnings'], col].dropna()
+    print(f"\n  {label}统计 (全部):")
+    print(f"    均值/标准差  : {s.mean():+.2f}% / {s.std():.2f}%")
+    print(f"    5%~95%分位   : {s.quantile(0.05):+.2f}% ~ {s.quantile(0.95):+.2f}%")
+    if label == '周度':
+        print(f"    涨>3%: {(s>3).mean()*100:.1f}%  跌>3%: {(s<-3).mean()*100:.1f}%")
+        print(f"    涨>5%: {(s>5).mean()*100:.1f}%  跌>5%: {(s<-5).mean()*100:.1f}%")
+    else:
+        print(f"    涨>5%:  {(s>5).mean()*100:.1f}%  跌>5%:  {(s<-5).mean()*100:.1f}%")
+        print(f"    涨>10%: {(s>10).mean()*100:.1f}%  跌>10%: {(s<-10).mean()*100:.1f}%")
+    print(f"  {label}统计 (非财报):")
+    print(f"    均值/标准差  : {s_noer.mean():+.2f}% / {s_noer.std():.2f}%")
+
+# ── 5-C ──────────────────────────────────────────────────────
+print("\n▶ 5-C 财报日专项分析")
+print("-" * 60)
+
+er_days = df.loc[df['交易日类型'] == '财报日'].copy()
+if len(er_days) > 0:
+    er_ret = er_days['日收益率'].dropna()
+    print(f"  识别财报日      : {len(er_days)} 天")
+    print(f"  上涨概率        : {(er_ret > 0).mean()*100:.1f}%")
+    print(f"  平均绝对波动    : {er_ret.abs().mean():.2f}%")
+    print(f"  最大单日涨      : {er_ret.max():+.2f}%")
+    print(f"  最大单日跌      : {er_ret.min():+.2f}%")
+
+    vol_ma20 = df['成交量'].rolling(20).mean()
+    er_days  = er_days.copy()
+    er_days['vol_ratio'] = er_days['成交量'].values / vol_ma20.loc[er_days.index].values
+
+    print(f"\n  {'日期':<12} {'收盘':>8} {'涨跌%':>8} {'振幅%':>8} {'量比':>8}")
+    print(f"  {'-'*50}")
+    for _, row in er_days.iterrows():
+        vib = row.get('振幅', np.nan)
+        vr  = row.get('vol_ratio', np.nan)
+        print(f"  {row['日期'].strftime('%Y-%m-%d'):<12} "
+              f"{row['收盘']:>8.2f} "
+              f"{row['日收益率']:>+8.2f}% "
+              f"{vib:>8.2f}% "
+              f"{vr:>8.2f}x")
+
+    print(f"\n  {'财报日':<12} {'当日%':>8} {'后1日%':>8} {'后5日%':>8} {'后10日%':>9}")
+    print(f"  {'-'*48}")
+    for ed in known_earnings_dt:
+        cands = df[abs((df['日期'] - ed).dt.days) <= 1].index
+        if len(cands) == 0:
+            continue
+        idx = cands[0]
+        d0  = df.loc[idx, '日收益率']
+        def _safe(offset):
+            i2 = idx + offset
+            return (df.loc[i2,'收盘'] / df.loc[idx,'收盘'] - 1)*100 if i2 < len(df) else np.nan
+        print(f"  {ed.strftime('%Y-%m-%d'):<12} "
+              f"{d0:>+8.2f}% {_safe(1):>+8.2f}% "
+              f"{_safe(5):>+8.2f}% {_safe(10):>+9.2f}%")
+
+# ── 5-D ──────────────────────────────────────────────────────
+print("\n▶ 5-D 均值回归特性")
+print("-" * 60)
+
+for thresh, label in [(2.0,'涨>2%'), (-2.0,'跌>2%'), (4.0,'涨>4%'), (-4.0,'跌>4%')]:
+    mask = (df['交易日类型'] == '常规日') & (
+        (df['日收益率'] > thresh) if thresh > 0 else (df['日收益率'] < thresh)
+    )
+    trigger_idx = df.index[mask]
+    next_rets   = [df.at[i+1, '日收益率'] for i in trigger_idx if i+1 < len(df)]
+    if not next_rets:
+        continue
+    ndr  = np.array(next_rets, dtype=float)
+    ndr  = ndr[~np.isnan(ndr)]
+    prob = (ndr < 0 if thresh > 0 else ndr > 0).mean() * 100
+    tag  = '反转' if thresh > 0 else '反弹'
+    print(f"  {label}后次日{tag}概率: {prob:.1f}%  次日均值: {ndr.mean():+.3f}%")
+
+# ── 5-E ──────────────────────────────────────────────────────
+print("\n▶ 5-E 筹码分析")
+print("-" * 60)
+
+latest    = df.iloc[-1]
+chip_cols = [
+    '获利比例', '平均成本',
+    '90%成本-低', '90%成本-高', '90%集中度',
+    '70%成本-低', '70%成本-高', '70%集中度',
+    '日K筹码偏离率', '周K筹码偏离率',
+]
+chip_info = {}
+for col in chip_cols:
+    val = latest.get(col, np.nan)
+    if col in df.columns and not pd.isna(val):
+        chip_info[col] = float(val)
+        print(f"  {col:<16}: {val:.2f}")
+
+print("\n  【筹码信号解读】")
+if '获利比例' in chip_info:
+    gp = chip_info['获利比例']
+    if gp > 70:
+        print(f"  ✅ 获利比例 {gp:.0f}%: 多数持仓盈利, 股价强势")
+    elif gp > 40:
+        print(f"  ➡️  获利比例 {gp:.0f}%: 盈亏参半, 注意套牢盘压力")
+    else:
+        print(f"  ⚠️  获利比例 {gp:.0f}%: 大量套牢, 反弹遇阻风险高")
+
+if '90%成本-高' in chip_info:
+    res_90      = chip_info['90%成本-高']
+    dist_to_res = (res_90 / current_price - 1) * 100
+    print(f"  90%筹码上沿 ${res_90:.2f}: 距当前价 {dist_to_res:+.1f}%  → CC Strike参考位")
+    if dist_to_res < 3:
+        print(f"  ⚠️  接近90%筹码上沿, 上方阻力大, Strike建议 ≥ ${res_90*1.01:.2f}")
+
+if '日K筹码偏离率' in chip_info:
+    dev = chip_info['日K筹码偏离率']
+    if dev > 15:
+        print(f"  ⚠️  日K筹码偏离率 {dev:.1f}%: 偏高, 适合卖ITM或近OTM CC")
+    elif dev < -15:
+        print(f"  ✅ 日K筹码偏离率 {dev:.1f}%: 折价, 建议卖较远OTM CC")
+    else:
+        print(f"  ➡️  日K筹码偏离率 {dev:.1f}%: 正常区间")
+
+print("\n  【基于筹码的CC Strike建议】")
+if '90%成本-高' in chip_info:
+    chip_strike = max(chip_info['90%成本-高'], current_price * 1.02)
+    print(f"  最低建议Strike (筹码压力位): ${chip_strike:.2f}")
+
+# ── 5-F ──────────────────────────────────────────────────────
+print("\n▶ 5-F 月度季节性")
+print("-" * 60)
+
+df['_month_num'] = df['日期'].dt.month
+seasonal = (
+    df.groupby('_month_num', sort=True)['日收益率']
+    .agg(['mean', 'std', 'count'])
+)
+seasonal.columns = ['日均收益%', '日波动%', '天数']
+seasonal['月化预期%'] = seasonal['日均收益%'] * 21
+seasonal.index = ['1月','2月','3月','4月','5月','6月',
+                  '7月','8月','9月','10月','11月','12月']
+print(seasonal.to_string(float_format=lambda x: f'{x:+.3f}'))
+
+
+# ============================================================
+# 6. CC 被Call 概率矩阵
+# ============================================================
+print("\n" + "=" * 80)
+print("【第6步】CC被Call概率矩阵")
+print("=" * 80)
+
+dte_list = CONFIG['cc_dte_list']
+otm_list = CONFIG['cc_otm_list']
+
+def compute_prob_matrix(df, dte_list, otm_list, use_high=False, exclude_earnings=True):
+    closes = df['收盘'].values
+    highs  = df['最高'].values
+    is_er  = (df['交易日类型'] == '财报日').values
+    n      = len(df)
+    mat    = np.full((len(dte_list), len(otm_list)), np.nan)
+
+    for i, dte in enumerate(dte_list):
+        if n <= dte:
+            continue
+        samples = []
+        for k in range(n - dte):
+            if exclude_earnings and is_er[k:k+dte].any():
+                continue
+            sp = closes[k]
+            if sp <= 0 or np.isnan(sp):
+                continue
+            val = (highs[k:k+dte].max()/sp - 1)*100 if use_high else (closes[k+dte]/sp - 1)*100
+            samples.append(val)
+
+        if samples:
+            arr = np.array(samples)
+            for j, otm in enumerate(otm_list):
+                mat[i, j] = (arr > otm).mean() * 100
+    return mat
+
+print("  计算中 (非财报期, 到期收盘价)...")
+prob_close = compute_prob_matrix(df, dte_list, otm_list, use_high=False, exclude_earnings=True)
+
+print("  计算中 (非财报期, 期间最高价/保守)...")
+prob_high  = compute_prob_matrix(df, dte_list, otm_list, use_high=True,  exclude_earnings=True)
+
+print("  计算中 (含财报期, 到期收盘价)...")
+prob_close_with_er = compute_prob_matrix(df, dte_list, otm_list, use_high=False, exclude_earnings=False)
+
+def print_matrix(mat, title, dte_list, otm_list):
+    print(f"\n  --- {title} ---")
+    hdr = f"  {'DTE':<6}" + "".join(f"  OTM{o:>2}%" for o in otm_list)
+    print(hdr)
+    for i, dte in enumerate(dte_list):
+        row = f"  {dte}天   " + "".join(
+            f"  {mat[i,j]:5.1f}%" if not np.isnan(mat[i,j]) else "    N/A"
+            for j in range(len(otm_list))
+        )
+        print(row)
+
+print_matrix(prob_close,         "非财报期: 到期收盘价被Call概率",  dte_list, otm_list)
+print_matrix(prob_high,          "非财报期: 期间最高价被Touch概率", dte_list, otm_list)
+print_matrix(prob_close_with_er, "含财报期: 到期收盘价被Call概率",  dte_list, otm_list)
+
+
+# ============================================================
+# 7. CC 策略回测
+# ============================================================
+print("\n" + "=" * 80)
+print("【第7步】CC策略历史回测")
+print("=" * 80)
+
+def backtest_cc(df, otm_pct, dte=30, exclude_earnings=True, normal_hv=0.30):
+    closes = df['收盘'].values
+    is_er  = (df['交易日类型'] == '财报日').values
+    hv20   = df['HV20'].values
+    dates  = df['日期'].values
+    n      = len(df)
+    trades = []
+    i      = 0
+
+    while i <= n - dte - 1:
+        window_er = is_er[i:i+dte]
+        if exclude_earnings and window_er.any():
+            first_er_offset = int(np.argmax(window_er))
+            i += first_er_offset + 1
+            continue
+
+        sp     = float(closes[i])
+        strike = sp * (1 + otm_pct / 100)
+        ep     = float(closes[i + dte])
+
+        hv_now   = float(hv20[i]) if not np.isnan(hv20[i]) else normal_hv
+        iv_est   = hv_now * 1.1
+        otm_disc = max(0.3, 1 - abs(otm_pct) * 0.08)
+        premium  = sp * iv_est * np.sqrt(dte / 252) * otm_disc * 0.5
+
+        called = ep >= strike
+        profit = (strike - sp + premium) if called else premium
+
+        trades.append({
+            '开仓日'  : pd.Timestamp(dates[i]).strftime('%Y-%m-%d'),
+            '到期日'  : pd.Timestamp(dates[i + dte]).strftime('%Y-%m-%d'),
+            '开仓价'  : round(sp, 4),
+            'Strike'  : round(strike, 4),
+            '到期价'  : round(ep, 4),
+            '权利金'  : round(premium, 4),
+            '盈亏/股' : round(profit, 4),
+            '收益率%' : round(profit / sp * 100, 4),
+            '被行权'  : called,
+            'OTM%'    : otm_pct,
+        })
+        i += dte
+
+    return pd.DataFrame(trades)
+
+def print_bt_row(label, bt):
+    if len(bt) == 0:
+        print(f"  {label:<8}  无有效交易")
+        return
+    wins   = (bt['盈亏/股'] > 0).mean() * 100
+    called = bt['被行权'].mean() * 100
+    avg    = bt['收益率%'].mean()
+    total  = bt['收益率%'].sum()
+    mxls   = bt['收益率%'].min()
+    std_   = bt['收益率%'].std()
+    sharpe = (avg / std_ * np.sqrt(12)) if std_ > 0 else 0
+    print(f"  {label:<8} {len(bt):>5}次  "
+          f"胜率{wins:>5.1f}%  被行权{called:>5.1f}%  "
+          f"均收益{avg:>+6.3f}%  总收益{total:>+8.1f}%  "
+          f"最大亏{mxls:>+6.3f}%  Sharpe{sharpe:>5.2f}")
+
+backtest_results = {}
+print(f"\n  OTM策略回测 (DTE=30, 非财报月):")
+print(f"  {'-'*85}")
+for otm in [2, 3, 5, 7, 10]:
+    bt = backtest_cc(df, otm_pct=otm, dte=30,
+                     exclude_earnings=True, normal_hv=normal_hv_annual)
+    backtest_results[otm] = bt
+    print_bt_row(f"OTM {otm}%", bt)
+
+print(f"\n  ITM策略回测 (DTE=21, 非财报月):")
+print(f"  {'-'*85}")
+for itm in [1, 2, 3]:
+    bt_itm = backtest_cc(df, otm_pct=-itm, dte=21,
+                         exclude_earnings=True, normal_hv=normal_hv_annual)
+    print_bt_row(f"ITM {itm}%", bt_itm)
+
+
+# ============================================================
+# 8. 策略建议
+# ============================================================
+print("\n" + "=" * 80)
+print("【第8步】HPE CC策略综合建议")
+print("=" * 80)
+
+today           = df['日期'].max()
+future_earnings = sorted([ed for ed in known_earnings_dt if ed > today])
+next_er_str     = future_earnings[0].strftime('%Y-%m-%d') if future_earnings else '待查询'
+days_to_er      = int((future_earnings[0] - today).days) if future_earnings else 999
+
+if iv_hv_ratio > 1.3:
+    iv_signal = "✅ IV明显高于HV, 是卖CC的好时机!"
+elif iv_hv_ratio > 1.0:
+    iv_signal = "➡️  IV略高于HV, 可以正常卖CC"
+else:
+    iv_signal = "⚠️  IV低于HV, 权利金偏薄, 考虑减少CC仓位"
+
+chip_signal = "➡️  筹码数据不足"
+if '日K筹码偏离率' in chip_info:
+    dev = chip_info['日K筹码偏离率']
+    if dev > 15:
+        chip_signal = "⚠️  筹码偏离过高, 倾向于卖ITM或近OTM"
+    elif dev < -10:
+        chip_signal = "✅ 筹码偏离偏低, 倾向于卖较远OTM"
+    else:
+        chip_signal = "➡️  筹码正常区间, 卖OTM 3-5%"
+
+otm3_strike = current_price * 1.03
+otm5_strike = current_price * 1.05
+itm1_strike = current_price * 0.99
+itm2_strike = current_price * 0.98
+
+div_warning = ""
+if option_data['ex_div_date']:
+    ex_div     = pd.to_datetime(option_data['ex_div_date'])
+    days_to_ex = (ex_div - today).days
+    if 0 < days_to_ex < 45:
+        div_warning = (
+            f"\n  ⚠️  除息日临近! {option_data['ex_div_date']} ({days_to_ex}天后)\n"
+            f"  ITM CC 极可能被提前行权以套取股息!\n"
+            f"  建议: 除息日前将ITM CC roll到更高Strike或平仓"
+        )
+
+print(f"""
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【当前市场状态】
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  当前价格  : ${current_price:.2f}
+  持仓      : {CONFIG['shares_held']} 股   市值: ${current_price * CONFIG['shares_held']:,.0f}
+  当前IV    : {current_iv:.1f}%  (ATM)
+  20日HV    : {hv20_pct:.1f}%
+  IV/HV比   : {iv_hv_ratio:.2f}  → {iv_signal}
+  筹码信号  : {chip_signal}
+  下一财报  : {next_er_str} (约 {days_to_er} 天后){div_warning}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【800股分仓建议】
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ┌──────────────────────────────────────────────────────────┐
+  │ 仓位A: 400股 (4手) - 核心收益型                           │
+  │   DTE    : 30-45天                                       │
+  │   Strike : OTM 3-5% ≈ ${otm3_strike:.2f} ~ ${otm5_strike:.2f}          │
+  │   目标   : 稳定收租, 被call概率 <20%                      │
+  │   建议   : 月初开仓, DTE<5时平仓或自然到期               │
+  ├──────────────────────────────────────────────────────────┤
+  │ 仓位B: 300股 (3手) - 灵活增强型                           │
+  │   DTE    : 14-21天                                       │
+  │   Strike : OTM 2-3% 常规 / ITM 1-2% 看平时              │
+  │             OTM ≈ ${current_price*1.02:.2f} ~ ${current_price*1.03:.2f}              │
+  │             ITM ≈ ${itm1_strike:.2f} ~ ${itm2_strike:.2f}              │
+  │   触发   : IV spike 或 价格偏离MA30 > 3%                 │
+  ├──────────────────────────────────────────────────────────┤
+  │ 仓位C: 100股 (1手) - 机动仓                               │
+  │   DTE    : 7天 (周期权)                                  │
+  │   Strike : OTM 5-7% 或 不卖CC 保留上涨弹性              │
+  └──────────────────────────────────────────────────────────┘
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【场景化操作指引】
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  📈 连涨3天 + 偏离MA30 > 5%:
+     → 仓位B 改为 ITM 1-2% CC (高位锁利)
+
+  📉 下跌 + 接近MA60支撑:
+     → 仓位A/B 换 OTM 5-7%, 或暂停CC等回升
+
+  ➡️  横盘震荡 (价格在MA20附近):
+     → 仓位A: OTM 3%  DTE 30天
+     → 仓位B: ITM 1%  DTE 14天  ← 最优收益窗口
+
+  📊 财报前2周 ({days_to_er}天后财报):
+     → 仓位A: 换 OTM 10%+ 或平仓
+     → 仓位B/C: 全部平仓
+     → 财报后重新评估开仓
+
+  🔄 Roll策略:
+     → 价格超Strike < 2% 且 DTE > 5: Roll Up & Out
+     → 深度ITM (> 5%): 接受行权 或 Roll Out 2个月
+     → 大跌后CC成废纸: 立即开新CC (OTM 2-3%)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【关键监控阈值】
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  相对成交量 > 2x + 大涨  → 机构入场, 立即Roll Up CC
+  IV/HV > 1.4             → 大量卖CC (权利金极贵)
+  IV/HV < 0.8             → 减少CC (权利金太薄)
+  获利比例 < 30%           → 不要卖ITM CC
+  筹码偏离率 > 20%         → 卖ITM CC锁定高位
+""")
+
+if days_to_er < 30:
+    print(f"  🚨 警告: 财报日仅剩 {days_to_er} 天! 请立即检查CC仓位!")
+
+
+# ============================================================
+# 9. 可视化
+# ============================================================
+print("\n【第9步】生成可视化图表...")
+
+MA_COLS = {'日MA30':'orange', '日MA60':'red', '日MA120':'green'}
+valid_ma_cols = {
+    col: clr for col, clr in MA_COLS.items()
+    if col in df.columns
+    and pd.api.types.is_numeric_dtype(df[col])
+    and df[col].notna().sum() > 10
+}
+print(f"  有效均线列: {list(valid_ma_cols.keys())}")
+
+CMAP_RG = LinearSegmentedColormap.from_list('rg', ['#2ecc71', '#f39c12', '#e74c3c'])
+
+fig = plt.figure(figsize=(24, 30))
+fig.patch.set_facecolor('white')
+fig.suptitle(
+    f'HPE Covered Call 策略分析系统\n'
+    f'当前价: ${current_price:.2f}  |  IV: {current_iv:.1f}%  |  '
+    f'HV20: {hv20_pct:.1f}%  |  下次财报: {next_er_str}',
+    fontsize=14, fontweight='bold', y=0.985,
+)
+gs = gridspec.GridSpec(4, 3, figure=fig, hspace=0.45, wspace=0.35)
+
+# 图1
+ax1 = fig.add_subplot(gs[0, :2])
+ax1.plot(df['日期'], df['收盘'], 'b-', lw=0.7, alpha=0.9, label='收盘价')
+for col, clr in valid_ma_cols.items():
+    s = df[col].dropna()
+    if len(s) > 0:
+        ax1.plot(df.loc[s.index,'日期'], s.values, color=clr, lw=0.9, alpha=0.7, label=col)
+er_mask = df['交易日类型'] == '财报日'
+ev_mask = df['交易日类型'] == '突发事件日'
+ax1.scatter(df.loc[er_mask,'日期'], df.loc[er_mask,'收盘'],
+            c='red', s=60, zorder=5, marker='^', label='财报日')
+ax1.scatter(df.loc[ev_mask,'日期'], df.loc[ev_mask,'收盘'],
+            c='orange', s=30, zorder=5, alpha=0.7, label='突发事件日')
+ax1.set_title('HPE 股价走势与事件标记', fontsize=11)
+ax1.legend(loc='upper left', fontsize=8, ncol=3)
+ax1.set_ylabel('价格 ($)')
+ax1.grid(True, alpha=0.3)
+
+# 图2
+ax2 = fig.add_subplot(gs[0, 2])
+hv20_plot = df['HV20'].dropna() * 100
+hv60_plot = df['HV60'].dropna() * 100
+ax2.plot(df.loc[hv20_plot.index,'日期'], hv20_plot.values, 'b-', lw=0.8, alpha=0.8, label='HV20')
+ax2.plot(df.loc[hv60_plot.index,'日期'], hv60_plot.values, 'r-', lw=0.8, alpha=0.8, label='HV60')
+if option_data['success']:
+    ax2.axhline(current_iv, color='purple', ls='--', lw=1.5, label=f'当前IV {current_iv:.1f}%')
+ax2.set_title('历史波动率 & 当前IV', fontsize=11)
+ax2.legend(fontsize=8)
+ax2.set_ylabel('波动率 (%)')
+ax2.grid(True, alpha=0.3)
+
+# 图3
+ax3 = fig.add_subplot(gs[1, 0])
+nr_ = df.loc[df['交易日类型']=='常规日','日收益率'].dropna()
+er_ = df.loc[df['交易日类型']=='财报日', '日收益率'].dropna()
+bins = np.linspace(-15, 15, 90)
+ax3.hist(nr_, bins=bins, alpha=0.7, color='steelblue', density=True,
+         label=f'常规日 σ={nr_.std():.2f}%')
+if len(er_) > 0:
+    ax3.hist(er_, bins=bins, alpha=0.7, color='tomato', density=True,
+             label=f'财报日 σ={er_.std():.2f}%')
+ax3.axvline(0, color='black', ls='--', alpha=0.5)
+ax3.set_title('日收益率分布', fontsize=11)
+ax3.legend(fontsize=8)
+ax3.set_xlabel('日收益率 (%)')
+ax3.grid(True, alpha=0.3)
+
+# 图4
+ax4 = fig.add_subplot(gs[1, 1])
+wr_   = weekly['周收益率'].dropna()
+wr_ne = weekly.loc[~weekly['has_earnings'], '周收益率'].dropna()
+ax4.hist(wr_,   bins=60, alpha=0.45, color='green',     density=True, label=f'全部周 σ={wr_.std():.2f}%')
+ax4.hist(wr_ne, bins=60, alpha=0.75, color='limegreen', density=True, label=f'非财报周 σ={wr_ne.std():.2f}%')
+for q in [0.05, 0.10, 0.90, 0.95]:
+    ax4.axvline(wr_ne.quantile(q), color='red', ls=':', alpha=0.6, lw=0.8)
+ax4.axvline(0, color='black', ls='--', alpha=0.5)
+ax4.set_title('周收益率分布', fontsize=11)
+ax4.legend(fontsize=8)
+ax4.set_xlabel('周收益率 (%)')
+ax4.grid(True, alpha=0.3)
+
+# 图5
+ax5    = fig.add_subplot(gs[1, 2])
+mn     = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+mm     = [df.loc[df['_month_num']==m,'日收益率'].mean()*21 for m in range(1,13)]
+colors = ['tomato' if x < 0 else 'steelblue' for x in mm]
+ax5.bar(mn, mm, color=colors, alpha=0.8, edgecolor='white')
+ax5.axhline(0, color='black', lw=0.8)
+ax5.set_title('月度化预期收益率 (%)', fontsize=11)
+ax5.set_xticklabels(mn, rotation=45, fontsize=8)
+ax5.grid(True, alpha=0.3, axis='y')
+
+# 图6
+ax6 = fig.add_subplot(gs[2, 0])
+im6 = ax6.imshow(prob_close, cmap=CMAP_RG, aspect='auto', vmin=0, vmax=60)
+ax6.set_xticks(range(len(otm_list)))
+ax6.set_xticklabels([f'{o}%' for o in otm_list], fontsize=9)
+ax6.set_yticks(range(len(dte_list)))
+ax6.set_yticklabels([f'{d}天' for d in dte_list], fontsize=9)
+ax6.set_title('被Call概率 - 到期收盘价\n(非财报期)', fontsize=10)
+ax6.set_xlabel('OTM %', fontsize=9)
+ax6.set_ylabel('DTE', fontsize=9)
+for i in range(len(dte_list)):
+    for j in range(len(otm_list)):
+        if not np.isnan(prob_close[i,j]):
+            tc_ = 'white' if (prob_close[i,j] > 45 or prob_close[i,j] < 8) else 'black'
+            ax6.text(j, i, f'{prob_close[i,j]:.0f}%',
+                     ha='center', va='center', fontsize=8, fontweight='bold', color=tc_)
+plt.colorbar(im6, ax=ax6, shrink=0.8)
+
+# 图7
+ax7 = fig.add_subplot(gs[2, 1])
+im7 = ax7.imshow(prob_high, cmap=CMAP_RG, aspect='auto', vmin=0, vmax=80)
+ax7.set_xticks(range(len(otm_list)))
+ax7.set_xticklabels([f'{o}%' for o in otm_list], fontsize=9)
+ax7.set_yticks(range(len(dte_list)))
+ax7.set_yticklabels([f'{d}天' for d in dte_list], fontsize=9)
+ax7.set_title('被Touch概率 - 期间最高价\n(保守估计)', fontsize=10)
+ax7.set_xlabel('OTM %', fontsize=9)
+ax7.set_ylabel('DTE', fontsize=9)
+for i in range(len(dte_list)):
+    for j in range(len(otm_list)):
+        if not np.isnan(prob_high[i,j]):
+            tc_ = 'white' if (prob_high[i,j] > 55 or prob_high[i,j] < 12) else 'black'
+            ax7.text(j, i, f'{prob_high[i,j]:.0f}%',
+                     ha='center', va='center', fontsize=8, fontweight='bold', color=tc_)
+plt.colorbar(im7, ax=ax7, shrink=0.8)
+
+# 图8
+ax8     = fig.add_subplot(gs[2, 2])
+palette = ['#e74c3c','#e67e22','#f1c40f','#2ecc71','#3498db']
+for idx, (otm, bt) in enumerate(backtest_results.items()):
+    if len(bt) == 0:
+        continue
+    ax8.plot(range(len(bt)), bt['收益率%'].cumsum().values,
+             label=f'OTM {otm}%', lw=1.5, color=palette[idx % len(palette)])
+ax8.axhline(0, color='black', lw=0.8)
+ax8.set_title('CC策略回测累计收益 (非财报月)', fontsize=11)
+ax8.set_xlabel('交易次数')
+ax8.set_ylabel('累计收益率 (%)')
+ax8.legend(fontsize=8)
+ax8.grid(True, alpha=0.3)
+
+# 图9
+ax9    = fig.add_subplot(gs[3, 0])
+cutoff = df['日期'].max() - pd.DateOffset(years=1)
+rec    = df[df['日期'] >= cutoff].copy()
+ax9.plot(rec['日期'], rec['收盘'], 'b-', lw=1.2, label='收盘价')
+for col, clr in valid_ma_cols.items():
+    s = rec[col].dropna()
+    if len(s) > 0:
+        ax9.plot(rec.loc[s.index,'日期'], s.values, color=clr, lw=0.8, alpha=0.8, label=col)
+if '90%成本-高' in chip_info and '90%成本-低' in chip_info:
+    ax9.axhspan(chip_info['90%成本-低'], chip_info['90%成本-高'],
+                alpha=0.10, color='purple', label='90%筹码区间')
+if '70%成本-高' in chip_info and '70%成本-低' in chip_info:
+    ax9.axhspan(chip_info['70%成本-低'], chip_info['70%成本-高'],
+                alpha=0.15, color='blue', label='70%筹码区间')
+ax9.axhline(current_price, color='black', ls='--', alpha=0.5, lw=0.8)
+ax9.set_title('近1年走势 + 筹码支撑/阻力', fontsize=11)
+ax9.legend(fontsize=7, loc='upper left', ncol=2)
+ax9.grid(True, alpha=0.3)
+
+# 图10
+ax10        = fig.add_subplot(gs[3, 1])
+recent_chip = df[df['日期'] >= cutoff].copy()
+if '获利比例' in df.columns and '日K筹码偏离率' in df.columns:
+    gp_series  = recent_chip['获利比例'].ffill()
+    dev_series = recent_chip['日K筹码偏离率'].ffill()
+    ax10.fill_between(recent_chip['日期'], gp_series, alpha=0.25, color='green')
+    ln1, = ax10.plot(recent_chip['日期'], gp_series, 'g-', lw=0.9, label='获利比例%')
+    ax10.set_ylabel('获利比例 (%)', color='green')
+    ax10.tick_params(axis='y', labelcolor='green')
+    ax10b = ax10.twinx()
+    ln2,  = ax10b.plot(recent_chip['日期'], dev_series, 'r-', lw=0.9, label='筹码偏离率%')
+    ax10b.axhline(0,   color='gray', lw=0.5)
+    ax10b.axhline(15,  color='red',   ls=':', lw=0.6, alpha=0.7)
+    ax10b.axhline(-15, color='green', ls=':', lw=0.6, alpha=0.7)
+    ax10b.set_ylabel('筹码偏离率 (%)', color='red')
+    ax10b.tick_params(axis='y', labelcolor='red')
+    ax10.legend(handles=[ln1, ln2], labels=['获利比例%','筹码偏离率%'],
+                fontsize=8, loc='upper left')
+else:
+    ax10.text(0.5, 0.5, '筹码数据不完整',
+              transform=ax10.transAxes, ha='center', va='center', fontsize=12)
+ax10.set_title('获利比例 & 日K筹码偏离率 (近1年)', fontsize=11)
+ax10.grid(True, alpha=0.3)
+
+# 图11
+ax11 = fig.add_subplot(gs[3, 2])
+if option_data['success'] and option_data['call_chain'] is not None:
+    chain = option_data['call_chain']
+    cf    = chain[
+        (chain['strike'] >= current_price * 0.88) &
+        (chain['strike'] <= current_price * 1.18)
+    ].copy().reset_index(drop=True)
+    if not cf.empty:
+        strikes  = cf['strike'].values.astype(float)
+        iv_vals  = cf['impliedVolatility'].values.astype(float) * 100
+        vol_vals = cf['volume'].fillna(0).values.astype(float) if 'volume' in cf.columns \
+                   else np.zeros(len(cf))
+        bar_w = float(np.diff(strikes).mean()) * 0.4 if len(strikes) > 1 else 0.5
+        ax11b = ax11.twinx()
+        ax11.plot(strikes, iv_vals, 'b-o', ms=4, lw=1.5, label='IV (%)', zorder=3)
+        ax11.axvline(current_price, color='red', ls='--', lw=1.2,
+                     label=f'当前价 ${current_price:.2f}')
+        ax11b.bar(strikes, vol_vals, alpha=0.30, color='orange',
+                  width=bar_w, label='成交量', zorder=2)
+        ax11.set_xlabel('Strike')
+        ax11.set_ylabel('IV (%)', color='blue')
+        ax11b.set_ylabel('成交量', color='orange')
+        ax11.tick_params(axis='y', labelcolor='blue')
+        ax11b.tick_params(axis='y', labelcolor='orange')
+        exp_label = option_data['options_dates'][0] if option_data['options_dates'] else ''
+        ax11.set_title(f'Call期权链 IV微笑\n({exp_label})', fontsize=11)
+        ax11.legend(fontsize=8, loc='upper left')
+        ax11.grid(True, alpha=0.3)
+else:
+    hv20_pct_series = df['HV20'].dropna() * 100
+    ax11.hist(hv20_pct_series, bins=60, color='purple', alpha=0.7, density=True)
+    ax11.axvline(current_iv, color='red', ls='--', lw=1.5,
+                 label=f'当前IV {current_iv:.1f}%')
+    median_hv = float(hv20_pct_series.median())
+    ax11.axvline(median_hv, color='blue', ls='--', lw=1.2,
+                 label=f'HV20中位 {median_hv:.1f}%')
+    ax11.set_title('HV20历史分布 (IV参考)', fontsize=11)
+    ax11.set_xlabel('历史波动率 (%)')
+    ax11.legend(fontsize=8)
+    ax11.grid(True, alpha=0.3)
+
+plt.tight_layout(rect=[0, 0, 1, 0.975])
+output_path = os.path.join(CONFIG['output_dir'], 'HPE_CC_Analysis.png')
+plt.savefig(output_path, dpi=150, bbox_inches='tight', facecolor='white', edgecolor='none')
+print(f"  ✅ 图表已保存: {output_path}")
+plt.show()
+
+
+# ============================================================
+# 10. 导出 Excel 报告 + 格式化
+# ============================================================
+print("\n【第10步】导出分析报告并格式化...")
+
+report_path = os.path.join(CONFIG['output_dir'], 'HPE_CC_Report.xlsx')
+
+# ── 10-A 写入数据 ─────────────────────────────────────────────
+with pd.ExcelWriter(report_path, engine='openpyxl') as writer:
+
+    stats_df.round(3).to_excel(writer, sheet_name='交易日统计')
+
+    pd.DataFrame(
+        prob_close.round(1),
+        index  =[f'DTE {d}天' for d in dte_list],
+        columns=[f'OTM {o}%'  for o in otm_list],
+    ).to_excel(writer, sheet_name='CC被Call概率(收盘价)')
+
+    pd.DataFrame(
+        prob_high.round(1),
+        index  =[f'DTE {d}天' for d in dte_list],
+        columns=[f'OTM {o}%'  for o in otm_list],
+    ).to_excel(writer, sheet_name='CC被Touch概率(最高价)')
+
+    pd.DataFrame(
+        prob_close_with_er.round(1),
+        index  =[f'DTE {d}天' for d in dte_list],
+        columns=[f'OTM {o}%'  for o in otm_list],
+    ).to_excel(writer, sheet_name='CC被Call概率(含财报)')
+
+    for otm, bt in backtest_results.items():
+        if len(bt) > 0:
+            bt.to_excel(writer, sheet_name=f'回测_OTM{otm}%', index=False)
+
+    seasonal.round(4).to_excel(writer, sheet_name='月度季节性')
+
+    pd.DataFrame.from_dict(
+        chip_info, orient='index', columns=['当前值']
+    ).round(3).to_excel(writer, sheet_name='筹码状态')
+
+# ── 10-B 格式化 ──────────────────────────────────────────────
+print("  格式化Excel...")
+
+# 识别回测sheet名称
+BACKTEST_SHEET_NAMES = {f'回测_OTM{otm}%' for otm in backtest_results if len(backtest_results[otm]) > 0}
+# 回测sheet中需要宽度=20的列名
+DATE_COLS_IN_BT = {'开仓日', '到期日'}
+
+def format_worksheet(ws, is_backtest: bool = False):
+    """
+    对单个worksheet应用统一格式:
+    - 字体: Times New Roman, 10号
+    - 对齐: 左对齐, 垂直居中
+    - 列宽: 自动适配 (最小8, 最大50)
+    - 回测sheet的 开仓日/到期日 列宽固定为20
+    """
+    BASE_FONT      = Font(name='Times New Roman', size=10)
+    BASE_ALIGNMENT = Alignment(horizontal='left', vertical='center', wrap_text=False)
+
+    # ── 找出回测sheet中日期列的列号 ────────────────────────────
+    date_col_indices = set()
+    if is_backtest:
+        for cell in ws[1]:                          # 第1行是表头
+            if cell.value in DATE_COLS_IN_BT:
+                date_col_indices.add(cell.column)  # 1-based
+
+    # ── 逐行应用字体和对齐 ─────────────────────────────────────
+    for row in ws.iter_rows():
+        for cell in row:
+            cell.font      = BASE_FONT
+            cell.alignment = BASE_ALIGNMENT
+
+    # ── 列宽计算 ───────────────────────────────────────────────
+    for col_cells in ws.columns:
+        col_letter = get_column_letter(col_cells[0].column)
+        col_idx    = col_cells[0].column            # 1-based
+
+        # 回测sheet的日期列: 固定宽度20
+        if is_backtest and col_idx in date_col_indices:
+            ws.column_dimensions[col_letter].width = 20
+            continue
+
+        # 其他列: 按内容自动适配
+        max_len = 0
+        for cell in col_cells:
+            if cell.value is not None:
+                # 中文字符算2个宽度单位
+                val_str  = str(cell.value)
+                char_len = sum(2 if ord(c) > 127 else 1 for c in val_str)
+                max_len  = max(max_len, char_len)
+
+        # 留1个字符padding, 限制在[8, 50]
+        fitted_width = min(max(max_len + 1, 8), 50)
+        ws.column_dimensions[col_letter].width = fitted_width
+
+    # ── 冻结首行 (方便阅读) ────────────────────────────────────
+    ws.freeze_panes = 'A2'
+
+# ── 10-C 打开workbook应用格式 ─────────────────────────────────
+wb = load_workbook(report_path)
+for sheet_name in wb.sheetnames:
+    ws          = wb[sheet_name]
+    is_backtest = sheet_name in BACKTEST_SHEET_NAMES
+    format_worksheet(ws, is_backtest=is_backtest)
+    print(f"    ✔ 格式化完成: {sheet_name}"
+          + (" [回测sheet: 开仓日/到期日列宽=20]" if is_backtest else ""))
+
+wb.save(report_path)
+wb.close()
+
+print(f"\n  ✅ 报告已保存并格式化: {report_path}")
+print("\n" + "=" * 80)
+print("  ✅ 全部分析完成!")
+print(f"  图表  : {output_path}")
+print(f"  报告  : {report_path}")
+print("=" * 80)
+
+PS C:\Users\simon> & D:/Python312/python.exe "c:/Users/simon/Desktop/HPE CC分析.py"
+================================================================================
+  HPE Covered Call 策略分析系统  v4
+  运行时间: 2026-06-21 19:45:32
+================================================================================
+
+【第1步】读取Excel数据...
+  ✅ 数据读取成功
+  日期范围: 2015-11-02 ~ 2026-06-17
+  总行数  : 2671
+  列数    : 52
+  最新收盘价: $48.20
+
+【第2步】交易日分类...
+  财报日    : 111 天
+  突发事件日: 47 天
+  常规日    : 2513 天
+
+【第3步】获取实时期权数据 (IV)...
+  ⚠️  IV获取失败 (Too Many Requests. Rate limited. Try after a while.), 将使用历史波动率替代
+
+【第4步】历史波动率分析...
+  当前IV (ATM) : 104.3%
+  20日HV       : 104.3%
+  60日HV       : 73.5%
+  IV/HV 比     : 1.00
+  IV Rank      : 96%ile
+  常规日年化HV : 45.4%
+
+================================================================================
+【第5步】完整股性分析
+================================================================================
+
+▶ 5-A 各类型交易日收益率统计
+------------------------------------------------------------
+
+  常规日 (n=2512)
+    天数          : 2512.000
+    均值%         :    0.139
+    中位数%        :    0.204
+    标准差%        :    2.861
+    最大涨%        :   23.718
+    最大跌%        :  -22.504
+    上涨概率%       :   52.588
+    涨>2%概率      :   18.511
+    跌>2%概率      :   16.242
+    涨>5%概率      :    3.463
+    跌>5%概率      :    3.025
+
+  财报日 (n=111)
+    天数          :  111.000
+    均值%         :    0.328
+    中位数%        :   -0.149
+    标准差%        :    3.826
+    最大涨%        :   12.061
+    最大跌%        :  -12.544
+    上涨概率%       :   48.649
+    涨>2%概率      :   22.523
+    跌>2%概率      :   18.919
+    涨>5%概率      :    9.910
+    跌>5%概率      :    4.505
+
+  突发事件日 (n=47)
+    天数          :   47.000
+    均值%         :    0.025
+    中位数%        :   -4.870
+    标准差%        :   10.248
+    最大涨%        :   31.471
+    最大跌%        :  -16.505
+    上涨概率%       :   46.809
+    涨>2%概率      :   46.809
+    跌>2%概率      :   53.191
+    涨>5%概率      :   40.426
+    跌>5%概率      :   46.809
+
+▶ 5-B 周度 / 月度统计
+------------------------------------------------------------
+
+  周度统计 (全部):
+    均值/标准差  : +0.69% / 6.34%
+    5%~95%分位   : -9.21% ~ +11.49%
+    涨>3%: 29.5%  跌>3%: 24.7%
+    涨>5%: 19.3%  跌>5%: 15.0%
+  周度统计 (非财报):
+    均值/标准差  : +0.62% / 6.17%
+
+  月度统计 (全部):
+    均值/标准差  : +2.76% / 13.55%
+    5%~95%分位   : -15.31% ~ +21.55%
+    涨>5%:  35.9%  跌>5%:  22.7%
+    涨>10%: 20.3%  跌>10%: 14.8%
+  月度统计 (非财报):
+    均值/标准差  : +2.48% / 13.83%
+
+▶ 5-C 财报日专项分析
+------------------------------------------------------------
+  识别财报日      : 111 天
+  上涨概率        : 48.6%
+  平均绝对波动    : 2.56%
+  最大单日涨      : +12.06%
+  最大单日跌      : -12.54%
+
+  日期                 收盘      涨跌%      振幅%       量比
+  --------------------------------------------------
+  2019-02-25      13.04    +3.49%     4.61%     1.09x
+  2019-02-26      13.08    +0.31%     1.99%     0.91x
+  2019-02-27      12.98    -0.76%     0.92%     0.81x
+  2019-02-28      12.66    -2.47%     2.39%     1.26x
+  2019-06-03      10.08    -0.30%     3.26%     0.94x
+  2019-06-04      10.52    +4.37%     3.57%     0.75x
+  2019-06-05      10.48    -0.38%     4.18%     0.74x
+  2019-06-06      10.38    -0.95%     3.53%     0.85x
+  2019-08-26       9.44    +2.05%     2.92%     0.88x
+  2019-08-27       9.43    -0.11%     3.18%     1.37x
+  2019-08-28       9.87    +4.67%     7.85%     1.40x
+  2019-08-29      10.18    +3.14%     1.93%     1.03x
+  2019-11-25      14.06    +2.40%     3.28%     1.35x
+  2019-11-26      12.58   -10.53%     6.54%     2.92x
+  2019-11-27      12.55    -0.24%     1.59%     0.88x
+  2020-02-24      10.44    -4.31%     3.76%     1.38x
+  2020-02-25      10.06    -3.64%     5.75%     1.41x
+  2020-02-26       9.77    -2.88%     5.57%     1.25x
+  2020-02-27       9.31    -4.71%     5.73%     1.46x
+  2020-06-01       6.61    +0.76%     5.79%     0.95x
+  2020-06-02       6.80    +2.87%     2.87%     0.93x
+  2020-06-03       7.19    +5.74%     6.91%     0.98x
+  2020-06-04       7.33    +1.95%     5.56%     1.10x
+  2020-08-24       6.59    +4.60%     6.35%     1.10x
+  2020-08-25       6.30    -4.40%     6.67%     1.55x
+  2020-08-26       6.64    +5.40%    10.47%     2.53x
+  2020-08-27       6.54    -1.51%     4.37%     1.01x
+  2020-11-23       8.16    +7.94%     7.93%     0.83x
+  2020-11-24       8.62    +5.64%     6.62%     1.00x
+  2020-11-25       8.33    -3.36%     3.36%     0.84x
+  2021-03-01      11.81    +0.34%     3.65%     1.38x
+  2021-03-02      11.71    -0.85%     2.46%     1.28x
+  2021-03-03      11.77    +0.51%     7.17%     2.09x
+  2021-03-04      11.25    -4.42%    10.02%     1.62x
+  2021-06-01      13.42    +0.98%     2.56%     1.34x
+  2021-06-02      13.40    -0.15%     3.05%     1.98x
+  2021-06-03      13.23    -1.27%     1.42%     1.07x
+  2021-08-30      12.76    -0.85%     2.41%     1.04x
+  2021-08-31      12.91    +1.18%     1.57%     1.62x
+  2021-09-01      12.79    -0.93%     2.48%     1.26x
+  2021-09-02      12.84    +0.39%     1.95%     1.62x
+  2021-09-03      12.93    +0.70%     3.89%     1.95x
+  2021-11-29      12.18    +1.50%     3.17%     1.37x
+  2021-11-30      11.92    -2.13%     4.35%     2.55x
+  2021-12-01      11.78    -1.17%     5.87%     2.17x
+  2021-12-02      12.56    +6.62%     7.64%     1.37x
+  2021-12-03      12.74    +1.43%     5.89%     1.75x
+  2022-02-28      13.61    -0.73%     2.92%     1.80x
+  2022-03-01      13.10    -3.75%     5.73%     1.43x
+  2022-03-02      14.68   +12.06%     7.86%     1.98x
+  2022-03-03      14.44    -1.63%     2.93%     1.51x
+  2022-05-31      13.41    -1.40%     3.31%     1.45x
+  2022-06-01      13.59    +1.34%     3.28%     0.94x
+  2022-06-02      12.77    -6.03%     5.81%     1.62x
+  2022-06-03      12.89    +0.94%     3.29%     0.68x
+  2022-08-29      11.65    -0.34%     3.51%     1.35x
+  2022-08-30      11.58    -0.60%     2.32%     1.16x
+  2022-08-31      11.53    -0.43%     2.42%     2.29x
+  2022-09-01      11.30    -1.99%     3.56%     1.41x
+  2022-11-28      13.60    -2.02%     1.87%     1.03x
+  2022-11-29      13.51    -0.66%     1.84%     1.12x
+  2022-11-30      14.83    +9.77%     9.69%     2.50x
+  2022-12-01      14.87    +0.27%     4.65%     1.21x
+  2023-02-27      13.81    +0.29%     1.82%     0.63x
+  2023-02-28      13.78    -0.22%     1.16%     1.16x
+  2023-03-01      13.71    -0.51%     2.03%     0.74x
+  2023-03-02      13.67    -0.29%     1.68%     0.99x
+  2023-03-03      13.45    -1.61%     6.07%     1.78x
+  2023-06-05      13.31    -1.63%     2.07%     1.07x
+  2023-06-06      13.63    +2.40%     3.46%     0.75x
+  2023-06-07      14.05    +3.08%     3.01%     0.89x
+  2023-06-08      14.09    +0.28%     1.64%     0.73x
+  2023-09-05      16.22    -1.04%     1.83%     0.84x
+  2023-09-06      16.16    -0.37%     2.28%     0.88x
+  2023-09-07      15.70    -2.85%     1.79%     1.18x
+  2023-09-08      15.75    +0.32%     0.76%     0.60x
+  2023-12-04      15.07    -2.27%     2.40%     1.32x
+  2023-12-05      14.61    -3.05%     2.59%     1.38x
+  2023-12-06      14.41    -1.37%     2.74%     1.14x
+  2023-12-07      14.65    +1.67%     2.98%     1.60x
+  2024-03-04      15.81   +11.18%    10.86%     3.15x
+  2024-03-05      16.76    +6.01%     7.46%     2.97x
+  2024-03-06      17.43    +4.00%    10.32%     3.03x
+  2024-03-07      16.84    -3.38%     6.37%     1.67x
+  2024-03-08      16.65    -1.13%     4.36%     1.17x
+  2024-06-03      16.74    +1.82%     2.62%     1.66x
+  2024-06-04      16.39    -2.09%     2.21%     2.08x
+  2024-06-05      18.27   +11.47%     6.04%     4.70x
+  2024-06-06      18.38    +0.60%     5.23%     1.53x
+  2024-09-03      17.98    -1.69%     2.62%     1.39x
+  2024-09-04      17.69    -1.61%     2.56%     1.91x
+  2024-09-05      16.56    -6.39%     6.47%     2.43x
+  2024-09-06      16.45    -0.66%     3.02%     1.32x
+  2024-12-02      20.30    +0.15%     3.01%     1.11x
+  2024-12-03      20.35    +0.25%     1.77%     0.81x
+  2024-12-04      20.81    +2.26%     3.49%     1.02x
+  2024-12-05      20.70    -0.53%     5.62%     2.15x
+  2024-12-06      23.00   +11.11%     8.60%     2.82x
+  2025-03-04      18.02    -1.04%     4.31%     1.46x
+  2025-03-05      18.07    +0.28%     2.91%     1.37x
+  2025-03-06      17.14    -5.15%     4.47%     2.12x
+  2025-03-07      14.99   -12.54%     6.48%     5.30x
+  2025-06-02      16.65    +0.36%     2.11%     1.02x
+  2025-06-03      17.00    +2.10%     3.69%     1.70x
+  2025-06-04      17.15    +0.88%     9.53%     2.58x
+  2025-06-05      17.07    -0.47%     3.15%     1.30x
+  2025-06-06      17.42    +2.05%     2.75%     0.78x
+  2025-09-02      22.12    +0.50%     3.59%     1.61x
+  2025-09-03      22.26    +0.63%     2.10%     1.87x
+  2025-09-04      22.60    +1.53%     6.72%     3.05x
+  2025-09-05      22.96    +1.59%     3.80%     1.16x
+
+  财报日               当日%     后1日%     后5日%     后10日%
+  ------------------------------------------------
+  2025-09-04      +0.63%    +1.53%    +7.28%     +8.58%
+  2025-06-04      +2.10%    +0.88%    +3.82%     +1.24%
+  2025-03-06      +0.28%    -5.15%   -21.03%    -14.11%
+  2024-12-04      +0.25%    +2.26%    +3.05%     +1.18%
+  2024-09-05      -1.61%    -6.39%   -13.40%     -2.66%
+  2024-06-04      +1.82%    -2.09%   +15.77%    +22.16%
+  2024-03-06      +6.01%    +4.00%    -0.30%     -7.10%
+  2023-12-05      -2.27%    -3.05%    +0.80%     +2.52%
+  2023-09-06      -1.04%    -0.37%    -4.50%     -3.82%
+  2023-06-06      -1.63%    +2.40%    +9.47%    +15.85%
+  2023-03-01      -0.22%    -0.51%    -4.35%    -10.67%
+  2022-11-29      -2.02%    -0.66%    +4.85%     +5.96%
+  2022-08-30      -0.34%    -0.60%    -4.89%     -3.61%
+  2022-06-01      -1.40%    +1.34%    -1.94%    -13.50%
+  2022-03-01      -0.73%    -3.75%    -1.10%     +3.82%
+  2021-12-01      -2.13%    -1.17%    +9.40%     +2.85%
+  2021-09-01      +1.18%    -0.93%    -7.13%    -12.39%
+  2021-06-01      +0.98%    -0.15%    -0.67%     -2.53%
+  2021-03-02      +0.34%    -0.85%    +1.78%    +13.29%
+  2020-11-24      +7.94%    +5.64%    +1.59%    +14.09%
+  2020-08-25      +4.60%    -4.40%    +0.76%     -1.06%
+  2020-06-02      +0.76%    +2.87%   +27.69%     +8.62%
+  2020-02-25      -4.31%    -3.64%    -7.85%    -24.62%
+  2019-11-26      +2.40%   -10.53%   -13.09%    -10.60%
+  2019-08-27      +2.05%    -0.11%    +5.83%    +23.94%
+  2019-06-04      -0.30%    +4.37%    +5.65%     +7.14%
+  2019-02-26      +3.49%    +0.31%    -4.60%     -6.75%
+
+▶ 5-D 均值回归特性
+------------------------------------------------------------
+  涨>2%后次日反转概率: 46.0%  次日均值: -0.008%
+  跌>2%后次日反弹概率: 51.5%  次日均值: +0.168%
+  涨>4%后次日反转概率: 47.1%  次日均值: -0.044%
+  跌>4%后次日反弹概率: 47.0%  次日均值: +0.262%
+
+▶ 5-E 筹码分析
+------------------------------------------------------------
+  获利比例            : 84.47
+  平均成本            : 31.79
+  90%成本-低         : 20.50
+  90%成本-高         : 54.86
+  90%集中度          : 45.60
+  70%成本-低         : 21.42
+  70%成本-高         : 48.35
+  70%集中度          : 38.60
+  日K筹码偏离率         : 51.62
+  周K筹码偏离率         : 106.25
+
+  【筹码信号解读】
+  ✅ 获利比例 84%: 多数持仓盈利, 股价强势
+  90%筹码上沿 $54.86: 距当前价 +13.8%  → CC Strike参考位
+  ⚠️  日K筹码偏离率 51.6%: 偏高, 适合卖ITM或近OTM CC
+
+  【基于筹码的CC Strike建议】
+  最低建议Strike (筹码压力位): $54.86
+
+▶ 5-F 月度季节性
+------------------------------------------------------------
+     日均收益%   日波动%   天数  月化预期%
+1月  -0.008 +3.247  222 -0.159
+2月  +0.102 +3.265  211 +2.152
+3月  +0.278 +4.957  241 +5.836
+4月  +0.047 +2.959  227 +0.995
+5月  +0.201 +3.401  233 +4.229
+6月  +0.193 +3.403  223 +4.057
+7月  +0.219 +2.041  210 +4.604
+8月  +0.092 +2.323  223 +1.942
+9月  +0.137 +2.384  204 +2.871
+10月 -0.037 +2.517  221 -0.786
+11月 +0.359 +3.519  224 +7.540
+12月 +0.137 +2.863  231 +2.871
+
+================================================================================
+【第6步】CC被Call概率矩阵
+================================================================================
+  计算中 (非财报期, 到期收盘价)...
+  计算中 (非财报期, 期间最高价/保守)...
+  计算中 (含财报期, 到期收盘价)...
+
+  --- 非财报期: 到期收盘价被Call概率 ---
+  DTE     OTM 1%  OTM 2%  OTM 3%  OTM 4%  OTM 5%  OTM 7%  OTM10%
+  7天      49.5%   41.6%   35.3%   29.9%   24.2%   16.8%    9.4%
+  14天      51.3%   46.6%   41.7%   37.4%   34.4%   27.7%   20.1%
+  21天      52.7%   48.8%   45.1%   41.1%   38.0%   31.5%   23.4%
+  30天      55.6%   51.9%   48.7%   44.8%   42.2%   35.6%   27.5%
+  45天      56.6%   54.0%   50.6%   48.9%   46.6%   41.7%   34.8%
+
+  --- 非财报期: 期间最高价被Touch概率 ---
+  DTE     OTM 1%  OTM 2%  OTM 3%  OTM 4%  OTM 5%  OTM 7%  OTM10%
+  7天      92.2%   79.3%   65.1%   52.7%   42.0%   26.9%   14.6%
+  14天      94.5%   86.5%   76.2%   66.9%   58.3%   44.0%   31.8%
+  21天      95.4%   88.4%   80.9%   73.8%   66.9%   55.3%   41.7%
+  30天      96.5%   91.1%   85.6%   81.1%   75.6%   65.0%   50.4%
+  45天      97.7%   94.2%   91.0%   87.3%   82.4%   73.6%   61.3%
+
+  --- 含财报期: 到期收盘价被Call概率 ---
+  DTE     OTM 1%  OTM 2%  OTM 3%  OTM 4%  OTM 5%  OTM 7%  OTM10%
+  7天      49.5%   42.0%   35.7%   30.1%   24.7%   17.4%    9.8%
+  14天      51.4%   46.5%   41.5%   37.5%   34.5%   28.0%   20.3%
+  21天      52.5%   48.5%   44.9%   41.1%   38.2%   32.7%   24.7%
+  30天      55.1%   52.0%   48.9%   45.7%   43.4%   37.7%   30.1%
+  45天      55.4%   52.7%   49.5%   47.9%   45.2%   40.2%   34.5%
+
+================================================================================
+【第7步】CC策略历史回测
+================================================================================
+
+  OTM策略回测 (DTE=30, 非财报月):
+  -------------------------------------------------------------------------------------
+  OTM 2%      68次  胜率100.0%  被行权 48.5%  均收益+8.485%  总收益  +577.0%  最大亏+2.651%  Sharpe 6.61
+  OTM 3%      68次  胜率100.0%  被行权 48.5%  均收益+8.255%  总收益  +561.3%  最大亏+2.398%  Sharpe 6.80
+  OTM 5%      68次  胜率100.0%  被行权 39.7%  均收益+7.353%  总收益  +500.0%  最大亏+1.893%  Sharpe 6.33
+  OTM 7%      68次  胜率100.0%  被行权 35.3%  均收益+6.407%  总收益  +435.7%  最大亏+1.388%  Sharpe 5.25
+  OTM 10%     68次  胜率100.0%  被行权 30.9%  均收益+5.772%  总收益  +392.5%  最大亏+0.947%  Sharpe 3.92
+
+  ITM策略回测 (DTE=21, 非财报月):
+  -------------------------------------------------------------------------------------
+  ITM 1%     103次  胜率100.0%  被行权 59.2%  均收益+6.031%  总收益  +621.2%  最大亏+1.655%  Sharpe 5.32
+  ITM 2%     103次  胜率100.0%  被行权 65.0%  均收益+4.746%  总收益  +488.9%  最大亏+0.424%  Sharpe 4.49
+  ITM 3%     103次  胜率 95.1%  被行权 68.9%  均收益+3.403%  总收益  +350.6%  最大亏-0.807%  Sharpe 3.41
+
+================================================================================
+【第8步】HPE CC策略综合建议
+================================================================================
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【当前市场状态】
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  当前价格  : $48.20
+  持仓      : 800 股   市值: $38,560
+  当前IV    : 104.3%  (ATM)
+  20日HV    : 104.3%
+  IV/HV比   : 1.00  → ⚠️  IV低于HV, 权利金偏薄, 考虑减少CC仓位
+  筹码信号  : ⚠️  筹码偏离过高, 倾向于卖ITM或近OTM
+  下一财报  : 待查询 (约 999 天后)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【800股分仓建议】
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ┌──────────────────────────────────────────────────────────┐
+  │ 仓位A: 400股 (4手) - 核心收益型                           │
+  │   DTE    : 30-45天                                       │
+  │   Strike : OTM 3-5% ≈ $49.65 ~ $50.61          │
+  │   目标   : 稳定收租, 被call概率 <20%                      │
+  │   建议   : 月初开仓, DTE<5时平仓或自然到期               │
+  ├──────────────────────────────────────────────────────────┤
+  │ 仓位B: 300股 (3手) - 灵活增强型                           │
+  │   DTE    : 14-21天                                       │
+  │   Strike : OTM 2-3% 常规 / ITM 1-2% 看平时              │
+  │             OTM ≈ $49.16 ~ $49.65              │
+  │             ITM ≈ $47.72 ~ $47.24              │
+  │   触发   : IV spike 或 价格偏离MA30 > 3%                 │
+  ├──────────────────────────────────────────────────────────┤
+  │ 仓位C: 100股 (1手) - 机动仓                               │
+  │   DTE    : 7天 (周期权)                                  │
+  │   Strike : OTM 5-7% 或 不卖CC 保留上涨弹性              │
+  └──────────────────────────────────────────────────────────┘
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【场景化操作指引】
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  📈 连涨3天 + 偏离MA30 > 5%:
+     → 仓位B 改为 ITM 1-2% CC (高位锁利)
+
+  📉 下跌 + 接近MA60支撑:
+     → 仓位A/B 换 OTM 5-7%, 或暂停CC等回升
+
+  ➡️  横盘震荡 (价格在MA20附近):
+     → 仓位A: OTM 3%  DTE 30天
+     → 仓位B: ITM 1%  DTE 14天  ← 最优收益窗口
+
+  📊 财报前2周 (999天后财报):
+     → 仓位A: 换 OTM 10%+ 或平仓
+     → 仓位B/C: 全部平仓
+     → 财报后重新评估开仓
+
+  🔄 Roll策略:
+     → 价格超Strike < 2% 且 DTE > 5: Roll Up & Out
+     → 深度ITM (> 5%): 接受行权 或 Roll Out 2个月
+     → 大跌后CC成废纸: 立即开新CC (OTM 2-3%)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【关键监控阈值】
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  相对成交量 > 2x + 大涨  → 机构入场, 立即Roll Up CC
+  IV/HV > 1.4             → 大量卖CC (权利金极贵)
+  IV/HV < 0.8             → 减少CC (权利金太薄)
+  获利比例 < 30%           → 不要卖ITM CC
+  筹码偏离率 > 20%         → 卖ITM CC锁定高位
+
+
+【第9步】生成可视化图表...
+  有效均线列: ['日MA30', '日MA60', '日MA120']
+  ✅ 图表已保存: C:\Users\simon\Desktop\HPE_CC_Analysis.png
+
+【第10步】导出分析报告并格式化...
+  格式化Excel...
+    ✔ 格式化完成: 交易日统计
+    ✔ 格式化完成: CC被Call概率(收盘价)
+    ✔ 格式化完成: CC被Touch概率(最高价)
+    ✔ 格式化完成: CC被Call概率(含财报)
+    ✔ 格式化完成: 回测_OTM2% [回测sheet: 开仓日/到期日列宽=20]
+    ✔ 格式化完成: 回测_OTM3% [回测sheet: 开仓日/到期日列宽=20]
+    ✔ 格式化完成: 回测_OTM5% [回测sheet: 开仓日/到期日列宽=20]
+    ✔ 格式化完成: 回测_OTM7% [回测sheet: 开仓日/到期日列宽=20]
+    ✔ 格式化完成: 回测_OTM10% [回测sheet: 开仓日/到期日列宽=20]
+    ✔ 格式化完成: 月度季节性
+    ✔ 格式化完成: 筹码状态
+
+  ✅ 报告已保存并格式化: C:\Users\simon\Desktop\HPE_CC_Report.xlsx
+
+================================================================================
+  ✅ 全部分析完成!
+  图表  : C:\Users\simon\Desktop\HPE_CC_Analysis.png
+  报告  : C:\Users\simon\Desktop\HPE_CC_Report.xlsx
+================================================================================
+PS C:\Users\simon> 
+
+你咋看

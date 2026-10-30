@@ -1,0 +1,12 @@
+ERPS Ring Application&Bypass
+Location A                   Location B
+|  | Switch1           Switch 4  |  |
+Managed Switch                                                      Managed Switch
+Switch 3
+a                                H                                  =
+Switch2 # |              i            由”Switch5
+(¢ =
+|  |  { | Olycom Bypass Switch
+民
+Location A and location B could still communicate normally even though power failure happened
+to Switch 3 if we add an optical bypass module in this optical path.

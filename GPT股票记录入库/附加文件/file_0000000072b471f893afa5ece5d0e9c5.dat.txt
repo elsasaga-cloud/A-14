@@ -1,0 +1,17 @@
+AC + DC Dual Power & Delay Start
+Smart Protection for Fiber Bypass
+人 Minnutes:
+ge   Delay Start         a     ih Power
+E>                       1-8 Minutes                             \ ==
+hi          |
+     :
+AC power :—- al           TR pc power |
+|       Inline Devi       lF     山     。
+nlne Device (e.g, Frewa      =             1
+AC Power ESS [e DC Power
+v  AC + DC Dual Power                gs  DIP Switch Controlled Delay Start
+¢ Provides power redundancy            ¢ Prevents link instability
+* Improves reliability in                      e Ensures smooth recovery after
+mixed environments                           power returns
+Application Examples
+a Data Centers       BRS Telecom Systems     > Remote Sites

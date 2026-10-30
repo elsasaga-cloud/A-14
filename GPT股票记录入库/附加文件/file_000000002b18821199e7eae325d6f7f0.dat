@@ -1,0 +1,1093 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+CHPS (Xtrackers Semiconductor Select Equity ETF) 深度综合跟踪系统 v1.1
+
+v1.1 修复:
+- 修复1: SK Hynix(000660.KS) 财务数据韩元→美元换算 (÷1350汇率再÷1e8)
+- 修复2: SK Hynix 市值韩元→十亿美元换算
+- 修复3: PB异常值过滤 (>500视为数据错误，置0)
+- 更新: 持仓更新为Jul 31, 2026最新数据
+
+v1.0:
+- 框架沿用513050中概互联跟踪脚本逻辑，针对美股ETF做以下改动
+- 数据源: 全部换用 yfinance (美股/台股/韩股ADR)
+- S5溢价率模块: 改为"CHPS vs SOX相对强弱"(无QDII溢价问题)
+- 板块参考指数: SOXX (iShares Semiconductor ETF) 作为行业基准
+
+依赖:
+    pip install yfinance requests numpy pandas
+"""
+
+import os
+
+# =========================================================
+# 代理设置 (VS Code直接运行时需要，终端已设环境变量可忽略)
+# =========================================================
+os.environ.setdefault("ALL_PROXY",   "socks5://127.0.0.1:10808")
+os.environ.setdefault("HTTPS_PROXY", "socks5://127.0.0.1:10808")
+os.environ.setdefault("HTTP_PROXY",  "socks5://127.0.0.1:10808")
+
+import re
+import time
+import warnings
+from datetime import datetime
+
+import numpy as np
+import pandas as pd
+import requests
+
+try:
+    import yfinance as yf
+    YF_OK = True
+except ImportError:
+    YF_OK = False
+    print("[WARN] yfinance未安装: pip install yfinance")
+
+warnings.filterwarnings("ignore")
+
+# =========================================================
+# 全局配置
+# =========================================================
+ETF_TICKER   = "CHPS"
+ETF_NAME     = "CHPS半导体ETF"
+BENCH_TICKER = "SOXX"       # 行业基准对比
+BENCH_NAME   = "iShares半导体ETF(SOXX)"
+
+OUTPUT_DIR  = r"C:\Users\simon\Desktop\stockSpider_output"
+OUTPUT_FILE = os.path.join(OUTPUT_DIR, "CHPS跟踪报告.txt")
+HISTORY_FILE= os.path.join(OUTPUT_DIR, "history_CHPS.csv")
+
+# =========================================================
+# 默认持仓 (Jul 31, 2026 最新数据, 来源: 同花顺F10)
+# ETF动态调整, 建议每季度手动核对一次
+# 注: SK Hynix (000660.KS) 为韩股, yfinance可拉取
+# =========================================================
+DEFAULT_HOLDINGS = [
+    {"ticker": "AMD",       "name": "Advanced Micro Devices", "weight": 6.86},
+    {"ticker": "MU",        "name": "Micron Technology",       "weight": 6.65},
+    {"ticker": "000660.KS", "name": "SK Hynix",                "weight": 6.09},
+    {"ticker": "INTC",      "name": "Intel Corporation",       "weight": 4.96},
+    {"ticker": "TXN",       "name": "Texas Instruments",       "weight": 4.37},
+    {"ticker": "AMAT",      "name": "Applied Materials",       "weight": 4.34},
+    {"ticker": "TSM",       "name": "TSMC ADR",                "weight": 4.14},
+    {"ticker": "ASML",      "name": "ASML Holding",            "weight": 3.89},
+    {"ticker": "LRCX",      "name": "Lam Research",            "weight": 3.85},
+    {"ticker": "AVGO",      "name": "Broadcom",                "weight": 3.73},
+]
+
+# PE历史区间参考 (用于估值分位判断)
+PE_REF = {
+    "AMD":       {"lo": 20, "hi": 80},
+    "MU":        {"lo": 8,  "hi": 35},
+    "000660.KS": {"lo": 8,  "hi": 25},
+    "INTC":      {"lo": 10, "hi": 30},
+    "TXN":       {"lo": 15, "hi": 35},
+    "AMAT":      {"lo": 15, "hi": 35},
+    "TSM":       {"lo": 15, "hi": 30},
+    "ASML":      {"lo": 30, "hi": 65},
+    "LRCX":      {"lo": 15, "hi": 35},
+    "AVGO":      {"lo": 20, "hi": 50},
+}
+
+
+# =========================================================
+# 工具函数
+# =========================================================
+def log(msg, level="INFO"):
+    print(f"[{datetime.now().strftime('%H:%M:%S')}][{level}] {msg}")
+
+
+def ensure_dir():
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+
+def sf(x, default=0.0):
+    try:
+        if x in [None, "", "-", "--"]:
+            return default
+        return float(x)
+    except Exception:
+        return default
+
+
+def save_report(text):
+    ensure_dir()
+    with open(OUTPUT_FILE, "w", encoding="utf-8-sig") as f:
+        f.write(text)
+    log(f"报告已保存: {OUTPUT_FILE}")
+
+
+# =========================================================
+# yfinance 数据获取层
+# =========================================================
+def fetch_daily(ticker: str, period="1y") -> pd.DataFrame | None:
+    """拉取日K线，返回含 date/open/high/low/close/volume 的DataFrame"""
+    if not YF_OK:
+        return None
+    try:
+        t = yf.Ticker(ticker)
+        df = t.history(period=period, auto_adjust=True)
+        if df is None or len(df) < 20:
+            log(f"  {ticker}: 日K数据不足", "WARN")
+            return None
+        df = df.reset_index()
+        df.columns = [c.lower() for c in df.columns]
+        df = df.rename(columns={"date": "date"})
+        df["date"] = pd.to_datetime(df["date"]).dt.tz_localize(None)
+        df = df[["date", "open", "high", "low", "close", "volume"]].dropna()
+        df = df.sort_values("date").reset_index(drop=True)
+        log(f"  {ticker}: 日K {len(df)}条")
+        return df
+    except Exception as e:
+        log(f"  {ticker} 日K失败: {e}", "WARN")
+        return None
+
+
+def fetch_info(ticker: str) -> dict:
+    """拉取基本面/估值信息"""
+    if not YF_OK:
+        return {}
+    try:
+        t = yf.Ticker(ticker)
+        info = t.info or {}
+        return info
+    except Exception as e:
+        log(f"  {ticker} info失败: {e}", "WARN")
+        return {}
+
+
+def fetch_financials(ticker: str) -> dict:
+    """拉取财务数据(营收/净利/同比)"""
+    if not YF_OK:
+        return {}
+    try:
+        t = yf.Ticker(ticker)
+        # 年报
+        fin = t.financials  # columns=years, rows=items
+        if fin is None or fin.empty:
+            return {}
+
+        result = {}
+        # 营收
+        for key in ["Total Revenue", "Revenue"]:
+            if key in fin.index:
+                vals = fin.loc[key].dropna()
+                if len(vals) >= 1:
+                    result["revenue"] = float(vals.iloc[0]) / 1e8   # 转亿美元
+                if len(vals) >= 2:
+                    prev = float(vals.iloc[1])
+                    curr = float(vals.iloc[0])
+                    result["revenue_yoy"] = round((curr / prev - 1) * 100, 1) if prev else 0
+                break
+
+        # 净利润
+        for key in ["Net Income", "Net Income Common Stockholders"]:
+            if key in fin.index:
+                vals = fin.loc[key].dropna()
+                if len(vals) >= 1:
+                    result["net_profit"] = float(vals.iloc[0]) / 1e8
+                if len(vals) >= 2:
+                    prev = float(vals.iloc[1])
+                    curr = float(vals.iloc[0])
+                    result["profit_yoy"] = round((curr / prev - 1) * 100, 1) if prev else 0
+                break
+
+        return result
+    except Exception as e:
+        log(f"  {ticker} 财务数据失败: {e}", "WARN")
+        return {}
+
+
+# =========================================================
+# Section 1: 板块动量与量能
+# =========================================================
+class SectorMomentum:
+    def __init__(self, etf_df: pd.DataFrame, bench_df: pd.DataFrame | None):
+        self.etf_df   = etf_df
+        self.bench_df = bench_df
+
+    def analyze(self):
+        log("\n>>> Section 1: 板块动量与量能")
+
+        # 用SOXX作基准，否则退化到CHPS自身
+        df = self.bench_df if (self.bench_df is not None and len(self.bench_df) >= 20) \
+             else self.etf_df
+        src = BENCH_NAME if df is self.bench_df else ETF_NAME
+
+        periods = [3, 5, 10, 15, 20]
+        cp = float(df["close"].iloc[-1])
+        changes = {}
+        for p in periods:
+            past = float(df["close"].iloc[-p - 1]) if len(df) > p else cp
+            changes[p] = round((cp / past - 1) * 100, 2) if past > 0 else 0
+
+        pos_cnt = sum(1 for v in changes.values() if v > 0)
+
+        if all(v > 0 for v in changes.values()):
+            ps, pc = 18, f"{src}近3/5/10/15/20日全部为正，半导体板块热度升温。"
+        elif all(v < 0 for v in changes.values()):
+            ps, pc = 2,  f"{src}近3/5/10/15/20日全部为负，板块冷区。"
+        elif pos_cnt >= 4:
+            ps, pc = 15, f"{src}偏强，{pos_cnt}/5窗口为正。"
+        elif pos_cnt >= 3:
+            ps, pc = 12, f"{src}偏暖，{pos_cnt}/5窗口为正。"
+        else:
+            ps, pc = 6,  f"{src}偏弱，仅{pos_cnt}/5窗口为正。"
+
+        # ETF自身量能变化
+        vol = self.etf_df["volume"].astype(float)
+        vol_details = {}
+        for p in periods:
+            if len(vol) >= 2 * p:
+                r  = vol.tail(p).mean()
+                pv = vol.iloc[-2*p:-p].mean()
+                vol_details[p] = round((r / pv - 1) * 100, 1) if pv > 0 else 0
+            else:
+                vol_details[p] = 0
+
+        vol_up = sum(1 for v in vol_details.values() if v >  5)
+        vol_dn = sum(1 for v in vol_details.values() if v < -5)
+
+        if   vol_up >= 4: fs, fc = 16, f"CHPS量能持续放大({vol_up}/5)。"
+        elif vol_up >= 3: fs, fc = 13, f"CHPS量能抬升({vol_up}/5)。"
+        elif vol_dn >= 4: fs, fc = 4,  f"CHPS量能持续萎缩({vol_dn}/5)。"
+        elif vol_dn >= 3: fs, fc = 7,  f"CHPS量能略降({vol_dn}/5)。"
+        else:             fs, fc = 10, "CHPS量能平稳。"
+
+        score = round((ps + fs) / 2, 1)
+        chg_str = " / ".join([f"{p}日:{changes[p]:+.2f}%" for p in periods])
+        vol_str = " / ".join([f"{p}日:{vol_details[p]:+.1f}%" for p in periods])
+
+        comment = (f"{pc} {fc}\n"
+                   f"{src}涨跌幅: {chg_str}\n"
+                   f"CHPS成交量变化: {vol_str}")
+
+        log(f"  Section 1 得分: {score}/20")
+        return score, {"score": score, "comment": comment, "changes": changes}
+
+
+# =========================================================
+# Section 2: 技术走势 (均线状态机，与513050完全一致)
+# =========================================================
+class TechnicalAnalysis:
+    def __init__(self, daily_df: pd.DataFrame, realtime_price: float = 0):
+        self.daily_df = daily_df
+        self.realtime_price = realtime_price
+
+    def _compute_state(self, df):
+        if df is None or len(df) < 90:
+            return {"state": "X", "sub_state": "数据不足", "score": 8, "price": None}
+
+        close = df["close"].astype(float).reset_index(drop=True)
+        P = float(close.iloc[-1])
+        mas = {f"MA{n}": float(close.tail(n).mean()) for n in [5, 10, 20, 30, 40, 50, 60, 70, 80, 90]}
+        MA30, MA60, MA90 = mas["MA30"], mas["MA60"], mas["MA90"]
+        MA10, MA50, MA70 = mas["MA10"], mas["MA50"], mas["MA70"]
+
+        def Gap(n):
+            m = mas[f"MA{n}"]
+            return (P - m) / m if m else 0
+
+        state, sub_state, score = "X", "", 7
+
+        if P < MA30 < MA60 < MA90:
+            state, sub_state, score = "0", "结构性空头", 2
+        elif P > MA30 > MA60 > MA90:
+            state, sub_state, score = "3", "结构性多头", 16
+            if P > MA10 > MA30 > MA50 > MA70 > MA90:
+                state, sub_state, score = "3+", "强趋势多头", 19
+        elif P > MA30 and abs(Gap(60)) < 0.01:
+            state = "2"
+            if P > MA60:
+                mg = max(abs(Gap(n)) for n in [10, 20, 30, 40, 50, 60])
+                if   mg <= 0.015: sub_state, score = "2B-Compress", 15
+                elif mg <= 0.03:  sub_state, score = "2B-EarlyBull", 13
+                else:             sub_state, score = "2A", 8
+            else:
+                sub_state, score = "2A", 8
+        elif P > MA30 and P < MA60 and MA60 < MA90:
+            state, sub_state, score = "1", "弱反弹", 5
+        else:
+            state = "X"
+            if P > MA30 and P > MA60 and P > MA90:
+                sub_state, score = "反转过渡态(价格先行,长均线修复中)", 9
+            elif abs((MA30 - MA60) / MA60) < 0.02 and abs((MA60 - MA90) / MA90) < 0.02:
+                sub_state, score = "均线粘合横盘", 7
+            else:
+                sub_state, score = "未完成确认", 7
+
+        return {"state": state, "sub_state": sub_state, "score": score, "price": round(P, 3)}
+
+    def _chip(self):
+        df = self.daily_df.copy().reset_index(drop=True)
+        close = df["close"].astype(float)
+        cp = self.realtime_price if self.realtime_price > 0 else float(close.iloc[-1])
+
+        recent = df.tail(min(len(df), 60)).copy()
+        vol = recent["volume"].astype(float)
+        avg_cost = float((recent["close"].astype(float) * vol).sum() / vol.sum()) \
+                   if vol.sum() > 0 else float(recent["close"].astype(float).mean())
+
+        low_70  = float(recent["close"].astype(float).quantile(0.15))
+        high_70 = float(recent["close"].astype(float).quantile(0.85))
+
+        v5  = df["volume"].astype(float).tail(5).mean()
+        v20 = df["volume"].astype(float).tail(20).mean()
+        vr  = v5 / v20 if v20 > 0 else 1.0
+
+        pen  = ((cp - low_70) / (high_70 - low_70) * 100) if high_70 != low_70 else 50
+        prem = (cp / avg_cost - 1) * 100 if avg_cost > 0 else 0
+        trend = cp > avg_cost
+
+        signal, desc = "HOLD", "震荡/观察"
+        if trend and (20 <= pen <= 80) and vr >= 1.0:
+            signal, desc = "BUY",  "趋势启动，放量突破"
+        elif (not trend) and (pen < 10 or prem < -3.0):
+            signal, desc = "SELL", "趋势破位，筹码溃散"
+        elif trend and pen > 80:
+            signal, desc = "HOLD", "高位锁仓(只卖不买)"
+        elif not trend:
+            signal, desc = "HOLD", "水下蓄势(未破位)"
+
+        cs = {"BUY": 17, "HOLD": 10, "SELL": 3}.get(signal, 10)
+        if signal == "HOLD" and trend and pen > 80:
+            cs = 12
+
+        return {"signal": signal, "desc": desc, "score": cs,
+                "penetration": round(pen, 2), "cost_premium": round(prem, 2),
+                "trend": trend, "volume_ratio": round(vr, 2)}
+
+    def analyze(self):
+        log("\n>>> Section 2: 技术走势分析")
+        mad  = self._compute_state(self.daily_df)
+
+        # CHPS上市时间不足一年，周线替代120分钟K线做中期判断
+        if len(self.daily_df) >= 30:
+            weekly = (self.daily_df.copy()
+                      .assign(week=pd.to_datetime(self.daily_df["date"]).dt.to_period("W"))
+                      .groupby("week")
+                      .agg({"open": "first","high": "max","low": "min",
+                            "close": "last","volume": "sum"})
+                      .reset_index(drop=True))
+            maw = self._compute_state(weekly)
+        else:
+            maw = {"state": "X", "sub_state": "数据不足", "score": 8, "price": None}
+
+        chip = self._chip()
+        score = round(maw["score"] * 0.3 + mad["score"] * 0.4 + chip["score"] * 0.3, 1)
+
+        comment = (
+            f"周线结构: State {maw['state']}({maw['sub_state']})\n"
+            f"日K结构:  State {mad['state']}({mad['sub_state']})\n"
+            f"筹码信号: {chip['signal']}({chip['desc']}) | "
+            f"穿透率={chip['penetration']:.1f}% | 成本溢价={chip['cost_premium']:+.2f}% | "
+            f"量比={chip['volume_ratio']:.2f}\n"
+        )
+        if   mad["state"] in ["3", "3+"]:
+            comment += "日线标准多头，可按顺势思路处理。"
+        elif mad["state"] == "2" and "2B" in mad["sub_state"]:
+            comment += "日线处于可试多区域，适合轻仓节奏。"
+        elif mad["state"] == "X" and "反转" in mad["sub_state"]:
+            comment += "价格先行，长均线仍在修复，不追高，等回踩。"
+        elif mad["state"] == "0":
+            comment += "结构性空头，回避。"
+        else:
+            comment += "结构未完成确认，观察为主。"
+
+        log(f"  Section 2 得分: {score}/20")
+        return score, {"score": score, "daily": mad, "weekly": maw, "chip": chip, "comment": comment}
+
+
+# =========================================================
+# Section 3: 持仓深度 (行情 + 估值 + 基本面)
+# =========================================================
+class HoldingsDeepAnalysis:
+
+    def __init__(self, holdings=None):
+        self.holdings = holdings or DEFAULT_HOLDINGS
+        self.deep_data = []
+
+    def _fetch_one(self, h: dict) -> dict:
+        ticker = h["ticker"]
+        d = {
+            "ticker": ticker, "name": h["name"], "weight": h["weight"],
+            "price": 0, "change_1d": 0, "changes": {},
+            "high_52w": 0, "low_52w": 0, "pos_52w": 50,
+            "pe_ttm": 0, "pe_forward": 0, "pb": 0, "ps": 0,
+            "dividend_yield": 0, "roe": 0, "market_cap_b": 0,
+            "profit_status": "unknown", "valuation_missing": False,
+            "avg_volume_5d": 0, "avg_volume_20d": 0,
+            "volume_ratio": 0, "amplitude_20d": 0,
+            "revenue_b": 0, "revenue_yoy": 0,
+            "net_profit_b": 0, "profit_yoy": 0,
+            "report_date": "",
+        }
+
+        # --- 行情 ---
+        df = fetch_daily(ticker, period="1y")
+        if df is not None and len(df) >= 25:
+            cp = float(df["close"].iloc[-1])
+            d["price"] = round(cp, 2)
+            if len(df) >= 2:
+                d["change_1d"] = round((cp / float(df["close"].iloc[-2]) - 1) * 100, 2)
+            for p in [3, 5, 10, 15, 20]:
+                past = float(df["close"].iloc[-p-1]) if len(df) > p else cp
+                d["changes"][p] = round((cp / past - 1) * 100, 2) if past > 0 else 0
+
+            hi = float(df["high"].max())
+            lo = float(df["low"].min())
+            d["high_52w"] = round(hi, 2)
+            d["low_52w"]  = round(lo, 2)
+            d["pos_52w"]  = round((cp - lo) / (hi - lo) * 100, 1) if hi > lo else 50
+
+            vol = df["volume"].astype(float)
+            v5  = float(vol.tail(5).mean())
+            v20 = float(vol.tail(20).mean())
+            d["avg_volume_5d"]  = v5
+            d["avg_volume_20d"] = v20
+            d["volume_ratio"]   = round(v5 / v20, 2) if v20 > 0 else 0
+
+            r20 = df.tail(20)
+            if len(r20) > 1:
+                amp = ((r20["high"].astype(float) - r20["low"].astype(float)) /
+                       r20["close"].astype(float).shift(1)).dropna()
+                d["amplitude_20d"] = round(float(amp.mean()) * 100, 2) if len(amp) > 0 else 0
+
+        # v1.1: 韩股标识，财务数据需要KRW→USD换算
+        is_krw = ticker.endswith(".KS")
+        KRW_TO_USD = 1350.0   # 约定汇率，如需精确可接入实时汇率
+
+        # --- 估值 (yfinance info) ---
+        info = fetch_info(ticker)
+        if info:
+            d["pe_ttm"]     = round(sf(info.get("trailingPE")), 2)
+            d["pe_forward"] = round(sf(info.get("forwardPE")), 2)
+
+            # v1.1 修复2: PB异常值过滤 (yfinance对部分股票返回畸形值)
+            pb_raw = sf(info.get("priceToBook"))
+            d["pb"] = round(pb_raw, 2) if 0 < pb_raw < 500 else 0
+
+            d["ps"]           = round(sf(info.get("priceToSalesTrailing12Months")), 2)
+            d["dividend_yield"]= round(sf(info.get("dividendYield", 0)) * 100, 2)
+            d["roe"]          = round(sf(info.get("returnOnEquity", 0)) * 100, 2)
+
+            mcap = sf(info.get("marketCap", 0))
+            if mcap > 0:
+                # v1.1 修复: 韩股市值单位是KRW，需换算成十亿美元
+                if is_krw:
+                    d["market_cap_b"] = round(mcap / KRW_TO_USD / 1e9, 1)
+                else:
+                    d["market_cap_b"] = round(mcap / 1e9, 1)
+
+            pe_check = d["pe_ttm"] or d["pe_forward"]
+            if pe_check < 0:
+                d["profit_status"] = "loss"
+            elif pe_check > 0:
+                d["profit_status"] = "profit"
+            else:
+                d["profit_status"] = "unknown"
+                d["valuation_missing"] = True
+
+        # --- 基本面 (yfinance financials) ---
+        fin = fetch_financials(ticker)
+        if fin:
+            if is_krw:
+                # v1.1 修复1: 韩股财务数据单位是KRW，换算成十亿美元(B$)
+                krw_to_busd = KRW_TO_USD * 1e9   # 1B USD = 1350 * 1e9 KRW
+                d["revenue_b"]    = round(fin.get("revenue", 0) * 1e8 / krw_to_busd, 1)
+                d["net_profit_b"] = round(fin.get("net_profit", 0) * 1e8 / krw_to_busd, 1)
+            else:
+                d["revenue_b"]    = round(fin.get("revenue", 0), 1)   # 已是十亿美元
+                d["net_profit_b"] = round(fin.get("net_profit", 0), 1)
+            d["revenue_yoy"] = fin.get("revenue_yoy", 0)
+            d["profit_yoy"]  = fin.get("profit_yoy", 0)
+
+        return d
+
+    def fetch_all(self):
+        log(">>> 开始持仓深度抓取...")
+        self.deep_data = []
+        for i, h in enumerate(self.holdings):
+            t0 = time.time()
+            log(f"  [{i+1}/{len(self.holdings)}] {h['name']}({h['ticker']})")
+            d = self._fetch_one(h)
+            self.deep_data.append(d)
+            log(f"    -> 耗时{time.time()-t0:.1f}s | 价格={d['price']} PE_ttm={d['pe_ttm']} ROE={d['roe']}%")
+            time.sleep(0.3)   # 避免yfinance限流
+        log(">>> 持仓深度抓取完成")
+
+    def _score_momentum(self):
+        total_w = sum(d["weight"] for d in self.deep_data)
+        weighted_change = pos_cnt = 0
+        for d in self.deep_data:
+            vals = list(d["changes"].values())
+            if not vals:
+                continue
+            avg = float(np.mean(vals))
+            weighted_change += avg * d["weight"] / total_w
+            if avg > 0:
+                pos_cnt += 1
+
+        n = len(self.deep_data)
+        if   weighted_change >  5: s, msg = 9.5, "重仓股整体明显走强，共振度高。"
+        elif weighted_change >  2: s, msg = 8.0, "重仓股整体偏强。"
+        elif weighted_change >  0: s, msg = 6.5, "重仓股略偏强。"
+        elif weighted_change > -2: s, msg = 4.5, "重仓股震荡偏弱。"
+        else:                      s, msg = 2.5, "重仓股整体偏弱。"
+        return s, weighted_change, pos_cnt, n, msg
+
+    def _pick_pe(self, d):
+        for k in ["pe_forward", "pe_ttm"]:
+            v = d.get(k, 0)
+            if v and v > 0:
+                return v, k
+        return 0, "none"
+
+    def _score_valuation(self):
+        weighted_pe = pe_w_sum = weighted_pb = pb_w_sum = 0
+        low_cnt = high_cnt = loss_cnt = missing_cnt = reasonable_cnt = 0
+        judgments = []
+
+        for d in self.deep_data:
+            pe_used, pe_src = self._pick_pe(d)
+            ref = PE_REF.get(d["ticker"], {"lo": 15, "hi": 40})
+
+            growth = d.get("profit_yoy", 0) or d.get("revenue_yoy", 0)
+
+            if d.get("valuation_missing"):
+                grade, grade_score = "数据缺失", 10
+                missing_cnt += 1
+                peg, pctile = 0, 50
+
+            elif d.get("profit_status") == "loss" or pe_used <= 0:
+                rev_yoy = d.get("revenue_yoy", 0)
+                if d.get("ps", 0) > 0 and rev_yoy > 15:
+                    grade, grade_score = "亏损(高成长)", 12
+                elif d.get("ps", 0) > 0:
+                    grade, grade_score = "亏损(观察)", 8
+                else:
+                    grade, grade_score = "亏损", 6
+                loss_cnt += 1
+                peg, pctile = 0, 50
+
+            else:
+                lo, hi = ref["lo"], ref["hi"]
+                pctile = max(0, min(100, (pe_used - lo) / (hi - lo) * 100)) if hi > lo else 50
+
+                if growth > 0:
+                    peg = pe_used / growth
+                else:
+                    peg = 999
+
+                if growth <= 0:
+                    if growth < -20:
+                        grade, grade_score = "衰退★", 4
+                    elif growth < 0:
+                        grade, grade_score = "增速放缓", 7
+                    else:
+                        if   pctile < 30: grade, grade_score = "偏低(增速未知)", 13
+                        elif pctile < 70: grade, grade_score = "合理(增速未知)", 11
+                        else:             grade, grade_score = "偏高(增速未知)", 7
+                    if growth < 0:
+                        high_cnt += 1
+                    else:
+                        reasonable_cnt += 1
+                elif peg < 0.8 and pctile < 30:
+                    grade, grade_score = "低估★", 18; low_cnt += 1
+                elif peg < 1.0 and pctile < 50:
+                    grade, grade_score = "偏低", 15; low_cnt += 1
+                elif peg < 1.5 and pctile < 70:
+                    grade, grade_score = "合理", 12; reasonable_cnt += 1
+                elif peg < 2.5 or pctile < 85:
+                    grade, grade_score = "偏高", 8; high_cnt += 1
+                else:
+                    grade, grade_score = "高估", 4; high_cnt += 1
+
+                weighted_pe  += pe_used * d["weight"]
+                pe_w_sum     += d["weight"]
+
+            if d.get("pb", 0) > 0:
+                weighted_pb += d["pb"] * d["weight"]
+                pb_w_sum    += d["weight"]
+
+            judgments.append({
+                "ticker": d["ticker"], "name": d["name"], "weight": d["weight"],
+                "pe_used": pe_used, "pe_src": pe_src, "peg": peg,
+                "pctile": pctile, "grade": grade, "grade_score": grade_score,
+            })
+
+        avg_score = np.mean([j["grade_score"] for j in judgments]) if judgments else 10
+        s = round(avg_score / 20 * 10, 1)
+        w_pe = weighted_pe / pe_w_sum if pe_w_sum > 0 else 0
+        w_pb = weighted_pb / pb_w_sum if pb_w_sum > 0 else 0
+
+        return s, w_pe, w_pb, low_cnt, high_cnt, loss_cnt, missing_cnt, reasonable_cnt, judgments
+
+    def _score_fundamental(self):
+        w_rev = w_prof = w_roe = rev_sum = prof_sum = roe_sum = 0
+        valid_rev = valid_prof = valid_roe = 0
+
+        for d in self.deep_data:
+            if d.get("revenue_yoy") != 0:
+                w_rev += d["revenue_yoy"] * d["weight"]; rev_sum += d["weight"]; valid_rev += 1
+            if d.get("profit_yoy") != 0:
+                w_prof += d["profit_yoy"] * d["weight"]; prof_sum += d["weight"]; valid_prof += 1
+            if d.get("roe", 0) != 0:
+                w_roe += d["roe"] * d["weight"]; roe_sum += d["weight"]; valid_roe += 1
+
+        avg_rev  = w_rev  / rev_sum  if rev_sum  > 0 else 0
+        avg_prof = w_prof / prof_sum if prof_sum > 0 else 0
+        avg_roe  = w_roe  / roe_sum  if roe_sum  > 0 else 0
+        coverage = (valid_rev + valid_prof + valid_roe) / (3 * len(self.deep_data)) if self.deep_data else 0
+
+        if coverage < 0.3:
+            return 6.0, avg_rev, avg_prof, avg_roe, coverage, "数据覆盖率不足，中性分。"
+
+        rev_s  = 3 if avg_rev  > 15 else (2.5 if avg_rev  > 8 else (2 if avg_rev  > 0 else 1))
+        prof_s = 4 if avg_prof > 20 else (3.5 if avg_prof > 10 else (2.5 if avg_prof > 0 else 1.5))
+        roe_s  = 3 if avg_roe  > 20 else (2.5 if avg_roe  > 15 else (2 if avg_roe  > 8 else 1))
+        s = min(10, round(rev_s + prof_s + roe_s, 1))
+
+        msg = ("重仓股基本面质量优秀。" if s >= 8 else
+               "基本面质量良好。"    if s >= 6.5 else
+               "基本面质量中性。"    if s >= 5 else
+               "基本面质量偏弱。")
+        return s, avg_rev, avg_prof, avg_roe, coverage, msg
+
+    def analyze(self):
+        log("\n>>> Section 3: 持仓深度分析")
+        self.fetch_all()
+
+        s1, w_chg, pos_cnt, n, m1 = self._score_momentum()
+        s2, w_pe, w_pb, low_cnt, high_cnt, loss_cnt, missing_cnt, reasonable_cnt, judgments = self._score_valuation()
+        s3, avg_rev, avg_prof, avg_roe, cov, m3 = self._score_fundamental()
+        total = round(s1 + s2 + s3, 1)
+
+        lines = []
+
+        # 行情表
+        lines.append(f"【行情视角】评分 {s1}/10 — {m1} 上涨{pos_cnt}/{n}只, 加权涨跌{w_chg:+.2f}%")
+        lines.append(f"{'代码':<8}{'名称':<20}{'权重':>7}{'3日':>8}{'5日':>8}{'20日':>8}{'52周位':>8}")
+        for d in self.deep_data:
+            lines.append(f"{d['ticker']:<8}{d['name'][:18]:<20}{d['weight']:>6.2f}%"
+                         f"{d['changes'].get(3,0):>+7.1f}%{d['changes'].get(5,0):>+7.1f}%"
+                         f"{d['changes'].get(20,0):>+7.1f}%{d['pos_52w']:>7.1f}%")
+
+        # 估值表
+        lines.append("")
+        lines.append(f"【估值视角】评分 {s2}/10 — 加权PE={w_pe:.1f} 加权PB={w_pb:.2f}")
+        lines.append(f"低估{low_cnt}只/合理{reasonable_cnt}只/偏高{high_cnt}只/亏损{loss_cnt}只/缺失{missing_cnt}只")
+        lines.append(f"{'代码':<8}{'名称':<20}{'TTM_PE':>8}{'Fwd_PE':>8}{'PB':>6}{'ROE%':>7}{'市值(B$)':>9}{'判定':>12}")
+        for d, j in zip(self.deep_data, judgments):
+            pe_t = f"{d['pe_ttm']:.1f}"  if d['pe_ttm']  > 0 else ("亏损" if d['profit_status']=="loss" else "--")
+            pe_f = f"{d['pe_forward']:.1f}" if d['pe_forward'] > 0 else "--"
+            pb   = f"{d['pb']:.2f}"      if d['pb']   > 0 else "--"
+            roe  = f"{d['roe']:.1f}%"   if d['roe']  != 0 else "--"
+            mcap = f"{d['market_cap_b']:.0f}" if d['market_cap_b'] > 0 else "--"
+            lines.append(f"{d['ticker']:<8}{d['name'][:18]:<20}{pe_t:>8}{pe_f:>8}{pb:>6}{roe:>7}{mcap:>9}{j['grade']:>12}")
+
+        # 基本面表
+        lines.append("")
+        lines.append(f"【基本面视角】评分 {s3}/10 — "
+                     f"加权营收同比{avg_rev:+.1f}% / 加权净利同比{avg_prof:+.1f}% / 加权ROE{avg_roe:.1f}%")
+        lines.append(f"数据覆盖率{cov*100:.0f}% — {m3}")
+        lines.append(f"{'代码':<8}{'名称':<20}{'营收(B$)':>10}{'营收同比':>10}{'净利(B$)':>10}{'净利同比':>10}")
+        for d in self.deep_data:
+            rev  = f"{d['revenue_b']:.1f}"   if d['revenue_b']   != 0 else "--"
+            ryoy = f"{d['revenue_yoy']:+.1f}%" if d['revenue_yoy'] != 0 else "--"
+            prof = f"{d['net_profit_b']:.1f}" if d['net_profit_b'] != 0 else "--"
+            pyoy = f"{d['profit_yoy']:+.1f}%" if d['profit_yoy']  != 0 else "--"
+            lines.append(f"{d['ticker']:<8}{d['name'][:18]:<20}{rev:>10}{ryoy:>10}{prof:>10}{pyoy:>10}")
+
+        comment = "\n".join(lines)
+        log(f"  Section 3 得分: {total}/30 (行情{s1}+估值{s2}+基本面{s3})")
+
+        return total, {
+            "score": total, "momentum_score": s1, "valuation_score": s2, "fundamental_score": s3,
+            "weighted_change": w_chg, "weighted_pe": w_pe, "weighted_pb": w_pb,
+            "avg_rev_yoy": avg_rev, "avg_profit_yoy": avg_prof, "avg_roe": avg_roe,
+            "low_cnt": low_cnt, "high_cnt": high_cnt, "loss_cnt": loss_cnt,
+            "missing_cnt": missing_cnt, "coverage": cov,
+            "detail": self.deep_data, "judgments": judgments, "comment": comment,
+        }
+
+
+# =========================================================
+# Section 4: 流动性与情绪
+# =========================================================
+class LiquidityAnalysis:
+    def __init__(self, deep_data, etf_df):
+        self.deep_data = deep_data
+        self.etf_df    = etf_df
+
+    def analyze(self):
+        log("\n>>> Section 4: 流动性与情绪")
+        if not self.deep_data:
+            return 5.0, {"score": 5.0, "comment": "无数据。"}
+
+        w_vr = w_amp = vr_sum = amp_sum = 0
+        for d in self.deep_data:
+            if d.get("volume_ratio", 0) > 0:
+                w_vr  += d["volume_ratio"] * d["weight"]; vr_sum  += d["weight"]
+            if d.get("amplitude_20d", 0) > 0:
+                w_amp += d["amplitude_20d"] * d["weight"]; amp_sum += d["weight"]
+
+        avg_vr  = w_vr  / vr_sum  if vr_sum  > 0 else 1.0
+        avg_amp = w_amp / amp_sum if amp_sum > 0 else 0
+
+        # ETF自身量比
+        vol = self.etf_df["volume"].astype(float)
+        etf_vr = float(vol.tail(5).mean() / vol.tail(20).mean()) if vol.tail(20).mean() > 0 else 1.0
+
+        vr_s  = 3 if avg_vr > 1.3 else (2.5 if avg_vr > 1.0 else (2 if avg_vr > 0.8 else 1))
+        amp_s = 2 if 1 < avg_amp < 5 else (1.5 if avg_amp <= 1 else 1)
+        etf_s = 2 if etf_vr > 1.2 else (1.5 if etf_vr > 0.8 else 1)
+
+        score = min(10, round(vr_s + amp_s + etf_s + 2, 1))   # +2底分
+
+        msg = ("重仓股整体活跃，情绪偏正面。" if score >= 8 else
+               "流动性中性偏正。"            if score >= 6 else
+               "流动性中性偏冷。"            if score >= 4 else
+               "流动性偏冷。")
+        comment = (f"{msg}\n"
+                   f"加权量比: {avg_vr:.2f} | 加权20日振幅: {avg_amp:.2f}% | ETF量比: {etf_vr:.2f}")
+
+        log(f"  Section 4 得分: {score}/10")
+        return score, {"score": score, "comment": comment}
+
+
+# =========================================================
+# Section 5: CHPS vs SOXX 相对强弱  (替代QDII溢价模块)
+# =========================================================
+class RelativeStrengthAnalysis:
+    """
+    CHPS无QDII溢价问题，改为衡量相对SOX指数的超额/折价表现。
+    逻辑: 若CHPS持续跑赢SOXX → 说明均衡分散策略得到认可 → 加分
+         若持续跑输 → 资金更偏向头部集中的SOXX → 注意
+    """
+    def __init__(self, chps_df, soxx_df):
+        self.chps = chps_df
+        self.soxx = soxx_df
+
+    def analyze(self):
+        log("\n>>> Section 5: CHPS vs SOXX 相对强弱")
+
+        if self.soxx is None or len(self.soxx) < 20:
+            score = 5
+            comment = "SOXX数据不足，中性分。"
+            log(f"  Section 5 得分: {score}/10")
+            return score, {"score": score, "comment": comment, "rs_details": {}}
+
+        # 对齐日期
+        c = self.chps[["date","close"]].copy().rename(columns={"close":"chps"})
+        s = self.soxx[["date","close"]].copy().rename(columns={"close":"soxx"})
+        c["date"] = pd.to_datetime(c["date"]).dt.normalize()
+        s["date"] = pd.to_datetime(s["date"]).dt.normalize()
+        m = pd.merge(c, s, on="date").sort_values("date").reset_index(drop=True)
+
+        if len(m) < 10:
+            return 5, {"score": 5, "comment": "对齐数据不足，中性分。", "rs_details": {}}
+
+        rs_details = {}
+        for p in [5, 10, 20, 60]:
+            if len(m) > p:
+                chps_ret = (float(m["chps"].iloc[-1]) / float(m["chps"].iloc[-p-1]) - 1) * 100
+                soxx_ret = (float(m["soxx"].iloc[-1]) / float(m["soxx"].iloc[-p-1]) - 1) * 100
+                rs_details[p] = round(chps_ret - soxx_ret, 2)
+
+        # 超额表现评分
+        beats = sum(1 for v in rs_details.values() if v > 0)
+        avg_excess = np.mean(list(rs_details.values())) if rs_details else 0
+
+        if   beats >= 3 and avg_excess >  1: s_score, s_msg = 8, "CHPS多周期跑赢SOXX，均衡策略占优。"
+        elif beats >= 3:                     s_score, s_msg = 6, "CHPS小幅跑赢SOXX。"
+        elif beats >= 2:                     s_score, s_msg = 5, "CHPS与SOXX基本持平。"
+        elif beats == 1:                     s_score, s_msg = 4, "CHPS小幅跑输SOXX。"
+        else:                                s_score, s_msg = 2, "CHPS多周期跑输SOXX，集中持仓更受青睐。"
+
+        rs_str = " / ".join([f"{p}日:{rs_details[p]:+.2f}%" for p in sorted(rs_details)])
+        comment = f"{s_msg}\nCHPS超额SOXX: {rs_str}"
+
+        log(f"  Section 5 得分: {s_score}/10")
+        return s_score, {"score": s_score, "comment": comment, "rs_details": rs_details}
+
+
+# =========================================================
+# Section 6: 综合六维雷达
+# =========================================================
+class SynthesisAnalysis:
+    def __init__(self, s1_res, s2_res, s3_res, s4_res, s5_res):
+        self.r = [s1_res, s2_res, s3_res, s4_res, s5_res]
+
+    def analyze(self):
+        log("\n>>> Section 6: 综合观点·六维雷达")
+        r1, r2, r3, r4, r5 = self.r
+        radar = {
+            "板块动量":   round(r1["score"] / 20 * 10, 1),
+            "技术趋势":   round(r2["score"] / 20 * 10, 1),
+            "持仓共振":   round(r3["momentum_score"], 1),
+            "估值健康":   round(r3["valuation_score"], 1),
+            "基本面质量": round(r3["fundamental_score"], 1),
+            "情绪/相对强": round((r4["score"] + r5["score"]) / 2, 1),
+        }
+        avg = np.mean(list(radar.values()))
+        strong = sum(1 for v in radar.values() if v >= 7)
+        weak   = sum(1 for v in radar.values() if v <  5)
+
+        if   strong >= 5 and weak == 0: score, verdict = 9.5, "六维全线强势，罕见多维共振。"
+        elif strong >= 4 and weak <= 1: score, verdict = 8.5, "多维共振偏强，主导逻辑清晰。"
+        elif strong >= 3 and weak <= 2: score, verdict = 7.0, "偏多但存在弱项。"
+        elif strong >= 2:               score, verdict = 5.5, "多空胶着，方向未明。"
+        elif weak   >= 4:               score, verdict = 2.5, "多维弱势，回避为宜。"
+        else:                           score, verdict = 4.0, "整体偏弱。"
+
+        if all(v >= 6 for v in radar.values()):
+            score = min(10, score + 0.5)
+
+        radar_str = " | ".join([f"{k}:{v}" for k, v in radar.items()])
+        comment = (f"{verdict}\n六维: {radar_str}\n"
+                   f"六维均值: {avg:.2f} | 强项(≥7): {strong} | 弱项(<5): {weak}")
+
+        log(f"  Section 6 得分: {score}/10")
+        return score, {"score": score, "radar": radar,
+                       "strong_cnt": strong, "weak_cnt": weak, "avg": round(avg,2),
+                       "comment": comment}
+
+
+# =========================================================
+# 历史对照
+# =========================================================
+class HistoryTracker:
+    COLS = ["date","total_score","s1","s2","s3","s4","s5","s6",
+            "weighted_pe","weighted_pb","weighted_roe",
+            "avg_rev_yoy","avg_profit_yoy","price"]
+
+    @staticmethod
+    def load():
+        if os.path.exists(HISTORY_FILE):
+            try: return pd.read_csv(HISTORY_FILE)
+            except: pass
+        return pd.DataFrame(columns=HistoryTracker.COLS)
+
+    @staticmethod
+    def append(row):
+        ensure_dir()
+        df = HistoryTracker.load()
+        today = row["date"]
+        df = df[df["date"] != today]
+        df = pd.concat([df, pd.DataFrame([row])], ignore_index=True)
+        df = df.sort_values("date").tail(200)
+        df.to_csv(HISTORY_FILE, index=False, encoding="utf-8-sig")
+        log(f"历史数据已更新: {HISTORY_FILE}")
+
+    @staticmethod
+    def compare(current):
+        df = HistoryTracker.load()
+        prev = df[df["date"] != current["date"]]
+        if len(prev) == 0: return None
+        last = prev.iloc[-1].to_dict()
+
+        def diff(k, d=1):
+            try:
+                c, p = float(current[k]), float(last[k])
+                arr = "↑" if c-p > 0.05 else ("↓" if c-p < -0.05 else "→")
+                return f"{p:.{d}f} → {c:.{d}f} ({c-p:+.{d}f}) {arr}"
+            except: return "N/A"
+
+        return "\n".join([
+            f"【历史对照】(vs 上次运行 {last['date']})",
+            f"  综合评分: {diff('total_score')}",
+            f"  加权PE:   {diff('weighted_pe', 2)}",
+            f"  加权PB:   {diff('weighted_pb', 2)}",
+            f"  加权ROE:  {diff('weighted_roe', 2)}",
+            f"  营收同比: {diff('avg_rev_yoy', 2)}",
+            f"  CHPS价格: {diff('price', 2)}",
+        ])
+
+
+# =========================================================
+# 最终报告
+# =========================================================
+class FinalReport:
+    def __init__(self, results, etf_price, history_compare):
+        self.results = results
+        self.etf_price = etf_price
+        self.hc = history_compare
+
+    def _strategy(self, total, s6_res):
+        strong = s6_res["strong_cnt"]
+        weak   = s6_res["weak_cnt"]
+        r2 = self.results["s2"][1]
+        daily_state = r2["daily"]["state"]
+        daily_sub   = r2["daily"]["sub_state"]
+        chip_desc   = r2["chip"]["desc"]
+        rs_res = self.results["s5"][1]
+
+        paras = []
+
+        # 整体定性
+        if strong >= 4:
+            paras.append(
+                f"{ETF_NAME}目前具备{strong}个强势维度、{weak}个弱势维度，"
+                "处于【多维共振偏多】阶段。半导体产业链逻辑仍在验证中，"
+                "共振越明显容错越窄，操作纪律要更严。")
+        elif strong >= 2 and weak <= 2:
+            paras.append(
+                f"{ETF_NAME}处于【偏多但结构不完整】阶段，"
+                f"{strong}个强、{weak}个弱。分批回踩为主，不追高。")
+        elif weak >= 3:
+            paras.append(f"弱势维度偏多({weak}个)，整体不具备进攻条件，观察或减仓。")
+        else:
+            paras.append("多空胶着，定投节奏为主，不做主动加仓。")
+
+        # 操作建议
+        acts = []
+        if total >= 70:
+            acts.append("已有仓位继续持有，不因短线波动下车。")
+            if daily_state in ["3", "3+"]:
+                acts.append("均线多头确认，可适度提高权重。")
+            else:
+                acts.append("新增仓位优先等回踩MA10/MA20或缩量企稳时介入。")
+            if "锁仓" in chip_desc:
+                acts.append("筹码穿透率偏高，遵循【能买回调，不追拉升】。")
+        elif total >= 55:
+            acts.append("保留正常定投，不加快节奏。若动量转弱或跌破成本线则暂停加仓。")
+        else:
+            acts.append("以观察为主，暂停主动加仓。")
+        paras.append("".join(acts))
+
+        # 跟踪指标提示
+        paras.append(
+            "后续重点观察四个条件:\n"
+            f"① SOX/SOXX板块动量维持偏强 (当前{('正' if self.results['s1'][0] >= 12 else '弱')})\n"
+            f"② 日K结构从State {daily_state}({daily_sub})升级至State 3+\n"
+            "③ 重仓股营收/净利同比保持正贡献 (AI资本开支不减速)\n"
+            f"④ CHPS相对SOXX超额表现: {rs_res.get('comment','--').split(chr(10))[0]}\n"
+            "\n额外风险: 半导体周期拐点 | 地缘管制(ASML/TSMC出口限制) | 美联储利率路径 | 关税政策"
+        )
+
+        return "\n\n".join(paras)
+
+    def build(self):
+        s1, r1 = self.results["s1"]
+        s2, r2 = self.results["s2"]
+        s3, r3 = self.results["s3"]
+        s4, r4 = self.results["s4"]
+        s5, r5 = self.results["s5"]
+        s6, r6 = self.results["s6"]
+        total = round(s1 + s2 + s3 + s4 + s5 + s6, 1)
+
+        lines = []
+        lines.append(f"{ETF_NAME} 深度跟踪报告 v1.0")
+        lines.append(f"数据截至: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+        lines.append(f"参考基准: {BENCH_NAME}")
+        lines.append(f"ETF当前价格: ${self.etf_price:.2f}")
+        lines.append("")
+        lines.append(f"综合评分: {total}/100")
+
+        if self.hc:
+            lines.append(""); lines.append(self.hc)
+
+        for title, score, res_dict in [
+            (f"Section 1 | 板块动量与量能 ({s1}/20)", s1, r1),
+            (f"Section 2 | 技术走势 ({s2}/20)",       s2, r2),
+            (f"Section 3 | 持仓深度分析 ({s3}/30) — 行情{r3['momentum_score']}+估值{r3['valuation_score']}+基本面{r3['fundamental_score']}", s3, r3),
+            (f"Section 4 | 流动性与情绪 ({s4}/10)",   s4, r4),
+            (f"Section 5 | 相对强弱SOXX ({s5}/10)",   s5, r5),
+            (f"Section 6 | 综合六维雷达 ({s6}/10)",   s6, r6),
+        ]:
+            lines.append(""); lines.append(title)
+            lines.append(res_dict.get("comment",""))
+
+        lines.append("")
+        lines.append("=" * 60)
+        lines.append("操作建议")
+        lines.append("=" * 60)
+        lines.append(self._strategy(total, r6))
+        lines.append("")
+
+        return "\n".join(lines), total
+
+
+# =========================================================
+# 主函数
+# =========================================================
+def main():
+    log("=" * 70)
+    log(f"  {ETF_NAME} 深度综合分析系统 v1.0 启动")
+    log(f"  时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    log("=" * 70)
+
+    t0 = time.time()
+
+    # 拉取ETF本身行情
+    log(">>> 拉取ETF行情...")
+    etf_df   = fetch_daily(ETF_TICKER, period="1y")
+    soxx_df  = fetch_daily(BENCH_TICKER, period="1y")
+
+    if etf_df is None or len(etf_df) < 30:
+        log("CHPS行情数据不足，退出。", "ERROR"); return
+
+    etf_price = float(etf_df["close"].iloc[-1])
+    log(f"  CHPS最新价: ${etf_price:.2f}")
+
+    # Section 1
+    s1_score, s1_res = SectorMomentum(etf_df, soxx_df).analyze()
+
+    # Section 2
+    s2_score, s2_res = TechnicalAnalysis(etf_df, etf_price).analyze()
+
+    # Section 3
+    holdings_analyzer = HoldingsDeepAnalysis()
+    s3_score, s3_res  = holdings_analyzer.analyze()
+
+    # Section 4
+    s4_score, s4_res = LiquidityAnalysis(holdings_analyzer.deep_data, etf_df).analyze()
+
+    # Section 5: 相对强弱
+    s5_score, s5_res = RelativeStrengthAnalysis(etf_df, soxx_df).analyze()
+
+    # Section 6
+    s6_score, s6_res = SynthesisAnalysis(s1_res, s2_res, s3_res, s4_res, s5_res).analyze()
+
+    results = {
+        "s1": (s1_score, s1_res), "s2": (s2_score, s2_res),
+        "s3": (s3_score, s3_res), "s4": (s4_score, s4_res),
+        "s5": (s5_score, s5_res), "s6": (s6_score, s6_res),
+    }
+    total = round(s1_score + s2_score + s3_score + s4_score + s5_score + s6_score, 1)
+
+    # 历史
+    today = datetime.now().strftime("%Y-%m-%d")
+    history_row = {
+        "date": today, "total_score": total,
+        "s1": s1_score, "s2": s2_score, "s3": s3_score,
+        "s4": s4_score, "s5": s5_score, "s6": s6_score,
+        "weighted_pe":  round(s3_res["weighted_pe"], 2),
+        "weighted_pb":  round(s3_res["weighted_pb"], 2),
+        "weighted_roe": round(s3_res["avg_roe"], 2),
+        "avg_rev_yoy":  round(s3_res["avg_rev_yoy"], 2),
+        "avg_profit_yoy": round(s3_res["avg_profit_yoy"], 2),
+        "price": round(etf_price, 2),
+    }
+    hc = HistoryTracker.compare(history_row)
+    HistoryTracker.append(history_row)
+
+    report_text, total = FinalReport(results, etf_price, hc).build()
+    save_report(report_text)
+
+    log("\n" + "=" * 60)
+    log("最终结论")
+    log("=" * 60)
+    print(report_text)
+    log(f"\n总分: {total}/100 | 耗时: {time.time()-t0:.1f}s")
+    log(f"报告: {OUTPUT_FILE}")
+    log(f"历史: {HISTORY_FILE}")
+
+
+if __name__ == "__main__":
+    main()
+
+这个代码优化一下 注意只需要提意见 不需要你写代码

@@ -1,0 +1,16 @@
+@ $5624XH-2Z-SI: 880Gbps                  @ $5624XH-2Z-SI: 1309.44Mpps
+@ $5612X12TH-2Z-El: 880Gbps              @ $5612X12TH-2Z-El: 1309.44Mp
+@ S5612X12TH-2Z-SI: 880Gbps              @ S5612X12TH-2Z-SI: 1309.44Mp
+@ S5624TH-2Z-El: 880Gbps                  @ S5624TH-2Z-El: 1309.44Mpps
+@ S5624TH-2Z-SI: ‘er                  @ S5624TH-2Z-SI: 1309.44Mpps
+~ Environmental ranges :                        了 Te=-perature alarm
+@ Operating temperature: 0°C to 40°C          4 gam threshold: 50°C.
+@ Storage temperature: -40°C to 70°C
+O ®@ Running Humidity: 10% to 90% (No         e) hg ory
+.                                     @ eMMc: 8GB on all models
+condensation)                                  ¢ 2 24M: 268 on all models
+@ Store Humidity: 0 to 95% (No
+____ condensation)    _ <a
+O                        0                        © @ Dual-core processor, ARM A53
+Acoustic in dBA                                       Cooling [CFM]
+@ S7814ZH-4N-El: 62.67dB                    @ S7814ZH-4N-El: 21.61cfm

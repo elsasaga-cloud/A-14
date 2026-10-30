@@ -1,0 +1,10 @@
+DWDM Solution - Phase 1 100G Capapcity For 7 Sites
+Dual fiber.
+Capacity 100G on the entire ring network, phase 1 active 6 sites in green color.
+Attenuation is 0.2dB/km.
+DWDM solution need to realize transmission capacity between any two sites.
+‘>                 [EEE Green color sites mean the traffic add/drop sites in Phase 1.
+sy           Gy   Qs                          [EEG orange color sites mean the traffic add/drop sites in the future
+             ;    :
+a.      )
+和sy    和N

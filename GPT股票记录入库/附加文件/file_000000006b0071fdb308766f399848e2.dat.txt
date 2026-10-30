@@ -1,0 +1,46 @@
+NN                                                                                                  )
+HN                                           |
+外                    é         be fd
+‘pee e                  In 2026, 800G switches will enter large-scale mass deployment driven by surging Al
+1        a           “e                                                                                         cluster demand
+]                          iq               reo                           Global revenue is projected to grow by over 90% quarter on quarter.
+MIN 1               =a            =          With ultra-high bandwidth, low latency, and high-density ports, 800G has become the
+|    i ii yy                    >            2                   mandatory standard for building large GPU clusters and next-generation Al data
+WTB             <    >,    PS a                                    centers, supporting high-performance computing
+HA                3     Fant                               distributed training, and real-time Al service delivery efficiently.
+|
+由NA
+ND                                       :
+|
+|
+外
+Fiber bypass switches play a critical role in maintaining uninterrupted optical
+re.  |      NA f        re  a A                                                                                             links during power failures or device downtime
+—_| u        HA       tad IVI                                                                      f      }        The latest design enhances this capability by integrating DIP switch settings
+mm                          一          a        |           gs       and delay timer functionality, giving users greater control over switching
+Ecsta ae a wd              |        |          Sey behavior while improving overall network stability                                 be
+a                              |       |                  7                                                                                           ey ° a
+Sones |                                         |                 =                                                                                            es
+人            i                                                  -    |                                                                        Flexible Configuration and Intelligent Switching
+With built-in DIP switches, users can easily configure parameters such as delay time and operating mode based on specific
+deployment needs.
+The delay timer ensures that, after power restoration, connected devices have sufficient time to fully boot up before the link
+switches back to normal operation.
+This prevents issues like packet loss, unstable connections, or unnecessary alarms caused by premature switching
+Reliable Operation in Diverse Applications
+Supporting AC/DC dual power input, the bypass switch adapts well to complex power environments.
+It automatically switches to fail-safe mode during outages to maintain link continuity, and resumes normal operation only after
+conditions are stable
+This makes it an ideal solution for data centers, telecom networks, and various industrial or commercial scenarios where
+consistent network performance is essential.
+=
+Shenzhen OLYCOM Technology Co.,Ltd
+www.olycom.com.cn
+a        y                   On 12th, Mar, 2026, our team had an in-depth communication meeting
+QY. ge        Cy |                                     with our valued clients in Shenzhen
+aD              :                        With a professional discussion about CCTV cabinet solutions,
+7                                             both agreed upon a mutually-pleasant cooperation framework.
+x |                                                         After that, we had dinner together.
+talked openly about interesting cultural differences, personal ideas
+i          ae                           and strengthened our partnership in a relaxed atmosphere
+, eee me 2 Sie,  £

@@ -1,0 +1,36 @@
+   pport
+DereEF ——_—~(200,000 hours
+ TEEESO23af15.4W), IEEESOD3aiG0W)
+‘Remark: auto-sensing PD standard and supply compatible
+PoE Distance              100-meter
+Remark: A PoE extender is required forlonger PoE transi
+[BoE Wing 1269, 3760
+PoE Budget               240W
+Max PoE output: 30W/part, 30W8=240W
+  DC44-37V@oE af), DCS2-57V(PoE at), Redundant Input
+Removable 4-pin terminal block
+PoE Oupat        DCABV, Active PoE
+NX                A PoE splitter is required if the powered device receives Di
+ 5.6A Max
+ Full loading without PoEIOW
+   ppart
+ Suppat
+Tndustry Standard             EME FOC Fan 155 Class
+‘Surge protection of power: IEC 61000-4-5 6KV/4KV (8/20
+‘Surge protection of Ethemet ports: IEC 61000-4.5 6KV/2K
+RS: IEC 61000-4.3 80MHz-1 GHz: 10 Vim
+EFT: IEC 6100044 power interface: 4K; Ethemet ports:
+C8: IEC 61000-4.6 10V
+ESD: TEC 61000-4.2 Level 4(@K/15K)
+Shock: TEC 60068-2-27
+Free fal TEC 60068-2-32
+Vibration: IEC 60068.2.6
+ TP40(Cunently [P66 TP67/P6E rated models are NOT aval
+ Din Ral or Wall Mounted{ipe mounting hanger is offered)
+[Catttestion———_____ | CE/FCC/RoHS/Reach UKCA.
+(ES       "Working Temperature: 40°C—75°C(at 240W output)
+Storage Temperature: 40°C-85°C
+Relative Humidity: 594-959, non-condensing
+TED indicator       PWR (Power indicator), Green Color
+(On: power status is normal
+Off power offor power comection failure

@@ -1,0 +1,30 @@
+x File Edit Selection View Go Run Terminal Help © 仿 cctest                                                   Gy                     08 |
+ta}   ROO CODE                                                                     28 OB ~ XJ Welcome
+Q    所 Settings                                                                                                 Q    Save       Start
+& Providers                                                                                                 [ News
+gs                                        About Roo Code                                                                                                                                     (a)  Gum
+BX Modes
+S                                                                                                                             © Open
+bs    & Skills             Version: 3.53.0 (44f6bba2)                                                                     X Conn
+& Slash Commands                                                                                                CG ea
+VY Allow anonymous error and usage reporting
+% Auto-Approve             Help improve Roo Code by sending anonymous usage data and error reports. This telemetry does not collect code, prompts or personal information. See our
+7                                                   privacy policy for more details.                                                                                                                                                                  Recent
+& MCP Servers                                                                                                      stockSpide
+4 Checkpoints           Contact & Community
+3% Found a bug? Report on GitHub                               ~ Drow
+Q Notifications               oun Oage POTE ONIN
+2 Have an idea? Share it with us                                                                                 .
+=} Context                                                                                                                      PS C:NUsel
+O Discovered a vulnerability? Follow our disclosure process
+© Terminal         只    ，       |           > oi   .          .
+2] Want tips or to just hang out with other Roo Code users? Join reddit. com/r/RooCode or discord.gg/roocode
+PD Prompts
+WY Worktrees                   Enable debug mode
+Enable debug mode to show additional buttons in the task header for viewing API conversation history and UI messages as prettified JSON in temporary files.
+68 Ul
+Experimental                       .
+©    & Bp                 Manage Settings
+La
+oY  |  @® About Roo Code
+X WofAo

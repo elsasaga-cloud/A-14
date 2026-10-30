@@ -1,0 +1,12 @@
+Dual-Route Protected
+OTN DWDM Network
+High Reliability | High Capacity | Future Ready        网 一一
+Primary Route
+(fh)         mm    (hk )
+Location A                        “e)                Le}                        S=s- .         ‘eo;                    Location B
+Protection Route 3 — .
+=
+Ss
+人 ，                  到
+40Gbps                   Dual-Route             OTN + DWDM                4 x 10GbE                 Scalable for
+Total Capacity                Protection               Technology            Service Interfaces          Future Growth

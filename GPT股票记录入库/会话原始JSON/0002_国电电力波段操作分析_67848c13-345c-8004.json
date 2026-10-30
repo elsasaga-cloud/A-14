@@ -1,0 +1,396 @@
+{
+  "conversation_id": "67848c13-345c-8004-a113-e7601374b971",
+  "conversation_template_id": null,
+  "create_time": 1736739859.501888,
+  "current_node": "e24a8da1-43c3-4600-b3fc-f45d9208b6fc",
+  "default_model_slug": "auto",
+  "id": "67848c13-345c-8004-a113-e7601374b971",
+  "is_archived": true,
+  "is_do_not_remember": null,
+  "is_read_only": null,
+  "is_starred": null,
+  "is_study_mode": false,
+  "mapping": {
+    "aaa1bc03-9e2f-4f90-a4b2-b95cd15c0876": {
+      "id": "aaa1bc03-9e2f-4f90-a4b2-b95cd15c0876",
+      "message": null,
+      "parent": null
+    },
+    "aaa2bdb4-6f1d-441d-86b7-3bd43e07740b": {
+      "id": "aaa2bdb4-6f1d-441d-86b7-3bd43e07740b",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "user"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "国电电力股票详细分析以及是否似乎做波段操作"
+          ]
+        },
+        "create_time": 1736739859.506186,
+        "id": "aaa2bdb4-6f1d-441d-86b7-3bd43e07740b",
+        "metadata": {
+          "serialization_metadata": {
+            "custom_symbol_offsets": []
+          }
+        }
+      },
+      "parent": "aaa1bc03-9e2f-4f90-a4b2-b95cd15c0876"
+    },
+    "e24a8da1-43c3-4600-b3fc-f45d9208b6fc": {
+      "id": "e24a8da1-43c3-4600-b3fc-f45d9208b6fc",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "assistant"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "国电电力发展股份有限公司（股票代码：600795）是中国主要的电力生产企业之一，业务涵盖火力发电、水力发电、风电和光伏发电等领域。\n\n**财务表现：**\n\n根据2024年半年报，公司实现营业收入858.28亿元，同比下降3.22%；归属于母公司股东的净利润为67.16亿元，同比增长127.35%。 citeturn0search3\n\n**业务构成：**\n\n截至2024年上半年，公司总装机容量达到10713万千瓦，同比增长8.81%。其中，风电装机容量为952.33万千瓦，光伏装机容量为1008.21万千瓦。 citeturn0search3\n\n**技术面分析：**\n\n截至2024年10月28日，国电电力股价在5.33元的压力位和4.83元的支撑位之间波动。 citeturn0search0\n\n**波段操作建议：**\n\n鉴于股价在上述区间内波动，投资者可以考虑在接近支撑位时买入，接近压力位时卖出，进行区间波段操作。\n\n**风险提示：**\n\n投资股票存在市场风险，建议投资者在操作前充分了解市场行情，结合自身风险承受能力，谨慎决策。 "
+          ]
+        },
+        "create_time": 1736739867.677658,
+        "id": "e24a8da1-43c3-4600-b3fc-f45d9208b6fc",
+        "metadata": {
+          "content_references": [
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": "([希财网](https://www.csai.cn/biji/gp/5915.html?utm_source=chatgpt.com))",
+              "items": [
+                {
+                  "attribution": "希财网",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "国电电力（600795）研报：业绩稳健，水电和新能源潜力大 - 股票笔记 - 希财网",
+                  "url": "https://www.csai.cn/biji/gp/5915.html?utm_source=chatgpt.com"
+                }
+              ],
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": "([希财网](https://www.csai.cn/biji/gp/5915.html?utm_source=chatgpt.com))",
+              "items": [
+                {
+                  "attribution": "希财网",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "国电电力（600795）研报：业绩稳健，水电和新能源潜力大 - 股票笔记 - 希财网",
+                  "url": "https://www.csai.cn/biji/gp/5915.html?utm_source=chatgpt.com"
+                }
+              ],
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": "([新浪财经](https://finance.sina.com.cn/stock/aiassist/ggsp/2024-10-28/doc-incuautc8813243.shtml?utm_source=chatgpt.com))",
+              "items": [
+                {
+                  "attribution": "新浪财经",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "国电电力跌0.20%，目前股价在压力位5.33和支撑位4.83之间，可以做区间波段|国电电力_新浪财经_新浪网",
+                  "url": "https://finance.sina.com.cn/stock/aiassist/ggsp/2024-10-28/doc-incuautc8813243.shtml?utm_source=chatgpt.com"
+                }
+              ],
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": null,
+              "prompt_text": null,
+              "type": "hidden"
+            },
+            {
+              "alt": "",
+              "has_images": false,
+              "prompt_text": null,
+              "sources": [],
+              "type": "sources_footnote"
+            }
+          ],
+          "image_results": [],
+          "message_locale": "zh-CN",
+          "model_slug": "gpt-4o",
+          "parent_id": "3df1f668-5fe5-4ce6-824e-92f06b24a7b7",
+          "search_result_groups": [
+            {
+              "domain": "sina.com.cn",
+              "entries": [
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "证券 > 正文  国电电力跌0.20%，目前股价在压力位5.33和支撑位4.83之间，可以做区间波段  国电电力跌0.20%，目前股价在压力位5.33和支撑位4.83之间，可以做区间波段  2024年10月28日 15:11 新浪证券-红岸工作室  @全体股民：《投资研报》巨额特惠，满3000减1000，满1500减500！〖历史低价手慢无，速抢>>〗  10月28日，国电电力跌0.20%，成交额...",
+                  "title": "国电电力跌0.20%，目前股价在压力位5.33和支撑位4.83之间，可以做区间波段|国电电力_新浪财经_新浪网",
+                  "url": "https://finance.sina.com.cn/stock/aiassist/ggsp/2024-10-28/doc-incuautc8813243.shtml"
+                }
+              ]
+            },
+            {
+              "domain": "sohu.com",
+              "entries": [
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "新浪财经  文章 总阅读  * 新浪财经官方搜狐号  查看TA的文章>  国电电力跌4.01%，目前股价在压力位5.33和支撑位4.83之间，可以做区间波段  2024-10-25 15:06  发布于：北京市  来源：新浪证券-红岸工作室  10月25日，国电电力跌4.01%，成交额21.06亿元，换手率2.35%，总市值897.13亿元。  根据AI大模型测算国电电力后市走势。短期趋势看，连续...",
+                  "title": "国电电力跌4.01%，目前股价在压力位5.33和支撑位4.83之间，可以做区间波段_分析_发电_公司",
+                  "url": "https://news.sohu.com/a/820234679_122014422"
+                },
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "国电电力股价小幅回落，盈利表现引人关注：市盈率仅9.08倍的背后  2024-12-13 21:06  在中国电力市场的波涛汹涌中，国电电力（601991.SH）于2023年12月13日的收盘表现引起了投资者和市场分析者的高度关注。今日，该公司股价报收于4.67元，跌幅为1.06%。这一数字不仅彰显了市场的波动，还让人不禁思考在如此动荡的市场环境中，国电电力的投资价值到底如何？  市盈率的背后：低...",
+                  "title": "国电电力股价小幅回落，盈利表现引人关注：市盈率仅9.08倍的背后_该公司_市场_投资价值",
+                  "url": "https://news.sohu.com/a/836796063_122066678"
+                },
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "证券之星财讯  文章 总阅读  查看TA的文章>  股票行情快报：国电电力（600795）12月30日主力资金净卖出4258.72万元  2024-12-30 19:37  发布于：上海市  证券之星消息，截至2024年12月30日收盘，国电电力(600795)报收于4.63元，下跌0.64%，换手率0.48%，成交量85.36万手，成交额3.96亿元。  12月30日的资金流向数据方面，主力资金...",
+                  "title": "股票行情快报：国电电力（600795）12月30日主力资金净卖出4258.72万元_成交额_流向_股价",
+                  "url": "https://news.sohu.com/a/843538838_121319643"
+                },
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "电气风电涨1.33%，目前股价在压力位4.66和支撑位3.33之间，可以做区间波段  新浪财经 2024-10-10 15:48  来源：新浪证券-红岸工作室  10月10日，电气风电涨1.33%，成交额8290.50万元，换手率1.60%，总市值50.80亿元。  根据AI大模型测算电气风电后市走势。短期趋势看，该股当前无连续增减仓现象，主力趋势不明显。主力没有控盘。中期趋势方面，下方累积一定获...",
+                  "title": "电气风电涨1.33%，目前股价在压力位4.66和支撑位3.33之间，可以做区间波段_手机搜狐网",
+                  "url": "https://m.sohu.com/a/815288960_122014422"
+                },
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "国电电力Q3财报前瞻：背后的市场信号与投资机遇  2024-10-29 21:04 来源: 社会显微镜  发布于：北京市  在复杂多变的金融市场中，投资者总是渴望寻找那些不仅能带来财富增值的股市机会，更希望了解每个股市动荡背后的深层逻辑。最近国电电力的股价下跌2.19%，成交额达到7.67亿元，但伴随着的主力资金却出现了净流出1.15亿元，这引发了市场的广泛关注。那么，这一股价波动背后，藏着怎样的...",
+                  "title": "国电电力Q3财报前瞻：背后的市场信号与投资机遇_短期波动_股价波动_火力发电",
+                  "url": "https://www.sohu.com/a/821760278_122001004"
+                }
+              ]
+            },
+            {
+              "domain": "stockstar.com",
+              "entries": [
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "加入收藏 我的证券之星  国电电力（600795）10月9日主力资金净买入51.66万元  来源：证券之星资金流向 2024-10-09 15:51:40  证券之星消息，截至2024年10月9日收盘，国电电力(600795)报收于5.14元，下跌4.81%，换手率1.44%，成交量257.58万手，成交额13.45亿元。  10月9日的资金流向数据方面，主力资金净流入51.66万元，占总成交额0...",
+                  "title": "国电电力（600795）10月9日主力资金净买入51.66万元_股票频道_证券之星",
+                  "url": "https://stock.stockstar.com/RB2024100900024153.shtml"
+                },
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "|  股票  国电电力（600795）10月9日主力资金净买入51.66万元  来源：证星资金流向  2024-10-10 08:19:13  证券之星消息，截至2024年10月9日收盘，国电电力(600795)报收于5.14元，下跌4.81%，换手率1.44%，成交量257.58万手，成交额13.45亿元。  10月9日的资金流向数据方面，主力资金净流入51.66万元，占总成交额0.04%，游资...",
+                  "title": "国电电力（600795）10月9日主力资金净买入51.66万元_主力研究_股票_证券之星",
+                  "url": "https://4g.stockstar.com/detail/RB2024101000009498"
+                },
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "加入收藏 我的证券之星  国电电力（600795）10月18日主力资金净买入1440.88万元  来源：证星资金流向 2024-10-19 08:24:58  证券之星消息，截至2024年10月18日收盘，国电电力(600795)报收于5.11元，上涨0.79%，换手率0.96%，成交量171.05万手，成交额8.72亿元。  10月18日的资金流向数据方面，主力资金净流入1440.88万元，占总...",
+                  "title": "国电电力（600795）10月18日主力资金净买入1440.88万元_股票频道_证券之星",
+                  "url": "https://stock.stockstar.com/RB2024101900005367.shtml"
+                },
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "加入收藏 我的证券之星  国电电力（600795）周评：本周涨0.82%，主力资金合计净流入663.56万元  来源：证券之星股票 2024-09-20 17:44:38  证券之星消息，截至2024年9月20日收盘，国电电力（600795）报收于4.89元，较上周的4.85元上涨0.82%。本周，国电电力9月20日盘中最高价报4.91元。9月19日盘中最低价报4.75元。国电电力当前最新总市值8...",
+                  "title": "国电电力（600795）周评：本周涨0.82%，主力资金合计净流入663.56万元_股票频道_证券之星",
+                  "url": "https://stock.stockstar.com/RB2024092000028199.shtml"
+                },
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "加入收藏 我的证券之星  本周盘点（9.23-9.27）：国电电力周涨4.50%，主力资金合计净流出2484.85万元  来源：证券之星周评 2024-09-27 18:44:14  证券之星消息，截至2024年9月27日收盘，国电电力（600795）报收于5.11元，较上周的4.89元上涨4.5%。本周，国电电力9月25日盘中最高价报5.22元。9月23日盘中最低价报4.87元。国电电力当前最新...",
+                  "title": "本周盘点（9.23-9.27）：国电电力周涨4.50%，主力资金合计净流出2484.85万元_股票频道_证券之星",
+                  "url": "https://stock.stockstar.com/RB2024092700032668.shtml"
+                },
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "加入收藏 我的证券之星  股票行情快报：国电电力（600795）12月5日主力资金净买入54.18万元  来源：证星主力研究 2024-12-05 19:03:39  证券之星消息，截至2024年12月5日收盘，国电电力(600795)报收于4.66元，下跌0.64%，换手率0.43%，成交量75.97万手，成交额3.55亿元。  12月5日的资金流向数据方面，主力资金净流入54.18万元，占总成...",
+                  "title": "股票行情快报：国电电力（600795）12月5日主力资金净买入54.18万元_股票频道_证券之星",
+                  "url": "https://stock.stockstar.com/RB2024120500032080.shtml"
+                }
+              ]
+            },
+            {
+              "domain": "csai.cn",
+              "entries": [
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "* (0)  国电电力（600795）研报：业绩稳健，水电和新能源潜力大  个股研报       2024-08-27      来源：希财网  个股研报 股票顾问   股票研报个股基本面  国电电力（600795.SH）近期发布了2024年半年报，报告显示公司上半年实现营业收入858.28亿元，同比下降3.22%；归母净利润达到67.16亿元，同比增长127.35%；扣除非经常性损益后的归母净利...",
+                  "title": "国电电力（600795）研报：业绩稳健，水电和新能源潜力大 - 股票笔记 - 希财网",
+                  "url": "https://www.csai.cn/biji/gp/5915.html"
+                }
+              ]
+            },
+            {
+              "domain": "eastmoney.com",
+              "entries": [
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "数据中心  行情中心  东方财富网 > 研报大全 > 国电电力-研报正文  国电电力-研报正文  个股研报搜索:  国电电力2024年中报点评：煤电盈利大幅改善，国电建投转让增厚业绩  www.eastmoney.com 中国银河 陶贻功,梁悠南 查看PDF原文  国电电力(600795)  事件：公司发布2024年中报，上半年实现营收858.28亿元，同比下降3.22%，实现归母净利67.16亿...",
+                  "title": "国电电力2024年中报点评：煤电盈利大幅改善，国电建投转让增厚业绩- 宏观研究报告 _ 数据中心 _ 东方财富网",
+                  "url": "https://data.eastmoney.com/report/zw_stock.jshtml?encodeUrl=Z2GJ+yf3zOC87XS0lHUHeCAn0NYuevD3HGVMRzZQJ%2F4%3D"
+                },
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "数据中心  行情中心  财经大V深度好文  点击进入研报中心  个股研报：  国电电力(600795)  * 最新价 * 涨跌 * 涨跌幅 * 换手 * 总手 * 金额  国电电力2023年报点评：煤电盈利大幅提升，新能源装机有望持续加速  www.eastmoney.com 中国银河 陶贻功,梁悠南 查看PDF原文  国电电力(600795)  核心观点：  事件：公司发布2023年年报，全年实...",
+                  "title": "国电电力2023年报点评：煤电盈利大幅提升，新能源装机有望持续加速 _ 研究报告正文 _ 数据中心 _ 东方财富网",
+                  "url": "https://data.eastmoney.com/report/zw_stock.jshtml?infocode=AP202404161630274366"
+                },
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "这段时间是二波修复，不可能涨的，冬炒煤夏炒电，现在布局电力，如果有子弹就慢慢加仓  紫色小韭菜  2024-10-18 10:13:09  来自河北  * 1 *   ♥  收藏 * A  大中小  $国电电力(SH600795)$  这段时间是二波修复，不可能涨的，冬炒煤夏炒电，现在布局电力，如果有子弹就慢慢加仓，等待上涨…  举报  郑重声明：用户在财富号/股吧/博客等社区发表的所有信息（...",
+                  "title": "这段时间是二波修复，不可能涨的，冬炒煤夏炒电，现在布局电力，如果有子弹就慢慢加仓_国电电力(600795)股吧_东方财富网股吧",
+                  "url": "https://guba.eastmoney.com/news%2C600795%2C1471892427.html"
+                }
+              ]
+            },
+            {
+              "domain": "10jqka.com.cn",
+              "entries": [
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "查看网站地图  西南证券：给予国电电力买入评级  2024-08-26 12:04:50 来源： 证券之星  西南证券股份有限公司韩晨近期对国电电力（600795）进行研究并发布了研究报告《2024年半年报点评：水火业绩稳健，风光打开成长空间》，本报告对国电电力给出买入评级，当前股价为5.42元。  国电电力  投资要点78249  事件：公司发布2024年半年报，公司实现营收858亿元，同比下降...",
+                  "title": "西南证券：给予国电电力买入评级",
+                  "url": "https://stock.10jqka.com.cn/20240826/c661119502.shtml"
+                },
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "查看网站地图  华源证券：给予国电电力增持评级  2024-11-03 12:53:17 来源： 证券之星  华源证券股份有限公司刘晓宁,查浩,邓思平近期对国电电力（600795）进行研究并发布了研究报告《业绩符合预期，国能集团常规能源整合平台》，本报告对国电电力给出增持评级，当前股价为4.88元。  国电电力  投资要点：  事件：公司发布2024年三季报，前三季度实现营收1339亿元，同比减少...",
+                  "title": "华源证券：给予国电电力增持评级",
+                  "url": "https://stock.10jqka.com.cn/20241103/c663122515.shtml"
+                }
+              ]
+            },
+            {
+              "domain": "investing.com",
+              "entries": [
+                {
+                  "attributions": null,
+                  "content_type": null,
+                  "snippet": "国电电力 (600795)  货币 CNY  添加至投资组合  4.230  -0.090(-2.08%)  闭盘10/01  600795技术分析  5分钟15 分钟30分钟1小时5 小时1日1周 1个月  总结  强力卖出  卖出  中性  买入  强力买入  强力卖出  技术指标  强力卖出  移动平均指数  强力卖出  总结:强力卖出  移动平均指数:  | 强力卖出  | 买入: (0)...",
+                  "title": "国电电力(600795)股票行情走势技术分析_未来预测_买卖操作建议_英为财情Investing.com",
+                  "url": "https://cn.investing.com/equities/gd-power-technical"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "parent": "aaa2bdb4-6f1d-441d-86b7-3bd43e07740b"
+    }
+  },
+  "memory_scope": "global_enabled",
+  "pinned_time": null,
+  "plugin_ids": null,
+  "title": "国电电力波段操作分析",
+  "update_time": 1745318829.108325,
+  "voice": null
+}

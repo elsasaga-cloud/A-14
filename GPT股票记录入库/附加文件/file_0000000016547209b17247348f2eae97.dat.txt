@@ -1,0 +1,30 @@
+ee fee terre                 IP Interfaces                                                                                                  Auto-retresn (_] | Refresh |
+= Seats                            [Interface [Type [ Address [Status
+= SysLog                                OS:lo       LINK —00-00-00-00-00-00              <UP LOOPBACK RUNNING MULTICAST>
+= Detailed SysLog                             OS:lo         IPv4 ”127.0.0.18
+>RMON                                     OS:l0        IPv6 1/128
+= MAC Table                                     OS:lo         IPv6 。” fe80::1/64
+*VLANS                                 VLAN1      LINK 20-77-59-11-fd-74               <UP BROADCAST RUNNING MULTICAST>
+>Ports                                      VLANL       IPv4a ”192.168.255.3/24
+pLACP                                     VLANIL       IPv6    fe80::2277:59ff:fell:fd74/64
+=了wrapProweow                        VLAN10 LINK ”20-77-59-11-fd-74                   <BROADCAST MULTICAST>
+= Green Ethernet                             VLAN10 IPv4 ”10.90.10.10/24
+= PoE Status                                  VLAN1O = IPV6_— fe80::2277:59ff:fell:fd74/64
+>LLDP                                     VLAN20 LINK .20-77-59-11-fd-74                <BROADCAST MULTICAST>
+node Protection                            VLAN20 IPv4 ”10.90.20.10/24
+>Spanning Tree                              VLAN20 _IPv6__fe80::2277:59ff:fell:fd74/64
+*IGMP Snooping                     IP Routes
+*MLD Snooping                           _      —         —_                   —
+»DHCP                                     [ Network | Gateway | Status |
+"                           0.0.0.0/0 192.168.255.2 <UP GATEWAY HW_RT>
+raos
+>Qos                                      224.0.0.0/4 127.0.0.1          <UP>
+>Network Admin                                   nM/128 2:1                   <UP HOST>
+>Port Configure                           ARP Table
+>PoE                                       a                 oOo              —
+» Advanced Configure                     [iP Address” | LinkAddress |
+192.168.255.2 VLAN1:dc-a6-32-ad-dce-22
+ses cnngure
+> QoS Configure             fe80::2277:59ff:fell:fd74 | VLAN10:20-77-59-11-fd-74
+> Diagnostics          fe80::2277:59ff:fell:fd74__VLAN20:20-77-59-11-fd-74
+>Maintenance

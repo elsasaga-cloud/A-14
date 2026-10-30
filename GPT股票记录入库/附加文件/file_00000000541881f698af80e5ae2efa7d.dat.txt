@@ -1,0 +1,34 @@
+8-Port Gigabit Managed Industrial Fiber Switch
+with 8x10/100/1000M PoE+ Ports
+802.3af                                               sa
+r---> DC48V~DC57V                                                             al
+1                                              Router                IP Cameras               IP Phone
+Bre       2                      1              Per Port
+3h       4                      !
+Fa
+上                      1                                                 9
+8x10/100/1000M                      a                 |
+2              4但                                     802.3at
+ree ae                                       £                          1                                                  Wireless AP               Video Phone             Access Control
+.3aflai                                      i                      b--->
+Fd                      i              Per Port
+e                8                       1
+a     !         mJ w&
+i                      1
+r                §                      \              802.3bt
+,                                 1                Type 3                      Desktop PC            Cashier System            PTZ Camera
+Console Port <一一田|  |    |        =                       heer   r cow |
+an    |一 Be              Per Port
+ML ee                        1
+2x100/1000M              Fane     by                 |                                 <a             x
+SFP Slots + a                       1              802.3bt                                                  is
+(Fiber Uplink)                           8                              :              Type 4
+1                                         Smart LED Light       Medical Equipment        Digital Signage
+IM-FP21008GW                                  Paap
+4                                              er Port
+1                                                                                                          a
+—--> PoE (Data + Power)            1                                                                                                               1
+==> Fiber Uplink                  t                                                                                                    !
+==> Power input              c-----------------DCc48V-DC57V - - ------------------4
+  8x PoE+          |        (mer) 2x SFP Slots            G)  802.3af/at/bt                   = -40°C ~ 75°C                 人日 DIN-Rail
+2 10/100/1000M                | 100/1000M                 \ Up to 90W per Port                     Wide Operating Temp.             山     Mounting

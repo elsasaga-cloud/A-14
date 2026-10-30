@@ -1,0 +1,76 @@
+--- page 1 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+TA510-GE-X:1*Fiber+1*Ethernet
+MiniFiberOpticMediaConverterCardForUAVFiberCommunicationSolution
+KeyFeature
+ Widevoltagepowersupply5-24V,compatiblewithavarietyofbatteries,ensuringstableoperation
+ Flexiblecommunicationdistancesandopticalconnectors
+ Lightweight,compactsize70x25x15mm,reducingequipmentburdenandimprovingflightefficiency
+ Realtekbased,long-termsupplyandguaranteedperformance
+Web:www.olycom.com.cn
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+--- page 2 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+Specification
+Standard IEEE802.3(10BASE-T),IEEE802.3u100BASE-TX/FX(Fast-Ethernet),
+IEE802.3z1000BASE-SX/LX(Gigabit-Ethernet)
+10/100/1000BASE-T STPorUTPCategory5/5e/6cable(Max.100m)
+1000BASE-FX 9/125umsinglemodefibercable(20/40/60/80/100/120km)
+ConversionMode/DelayTime Store-and-Forward<10us,straight-through<0.9us
+Flowcontrol Fullduplex-flowcontrol,Halfduplex-backpressure
+RJ-45Port Auto-MDI/MDIX
+FiberPort FC/SC/ST/SFPslot,ALLOPTIONAL
+Dimension 70x25x15mm
+InputVoltage DC5V-24VwithExternalpoweradapter
+PowerConsumption <1W
+MACAddressTable 2K
+BufferSize 64K
+OperatingTemperature 0℃~70℃
+StorageTemperature -40℃~125℃
+StorageHumidity 5%~90%non-condescending
+Application
+ 4Kvideotransmission
+ AIedgecomputingcommunication
+ Remotesensornetworking
+ Ground-to-airEthernetextension
+ Fiberopticdatalinksforanti-interferenceenvironments
+Workflow
+ Onboard (Sky End): The TA510-GE-X is connected to the drone’s camera or payload via Ethernet. It
+convertsthevideo/datasignalintolightandsendsitdownthefiber
+ FiberLink:ThesignaltravelsthroughtheKevlar-reinforcedfiberoptictether
+ Ground (BaseEnd):AmatchingTA510-GE-Xconverts the light signalback to Ethernet, which is then fed
+intoamonitor,recorder,orgroundcontrolstation
+Web:www.olycom.com.cn
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html
+Standard | IEEE802.3(10BASE-T),IEEE802.3u100BASE-TX/FX(Fast-Ethernet),
+IEE802.3z1000BASE-SX/LX(Gigabit-Ethernet)
+10/100/1000BASE-T | STPorUTPCategory5/5e/6cable(Max.100m)
+1000BASE-FX | 9/125umsinglemodefibercable(20/40/60/80/100/120km)
+ConversionMode/DelayTime | Store-and-Forward<10us,straight-through<0.9us
+Flowcontrol | Fullduplex-flowcontrol,Halfduplex-backpressure
+RJ-45Port | Auto-MDI/MDIX
+FiberPort | FC/SC/ST/SFPslot,ALLOPTIONAL
+Dimension | 70x25x15mm
+InputVoltage | DC5V-24VwithExternalpoweradapter
+PowerConsumption | <1W
+MACAddressTable | 2K
+BufferSize | 64K
+OperatingTemperature | 0℃~70℃
+StorageTemperature | -40℃~125℃
+StorageHumidity | 5%~90%non-condescending
+--- page 3 ---
+ProfessionalFiberOpticTransmissionEquipmentManufacturer
+ShenzhenOlycomTechnologyCo.,Ltd.
+Port
+1*Fiber+1*Ethernet
+IdealtouseSFPorFixedTransceiver:flexiblecommunicationdistancesandopticalconnectors
+Ethernetspeedis10/100Mbpsor10/100/1000Mbpsauto-adaptive:sufficientforcompressed4Kvideo
+(H.264/H.265)usedindrones
+ProductPhoto
+Web:www.olycom.com.cn
+Email:simon@olycom.com.cn
+VRLink:https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html

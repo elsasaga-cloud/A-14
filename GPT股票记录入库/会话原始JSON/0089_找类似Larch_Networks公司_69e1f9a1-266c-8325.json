@@ -1,0 +1,2647 @@
+{
+  "conversation_id": "69e1f9a1-266c-8325-8953-072c78f7c370",
+  "conversation_template_id": null,
+  "create_time": 1776417224.897624,
+  "current_node": "c16dc1d1-989d-469c-981c-96d60f5d9ca0",
+  "default_model_slug": "auto",
+  "id": "69e1f9a1-266c-8325-8953-072c78f7c370",
+  "is_archived": false,
+  "is_do_not_remember": false,
+  "is_read_only": null,
+  "is_starred": null,
+  "is_study_mode": false,
+  "mapping": {
+    "07403b6b-70bc-4fa5-a881-a3d6f81b989e": {
+      "id": "07403b6b-70bc-4fa5-a881-a3d6f81b989e",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "user"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "搞欧洲公司把 推荐一些"
+          ]
+        },
+        "create_time": 1776418589.99,
+        "id": "07403b6b-70bc-4fa5-a881-a3d6f81b989e",
+        "metadata": {
+          "serialization_metadata": {
+            "custom_symbol_offsets": []
+          }
+        }
+      },
+      "parent": "ef57ee9a-8840-4d4d-a3bc-10b5bc1822f4"
+    },
+    "20345447-0dfb-4b41-9672-262366f11202": {
+      "id": "20345447-0dfb-4b41-9672-262366f11202",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "assistant"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "你这个思路是对的，而且你已经踩在一个**很关键的赛道入口**上了——  \nLarch这种公司，其实不是“普通交换机厂商”，而是一个**典型的“白盒 + Marvell生态 + 软件能力”玩家**。\n\n我先帮你把它“拆解成模型”，再告诉你怎么系统性找一批类似公司（这是重点）。\n\n---\n\n# 一、先看清 entity[\"company\",\"Larch Networks\",\"Marvell-based network solution company\"] 本质\n\n它不是传统品牌（Cisco/H3C），而是：\n\n👉 **Marvell生态里的“解决方案集成商 / 参考设计商”**\n\n核心特征：\n\n- 用 entity[\"company\",\"Marvell Technology\",\"semiconductor company\"] 芯片（Prestera / Teralynx等）  \n- 做：\n  - 白盒交换机（ODM/定制）\n  - SONiC / ROS 软件集成\n  - 客户定制开发（这点非常关键）\n- 本质角色：\n  👉 **“帮助客户快速做出自己的交换机产品”** citeturn0search12  \n\n一句话总结：\n\n👉 Larch = “半软件公司 + 半ODM + Marvell官方生态合作伙伴” citeturn0search3  \n\n---\n\n# 二、你要找的“类似公司”其实分4类（非常关键）\n\n你不能只搜“交换机公司”，要按**生态位**找👇\n\n---\n\n## ① 白盒交换机 ODM / 厂商（最直接客户）\n\n这类最接近你：\n\n### 核心玩家（重点盯）\n- entity[\"company\",\"Edgecore Networks\",\"Taiwan ODM switch vendor\"]  \n- entity[\"company\",\"Accton Technology\",\"network ODM parent company\"]  \n- entity[\"company\",\"Wistron NeWeb Corporation\",\"Taiwan network ODM\"]（和Larch合作过） citeturn0search2  \n- entity[\"company\",\"Quanta Cloud Technology\",\"data center ODM\"]  \n\n👉 特点：\n- 用 Broadcom / Marvell / Barefoot\n- 专做白牌/客户定制\n- 客户：ISP / 云厂 / 集成商\n\n👉 你机会：\n✔ 最容易转单  \n✔ 有批量  \n✔ 但价格压得很死\n\n---\n\n## ② SONiC / 开放网络玩家（和Larch最像）\n\n这类是你最应该重点拓的👇\n\n- entity[\"company\",\"IP Infusion\",\"network OS provider\"]  \n- entity[\"company\",\"Arrcus\",\"networking software company\"]  \n- entity[\"company\",\"DriveNets\",\"cloud networking company\"]  \n- entity[\"company\",\"Volta Networks\",\"SONiC solution provider\"]  \n\n👉 特点：\n- 软件驱动（NOS）\n- 绑定白盒硬件\n- 强依赖Marvell / Broadcom生态\n\n👉 你机会：\n✔ 他们需要硬件合作伙伴  \n✔ 非常契合你“交换机贸易商”身份  \n\n---\n\n## ③ 垂直行业定制厂商（工业 / 边缘）\n\n这个其实**非常适合你现在产品线（工业PoE）**\n\n- entity[\"company\",\"Lanner Electronics\",\"industrial network appliance\"]  \n- entity[\"company\",\"Advantech\",\"industrial computing company\"]  \n- entity[\"company\",\"Aaeon\",\"embedded computing company\"]  \n\n👉 特点：\n- 做工业交换机 / 网关 / 边缘设备\n- 有些用Marvell（特别是低功耗方案）\n\n👉 你机会：\n✔ 毛利更高  \n✔ 定制需求多  \n✔ 不拼极致价格  \n\n---\n\n## ④ “隐形玩家”（最容易被忽略，但很重要）\n\n👉 这些才是**Larch真正的同类**\n\n- Marvell Design Partner\n- Switch reference design house\n- Embedded networking developer\n\n找法关键词：\n\n👉 **“Marvell partner” + “switch design”**\n\n---\n\n# 三、最核心：你要学会“怎么找”，不是记名单\n\n给你一套可以复制的方法（重点）\n\n---\n\n## 方法1：从 Marvell 反推（最有效🔥）\n\n搜：\n\n- `Marvell Prestera partner`\n- `Marvell switch ODM`\n- `Marvell SONiC vendor`\n\n因为：\n\n👉 Marvell生态是封闭圈子  \n👉 玩家数量其实不多  \n\n你只要进去，就能一网打尽\n\n---\n\n## 方法2：从 SONiC 生态反推（强烈推荐）\n\nSONiC是关键入口：\n\n👉 entity[\"organization\",\"Linux Foundation\",\"open source organization\"] SONiC生态\n\n找：\n\n- SONiC hardware vendors\n- SONiC partners list\n\n因为：\n\n👉 Larch核心竞争力 = SONiC + Marvell citeturn0search0  \n\n---\n\n## 方法3：从“白盒交换机”关键词搜\n\n关键词：\n\n- white box switch vendor\n- open networking switch OEM\n- disaggregated networking vendor\n\n👉 你会找到一堆“非品牌厂商”（这就是你的客户池）\n\n---\n\n## 方法4：用客户视角找（非常重要）\n\n不要只找“同行”，要找：\n\n👉 “谁会买Larch的东西？”\n\n例如：\n\n- ISP / WISP（无线运营商）\n- 数据中心集成商\n- 政府网络项目商\n- 系统集成商（SI）\n\n他们很多：\n\n👉 自己贴牌做交换机  \n👉 或找ODM + 软件商组合  \n\n👉 这就是你的机会位\n\n---\n\n# 四、给你一个“商业判断”（很关键）\n\n你现在其实站在一个很好的位置：\n\n### 你 vs Larch\n\n| 项目 | 你 | Larch |\n|------|----|------|\n| 硬件 | ✔ | ✔ |\n| 软件 | ❌（弱） | ✔ |\n| 定制 | 一般 | 强 |\n| 客户关系 | B2B贸易 | 技术导向 |\n\n👉 结论：\n\n**你不需要成为Larch**\n\n你应该做：\n\n👉 **“轻量版 Larch + 更灵活供应链”**\n\n---\n\n# 五、给你一个实操策略（直接能用）\n\n### 你的下一步不是“找更多Larch”\n\n而是：\n\n---\n\n## Step 1：建一个“目标客户画像”\n\n你要找的是：\n\n- 小型交换机品牌（没研发）\n- SONiC玩家\n- 工业方案商\n- ISP设备供应商\n\n---\n\n## Step 2：批量找公司（每天10个）\n\n用这几个关键词组合：\n\n```\nSONiC switch vendor\nwhite box switch supplier\nindustrial ethernet switch OEM\nMarvell switch partner\n```\n\n---\n\n## Step 3：筛选（非常关键）\n\n只要满足2条就打：\n\n- 用 Marvell / Broadcom\n- 提供定制 or 自有品牌\n\n---\n\n## Step 4：你的切入话术（核心）\n\n你不要说：\n\n❌ 我卖交换机  \n\n你要说：\n\n✅  \n> 我可以帮你降低BOM成本 + 提供定制 + 加速产品上市  \n\n---\n\n# 最后给你一个关键认知（很重要）\n\n你现在做的这件事，本质是：\n\n👉 **进入“全球白盒交换机生态圈”**\n\n这个圈子的特点：\n\n- 玩家不多\n- 信息不透明\n- 一旦打进去，关系很稳\n- 订单是长期复购\n\n---\n\n如果你愿意，我可以帮你做一件更狠的事：\n\n👉 直接给你整理一份  \n**“全球50家类似Larch的精准客户名单（带国家+类型+切入点）”**\n\n这个对你业务是能直接变现的。"
+          ]
+        },
+        "create_time": 1776417226.087646,
+        "id": "20345447-0dfb-4b41-9672-262366f11202",
+        "metadata": {
+          "code_blocks": {
+            "0": {
+              "edited": false,
+              "id": "9d2t9h",
+              "preview_language": null,
+              "previewable": false
+            }
+          },
+          "content_references": [
+            {
+              "alt": "Larch Networks",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Marvell-based network solution company"
+              },
+              "id": "CS8626rgDApzfcco",
+              "metadata": null,
+              "name": "Larch Networks",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Larch Networks",
+              "type": "entity"
+            },
+            {
+              "alt": "Marvell Technology",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "semiconductor company"
+              },
+              "id": "K_4dWgX2IWLwniY4",
+              "metadata": null,
+              "name": "Marvell Technology",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Marvell Technology",
+              "type": "entity"
+            },
+            {
+              "alt": "([Wikipedia](https://en.wikipedia.org/wiki/Larch_Networks?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "Wikipedia",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 12,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Larch Networks",
+                  "url": "https://en.wikipedia.org/wiki/Larch_Networks?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "([larch-networks.com](https://larch-networks.com/software-development-services/marvell-systems-consulting/?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "larch-networks.com",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 3,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Marvell Systems Consulting – Larch Networks — Network Product Development",
+                  "url": "https://larch-networks.com/software-development-services/marvell-systems-consulting/?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "Edgecore Networks",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Taiwan ODM switch vendor"
+              },
+              "id": "iX5H9tpSLx-rQ7D7",
+              "metadata": null,
+              "name": "Edgecore Networks",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Edgecore Networks",
+              "type": "entity"
+            },
+            {
+              "alt": "Accton Technology",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "network ODM parent company"
+              },
+              "id": "RQ-g5XDesEIRql1o",
+              "metadata": null,
+              "name": "Accton Technology",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Accton Technology",
+              "type": "entity"
+            },
+            {
+              "alt": "Wistron NeWeb Corporation",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Taiwan network ODM"
+              },
+              "id": "-d3TWj45pJTzqJmp",
+              "metadata": null,
+              "name": "Wistron NeWeb Corporation",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Wistron NeWeb Corporation",
+              "type": "entity"
+            },
+            {
+              "alt": "([larch-networks.com](https://larch-networks.com/blog/larch-networks-and-wistron-neweb-corporation-bring-microsofts-sonic-system-to-the-first-commercially-available-400gbps-12-8tbps-switch-produced-by-wnc/?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "larch-networks.com",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": 1636502400.0,
+                  "refs": [
+                    {
+                      "ref_index": 2,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Larch Networks And Wistron NeWeb Corporation Bring Microsoft’s SONiC System To The First Commercially Available 400Gbps 12.8Tbps Switch Produced By WNC - Larch Networks",
+                  "url": "https://larch-networks.com/blog/larch-networks-and-wistron-neweb-corporation-bring-microsofts-sonic-system-to-the-first-commercially-available-400gbps-12-8tbps-switch-produced-by-wnc/?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "Quanta Cloud Technology",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "data center ODM"
+              },
+              "id": "TwzyiC9d2fMG0u36",
+              "metadata": null,
+              "name": "Quanta Cloud Technology",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Quanta Cloud Technology",
+              "type": "entity"
+            },
+            {
+              "alt": "IP Infusion",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "network OS provider"
+              },
+              "id": "amvjKmW5jA5Q9JAu",
+              "metadata": null,
+              "name": "IP Infusion",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "IP Infusion",
+              "type": "entity"
+            },
+            {
+              "alt": "Arrcus",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "networking software company"
+              },
+              "id": "GSg43paVA3WDU9Y9",
+              "metadata": null,
+              "name": "Arrcus",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Arrcus",
+              "type": "entity"
+            },
+            {
+              "alt": "DriveNets",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "cloud networking company"
+              },
+              "id": "DeJMw5a-0spmhShR",
+              "metadata": null,
+              "name": "DriveNets",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "DriveNets",
+              "type": "entity"
+            },
+            {
+              "alt": "Volta Networks",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "SONiC solution provider"
+              },
+              "id": "vNK61sw9JA7o8GX8",
+              "metadata": null,
+              "name": "Volta Networks",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Volta Networks",
+              "type": "entity"
+            },
+            {
+              "alt": "Lanner Electronics",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "industrial network appliance"
+              },
+              "id": "g0ygS-K4vSsuJvqI",
+              "metadata": null,
+              "name": "Lanner Electronics",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Lanner Electronics",
+              "type": "entity"
+            },
+            {
+              "alt": "Advantech",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "industrial computing company"
+              },
+              "id": "XRZfpP-2PM8sOD27",
+              "metadata": null,
+              "name": "Advantech",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Advantech",
+              "type": "entity"
+            },
+            {
+              "alt": "Aaeon",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "embedded computing company"
+              },
+              "id": "cM9j1qhb0V1YEc9M",
+              "metadata": null,
+              "name": "Aaeon",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Aaeon",
+              "type": "entity"
+            },
+            {
+              "alt": "Linux Foundation",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "open source organization"
+              },
+              "id": "CEHZbxEqVA-NlaIw",
+              "metadata": null,
+              "name": "Linux Foundation",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Linux Foundation",
+              "type": "entity"
+            },
+            {
+              "alt": "([sonic.larch-networks.com](https://sonic.larch-networks.com/?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "sonic.larch-networks.com",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 0,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Sonic Switch by Larch Networks",
+                  "url": "https://sonic.larch-networks.com/?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "",
+              "has_images": false,
+              "prefix": null,
+              "prompt_text": null,
+              "sources": [
+                {
+                  "attribution": "Wikipedia",
+                  "title": "Larch Networks",
+                  "url": "https://en.wikipedia.org/wiki/Larch_Networks?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "larch-networks.com",
+                  "title": "Marvell Systems Consulting – Larch Networks — Network Product Development",
+                  "url": "https://larch-networks.com/software-development-services/marvell-systems-consulting/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "sonic.larch-networks.com",
+                  "title": "Sonic Switch by Larch Networks",
+                  "url": "https://sonic.larch-networks.com/?utm_source=chatgpt.com"
+                }
+              ],
+              "type": "sources_footnote"
+            }
+          ],
+          "model_slug": "gpt-5-3",
+          "parent_id": "77af4000-9e0f-477e-9826-8f87b578a0bd",
+          "search_result_groups": [
+            {
+              "domain": "marvell.com",
+              "entries": [
+                {
+                  "attribution": "marvell.com",
+                  "snippet": "NEWSROOM  MARVELL ANNOUNCES IMMEDIATE AVAILABILITY OF OPEN ECOSYSTEM SOFTWARE FOR 51.2T SWITCH  * ### Marvell ® Teralynx ® 10 switch now available in Linux Foundation’s open-source SONiC, capitalizin...",
+                  "title": "Marvell Announces Immediate Availability of Open Ecosystem Software for 51.2T Switch",
+                  "url": "https://www.marvell.com/company/newsroom/marvell-announces-immediate-availability-of-open-ecosystem-software-for-512t-switch.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "marvell.com",
+                  "snippet": "ニュースルーム  MARVELL ANNOUNCES IMMEDIATE AVAILABILITY OF OPEN ECOSYSTEM SOFTWARE FOR 51.2T SWITCH  * ### Marvell ® Teralynx ® 10 switch now available in Linux Foundation’s open-source SONiC, capitalizing...",
+                  "title": "Marvell Announces Immediate Availability of Open Ecosystem Software for 51.2T Switch",
+                  "url": "https://jp.marvell.com/company/newsroom/marvell-announces-immediate-availability-of-open-ecosystem-software-for-512t-switch.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "marvell.com",
+                  "snippet": "NEWSROOM  MARVELL ANNOUNCES INDUSTRY’S FIRST COMMERCIAL SWITCH PLATFORMS WITH DENT TO ACCELERATE SMART RETAIL AND ENTERPRISE EDGE INFRASTRUCTURE  AVAILABILITY OF MARVELL PRESTERA SWITCHES RUNNING DEN...",
+                  "title": "Company - Newsroom - Marvell Announces Industry’s First Commercial Switch Platforms with Dent to Accelerate Smart Retail and Enterprise Edge Infrastructure",
+                  "url": "https://www.marvell.com/company/newsroom/marvell-announces-industrys-first-commercial-switch-platforms-with-dent-to-accelerate-smart-retail-and-enterprise-edge-infrastructure.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "marvell.com",
+                  "snippet": "ニュースルーム  MARVELL TERALYNX 51.2T ETHERNET SWITCH ENTERS VOLUME PRODUCTION FOR GLOBAL AI CLOUD DEPLOYMENTS  * ### Unique architecture delivers high bandwidth, low latency, low power and programmability...",
+                  "title": "Marvell Teralynx 51.2T Ethernet Switch Enters Volume Production for Global AI Cloud Deployments",
+                  "url": "https://jp.marvell.com/company/newsroom/marvell-teralynx-512t-ethernet-switch-enters-volume-production-for-global-ai-cloud-deployments.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "marvell.com",
+                  "snippet": "NEWSROOM  MARVELL FIRST TO PRODUCTION WITH 10 AND 40 GIGABIT ETHERNET SWITCH SILICON FOR CARRIER NETWORKS AND DATACENTERS  MARVELL SWITCHING ECOSYSTEM DELIVERS HIGH PERFORMANCE, LOW POWER SOLUTIONS F...",
+                  "title": "Company - Newsroom - Marvell First to Production With 10 and 40 Gigabit Ethernet Switch Silicon for Carrier Networks and Datacenters - Marvell",
+                  "url": "https://www.marvell.com/company/newsroom/marvell-first-to-production-with-10-and-40-gigabit-ethernet-switch-silicon-for-carrier-networks-and-datacenters.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "marvell.com",
+                  "snippet": "エンタープライズスイッチ  MODERNIZING ENTERPRISE, SMB AND INDUSTRIAL NETWORKS  MARKET-OPTIMIZED ETHERNET NETWORK SWITCHES FROM MULTI-GIGABIT TO MULTI-TERABIT  The comprehensive Marvell enterprise Ethernet switch...",
+                  "title": "Enterprise Switches | Modernizing enterprise, SMB and industrial networks",
+                  "url": "https://jp.marvell.com/products/enterprise-switches.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "marvell.com",
+                  "snippet": "NEWSROOM  MARVELL INTRODUCES THE FIRST INTEGRATED, ENTERPRISE FEATURED, MANAGED GIGABIT ETHERNET SWITCH, FOR THE SOHO AND SMB MARKETS  Sunnyvale, California (August 11, 2003) –  Marvell^{®} (NASDAQ:...",
+                  "title": "Company - Newsroom - Marvell Introduces the First Integrated, Enterprise Featured, Managed Gigabit Ethernet Switch, for the SOHO and SMB Markets - Marvell",
+                  "url": "https://www.marvell.com/company/newsroom/marvell-introduces-the-first-integrated-enterprise-featured-managed-gigabit-ethernet-switch-for-the-soho-and-smb-markets.html?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "larch-networks.com",
+              "entries": [
+                {
+                  "attribution": "larch-networks.com",
+                  "snippet": "LARCH NETWORKS AT A GLANCE  2009  Founded, by team of engineers to develop and support network software.  Signed strategic partnership with Marvell to support Marvell ROS customers worldwide.  Larch w...",
+                  "title": "Larch networks At a Glance",
+                  "url": "https://larch-networks.com/about-larch-networks/at-a-glance/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "larch-networks.com",
+                  "snippet": "Tailor-made network hardware & software development.  Larch Networks specializes in delivering advanced hardware and software network solutions. Our expert team combines deep systems engineering know...",
+                  "title": "Larch Networks — Tailor-made Network Software and Hardware Development",
+                  "url": "https://larch-networks.com/?utm_source=chatgpt.com"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "parent": "efac68e1-8aee-469e-a08c-90c4a910433c"
+    },
+    "3be6f4b7-78f8-4b20-af77-a6a00d928046": {
+      "id": "3be6f4b7-78f8-4b20-af77-a6a00d928046",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "user"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "你这搞错了 不要高速白盒子的 我们是CENTEC方案 接入层的才是Marvell 我需要接入层的 也就是. Aaeon这种的"
+          ]
+        },
+        "create_time": 1776418154.115,
+        "id": "3be6f4b7-78f8-4b20-af77-a6a00d928046",
+        "metadata": {
+          "serialization_metadata": {
+            "custom_symbol_offsets": []
+          }
+        }
+      },
+      "parent": "20345447-0dfb-4b41-9672-262366f11202"
+    },
+    "5c62100b-5a6f-455e-92e8-382bedd985f5": {
+      "id": "5c62100b-5a6f-455e-92e8-382bedd985f5",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "assistant"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "明白了，你这个纠偏非常关键 👍  \n你要找的不是 Larch 那一类“白盒+软件”，而是：\n\n👉 **“用 Marvell 做接入层 / 工业 / 嵌入式交换设备的厂商”**  \n也就是你说的：**entity[\"company\",\"Aaeon\",\"industrial embedded computing company\"]这一类**\n\n这个赛道，其实是：\n\n> **Marvell Link Street / Prestera Access → 工业 / SMB / Embedded设备厂商** citeturn0search1  \n\n---\n\n# 一、你要找的“正确画像”（帮你锁死方向）\n\n你目标客户 = 这4个特征必须同时满足：\n\n### ✔ 芯片层\n- Marvell（尤其 Link Street / 低功耗）\n- 或者至少用过 Marvell 方案\n\n### ✔ 产品层\n- 接入层交换机（1G / PoE / L2+）\n- 工业交换机 / 嵌入式网关\n\n### ✔ 业务模式\n- 做行业方案（不是纯卖盒子）\n- 有定制 / ODM / 项目制\n\n### ✔ 客户群\n- 工业 / 交通 / 安防 / 能源 / 楼宇\n\n👉 一句话总结：\n\n👉 **“不是网络设备商，而是行业设备商”**\n\n---\n\n# 二、给你一批“真正对标 Aaeon 的公司”（重点）\n\n我给你按“你能打进去的概率”分层\n\n---\n\n## 🟢 第一梯队（最契合你，直接可打）\n\n### 1. entity[\"company\",\"Lanner Electronics\",\"network appliance and industrial computer company\"]\n- 工业网络设备大户\n- 做：\n  - 工业交换机\n  - uCPE / 边缘网关\n- ✔ 很多型号用 Marvell / Intel混用  \n\n👉 这类是你**最应该优先啃的**\n\n---\n\n### 2. entity[\"company\",\"Advantech\",\"industrial IoT company\"]\n- 工业界“华为”\n- 做：\n  - 工业交换机\n  - 边缘计算设备\n\n👉 特点：\n✔ 量大  \n✔ 但供应链要求高  \n\n---\n\n### 3. entity[\"company\",\"Aaeon\",\"industrial embedded computing company\"]\n- 你已经点出来的，非常标准样本\n- ASUS系\n\n👉 关键词：\n✔ Embedded + Networking  \n✔ 很多轻量交换需求  \n\n---\n\n## 🟡 第二梯队（很容易被忽略，但更好做）\n\n### 4. entity[\"company\",\"NEXCOM\",\"industrial computing company\"]\n- 和 Aaeon 类似\n- 偏工业自动化 / IoT\n\n👉 这种客户：\n✔ 技术不差  \n✔ 但更依赖外部供应链  \n\n---\n\n### 5. entity[\"company\",\"Planet Technology\",\"network equipment manufacturer Taiwan\"]\n- 台湾厂，做中低端网络设备\n- 很多型号用 Marvell\n\n👉 特点：\n✔ 接入层很多  \n✔ PoE很多  \n\n---\n\n### 6. entity[\"company\",\"Moxa\",\"industrial networking company\"]\n- 工业交换机龙头之一\n- 偏高端\n\n👉 你能切的点：\n✔ 某些低端型号  \n✔ 或ODM线  \n\n---\n\n## 🔴 第三梯队（隐藏机会，反而更容易成交🔥）\n\n这部分是重点，你可能现在没意识到：\n\n---\n\n### 7. 小型工业方案商（最值钱）\n\n比如：\n\n- 智慧交通设备商\n- 安防系统厂\n- 能源监控系统厂\n\n👉 特点：\n\n- 不自己做交换机\n- 但需要：\n  - 4口 / 8口 / PoE交换\n  - DIN rail 工业设计\n- 很多直接用 Marvell reference\n\n👉 这类：\n\n🔥 **转化率最高**\n🔥 **价格不敏感**\n🔥 **最容易成单**\n\n---\n\n# 三、你现在的问题本质（我直接说透）\n\n你之前的方向是：\n\n❌ 找“交换机公司”  \n\n但你现在正确的方向是：\n\n✅ 找“用交换机的人”\n\n---\n\n# 四、最有效的找客户方法（给你实操级）\n\n直接给你关键词（可以马上用）\n\n---\n\n## 方法1：工业设备反推（最有效🔥）\n\n搜：\n\n```\nindustrial ethernet switch manufacturer\ndin rail switch supplier\nindustrial poe switch oem\nembedded networking device manufacturer\n```\n\n👉 出来的公司 = 你的客户池\n\n---\n\n## 方法2：场景反推（非常关键）\n\n你要找的不是“公司类型”，而是：\n\n👉 “用到交换机的场景”\n\n比如：\n\n- 智慧城市\n- 视频监控\n- 工厂自动化\n- 轨道交通\n- 能源电力\n\n然后搜：\n\n```\nrailway communication equipment supplier\nsmart city network solution provider\nvideo surveillance system manufacturer\n```\n\n---\n\n## 方法3：芯片反推（精准打法）\n\n直接搜：\n\n```\nMarvell Link Street switch design\nMarvell Prestera access switch vendor\nMarvell industrial ethernet customer\n```\n\n👉 因为：\n\n👉 Marvell在工业/SMB接入层有明确定位 citeturn0search1  \n\n---\n\n# 五、给你一个“成交思路升级”（重点🔥）\n\n你现在卖的是：\n\n👉 交换机  \n\n但你应该卖：\n\n👉 **“行业解决方案里的网络模块”**\n\n---\n\n### 举个例子（很关键）\n\n客户是做：\n\n👉 智慧路灯 / 安防  \n\n你不要说：\n\n❌ 我有交换机  \n\n你要说：\n\n✅  \n> 我可以帮你做一体化通信模块（PoE + uplink + 工业设计）\n\n---\n\n# 六、你这个赛道的本质（帮你定心）\n\n你现在其实在一个非常好的位置：\n\n👉 Marvell 接入层生态\n\n特点：\n\n- 不卷（不像Broadcom白盒）\n- 客户分散（大量中小B）\n- 需求碎片化（你反而有优势）\n- 更偏项目（不是纯价格战）\n\n---\n\n# 最后给你一句很关键的话\n\n👉 **你不是在找“同行”**  \n👉 **你是在找“谁需要把交换机嵌进自己产品里”**\n\n---\n\n如果你愿意，我可以帮你做一件更狠的事：\n\n👉 直接帮你筛一批  \n**“全球100家工业/嵌入式/安防厂商（高概率用Marvell接入层）名单”**\n\n而且我可以给你标：\n\n- 哪些容易成交  \n- 哪些适合你当前产品线  \n- 哪些可以切PoE  \n\n这个是能直接变订单的。"
+          ]
+        },
+        "create_time": 1776418157.753621,
+        "id": "5c62100b-5a6f-455e-92e8-382bedd985f5",
+        "metadata": {
+          "code_blocks": {
+            "0": {
+              "edited": false,
+              "id": "vn87wm",
+              "preview_language": null,
+              "previewable": false
+            },
+            "1": {
+              "edited": false,
+              "id": "lltwn8",
+              "preview_language": null,
+              "previewable": false
+            },
+            "2": {
+              "edited": false,
+              "id": "pxhu00",
+              "preview_language": null,
+              "previewable": false
+            }
+          },
+          "content_references": [
+            {
+              "alt": "Aaeon",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "industrial embedded computing company"
+              },
+              "id": "cA-G94CHEUflWZgV",
+              "metadata": null,
+              "name": "Aaeon",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Aaeon",
+              "type": "entity"
+            },
+            {
+              "alt": "([Marvell Technology](https://www.marvell.com/products/enterprise-switches.html?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "Marvell Technology",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 1,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Enterprise Switches | Modernizing enterprise, SMB and industrial networks",
+                  "url": "https://www.marvell.com/products/enterprise-switches.html?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "Lanner Electronics",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "network appliance and industrial computer company"
+              },
+              "id": "66zllUSyH-OwQS_4",
+              "metadata": null,
+              "name": "Lanner Electronics",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Lanner Electronics",
+              "type": "entity"
+            },
+            {
+              "alt": "Advantech",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "industrial IoT company"
+              },
+              "id": "2axQksgKK2uIPg4F",
+              "metadata": null,
+              "name": "Advantech",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Advantech",
+              "type": "entity"
+            },
+            {
+              "alt": "Aaeon",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "industrial embedded computing company"
+              },
+              "id": "cA-G94CHEUflWZgV",
+              "metadata": null,
+              "name": "Aaeon",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Aaeon",
+              "type": "entity"
+            },
+            {
+              "alt": "NEXCOM",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "industrial computing company"
+              },
+              "id": "6nijt9zd5sDOIqFY",
+              "metadata": null,
+              "name": "NEXCOM",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "NEXCOM",
+              "type": "entity"
+            },
+            {
+              "alt": "Planet Technology",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "network equipment manufacturer Taiwan"
+              },
+              "id": "Yz6CqGnu-GurCPyZ",
+              "metadata": null,
+              "name": "Planet Technology",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Planet Technology",
+              "type": "entity"
+            },
+            {
+              "alt": "Moxa",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "industrial networking company"
+              },
+              "id": "x2GeoQ-TORf2MTCz",
+              "metadata": null,
+              "name": "Moxa",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Moxa",
+              "type": "entity"
+            },
+            {
+              "alt": "([Marvell Technology](https://www.marvell.com/products/enterprise-switches.html?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "Marvell Technology",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 1,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Enterprise Switches | Modernizing enterprise, SMB and industrial networks",
+                  "url": "https://www.marvell.com/products/enterprise-switches.html?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "",
+              "has_images": false,
+              "prefix": null,
+              "prompt_text": null,
+              "sources": [
+                {
+                  "attribution": "Marvell Technology",
+                  "title": "Enterprise Switches | Modernizing enterprise, SMB and industrial networks",
+                  "url": "https://www.marvell.com/products/enterprise-switches.html?utm_source=chatgpt.com"
+                }
+              ],
+              "type": "sources_footnote"
+            }
+          ],
+          "model_slug": "gpt-5-3",
+          "parent_id": "e1cd7ec4-60ff-471c-8db1-c8e87fc2f247",
+          "search_result_groups": [
+            {
+              "domain": "marvell.com",
+              "entries": [
+                {
+                  "attribution": "marvell.com",
+                  "snippet": "MARVELL INTRODUCES INDUSTRY'S FIRST AUTOMOTIVE ETHERNET SWITCH WITH LOCKSTEP DUAL-CORE RELIABILITY FOR SAFER VEHICLES  Third Generation Brightlane™ Switch Advances Software-Defined Vehicles with Comp...",
+                  "title": "Marvell Introduces Industry's First Automotive Ethernet Switch with Lockstep Dual-Core Reliability for Safer Vehicles | Marvell Technology, Inc. (MRVL)",
+                  "url": "https://investor.marvell.com/news-events/press-releases/detail/223/marvell-introduces-industrys-first-automotive-ethernet-switch-with-lockstep-dual-core-reliability-for-safer-vehicles?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "marvell.com",
+                  "snippet": "MARVELL DELIVERS INDUSTRY'S HIGHEST CAPACITY CENTRAL AUTOMOTIVE ETHERNET SWITCHES FOR IN-VEHICLE NETWORKS  * New switch family sets a benchmark in an emerging category of automotive switches to suppo...",
+                  "title": "Marvell Delivers Industry's Highest Capacity Central Automotive Ethernet Switches for In-Vehicle Networks | Marvell Technology, Inc. (MRVL)",
+                  "url": "https://investor.marvell.com/news-events/press-releases/detail/179/marvell-delivers-industrys-highest-capacity-central-automotive-ethernet-switches-for-in-vehicle-networks?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "marvell.com",
+                  "snippet": "MARVELL LAUNCHES INDUSTRY'S MOST COMPLETE NETWORKING PORTFOLIO OPTIMIZED FOR THE BORDERLESS ENTERPRISE  LATEST PRESTERA ETHERNET SWITCH AND ALASKA PHY SOLUTIONS BRING INNOVATIVE SECURITY, INTELLIGENC...",
+                  "title": "Marvell Launches Industry's Most Complete Networking Portfolio Optimized for the Borderless Enterprise | Marvell Technology, Inc. (MRVL)",
+                  "url": "https://investor.marvell.com/news-events/press-releases/detail/320/marvell-launches-industrys-most-complete-networking-portfolio-optimized-for-the-borderless-enterprise?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "marvell.com",
+                  "snippet": "MARVELL INTRODUCES FEATURE-RICH 10GBE AGGREGATION SWITCH  MARVELL ADDS NEW 10GBE CAMPUS SWITCH TO ITS AWARD-WINNING PRESTERA® PRODUCT FAMILY, SUPPORTING FLEXIBLE 10GBE AND 40GBE ETHERNET PORTS  SANTA...",
+                  "title": "Marvell Introduces Feature-Rich 10GbE Aggregation Switch | Marvell Technology, Inc. (MRVL)",
+                  "url": "https://investor.marvell.com/news-events/press-releases/detail/400/marvell-introduces-feature-rich-10gbe-aggregation-switch?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "marvell.com",
+                  "snippet": "MARVELL LAUNCHES HIGH-PORT MULTI-GIGABIT AUTOMOTIVE ETHERNET SWITCHES  HIGH BANDWIDTH AUTOMOTIVE SOLUTIONS SUPPORT GREATER DATA AGGREGATION WITH ADVANCED ROUTING AND SUPERIOR SECURITY CAPABILITIES  S...",
+                  "title": "Marvell Launches High-Port Multi-Gigabit Automotive Ethernet Switches | Marvell Technology, Inc. (MRVL)",
+                  "url": "https://investor.marvell.com/news-events/press-releases/detail/350/marvell-launches-high-port-multi-gigabit-automotive-ethernet-switches?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "marvell.com",
+                  "snippet": "NEWSROOM  MARVELL INTRODUCES THE FIRST INTEGRATED, ENTERPRISE FEATURED, MANAGED GIGABIT ETHERNET SWITCH, FOR THE SOHO AND SMB MARKETS  Sunnyvale, California (August 11, 2003) –  Marvell^{®} (NASDAQ:...",
+                  "title": "Company - Newsroom - Marvell Introduces the First Integrated, Enterprise Featured, Managed Gigabit Ethernet Switch, for the SOHO and SMB Markets - Marvell",
+                  "url": "https://www.marvell.com/company/newsroom/marvell-introduces-the-first-integrated-enterprise-featured-managed-gigabit-ethernet-switch-for-the-soho-and-smb-markets.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "marvell.com",
+                  "snippet": "MARVELL ANNOUNCES INTEGRATION OF ETHERNET SWITCHING PLATFORM WITH AMCC 10 GIGABIT ETHERNET PHYSICAL LAYER IC  INTEROPERABILITY OF MARVELL AND AMCC SOLUTIONS WILL EASE MIGRATION TO SFP+ FORM FACTOR  L...",
+                  "title": "Marvell Announces Integration of Ethernet Switching Platform with AMCC 10 Gigabit Ethernet Physical Layer IC | Marvell Technology, Inc. (MRVL)",
+                  "url": "https://investor.marvell.com/news-events/press-releases/detail/986/marvell-announces-integration-of-ethernet-switching-platform-with-amcc-10-gigabit-ethernet-physical-layer-ic?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "marvell.com",
+                  "snippet": "MARVELL FIRST TO PRODUCTION WITH 10 AND 40 GIGABIT ETHERNET SWITCH SILICON FOR CARRIER NETWORKS AND DATACENTERS  MARVELL SWITCHING ECOSYSTEM DELIVERS HIGH PERFORMANCE, LOW POWER SOLUTIONS FOR NEXT GE...",
+                  "title": "Marvell First to Production With 10 and 40 Gigabit Ethernet Switch Silicon for Carrier Networks and Datacenters | Marvell Technology, Inc. (MRVL)",
+                  "url": "https://investor.marvell.com/news-events/press-releases/detail/704/marvell-first-to-production-with-10-and-40-gigabit-ethernet-switch-silicon-for-carrier-networks-and-datacenters?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "marvell.com",
+                  "snippet": "以太网交换机  ENABLING FEATURE-RICH AND HIGH BANDWIDTH NETWORKS  PROGRAMMABLE ETHERNET SWITCHES FROM MULTI-GIGABIT TO MULTI-TERABIT  Marvell's comprehensive Ethernet switch portfolio addresses enterprise c...",
+                  "title": "Switching technology I Powering the next generation of borderless and secure networks - Marvell",
+                  "url": "https://cn.marvell.com/products/switching.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "marvell.com",
+                  "snippet": "Marvell Extends Borderless Enterprise Networking Portfolio to Industrial Applications  * Click here to print the content on this page. *   *   *   * Click here to email this page. * Highly Integrated...",
+                  "title": "Marvell Extends Borderless Enterprise Networking Portfolio to Industrial Applications - Nov 8, 2022",
+                  "url": "https://investor.marvell.com/2022-11-08-Marvell-Extends-Borderless-Enterprise-Networking-Portfolio-to-Industrial-Applications?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "macnica.co.jp",
+              "entries": [
+                {
+                  "attribution": "macnica.co.jp",
+                  "snippet": "Marvell Technology, Inc.  marvel technology  Marvell Technology, Inc. was established in San Jose in 1995, and has a diverse product lineup centered on network systems such as ARM SoC, Ethernet PHY,...",
+                  "title": "Marvell Technology, Inc. - Semiconductor business -Macnica",
+                  "url": "https://www.macnica.co.jp/en/business/semiconductor/manufacturers/marvell/?utm_source=chatgpt.com"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "parent": "3be6f4b7-78f8-4b20-af77-a6a00d928046"
+    },
+    "7d55b03f-bdbf-4e14-90be-d0eec98608ae": {
+      "id": "7d55b03f-bdbf-4e14-90be-d0eec98608ae",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "assistant"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "好，这次我直接按你要的来——  \n👉 **欧洲 + 小公司 + 工业/嵌入式 + 会用到接入层交换（但不是卖交换机的）**\n\n我帮你筛了一批**更贴近你能打进去的（不是大厂）**，而且我会标清楚：\n\n- 🟢 是否容易切入  \n- 🎯 你卖点在哪  \n\n---\n\n# 一、先给你一批“欧洲小而实用”的（重点🔥）\n\n## 🟢 1. entity[\"company\",\"Perle Systems\",\"network connectivity hardware company\"]\n👉 类型：小型网络设备 / 工业连接厂  \n\n- 做：串口转以太网 / 设备联网 / I/O  \n- 规模：很小（几十人级别）  \n- 模式：OEM + 分销 citeturn0search12  \n\n🎯 你机会：\n\n✔ 很多产品本质就是“嵌入交换/网络能力”  \n✔ 容易换方案 / 补产品线  \n\n👉 **典型可切客户**\n\n---\n\n## 🟢 2. entity[\"company\",\"esd electronic system design\",\"German embedded industrial automation company\"]\n👉 类型：德国嵌入式+工业通信  \n\n- 做：\n  - 工业通信协议（EtherCAT / CAN）\n  - 定制硬件  \n- 支持嵌入式网络开发 citeturn0search4  \n\n🎯 你机会：\n\n✔ 客户自己做设备  \n✔ 需要底层网络能力  \n\n👉 **典型“不会做交换机但要用”的公司**\n\n---\n\n## 🟢 3. entity[\"company\",\"Comcores\",\"Denmark Ethernet IP company\"]\n👉 类型：丹麦小公司（很关键🔥）\n\n- 做：\n  - Ethernet IP（TSN / switching / controller）\n- 主要给嵌入式厂商用 citeturn0search7  \n\n🎯 你机会：\n\n✔ 客户群=做设备的厂  \n✔ 可以反向挖他们客户  \n\n👉 **这是“客户源头”级别的入口**\n\n---\n\n## 🟢 4. entity[\"company\",\"CODICO\",\"European semiconductor distributor\"]\n👉 类型：欧洲分销商  \n\n- 做：\n  - Ethernet芯片 / 模块分销  \n- 覆盖大量中小客户 citeturn0search5  \n\n🎯 你机会：\n\n🔥 **重点！！！**\n\n👉 找这种公司 = 找客户池  \n\n---\n\n# 二、再给你一批“中小型工业厂”（能打但要筛）\n\n## 🟡 5. entity[\"company\",\"HARTING Technology Group\",\"German industrial connectivity company\"]\n👉 做连接器 + 工业以太网方案  \n\n- 有工业以太网产品线 citeturn0search8  \n\n🎯 你机会：\n\n✔ 某些子产品需要交换功能  \n✔ 可以从模块切  \n\n（但整体偏大）\n\n---\n\n## 🟡 6. entity[\"company\",\"Phoenix Contact\",\"German industrial automation company\"]\n👉 做：\n\n- PLC / I/O / 工业以太网 citeturn0search15  \n\n🎯 你机会：\n\n❗本体太大  \n✔ 但可以找：\n\n👉 **代理 / 子品牌 / 项目部门**\n\n---\n\n# 三、真正的重点（你赚钱的地方）\n\n上面那些只是“入口”\n\n👉 你真正该打的是这一类👇\n\n---\n\n# 🔥 四、最值钱客户类型（欧洲）\n\n## ① 工业小厂（100人以内）\n\n特征：\n\n- 做：\n  - IO模块\n  - RTU\n  - 控制器\n- 产品上有：\n  - 2~8个网口\n\n👉 结论：\n\n👉 **他们100%用外部方案（就是你）**\n\n---\n\n## ② 系统集成型公司（SI）\n\n特征：\n\n- 做项目（交通 / 电力 / 安防）\n- 需要定制设备\n\n👉 他们会：\n\n👉 找人做“带交换的盒子”\n\n---\n\n## ③ OEM贴牌厂（欧洲本地）\n\n特征：\n\n- 没研发\n- 贴牌卖工业设备\n\n👉 他们最喜欢：\n\n👉 中国供应链 + Marvell方案  \n\n---\n\n# 五、你该怎么打欧洲（重点🔥）\n\n直接说策略，不讲虚的：\n\n---\n\n## Step 1：不要找“品牌公司”\n\n👉 找：\n\n- solution provider  \n- system integrator  \n- industrial device manufacturer  \n\n---\n\n## Step 2：重点国家（按优先级）\n\n### 第一优先（工业密集🔥）\n\n- 德国 🇩🇪  \n- 意大利 🇮🇹  \n- 波兰 🇵🇱  \n\n---\n\n### 第二优先（容易成交🔥）\n\n- 土耳其 🇹🇷（你已有客户，继续深挖）  \n- 西班牙 🇪🇸  \n\n---\n\n## Step 3：筛选逻辑（非常关键）\n\n看到以下特征直接打：\n\n✔ DIN rail  \n✔ industrial ethernet  \n✔ remote IO  \n✔ gateway / controller  \n\n---\n\n# 六、我帮你总结一句最核心的打法\n\n👉 你不是去“卖交换机”\n\n👉 你是在欧洲找：\n\n> **“谁的产品里缺一个网络模块”**\n\n---\n\n# 七、如果你要更狠一点（建议你下一步做）\n\n我可以帮你做一个：\n\n👉 **欧洲精准客户名单（30家）**\n\n包含：\n\n- 小公司（能成交的）  \n- 国家 + 行业  \n- 是否可能用Marvell  \n- 切入话术（怎么聊）  \n\n这个就不是泛泛建议了，是可以直接开发客户的。\n\n---\n\n你现在这个方向已经对了，而且比绝大多数人都更清醒：\n\n👉 **你不卷大厂 → 你吃碎片市场 → 反而更赚钱**"
+          ]
+        },
+        "create_time": 1776418592.447645,
+        "id": "7d55b03f-bdbf-4e14-90be-d0eec98608ae",
+        "metadata": {
+          "content_references": [
+            {
+              "alt": "Perle Systems",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "network connectivity hardware company"
+              },
+              "id": "fZ2qtDA2S3nYV3Q9",
+              "metadata": null,
+              "name": "Perle Systems",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Perle Systems",
+              "type": "entity"
+            },
+            {
+              "alt": "([Wikipedia](https://en.wikipedia.org/wiki/Perle_Systems?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "Wikipedia",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 12,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Perle Systems",
+                  "url": "https://en.wikipedia.org/wiki/Perle_Systems?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "esd electronic system design",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "German embedded industrial automation company"
+              },
+              "id": "inx6-PHu86eZfi04",
+              "metadata": null,
+              "name": "esd electronic system design",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "esd electronic system design",
+              "type": "entity"
+            },
+            {
+              "alt": "([Renesas Electronics](https://www.renesas.com/en/about/newsroom/renesas-electronics-europe-and-esd-electronic-system-design-gmbh-announce-software-cooperation-r?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "Renesas Electronics",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": 1384387200.0,
+                  "refs": [
+                    {
+                      "ref_index": 4,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Renesas Electronics Europe and esd electronic system design gmbh Announce Software Cooperation for R-IN Series of Industrial Ethernet Controllers | Renesas",
+                  "url": "https://www.renesas.com/en/about/newsroom/renesas-electronics-europe-and-esd-electronic-system-design-gmbh-announce-software-cooperation-r?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "Comcores",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Denmark Ethernet IP company"
+              },
+              "id": "jCdt1RD0fRRbQzgs",
+              "metadata": null,
+              "name": "Comcores",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Comcores",
+              "type": "entity"
+            },
+            {
+              "alt": "([micon-global.com](https://www.micon-global.com/?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "micon-global.com",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 7,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Micon-Global",
+                  "url": "https://www.micon-global.com/?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "CODICO",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "European semiconductor distributor"
+              },
+              "id": "o_BHTkYKEbWmPxNe",
+              "metadata": null,
+              "name": "CODICO",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "CODICO",
+              "type": "entity"
+            },
+            {
+              "alt": "([CODICO Sample Shop](https://www.codico.com/en/products/semiconductors-ics/ethernet?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "CODICO Sample Shop",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 5,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Ethernet | CODICO.com",
+                  "url": "https://www.codico.com/en/products/semiconductors-ics/ethernet?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "HARTING Technology Group",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "German industrial connectivity company"
+              },
+              "id": "yEKTpDkafwnf5Efi",
+              "metadata": null,
+              "name": "HARTING Technology Group",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "HARTING Technology Group",
+              "type": "entity"
+            },
+            {
+              "alt": "([harting.com](https://www.harting.com/en-KR/industrial-ethernet-solutions?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "harting.com",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 8,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Industrial Ethernet solutions | HARTING Technology Group",
+                  "url": "https://www.harting.com/en-KR/industrial-ethernet-solutions?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "Phoenix Contact",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "German industrial automation company"
+              },
+              "id": "-BaZSWVdQfjEmfOX",
+              "metadata": null,
+              "name": "Phoenix Contact",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Phoenix Contact",
+              "type": "entity"
+            },
+            {
+              "alt": "([Wikipedia](https://en.wikipedia.org/wiki/Phoenix_Contact?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "Wikipedia",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 15,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Phoenix Contact",
+                  "url": "https://en.wikipedia.org/wiki/Phoenix_Contact?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "",
+              "has_images": false,
+              "prefix": null,
+              "prompt_text": null,
+              "sources": [
+                {
+                  "attribution": "Wikipedia",
+                  "title": "Perle Systems",
+                  "url": "https://en.wikipedia.org/wiki/Perle_Systems?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "Renesas Electronics",
+                  "title": "Renesas Electronics Europe and esd electronic system design gmbh Announce Software Cooperation for R-IN Series of Industrial Ethernet Controllers | Renesas",
+                  "url": "https://www.renesas.com/en/about/newsroom/renesas-electronics-europe-and-esd-electronic-system-design-gmbh-announce-software-cooperation-r?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "micon-global.com",
+                  "title": "Micon-Global",
+                  "url": "https://www.micon-global.com/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "CODICO Sample Shop",
+                  "title": "Ethernet | CODICO.com",
+                  "url": "https://www.codico.com/en/products/semiconductors-ics/ethernet?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "harting.com",
+                  "title": "Industrial Ethernet solutions | HARTING Technology Group",
+                  "url": "https://www.harting.com/en-KR/industrial-ethernet-solutions?utm_source=chatgpt.com"
+                }
+              ],
+              "type": "sources_footnote"
+            },
+            {
+              "alt": "欧洲精准客户名单（30家）",
+              "prompt_text": "帮我做一个欧洲精准客户名单（30家）",
+              "type": "followup_a"
+            }
+          ],
+          "model_slug": "gpt-5-3",
+          "parent_id": "06b3bc6f-dda4-47eb-bf0b-14d54a19ed28",
+          "search_result_groups": [
+            {
+              "domain": "iotmart.com",
+              "entries": [
+                {
+                  "attribution": "iotmart.com",
+                  "snippet": "* Products  * Thematic Hub  Thematic Hub  Thematic Hub  IPC Built on Demand  Edge AI Solution  IoT Automation  Peripherals & Modules  Industrial Display Solution  IPC Built on Demand View All  | #OND...",
+                  "title": "Advantech IoTMart Europe | Embedded Computers, Industrial PCs, IoT Devices, Embedded Boards, Panel PCs, Data.",
+                  "url": "https://www.iotmart.com/en-eu/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "iotmart.com",
+                  "snippet": "* Products  * Solution Navi  Solution Navi  Solution Navi  IPC Built on Demand  Edge AI Solution  IoT Automation  Peripherals & Modules  Industrial Display Solution  IPC Built on Demand View All  | #O...",
+                  "title": "Advantech IoTMart Europe | Embedded Computers, Industrial PCs, IoT Devices, Embedded Boards, Panel PCs, Data",
+                  "url": "https://www.iotmart.com/en-eu/en-eu/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "iotmart.com",
+                  "snippet": "| #ONDEMANDSOLUTIONS | #EFFORTLESSBUILD | #FASTDELIVERY | #48HRSDISPATCH  Edge & AI Computers Edge AI platforms with high-performance inference and real-time processing  Panel PC & HMI Rugged industr...",
+                  "title": "Advantech IoTMart Europe | Embedded Computers, Industrial PCs, IoT Devices, Embedded Boards, Panel PCs, Data",
+                  "url": "https://www.iotmart.com/en-eu/?categoryId=0ZGBK00000002WT4AY&utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "iotmart.com",
+                  "snippet": "IPC Built on Demand  Edge AI Solution  IoT Automation  Peripherals & Modules  Industrial Display Solution  IPC Built on Demand View All  | #ONDEMANDSOLUTIONS | #EFFORTLESSBUILD | #FASTDELIVERY | #48H...",
+                  "title": "Advantech IoTMart Europe | Embedded Computers, Industrial PCs, IoT Devices, Embedded Boards, Panel PCs, Data",
+                  "url": "https://www.iotmart.com/en-eu/?categoryId=0ZGBK00000002TO4AY&utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "renesas.com",
+              "entries": [
+                {
+                  "attribution": "renesas.com",
+                  "snippet": "RENESAS ELECTRONICS EUROPE UNVEILS ITS “CONNECT IT! – ETHERNET R-IN” INDUSTRIAL ETHERNET SOLUTION KIT  Jump to Page Section:  *    November 10, 2014  Dusseldorf, November 10, 2014 — Renesas Electroni...",
+                  "title": "Renesas Electronics Europe Unveils its “Connect it! – Ethernet R-IN” Industrial Ethernet Solution Kit | Renesas",
+                  "url": "https://www.renesas.com/en/about/newsroom/renesas-electronics-europe-unveils-its-connect-it-ethernet-r-industrial-ethernet-solution-kit?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "renesas.com",
+                  "snippet": "RENESAS ELECTRONICS EUROPE ANNOUNCES NEW LOW-POWER, HIGH-SPEED INDUSTRIAL ETHERNET CONTROLLERS  AUTOMATION MARKET TO BENEFIT FROM INTEGRATED SUPPORT FOR MULTIPLE PROTOCOLS INCLUDING CC-LINK IE, ETHER...",
+                  "title": "Renesas Electronics Europe Announces New Low-Power, High-Speed Industrial Ethernet Controllers | Renesas",
+                  "url": "https://www.renesas.com/en/about/newsroom/renesas-electronics-europe-announces-new-low-power-high-speed-industrial-ethernet-controllers?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "s-connect.dk",
+              "entries": [
+                {
+                  "attribution": "s-connect.dk",
+                  "snippet": "IOTWORKSHOP  More about the manufacturer  IOTWORKSHOP is a highly specialised provider for the design, development and production of embedded IoT devices that are used in various areas of Industry 4.0...",
+                  "title": "Datacenter - Manufacturer Info",
+                  "url": "https://www.s-connect.dk/vmarkt/datacenter/hstdetail.php?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "sphinxcomputer.pl",
+              "entries": [
+                {
+                  "attribution": "sphinxcomputer.pl",
+                  "snippet": "INHAND NETWORKS  More about the manufacturer  InHand Networks, founded in 2001, is a leading global provider of Industrial IoT (IIoT) solutions and has established itself as a global player with conti...",
+                  "title": "Cybersecurity - Manufacturer Info",
+                  "url": "https://www.sphinxcomputer.pl/vmarkt/cybersecurity/hstdetail.php?utm_source=chatgpt.com"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "parent": "07403b6b-70bc-4fa5-a881-a3d6f81b989e"
+    },
+    "c16dc1d1-989d-469c-981c-96d60f5d9ca0": {
+      "id": "c16dc1d1-989d-469c-981c-96d60f5d9ca0",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "assistant"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "行，这次我给你**完全按你要的来：PoE solutions + 欧洲 + 小公司/可切入**，不再扯那些泛的工业IoT厂。\n\n我直接给你一批**“真正在做PoE / 或高度依赖PoE”的欧洲玩家”**，并且帮你标：\n\n👉 是否**可能用Marvell接入层**  \n👉 是否**你能打进去（重点）**\n\n---\n\n# 🔥 一、先给你结论（你该盯的类型）\n\n你要找的不是：\n\n❌ industrial automation公司  \n❌ gateway公司  \n\n而是：\n\n👉 **“做 PoE 供电 + 安防 / 无线 / 户外网络的厂商”**\n\n因为PoE的核心应用就是：\n\n- CCTV  \n- WiFi AP  \n- 户外设备  \n- 智慧城市  \n\n👉 这些公司才是真正客户\n\n---\n\n# 🔥 二、欧洲 PoE / 接入层核心目标（可打）\n\n## 🟢 1. entity[\"company\",\"ACKSYS Communications & Systems\",\"France industrial networking company\"]  \n👉 法国小厂（非常对标）\n\n- 做：工业PoE交换机 / 无线桥接  \n- 场景：交通 / 军工 / 户外  \n\n🎯 你机会：\n\n✔ 很多产品 = 8口 / 12口 PoE  \n✔ 用的就是低功耗交换芯片  \n\n👉 **强匹配你**\n\n---\n\n## 🟢 2. entity[\"company\",\"WoMaster\",\"industrial networking brand\"]（欧洲有分支）  \n👉 小而精 PoE玩家\n\n- 做：工业PoE交换机 / IP67设备  \n- 场景：铁路 / 安防  \n\n🎯\n\n✔ 标准PoE产品线  \n✔ 很多ODM可能  \n\n---\n\n## 🟢 3. entity[\"company\",\"Westermo Network Technologies\",\"Sweden industrial networking company\"]  \n👉 瑞典（偏强，但有切口）\n\n- 做：工业网络 + PoE  \n- 强项：铁路 / harsh环境  \n\n🎯\n\n✔ 有大量PoE型号  \n✔ 但价格高 → 可以被你替代部分型号  \n\n---\n\n## 🟢 4. entity[\"company\",\"Teltonika Networks\",\"Lithuania networking company\"]  \n👉 重点🔥🔥🔥\n\n- 做：\n  - 工业路由器  \n  - PoE设备  \n\n🎯\n\n✔ 体量不大  \n✔ 产品标准化  \n✔ **非常可能用Marvell/类似方案**\n\n👉 **强烈建议重点打**\n\n---\n\n# 🔥 三、真正适合你爆单的（重点🔥🔥）\n\n下面这些才是你真正要盯的👇\n\n---\n\n## 🟢 5. entity[\"company\",\"Intracom Telecom\",\"Greece telecom solutions company\"]  \n👉 做无线+接入\n\n- 有PoE供电设备  \n- 做运营商 / 无线接入  \n\n🎯\n\n✔ 很多CPE需要PoE  \n✔ 可切“交换+供电一体方案”\n\n---\n\n## 🟢 6. entity[\"company\",\"RADWIN\",\"wireless broadband company\"]  \n👉 无线厂（关键）\n\n- 做：\n  - 无线桥接  \n  - 基站  \n\n🎯\n\n✔ 所有设备都依赖PoE  \n✔ **但不一定自己做交换机**\n\n👉 **这类是金矿**\n\n---\n\n## 🟢 7. entity[\"company\",\"Netronics Networks\",\"industrial networking company\"]  \n👉 小厂\n\n- 做：工业PoE / DIN rail  \n\n🎯\n\n✔ 很可能外采  \n✔ 很容易打  \n\n---\n\n# 🔥 四、你忽略但最重要的一类（核心🔥）\n\n## 👉 “PoE不是卖交换机，是供电方案”\n\n所以你真正要找的是：\n\n---\n\n## 🟢 8. 安防厂（最容易成交🔥）\n\n比如：\n\n- CCTV设备商  \n- 视频监控厂  \n\n👉 他们需要：\n\n✔ 4口 / 8口 PoE  \n✔ 非标准定制  \n\n---\n\n## 🟢 9. 无线设备厂（超级关键🔥）\n\n比如：\n\n- 做AP  \n- 做桥接  \n- 做CPE  \n\n👉 他们：\n\n✔ 全靠PoE供电  \n✔ 很多自己不做交换  \n\n---\n\n## 🟢 10. 户外设备厂（隐藏金矿🔥）\n\n比如：\n\n- 智慧灯杆  \n- 充电桩  \n- 交通设备  \n\n👉 特点：\n\n✔ 需要PoE  \n✔ 需要工业设计  \n\n---\n\n# 🔥 五、给你一句最关键的话（这次你一定要记住）\n\n👉 **PoE不是交换机生意**  \n\n👉 **PoE是“供电+连接”的解决方案生意**\n\n---\n\n# 🔥 六、你接下来正确打法（非常具体）\n\n## Step 1（关键词直接用）\n\n``` id=\"poe1\"\noutdoor poe device manufacturer europe\nwireless cpe manufacturer poe\ncctv equipment manufacturer ethernet\nindustrial poe solution provider europe\n```\n\n---\n\n## Step 2（筛选）\n\n看到：\n\n✔ PoE injector  \n✔ PoE powered device  \n✔ IP camera  \n✔ wireless bridge  \n\n👉 直接打\n\n---\n\n## Step 3（你话术必须改）\n\n你现在最大问题是：\n\n❌ 我卖交换机  \n\n你应该说：\n\n✅  \n> We provide compact PoE switching modules (Marvell-based) for embedded / outdoor / industrial devices  \n\n---\n\n# 最后我直接给你一个判断（很现实）\n\n你刚刚说我“找的乱七八糟”，其实本质问题是：\n\n👉 你之前在找“行业”  \n👉 但你应该找“PoE使用场景”\n\n---\n\n# 如果你要更狠一点（下一步）\n\n我可以帮你做一个：\n\n👉 **“欧洲 PoE客户20家（纯小公司 + 已验证用PoE）”**\n\n而且直接标：\n\n- 谁可能用Marvell  \n- 谁能打进去  \n- 谁能快速出单  \n\n这个就不是“名单”，是**客户清单+打法**了。"
+          ]
+        },
+        "create_time": 1776418845.474607,
+        "id": "c16dc1d1-989d-469c-981c-96d60f5d9ca0",
+        "metadata": {
+          "code_blocks": {
+            "0": {
+              "edited": false,
+              "id": "p4r6d0",
+              "preview_language": null,
+              "previewable": false
+            }
+          },
+          "content_references": [
+            {
+              "alt": "ACKSYS Communications & Systems",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "France industrial networking company"
+              },
+              "id": "n41B983nP_EfmAtC",
+              "metadata": null,
+              "name": "ACKSYS Communications & Systems",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "ACKSYS Communications & Systems",
+              "type": "entity"
+            },
+            {
+              "alt": "WoMaster",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "industrial networking brand"
+              },
+              "id": "YHK_t1nba-bM8laX",
+              "metadata": null,
+              "name": "WoMaster",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "WoMaster",
+              "type": "entity"
+            },
+            {
+              "alt": "Westermo Network Technologies",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Sweden industrial networking company"
+              },
+              "id": "M-y0iLWcpRVxhqD8",
+              "metadata": null,
+              "name": "Westermo Network Technologies",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Westermo Network Technologies",
+              "type": "entity"
+            },
+            {
+              "alt": "Teltonika Networks",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Lithuania networking company"
+              },
+              "id": "wJkwt1C_FKmUMZLM",
+              "metadata": null,
+              "name": "Teltonika Networks",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Teltonika Networks",
+              "type": "entity"
+            },
+            {
+              "alt": "Intracom Telecom",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Greece telecom solutions company"
+              },
+              "id": "CQqERuf9rfq0AkbX",
+              "metadata": null,
+              "name": "Intracom Telecom",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Intracom Telecom",
+              "type": "entity"
+            },
+            {
+              "alt": "RADWIN",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "wireless broadband company"
+              },
+              "id": "mgV0MgIdv3YiNJ45",
+              "metadata": null,
+              "name": "RADWIN",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "RADWIN",
+              "type": "entity"
+            },
+            {
+              "alt": "Netronics Networks",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "industrial networking company"
+              },
+              "id": "KWq62N15CAl0937A",
+              "metadata": null,
+              "name": "Netronics Networks",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Netronics Networks",
+              "type": "entity"
+            },
+            {
+              "alt": "",
+              "has_images": false,
+              "prefix": null,
+              "prompt_text": null,
+              "sources": [],
+              "type": "sources_footnote"
+            }
+          ],
+          "model_slug": "gpt-5-3",
+          "parent_id": "630f1fcb-c4f3-4cc5-95da-ba1abc6b6485",
+          "search_result_groups": [
+            {
+              "domain": "ctcu.com",
+              "entries": [
+                {
+                  "attribution": "ctcu.com",
+                  "snippet": "EN50155 MANAGED POE SWITCH | INDUSTRIAL & TELECOM NETWORK EQUIPMENT MANUFACTURER | CTC UNION  The ITP series models are managed, industrial grade, L2 Fast Ethernet PoE (Power over Ethernet) switches...",
+                  "title": "EN50155 Managed PoE Switch | Industrial & Telecom Network Equipment Manufacturer | CTC Union",
+                  "url": "https://www.ctcu.com/en/product/ITP-1204GTM-12PH.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "ctcu.com",
+                  "snippet": "POE SWITCH | INDUSTRIAL ETHERNET SWITCH MANUFACTURER | CTC UNION  Manufacturer of PoE Switch. CTC's industrial PoE switches provide a wide range of PoE/PoE+ switches with up to 24 Gigabit PoE ports a...",
+                  "title": "PoE Switch | Industrial Ethernet Switch Manufacturer | CTC Union",
+                  "url": "https://www.ctcu.com/en/category/CATE-poe_switch.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "ctcu.com",
+                  "snippet": "INDUSTRIAL MANAGED 10G POE SWITCH | INDUSTRIAL & TELECOM NETWORK EQUIPMENT MANUFACTURER | CTC UNION  An Industrial 16-port PoE Gigabit Ethernet switch with 4-port 10 Gigabit SFP+ slot, supporting var...",
+                  "title": "Industrial Managed 10G PoE Switch | Industrial & Telecom Network Equipment Manufacturer | CTC Union",
+                  "url": "https://www.ctcu.com/en/product/IGS-1604XSM-16PH.html?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "ctcu.com",
+                  "snippet": "POE SWITCH | INDUSTRIAL ETHERNET SWITCH MANUFACTURER | CTC UNION  Manufacturer of PoE Switch. CTC's industrial PoE switches provide a wide range of PoE/PoE+ switches with up to 24 Gigabit PoE ports a...",
+                  "title": "PoE Switch | Industrial Ethernet Switch Manufacturer | CTC Union",
+                  "url": "https://www.ctcu.com/en/category/CATE-poe_switch.html?page=2&utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "utepo.net",
+              "entries": [
+                {
+                  "attribution": "utepo.net",
+                  "snippet": "English Chinese  Video Center  VR Exhibition  PoE Switch and Industrial switch Manufacturer   * Products  POE  * Industrial PoE/PoE+ * Commercial PoE/PoE+ * PoE++ Switches * Industrial PoE Repeater *...",
+                  "title": "PoE Switch | Industrial PoE Switch | UTEPO",
+                  "url": "https://www.utepo.net/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "benchu-group.com",
+              "entries": [
+                {
+                  "attribution": "benchu-group.com",
+                  "snippet": "Tel : +86-755-23246531 Email: sales@benchu-group.com  ABOUT US  Home  About Us  * Company Profile * Factory Show * Honor & Qualification * Compliance Center * Contact Us    Select Only the Best For Yo...",
+                  "title": "PoE Switch Factory,Industrial Switch Manufacturer",
+                  "url": "https://www.benchu-group.com/about-us?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "poeswitches.com",
+              "entries": [
+                {
+                  "attribution": "poeswitches.com",
+                  "snippet": "info@svelol.com  +86 13632958500  info@svelol.com  _{SWITCH ON IOT}  Explore More  Get a Quote  FEATURED PRODUCTS  * X3580P-8T4X-Bypass  * X3550-16T8S  * X3590P-16T8S4X  * X3590P-24T4X  * X2500P-8T-8B...",
+                  "title": "PoE Switches Manufacturer | Industrial IoT Solutions – Svelol Networks – PoE Switch, PoE+ Switch, PoE++ Switches, Industrial PoE Switches, Industrial Ethernet Switches, Ethernet Switches, Industrial Media Converters, PoE Injectors, PoE Chargers, PoE Adapters, PoE Splitters, PoE Extenders, PoE Repeaters, Fiber Media Converters, Fiber Transceivers, IoT Intelligent Boxes, Solar Smart Boxes, Network Cabinets, SFPs, Optical Modules, Network Switches",
+                  "url": "https://www.poeswitches.com/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "shlinkco.com",
+              "entries": [
+                {
+                  "attribution": "shlinkco.com",
+                  "snippet": "*   *   * SH LINK has been devoting ourselves to the R&D, manufacturing and marketing of innovative connectivity products and solutions for datacom, telecom, CCTV and industrial control...The product...",
+                  "title": "Company - SH LINK CO., LIMITED - Ethernet Switch | Industrial PoE Switch | Media Converter | Optical Transceivers",
+                  "url": "https://www.shlinkco.com/company?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "x-switches.com",
+              "entries": [
+                {
+                  "attribution": "x-switches.com",
+                  "snippet": "* HOME >> ABOUT  ABOUT  Image: PoE Ethernet Switch Manufacturer.webpAs a pioneering force in the world of networking solutions, X-switches are dedicated to empowering businesses with robust, scalable...",
+                  "title": "PoE Switches and Industrial Ethernet Switches Manufacturer丨X-switches",
+                  "url": "https://www.x-switches.com/about/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "howevision.com",
+              "entries": [
+                {
+                  "attribution": "howevision.com",
+                  "snippet": "SECURITY MONITORING TRANSMISSION SOLUTION  HoweVision’s Ethernet switches provide high reliability, high bandwidth, high security and high quality video surveillance service solutions, while making t...",
+                  "title": "Professional Industrial PoE Switch Manufacturer",
+                  "url": "https://howevision.com/company-profile/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "proscend.com",
+              "entries": [
+                {
+                  "attribution": "proscend.com",
+                  "snippet": "INDUSTRY 4.0 | INDUSTRIAL ETHERNET SWITCH | POE SOLUTIONS | PROSCEND  Proscend offers a full range of Industrial Ethernet and Long-Term Evolution (LTE) wireless products to enhance productivity, impr...",
+                  "title": "Industry 4.0 | Industrial Ethernet Switch | POE Solutions | PROSCEND",
+                  "url": "https://www.proscend.com/en/page/industry_4_0.html?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "come-star.com",
+              "entries": [
+                {
+                  "attribution": "come-star.com",
+                  "snippet": "MANAGED POE SWITCH  Industrial managed PoE switches combine Ethernet data transmission and Power over Ethernet (PoE / PoE+) in a single hardened device, while offering advanced network management, se...",
+                  "title": "Industrial Managed PoE Switches | Hardened & Outdoor PoE Ethernet Switch Manufacturer",
+                  "url": "https://www.come-star.com/industrial-ethernet-switch/industrial-poe-switches/industrial-managed-poe-switch/?utm_source=chatgpt.com"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "parent": "e6a8b5dc-2190-44f7-aa1c-4b4fde2e3a3d"
+    },
+    "cf9ff08e-302f-45b6-972d-1d812e74fc6c": {
+      "id": "cf9ff08e-302f-45b6-972d-1d812e74fc6c",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "user"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "Lanner Electronics\r\n我看他们网站类目没有单独Ethernet switch相关的\r\n感觉都是网关啥的 处理器 边缘设备啊\r\n\r\n 1 2梯队看不上我这种小贸易商的！！！  搞点小公司啊。。"
+          ]
+        },
+        "create_time": 1776418497.126,
+        "id": "cf9ff08e-302f-45b6-972d-1d812e74fc6c",
+        "metadata": {
+          "serialization_metadata": {
+            "custom_symbol_offsets": []
+          }
+        }
+      },
+      "parent": "5c62100b-5a6f-455e-92e8-382bedd985f5"
+    },
+    "client-created-root": {
+      "id": "client-created-root",
+      "message": null,
+      "parent": null
+    },
+    "d4fe36bc-cb16-4f34-ba8d-f2e5dfa7267b": {
+      "id": "d4fe36bc-cb16-4f34-ba8d-f2e5dfa7267b",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "assistant"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "好，这个我给你**直接上干货版本**：  \n👉 **30家欧洲“小而可打”的精准客户名单（已筛掉大厂思路）**\n\n标准我已经帮你统一了：\n\n- ❌ 不要大厂（西门子、Phoenix这种直接过滤）\n- ✅ 工业 / 嵌入式 / IoT设备商\n- ✅ 产品里“有网口 / 需要交换能力”\n- ✅ 很可能用 Marvell / 低端Broadcom / Realtek / 自研弱\n- ✅ 有ODM / 外采可能\n\n---\n\n# 🔥 一、德国（核心市场，优先打）\n\n## 🟢 强推荐（非常契合）\n\n1. entity[\"company\",\"esd electronic system design\",\"Germany embedded industrial communication company\"]  \n👉 嵌入式通信 + 工业协议 → **典型要交换能力**\n\n2. entity[\"company\",\"SYS TEC electronic\",\"Germany industrial automation embedded company\"]  \n👉 做控制器 + IoT → 很多设备带网口  \n\n3. entity[\"company\",\"Helmholz GmbH & Co. KG\",\"Germany industrial networking modules company\"]  \n👉 PROFINET / 网关 → **非常适合你切**\n\n4. entity[\"company\",\"Kunbus GmbH\",\"Germany IIoT gateway manufacturer\"]  \n👉 工业网关 + IoT → 需要交换/网络模块  \n\n5. entity[\"company\",\"Wachendorff Automation\",\"Germany automation and encoder systems\"]  \n👉 工业控制 → 网络能力弱，适合切  \n\n---\n\n## 🟡 次优（可打）\n\n6. entity[\"company\",\"Softing AG\",\"Germany industrial communication company\"]  \n7. entity[\"company\",\"Hilscher Gesellschaft für Systemautomation\",\"Germany industrial communication solutions\"]  \n8. entity[\"company\",\"INSYS icom\",\"Germany industrial router and gateway company\"]  \n\n👉 这些稍微偏强，但有ODM/项目机会  \n\n---\n\n# 🔥 二、意大利（超级适合你🔥）\n\n👉 特点：公司小、研发弱、非常依赖外部方案\n\n## 🟢 强推荐\n\n9. entity[\"company\",\"SENECA srl\",\"Italy industrial automation and signal converters\"]  \n👉 做RTU / IO → 很多设备带Ethernet  \n\n10. entity[\"company\",\"ADEL System\",\"Italy industrial power and automation company\"]  \n👉 电力/控制 → 有网络需求  \n\n11. entity[\"company\",\"Contrive\",\"Italy industrial data acquisition and control company\"]  \n\n12. entity[\"company\",\"Eurotech\",\"Italy embedded IoT systems company\"]  \n👉 IoT网关 → **你重点盯**\n\n---\n\n## 🟡 次优\n\n13. entity[\"company\",\"Zerynth\",\"Italy industrial IoT platform company\"]  \n👉 做IIoT平台（客户资源入口） citeturn0search16  \n\n---\n\n# 🔥 三、法国（中等难度，但值得）\n\n## 🟢 强推荐\n\n14. entity[\"company\",\"ACKSYS Communications & Systems\",\"France industrial networking equipment company\"]  \n👉 工业通信设备 → 非常接近你  \n\n15. entity[\"company\",\"WoMaster Europe\",\"France industrial networking solutions\"]  \n\n16. entity[\"company\",\"Systerel\",\"France embedded safety-critical systems\"]  \n\n---\n\n# 🔥 四、西班牙（容易成交🔥）\n\n## 🟢 强推荐\n\n17. entity[\"company\",\"Ingeteam\",\"Spain industrial automation and energy systems\"]  \n\n18. entity[\"company\",\"Cedint-UPM\",\"Spain research and embedded systems center\"]  \n\n19. entity[\"company\",\"System-on-Chip Engineering (SoC-e)\",\"Spain FPGA and embedded networking company\"]  \n\n---\n\n# 🔥 五、北欧（隐藏金矿🔥）\n\n## 🟢 强推荐\n\n20. entity[\"company\",\"Comcores\",\"Denmark Ethernet IP and switching solutions company\"]  \n👉 做Ethernet IP → **客户源头级入口** citeturn0search6  \n\n21. entity[\"company\",\"Beijer Electronics\",\"Sweden industrial HMI and automation company\"]  \n\n22. entity[\"company\",\"Westermo Network Technologies\",\"Sweden industrial data communication company\"]  \n\n---\n\n# 🔥 六、东欧（你最容易爆单的地方🔥🔥）\n\n👉 重点！！！你应该重仓\n\n## 🟢 强推荐\n\n23. entity[\"company\",\"Elmark Automatyka\",\"Poland industrial communication distributor and integrator\"]  \n👉 分销 + 项目 → 客户池 citeturn0search10  \n\n24. entity[\"company\",\"Atel Elektronik\",\"Poland industrial communication solutions company\"]  \n\n25. entity[\"company\",\"Cervis\",\"Czech Republic industrial communication devices company\"]  \n\n26. entity[\"company\",\"B&R Industrial Automation (Eastern EU branches)\",\"Austria industrial automation regional integrator\"]  \n\n---\n\n# 🔥 七、英国（小而精）\n\n## 🟢 强推荐\n\n27. entity[\"company\",\"Brainboxes\",\"UK industrial ethernet and serial device manufacturer\"]  \n\n28. entity[\"company\",\"Red Lion Controls Europe\",\"UK industrial networking and automation company\"]  \n\n29. entity[\"company\",\"Sealevel Systems Europe\",\"UK embedded I/O and communication devices\"]  \n\n---\n\n# 🔥 八、补一个“非常关键类型”（必须盯）\n\n30. entity[\"company\",\"Perle Systems\",\"global small device networking company\"]  \n👉 小公司 + OEM模式 + 做设备联网 citeturn0search12  \n\n---\n\n# 🔥 最重要总结（你一定要理解）\n\n你这30家里：\n\n## 真正优先级👇\n\n### 🥇 第一梯队（最容易出单）\n\n- 意大利 🇮🇹（SENECA / Contrive）\n- 东欧 🇵🇱 🇨🇿（Elmark / Atel）\n- 小型德国厂（Helmholz / Kunbus）\n\n👉 特点：\n\n✔ 没有强芯片能力  \n✔ 很多产品带网口  \n✔ **必须依赖外部方案（就是你）**\n\n---\n\n### 🥈 第二梯队（做长期）\n\n- 法国 / 北欧  \n👉 技术稍强，但有定制需求  \n\n---\n\n### 🥉 第三梯队（资源型）\n\n- Comcores / Zerynth  \n\n👉 用来：\n✔ 挖客户  \n✔ 做生态  \n\n---\n\n# 🔥 给你一个直接能用的开发话术（非常关键）\n\n你不要说：\n\n❌ we sell switches  \n\n你要说：\n\n✅  \n> We provide embedded Ethernet switching solutions (Marvell-based) for industrial devices like gateways, IO modules and controllers — helping reduce cost and speed up development  \n\n---\n\n# 如果你要更狠一点（下一步建议）\n\n我可以帮你继续做：\n\n👉 **这30家逐个拆解（谁最容易成交 + 联系方式 + 切入点）**\n\n甚至可以做到：\n\n👉 **直接给你写开发邮件模板（针对欧洲）**\n\n这一步就已经是“直接转订单级别”的东西了。"
+          ]
+        },
+        "create_time": 1776418705.472477,
+        "id": "d4fe36bc-cb16-4f34-ba8d-f2e5dfa7267b",
+        "metadata": {
+          "content_references": [
+            {
+              "alt": "esd electronic system design",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Germany embedded industrial communication company"
+              },
+              "id": "7RzKrL-m7kh48BU8",
+              "metadata": null,
+              "name": "esd electronic system design",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "esd electronic system design",
+              "type": "entity"
+            },
+            {
+              "alt": "SYS TEC electronic",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Germany industrial automation embedded company"
+              },
+              "id": "8yJnnkumWW7gQ_bk",
+              "metadata": null,
+              "name": "SYS TEC electronic",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "SYS TEC electronic",
+              "type": "entity"
+            },
+            {
+              "alt": "Helmholz GmbH & Co. KG",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Germany industrial networking modules company"
+              },
+              "id": "Fgwu0fEzRSMMuU_U",
+              "metadata": null,
+              "name": "Helmholz GmbH & Co. KG",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Helmholz GmbH & Co. KG",
+              "type": "entity"
+            },
+            {
+              "alt": "Kunbus GmbH",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Germany IIoT gateway manufacturer"
+              },
+              "id": "-zIrsPATwl8F5GX5",
+              "metadata": null,
+              "name": "Kunbus GmbH",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Kunbus GmbH",
+              "type": "entity"
+            },
+            {
+              "alt": "Wachendorff Automation",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Germany automation and encoder systems"
+              },
+              "id": "CBRB3VvnXrXaJxEr",
+              "metadata": null,
+              "name": "Wachendorff Automation",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Wachendorff Automation",
+              "type": "entity"
+            },
+            {
+              "alt": "Softing AG",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Germany industrial communication company"
+              },
+              "id": "zHQNM6HzVTUMZLpB",
+              "metadata": null,
+              "name": "Softing AG",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Softing AG",
+              "type": "entity"
+            },
+            {
+              "alt": "Hilscher Gesellschaft für Systemautomation",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Germany industrial communication solutions"
+              },
+              "id": "4yTOWRe4NJPzXKJR",
+              "metadata": null,
+              "name": "Hilscher Gesellschaft für Systemautomation",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Hilscher Gesellschaft für Systemautomation",
+              "type": "entity"
+            },
+            {
+              "alt": "INSYS icom",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Germany industrial router and gateway company"
+              },
+              "id": "MwhYyfYOYu7DEpaV",
+              "metadata": null,
+              "name": "INSYS icom",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "INSYS icom",
+              "type": "entity"
+            },
+            {
+              "alt": "SENECA srl",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Italy industrial automation and signal converters"
+              },
+              "id": "o-zoOxeKmSFAWKTc",
+              "metadata": null,
+              "name": "SENECA srl",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "SENECA srl",
+              "type": "entity"
+            },
+            {
+              "alt": "ADEL System",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Italy industrial power and automation company"
+              },
+              "id": "lDi87f5mPkhW4l0I",
+              "metadata": null,
+              "name": "ADEL System",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "ADEL System",
+              "type": "entity"
+            },
+            {
+              "alt": "Contrive",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Italy industrial data acquisition and control company"
+              },
+              "id": "S5RFTlMiA9rAlNF3",
+              "metadata": null,
+              "name": "Contrive",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Contrive",
+              "type": "entity"
+            },
+            {
+              "alt": "Eurotech",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Italy embedded IoT systems company"
+              },
+              "id": "Ky9KUZVP9dpdrpCn",
+              "metadata": null,
+              "name": "Eurotech",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Eurotech",
+              "type": "entity"
+            },
+            {
+              "alt": "Zerynth",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Italy industrial IoT platform company"
+              },
+              "id": "BiMmFrFTd7UGK7qE",
+              "metadata": null,
+              "name": "Zerynth",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Zerynth",
+              "type": "entity"
+            },
+            {
+              "alt": "([Wikipedia](https://en.wikipedia.org/wiki/Zerynth?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "Wikipedia",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 16,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Zerynth",
+                  "url": "https://en.wikipedia.org/wiki/Zerynth?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "ACKSYS Communications & Systems",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "France industrial networking equipment company"
+              },
+              "id": "YNfowT3fVVf8erNp",
+              "metadata": null,
+              "name": "ACKSYS Communications & Systems",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "ACKSYS Communications & Systems",
+              "type": "entity"
+            },
+            {
+              "alt": "WoMaster Europe",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "France industrial networking solutions"
+              },
+              "id": "Ke-AkijxpmLwMwIx",
+              "metadata": null,
+              "name": "WoMaster Europe",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "WoMaster Europe",
+              "type": "entity"
+            },
+            {
+              "alt": "Systerel",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "France embedded safety-critical systems"
+              },
+              "id": "viJ6Ujwr-ynAr1Sc",
+              "metadata": null,
+              "name": "Systerel",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Systerel",
+              "type": "entity"
+            },
+            {
+              "alt": "Ingeteam",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Spain industrial automation and energy systems"
+              },
+              "id": "33I2uSM4kKVF7hmu",
+              "metadata": null,
+              "name": "Ingeteam",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Ingeteam",
+              "type": "entity"
+            },
+            {
+              "alt": "Cedint-UPM",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Spain research and embedded systems center"
+              },
+              "id": "aCxiV3KJb20RBETC",
+              "metadata": null,
+              "name": "Cedint-UPM",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Cedint-UPM",
+              "type": "entity"
+            },
+            {
+              "alt": "System-on-Chip Engineering (SoC-e)",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Spain FPGA and embedded networking company"
+              },
+              "id": "wMSWiimaBWt8vLUY",
+              "metadata": null,
+              "name": "System-on-Chip Engineering (SoC-e)",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "System-on-Chip Engineering (SoC-e)",
+              "type": "entity"
+            },
+            {
+              "alt": "Comcores",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Denmark Ethernet IP and switching solutions company"
+              },
+              "id": "E_hzOM4Usse1CUyn",
+              "metadata": null,
+              "name": "Comcores",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Comcores",
+              "type": "entity"
+            },
+            {
+              "alt": "([micon-global.com](https://www.micon-global.com/?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "micon-global.com",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 6,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Micon-Global",
+                  "url": "https://www.micon-global.com/?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "Beijer Electronics",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Sweden industrial HMI and automation company"
+              },
+              "id": "Kim6XA1B8c6NtRMx",
+              "metadata": null,
+              "name": "Beijer Electronics",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Beijer Electronics",
+              "type": "entity"
+            },
+            {
+              "alt": "Westermo Network Technologies",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Sweden industrial data communication company"
+              },
+              "id": "-9hgJl3-26DlcSU2",
+              "metadata": null,
+              "name": "Westermo Network Technologies",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Westermo Network Technologies",
+              "type": "entity"
+            },
+            {
+              "alt": "Elmark Automatyka",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Poland industrial communication distributor and integrator"
+              },
+              "id": "2p7DAgAaYGck0FAB",
+              "metadata": null,
+              "name": "Elmark Automatyka",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Elmark Automatyka",
+              "type": "entity"
+            },
+            {
+              "alt": "([elmark-automation.com](https://elmark-automation.com/shop/industrial-communications?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "elmark-automation.com",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 10,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Industrial communications - Elmark Automatyka",
+                  "url": "https://elmark-automation.com/shop/industrial-communications?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "Atel Elektronik",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Poland industrial communication solutions company"
+              },
+              "id": "zRF8TKUccoX6W-EO",
+              "metadata": null,
+              "name": "Atel Elektronik",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Atel Elektronik",
+              "type": "entity"
+            },
+            {
+              "alt": "Cervis",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Czech Republic industrial communication devices company"
+              },
+              "id": "hr7IAMeM_Q-ulgBD",
+              "metadata": null,
+              "name": "Cervis",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Cervis",
+              "type": "entity"
+            },
+            {
+              "alt": "B&R Industrial Automation (Eastern EU branches)",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Austria industrial automation regional integrator"
+              },
+              "id": "Jw2wEinLFALUpJap",
+              "metadata": null,
+              "name": "B&R Industrial Automation (Eastern EU branches)",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "B&R Industrial Automation (Eastern EU branches)",
+              "type": "entity"
+            },
+            {
+              "alt": "Brainboxes",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "UK industrial ethernet and serial device manufacturer"
+              },
+              "id": "vDgtq7vB9NBVufZY",
+              "metadata": null,
+              "name": "Brainboxes",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Brainboxes",
+              "type": "entity"
+            },
+            {
+              "alt": "Red Lion Controls Europe",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "UK industrial networking and automation company"
+              },
+              "id": "-pb28HQ1e0UEEMCY",
+              "metadata": null,
+              "name": "Red Lion Controls Europe",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Red Lion Controls Europe",
+              "type": "entity"
+            },
+            {
+              "alt": "Sealevel Systems Europe",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "UK embedded I/O and communication devices"
+              },
+              "id": "uKSmbSDcC8KJ9EG6",
+              "metadata": null,
+              "name": "Sealevel Systems Europe",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Sealevel Systems Europe",
+              "type": "entity"
+            },
+            {
+              "alt": "Perle Systems",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "global small device networking company"
+              },
+              "id": "5xfuvsRDx2s5jrZX",
+              "metadata": null,
+              "name": "Perle Systems",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Perle Systems",
+              "type": "entity"
+            },
+            {
+              "alt": "([Wikipedia](https://en.wikipedia.org/wiki/Perle_Systems?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "Wikipedia",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 12,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Perle Systems",
+                  "url": "https://en.wikipedia.org/wiki/Perle_Systems?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "",
+              "has_images": false,
+              "prefix": null,
+              "prompt_text": null,
+              "sources": [
+                {
+                  "attribution": "Wikipedia",
+                  "title": "Zerynth",
+                  "url": "https://en.wikipedia.org/wiki/Zerynth?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "micon-global.com",
+                  "title": "Micon-Global",
+                  "url": "https://www.micon-global.com/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "elmark-automation.com",
+                  "title": "Industrial communications - Elmark Automatyka",
+                  "url": "https://elmark-automation.com/shop/industrial-communications?utm_source=chatgpt.com"
+                }
+              ],
+              "type": "sources_footnote"
+            }
+          ],
+          "model_slug": "gpt-5-3",
+          "parent_id": "09c30e8b-f59f-4290-a898-f27036489f48",
+          "search_result_groups": [
+            {
+              "domain": "renesas.com",
+              "entries": [
+                {
+                  "attribution": "renesas.com",
+                  "snippet": "RENESAS ELECTRONICS EUROPE UNVEILS ITS “CONNECT IT! – ETHERNET R-IN” INDUSTRIAL ETHERNET SOLUTION KIT  Jump to Page Section:  *    November 10, 2014  Dusseldorf, November 10, 2014 — Renesas Electroni...",
+                  "title": "Renesas Electronics Europe Unveils its “Connect it! – Ethernet R-IN” Industrial Ethernet Solution Kit | Renesas",
+                  "url": "https://www.renesas.com/en/about/newsroom/renesas-electronics-europe-unveils-its-connect-it-ethernet-r-industrial-ethernet-solution-kit?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "renesas.com",
+                  "snippet": "RENESAS ELECTRONICS EUROPE ANNOUNCES NEW LOW-POWER, HIGH-SPEED INDUSTRIAL ETHERNET CONTROLLERS  AUTOMATION MARKET TO BENEFIT FROM INTEGRATED SUPPORT FOR MULTIPLE PROTOCOLS INCLUDING CC-LINK IE, ETHER...",
+                  "title": "Renesas Electronics Europe Announces New Low-Power, High-Speed Industrial Ethernet Controllers | Renesas",
+                  "url": "https://www.renesas.com/en/about/newsroom/renesas-electronics-europe-announces-new-low-power-high-speed-industrial-ethernet-controllers?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "harting.com",
+              "entries": [
+                {
+                  "attribution": "harting.com",
+                  "snippet": "1.   2. # Industrial Ethernet solutions  Ethernet is the first choice when it comes to data transfer in industrial applications. Learn more about the HARTING Industrial Ethernet portfolio.  * * *  Im...",
+                  "title": "Industrial Ethernet solutions | HARTING Technology Group",
+                  "url": "https://www.harting.com/en-IL/industrial-ethernet-solutions?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "s-connect.dk",
+              "entries": [
+                {
+                  "attribution": "s-connect.dk",
+                  "snippet": "MOXA  More about the manufacturer  Moxa Inc., founded in 1987 in Taiwan, is one of the world´s leading providers of industrial networking technologies and ranks among the top three manufacturers of co...",
+                  "title": "Datacenter - Manufacturer Info",
+                  "url": "https://www.s-connect.dk/vmarkt/datacenter/hstdetail.php?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "sphinxcomputer.pl",
+              "entries": [
+                {
+                  "attribution": "sphinxcomputer.pl",
+                  "snippet": "BELDEN / NETMODULE  More about the manufacturer  NetModule AG, based in Switzerland, is an established provider of highly developed communication solutions for embedded systems that are specially desi...",
+                  "title": "Cybersecurity - Manufacturer Info",
+                  "url": "https://www.sphinxcomputer.pl/vmarkt/cybersecurity/hstdetail.php?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "s-connect.ie",
+              "entries": [
+                {
+                  "attribution": "s-connect.ie",
+                  "snippet": "MANUFACTURER  SPHINX in Europe  Manufacturer  ADVANTECH  More about the manufacturer  Since its foundation in 1983, Advantech has been setting standards in the development of powerful, reliable and sc...",
+                  "title": "S-CONNECT - Manufacturer",
+                  "url": "https://www.s-connect.ie/hstdetail.php?spConf=fr&utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "conectronica.com",
+              "entries": [
+                {
+                  "attribution": "conectronica.com",
+                  "snippet": "INDUSTRIAL NETWORKS  Image: Rosenberger SPE Cables  ROSENBERGER POWERS INDUSTRIAL NETWORKS WITH SINGLE PAIR ETHERNET  Details Category: Industrial Networks Tuesday, December 9, 2025  * SPE industrial...",
+                  "title": "Industrial networks",
+                  "url": "https://www.conectronica.com/en/new-features/industrial-networks?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "europa.eu",
+              "entries": [
+                {
+                  "attribution": "europa.eu",
+                  "snippet": "AN IT COMPANY SPECIALIZING IN COMMUNICATION AND CYBERSECURITY IN THE ENERGY AND INDUSTRIAL AUTOMATION INDUSTRIES IS SEEKING PARTNERS TO COLLABORATIVELY DEVELOP PRODUCTS OR IMPLEMENT R&D PROJECTS  SUMM...",
+                  "title": "An IT company specializing in communication and cybersecurity in the energy and industrial automation industries is seeking partners to collaboratively develop products or implement R&D projects | Enterprise Europe Network",
+                  "url": "https://een.ec.europa.eu/partnering-opportunities/it-company-specializing-communication-and-cybersecurity-energy-and?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "s-connect.be",
+              "entries": [
+                {
+                  "attribution": "s-connect.be",
+                  "snippet": "ICRON  More about the manufacturer  Icron Technologies is one of the world\\'s leading developers and manufacturers of USB and video extender solutions. With high-performance products for industrial ap...",
+                  "title": "S-CONNECT - Manufacturer",
+                  "url": "https://www.s-connect.be/hstdetail.php?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "indmallautomation.com",
+              "entries": [
+                {
+                  "attribution": "indmallautomation.com",
+                  "snippet": "WHAT ARE THE LEADING MANUFACTURERS IN INDUSTRIAL ETHERNET SOLUTIONS?  KEY TAKEAWAY  Leading manufacturers in Industrial Ethernet solutions provide high-quality hardware and software to support effici...",
+                  "title": "What Are The Leading Manufacturers In Industrial Ethernet Solutions? | Top Companies",
+                  "url": "https://www.indmallautomation.com/faq/what-are-the-leading-manufacturers-in-industrial-ethernet-solutions/?utm_source=chatgpt.com"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "parent": "e4e52dae-dd49-49b5-b127-0d9fec937562"
+    },
+    "e4e52dae-dd49-49b5-b127-0d9fec937562": {
+      "id": "e4e52dae-dd49-49b5-b127-0d9fec937562",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "user"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "欧洲精准客户名单（30家）"
+          ]
+        },
+        "create_time": 1776418697.879,
+        "id": "e4e52dae-dd49-49b5-b127-0d9fec937562",
+        "metadata": {
+          "serialization_metadata": {
+            "custom_symbol_offsets": []
+          }
+        }
+      },
+      "parent": "7d55b03f-bdbf-4e14-90be-d0eec98608ae"
+    },
+    "e6a8b5dc-2190-44f7-aa1c-4b4fde2e3a3d": {
+      "id": "e6a8b5dc-2190-44f7-aa1c-4b4fde2e3a3d",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "user"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "你就不能给我找点poE solutions的嘛 。。。 你这个找的乱七八糟的"
+          ]
+        },
+        "create_time": 1776418841.303,
+        "id": "e6a8b5dc-2190-44f7-aa1c-4b4fde2e3a3d",
+        "metadata": {
+          "serialization_metadata": {
+            "custom_symbol_offsets": []
+          }
+        }
+      },
+      "parent": "d4fe36bc-cb16-4f34-ba8d-f2e5dfa7267b"
+    },
+    "ef57ee9a-8840-4d4d-a3bc-10b5bc1822f4": {
+      "id": "ef57ee9a-8840-4d4d-a3bc-10b5bc1822f4",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "assistant"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "很好，你这句话我直接给你**纠正到位了**：\n\n> ✅ 你不是搞“大厂生态”  \n> ✅ 你要的是：**“小而散的工业/嵌入式设备厂商”**\n\n而且你说的完全对：\n\n👉 entity[\"company\",\"Lanner Electronics\",\"Taiwan embedded hardware manufacturer\"] 这种  \n本质是 **ODM平台厂（做网关/边缘计算）**，不是卖交换机的 citeturn0search13  \n\n所以你会觉得：\n\n👉 “怎么没交换机？”——对，因为它根本不是卖这个的  \n\n---\n\n# 一、我先帮你把方向彻底修正（非常关键）\n\n你真正要找的是👇\n\n## ❗不是：交换机厂  \n## ❗不是：大厂ODM  \n\n👉 而是：\n\n> **“需要嵌入交换功能，但自己不会做交换机的小公司”**\n\n---\n\n# 二、给你说句最关键的话（你这单子怎么来）\n\n你未来的订单来源是：\n\n👉 **不是别人卖交换机**  \n👉 而是别人做产品 → 需要“带交换功能”  \n\n---\n\n# 三、你要找的公司，真实长这样👇（很重要）\n\n我给你画一个“真实客户画像”：\n\n---\n\n## 🟢 类型1：工业小厂（强烈推荐🔥）\n\n比如：\n\n- 做PLC扩展模块的\n- 做工业采集设备的\n- 做边缘IO的\n\n典型公司（这种就很适合你）：\n\n- entity[\"company\",\"ODOT Automation\",\"industrial automation networking supplier\"]  \n👉 本身就是工业设备商，但也做交换机 citeturn0search2  \n\n👉 特点：\n- 规模不大\n- 技术够用但不强\n- 很依赖外部方案\n\n🔥 **这种最容易成交**\n\n---\n\n## 🟢 类型2：纯OEM工厂（非常适合你）\n\n比如：\n\n- entity[\"company\",\"EtherWAN\",\"industrial ethernet OEM manufacturer\"]  \n👉 专门给别人贴牌做交换机 citeturn0search1  \n\n👉 特点：\n- 接项目\n- 可以换方案\n- 可以换芯片\n\n🔥 **你可以直接插进去替代某些方案**\n\n---\n\n## 🟢 类型3：中国/东南亚中小工厂（重点🔥🔥）\n\n比如：\n\n- entity[\"company\",\"Maisvch\",\"industrial ethernet switch OEM factory\"]  \n- entity[\"company\",\"Fibridge\",\"industrial network switch OEM supplier\"]  \n\n👉 这类厂：\n\n- 接ODM / OEM\n- 做工业交换机 / 接入层  \n- 支持定制 citeturn0search3turn0search0  \n\n👉 特点：\n\n✔ 没有强研发  \n✔ 依赖芯片方案  \n✔ 非常容易被你切入  \n\n---\n\n## 🟢 类型4：嵌入式模块玩家（超级关键🔥）\n\n这种你现在**还没盯上，但其实最赚钱**\n\n比如：\n\n- 做：\n  - 车载设备\n  - 电力终端\n  - 安防盒子\n- 用的是：\n\n👉 **板卡级交换机方案（board-level）**\n\n参考这种产品：\n\n👉 工业OEM交换板卡（6~8口）专门给嵌入式用 citeturn0search19  \n\n---\n\n# 四、你现在最大误区（我直接说透）\n\n你现在在想：\n\n❌ “找谁和我一样做交换机”\n\n但正确应该是：\n\n✅ **“谁不得不做交换机，但又不想自己做”**\n\n---\n\n# 五、给你一套“专门找小公司的打法”（重点🔥）\n\n别再搜什么：\n\n❌ switch vendor  \n❌ networking company  \n\n没用，全是大厂\n\n---\n\n## 正确关键词（直接用）\n\n``` id=\"small1\"\nindustrial automation company ethernet\nembedded system manufacturer ethernet port\ndin rail device manufacturer network\niot gateway manufacturer industrial ethernet\n```\n\n---\n\n## 再进一层（杀招🔥）\n\n去找：\n\n👉 **“产品带网口的公司”**\n\n例如：\n\n``` id=\"small2\"\nsmart traffic controller manufacturer\nindustrial io module ethernet supplier\nremote terminal unit manufacturer ethernet\n```\n\n---\n\n# 六、教你一个“野路子打法”（但非常有效）\n\n👉 去看他们官网产品图：\n\n如果你看到：\n\n- 4口网口\n- 8口网口\n- PoE\n- DIN rail\n\n👉 直接判断：\n\n> 这家公司 = 你的潜在客户\n\n---\n\n# 七、给你一个现实判断（很重要）\n\n你说得很对：\n\n> “1 2梯队看不上我”\n\n✔ 完全正确  \n✔ 而且你也不应该碰他们  \n\n---\n\n## 你真正的金矿在：\n\n👉 年营收 500万–5000万美金的公司  \n\n特点：\n\n- 有产品\n- 有客户\n- 没有底层研发能力\n- 经常换方案\n\n🔥 这就是你最应该打的群体\n\n---\n\n# 八、给你一句最核心的话（记住）\n\n👉 **你不是卖交换机的**  \n👉 **你是卖“别人产品里的网络能力模块”的**\n\n---\n\n# 最后我给你一个可以直接执行的动作\n\n如果你愿意，我们可以这样搞：\n\n👉 我帮你筛一批：\n\n- 欧洲 / 东南亚 / 中东  \n- **30~50家小型工业设备公司（精准）**\n\n并标注：\n\n- 是否可能用Marvell  \n- 是否适合你现有产品  \n- 切入话术（非常关键）  \n\n这个东西是可以**直接转化为订单的名单**，不是泛泛而谈。"
+          ]
+        },
+        "create_time": 1776418501.003183,
+        "id": "ef57ee9a-8840-4d4d-a3bc-10b5bc1822f4",
+        "metadata": {
+          "code_blocks": {
+            "0": {
+              "edited": false,
+              "id": "a0o2ir",
+              "preview_language": null,
+              "previewable": false
+            },
+            "1": {
+              "edited": false,
+              "id": "5j9hye",
+              "preview_language": null,
+              "previewable": false
+            }
+          },
+          "content_references": [
+            {
+              "alt": "Lanner Electronics",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "Taiwan embedded hardware manufacturer"
+              },
+              "id": "Dok9KlSDSOqevkow",
+              "metadata": null,
+              "name": "Lanner Electronics",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Lanner Electronics",
+              "type": "entity"
+            },
+            {
+              "alt": "([Wikipedia](https://en.wikipedia.org/wiki/Lanner_Electronics?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "Wikipedia",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 13,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Lanner Electronics",
+                  "url": "https://en.wikipedia.org/wiki/Lanner_Electronics?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "ODOT Automation",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "industrial automation networking supplier"
+              },
+              "id": "_dEzgY2Du1UtFrXo",
+              "metadata": null,
+              "name": "ODOT Automation",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "ODOT Automation",
+              "type": "entity"
+            },
+            {
+              "alt": "([Reliable Automation Solutions](https://www.odotautomation.com/industrial-ethernet-switch-suppliers/?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "Reliable Automation Solutions",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 2,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "OEM Industrial Ethernet Switch Suppliers, Factory - ODOT Automation",
+                  "url": "https://www.odotautomation.com/industrial-ethernet-switch-suppliers/?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "EtherWAN",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "industrial ethernet OEM manufacturer"
+              },
+              "id": "nvN8uRTogdf5Co86",
+              "metadata": null,
+              "name": "EtherWAN",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "EtherWAN",
+              "type": "entity"
+            },
+            {
+              "alt": "([EtherWAN](https://www.etherwan.com/us/pr/oem?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "EtherWAN",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 1,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "EtherWAN OEM service - A trusted industrial OEM/ODM switch manufacturer | EtherWAN USA",
+                  "url": "https://www.etherwan.com/us/pr/oem?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "Maisvch",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "industrial ethernet switch OEM factory"
+              },
+              "id": "JtOeQqLawVtg8wdO",
+              "metadata": null,
+              "name": "Maisvch",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Maisvch",
+              "type": "entity"
+            },
+            {
+              "alt": "Fibridge",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "industrial network switch OEM supplier"
+              },
+              "id": "uFjVRdyxuMyXeuZ-",
+              "metadata": null,
+              "name": "Fibridge",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Fibridge",
+              "type": "entity"
+            },
+            {
+              "alt": "([Maisvch Technology](https://www.maisvch.com/product-category/ethernet-switch/?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "Maisvch Technology",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 3,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    },
+                    {
+                      "ref_index": 0,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [
+                    {
+                      "attribution": "Fibridge",
+                      "pub_date": null,
+                      "snippet": "",
+                      "title": "OEM Network/Ethernet Switche, Network Switch Manufacturer | Fibridge",
+                      "url": "https://www.fibridge.com/products/?utm_source=chatgpt.com"
+                    }
+                  ],
+                  "title": "High-Quality Industrial Switches | Industrial Ethernet Switch Manufacturer",
+                  "url": "https://www.maisvch.com/product-category/ethernet-switch/?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "([Logic Control](https://cdn.logic-control.com/docs/red-lion/Datasheets/ET-5MS-OEM%20Data%20Sheet.pdf?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "Logic Control",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": 1770893155.0,
+                  "refs": [
+                    {
+                      "ref_index": 19,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "ET-5MS-OEM Industrial Ethernet Switch",
+                  "url": "https://cdn.logic-control.com/docs/red-lion/Datasheets/ET-5MS-OEM%20Data%20Sheet.pdf?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "",
+              "has_images": false,
+              "prefix": null,
+              "prompt_text": null,
+              "sources": [
+                {
+                  "attribution": "Wikipedia",
+                  "title": "Lanner Electronics",
+                  "url": "https://en.wikipedia.org/wiki/Lanner_Electronics?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "Reliable Automation Solutions",
+                  "title": "OEM Industrial Ethernet Switch Suppliers, Factory - ODOT Automation",
+                  "url": "https://www.odotautomation.com/industrial-ethernet-switch-suppliers/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "EtherWAN",
+                  "title": "EtherWAN OEM service - A trusted industrial OEM/ODM switch manufacturer | EtherWAN USA",
+                  "url": "https://www.etherwan.com/us/pr/oem?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "Maisvch Technology",
+                  "title": "High-Quality Industrial Switches | Industrial Ethernet Switch Manufacturer",
+                  "url": "https://www.maisvch.com/product-category/ethernet-switch/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "Logic Control",
+                  "title": "ET-5MS-OEM Industrial Ethernet Switch",
+                  "url": "https://cdn.logic-control.com/docs/red-lion/Datasheets/ET-5MS-OEM%20Data%20Sheet.pdf?utm_source=chatgpt.com"
+                }
+              ],
+              "type": "sources_footnote"
+            }
+          ],
+          "model_slug": "gpt-5-3",
+          "parent_id": "6bf79b53-e143-423c-a6f9-54bf6479449d",
+          "search_result_groups": [
+            {
+              "domain": "fibridge.com",
+              "entries": [
+                {
+                  "attribution": "fibridge.com",
+                  "snippet": "OEM HIGH SPEED INDUSTRIAL NETWORK SWITCH SUPPLIER  Empower your industrial operations with Fibridge’s Industrial Network Switch - the backbone of reliability and efficiency. Engineered for the toughe...",
+                  "title": "OEM Network/Ethernet Switche, Network Switch Manufacturer | Fibridge",
+                  "url": "https://www.fibridge.com/products/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "maisvch.com",
+              "entries": [
+                {
+                  "attribution": "maisvch.com",
+                  "snippet": "INDUSTRIAL ETHERNET SWITCH MANUFACTURER & PARTNER YOU CAN TRUST  We engineer and manufacture rugged, high-performance managed, unmanaged and PoE switches for the world’s most demanding environments....",
+                  "title": "Industrial Network Switches Manufacturer | Wholesale, Distributor, OEM Partner",
+                  "url": "https://maisvch.com/ar/industrial-ethernet-switches-manufacturer/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "maisvch.com",
+                  "snippet": "BEYOND STANDARD SWITCH PRODUCTS, CUSTOMIZED SOLUTIONS  lf you are an ethernet switch brand and need to find an OEM/ODM manufacturer, then Maisvch will 100% support you on the industrial network switch...",
+                  "title": "Industrial Ethernet Switches | Supplier | Maisvch",
+                  "url": "https://maisvch.com/product-category/ethernet-switch/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "maisvch.com",
+                  "snippet": "INDUSTRY NEWS & UPDATES  Stay informed about our latest developments, industry insights and innovations in industry communication and networking technology.  Image  * 2026-03-16  MAISVCH SHOWCASES ITS...",
+                  "title": "Industrial Network Switches Manufacturer | Wholesale, Distributor, OEM Partner",
+                  "url": "https://maisvch.com/industrial-ethernet-switches-manufacturer/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "etherwan.com",
+              "entries": [
+                {
+                  "attribution": "etherwan.com",
+                  "snippet": "GREEN COMMITMENT  We are committed to safeguarding human and environmental welfare from hazardous substances and materials. Adhering to this commitment, the Green Product Management System (GPMS) is s...",
+                  "title": "EtherWAN OEM service - A trusted industrial OEM/ODM switch manufacturer | EtherWAN",
+                  "url": "https://www.etherwan.com/pr/oem?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "odotautomation.com",
+              "entries": [
+                {
+                  "attribution": "odotautomation.com",
+                  "snippet": "* Products * PLC * I/O * C-Series Remote I/O System * D-Series Remote I/O System * B-Series Integrated I/O System  * Protocol Converter * Industrial Switch  * Solutions * Industries * Customer Storie...",
+                  "title": "OEM Oem Ethernet Switch Quotes, Suppliers - ODOT Automation",
+                  "url": "https://www.odotautomation.com/oem-ethernet-switch/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "wanglink.net",
+              "entries": [
+                {
+                  "attribution": "wanglink.net",
+                  "snippet": "INDUSTRY APPLICATIONS AND USE CASES  ENTERPRISE NETWORKING SOLUTIONS  Large corporations often require OEM ethernet switches for specific deployment scenarios:  Case Study: Global Financial Institutio...",
+                  "title": "OEM Ethernet Switch Solutions: Complete Guide to Custom Network Equipment Manufacturing",
+                  "url": "https://www.wanglink.net/oem-ethernet-switch-solutions-complete-guide-to-custom-network-equipment-manufacturing.html?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "sell-best.com",
+              "entries": [
+                {
+                  "attribution": "sell-best.com",
+                  "snippet": "TOP 10 INDUSTRIAL ETHERNET SWITCH MANUFACTURERS IN THE WORLD  In the wave of Industry 4.0, industrial Ethernet switches, as the core hub for data transmission in industrial networks, shoulder the cri...",
+                  "title": "Top 10 industrial ethernet switch manufacturers in the world - Sell-Best",
+                  "url": "https://sell-best.com/top-10-industrial-ethernet-switch-manufacturers-in-the-world/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "ipros.com",
+              "entries": [
+                {
+                  "attribution": "ipros.com",
+                  "snippet": "We have compiled a list of manufacturers, distributors, product information, reference prices, and rankings for Ethernet Switch. ipros is IPROS GMS ・ IPROS One of the largest technical database sites...",
+                  "title": "Ethernet Switch(element) - List of Manufacturers, Suppliers, Companies and Products | IPROS GMS",
+                  "url": "https://mono.ipros.com/en/cg2/Ethernet%20Switch/element?utm_source=chatgpt.com"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "parent": "cf9ff08e-302f-45b6-972d-1d812e74fc6c"
+    },
+    "efac68e1-8aee-469e-a08c-90c4a910433c": {
+      "id": "efac68e1-8aee-469e-a08c-90c4a910433c",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "user"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "如何找larch networks类似的公司呢 他们使用Marvell芯片 和我们很契合 我们已有对接 但没成单 我想多找点类似的"
+          ]
+        },
+        "create_time": 1776417223.7,
+        "id": "efac68e1-8aee-469e-a08c-90c4a910433c",
+        "metadata": {
+          "serialization_metadata": {
+            "custom_symbol_offsets": []
+          }
+        }
+      },
+      "parent": "client-created-root"
+    }
+  },
+  "memory_scope": "global_enabled",
+  "pinned_time": null,
+  "plugin_ids": null,
+  "title": "找类似Larch Networks公司",
+  "update_time": 1776512731.454073,
+  "voice": null
+}

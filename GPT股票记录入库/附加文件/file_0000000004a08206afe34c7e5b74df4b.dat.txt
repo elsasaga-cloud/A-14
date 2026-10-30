@@ -1,0 +1,768 @@
+版本1
+
+Python 量化抓取框架
+
+一、Python 环境
+
+永远只认一个 Python 入口:`D:\Python312\python.exe`
+
+所有执行方式:
+```
+D:\Python312\python.exe script.py
+D:\Python312\python.exe -m pip install xxx
+```
+pip 永远用 `-m` 方式调用:`D:\Python312\python.exe -m pip install requests`
+
+不要改 PATH。已经稳定就不要动环境变量。
+
+二、浏览器抓取基本原则
+
+所有网页抓取必须优先采用:Playwright + 本机 Chrome 用户目录复用
+
+要求:
+- 使用真实本机 Chrome 内核
+- 必须复用本机用户数据目录(User Data)
+- 必须复用登录态 / Cookie / 指纹
+- 默认使用 persistent context
+- 默认使用 headless 后台静默模式
+- 禁止新建临时浏览器环境
+- 禁止使用 Playwright 默认 Chromium
+- 禁止无痕模式
+- 禁止弹出浏览器窗口
+
+浏览器保活
+不要每次重新启动 Chrome。长期重启会导致内存爆炸、CPU 飙升、profile 损坏。必须:
+- 长期保活 browser 实例
+- 复用 context,不频繁销毁重建
+- 崩溃时自动恢复(browser crash auto recover)
+
+Chrome Profile 自动备份
+本机 Chrome Profile 长期运行必然出现 cookie 损坏、profile 崩溃、cache 爆炸。必须:
+- 定期自动备份 profile(用 `shutil.copytree` 备份到指定目录)
+- 备份只在浏览器未运行时执行,避免文件锁冲突
+- 异常时自动恢复备份
+
+Stealth 注入层
+不仅要加 `--disable-blink-features=AutomationControlled`,还要修复以下特征:
+- navigator.webdriver
+- plugins
+- languages
+- permissions
+- canvas fingerprint
+- webgl fingerprint
+- timezone
+
+三、多层级数据源架构
+
+抓取链路
+API优先 → 网页XHR接口 → HTML解析 → 浏览器渲染兜底
+
+数据源优先级
+
+A股核心:
+1. akshare
+2. baostock
+3. tushare
+
+全球市场:
+4. yfinance
+
+国内财经接口:
+5. 东方财富 API
+6. 新浪财经 API
+7. 腾讯财经接口
+8. 雪球接口
+
+海外网页接口:
+9. Yahoo Finance 网页/XHR
+
+自动抓包层:
+10. 浏览器 XHR 抓包(见第四节)
+
+最终兜底层:
+11. Playwright 页面渲染
+
+四、Spider Engine 抓取内核
+
+这是框架的核心,必须持续强化。目标是:更稳、更抗封、更通用、更长期运行、更低维护、更难失效。
+
+4.1 网络层切换
+不同网站对不同网络库的反应不同。必须支持多种网络层,按需切换:
+```
+requests → httpx → curl_cffi → aiohttp → browser fetch
+```
+强烈推荐引入 `curl_cffi`。它模拟真实 Chrome TLS 指纹,很多网站封的不是 UA,而是 TLS 指纹特征。`requests` 会 403 的接口,`curl_cffi` 往往不会。
+
+安装:
+```
+D:\Python312\python.exe -m pip install curl_cffi
+```
+使用方式,替换原有 requests 调用:
+```python
+from curl_cffi import requests as cffi_requests
+resp = cffi_requests.get(url, impersonate="chrome110", headers=headers)
+```
+
+4.2 自动接口发现器
+不要只依赖写死的接口。网站接口一定会变。程序必须能够自动发现接口:
+1. Playwright 自动打开目标页面
+2. 监听所有 XHR / fetch 请求
+3. 自动筛选 JSON 响应
+4. 自动识别含股票字段的数据(价格、成交量等)
+5. 自动保存接口地址和参数
+
+这极大降低页面改版、API 变更带来的维护成本。
+
+4.3 接口重放系统
+第一次通过浏览器监听抓到真实 XHR 后,后续直接用 `requests` / `httpx` / `curl_cffi` 重放,不每次启动浏览器。
+
+好处:速度快很多、稳定性更高、资源消耗低。
+
+4.4 接口指纹系统
+对每个接口,保存完整指纹信息:URL、Headers、Cookies、Query Params、Response Schema。
+
+一旦 response schema 发生变化,自动报警。程序不报错但数据已经错了,是最危险的情况。
+
+4.5 自动 schema 推断
+接口返回字段名往往是混淆的(如 `f43`、`f44`)。程序应自动分析哪个字段是价格、成交量、市值,定期维护字段映射表,长期使用会轻松很多。
+
+4.6 HAR 录制系统
+程序自动录制并保存每次请求的完整信息:request / response / headers / cookies / timing,保存为 `.har` 文件。接口炸了直接分析,对长期维护非常有价值。
+
+4.7 动态 Header 模拟
+不要写死 headers。长期固定 headers 一定会被识别。必须:
+- 自动从真实 Chrome 提取当前 headers
+- 提取 `sec-ch-ua`、cookies、referer
+- 定期轮换复用
+
+4.8 真实 Session 接管
+对于需要登录的平台(如雪球),不要模拟登录,直接接管本机已登录的真实 Chrome session。好处:稳定、不触发风控、不需要处理验证码。
+
+4.9 自动 Cookie 刷新
+很多系统长期死掉不是代码问题,而是 cookie 过期。必须:
+- 定时检测登录状态(每隔固定时间请求一次鉴权接口)
+- 检测到登录失效后自动重新同步浏览器 cookie
+- 自动同步 persistent context 中的最新 cookie 到 requests/httpx/curl_cffi 会话
+
+五、失败切换机制
+
+任意数据源失败后:
+- 自动记录失败原因
+- 自动切换下一个数据源
+- 自动重试
+- 自动保存失败日志
+- 不允许程序整体崩溃
+
+每个数据源:
+- 最大重试 5 次
+- 指数退避等待
+- 随机 sleep
+
+自动降级链路
+XHR 失败 → 切 DOM 解析 → 切备用数据源 → 切浏览器渲染 → 最终截图 OCR
+
+全自动,不需要人工干预。
+
+Watchdog 看门狗
+长期运行必备。用一个独立线程持续监控任务状态:10 分钟没有新数据 → 自动重启任务。
+
+实现方式:启动一个 `threading.Thread`,定期检查上次成功抓取的时间戳,超时则触发重启逻辑。主任务不需要感知它的存在。
+
+六、反风控规则
+
+所有抓取必须:
+- 随机等待(禁止固定 `sleep(1)`,改用 `time.sleep(random.uniform(2, 5))` 这类随机区间)
+- 模拟真人滚动
+- 模拟鼠标移动
+- 随机 hover
+- 控制访问频率,避免高并发
+- 自动轮换 User-Agent
+- 保持长会话,不频繁重建
+
+抓数据不要求时间和速度。慢慢来,停留时间长一些,只要数据正确、全部抓出来就行。
+
+禁止为了速度牺牲稳定性,禁止为了并发牺牲成功率,禁止为了炫技增加复杂度。
+
+DOM 智能定位
+不要使用脆弱的位置选择器(如 `div:nth-child(3)`)。应使用语义化定位:文本语义匹配、label 关联关系、data-* 属性、aria 属性。
+
+页面冻结检测
+很多网站会返回 challenge 页、空白页、无限 loading。程序必须检测页面是否真正成功加载,不能仅依赖超时。
+
+七、数据一致性校验
+
+同一股票数据至少两个来源交叉验证。校验字段:
+- 最新价
+- 成交量
+- 市值
+- PE
+- K 线长度
+- 财报日期
+
+八、交易日与时间窗口判断(新增)
+
+不分时间无脑爬既浪费资源,也容易在非交易时段抓到"昨日缓存数据"却误判为最新。
+
+8.1 交易日历
+- A股:用 `akshare` 的 `tool_trade_date_hist_sina()` 或 `chinese_calendar` 库判断是否交易日,不要手写节假日表(每年要维护,容易漏)
+- 美股/港股:用 `pandas_market_calendars`(分别取 `NYSE` / `XHKG` 日历),自动处理感恩节、平安夜半日市等特殊情况
+
+8.2 简单的开关函数
+所有任务入口前先判断一次:
+```python
+def should_run_today(market='A'):
+    # 非交易日直接 return False,任务整体跳过,不空跑
+    ...
+```
+- 非交易日 → 当天全部抓取任务直接跳过
+- 不需要做得太精细,只要能正确识别"今天到底开不开盘"就够用,不用细分到分钟级的盘前盘中盘后策略(除非你后面真的有这个需求)
+
+九、失败重试与超时熔断(新增)
+
+这是长期运行系统最容易"卡死"的地方,核心思路是:给每个任务设硬性时间上限,失败了就跳过,不要无限等。
+
+9.1 单只标的超时
+每只股票的抓取任务设置一个最长等待时间(比如 30 秒),用线程池的 `Future.result(timeout=30)` 实现,超时直接判定失败,不等它自己恢复。
+
+9.2 二次重爬,然后必须跳过
+- 整批任务跑完后,统计失败列表
+- 对失败列表发起第 2 轮重爬(降低并发、间隔放大)
+- 第 2 轮仍失败 → 写入 `failed_today.json`,本次任务直接跳过,不允许进入第 3 轮
+- 第二天可以选择性补抓昨日失败清单,而不是当天死磕到底
+
+9.3 简单熔断
+如果短时间内连续失败率过高(比如 50 只里失败 30 只以上),大概率是网络层或反爬升级问题,不是个别标的问题。这种情况下直接暂停整批任务并记录日志,而不是继续无效重试、浪费时间还可能加重封禁。
+
+十、并发抓取(新增)
+
+单线程顺序爬几百只股票确实慢,但也不能无脑全开多线程,容易触发反爬。思路是:分组并发 + 限速,够用就行,不用上太复杂的异步框架。
+
+10.1 并发方式
+直接用 `concurrent.futures.ThreadPoolExecutor` 就够了,不需要上 `asyncio`(除非以后真的要把 curl_cffi/playwright 都换成异步版本,那样维护成本会高很多)。
+
+10.2 并发数
+3~4 个并发是比较安全的起点,不同数据源可以分开设置:东方财富这种接口可以稍微开多一点(比如 5),雪球这种要复用登录态的源建议只开 1~2 个,避免被风控。
+
+简单写法示例:
+```python
+chunks = split_list(stock_pool, n=4)  # 分成4组
+with ThreadPoolExecutor(max_workers=4) as executor:
+    futures = [executor.submit(crawl_group, chunk) for chunk in chunks]
+```
+组与组之间并行跑,但每组内部仍然保留原来的随机 sleep、反风控节奏,不要因为开了并发就把这些去掉。
+
+10.3 进度保存,断点续爬
+长任务中途崩了不能从头再来:
+- 每抓完一只就把进度记下来(比如写入一个 `progress.json`,记录已完成的代码列表)
+- 重启任务时先读取进度文件,跳过已完成的,只续抓剩下的
+
+十一、其他几个简单实用的点(新增)
+
+11.1 边抓边写,不要全部跑完才存
+抓完一只立即写入文件,而不是等 752 只全部跑完才一次性保存——否则中途崩溃就等于全白跑。
+
+11.2 统一日志
+所有脚本统一用 `logging` 而不是到处 `print`,格式建议:
+时间 | 脚本名 | 股票代码 | 数据源 | 状态(成功/失败/跳过) | 耗时
+方便排查问题,也方便以后回看哪个数据源越来越不稳定。
+
+11.3 旧文件清理
+HAR 录制、截图 OCR 这些长期跑下来文件会越堆越多,定期(比如每周)清理 N 天前的旧日志/HAR/截图,避免占满磁盘。
+
+11.4 定时调度
+用 Windows 计划任务或者 `APScheduler` 统一触发任务,不用每次手动启动脚本。调度和抓取逻辑分开,方便单独测试。
+
+十二、输出目录
+
+如果未明确指定输出目录,固定为: C:\Users\simon\Desktop\stockSpider_output
+
+版本2
+
+# Python 量化抓取框架 — 最终实战版 v2
+
+## 一、Python 环境
+
+永远只认一个 Python 入口：`D:\Python312\python.exe`
+
+所有执行方式：
+```
+D:\Python312\python.exe script.py
+D:\Python312\python.exe -m pip install xxx
+```
+pip 永远用 `-m` 方式调用：`D:\Python312\python.exe -m pip install requests`
+
+不要改 PATH。已经稳定就不要动环境变量。
+
+---
+
+## 二、全局配置文件
+
+不要把路径、并发数、超时时间散落在各个脚本里。在项目根目录建立 `config.py`，所有脚本统一 `import config`。单人本地使用场景，不用 YAML，直接用 `.py` 更简单——能写注释、IDE 能语法检查、不用装额外的包。
+
+```python
+# config.py
+PYTHON_PATH = r"D:\Python312\python.exe"
+CHROME_PATH = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
+USER_DATA_DIR = r"C:\Users\simon\AppData\Local\Google\Chrome\User Data"
+OUTPUT_DIR = r"C:\Users\simon\Desktop\stockSpider_output"
+
+HTTP_CONCURRENCY = 4          # API/HTTP 多线程并发数
+RETRY_TIMES = 5               # 单源最大重试次数
+TIMEOUT_PER_STOCK = 30        # 单只标的任务超时（秒）
+WATCHDOG_TIMEOUT = 30 * 60    # 看门狗超时：30分钟
+
+# 数据源开关（按实战优先级排列，见第四节）
+DATA_SOURCES_A = [
+    {"name": "tencent",    "enabled": True},   # 最省事，接口稳定
+    {"name": "baostock",   "enabled": True},   # 历史数据强
+    {"name": "akshare",    "enabled": True},   # 备用宽口径
+    {"name": "eastmoney",  "enabled": True},   # 实时行情兜底
+    {"name": "sina",       "enabled": True},
+    {"name": "xueqiu",     "enabled": True},   # 需要登录态
+]
+
+DATA_SOURCES_US = [
+    {"name": "tencent",    "enabled": True},   # 美股基础行情同样省事
+    {"name": "yfinance",   "enabled": True},   # 期权/衍生品首选
+    {"name": "eastmoney",  "enabled": True},
+    {"name": "xueqiu",     "enabled": True},
+]
+```
+
+好处：调参不改代码，换机器只改这一个文件。
+
+---
+
+## 三、浏览器抓取基本原则
+
+所有网页抓取必须优先采用：Playwright + 本机 Chrome 用户目录复用
+
+要求：
+- 使用真实本机 Chrome 内核
+- 必须复用本机用户数据目录（User Data）
+- 必须复用登录态 / Cookie / 指纹
+- 默认使用 persistent context
+- 默认使用 headless 后台静默模式
+- 禁止新建临时浏览器环境
+- 禁止使用 Playwright 默认 Chromium
+- 禁止无痕模式
+- 禁止弹出浏览器窗口
+
+**浏览器保活与定期重启**
+长期保活 context，不频繁销毁重建。但同时每天收盘后强制主动重启一次 browser（而不是只靠崩溃后恢复）——长期运行 Chrome 一定会有内存泄漏，定时"安全关闭→清理/备份 Profile→重新启动"比捕获崩溃异常收拾烂摊子稳定得多。
+
+**Chrome Profile 自动备份**
+- 只在浏览器未运行时备份，避免文件锁冲突
+- 增量备份关键文件（Cookies、Local Storage、Preferences）即可，不用每次全量拷贝
+- 滚动保留最近 7 次，自动清理旧的
+- 异常时自动恢复备份
+
+**精简版 Stealth 注入层**
+真实 Profile 本身就是最好的反检测，过度 patch 反而会造出"系统时区与注入时区不一致"这类自相矛盾的破绽。只保留两项：
+1. `--disable-blink-features=AutomationControlled`
+2. `navigator.webdriver = false`
+
+（canvas/webgl/plugins/languages/permissions/timezone 等逐项 patch 已删除）
+
+---
+
+## 四、多层级数据源架构
+
+### 抓取链路
+
+```
+API 优先 → 网页 XHR 接口 → HTML 解析 → 浏览器渲染兜底
+```
+
+---
+
+### A 股数据源优先级（按实战省事程度排列）
+
+| 优先级 | 数据源 | 适用场景 | 说明 |
+|--------|--------|----------|------|
+| 1️⃣ | **腾讯财经** | 实时行情、基础指标 | 接口最稳定，字段清晰，免登录，直接 HTTP 重放省事 |
+| 2️⃣ | **baostock** | 历史 K 线、财务数据 | Python 库封装好，历史数据完整，A 股专用 |
+| 3️⃣ | **akshare** | 宽口径兜底 | 数据源多但封装层厚，偶尔接口变动 |
+| 4️⃣ | 东方财富 API | 实时行情备用 | 接口稳定，但 f43/f47 字段需手动维护映射 |
+| 5️⃣ | 新浪财经 | 备用 | 老接口，偶发 rate limit |
+| 6️⃣ | 雪球 | 需登录态场景 | 反爬较严，并发控制在 1~2 |
+
+```python
+# A股抓取调用顺序示例
+A_STOCK_CHAIN = ["tencent", "baostock", "akshare", "eastmoney", "sina", "xueqiu"]
+```
+
+**腾讯财经接口示例（A 股实时行情）**
+```python
+# 代码如 sz000001 / sh600000
+url = f"https://qt.gtimg.cn/q={code}"
+# 返回格式：v_sz000001="1~平安银行~000001~12.34~..."
+# 字段位置固定，直接 split("~") 按位取，不需要字段映射表
+```
+
+**baostock 历史 K 线示例**
+```python
+import baostock as bs
+lg = bs.login()
+rs = bs.query_history_k_data_plus(
+    code,
+    "date,open,high,low,close,volume,amount,turn,pctChg",
+    start_date="2024-01-01", end_date="2026-06-19",
+    frequency="d", adjustflag="3"  # 3=后复权
+)
+bs.logout()
+```
+
+---
+
+### 美股/港股/全球数据源优先级
+
+| 优先级 | 数据源 | 适用场景 | 说明 |
+|--------|--------|----------|------|
+| 1️⃣ | **腾讯财经** | 美股/港股基础行情 | 同样省事，实时报价走这里 |
+| 2️⃣ | **yfinance** | 期权、期货、衍生品；完整历史数据 | 包含期权链、隐含波动率；代码含期权符号时强制走这里 |
+| 3️⃣ | 东方财富 | 美股备用行情 | |
+| 4️⃣ | 雪球 | 美股/港股社区数据 | 需登录态 |
+| 5️⃣ | Yahoo Finance 网页/XHR | yfinance 失败时兜底 | |
+
+```python
+# 美股抓取路由逻辑
+def get_us_source_chain(code: str) -> list:
+    # 期权代码特征：含空格、含 C/P + 日期 + 行权价（如 AAPL 241220C00150000）
+    if is_option_code(code):
+        return ["yfinance", "tencent", "xueqiu"]  # 期权必须走 yfinance
+    else:
+        return ["tencent", "yfinance", "eastmoney", "xueqiu"]
+
+def is_option_code(code: str) -> bool:
+    import re
+    # 标准美股期权代码格式
+    return bool(re.match(r'^[A-Z]{1,5}\s?\d{6}[CP]\d{8}$', code.strip()))
+```
+
+**yfinance 期权抓取示例**
+```python
+import yfinance as yf
+
+ticker = yf.Ticker("AAPL")
+
+# 期权到期日列表
+expirations = ticker.options
+
+# 某到期日的期权链（call + put）
+opt_chain = ticker.option_chain("2024-12-20")
+calls = opt_chain.calls   # DataFrame
+puts  = opt_chain.puts    # DataFrame
+# 包含：strike, lastPrice, bid, ask, impliedVolatility, openInterest, volume
+```
+
+---
+
+### 数据源健康度（简化版）
+
+不做加减分计数，只做"连续失败 N 次自动禁用"：
+
+```python
+source_status = {
+    "tencent":   {"fail_streak": 0, "disabled": False},
+    "baostock":  {"fail_streak": 0, "disabled": False},
+    "akshare":   {"fail_streak": 0, "disabled": False},
+    "eastmoney": {"fail_streak": 0, "disabled": False},
+    "yfinance":  {"fail_streak": 0, "disabled": False},
+    "xueqiu":    {"fail_streak": 0, "disabled": False},
+}
+# 成功 → fail_streak 清零
+# 失败 → fail_streak += 1
+# fail_streak >= 5 → disabled = True，本次任务跳过此源
+# 每天任务开始时重置所有 disabled，给它机会恢复
+```
+
+---
+
+## 五、Spider Engine 抓取内核
+
+### 5.1 网络层切换
+```
+requests → httpx → curl_cffi → aiohttp → browser fetch
+```
+强烈推荐 `curl_cffi`，模拟真实 Chrome TLS 指纹，很多网站封的不是 UA 而是 TLS 指纹特征。
+```
+D:\Python312\python.exe -m pip install curl_cffi
+```
+```python
+from curl_cffi import requests as cffi_requests
+resp = cffi_requests.get(url, impersonate="chrome110", headers=headers)
+```
+
+### 5.2 自动接口发现器
+Playwright 自动打开目标页面 → 监听 XHR/fetch → 筛选 JSON 响应 → 自动识别股票字段 → 保存接口地址和参数。降低改版维护成本。
+
+### 5.3 接口重放系统
+第一次浏览器监听抓到真实 XHR 后，后续直接用 requests/httpx/curl_cffi 重放，不每次启动浏览器。
+
+> **腾讯财经接口特别说明**：腾讯 `qt.gtimg.cn` 接口返回固定位置字段，不需要 JSON 解析，直接 `split("~")` 按下标取值，字段几年未变，是所有源里最稳定的重放目标。
+
+### 5.4 接口指纹系统
+保存 URL、Headers、Cookies、Query Params、Response Schema。一旦 schema 变化，自动报警。
+
+### 5.5 字段映射：手动表 + 告警
+
+不自动猜字段——猜错的代价是模型拿着错的价格做决策。手动维护静态字典：
+
+```python
+# 东方财富字段映射（腾讯/baostock 字段清晰不需要这个）
+field_mapping_eastmoney = {
+    "f43":  "price",
+    "f47":  "volume",
+    "f116": "market_cap",
+    "f162": "pe_ttm",
+    "f167": "pb",
+}
+```
+每次请求后比对字段是否还在，缺失或类型变化 → 立即推送告警，由人工花几分钟更新映射表。
+
+### 5.6 HAR 录制（按需）
+默认不录制。只在以下情况自动开启：接口返回异常状态码、response schema 校验失败、连续重试仍失败、手动 debug 模式。
+
+### 5.7 动态 Header 模拟
+自动从真实 Chrome 提取当前 headers，提取 `sec-ch-ua`、cookies、referer，定期轮换。
+
+### 5.8 真实 Session 接管
+雪球这类需要登录的平台，直接接管本机已登录的真实 Chrome session，不模拟登录。
+
+### 5.9 自动 Cookie 刷新
+定时检测登录态，失效后自动同步 persistent context 中的最新 cookie 到 requests/httpx/curl_cffi 会话。
+
+---
+
+## 六、失败切换机制
+
+任意数据源失败后：自动记录失败原因、自动切换下一个数据源、自动重试、自动保存失败日志、不允许程序整体崩溃。
+
+每个数据源：最大重试 5 次，指数退避等待，随机 sleep。
+
+**自动降级链路**
+```
+XHR 失败 → DOM 解析 → 切备用数据源 → 切浏览器渲染
+```
+全部数据源 + 浏览器都失败 → 记录日志 + 推送告警，人工介入。
+
+**Watchdog 看门狗（30 分钟）**
+独立线程持续监控任务状态：30 分钟没有新进度推进 → 判定整体卡死，自动触发重启逻辑。（10 分钟太短，几百只股票分组并发正常跑完就要十几分钟，容易误触发）
+
+---
+
+## 七、反风控规则
+
+所有抓取必须：随机等待（`time.sleep(random.uniform(2, 5))`）、模拟真人滚动、模拟鼠标移动、随机 hover、控制访问频率、自动轮换 User-Agent、保持长会话。
+
+抓数据不要求时间和速度，只要数据正确、全部抓出来就行。禁止为了速度牺牲稳定性，禁止为了并发牺牲成功率，禁止为了炫技增加复杂度。
+
+DOM 智能定位：不用脆弱的位置选择器（如 `div:nth-child(3)`），用文本语义匹配、label 关联、data-* 属性、aria 属性。
+
+页面冻结检测：检测页面是否真正成功加载，不能仅依赖超时。
+
+---
+
+## 八、并发抓取
+
+单线程顺序爬几百只股票太慢，但无脑全开多线程会触发反爬，而且 Playwright 不能塞进多线程池，容易引发死锁或 `Target closed` 报错。
+
+### 8.1 双轨制：API 多线程 + Playwright 单线程隔离
+
+```python
+# 第一轨：API/HTTP 走多线程（3~4 并发，curl_cffi 为主）
+failed_list = []
+with ThreadPoolExecutor(max_workers=config.HTTP_CONCURRENCY) as executor:
+    results = executor.map(crawl_by_api, stock_list)
+    for stock, success in results:
+        if not success:
+            failed_list.append(stock)
+
+# 第二轨：Playwright 兜底，单线程串行处理 failed_list
+browser = playwright.chromium.launch_persistent_context(...)
+for stock in failed_list:
+    crawl_by_browser(stock, browser)
+browser.close()
+```
+
+### 8.2 并发数按数据源分别控制
+
+| 数据源 | 并发数 | 原因 |
+|--------|--------|------|
+| 腾讯财经 | 4~6 | 接口宽容度高，最省心 |
+| baostock | 3~4 | 官方库，有内置限速 |
+| 东方财富 | 4~5 | 公开接口，比较宽松 |
+| akshare | 3~4 | 封装层复杂，保守些 |
+| yfinance | 2~3 | Yahoo 有 rate limit |
+| 雪球 | 1~2 | 需登录态，容易触发风控 |
+
+### 8.3 任务分片，组内保留反风控节奏
+
+```python
+chunks = split_list(stock_pool, n=4)
+with ThreadPoolExecutor(max_workers=4) as executor:
+    futures = [executor.submit(crawl_group, chunk) for chunk in chunks]
+```
+组与组并行，但每组内部仍保留随机 sleep 和反风控动作——并发是为了缩短总耗时，不是为了提高对单一数据源的访问频率。
+
+### 8.4 进度持久化 / 断点续爬
+
+每抓完一只就记录进度（`progress.json` 或直接看输出文件已有哪些代码），重启任务时跳过已完成的，只续抓剩余部分。
+
+---
+
+## 九、失败重试与超时熔断
+
+### 9.1 单只标的超时
+设硬性超时（默认 30 秒），用 `Future.result(timeout=30)` 实现，超时直接判失败，不等它自己恢复。
+
+### 9.2 二次重爬，然后必须跳过
+整批任务跑完后统计失败列表，发起最多 1 次二轮重爬（降并发、加大间隔）。第二轮仍失败 → 写入 `failed_today.json`，本次任务直接跳过，不允许进入第三轮。第二天可选择性补抓昨日失败清单。
+
+### 9.3 全局熔断
+短时间内连续失败率过高（比如 50 只里失败超 30 只），大概率是网络层或反爬升级问题。触发熔断：暂停整批任务，记录日志，停止无效重试。
+
+---
+
+## 十、数据一致性校验（条件触发）
+
+对几百只股票全量做双源验证意味着请求量翻倍。改为默认单源抓取，主源成功即可，只在以下情况才触发第二数据源交叉验证：
+- 日涨跌幅 > 15% 这类价格异动
+- 成交量异常（交易日为 0，或突然放大 10 倍）
+- 新股 / 次新股 / ST 股
+- 主源数据缺失字段
+
+校验字段：最新价、成交量、市值、PE、K 线长度、财报日期。
+
+**单条数据最小可用性校验**
+很多接口"返回 200 但内容异常"，抓到后先过一道简单规则，不满足直接判失败：
+- 最新价 > 0
+- 成交量 >= 0
+- 数据对应日期是今天的交易日
+
+---
+
+## 十一、交易日与时间窗口判断
+
+```python
+def should_run_today(market='A'):
+    # A股用 akshare 的 tool_trade_date_hist_sina() 或 chinese_calendar
+    # 美股/港股用 pandas_market_calendars（NYSE / XHKG 日历）
+    # 非交易日直接 return False，当天全部任务跳过
+    ...
+```
+不需要细分到分钟级的盘前盘中盘后策略，能正确识别"今天到底开不开盘"就够用。
+
+---
+
+## 十二、最终产出完整性校验
+
+```python
+def validate_integrity(date):
+    expected = len(stock_pool)
+    actual_df = pd.read_csv(output_file)
+    actual = len(actual_df)
+    if actual < expected:
+        missing = set(stock_pool) - set(actual_df['code'])
+        logger.warning(f"{date} 缺失 {len(missing)} 只: {missing}")
+        save_json(missing, "missing.json")
+```
+
+---
+
+## 十三、失败原因分类（3 类）
+
+```python
+failed_stocks = {
+    "network_error": ["000001", "000002"],  # 超时、连接失败
+    "parse_error":   ["000003"],            # 返回了但解析不出字段，大概率接口变了
+    "blocked":       ["000004"],            # 403/429/验证码/登录失效
+}
+```
+每天收盘看一眼三类各多少，一眼定位主要矛盾在哪。
+
+---
+
+## 十四、数据时间戳（两个字段）
+
+```json
+{
+    "code": "000001",
+    "price": 12.34,
+    "data_time": "2026-06-19 14:30:00",
+    "fetch_time": "2026-06-19 14:35:12"
+}
+```
+`data_time` 明显早于 `fetch_time` 太多，就是拿到缓存/旧数据的信号。
+
+---
+
+## 十五、优雅退出
+
+```python
+import signal, sys
+
+def graceful_exit(sig, frame):
+    logger.info("收到退出信号，正在安全关闭浏览器并保存进度...")
+    if browser:
+        browser.close()
+    save_progress()
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, graceful_exit)
+```
+
+---
+
+## 十六、每日 Metrics 记录
+
+```csv
+date,total,success,failed,avg_time,browser_restarts
+2026-06-19,752,740,12,0.8,1
+2026-06-20,752,735,17,1.2,2
+```
+
+---
+
+## 十七、输出目录
+
+边抓边写：抓完一只立即写入，不要等全部跑完才一次性保存。
+
+```
+stockSpider_output/
+    2026-06-19/
+        data.csv          # 成功数据（含 data_time/fetch_time）
+        failed.json       # 按 3 类分类的失败记录
+        missing.json      # 完整性校验缺失清单
+        log.txt
+        metrics.csv       # 当日汇总
+    2026-06-20/
+```
+
+根目录固定为：`C:\Users\simon\Desktop\stockSpider_output`
+
+---
+
+## 十八、暂不实施（留作备选）
+
+- SQLite 替代 JSON/CSV——以后碎文件管理实在痛苦，这是存储层升级的首选
+- 本地 HTTP 健康检查 server
+- Dry-run 模式
+- 数据版本号 / config_hash
+- 复杂目录结构（软链接等）
+
+---
+
+## 附：数据源路由速查表
+
+```
+标的类型                   → 首选源         → 备用链
+────────────────────────────────────────────────────────
+A 股实时行情               → 腾讯财经       → baostock → akshare → 东方财富
+A 股历史 K 线 / 财务数据   → baostock       → akshare → 东方财富
+美股 / 港股基础行情        → 腾讯财经       → yfinance → 东方财富 → 雪球
+美股期权 / 衍生品          → yfinance       → Yahoo 网页 XHR
+需要登录态的场景           → 雪球           （并发控 1~2）
+全部 HTTP 源失败           → Playwright 兜底（单线程串行）
+```

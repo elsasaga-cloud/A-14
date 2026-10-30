@@ -1,0 +1,338 @@
+--- page 1 ---
+Suggestion: Toward a Long-Term
+Strategic Partnership with SAGA
+Telecom
+Enterprise-Grade Layer 3 Switch — Portfolio Opportunity & Development
+Recommendation
+Prepared by: Levent Kilic, Angora Networks A.S.
+Date: 31 July 2026
+Addressed to: Simon Cheng, SAGA Telecom Leadership
+1. Introduction - The Opportunity for an
+Enterprise-Grade Layer 3 Product
+Angora Networks has built its Ethernet networking business with SAGA Telecom as a
+foundational manufacturing partner. Together, we cover a strong breadth of the market —
+from unmanaged edge switches through capable L2+ and L3-managed aggregation devices.
+As we scale our ambitions in the Turkish and regional enterprise and public-sector markets,
+including our current engagement in the Turk Telekom 2026 procurement cycle, we see a
+clear and exciting opportunity: extending SAGA's already strong portfolio upward into a true
+enterprise-grade, high-end Layer 3 tier.
+Today, SAGA's most capable models (the STC-424XGGPM / STC-448XGGPM family) are
+well positioned in the L2+ / entry-L3 segment, with static routing as their core routing
+capability. Every enterprise tender we have reviewed this year, and the direct customer
+feedback we have gathered in the field, converges on four requirements for a true enterprise
+L3 tier — requirements that represent a natural and achievable next step for SAGA's product
+roadmap:
+Requirement Why it matters
+Stacking Increasingly treated as a mandatory
+checkbox for campus core and aggregation
+layers, not an optional extra
+USB port for firmware upgrade A practical field-engineering requirement,
+especially for remote-site deployments
+without reliable network access
+Out-of-Band (OOB) management port Standard on enterprise-class products; a
+recurring point of interest in customer
+conversations
+Requirement | Why it matters
+Stacking | Increasingly treated as a mandatory
+checkbox for campus core and aggregation
+layers, not an optional extra
+USB port for firmware upgrade | A practical field-engineering requirement,
+especially for remote-site deployments
+without reliable network access
+Out-of-Band (OOB) management port | Standard on enterprise-class products; a
+recurring point of interest in customer
+conversations
+--- page 2 ---
+Redundant / dual power supply option Expected for any switch positioned at the
+aggregation or core layer where uptime is
+business-critical
+Alongside these hardware features sits the software opportunity: a genuinely
+enterprise-grade product benefits from the full Layer 3 stack — OSPF, BGP, VRF, and ideally
+MPLS/IS-IS for larger deployments — building on the static-routing foundation already
+present today.
+Commercial Context
+To size the opportunity, we benchmarked current open-market pricing for comparable
+enterprise-tier L3 switches from established mid-market brands — a realistic peer group for
+a SAGA-branded enterprise product, rather than premium-tier vendors whose brand
+premium would not be a fair comparison:
+Reference class Configuration Indicative street price
+(USD)
+Mid-market enterprise, 24×GE + 4×10G SFP+, full ~1,000–1,100 (discounted
+24-port L3, stackable, dual-PSU distributor pricing); list ~4,400
+capable
+Mid-market enterprise, 48-port, full L3, 4×10G/1G List ~9,000 (heavily
+48-port + 2×40G discounted at street level)
+Entry-tier reference (floor), 24×GE + 4×10G SFP+, ~150–200
+24-port L2+/L3 static routing,
+non-stacking
+Mid-market enterprise, 48×GE PoE+ + 6×10G ~2,000
+48-port PoE+ SFP+, full L3 routing,
+stacking, redundant power,
+1,440W PoE budget
+Reading across this corridor, a genuinely enterprise-grade 24-port L3 switch (stacking +
+OOB + dual PSU + full L3 stack) realistically commands USD 600–1,200 at street/distributor
+pricing, and a 48-port equivalent USD 1,500–2,500, depending on PoE budget and
+SFP+/QSFP uplink density. Compared to SAGA's current top-tier street pricing of USD 340 /
+USD 530 for the STC-424XGGPM / STC-448XGGPM, an enterprise-tier SKU could
+reasonably command a 2–4x list-price uplift over SAGA's current flagship product, while still
+remaining attractively priced against established mid-market competitors — thanks to
+SAGA's existing OEM manufacturing economics.
+For Angora, this translates directly into materially improved blended margin on our
+highest-value deals — the enterprise and public-sector tenders where technical scoring
+rewards exactly these four features. We are currently unable to compete for a meaningful
+Redundant / dual power supply option | Expected for any switch positioned at the
+aggregation or core layer where uptime is
+business-critical
+Reference class | Configuration | Indicative street price
+(USD)
+Mid-market enterprise,
+24-port | 24×GE + 4×10G SFP+, full
+L3, stackable, dual-PSU
+capable | ~1,000–1,100 (discounted
+distributor pricing); list ~4,400
+Mid-market enterprise,
+48-port | 48-port, full L3, 4×10G/1G
++ 2×40G | List ~9,000 (heavily
+discounted at street level)
+Entry-tier reference (floor),
+24-port | 24×GE + 4×10G SFP+,
+L2+/L3 static routing,
+non-stacking | ~150–200
+Mid-market enterprise,
+48-port PoE+ | 48×GE PoE+ + 6×10G
+SFP+, full L3 routing,
+stacking, redundant power,
+1,440W PoE budget | ~2,000
+--- page 3 ---
+share of this segment on SAGA products alone — a gap we would much rather close
+together, within our primary manufacturing partnership, than address elsewhere.
+(Note: the pricing figures above are open-market/street-level estimates gathered from public
+distributor listings as of July 2026, intended to indicate directional positioning only. They are
+not formal quotes and should be treated as a starting point for SAGA's own commercial
+modelling, not a target price commitment from Angora.)
+2. Gap Report - Enterprise Layer 3 Model
+2.1 Current State vs. Target State — Hardware
+Feature Current state Target state (enterprise tier)
+(STC-424XGGPM /
+STC-448XGGPM
+family)
+Power supply Single PSU (AC, with Optional
+DC variant available) redundant/hot-swappable
+second PSU (AC+AC or
+AC+DC), sold as a modular
+add-on
+Out-of-Band (OOB) Not present Dedicated OOB Ethernet port,
+management port isolated from the data plane
+USB port Not present USB port (Type-A or Type-C) for
+firmware upgrade, config
+backup/restore, and field
+recovery
+Stacking hardware Not currently available Hardware stacking, minimum
+4–8 units, ring or daisy-chain
+topology, single management IP
+PoE budget Up to 440W Maintain af/at baseline; evaluate
+(802.3af/at) 802.3bt (90W/UPoE) for
+future-proofing
+2.2 Current State vs. Target State — Layer 3 Software
+Protocol / capability Current state Target state (enterprise tier)
+Static routing (IPv4/IPv6) Supported Retain as baseline
+RIP / RIPng Not yet confirmed at Add — low engineering cost,
+Feature | Current state
+(STC-424XGGPM /
+STC-448XGGPM
+family) | Target state (enterprise tier)
+Power supply | Single PSU (AC, with
+DC variant available) | Optional
+redundant/hot-swappable
+second PSU (AC+AC or
+AC+DC), sold as a modular
+add-on
+Out-of-Band (OOB)
+management port | Not present | Dedicated OOB Ethernet port,
+isolated from the data plane
+USB port | Not present | USB port (Type-A or Type-C) for
+firmware upgrade, config
+backup/restore, and field
+recovery
+Stacking hardware | Not currently available | Hardware stacking, minimum
+4–8 units, ring or daisy-chain
+topology, single management IP
+PoE budget | Up to 440W
+(802.3af/at) | Maintain af/at baseline; evaluate
+802.3bt (90W/UPoE) for
+future-proofing
+Protocol / capability | Current state | Target state (enterprise tier)
+Static routing (IPv4/IPv6) | Supported | Retain as baseline
+RIP / RIPng | Not yet confirmed at | Add — low engineering cost,
+--- page 4 ---
+CLI/protocol depth strong near-term quick win
+OSPFv2 / OSPFv3 Present in marketing Formally verified and
+materials; recommend documented OSPF support
+CLI-level verification
+and datasheet
+confirmation
+VRRP (with preemption) Not yet confirmed Add — table-stakes for
+core/aggregation gateway
+redundancy
+BGP4 / BGP4+ Not yet available Add — minimum for enterprise
+WAN edge / multi-site routing
+VRF (multi-tenant routing) Not yet available Add — increasingly requested in
+public-sector and MSP tenders
+ECMP / BFD Not yet available Add — supports fast failure
+detection in routed topologies
+IS-IS / MPLS Not yet available Phase-2 roadmap item for
+large-scale service-provider
+positioning; not required for
+initial enterprise-tier launch
+2.3 Recommended Phasing to Close the Gap
+Phase Timing Focus Key deliverables
+Phase 1 0–6 months Quick wins (largely Add USB port to existing
+software/firmware) hardware revision; verify
+and formally document
+OSPF support; add
+RIP/RIPng; add VRRP with
+preemption
+Phase 2 6–12 months Hardware revision Design and qualify
+dedicated OOB
+management port; design
+modular/hot-swappable
+dual-PSU option; begin
+stacking hardware/ASIC
+feasibility study
+Phase 3 12–18 months Full enterprise Stacking software (ring
+launch topology, single
+management plane,
+minimum 4-unit stack); add
+BGP4+/VRF; formal
+ | CLI/protocol depth | strong near-term quick win
+OSPFv2 / OSPFv3 | Present in marketing
+materials; recommend
+CLI-level verification
+and datasheet
+confirmation | Formally verified and
+documented OSPF support
+VRRP (with preemption) | Not yet confirmed | Add — table-stakes for
+core/aggregation gateway
+redundancy
+BGP4 / BGP4+ | Not yet available | Add — minimum for enterprise
+WAN edge / multi-site routing
+VRF (multi-tenant routing) | Not yet available | Add — increasingly requested in
+public-sector and MSP tenders
+ECMP / BFD | Not yet available | Add — supports fast failure
+detection in routed topologies
+IS-IS / MPLS | Not yet available | Phase-2 roadmap item for
+large-scale service-provider
+positioning; not required for
+initial enterprise-tier launch
+Phase | Timing | Focus | Key deliverables
+Phase 1 | 0–6 months | Quick wins (largely
+software/firmware) | Add USB port to existing
+hardware revision; verify
+and formally document
+OSPF support; add
+RIP/RIPng; add VRRP with
+preemption
+Phase 2 | 6–12 months | Hardware revision | Design and qualify
+dedicated OOB
+management port; design
+modular/hot-swappable
+dual-PSU option; begin
+stacking hardware/ASIC
+feasibility study
+Phase 3 | 12–18 months | Full enterprise
+launch | Stacking software (ring
+topology, single
+management plane,
+minimum 4-unit stack); add
+BGP4+/VRF; formal
+--- page 5 ---
+enterprise-tier product
+launch
+A further requirement for the enterprise tier is software parity across the full 8-port, 24-port,
+and 48-port range: all three form factors should run the same Layer 3 feature set (OSPF,
+BGP, VRF, VRRP, ECMP/BFD, etc.), not a reduced subset on smaller units. This also
+extends to mixed-model stacking — for example, a 24-port unit and a 48-port unit should be
+able to join the same stack — which is a common deployment pattern in campus
+wiring-closet designs where port density needs vary floor-by-floor within a single logical
+switch stack.
+We recognise that stacking, in particular, represents a significant R&D commitment — it is
+the capability that most clearly distinguishes a genuine enterprise/core-tier switch from an
+advanced access-tier switch, and it is the single feature most consistently requested in the
+tenders and customer conversations we are seeing. We would welcome the opportunity to
+discuss joint engineering input, field requirements gathering, and — should it be useful —
+co-investment or volume-commitment structures that make this development path
+commercially attractive for SAGA.
+3. On the Long-Term Partnership
+Angora Networks views SAGA Telecom as our foundational manufacturing partner in the
+Ethernet networking business line, and this recommendation is offered in that spirit — as an
+invitation to grow together into a segment we believe SAGA is well placed to lead.
+Our two companies have already built real trust: SAGA in EXW pricing discipline, product
+reliability, and responsiveness to customisation requests; Angora in bringing that portfolio to
+the Turkish enterprise, public-sector, and service-provider market with local sales, support,
+and regulatory relationships. Closing the enterprise L3 gap converts this into a genuinely
+differentiated joint offering — one where Angora can compete for larger, higher-margin,
+multi-year framework contracts (such as the Turk Telekom 2026 tender and its successors),
+with SAGA product positioned at the centre of the technical solution.
+We are committed to this partnership for the long term and would like to discuss:
+Discussion item Purpose
+Joint roadmap review session (technical + Within the next 4–6 weeks, to align on
+commercial) scope and timing
+Angora-supplied field requirements and Detailed field requirements, competitive
+forecasts positioning data, and volume forecasts to
+support SAGA's business case for the R&D
+investment described above
+Preferred-partner terms Once the enterprise L3 tier is qualified,
+reflecting Angora's role in co-developing the
+product requirements
+ |  |  | enterprise-tier product
+launch
+Discussion item | Purpose
+Joint roadmap review session (technical +
+commercial) | Within the next 4–6 weeks, to align on
+scope and timing
+Angora-supplied field requirements and
+forecasts | Detailed field requirements, competitive
+positioning data, and volume forecasts to
+support SAGA's business case for the R&D
+investment described above
+Preferred-partner terms | Once the enterprise L3 tier is qualified,
+reflecting Angora's role in co-developing the
+product requirements
+--- page 6 ---
+We look forward to your feedback on this analysis and to continuing to build Angora and
+SAGA's shared position in the Ethernet networking market together.
+Appendix: Sources & Methodology Notes
+Category Details
+Current-tier SAGA specifications Drawn from Angora's internal vendor
+documentation library (SAGA price lists and
+feature/function summaries).
+Open-market pricing benchmarks Anonymised indicative figures gathered
+from public distributor listings for
+established mid-market enterprise switch
+brands, accessed July 2026 — directional
+only, not formal RFQs.
+Customer feedback Requirements on stacking, USB firmware
+upgrade, OOB management, and
+redundant PSU were gathered directly by
+Angora Networks from field engagements.
+Scope note This report intentionally focuses only on the
+enterprise-tier opportunity and omits parity
+features already present in SAGA's current
+L2+ tier.
+Category | Details
+Current-tier SAGA specifications | Drawn from Angora's internal vendor
+documentation library (SAGA price lists and
+feature/function summaries).
+Open-market pricing benchmarks | Anonymised indicative figures gathered
+from public distributor listings for
+established mid-market enterprise switch
+brands, accessed July 2026 — directional
+only, not formal RFQs.
+Customer feedback | Requirements on stacking, USB firmware
+upgrade, OOB management, and
+redundant PSU were gathered directly by
+Angora Networks from field engagements.
+Scope note | This report intentionally focuses only on the
+enterprise-tier opportunity and omits parity
+features already present in SAGA's current
+L2+ tier.

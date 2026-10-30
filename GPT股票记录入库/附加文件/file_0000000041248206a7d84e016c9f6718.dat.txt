@@ -1,0 +1,20 @@
+(GO Webmaster
+Reindex pageso
+‘Add URL to your list of important pages in order to track its indexing and get notified about changes to its status in Search. Find out more
+___ https://sagatele.com                    v          十
+Q Search
+88 Summary
+hy Website optimization                      v
+da Efficiency                                                 v
+Your daily limit is 150 URLs per site, including the main domain and all subdomains. You can send 149 more URLs today.
+
+@ Indexing                                                   o
+@ Tools                                                    ev
+名 Your website in Yandex search            ~                Sent pages
+ Links                   _       Updates aren't immediate. They appear after a few database refreshes.
+(2) Tutortals                                                                        Page URL                                                                                                                                                   Status                                     Sent
+
+Useful servic                                              v
+@    services                      https://sagatele.com/                                            @ Inqueue          08/12/2026 8:35 PM     Already tracking
+
+>                  https://sagatele.com/                                                                                                                           Cc >                  08/01/2026 7:33 PM                Already tracking

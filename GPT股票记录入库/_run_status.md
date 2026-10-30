@@ -1,3 +1,3 @@
-- 2026-10-30T11:08:35Z START ChatGPT 股票相关记录（2026-10-29 导出）
-- 2026-10-30T11:08:40Z SOURCE 153awyFG7sOMEwl9GI2BL3XU_rCvOvbev.zip；115267786 bytes
-- 2026-10-30T11:08:40Z **ABORT (exit 4)**：no conversations.json found; refusing to substitute a partial HTML extraction
+- 2026-10-30T11:09:46Z START ChatGPT 股票相关记录（2026-10-29 导出）
+- 2026-10-30T11:09:47Z SOURCE 153awyFG7sOMEwl9GI2BL3XU_rCvOvbev.zip；115267786 bytes
+- 2026-10-30T11:13:09Z DONE selected 227/341 conversations; 3537 messages; attachments 223; errors 5

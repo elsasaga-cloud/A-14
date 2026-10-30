@@ -1,0 +1,978 @@
+{
+  "conversation_id": "6a5cc303-9bac-83ec-a2fa-f3838317a116",
+  "conversation_template_id": null,
+  "create_time": 1784464132.638373,
+  "current_node": "f93e4c8d-c97c-4c99-ae0e-f119e050912a",
+  "default_model_slug": "auto",
+  "id": "6a5cc303-9bac-83ec-a2fa-f3838317a116",
+  "is_archived": false,
+  "is_do_not_remember": false,
+  "is_read_only": null,
+  "is_starred": null,
+  "is_study_mode": false,
+  "mapping": {
+    "7f698cdc-5553-41a0-90f0-53c1e64c5b5a": {
+      "id": "7f698cdc-5553-41a0-90f0-53c1e64c5b5a",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "user"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "那也就是arena基本没办法用最先进的模型了是吧？免费的"
+          ]
+        },
+        "create_time": 1784464536.648,
+        "id": "7f698cdc-5553-41a0-90f0-53c1e64c5b5a",
+        "metadata": {
+          "serialization_metadata": {
+            "custom_symbol_offsets": []
+          }
+        }
+      },
+      "parent": "f5639f67-3f29-4d76-abda-bfc221a98caf"
+    },
+    "b30ca2d9-eb88-4114-b2f8-fd9246b2f089": {
+      "id": "b30ca2d9-eb88-4114-b2f8-fd9246b2f089",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "user"
+        },
+        "content": {
+          "content_type": "multimodal_text",
+          "parts": [
+            {
+              "asset_pointer": "sediment://file_0000000007d481f8a4b8e530403ae6fe",
+              "content_type": "image_asset_pointer",
+              "fovea": null,
+              "height": 698,
+              "metadata": {
+                "asset_pointer_link": null,
+                "container_pixel_height": null,
+                "container_pixel_width": null,
+                "dalle": null,
+                "emu_omit_glimpse_image": null,
+                "emu_patches_override": null,
+                "generation": null,
+                "gizmo": null,
+                "is_no_auth_placeholder": null,
+                "lpe_delta_encoding_channel": null,
+                "lpe_keep_patch_ijhw": null,
+                "sanitized": false,
+                "segmentation": null,
+                "watermarked_asset_pointer": null
+              },
+              "size_bytes": 97476,
+              "width": 1010
+            },
+            "Arena之前有很多现金的模型 最近一段时间都下架了 为啥 还有啥免费的能直接用先进的模型网站啥的吗"
+          ]
+        },
+        "create_time": 1784464129.049,
+        "id": "b30ca2d9-eb88-4114-b2f8-fd9246b2f089",
+        "metadata": {
+          "attachments": [
+            {
+              "height": 698,
+              "id": "file_0000000007d481f8a4b8e530403ae6fe",
+              "is_big_paste": false,
+              "library_file_id": "libfile_602b21fc5b48819197b8645a91b3a275",
+              "mime_type": "image/png",
+              "name": "image(17).png",
+              "size": 97476,
+              "source": "local",
+              "width": 1010
+            }
+          ],
+          "serialization_metadata": {
+            "custom_symbol_offsets": []
+          }
+        }
+      },
+      "parent": "client-created-root"
+    },
+    "client-created-root": {
+      "id": "client-created-root",
+      "message": null,
+      "parent": null
+    },
+    "f5639f67-3f29-4d76-abda-bfc221a98caf": {
+      "id": "f5639f67-3f29-4d76-abda-bfc221a98caf",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "assistant"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "你截图里的这个情况其实挺典型，**Arena（原 LMSYS Chatbot Arena）最近把很多“免费直连旗舰模型”收回去了**，不是你账号问题。citeturn0search5\n\n以前大家喜欢 Arena，是因为它相当于一个“AI 白嫖竞技场”：\n\n- Claude Opus\n- GPT-4/5 系列\n- Gemini Pro\n- Grok\n- DeepSeek 等\n\n很多官方收费模型可以直接免费体验。\n\n但现在模式变了。\n\n---\n\n## 1. 为什么 Arena 下架大量免费模型？\n\n核心原因：**算力成本 + 商业模式变化**\n\n以前：\n\n> AI公司：把模型放 Arena  \n> 用户：免费测试  \n> Arena：收集大量真实用户偏好数据，做排行榜\n\n这个模式双方都有价值。\n\n但是到了现在：\n\n一个旗舰模型：\n\n比如 Claude Opus、GPT 高阶模型：\n\n一次复杂回答可能消耗：\n\n- 几万 token\n- GPU 推理成本\n- 高峰期排队资源\n\n如果每天几十万人免费调用：\n\n成本非常高。\n\n所以现在很多平台开始：\n\n### 第一阶段：\n开放旗舰模型吸引用户\n\n↓\n\n### 第二阶段：\n用户习惯平台\n\n↓\n\n### 第三阶段：\n限制旗舰模型，推出自己的 Router / Max / Premium\n\nArena 现在明显进入第三阶段。\n\n\n---\n\n## 2. 你截图里的 Max 是什么？\n\n这个 Max 不是一个固定模型。\n\n它类似：\n\n> AI 路由器\n\n你的问题进去以后：\n\n系统判断：\n\n- 写作 → Claude\n- 数学 → Gemini/OpenAI\n- 编程 → Claude/GPT\n- 综合 → 某个最佳模型\n\n然后返回答案。\n\nArena 官方就是这么介绍 Max 的，它是根据不同任务自动路由模型。citeturn0search1\n\n类似：\n\n以前：\n\n```\n你选择：\nClaude Opus\n\nGPT-5\n\nGemini Pro\n```\n\n现在：\n\n```\n你选择：\nMax\n\n↓\n\n系统帮你选\n```\n\n优点：\n\n方便。\n\n缺点：\n\n你不知道背后是谁。\n\n---\n\n## 3. 现在还有哪些免费渠道可以用高级模型？\n\n我按你的需求（你经常做：\n\n- 投资分析\n- 商业战略\n- 技术资料\n- 外贸邮件\n- 长文讨论\n\n不是简单聊天）\n\n排序：\n\n---\n\n# 第一梯队：官方免费版\n\n\n## ① Google Gemini 免费版\n\n目前免费价值非常高。\n\nentity[\"company\",\"Google Gemini\",\"AI assistant by Google\"]\n\n优势：\n\n✅ 长上下文  \n✅ 搜索能力强  \n✅ 图片理解强  \n✅ Google生态结合\n\n适合：\n\n- 市场研究\n- 产品分析\n- 查资料\n\n缺点：\n\n深度推理有时候不如 GPT/Claude。\n\nciteturn0news35\n\n\n---\n\n## ② Claude 免费版\n\nentity[\"company\",\"Anthropic Claude\",\"AI assistant\"]\n\n优势：\n\n非常适合：\n\n- 商业分析\n- 战略讨论\n- 写文章\n- 长文本\n\n你的那种：\n\n> “轻FIRE逻辑”\n> “资本结构”\n> “企业竞争分析”\n\nClaude其实很强。\n\n缺点：\n\n免费额度比较容易撞墙。\n\nciteturn0news36\n\n\n---\n\n## ③ ChatGPT 免费版\n\n就是现在这个。\n\n优势：\n\n综合能力最均衡：\n\n- 推理\n- 图片\n- 文件\n- 工具\n\n缺点：\n\n高级模型额度有限。\n\n---\n\n# 第二梯队：多模型聚合网站\n\n## ④ Duck.ai\n\n这个最近比较火。\n\nentity[\"company\",\"DuckDuckGo\",\"privacy-focused search company\"] 的 AI 聊天。\n\n特点：\n\n不用复杂注册也可以体验多个模型。\n\n包括：\n\n- GPT系列\n- Claude系列\n- Llama\n\n但是免费额度有限。\n\nciteturn0news34\n\n\n---\n\n## ⑤ OpenRouter\n\n这个其实非常适合你。\n\nentity[\"company\",\"OpenRouter\",\"AI model routing platform\"]\n\n逻辑：\n\n一个接口：\n\n下面挂：\n\n- Claude\n- GPT\n- Gemini\n- DeepSeek\n- Qwen\n\n很多模型有：\n\n免费额度。\n\n网址：\n\nurlOpenRouterhttps://openrouter.ai\n\n缺点：\n\n需要一点技术感。\n\n---\n\n## ⑥ Hugging Face Chat\n\nentity[\"company\",\"Hugging Face\",\"AI model platform\"]\n\n大量开源模型：\n\n- Llama\n- Qwen\n- DeepSeek\n- Mistral\n\n适合测试。\n\n---\n\n# 4. 如果我是你，我会这样组合\n\n结合你之前的使用方式：\n\n（你不是普通聊天，而是长期研究型用户）\n\n我觉得：\n\n## 日常：\n\n### ChatGPT 免费\n\n负责：\n\n- 长期思维模型\n- 投资框架\n- 商业战略\n\n\n---\n\n### Gemini 免费\n\n负责：\n\n- 搜索\n- 最新信息\n- 市场调查\n\n\n---\n\n### Claude 免费\n\n负责：\n\n- 文案\n- 商业表达\n- 深度整理\n\n\n---\n\n### OpenRouter\n\n负责：\n\n“今天想试一下最新模型”\n\n---\n\n## 5. Arena以后还值得用吗？\n\n值得。\n\n但定位变了：\n\n以前：\n\n> 免费用顶级模型\n\n现在：\n\n> 看模型排名 + 测试Max路由\n\n它越来越像：\n\nAI版Benchmark平台。\n\n它的Leaderboard仍然在维护，用用户投票评价模型。citeturn0search2turn0search3\n\n\n---\n\n## 结合你的情况，我觉得最优解：\n\n你的使用强度已经接近专业用户：\n\n- 商业分析\n- 股票研究\n- 技术营销\n- 产品规划\n- 人生规划\n\n其实：\n\n**免费组合：**\n```\nChatGPT\n+\nGemini\n+\nClaude\n+\nOpenRouter\n```\n\n已经覆盖90%的需求。\n\n如果以后付费：\n\n我反而觉得：\n\n1个旗舰订阅 > 买很多便宜会员。\n\n因为你的核心价值不是“问100个简单问题”，而是：\n\n> 一个模型能不能陪你持续构建复杂认知体系。\n\n这一点 GPT/Claude 这种长期上下文能力更重要。"
+          ]
+        },
+        "create_time": 1784464134.171832,
+        "id": "f5639f67-3f29-4d76-abda-bfc221a98caf",
+        "metadata": {
+          "code_blocks": {
+            "0": {
+              "edited": false,
+              "id": "6rq9uw",
+              "preview_language": null,
+              "previewable": false
+            },
+            "1": {
+              "edited": false,
+              "id": "v3tobi",
+              "preview_language": null,
+              "previewable": false
+            },
+            "2": {
+              "edited": false,
+              "id": "tybffq",
+              "preview_language": null,
+              "previewable": false
+            }
+          },
+          "content_references": [
+            {
+              "alt": "([Arena Help Center](https://help.arena.ai/articles/4662132537-models-added-and-removed-from-direct-and-side-by-side-mode?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "Arena Help Center",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": 1775174400.0,
+                  "refs": [
+                    {
+                      "ref_index": 5,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Arena Troubleshooting: Models May Be Removed from Direct and Side by Side Mode",
+                  "url": "https://help.arena.ai/articles/4662132537-models-added-and-removed-from-direct-and-side-by-side-mode?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "([Arena AI](https://arena.ai/blog/introducing-max/?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "Arena AI",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": 1770163200.0,
+                  "refs": [
+                    {
+                      "ref_index": 1,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Introducing Max",
+                  "url": "https://arena.ai/blog/introducing-max/?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "Google Gemini",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "AI assistant by Google"
+              },
+              "id": "h16YnE8SySt0bLhG",
+              "metadata": null,
+              "name": "Google Gemini",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Google Gemini",
+              "type": "entity"
+            },
+            {
+              "alt": "([WIRED](https://www.wired.com/story/how-googles-new-gemini-rates-work-and-how-to-track-your-usage?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "WIRED",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": 1784368800.0,
+                  "refs": [
+                    {
+                      "ref_index": 35,
+                      "ref_type": "news",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "Google has updated its Gemini AI platform with significant changes to both its capabilities and usage limits. Now, AI usage is measured by the computing resources required rather than simply the number of requests. This means complex prompts, like generating videos or coding mini-apps, consume more AI credits than simpler tasks like weather forecasts. Additionally, usage can vary due to testing or availability, leading to unpredictable limits. \n\nThere are four subscription tiers: Free, AI Plus ($8/month), AI Pro ($20/month), and AI Ultra ($100 or $200/month), each offering progressively higher usage allowances. Usage limits are further influenced by the chosen AI model (e.g., Flash-Lite, Flash, Pro) and the depth of processing requested (Standard, Extended, Deep Think). Token limits for conversation context range from 32K for free users to up to 1 million for Pro and Ultra subscribers.\n\nUsage can be monitored in the app via a reset-every-5-hours bar and a weekly limit bar. Exceeding limits on paid tiers results in temporary downgrades to basic models. Google notes these limits may change without notice, particularly for free-tier users.",
+                  "supporting_websites": [],
+                  "title": "How Google's New Gemini Rates Work and How to Track Your Usage",
+                  "url": "https://www.wired.com/story/how-googles-new-gemini-rates-work-and-how-to-track-your-usage?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "Anthropic Claude",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "AI assistant"
+              },
+              "id": "RksnOhNGI_XZgi4s",
+              "metadata": null,
+              "name": "Anthropic Claude",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Anthropic Claude",
+              "type": "entity"
+            },
+            {
+              "alt": "([The Times of India](https://timesofindia.indiatimes.com/technology/tech-news/anthropics-claude-fable-5-free-offer-extended-till-july-19-all-you-need-to-know/articleshow/132356840.cms?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "The Times of India",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": 1783918012.0,
+                  "refs": [
+                    {
+                      "ref_index": 36,
+                      "ref_type": "news",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "Anthropic has extended the free access promotion for Claude Fable 5 until July 19, 2026, from the earlier deadline of July 12. During this promotional period, users are allowed to utilize up to 50% of their weekly subscription limits on Claude Fable 5 services at no extra charge. This offer also includes a 50% boost to Claude Code weekly usage limits, also extended through July 19 at 11:59:59 PM PT. The free access is available under various subscription plans, including Pro, Max, Team, and premium seats within seat-based Enterprise plans.",
+                  "supporting_websites": [],
+                  "title": "Anthropic's Claude Fable 5 free offer extended till July 19: All you need to know",
+                  "url": "https://timesofindia.indiatimes.com/technology/tech-news/anthropics-claude-fable-5-free-offer-extended-till-july-19-all-you-need-to-know/articleshow/132356840.cms?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "DuckDuckGo",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "privacy-focused search company"
+              },
+              "id": "IjW53f0iGpoxKLZR",
+              "metadata": null,
+              "name": "DuckDuckGo",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "DuckDuckGo",
+              "type": "entity"
+            },
+            {
+              "alt": "([TechRadar](https://www.techradar.com/pro/duck-ai-review?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "TechRadar",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": 1783937814.0,
+                  "refs": [
+                    {
+                      "ref_index": 34,
+                      "ref_type": "news",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "**Duck.ai Review Summary (TechRadar Pro)**\n\nDuck.ai, launched by DuckDuckGo in early 2025, is a privacy-first AI chat platform that allows users to interact with advanced AI models like GPT-5 and Claude Opus without registration. Integrated into DuckDuckGo’s search and browser ecosystem, it anonymizes all user prompts via a privacy proxy, ensuring that data isn’t used for AI training and is not stored on its servers.\n\nUsers can access the service through the DuckDuckGo browser or extensions. The free tier includes models like GPT-5 mini, Claude 4.5 Haiku, and Llama 4 Scout, offering substantial utility for general tasks. The Pro tier, priced at $19.99/month, adds access to premium models like Claude Opus 4.7, which excels in complex and multi-step tasks. Notably, Duck.ai lacks a file upload feature, although that is on the roadmap.\n\nIts clean, minimal interface stores chat history locally and supports voice input through encrypted relays. While customer support is limited, the service includes comprehensive online documentation. Overall, Duck.ai stands out for its strong privacy features, account-free access, and extensive model range, making it a top choice for privacy-conscious users and professionals.",
+                  "supporting_websites": [],
+                  "title": "Duck.ai by DuckDuckGo review",
+                  "url": "https://www.techradar.com/pro/duck-ai-review?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "OpenRouter",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "AI model routing platform"
+              },
+              "id": "bLyh4qyHt4M9LNSz",
+              "metadata": null,
+              "name": "OpenRouter",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "OpenRouter",
+              "type": "entity"
+            },
+            {
+              "alt": "[OpenRouter](https://openrouter.ai?utm_source=chatgpt.com)",
+              "logo": null,
+              "prefix": null,
+              "prompt_text": null,
+              "title": "OpenRouter",
+              "type": "url"
+            },
+            {
+              "alt": "Hugging Face",
+              "entity_data": null,
+              "entity_index": null,
+              "extra_params": {
+                "disambiguation": "AI model platform"
+              },
+              "id": "Z23QEskBHW-75Hy0",
+              "metadata": null,
+              "name": "Hugging Face",
+              "notes": null,
+              "prefix": null,
+              "prompt_text": "Hugging Face",
+              "type": "entity"
+            },
+            {
+              "alt": "([Arena AI](https://arena.ai/leaderboard?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "Arena AI",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": null,
+                  "refs": [
+                    {
+                      "ref_index": 2,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    },
+                    {
+                      "ref_index": 3,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [
+                    {
+                      "attribution": "Arena Help Center",
+                      "pub_date": null,
+                      "snippet": "",
+                      "title": "How to see AI Rankings in Arena Leaderboards",
+                      "url": "https://help.arena.ai/articles/7011479247-how-to-see-ai-rankings-in-arena-leaderboards-2-0-wip?utm_source=chatgpt.com"
+                    }
+                  ],
+                  "title": "Arena Leaderboard | Compare & Benchmark the Best Frontier AI Models",
+                  "url": "https://arena.ai/leaderboard?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "",
+              "has_images": false,
+              "prefix": null,
+              "prompt_text": null,
+              "sources": [
+                {
+                  "attribution": "Arena Help Center",
+                  "title": "Arena Troubleshooting: Models May Be Removed from Direct and Side by Side Mode",
+                  "url": "https://help.arena.ai/articles/4662132537-models-added-and-removed-from-direct-and-side-by-side-mode?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "Arena AI",
+                  "title": "Introducing Max",
+                  "url": "https://arena.ai/blog/introducing-max/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "WIRED",
+                  "title": "How Google's New Gemini Rates Work and How to Track Your Usage",
+                  "url": "https://www.wired.com/story/how-googles-new-gemini-rates-work-and-how-to-track-your-usage?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "The Times of India",
+                  "title": "Anthropic's Claude Fable 5 free offer extended till July 19: All you need to know",
+                  "url": "https://timesofindia.indiatimes.com/technology/tech-news/anthropics-claude-fable-5-free-offer-extended-till-july-19-all-you-need-to-know/articleshow/132356840.cms?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "TechRadar",
+                  "title": "Duck.ai by DuckDuckGo review",
+                  "url": "https://www.techradar.com/pro/duck-ai-review?utm_source=chatgpt.com"
+                }
+              ],
+              "type": "sources_footnote"
+            }
+          ],
+          "model_slug": "gpt-5-5",
+          "parent_id": "4cb4ab91-a131-48ac-b222-da164a3c3a8f",
+          "search_result_groups": [
+            {
+              "domain": "arena.ai",
+              "entries": [
+                {
+                  "attribution": "arena.ai",
+                  "snippet": "MULTIMODAL MAX  ARENA TEAM  05 May 2026 29 min  Image: Multimodal Max  Max, Arena's model router powered by 5M+ community votes, is now multimodal. Starting today, Max will be available as the defaul...",
+                  "title": "Multimodal Max",
+                  "url": "https://arena.ai/blog/multimodal-max/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "arena.ai",
+                  "snippet": "HOW TO SEE AI RANKINGS IN ARENA LEADERBOARDS  Last updated: July 15, 2026  HOW TO USE ARENA LEADERBOARDS AND FILTERS  Arena leaderboards rank AI models based on human preference votes from real head-...",
+                  "title": "How to see AI Rankings in Arena Leaderboards",
+                  "url": "https://help.arena.ai/articles/7011479247-how-to-see-ai-rankings-in-arena-leaderboards-2-0-wip?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "arena.ai",
+                  "snippet": "MARCH 2026: ARENA UPDATES ACROSS PRODUCT, LEADERBOARD RANKINGS & RESEARCH  ARENA TEAM  31 Mar 2026 4 min  Image: March 2026: Arena Updates across Product, Leaderboard Rankings & Research  March 2026...",
+                  "title": "March 2026: Arena Updates across Product, Leaderboard Rankings & Research",
+                  "url": "https://arena.ai/blog/march-2026-arena-updates/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "arena.ai",
+                  "snippet": "HOW TO USE MAX SMART-ROUTER IN ARENA  Last updated: February 13, 2026  Image: MAXintro.gif  Max routes each prompt to the most capable model with latency in mind. AI models excel at different things...",
+                  "title": "How to use Max Smart-Router in Arena",
+                  "url": "https://help.arena.ai/articles/3772686617-arena-how-to-max?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "arena.ai",
+                  "snippet": "HOW TO SELECT SPECIFIC MODELS IN ARENA  Last updated: February 24, 2026  Model selector is a new design for the model drop-down menu in Direct and Side by Side mode. Models are now ordered by rank an...",
+                  "title": "How to Select Specific Models in Arena",
+                  "url": "https://help.arena.ai/articles/1858200927-lmarena-experiments-new-model-selector?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "arena.ai",
+                  "snippet": "Today, we are excited to introduce Agent Mode, designed to help everyone from everyday users looking to get more done to entrepreneurs looking to maximize agentic efficacy across complex use cases. Wh...",
+                  "title": "Arena Team - Arena Blog",
+                  "url": "https://arena.ai/blog/author/arena/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "arena.ai",
+                  "snippet": "LIST AVAILABLE MODELS  ​Copy link  Auth Required  Returns the list of models available through the Arena API, including both direct models and routing modes (`auto`, `fast`).  Routing mode entries hav...",
+                  "title": "Arena API Docs",
+                  "url": "https://portal.api.preview.arena.ai/docs/api-reference?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "arena.ai",
+                  "snippet": "LEADERBOARD OVERVIEW  See how leading AI models stack up across text, image, vision, and more. This page provides a high-level snapshot of each Arena. Explore dedicated tabs for deeper insights. Lear...",
+                  "title": "Arena Leaderboard | Compare & Benchmark the Best Frontier AI Models",
+                  "url": "https://arena.ai/leaderboard?_bhlid=60dd458ffc96fd59104f9417beb7998d5b3a801e&utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "arena.ai",
+                  "snippet": "HOW TO  Learn How To Use Arena  ARTICLES  * How to Compare AI Models in Battle Mode * How to Access Auto-Mode in Arena * How to Select Specific Models in Arena * How to Stop a Chat in Arena * How to...",
+                  "title": "How To",
+                  "url": "https://help.arena.ai/collections/2377350852-how_to?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "openai.com",
+              "entries": [
+                {
+                  "attribution": "openai.com",
+                  "snippet": "CHATGPT FREE TIER FAQ  Updated: 2 days ago  ChatGPT is free to use, and Free tier users now have access to a large range of capabilities with GPT-5.2, including access to a series of tools and access...",
+                  "title": "ChatGPT Free Tier FAQ | OpenAI Help Center",
+                  "url": "https://help.openai.com/en/articles/9275245-using-chatgpt-s-free-tier-faq.pdf?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "openai.com",
+                  "snippet": "MENGHENTIKAN GPT-4O DAN MODEL CHATGPT LAINNYA  GPT-4o dan model tambahan tidak lagi didukung di ChatGPT pada 13 Februari 2026. Model-model ini akan tetap tersedia di API.  Diperbarui: 3 days ago  IKH...",
+                  "title": "Menghentikan GPT-4o dan model ChatGPT lainnya | OpenAI Help Center",
+                  "url": "https://help.openai.com/id-id/articles/20001051-retiring-gpt-4o-and-other-chatgpt-models?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "lmsys.org",
+              "entries": [
+                {
+                  "attribution": "lmsys.org",
+                  "snippet": "Contents  * Our Mission * Our Progress * Our Policy * FAQ * Why another eval? * What model to evaluate? Why not all? * Why should the community trust our eval? * Why do you only share 20% of data, no...",
+                  "title": "LMSYS Chatbot Arena: Live and Community-Driven LLM Evaluation - LMSYS Org",
+                  "url": "https://www.lmsys.org/blog/2024-03-01-policy/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "lmsys.org",
+                  "snippet": "ANNOUNCING A NEW SITE FOR CHATBOT ARENA  LMSys Team Sep 20, 2024  We’re excited to share that Chatbot Arena now has its own dedicated website: lmarena.ai and blog!  You might be wondering why we’re m...",
+                  "title": "Announcing a New Site for Chatbot Arena - LMSYS Org",
+                  "url": "https://www.lmsys.org/blog/2024-09-20-arena-new-site/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "lmsys.org",
+                  "snippet": "Projects  Open-source projects and research initiatives incubated by LMSYS, building accessible large AI models, systems, and evaluation tools.  SYSTEMS  SGLang A high-performance serving engine for...",
+                  "title": "Projects - LMSYS Org",
+                  "url": "https://www.lmsys.org/projects/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "aarena.ai",
+              "entries": [
+                {
+                  "attribution": "aarena.ai",
+                  "snippet": "BATTLEBOARD  AI Model rankings based on ELO ratings and community votes  Total Models  6  Active Models  6  Total Battles  445  Providers  3  Rank  | Model ↕  | Provider ↕  | ELO Rating ↓  | Win Rate...",
+                  "title": "Battleboard - AI Model Rankings | AArena | AARENA",
+                  "url": "https://aarena.ai/arena/battleboard?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "google.com",
+              "entries": [
+                {
+                  "attribution": "google.com",
+                  "snippet": "AI SIDEBAR — CHATGPT, CLAUDE, GEMINI — FREE & UNLIMITED  4.8(5 ratings)  Ratings are updated daily and may not reflect the most recent reviews.  Share  ExtensionTools698 users  Add to Chrome    Overv...",
+                  "title": "AI Sidebar — ChatGPT, Claude, Gemini — FREE & Unlimited - Chrome Web Store",
+                  "url": "https://chromewebstore.google.com/detail/ai-sidebar-%E2%80%94-chatgpt-clau/bfabadmipmkngbdagbjkpjflihlclckc?hl=en&utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "alibabacloud.com",
+              "entries": [
+                {
+                  "attribution": "alibabacloud.com",
+                  "snippet": "ALIBABA CLOUD MODEL STUDIO:FREE QUOTA FOR NEW USERS  Last Updated:Jun 23, 2026  When you first activate Alibaba Cloud Model Studio (Singapore region), the platform automatically grants you a free quo...",
+                  "title": "Free quota for new users - Alibaba Cloud Model Studio - Alibaba Cloud Documentation Center",
+                  "url": "https://www.alibabacloud.com/help/en/model-studio/new-free-quota?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "chatg.org",
+              "entries": [
+                {
+                  "attribution": "chatg.org",
+                  "snippet": "Free · No sign-up · Unlimited  YOUR EVERYDAY AI ASSISTANT  ChatG is a clean, fast GPT chat and assistant. Ask questions, write and refine text, debug code, learn new topics and spark ideas — all in o...",
+                  "title": "ChatG — GPT Chat & Assistant, free and unlimited",
+                  "url": "https://chatg.org/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "nerdbot.com",
+              "entries": [
+                {
+                  "attribution": "nerdbot.com",
+                  "snippet": "BEST FREE AI CHATBOTS IN 2026: I TESTED EVERY FREE TIER SO YOU DON’T HAVE TO  Image: Amelia JonesBy Amelia JonesMay 20, 2026 17 Mins Read  QUICK ANSWER  ChatGPT is the best free AI chatbot for most p...",
+                  "title": "Best Free AI Chatbots in 2026: I Tested Every Free Tier So You Don't Have To",
+                  "url": "https://nerdbot.com/2026/05/20/best-free-ai-chatbots-in-2026-i-tested-every-free-tier-so-you-dont-have-to/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "subchoice.com",
+              "entries": [
+                {
+                  "attribution": "subchoice.com",
+                  "snippet": "BEST FREE AI CHATBOTS COMPARED (2026)  Compare ChatGPT Free, Claude Free, and Gemini Free — model quality, usage limits, and features. Find the best free AI chatbot in 2026.  Published: February 25,...",
+                  "title": "Best Free AI Chatbots Compared (2026)",
+                  "url": "https://subchoice.com/compare/best-free-ai-chatbot/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "rewind.ai",
+              "entries": [
+                {
+                  "attribution": "rewind.ai",
+                  "snippet": "Published May 9, 2026  BEST FREE AI CHATBOTS 2026: CHATGPT VS CLAUDE VS REWIND.AI  By Rewind.ai Team March 25, 2026 Updated March 25, 2026  We compare the top free AI chatbots of 2026. See how ChatGP...",
+                  "title": "Best Free AI Chatbots 2026 - Full Comparison",
+                  "url": "https://rewind.ai/blog/best-free-ai-chatbots-2026/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "github.blog",
+              "entries": [
+                {
+                  "attribution": "github.blog",
+                  "snippet": "June 16, 2026 • 1 minute read  GITHUB MODELS IS NO LONGER AVAILABLE TO NEW CUSTOMERS  Image  We are retiring GitHub Models. As a first step, new customers can no longer use it. If your organization o...",
+                  "title": "GitHub Models is no longer available to new customers - GitHub Changelog",
+                  "url": "https://github.blog/changelog/2026-06-16-github-models-is-no-longer-available-to-new-customers/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "github.blog",
+                  "snippet": "Retired  July 1, 2026 • 1 minute read  GITHUB MODELS IS BEING FULLY RETIRED ON JULY 30, 2026  Image  TABLE OF CONTENTS  * What's changing * What you can do  Menu. Currently selected: What's changing...",
+                  "title": "GitHub Models is being fully retired on July 30, 2026 - GitHub Changelog",
+                  "url": "https://github.blog/changelog/2026-07-01-github-models-is-being-fully-retired-on-july-30-2026/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "multiple.chat",
+              "entries": [
+                {
+                  "attribution": "multiple.chat",
+                  "snippet": "Free AI Tools Reference May 2026 · 18 min read  EVERY FREE AI WEBSITE IN 2026  A complete reference of every major free AI tool — daily limits, signup requirements, file uploads, image generation, an...",
+                  "title": "Every Free AI Website in 2026: Limits, Signup, and What You Can Actually Do — MultipleChat",
+                  "url": "https://multiple.chat/free-ai-websites?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "fast.io",
+              "entries": [
+                {
+                  "attribution": "fast.io",
+                  "snippet": "BEST FREE AI CHATBOTS YOU CAN ACTUALLY USE IN 2026  Nearly a billion people use AI chatbots, but most articles about free options gloss over the fine print. We tested ChatGPT, Gemini, Claude, DeepSee...",
+                  "title": "Best Free AI Chatbots in 2026, Tested and Compared | Fastio",
+                  "url": "https://fast.io/resources/best-free-ai-chatbot-2026/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "howdoiuseai.com",
+              "entries": [
+                {
+                  "attribution": "howdoiuseai.com",
+                  "snippet": "learningMarch 23, 2026 By HowDoIUseAI Team  THE BEST FREE AI CHATBOTS IN 2026 THAT ACTUALLY WORK  Compare the top free AI chatbots of 2026 with current limits, features, and real-world testing. Which...",
+                  "title": "The best free AI chatbots in 2026 that actually work | How Do I Use AI",
+                  "url": "https://www.howdoiuseai.com/blog/2026-03-23-the-best-free-ai-chatbots-in-2026-that-actually-wo?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "aigums.com",
+              "entries": [
+                {
+                  "attribution": "aigums.com",
+                  "snippet": "BEST FREE AI TOOLS YOU CAN USE WITHOUT PAYING IN 2026  The free AI landscape in 2026 is tighter than it was a couple years ago. Several tools have tightened their free tiers, introduced usage caps, or...",
+                  "title": "Best Free AI Tools You Can Use Without Paying in 2026 | AIGums",
+                  "url": "https://aigums.com/blog/best-free-ai-tools-you-can-use-without-paying/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "toolchase.com",
+              "entries": [
+                {
+                  "attribution": "toolchase.com",
+                  "snippet": "Guide  FREE AI TOOLS (NO CREDIT CARD REQUIRED): 2026  Last updated: May 2026 · Maintained by ToolChase · Methodology  TL;DR  The fully free, no-card AI tools that actually matter in 2026 are ChatGPT...",
+                  "title": "Free AI Tools (No Credit Card Required): 2026",
+                  "url": "https://toolchase.com/blog/free-ai-tools-no-credit-card/?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "arcanea.ai",
+              "entries": [
+                {
+                  "attribution": "arcanea.ai",
+                  "snippet": "A I M O D E L A R E N A  Transparent model intelligence for creators. Live benchmarks, free model tracking, and production routing across 344 models from 57 providers. Updated hourly from OpenRouter....",
+                  "title": "AI Model Arena | Arcanea — Benchmarks, Rankings & Free Models | Arcanea",
+                  "url": "https://www.arcanea.ai/models?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "ai-hunter.org",
+              "entries": [
+                {
+                  "attribution": "ai-hunter.org",
+                  "snippet": "7 BEST FREE CHATGPT ALTERNATIVES IN 2026  The best free alternatives to ChatGPT: Claude, DeepSeek, Gemini, Mistral, Perplexity, Poe and Grok. Complete comparison.  April 2, 2026  ·  Updated May 14, 2...",
+                  "title": "7 Best Free ChatGPT Alternatives in 2026 (7 tools ranked & free plans) | AI Hunter",
+                  "url": "https://ai-hunter.org/blog/best-free-chatgpt-alternatives-2026/?utm_source=chatgpt.com"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "parent": "b30ca2d9-eb88-4114-b2f8-fd9246b2f089"
+    },
+    "f93e4c8d-c97c-4c99-ae0e-f119e050912a": {
+      "id": "f93e4c8d-c97c-4c99-ae0e-f119e050912a",
+      "message": {
+        "author": {
+          "name": null,
+          "role": "assistant"
+        },
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "对，**基本可以这么理解：Arena 现在已经不是以前那个“免费白嫖最强模型”的地方了。**\n\n以前（大概 2023～2025 初）：\n\n> 打开 Arena → 选 Claude Opus / GPT-4 / Gemini Pro → 免费聊\n\n这个体验非常爽，相当于免费试驾跑车。\n\n现在：\n\n> 打开 Arena → 大部分旗舰模型不再直接暴露 → 给你 Max 路由\n\n官方也明确说明，模型可能会因为可用性、成本等原因从 Direct 和 Side-by-Side 模式移除。citeturn0search0  \nMax 本质是智能路由，会根据任务把请求分配到它认为合适的模型，而不是让你固定选择某个旗舰模型。citeturn0search1\n\n---\n\n但是要注意一个细节：\n\n**不是说 Arena 完全没有先进模型。**\n\n它现在更像：\n\n以前：\n\n```\n你\n |\n选择 Claude Opus\n |\nClaude Opus回答\n```\n\n现在：\n\n```\n你\n |\nMax\n |\n系统判断\n |\n可能调用某个高级模型\n```\n\n问题是：\n\n1. 你不知道到底调用谁\n2. 可能不是最高级版本\n3. 没法稳定复现\n\n所以对于你这种用户：\n\n> “我要长期研究投资逻辑”\n>\n> “我要拆商业模式”\n>\n> “我要讨论人生战略”\n\n这种需要连续思考的场景，Arena价值下降明显。\n\n---\n\n## 现在免费的“接近旗舰”的路线\n\n我觉得排序应该这样：\n\n### 第一：\n\n## Gemini 免费版\n\n目前免费里面非常能打。\n\n适合：\n\n- 搜索\n- 市场分析\n- 最新信息\n- 文件阅读\n\nGoogle愿意通过免费入口培养用户。\n\n---\n\n### 第二：\n\n## Claude 免费版\n\n尤其适合你。\n\n你的很多问题：\n\n- 轻FIRE\n- 财富体系\n- 商业模式\n- 企业竞争力\n\n其实 Claude 风格很适合。\n\n它强项：\n\n> 长文本理解 + 商业写作 + 逻辑整理\n\n---\n\n### 第三：\n\n## ChatGPT 免费\n\n综合能力最均衡。\n\n尤其：\n\n- 图片\n- 文件\n- 推理\n- 多轮讨论\n\n---\n\n### 第四：\n\n## OpenRouter 免费模型\n\n这个是以前 Arena 用户转移过去的一大方向。\n\n可以试：\n\n- DeepSeek\n- Qwen\n- Llama\n- Mistral\n\n不过免费模型通常有限额。\n\n---\n\n## 如果你的目标是“免费体验最先进模型”\n\n现在现实情况：\n\n|平台|免费体验旗舰可能性|\n|-|-|\n|Arena|下降很多|\n|Gemini|高|\n|Claude|中高|\n|ChatGPT|中|\n|OpenRouter|看活动|\n|HuggingFace|偏开源模型|\n\n---\n\n其实还有一个趋势：\n\n以前：\n\n> “模型公司免费给大家玩模型”\n\n现在：\n\n> “模型公司免费给大家建立使用习惯，然后收费”\n\n因为训练成本已经不是最大问题，**推理成本（Inference）才是现金流压力。**\n\n一个普通用户每天问几十个复杂问题，对公司来说是真金白银。\n\n所以你看到 Arena 收缩，是整个行业趋势，不只是 Arena。citeturn0search0\n\n---\n\n结合你的使用方式，我觉得目前最优免费组合：\n\n```\n复杂战略/投资：\nChatGPT\n\n商业写作/整理：\nClaude\n\n查资料/最新动态：\nGemini\n\n测试各种模型：\nOpenRouter\n```\n\nArena现在更适合：\n- 看排行榜\n- 偶尔测试\n- 比较模型能力\n\n不适合作为主力生产工具了。citeturn0search2\n\n你之前说 Claude 被封、又研究 GPT 订阅，其实你的需求已经明显超过普通用户了。你这种使用强度，**免费多平台轮换其实还能撑，但长期看一个旗舰订阅的ROI会非常高。**"
+          ]
+        },
+        "create_time": 1784464543.063203,
+        "id": "f93e4c8d-c97c-4c99-ae0e-f119e050912a",
+        "metadata": {
+          "code_blocks": {
+            "0": {
+              "edited": false,
+              "id": "m4ul5h",
+              "preview_language": null,
+              "previewable": false
+            },
+            "1": {
+              "edited": false,
+              "id": "c4url0",
+              "preview_language": null,
+              "previewable": false
+            },
+            "2": {
+              "edited": false,
+              "id": "ee1i7l",
+              "preview_language": null,
+              "previewable": false
+            }
+          },
+          "content_references": [
+            {
+              "alt": "([Arena Help Center](https://help.arena.ai/articles/4662132537-models-added-and-removed-from-direct-and-side-by-side-mode?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "Arena Help Center",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": 1775174400.0,
+                  "refs": [
+                    {
+                      "ref_index": 0,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Arena Troubleshooting: Models May Be Removed from Direct and Side by Side Mode",
+                  "url": "https://help.arena.ai/articles/4662132537-models-added-and-removed-from-direct-and-side-by-side-mode?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "([Arena Help Center](https://help.arena.ai/articles/3772686617-arena-how-to-max?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "Arena Help Center",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": 1770940800.0,
+                  "refs": [
+                    {
+                      "ref_index": 1,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "How to use Max Smart-Router in Arena",
+                  "url": "https://help.arena.ai/articles/3772686617-arena-how-to-max?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "([Arena Help Center](https://help.arena.ai/articles/4662132537-models-added-and-removed-from-direct-and-side-by-side-mode?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "Arena Help Center",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": 1775174400.0,
+                  "refs": [
+                    {
+                      "ref_index": 0,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Arena Troubleshooting: Models May Be Removed from Direct and Side by Side Mode",
+                  "url": "https://help.arena.ai/articles/4662132537-models-added-and-removed-from-direct-and-side-by-side-mode?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "([LMSYS Org](https://www.lmsys.org/blog/2024-09-20-arena-new-site/?utm_source=chatgpt.com))",
+              "fallback_items": null,
+              "items": [
+                {
+                  "attribution": "LMSYS Org",
+                  "attribution_segments": null,
+                  "attributions": null,
+                  "hue": null,
+                  "pub_date": 1726790400.0,
+                  "refs": [
+                    {
+                      "ref_index": 2,
+                      "ref_type": "search",
+                      "turn_index": 0
+                    }
+                  ],
+                  "snippet": "",
+                  "supporting_websites": [],
+                  "title": "Announcing a New Site for Chatbot Arena - LMSYS Org",
+                  "url": "https://www.lmsys.org/blog/2024-09-20-arena-new-site/?utm_source=chatgpt.com"
+                }
+              ],
+              "prefix": null,
+              "prompt_text": null,
+              "type": "grouped_webpages"
+            },
+            {
+              "alt": "",
+              "has_images": false,
+              "prefix": null,
+              "prompt_text": null,
+              "sources": [
+                {
+                  "attribution": "Arena Help Center",
+                  "title": "Arena Troubleshooting: Models May Be Removed from Direct and Side by Side Mode",
+                  "url": "https://help.arena.ai/articles/4662132537-models-added-and-removed-from-direct-and-side-by-side-mode?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "LMSYS Org",
+                  "title": "Announcing a New Site for Chatbot Arena - LMSYS Org",
+                  "url": "https://www.lmsys.org/blog/2024-09-20-arena-new-site/?utm_source=chatgpt.com"
+                }
+              ],
+              "type": "sources_footnote"
+            }
+          ],
+          "conversation_context_citation_metadata": [
+            {
+              "citation": {
+                "alt": null,
+                "attribution": "Memory",
+                "citation_uuid": "8df7eda3-251a-49dd-9dfd-cc3bc512dcf1",
+                "conversation_context_type": "general_memory",
+                "end_idx": -1,
+                "index": 10,
+                "matched_text": "",
+                "prompt_text": null,
+                "reason": "You previously reported that your Claude account was suspended and you were researching GPT subscription/payment details.",
+                "refs": [],
+                "snippet": "User described Claude AI account issue: “This organization has been disabled” message.",
+                "start_idx": -1,
+                "title": "You previously reported that your Claude account was suspended and you were researching GPT subscription/payment details.",
+                "type": "conversation_context_citation",
+                "url": "#settings/Personalization"
+              },
+              "citation_uuid": "8df7eda3-251a-49dd-9dfd-cc3bc512dcf1",
+              "deleted": false,
+              "feedback": null
+            }
+          ],
+          "model_slug": "gpt-5-5",
+          "parent_id": "d4488748-7385-4c3a-b98f-5a5994b5b081",
+          "search_result_groups": [
+            {
+              "domain": "arena.ai",
+              "entries": [
+                {
+                  "attribution": "arena.ai",
+                  "snippet": "HOW TO SELECT SPECIFIC MODELS IN ARENA  Last updated: February 24, 2026  Model selector is a new design for the model drop-down menu in Direct and Side by Side mode. Models are now ordered by rank an...",
+                  "title": "How to Select Specific Models in Arena",
+                  "url": "https://help.arena.ai/articles/1858200927-lmarena-experiments-new-model-selector?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "arena.ai",
+                  "snippet": "HOW TO ACCESS AUTO-MODE IN ARENA  Last updated: February 13, 2026  Auto-Mode automatically routes you to the correct modality based on what you prompt. This will remove the need to manually select wh...",
+                  "title": "How to Access Auto-Mode in Arena",
+                  "url": "https://help.arena.ai/articles/1350607902-lmarena-experiments-auto-modality?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "arena.ai",
+                  "snippet": "TROUBLESHOOTING  Problems you may encounter  ARTICLES  * Arena Troubleshooting: Session Token Limits * Arena Troubleshooting: Daily Usage Limits * Arena Troubleshooting: Something went wrong with thi...",
+                  "title": "Troubleshooting",
+                  "url": "https://help.arena.ai/collections/3598891525-troubleshooting?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "arena.ai",
+                  "snippet": "ARENA TROUBLESHOOTING: SESSION TOKEN LIMITS  Last updated: June 25, 2026  In some cases, a chat session may reach its token or context limit during a conversation. When this happens, you’ll see an er...",
+                  "title": "Arena Troubleshooting: Session Token Limits",
+                  "url": "https://help.arena.ai/articles/3975292349-arena-troubleshooting-session-token-limits?utm_source=chatgpt.com"
+                }
+              ]
+            },
+            {
+              "domain": "lmsys.org",
+              "entries": [
+                {
+                  "attribution": "lmsys.org",
+                  "snippet": "Contents  * Our Mission * Our Progress * Our Policy * FAQ * Why another eval? * What model to evaluate? Why not all? * Why should the community trust our eval? * Why do you only share 20% of data, no...",
+                  "title": "LMSYS Chatbot Arena: Live and Community-Driven LLM Evaluation - LMSYS Org",
+                  "url": "https://www.lmsys.org/blog/2024-03-01-policy/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "lmsys.org",
+                  "snippet": "Contents  * Introducing new models * Tracking Performance of Proprietary APIs - GPT-4-0314 vs 0613? * Transition from online Elo rating system to Bradley-Terry model * Bonus: Topic modeling on user p...",
+                  "title": "Chatbot Arena: New models & Elo system update - LMSYS Org",
+                  "url": "https://www.lmsys.org/blog/2023-12-07-leaderboard/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "lmsys.org",
+                  "snippet": "Projects  Open-source projects and research initiatives incubated by LMSYS, building accessible large AI models, systems, and evaluation tools.  SYSTEMS  SGLang A high-performance serving engine for...",
+                  "title": "Projects - LMSYS Org",
+                  "url": "https://www.lmsys.org/projects/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "lmsys.org",
+                  "snippet": "PAIRWISE WIN RATES  As a basis for calibration, we also present here the pairwise win rates for each model in the tournament (Figure 4) as well as the predicted pairwise win rate estimated using Elo r...",
+                  "title": "Chatbot Arena: Benchmarking LLMs in the Wild with Elo Ratings - LMSYS Org",
+                  "url": "https://www.lmsys.org/blog/2023-05-03-arena/?utm_source=chatgpt.com"
+                },
+                {
+                  "attribution": "lmsys.org",
+                  "snippet": "LMSYS ORG  The Large Model Systems Organization develops large models and systems that are open, accessible, and scalable.  15+Projects  80K+GitHub Stars  1000+Contributors  LATEST BLOG  See all post...",
+                  "title": "LMSYS Org",
+                  "url": "https://www.lmsys.org/?utm_source=chatgpt.com"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "parent": "7f698cdc-5553-41a0-90f0-53c1e64c5b5a"
+    }
+  },
+  "memory_scope": "global_enabled",
+  "pinned_time": null,
+  "plugin_ids": null,
+  "title": "Arena 模型下架原因",
+  "update_time": 1784464552.226898,
+  "voice": null
+}

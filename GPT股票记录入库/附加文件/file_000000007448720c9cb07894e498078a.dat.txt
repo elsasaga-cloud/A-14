@@ -1,0 +1,63 @@
+TA510-GE-X: 1*Fiber + 1*Ethernet
+Mini Fiber Optic Media Converter Card For UAV Fiber Communication Solution
+
+Key Feature
+
+Wide voltage power supply 5-24V, compatible with a variety of batteries, ensuring stable operation
+Flexible communication distances and optical connectors
+Lightweight, compact size 70x25x15mm, reducing equipment burden and improving flight efficiency
+Realtek based, long-term supply and guaranteed performance
+
+
+Specification
+
+Standard | IEEE802.3 (10BASE-T), IEEE802.3u 100BASE-TX/FX (Fast-Ethernet),
+IEE802.3z 1000BASE -SX/LX(Gigabit-Ethernet)
+10/100/1000BASE-T | STP or UTP Category 5/5e/6 cable (Max. 100m)
+1000BASE-FX | 9/125um singlemode fiber cable (20/40/60/80/100/120km)
+Conversion Mode / Delay Time | Store-and-Forward < 10us, straight-through<0.9us
+Flow control | Full duplex-flow control, Half duplex-back pressure
+RJ-45 Port  | Auto-MDI/MDIX 
+Fiber Port | FC/SC/ST/SFP slot, ALL OPTIONAL
+Dimension | 70x25x15mm
+Input Voltage | DC5V-24V with External power adapter
+Power Consumption | <1W
+MAC Address Table | 2K
+Buffer Size | 64K
+Operating Temperature  | 0℃~70℃
+Storage Temperature | -40℃~125℃
+Storage Humidity | 5%~90% non-condescending
+
+Application
+
+4K video transmission
+AI edge computing communication
+Remote sensor networking
+Ground-to-air Ethernet extension
+Fiber optic data links for anti-interference environments
+
+Workflow
+
+Onboard (Sky End): The TA510-GE-X is connected to the drone’s camera or payload via Ethernet. It converts the video/data signal into light and sends it down the fiber
+Fiber Link: The signal travels through the Kevlar-reinforced fiber optic tether
+Ground (Base End): A matching TA510-GE-X converts the light signal back to Ethernet, which is then fed into a monitor, recorder, or ground control station
+
+
+
+
+Port
+
+1*Fiber + 1*Ethernet
+
+Ideal to use SFP or Fixed Transceiver: flexible communication distances and optical connectors
+Ethernet speed is 10/100Mbps or 10/100/1000Mbps auto-adaptive: sufficient for compressed 4K video (H.264/H.265) used in drones
+
+
+Product Photo
+
+
+Professional Fiber Optic Transmission Equipment Manufacturer
+Shenzhen Olycom Technology Co., Ltd.
+Web: www.olycom.com.cn
+Email: simon@olycom.com.cn
+VR Link: https://www.ecer.com/corp/uuu5b8d-industrialnetworkswitch/vr.html

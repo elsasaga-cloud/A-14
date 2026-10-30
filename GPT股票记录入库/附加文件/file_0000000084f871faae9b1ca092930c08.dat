@@ -1,0 +1,779 @@
+512690 白酒ETF 核心持仓加权追踪器 v5.1 (极简白话决策版)
+运行：
+D:/Python312/python.exe 白酒跟踪.py
+输出：桌面/stockSpider_output/白酒跟踪.txt （覆写最新）
+import json
+import time
+import random
+import traceback
+import re
+from datetime import datetime
+from pathlib import Path
+
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+
+============================================================
+配置
+============================================================
+OUTPUT_DIR = Path.home() / "Desktop" / "stockSpider_output"
+OUTPUT_FILE = OUTPUT_DIR / "白酒跟踪.txt"
+
+PERIODS = [3, 5, 8, 12, 16, 20] # 追踪周期（交易日数）
+LOOKBACK = 90 # 拉取天数
+
+关联东财板块配置
+SECTOR_CODE = "BK0477" # 东方财富酿酒行业板块代码
+SECTOR_NAME = "酿酒行业"
+
+SIGNAL_MAP = [
+(0.80, "🟢 健康 — 继续持有 / 定投加仓"),
+(0.55, "🟡 观望 — 暂停加仓，密切关注"),
+(0.35, "🟠 警戒 — 考虑减仓 1020%"),
+(0.00, "🔴 危险 — 考虑减仓 3050%"),
+]
+
+BROWSER_HEADERS = {
+"User-Agent": (
+"Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+"AppleWebKit/537.36 (KHTML, like Gecko) "
+"Chrome/131.0.0.0 Safari/537.36"
+),
+"Accept": "text/html,application/xhtml+xml,application/json,/;q=0.8",
+"Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+"Accept-Encoding": "gzip, deflate",
+"Connection": "keep-alive",
+"Referer": "http://fund.eastmoney.com/",
+}
+
+============================================================
+Step 1: 多数据源多标的映射抓取持仓
+============================================================
+def fetch_holdings_from_eastmoney_api_by_code(code: str) -> tuple:
+try:
+url = "http://fund.eastmoney.com/f10/FundArchivesDatas.aspx"
+params = {
+'type': 'jjcc',
+'code': code,
+'topline': '10',
+'year': '',
+'month': '',
+'rt': str(int(time.time() * 1000))
+}
+r = requests.get(url, params=params, headers=BROWSER_HEADERS, timeout=12)
+r.encoding = 'utf-8'
+r.raise_for_status()
+
+text
+
+    match = re.search(r'var apidata=({.*?});', r.text, re.DOTALL)
+    if not match:
+        raise ValueError("未找到 JSON 数据")
+    
+    data = json.loads(match.group(1))
+    content = data.get('content', '')
+    arryear = data.get('arryear', [])
+    
+    date_str = "未知"
+    if arryear and len(arryear) > 0:
+        latest = arryear[0]
+        date_parts = latest.split(',')
+        if len(date_parts) >= 2:
+            year = date_parts[0]
+            quarter_map = {'1': '03-31', '2': '06-30', '3': '09-30', '4': '12-31'}
+            date_str = f"{year}-{quarter_map.get(date_parts[1], '??-??')}"
+    
+    soup = BeautifulSoup(content, 'lxml')
+    holdings = {}
+    table = soup.find('table')
+    if not table:
+        raise ValueError("未找到持仓表格")
+    
+    rows = table.find_all('tr')
+    for row in rows[:10]:
+        cells = row.find_all('td')
+        if len(cells) < 4:
+            continue
+        try:
+            code_cell = cells[1]
+            code_link = code_cell.find('a')
+            stock_code = code_link.get_text(strip=True) if code_link else code_cell.get_text(strip=True)
+            stock_code = ''.join(filter(str.isdigit, stock_code))
+            ratio_text = cells[3].get_text(strip=True)
+            ratio = float(ratio_text.replace('%', '').replace(',', '')) / 100
+            if len(stock_code) == 6 and 0.001 < ratio < 0.5:
+                holdings[stock_code] = ratio
+        except Exception:
+            continue
+    
+    if len(holdings) >= 5:
+        return holdings, f"天天基金API（{date_str}）", True
+    else:
+        raise ValueError(f"持仓数据少于5只")
+except Exception:
+    return {}, "", False
+def fetch_holdings_from_xueqiu_by_code(code: str) -> tuple:
+try:
+session = requests.Session()
+headers = BROWSER_HEADERS.copy()
+headers['Referer'] = 'https://xueqiu.com/'
+session.headers.update(headers)
+session.get('https://xueqiu.com', timeout=10)
+time.sleep(1)
+
+text
+
+    market_prefix = 'SZ' if code.startswith('15') or code.startswith('16') else 'SH'
+    url = "https://stock.xueqiu.com/v5/stock/portfolio/stock.json"
+    params = {'symbol': f'{market_prefix}{code}', 'size': 10}
+    
+    r = session.get(url, params=params, timeout=10)
+    r.raise_for_status()
+    data = r.json()
+    stocks = data.get('data', {}).get('stocks', [])
+    
+    holdings = {}
+    for stock in stocks[:10]:
+        stock_code = str(stock.get('stock_id', ''))
+        stock_code = ''.join(filter(str.isdigit, stock_code))[-6:]
+        weight = stock.get('weight', 0)
+        if len(stock_code) == 6 and 0 < weight < 100:
+            holdings[stock_code] = weight / 100
+    
+    date_str = data.get('data', {}).get('stock_date', '未知')
+    if len(holdings) >= 5:
+        return holdings, f"雪球（{date_str}）", True
+    else:
+        raise ValueError(f"持仓数据少于5只")
+except Exception:
+    return {}, "", False
+def fetch_holdings_from_eastmoney_web_by_code(code: str) -> tuple:
+url = f"http://fundf10.eastmoney.com/ccmx_{code}.html"
+try:
+r = requests.get(url, headers=BROWSER_HEADERS, timeout=12)
+r.encoding = 'utf-8'
+r.raise_for_status()
+
+text
+
+    soup = BeautifulSoup(r.text, "lxml")
+    holdings = {}
+    date_str = "未知"
+    
+    date_tag = soup.find("font", class_="px12")
+    if date_tag:
+        date_match = re.search(r'(\d{4})-(\d{2})-(\d{2})', date_tag.get_text())
+        if date_match:
+            date_str = date_match.group(0)
+    
+    if date_str == "未知":
+        select = soup.find("select", id="jzrq")
+        if select and select.find_all("option"):
+            date_str = select.find_all("option")[0].get('value', '未知')
+
+    for tbl in soup.find_all("table"):
+        rows = tbl.find_all("tr")
+        if len(rows) < 2:
+            continue
+        header = rows[0].get_text()
+        if "股票代码" not in header or "占净值比例" not in header:
+            continue
+        for row in rows[1:11]:
+            cells = row.find_all("td")
+            if len(cells) < 4:
+                continue
+            try:
+                stock_code = cells[1].get_text(strip=True)
+                stock_code = ''.join(filter(str.isdigit, stock_code))
+                ratio_text = cells[3].get_text(strip=True)
+                ratio = float(ratio_text.replace('%', '').replace(',', '')) / 100
+                if len(stock_code) == 6 and 0.001 < ratio < 0.5:
+                    holdings[stock_code] = ratio
+            except Exception:
+                continue
+        if len(holdings) >= 5:
+            break
+
+    if len(holdings) >= 5:
+        return holdings, f"天天基金网（{date_str}）", True
+    else:
+        raise ValueError(f"持仓数据少于5只")
+except Exception:
+    return {}, "", False
+FALLBACK_HOLDINGS = {
+"600519": 0.1726, "000858": 0.1542, "000568": 0.1194, "600809": 0.1082,
+"002304": 0.0475, "600600": 0.0437, "603369": 0.0395, "000729": 0.0368,
+"000596": 0.0335, "600132": 0.0273,
+}
+FALLBACK_DATE = "2026-03-31（实际参考值）"
+
+def fetch_holdings() -> tuple:
+print("\n ── 获取持仓权重 " + "─" * 35)
+codes_to_try = ['512690', '161725', '159843']
+for code in codes_to_try:
+strategies = [
+fetch_holdings_from_eastmoney_api_by_code,
+fetch_holdings_from_xueqiu_by_code,
+fetch_holdings_from_eastmoney_web_by_code
+]
+for strategy in strategies:
+holdings, source, success = strategy(code)
+if success and len(holdings) >= 5:
+final_source = f"{source}" if code == '512690' else f"{source} (通过同指数关联基金 {code} 穿透获取)"
+return holdings, final_source
+time.sleep(0.5)
+
+text
+
+print(f"  [兜底] ⚠️ 所有在线检索失败，采用内置实际指数重仓配置")
+return FALLBACK_HOLDINGS, f"内置实际参考权重（{FALLBACK_DATE}）"
+============================================================
+Step 2: 东方财富板块资金流抓取
+============================================================
+def fetch_sector_flow(bk_code: str, days: int = LOOKBACK) -> pd.DataFrame:
+print(f"\n ── 获取 {SECTOR_NAME} ({bk_code}) 主力资金面 ─────────")
+url = "http://push2his.eastmoney.com/api/qt/stock/fflow/daykline/get"
+params = {
+"lmt": str(days + 50),
+"klt": "101",
+"secid": f"90.{bk_code}",
+"fields1": "f1,f2,f3,f7",
+"fields2": "f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61,f62,f63,f64,f65"
+}
+try:
+r = requests.get(url, params=params, headers=BROWSER_HEADERS, timeout=10)
+r.raise_for_status()
+data = r.json()
+klines = data.get("data", {}).get("klines", [])
+if not klines:
+raise ValueError("无有效资金流数据返回")
+
+text
+
+    records = []
+    for k in klines:
+        parts = k.split(",")
+        records.append({
+            "Date": pd.to_datetime(parts[0]),
+            "NetInflow": float(parts[1])
+        })
+    
+    df = pd.DataFrame(records)
+    df.set_index("Date", inplace=True)
+    print(f"  [Flow] ✅ 板块资金流获取成功: 包含 {len(df)} 交易日，最新主力流入 {parts[1]:>12} 元")
+    return df
+except Exception as e:
+    print(f"  [Flow] ❌ 板块资金获取失败: {e}")
+    return pd.DataFrame()
+============================================================
+Step 3: 抓取历史 K 线与盘中实时行情合并
+============================================================
+def merge_realtime_data(df: pd.DataFrame, code: str) -> pd.DataFrame:
+try:
+symbol = f"sh{code}" if code.startswith('6') else f"sz{code}"
+url = f"https://qt.gtimg.cn/q={symbol}"
+r = requests.get(url, headers=BROWSER_HEADERS, timeout=5)
+text = r.content.decode('gbk')
+
+text
+
+    match = re.search(r'"(.*)"', text)
+    if not match:
+        return df
+    
+    fields = match.group(1).split('~')
+    if len(fields) < 37:
+        return df
+        
+    live_price = float(fields[3])
+    open_price = float(fields[5])
+    high_price = float(fields[33])
+    low_price = float(fields[34])
+    volume = float(fields[36]) * 100
+    
+    date_match = re.search(r'\d{8}', fields[30])
+    date_str = date_match.group(0) if date_match else datetime.now().strftime("%Y%m%d")
+    live_date = pd.to_datetime(date_str, format="%Y%m%d")
+    
+    if live_price <= 0 or open_price <= 0:
+        return df
+        
+    if live_date in df.index:
+        df.at[live_date, 'Open'] = open_price
+        df.at[live_date, 'High'] = float(max(df.loc[live_date, 'High'], high_price))
+        df.at[live_date, 'Low'] = float(min(df.loc[live_date, 'Low'], low_price))
+        df.at[live_date, 'Close'] = live_price
+        df.at[live_date, 'Volume'] = volume
+    else:
+        new_row = pd.DataFrame([{
+            'Open': open_price, 'High': high_price, 'Low': low_price,
+            'Close': live_price, 'Volume': volume
+        }], index=[live_date])
+        df = pd.concat([df, new_row])
+        
+    df = df[~df.index.duplicated(keep='last')].sort_index()
+    return df
+except Exception:
+    return df
+def fetch_sina_stock(code: str, days: int = LOOKBACK) -> pd.DataFrame:
+symbol = f'sh{code}' if code.startswith('6') else f'sz{code}'
+url = f"http://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol={symbol}&scale=240&ma=5&datalen={days + 50}"
+
+text
+
+try:
+    r = requests.get(url, headers=BROWSER_HEADERS, timeout=10)
+    r.raise_for_status()
+    data = json.loads(r.text)
+    if not data:
+        raise ValueError("无历史K线")
+    
+    df = pd.DataFrame(data)
+    df['day'] = pd.to_datetime(df['day'])
+    df.set_index('day', inplace=True)
+    
+    for col in ['open', 'high', 'low', 'close', 'volume']:
+        df[col] = pd.to_numeric(df[col], errors='coerce')
+    
+    df.rename(columns={
+        'open': 'Open', 'high': 'High', 'low': 'Low',
+        'close': 'Close', 'volume': 'Volume'
+    }, inplace=True)
+    
+    return df[['Open', 'High', 'Low', 'Close', 'Volume']].dropna()
+except Exception as e:
+    raise ValueError(f"Sina 历史接口调用出错: {e}")
+def fetch_prices(stock_codes: list, days: int = LOOKBACK) -> dict:
+print("\n ── 获取并融合个股行情（包含盘中实时） ───────")
+data = {}
+for code in stock_codes:
+for attempt in range(3):
+try:
+df = fetch_sina_stock(code, days)
+if not df.empty:
+df = merge_realtime_data(df, code)
+data[code] = df
+print(f" [Price] ✅ {code:<6} {len(df)} 条数据 "
+f"最新时间 {df.index[-1].strftime('%m-%d')} "
+f"收盘价/现价 {df['Close'].iloc[-1]:.2f}")
+break
+except Exception as e:
+wait = random.uniform(2, 3)
+print(f" [Price] 🔄 {code} 失败（第{attempt+1}次），{wait:.0f}s后重试：{e}")
+time.sleep(wait)
+else:
+print(f" [Price] ❌ {code} 获取行情失败")
+time.sleep(random.uniform(0.3, 0.8))
+return data
+
+============================================================
+Step 4: 指标计算与加权汇总
+============================================================
+def calc_metrics(df: pd.DataFrame, periods: list) -> dict:
+if df is None or len(df) < 3:
+return None
+
+text
+
+close = float(df["Close"].iloc[-1])
+m = {"close": close, "date": df.index[-1].strftime("%Y-%m-%d")}
+
+for p in periods:
+    if len(df) > p:
+        prev = float(df["Close"].iloc[-(p + 1)])
+        m[f"r{p}d"] = (close - prev) / prev
+    else:
+        m[f"r{p}d"] = None
+
+# 计算 20 日指标
+if len(df) >= 20:
+    ma_val = float(df["Close"].iloc[-20:].mean())
+    ma_vol = float(df["Volume"].iloc[-20:].mean())
+    high20 = float(df["High"].iloc[-20:].max())
+    
+    m["ma20"] = ma_val
+    m["above_ma20"] = 1 if close > ma_val else 0
+    m["drawdown20"] = (close - high20) / high20
+    m["vol_ratio"] = float(df["Volume"].iloc[-1] / ma_vol) if ma_vol > 0 else None
+else:
+    m["ma20"] = None
+    m["above_ma20"] = None
+    m["drawdown20"] = None
+    m["vol_ratio"] = None
+
+return m
+def weighted_summary(all_m: dict, weights: dict, periods: list) -> dict:
+result = {}
+for p in periods:
+key = f"r{p}d"
+pairs = [(weights[s], all_m[s][key])
+for s in weights
+if s in all_m and all_m[s] and all_m[s].get(key) is not None]
+if pairs:
+tw = sum(w for w, _ in pairs)
+result[key] = sum(w * v for w, v in pairs) / tw
+else:
+result[key] = None
+
+text
+
+# 深度多维合并（已更正全部 unpack 元组格式）
+valid_s = [s for s in weights if s in all_m and all_m[s]]
+if valid_s:
+    total_w = sum(weights[s] for s in valid_s)
+    
+    # 加权 20日回撤
+    pairs_dd = [(weights[s], all_m[s]['drawdown20']) for s in valid_s if all_m[s].get('drawdown20') is not None]
+    result['drawdown20'] = sum(w * v for w, v in pairs_dd) / sum(w for w, v in pairs_dd) if (pairs_dd and sum(w for w, v in pairs_dd) > 0) else None
+    
+    # 加权收盘价与加权MA20
+    pairs_close = [(weights[s], all_m[s]['close']) for s in valid_s]
+    pairs_ma20 = [(weights[s], all_m[s]['ma20']) for s in valid_s if all_m[s].get('ma20') is not None]
+    
+    w_close = sum(w * v for w, v in pairs_close) / sum(w for w, v in pairs_close) if (pairs_close and sum(w for w, v in pairs_close) > 0) else None
+    w_ma20 = sum(w * v for w, v in pairs_ma20) / sum(w for w, v in pairs_ma20) if (pairs_ma20 and sum(w for w, v in pairs_ma20) > 0) else None
+    
+    result['weighted_close'] = w_close
+    result['weighted_ma20'] = w_ma20
+    
+    # 20日加权乖离率 (Weighted BIAS20)
+    result['weighted_bias20'] = ((w_close - w_ma20) / w_ma20 * 100) if (w_close and w_ma20 and w_ma20 != 0) else None
+    
+    # 加权主力成交量比 (量比支持度)
+    pairs_vol = [(weights[s], all_m[s]['vol_ratio']) for s in valid_s if all_m[s].get('vol_ratio') is not None]
+    result['weighted_vol_ratio'] = sum(w * v for w, v in pairs_vol) / sum(w for w, v in pairs_vol) if (pairs_vol and sum(w for w, v in pairs_vol) > 0) else None
+    
+    # 板块多头宽度 (站上MA20个股比例)
+    valid_above = [all_m[s]['above_ma20'] for s in valid_s if all_m[s].get('above_ma20') is not None]
+    result['sector_breadth'] = sum(valid_above) / len(valid_above) if valid_above else None
+else:
+    result['weighted_close'] = None
+    result['weighted_ma20'] = None
+    result['weighted_bias20'] = None
+    result['weighted_vol_ratio'] = None
+    result['sector_breadth'] = None
+    result['drawdown20'] = None
+    
+return result
+def format_flow(val: float) -> str:
+if val is None or pd.isna(val):
+return "N/A"
+abs_val = abs(val)
+sign = "+" if val >= 0 else "-"
+if abs_val >= 1e8:
+return f"{sign}{abs_val / 1e8:.2f} 亿元"
+elif abs_val >= 1e4:
+return f"{sign}{abs_val / 1e4:.0f} 万元"
+else:
+return f"{sign}{abs_val:.0f} 元"
+
+def interpret_relation(r: float, f: float) -> str:
+if r is None or f is None:
+return "N/A"
+if r > 0 and f > 0:
+return "🟢 强劲（价涨量增，主力增仓）"
+elif r <= 0 and f > 0:
+return "💎 蓄势（价调量增，底背离吸筹）"
+elif r > 0 and f <= 0:
+return "⚠️ 诱多（价涨量缩，顶背离拉高）"
+else:
+return "❄️ 弱势（价跌量缩，主力持续流出）"
+
+============================================================
+Step 5: 综合多维健康度评分 (v5.1 大白话打分体系)
+============================================================
+def health_score(wt: dict, periods_inflows: dict) -> tuple:
+score, detail = 0.0, []
+
+text
+
+# 维度一：多周期价格-资金共振 (60%)
+period_weights = {3: 0.08, 5: 0.10, 8: 0.12, 12: 0.12, 16: 0.10, 20: 0.08}
+detail.append("  [维度一：价格-资金共振度（钱和价格方向一致吗）] (总分60%)")
+for p, pw in period_weights.items():
+    r = wt.get(f"r{p}d")
+    f = periods_inflows.get(p)
+    if r is None or f is None:
+        detail.append(f"    - 加权{p:2d}日共振 : 数据不全 (0分)")
+        continue
+        
+    if r > 0 and f > 0:
+        score += pw
+        mark = "✅ (量价齐升)"
+    elif r <= 0 and f > 0:
+        score += pw * 0.8
+        mark = "💎 (黄金坑吸筹)"
+    elif r > 0 and f <= 0:
+        score += pw * 0.3
+        mark = "⚠️ (顶背离诱多)"
+    else:
+        mark = "❌ (持续失血)"
+    detail.append(f"    - 加权{p:2d}日共振 : 涨幅 {r:+.2%}, 板块主力流入 {format_flow(f)}  {mark}")
+
+# 维度二：板块多头宽度 (20%)
+breadth = wt.get("sector_breadth")
+detail.append("\n  [维度二：板块宽度/普涨率（大家都在跟着涨吗）] (总分20%)")
+if breadth is not None:
+    if breadth >= 0.70:
+        score += 0.20
+        mark = "✅ 普涨强势（跟风小弟多，行情稳健）"
+    elif breadth >= 0.40:
+        score += 0.10
+        mark = "🟡 结构分化（只有少数大哥在撑着）"
+    else:
+        mark = "❌ 极度分化（只有大哥唱戏，防假高掩护出货）"
+    detail.append(f"    - 核心重仓站上MA20比例 : {breadth:.1%}  {mark}")
+else:
+    detail.append("    - 宽度数据获取异常")
+
+# 维度三：空间安全度 / 20日乖离率 (15%)
+bias = wt.get("weighted_bias20")
+detail.append("\n  [维度三：空间安全安全阈值（现在买便宜不便宜）] (总分15%)")
+if bias is not None:
+    if bias <= 3.0:
+        score += 0.15
+        mark = "✅ 空间安全（位置低、性价比高，没追高）"
+    elif bias <= 5.0:
+        score += 0.075
+        mark = "🟡 轻度超买（位置开始偏高，不宜猛追）"
+    else:
+        mark = "🚨 严重超买（偏离过远，追在山顶风险极大）"
+    detail.append(f"    - 加权20日乖离率 : {bias:+.2f}%  {mark}")
+else:
+    detail.append("    - 空间数据异常")
+
+# 维度四：成交量支持度 / 加权量比 (5%)
+vol_ratio = wt.get("weighted_vol_ratio")
+detail.append("\n  [维度四：主力爆发力度（主力出真金白银了吗）] (总分5%)")
+if vol_ratio is not None:
+    if vol_ratio >= 1.2:
+        score += 0.05
+        mark = "✅ 放量抢筹（大资金真枪实弹）"
+    elif vol_ratio >= 0.8:
+        score += 0.03
+        mark = "🟡 成交正常"
+    else:
+        mark = "❌ 严重缩量（无人问津，谨防假突破）"
+    detail.append(f"    - 核心持仓主力成交量比 : {vol_ratio:.2f}x  {mark}")
+else:
+    detail.append("    - 量比数据异常")
+
+return round(score, 3), detail
+def get_signal(score: float, bias: float) -> str:
+if bias is not None and bias > 5.0:
+return "⚠️ 超买风险 — 尽管主力流入，但位置偏离过高（买贵了），防高位被砸，切记追涨"
+for threshold, msg in SIGNAL_MAP:
+if score >= threshold:
+return msg
+return SIGNAL_MAP[-1][1]
+
+============================================================
+Step 6: 生成最终报表
+============================================================
+def build_report(run_time, holdings, source, all_m,
+wt_result, periods_inflows, score, detail, signal, price_date="") -> str:
+SEP = "=" * 76
+lines = [
+SEP,
+f" 512690 白酒ETF 价格-资金-空间共振分析报告 | {run_time}",
+f" 最新行情：{price_date} | 重仓配置数据源：{source}",
+f" 资金监控：东财 {SECTOR_NAME} ({SECTOR_CODE}) 历史主力流向 (融合盘中实时)",
+SEP,
+(f" {'代码':<8} {'权重':>5} "
+f"{'3日':>8} {'5日':>8} {'8日':>8} {'12日':>8} {'16日':>8} {'20日':>8} "
+f"{'MA20':>4} {'回撤20日':>9}"),
+" " + "-" * 72,
+]
+
+text
+
+for code, w in sorted(holdings.items(), key=lambda x: -x[1]):
+    m = all_m.get(code)
+    if not m:
+        lines.append(f"  {code:<8} {w:>4.1%}  {'-- 行情数据异常 --':^60}")
+        continue
+
+    def fr(k):
+        v = m.get(k)
+        return f"{v:+.2%}" if v is not None else "  N/A"
+
+    ma_str = "上" if m.get("above_ma20") == 1 else ("下" if m.get("above_ma20") == 0 else "?")
+    dd_str = f"{m['drawdown20']:+.2%}" if m.get("drawdown20") is not None else "N/A"
+
+    lines.append(
+        f"  {code:<8} {w:>4.1%}  "
+        f"{fr('r3d'):>8} {fr('r5d'):>8} {fr('r8d'):>8} "
+        f"{fr('r12d'):>8} {fr('r16d'):>8} {fr('r20d'):>8}  "
+        f"{ma_str:>4}  {dd_str:>9}"
+    )
+
+# 核心价格-资金流共振表
+lines += ["", "  ── 核心多周期共振判读：加权价格动能 vs 行业板块主力资金 ─────────"]
+lines.append(f"  {'周期':<6} {'加权价格涨跌':<12} {'板块主力净流入':<16} {'主力共振关系判读'}")
+lines.append("  " + "-" * 72)
+for p in PERIODS:
+    r = wt_result.get(f"r{p}d")
+    f = periods_inflows.get(p)
+    r_str = f"{r:+.2%}" if r is not None else "N/A"
+    f_str = format_flow(f)
+    interpretation = interpret_relation(r, f)
+    lines.append(f"  {p:2d}日    {r_str:<12} {f_str:<16} {interpretation}")
+
+# 三维空间过滤白话指标
+lines += ["", "  ── 三维过滤决策：宽度、空间（乖离）、主力买盘 ────────────────"]
+breadth = wt_result.get("sector_breadth")
+bias = wt_result.get("weighted_bias20")
+vol_ratio = wt_result.get("weighted_vol_ratio")
+
+# 将高频量化指标，翻译成极简白话字符串
+breadth_str = f"{breadth:.1%}" if breadth is not None else "N/A"
+bias_str = f"{bias:+.2f}%" if bias is not None else "N/A"
+vol_ratio_str = f"{vol_ratio:.2f}x" if vol_ratio is not None else "N/A"
+
+br_interpret = "🟢 板块普涨（大家都在涨，跟风小弟多，行情安全）" if breadth and breadth >= 0.70 else ("🟡 板块分化（只有少数大哥在撑着，小弟不跟）" if breadth and breadth >= 0.40 else "🚨 极度分化（只有大哥唱戏，小弟都在挨揍，小心假反弹）")
+bias_interpret = "🟢 空间安全（现在价格便宜，买得划算，肯定没追高）" if bias and bias <= 3.0 else ("🟡 轻度超买（位置有点偏高，追涨性价比变低）" if bias and bias <= 5.0 else "🚨 严重超买（价格飞得太高，偏离过远，防高空砸落）")
+vol_interpret = "🟢 放量上攻（大主力在真枪实弹抢筹，买盘有力）" if vol_ratio and vol_ratio >= 1.2 else ("🟡 量能平稳（成交正常配合，走势温和）" if vol_ratio and vol_ratio >= 0.8 else "🚨 缩量空涨（根本没人出钱买，只是没人砸而空飘，防假突破）")
+
+lines.append(f"    小弟多不上 [成分股都在跟着涨吗]: {breadth_str:<10} -> {br_interpret}")
+lines.append(f"    现在便宜吗 [价格偏离安全线高低]: {bias_str:<10} -> {bias_interpret}")
+lines.append(f"    主力出钱吗 [主力今天出真金白银了吗]: {vol_ratio_str:<10} -> {vol_interpret}")
+
+# 深度综合评分明细
+lines += ["", "  ── 终极多维共振打分明细 ──────────────────────────────────"]
+lines += [f"  {d}" for d in detail]
+
+# 结论
+lines += [
+    "",
+    f"  综合健康度评分 : {score:.1%}",
+    f"  战术交易指令   : {signal}",
+    SEP, "",
+]
+
+return "\n".join(lines)
+============================================================
+主入口
+============================================================
+def main():
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+run_time = datetime.now().strftime("%Y-%m-%d %H:%M")
+
+text
+
+print("=" * 60)
+print(f"  512690 白酒ETF 价格-资金-空间共振分析仪 v5.1 | {run_time}")
+print("=" * 60)
+
+# 1. 抓持仓权重
+holdings, weight_source = fetch_holdings()
+print(f"  抓取核心重仓股共： {len(holdings)} 只\n")
+
+# 2. 抓行情并进行实时融合
+price_data = fetch_prices(list(holdings.keys()))
+
+# 3. 抓东财板块主力流向
+flow_data = fetch_sector_flow(SECTOR_CODE)
+
+# 4. 运算个股多维指标
+all_metrics = {s: calc_metrics(price_data.get(s), PERIODS) for s in holdings}
+
+# 5. 加权与空间、宽度深度统计
+wt_result = weighted_summary(all_metrics, holdings, PERIODS)
+
+# 6. 计算板块主力资金周期累计
+periods_inflows = {}
+if not flow_data.empty:
+    for p in PERIODS:
+        if len(flow_data) >= p:
+            periods_inflows[p] = float(flow_data['NetInflow'].iloc[-p:].sum())
+        else:
+            periods_inflows[p] = None
+else:
+    for p in PERIODS:
+        periods_inflows[p] = None
+
+# 7. 打分系统
+score, detail = health_score(wt_result, periods_inflows)
+signal = get_signal(score, wt_result.get("weighted_bias20"))
+
+# 8. 时间判读
+price_date = ""
+for code in holdings:
+    if code in price_data and not price_data[code].empty:
+        last_dt = price_data[code].index[-1]
+        if last_dt.date() == datetime.now().date():
+            price_date = last_dt.strftime("%Y-%m-%d（盘中实时）")
+        else:
+            price_date = last_dt.strftime("%Y-%m-%d（上一交易日）")
+        break
+
+# 9. 生成报表
+report = build_report(
+    run_time, holdings, weight_source, all_metrics,
+    wt_result, periods_inflows, score, detail, signal, price_date,
+)
+
+# 覆盖式写入
+with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    f.write(report)
+
+print("\n" + report)
+print(f"  ✅ 运算结束，资金-价格-空间三维共振报表已覆盖写入：\n  {OUTPUT_FILE.resolve()}")
+if name == "main":
+try:
+main()
+except Exception:
+traceback.print_exc()
+
+============================================================================
+512690 白酒ETF 价格-资金-空间共振分析报告 | 2026-06-05 15:00
+最新行情：2026-06-05（盘中实时） | 重仓配置数据源：内置实际参考权重（2026-03-31（实际参考值））
+资金监控：东财 酿酒行业 (BK0477) 历史主力流向 (融合盘中实时)
+代码 权重 3日 5日 8日 12日 16日 20日 MA20 回撤20日
+600519 17.3% -2.63% -4.01% -0.04% -3.20% -5.16% -7.29% 下 -7.29%
+000858 15.4% -1.97% -4.49% -2.74% -5.14% -8.89% -11.99% 下 -12.15%
+000568 11.9% -1.83% -4.57% -4.30% -5.77% -7.92% -10.92% 下 -11.64%
+600809 10.8% -2.92% -4.89% -3.67% -7.17% -8.97% -13.82% 下 -14.54%
+002304 4.8% -3.11% -4.60% -2.01% -3.46% -8.17% -10.35% 下 -10.89%
+600600 4.4% -2.15% -2.36% -1.21% -3.41% -3.94% -4.42% 下 -5.63%
+603369 4.0% -11.17% -14.42% -8.21% -8.57% -9.65% -7.82% 下 -18.02%
+000729 3.7% -5.40% -6.73% -2.14% -6.22% -4.49% -7.82% 下 -8.94%
+000596 3.4% -5.19% -5.17% -4.88% -8.17% -12.69% -17.06% 下 -18.00%
+600132 2.7% -4.33% -4.37% -0.55% -4.94% -4.40% -5.89% 下 -6.61%
+
+── 核心多周期共振判读：加权价格动能 vs 行业板块主力资金 ─────────
+周期 加权价格涨跌 板块主力净流入 主力共振关系判读
+3日 -3.15% -39.67 亿元 ❄️ 弱势（价跌量缩，主力持续流出）
+5日 -4.97% -55.64 亿元 ❄️ 弱势（价跌量缩，主力持续流出）
+8日 -2.64% -29.30 亿元 ❄️ 弱势（价跌量缩，主力持续流出）
+12日 -5.24% -67.70 亿元 ❄️ 弱势（价跌量缩，主力持续流出）
+16日 -7.45% -122.40 亿元 ❄️ 弱势（价跌量缩，主力持续流出）
+20日 -10.12% -199.43 亿元 ❄️ 弱势（价跌量缩，主力持续流出）
+
+── 三维过滤决策：宽度、空间（乖离）、主力买盘 ────────────────
+小弟多不上 [成分股都在跟着涨吗]: 0.0% -> 🚨 极度分化（只有大哥唱戏，小弟都在挨揍，小心假反弹）
+现在便宜吗 [价格偏离安全线高低]: -3.22% -> 🟢 空间安全（现在价格便宜，买得划算，肯定没追高）
+主力出钱吗 [主力今天出真金白银了吗]: 0.72x -> 🚨 缩量空涨（根本没人出钱买，只是没人砸而空飘，防假突破）
+
+── 终极多维共振打分明细 ──────────────────────────────────
+[维度一：价格-资金共振度（钱和价格方向一致吗）] (总分60%)
+- 加权 3日共振 : 涨幅 -3.15%, 板块主力流入 -39.67 亿元 ❌ (持续失血)
+- 加权 5日共振 : 涨幅 -4.97%, 板块主力流入 -55.64 亿元 ❌ (持续失血)
+- 加权 8日共振 : 涨幅 -2.64%, 板块主力流入 -29.30 亿元 ❌ (持续失血)
+- 加权12日共振 : 涨幅 -5.24%, 板块主力流入 -67.70 亿元 ❌ (持续失血)
+- 加权16日共振 : 涨幅 -7.45%, 板块主力流入 -122.40 亿元 ❌ (持续失血)
+- 加权20日共振 : 涨幅 -10.12%, 板块主力流入 -199.43 亿元 ❌ (持续失血)
+
+[维度二：板块宽度/普涨率（大家都在跟着涨吗）] (总分20%)
+- 核心重仓站上MA20比例 : 0.0% ❌ 极度分化（只有大哥唱戏，防假高掩护出货）
+
+[维度三：空间安全安全阈值（现在买便宜不便宜）] (总分15%)
+- 加权20日乖离率 : -3.22% ✅ 空间安全（位置低、性价比高，没追高）
+
+[维度四：主力爆发力度（主力出真金白银了吗）] (总分5%)
+- 核心持仓主力成交量比 : 0.72x ❌ 严重缩量（无人问津，谨防假突破）
+
+综合健康度评分 : 15.0%
+战术交易指令 : 🔴 危险 — 考虑减仓 30~50%
+用这个长期跟踪白酒如何？

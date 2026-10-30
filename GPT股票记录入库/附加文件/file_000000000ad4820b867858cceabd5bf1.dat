@@ -1,0 +1,798 @@
+"""
+A股 15分钟K线成交量异动分析系统
+- 支持多股票, 在 STOCK_LIST 中自行增删
+- 每只股票独立文件夹, 独立报告
+- 获取最近30个交易日的15分钟K线(每天16根)
+"""
+
+import os
+import sys
+import datetime
+import traceback
+import subprocess
+from collections import Counter
+
+# ============================================================
+# 基础配置
+# ============================================================
+DESKTOP    = r"C:\Users\simon\Desktop"
+TRADE_DAYS = 30
+
+# ============================================================
+# >>> 股票列表 (在这里自行增删) <<<
+# 格式: {"code": 股票代码, "name": 中文名, "market": 市场(1=沪 0=深)}
+# ============================================================
+STOCK_LIST = [
+    {"code": "600398", "name": "海澜之家", "market": 1},
+    {"code": "000858", "name": "五粮液",   "market": 0},
+    # --- 在下方继续添加 ---
+    # {"code": "600519", "name": "贵州茅台", "market": 1},
+    # {"code": "000001", "name": "平安银行", "market": 0},
+    # {"code": "002594", "name": "比亚迪",   "market": 0},
+    # {"code": "601318", "name": "中国平安", "market": 1},
+]
+# ============================================================
+
+CFG = {
+    "bar_surge_ratio"        : 2.0,
+    "bar_extreme_ratio"      : 4.0,
+    "bar_shrink_ratio"       : 0.4,
+    "open_surge_ratio"       : 1.8,
+    "open_extreme_ratio"     : 3.0,
+    "open_shrink_ratio"      : 0.5,
+    "day_surge_ratio"        : 1.6,
+    "day_extreme_ratio"      : 2.5,
+    "day_shrink_ratio"       : 0.6,
+    "consecutive_surge_days" : 3,
+    "pct_change_alert"       : 50,
+    "tail_surge_ratio"       : 2.0,
+    "price_vol_diverge_pct"  : 1.0,
+}
+
+SHORT_LABELS = [
+    "09:45","10:00","10:15","10:30","10:45","11:00","11:15","11:30",
+    "13:15","13:30","13:45","14:00","14:15","14:30","14:45","15:00",
+]
+SLOT_DESCS = [
+    "09:30-09:45 开盘1","09:45-10:00 开盘2",
+    "10:00-10:15","10:15-10:30","10:30-10:45","10:45-11:00",
+    "11:00-11:15","11:15-11:30 午前收",
+    "13:00-13:15 午后开1","13:15-13:30 午后开2",
+    "13:30-13:45","13:45-14:00","14:00-14:15","14:15-14:30",
+    "14:30-14:45 尾盘1","14:45-15:00 尾盘2",
+]
+SLOT_MAP = {l:i for i,l in enumerate(SHORT_LABELS)}
+S_O1=0; S_O2=1; S_T1=14; S_T2=15
+
+
+# ============================================================
+# 工具
+# ============================================================
+_log_file = None
+
+def log(msg):
+    ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    line = f"[{ts}] {msg}"
+    print(line)
+    if _log_file:
+        with open(_log_file, "a", encoding="utf-8") as f:
+            f.write(line + "\n")
+
+def ensure_packages():
+    for imp, pip in {"akshare":"akshare","pandas":"pandas","requests":"requests"}.items():
+        try: __import__(imp)
+        except ImportError:
+            log(f"安装: {pip}")
+            subprocess.check_call([sys.executable,"-m","pip","install",pip,"-q"])
+
+def _slot(t): return SLOT_MAP.get(t, -1)
+
+def _clear_proxy():
+    for k in ["HTTP_PROXY","HTTPS_PROXY","http_proxy","https_proxy","ALL_PROXY","all_proxy"]:
+        os.environ.pop(k, None)
+
+
+# ============================================================
+# 数据源
+# ============================================================
+def fetch_akshare(code, start):
+    log(f"  [{code}] 尝试 akshare ...")
+    _clear_proxy()
+    try:
+        import akshare as ak
+        df = ak.stock_zh_a_hist_min_em(
+            symbol=code, period="15",
+            start_date=start+" 09:30:00",
+            end_date=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            adjust="qfq")
+        if df is None or df.empty:
+            log(f"  [{code}] akshare 空"); return None
+        log(f"  [{code}] akshare OK, {len(df)} 条")
+        df = df.rename(columns={"时间":"datetime","开盘":"open","收盘":"close",
+                                "最高":"high","最低":"low","成交量":"volume","成交额":"amount"})
+        need = ["datetime","open","close","high","low","volume","amount"]
+        for c in need:
+            if c not in df.columns: df[c] = None
+        return df[need]
+    except Exception as e:
+        log(f"  [{code}] akshare 失败: {e}"); return None
+
+
+def fetch_eastmoney(code, market, start):
+    log(f"  [{code}] 尝试 东方财富API ...")
+    _clear_proxy()
+    import requests as R
+    try:
+        s = R.Session(); s.trust_env = False
+        r = s.get("https://push2his.eastmoney.com/api/qt/stock/kline/get",
+                  params={"secid":f"{market}.{code}",
+                          "fields1":"f1,f2,f3,f4,f5,f6",
+                          "fields2":"f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61",
+                          "klt":"15","fqt":"1",
+                          "beg":start.replace("-",""),"end":"20500101","lmt":"5000",
+                          "ut":"fa5fd1943c7b386f172d6893dbfba10b"},
+                  headers={"User-Agent":"Mozilla/5.0","Referer":"https://quote.eastmoney.com/"},
+                  timeout=20)
+        r.raise_for_status()
+        kl = r.json().get("data",{}).get("klines",[])
+        if not kl: log(f"  [{code}] 东方财富 空"); return None
+        log(f"  [{code}] 东方财富 OK, {len(kl)} 条")
+        import pandas as pd
+        rows = []
+        for line in kl:
+            p = line.split(",")
+            if len(p)>=7:
+                rows.append({"datetime":p[0],"open":float(p[1]),"close":float(p[2]),
+                              "high":float(p[3]),"low":float(p[4]),
+                              "volume":float(p[5]),"amount":float(p[6])})
+        return pd.DataFrame(rows)
+    except Exception as e:
+        log(f"  [{code}] 东方财富 失败: {e}"); return None
+
+
+def fetch_baostock(code, market, start):
+    log(f"  [{code}] 尝试 baostock ...")
+    try:
+        import baostock as bs, pandas as pd
+        bs.login()
+        prefix = "sh" if market == 1 else "sz"
+        rs = bs.query_history_k_data_plus(f"{prefix}.{code}",
+            "date,time,open,high,low,close,volume,amount",
+            start_date=start, end_date=datetime.datetime.now().strftime("%Y-%m-%d"),
+            frequency="15", adjustflag="2")
+        rows = []
+        while rs.error_code=="0" and rs.next(): rows.append(rs.get_row_data())
+        bs.logout()
+        if not rows: log(f"  [{code}] baostock 空"); return None
+        df = pd.DataFrame(rows, columns=rs.fields)
+        log(f"  [{code}] baostock OK, {len(df)} 条")
+        df["datetime"] = df["date"]+" "+df["time"].apply(
+            lambda t: f"{str(t).zfill(14)[8:10]}:{str(t).zfill(14)[10:12]}")
+        for c in ["open","high","low","close","volume","amount"]:
+            df[c] = pd.to_numeric(df[c], errors="coerce")
+        return df[["datetime","open","close","high","low","volume","amount"]]
+    except Exception as e:
+        log(f"  [{code}] baostock 失败: {e}"); return None
+
+
+# ============================================================
+# 清洗
+# ============================================================
+def clean_df(df):
+    import pandas as pd
+    df = df.copy()
+    df["datetime"] = pd.to_datetime(df["datetime"], errors="coerce")
+    df = df.dropna(subset=["datetime"]).sort_values("datetime").reset_index(drop=True)
+    for c in ["open","close","high","low","volume","amount"]:
+        df[c] = pd.to_numeric(df[c], errors="coerce")
+    df["date"]     = df["datetime"].dt.date
+    df["time_str"] = df["datetime"].dt.strftime("%H:%M")
+    df["slot_idx"] = df["time_str"].map(_slot)
+    return df
+
+def keep_n_days(df, n=30):
+    dates = sorted(df["date"].unique())
+    if len(dates)>n: dates = dates[-n:]
+    df = df[df["date"].isin(dates)].reset_index(drop=True)
+    log(f"  保留 {len(dates)} 个交易日 ({dates[0]} ~ {dates[-1]})")
+    return df
+
+def build_day_summary(df):
+    import pandas as pd
+    recs = []
+    for d in sorted(df["date"].unique()):
+        dd = df[df["date"]==d].sort_values("slot_idx")
+        bv = dd.set_index("slot_idx")["volume"]
+        ba = dd.set_index("slot_idx")["amount"]
+        r = {"date":str(d)}
+        for s in range(16):
+            r[f"vol_{SHORT_LABELS[s]}"] = int(bv.get(s,0) or 0)
+            r[f"amt_{SHORT_LABELS[s]}"] = round(float(ba.get(s,0) or 0)/10000,1)
+        r["day_vol"]     = int(dd["volume"].sum())
+        r["day_amt_wan"] = round(float(dd["amount"].sum())/10000,1)
+        o = dd.sort_values("slot_idx")
+        r["open_price"]  = float(o["open"].iloc[0]) if len(o)>0 else None
+        r["close_price"] = float(o["close"].iloc[-1]) if len(o)>0 else None
+        recs.append(r)
+    return pd.DataFrame(recs)
+
+def _open30(bv):
+    return float(bv.get(S_O1,0) or 0) + float(bv.get(S_O2,0) or 0)
+def _tail30(bv):
+    return float(bv.get(S_T1,0) or 0) + float(bv.get(S_T2,0) or 0)
+
+
+# ============================================================
+# 分析
+# ============================================================
+def analyze(df, stock_name, stock_code):
+    import pandas as pd, numpy as np
+    dates  = sorted(df["date"].unique())
+    alerts = []
+    report = []
+
+    slot_means = {}
+    for s in range(16):
+        sub = df[df["slot_idx"]==s]["volume"]
+        slot_means[s] = float(sub.mean()) if len(sub)>0 else 0
+
+    day_totals = df.groupby("date")["volume"].sum()
+    day_amt    = df.groupby("date")["amount"].sum()
+    day_mean   = float(day_totals.mean())
+    day_std    = float(day_totals.std())
+
+    open_30 = {}; tail_30 = {}
+    for d in dates:
+        bv = df[df["date"]==d].set_index("slot_idx")["volume"]
+        open_30[d] = _open30(bv); tail_30[d] = _tail30(bv)
+    open_mean = float(np.mean(list(open_30.values()))) if open_30 else 0
+    open_std  = float(np.std(list(open_30.values())))  if open_30 else 0
+    tail_mean = float(np.mean(list(tail_30.values()))) if tail_30 else 0
+
+    report.append(f"{stock_name}({stock_code}) 15分钟K线 Day-by-Day 分析报告")
+    report.append(f"生成时间: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    report.append(f"区间: {dates[0]} ~ {dates[-1]}  共 {len(dates)} 个交易日  每日16根")
+    report.append(f"30日均量: {day_mean:,.0f}手  开盘30min均量: {open_mean:,.0f}手  尾盘30min均量: {tail_mean:,.0f}手")
+    report.append("")
+
+    # 上午表
+    report.append("[上午 9:30-11:30]")
+    h = f"{'日期':>12s} | "+" | ".join(f"{l:>7s}" for l in SHORT_LABELS[:8])+f" | {'开30m':>8s} | {'日/均':>6s} | 信号"
+    report.append(h); report.append("-"*len(h))
+
+    consec = 0; prev_bv = None
+
+    for d in dates:
+        dd = df[df["date"]==d].sort_values("slot_idx")
+        bv = dd.set_index("slot_idx")["volume"]
+        bc = dd.set_index("slot_idx")["close"]
+        bo = dd.set_index("slot_idx")["open"]
+        dv = float(day_totals.get(d,0)); dr = dv/day_mean if day_mean>0 else 1
+        o30 = open_30[d]; o_r = o30/open_mean if open_mean>0 else 1
+        sigs = []
+
+        cols = []
+        for s in range(8):
+            v = bv.get(s,None)
+            if v is None or (hasattr(v,'__float__') and np.isnan(float(v))):
+                cols.append(f"{'---':>7s}"); continue
+            v = float(v); base = slot_means.get(s,0); tag=""
+            if base>0:
+                r=v/base
+                if r>=CFG["bar_extreme_ratio"]: tag="*"
+                elif r>=CFG["bar_surge_ratio"]: tag="+"
+                elif r<=CFG["bar_shrink_ratio"]: tag="-"
+            cols.append(f"{int(v):>6,d}{tag}")
+
+        if prev_bv is not None:
+            for s in range(16):
+                c=bv.get(s,None); p_=prev_bv.get(s,None)
+                if c is None or p_ is None or float(p_)==0: continue
+                pct=(float(c)-float(p_))/float(p_)*100
+                if abs(pct)>=CFG["pct_change_alert"]:
+                    sigs.append(f"{SHORT_LABELS[s]}{'涨' if pct>0 else '跌'}{abs(pct):.0f}%")
+                    alerts.append({"date":str(d),"type":"跳变","slot":SHORT_LABELS[s],
+                        "detail":f"同槽较前日 {pct:+.1f}% ({int(p_):,}->{int(c):,}手)",
+                        "severity":"极端" if abs(pct)>=200 else("高" if abs(pct)>=100 else "中")})
+
+        if o_r>=CFG["open_extreme_ratio"]:
+            sigs.append(f"开盘极端放量x{o_r:.1f}"); consec+=1
+            alerts.append({"date":str(d),"type":"开盘极端放量","slot":"09:30",
+                "detail":f"开盘30min量 {o30:,.0f}手, 均量的 {o_r:.2f}倍","severity":"极端"})
+        elif o_r>=CFG["open_surge_ratio"]:
+            sigs.append(f"开盘放量x{o_r:.1f}"); consec+=1
+            alerts.append({"date":str(d),"type":"开盘放量","slot":"09:30",
+                "detail":f"开盘30min量 {o30:,.0f}手, 均量的 {o_r:.2f}倍","severity":"中"})
+        elif o_r<=CFG["open_shrink_ratio"]:
+            sigs.append(f"开盘缩量x{o_r:.1f}"); consec=0
+            alerts.append({"date":str(d),"type":"开盘缩量","slot":"09:30",
+                "detail":f"开盘30min量 {o30:,.0f}手, 均量的 {o_r:.2f}倍","severity":"中"})
+        else:
+            if o_r<1: consec=0
+
+        if consec>=CFG["consecutive_surge_days"]:
+            sigs.append(f"连续{consec}日开盘放量")
+            alerts.append({"date":str(d),"type":"持续放量","slot":"开盘",
+                "detail":f"连续 {consec} 日开盘30min量超均值","severity":"高"})
+
+        if dr>=CFG["day_extreme_ratio"]:
+            sigs.append(f"日极端放量x{dr:.1f}")
+            alerts.append({"date":str(d),"type":"日极端放量","slot":"全天",
+                "detail":f"日总量 {dv:,.0f}手, 30日均的 {dr:.2f}倍","severity":"极端"})
+        elif dr>=CFG["day_surge_ratio"]:
+            sigs.append(f"日放量x{dr:.1f}")
+            alerts.append({"date":str(d),"type":"日放量","slot":"全天",
+                "detail":f"日总量 {dv:,.0f}手, 30日均的 {dr:.2f}倍","severity":"中"})
+        elif dr<=CFG["day_shrink_ratio"]:
+            sigs.append(f"日缩量x{dr:.1f}")
+            alerts.append({"date":str(d),"type":"日缩量","slot":"全天",
+                "detail":f"日总量 {dv:,.0f}手, 30日均的 {dr:.2f}倍","severity":"低"})
+
+        t30=tail_30[d]
+        if tail_mean>0 and t30/tail_mean>=CFG["tail_surge_ratio"]:
+            rt=t30/tail_mean; sigs.append(f"尾盘放量x{rt:.1f}")
+            alerts.append({"date":str(d),"type":"尾盘放量","slot":"14:30",
+                "detail":f"尾盘30min量 {t30:,.0f}手, 均量的 {rt:.2f}倍",
+                "severity":"中" if rt<3 else "高"})
+
+        if len(bo)>0 and len(bc)>0:
+            po=float(bo.iloc[0]); pc=float(bc.iloc[-1])
+            pchg=(pc-po)/po*100 if po>0 else 0
+            if abs(pchg)>=CFG["price_vol_diverge_pct"]:
+                if pchg>0 and dr<0.9:
+                    sigs.append("量价背离(涨缩)")
+                    alerts.append({"date":str(d),"type":"量价背离","slot":"全天",
+                        "detail":f"价涨{pchg:.1f}%但量低于均值(比={dr:.2f})","severity":"中"})
+                elif pchg<0 and dr>1.1:
+                    sigs.append("量价背离(跌涨)")
+                    alerts.append({"date":str(d),"type":"量价背离","slot":"全天",
+                        "detail":f"价跌{pchg:.1f}%但量高于均值(比={dr:.2f})","severity":"高"})
+
+        v1=float(bv.get(S_O1,0) or 0); b1=slot_means.get(S_O1,0)
+        if b1>0 and v1/b1>=CFG["bar_extreme_ratio"]:
+            sigs.append("首根15min极端放量")
+            alerts.append({"date":str(d),"type":"首根极端放量","slot":"09:45",
+                "detail":f"9:30-9:45量 {v1:,.0f}手, 槽均的 {v1/b1:.2f}倍","severity":"极端"})
+
+        sig_str=" | ".join(sigs) if sigs else ""
+        row=f"{str(d):>12s} | "+" | ".join(cols)+f" | {int(o30):>8,d} | {dr:>5.2f}x | {sig_str}"
+        report.append(row)
+        prev_bv=bv
+
+    report.append("")
+
+    # 下午表
+    report.append("[下午 13:00-15:00]")
+    h2=f"{'日期':>12s} | "+" | ".join(f"{l:>7s}" for l in SHORT_LABELS[8:])+f" | {'尾30m':>8s} | {'日/均':>6s}"
+    report.append(h2); report.append("-"*len(h2))
+    for d in dates:
+        dd=df[df["date"]==d].sort_values("slot_idx")
+        bv=dd.set_index("slot_idx")["volume"]
+        dv=float(day_totals.get(d,0)); dr=dv/day_mean if day_mean>0 else 1
+        t30=tail_30[d]; cols=[]
+        for s in range(8,16):
+            v=bv.get(s,None)
+            if v is None or (hasattr(v,'__float__') and np.isnan(float(v))):
+                cols.append(f"{'---':>7s}"); continue
+            v=float(v); base=slot_means.get(s,0); tag=""
+            if base>0:
+                r=v/base
+                if r>=CFG["bar_extreme_ratio"]: tag="*"
+                elif r>=CFG["bar_surge_ratio"]: tag="+"
+                elif r<=CFG["bar_shrink_ratio"]: tag="-"
+            cols.append(f"{int(v):>6,d}{tag}")
+        row=f"{str(d):>12s} | "+" | ".join(cols)+f" | {int(t30):>8,d} | {dr:>5.2f}x"
+        report.append(row)
+    report.append("")
+    report.append("标记: *=极端>=4倍  +=放量>=2倍  -=缩量<=0.4倍  量=手")
+
+    # 关键槽跨日
+    ks=[(0,"开盘首根09:30-09:45"),(1,"开盘次根09:45-10:00"),
+        (14,"尾盘前根14:30-14:45"),(15,"尾盘末根14:45-15:00")]
+    report.append(""); report.append("[关键时段跨日趋势]")
+    for s,sl in ks:
+        sd_=df[df["slot_idx"]==s].sort_values("date")
+        if sd_.empty: continue
+        sm=slot_means.get(s,0)
+        report.append(f"  {sl}  槽均量={sm:,.0f}手")
+        report.append(f"  {'日期':>12s}  {'量(手)':>10s}  {'vs均':>6s}  {'vs前日':>8s}")
+        pv_=None
+        for _,rs_ in sd_.iterrows():
+            vs_=float(rs_["volume"]); ratio_=vs_/sm if sm>0 else 1
+            tag_="*" if ratio_>=CFG["bar_extreme_ratio"] else("+" if ratio_>=CFG["bar_surge_ratio"] else("-" if ratio_<=CFG["bar_shrink_ratio"] else " "))
+            chg_=f"{(vs_-pv_)/pv_*100:+.1f}%" if(pv_ and pv_>0) else "   ---"
+            report.append(f"  {str(rs_['date']):>12s}  {int(vs_):>10,d}{tag_} {ratio_:>5.2f}x  {chg_:>8s}")
+            pv_=vs_
+        report.append("")
+
+    report.append(f"[异动预警汇总] 共 {len(alerts)} 条")
+    if alerts:
+        for al in sorted(alerts,key=lambda x:x["date"],reverse=True):
+            report.append(f"  [{al['date']}] [{al.get('severity','中')}] {al['type']:<12s} {al['slot']:>6s}  {al['detail']}")
+    else:
+        report.append("  无明显异动")
+
+    return "\n".join(report), alerts, {
+        "dates":dates,"day_totals":day_totals,"day_mean":day_mean,"day_std":day_std,
+        "open_30":open_30,"open_mean":open_mean,"open_std":open_std,
+        "tail_30":tail_30,"tail_mean":tail_mean,"slot_means":slot_means,"day_amt":day_amt,
+    }
+
+
+# ============================================================
+# 操作指引
+# ============================================================
+def generate_guide(df, alerts, stats, stock_name, stock_code):
+    import numpy as np
+
+    dates=stats["dates"]; day_totals=stats["day_totals"]; day_mean=stats["day_mean"]
+    day_std=stats["day_std"]; open_30=stats["open_30"]; open_mean=stats["open_mean"]
+    open_std=stats["open_std"]; tail_30=stats["tail_30"]; tail_mean=stats["tail_mean"]
+    slot_means=stats["slot_means"]; n_days=len(dates)
+
+    recent_5=[float(day_totals.get(d,0)) for d in dates[-5:]]
+    recent_10=[float(day_totals.get(d,0)) for d in dates[-10:]]
+    avg_5=float(np.mean(recent_5)) if recent_5 else 0
+    avg_10=float(np.mean(recent_10)) if recent_10 else 0
+    r5=avg_5/day_mean if day_mean>0 else 1
+
+    seg1=[float(day_totals.get(d,0)) for d in dates[:10]]
+    seg2=[float(day_totals.get(d,0)) for d in dates[10:20]]
+    seg3=[float(day_totals.get(d,0)) for d in dates[20:]]
+    avg1=float(np.mean(seg1)) if seg1 else 0
+    avg2=float(np.mean(seg2)) if seg2 else 0
+    avg3=float(np.mean(seg3)) if seg3 else 0
+    trend_13=(avg3-avg1)/avg1*100 if avg1>0 else 0
+    trend_23=(avg3-avg2)/avg2*100 if avg2>0 else 0
+    trend_12=(avg2-avg1)/avg1*100 if avg1>0 else 0
+
+    ov=[open_30.get(d,0) for d in dates]
+    r5o=ov[-5:] if len(ov)>=5 else ov
+    lo=r5o[-1] if r5o else 0; lor=lo/open_mean if open_mean>0 else 1
+    otu=otd=0
+    if len(r5o)>=2:
+        for i in range(1,len(r5o)):
+            if r5o[i]>r5o[i-1]: otu+=1
+            elif r5o[i]<r5o[i-1]: otd+=1
+
+    tv=[tail_30.get(d,0) for d in dates]
+    r5t=tv[-5:] if len(tv)>=5 else tv
+    lt=r5t[-1] if r5t else 0
+    tsc=sum(1 for v in tv if tail_mean>0 and v/tail_mean>=CFG["tail_surge_ratio"])
+
+    ed=[(d,float(day_totals.get(d,0))) for d in dates if float(day_totals.get(d,0))>=day_mean*4]
+    dd_=[(d,float(day_totals.get(d,0))) for d in dates if day_mean*2<=float(day_totals.get(d,0))<day_mean*4]
+    shd=[(d,float(day_totals.get(d,0))) for d in dates if float(day_totals.get(d,0))<=day_mean*CFG["day_shrink_ratio"]]
+    div=[a for a in alerts if a["type"]=="量价背离"]
+    fba=[a for a in alerts if a["type"]=="首根极端放量"]
+
+    tsv=sum(slot_means.get(s,0) for s in range(16))
+    sp=[slot_means.get(s,0)/tsv*100 if tsv>0 else 0 for s in range(16)]
+    o2p=sp[0]+sp[1]; t2p=sp[14]+sp[15]
+    ms=max(range(16),key=lambda s:slot_means.get(s,0))
+
+    # 评分
+    score=0; sd_=[]
+    if r5>1.3:    score+=2; sd_.append(f"+2 近5日量能高于均值 ({r5:.2f}x)")
+    elif r5>1.1:  score+=1; sd_.append(f"+1 近5日量能略高 ({r5:.2f}x)")
+    elif r5<0.7:  score-=2; sd_.append(f"-2 近5日量能明显低 ({r5:.2f}x)")
+    elif r5<0.9:  score-=1; sd_.append(f"-1 近5日量能略低 ({r5:.2f}x)")
+    else:         sd_.append(f" 0 近5日量能正常 ({r5:.2f}x)")
+
+    if trend_13>20:    score+=2; sd_.append(f"+2 30日量能上升 ({trend_13:+.0f}%)")
+    elif trend_13>5:   score+=1; sd_.append(f"+1 30日量能温和上升 ({trend_13:+.0f}%)")
+    elif trend_13<-20: score-=2; sd_.append(f"-2 30日量能下降 ({trend_13:+.0f}%)")
+    elif trend_13<-5:  score-=1; sd_.append(f"-1 30日量能温和下降 ({trend_13:+.0f}%)")
+    else:              sd_.append(f" 0 30日量能平稳 ({trend_13:+.0f}%)")
+
+    if lor>=CFG["open_extreme_ratio"]:  score+=3; sd_.append(f"+3 最新开盘30min极端放量 ({lor:.2f}x)")
+    elif lor>=CFG["open_surge_ratio"]:  score+=2; sd_.append(f"+2 最新开盘30min放量 ({lor:.2f}x)")
+    elif lor<=CFG["open_shrink_ratio"]: score-=2; sd_.append(f"-2 最新开盘30min缩量 ({lor:.2f}x)")
+    else:                               sd_.append(f" 0 最新开盘30min正常 ({lor:.2f}x)")
+
+    if otu>=4:   score+=2; sd_.append(f"+2 近5日开盘量持续递增 (升{otu}次)")
+    elif otu>=3: score+=1; sd_.append(f"+1 近5日开盘量多数递增 (升{otu}次)")
+    elif otd>=4: score-=2; sd_.append(f"-2 近5日开盘量持续递减 (降{otd}次)")
+    elif otd>=3: score-=1; sd_.append(f"-1 近5日开盘量多数递减 (降{otd}次)")
+
+    if len(div)>=3:   score-=2; sd_.append(f"-2 量价背离频繁 ({len(div)}次)")
+    elif len(div)>=1: score-=1; sd_.append(f"-1 存在量价背离 ({len(div)}次)")
+    else:             score+=1; sd_.append(f"+1 无量价背离")
+
+    if len(ed)>0:    score+=1; sd_.append(f"+1 存在天量日 ({len(ed)}次)")
+    if len(fba)>=2:  score+=1; sd_.append(f"+1 首根15min多次极端放量 ({len(fba)}次)")
+    if tsc>=5:       score+=1; sd_.append(f"+1 尾盘频繁放量 ({tsc}次)")
+    if len(shd)>=10: score-=1; sd_.append(f"-1 缩量日过多 ({len(shd)}/{n_days}天)")
+
+    if score>=5:
+        rating="强烈看多"; action="满仓持有/回调加仓"
+        ops=["量能强多信号, 满仓持有.","无仓位可在回调缩量时分批建仓.",
+             "开盘30min量持续超均量2倍时可加仓.","注意: 天量(>=4倍)且价格回落时立即评估止损."]
+    elif score>=2:
+        rating="温和看多/持有"; action="维持持仓(HOLD), 等放量信号加仓"
+        ops=["量能偏多方, 维持现有仓位.","不建议大幅减仓.",
+             "连续3日开盘30min量递增超均值时可适当加仓.","日量突然2倍以上且价跌, 警惕出货."]
+    elif score>=-1:
+        rating="中性/观望"; action="按兵不动, 等待量能方向明朗"
+        ops=["量能无明确方向, 多空拉锯.","已持仓: 维持现仓, 不加不减.",
+             "未持仓: 暂时观望.","做多信号: 开盘30min量连续2日超均量1.5倍且价涨.",
+             "布局信号: 日量萎缩至均量50%以下且价格企稳."]
+    elif score>=-3:
+        rating="温和看空/谨慎"; action="轻仓观望, 考虑减仓至50%以下"
+        ops=["量能偏弱, 资金流入动力不足.","已持仓: 考虑减仓至轻仓.",
+             "未持仓: 暂勿介入.","再次开盘缩量(<均量50%)时建议进一步减仓."]
+    else:
+        rating="看空/离场观望"; action="减仓或清仓, 等待量能重新活跃"
+        ops=["量能明显弱势信号.","已持仓: 建议减仓或清仓.",
+             "未持仓: 不介入.","天量配合价格大跌时不抄底."]
+
+    L=[]; p=lambda t="":L.append(t)
+
+    p(f"{stock_name}({stock_code}) 成交量维度 操作指引")
+    p(f"生成时间: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    p(f"数据区间: {dates[0]} ~ {dates[-1]}  共 {n_days} 个交易日  15分钟K线(每日16根)")
+    p(""); p("本报告基于纯成交量维度分析, 不包含基本面与消息面.")
+    p("所有操作建议均为参考, 最终决策请结合个人风险偏好."); p("")
+
+    p("---------------------------------------------------")
+    p("一、综合评级与操作建议"); p("---------------------------------------------------"); p("")
+    p(f"综合评级: {rating}"); p(f"综合得分: {score:+d} 分"); p(f"一句话操作: {action}"); p("")
+    p("详细操作建议:")
+    for i,o in enumerate(ops,1): p(f"  {i}. {o}")
+    p(""); p("评分明细:")
+    for d__ in sd_: p(f"  {d__}")
+    p(""); p("关键量能快览:")
+    p(f"  30日日均量: {day_mean:,.0f} 手")
+    p(f"  近5日日均量: {avg_5:,.0f} 手 (vs30日均 {(r5-1)*100:+.1f}%)")
+    p(f"  最新开盘30min量: {lo:,.0f} 手 (均量的 {lor:.2f}x)")
+    p(f"  近5日开盘30min: " + " -> ".join(f"{v:,.0f}" for v in r5o))
+    fb=df[df["slot_idx"]==0].sort_values("datetime")
+    fbl=float(fb["volume"].iloc[-1]) if len(fb)>0 else 0
+    p(f"  最新首根15min量: {fbl:,.0f} 手")
+    p(f"  天量日(>=4倍): {len(ed)}次  大量日(2~4倍): {len(dd_)}次")
+    p(f"  量价背离次数: {len(div)}次")
+    p(f"  30日量能趋势: {trend_13:+.1f}% (前10日均->近10日均)"); p("")
+
+    p("关键监控信号:"); p("")
+    p("  做多触发:")
+    p("    - 日量>=30日均量2倍 且 当日价涨>=1%")
+    p("    - 开盘30min量>=均量2倍 且 开盘价高于前日收盘")
+    p("    - 首根15min量>=槽均4倍(极端放量)")
+    p("    - 连续3日开盘量递增且每日超均量1.2倍")
+    p("    - 尾盘最后30分钟放量拉升(量>=均量2倍, 价涨)"); p("")
+    p("  减仓/止损触发:")
+    p("    - 日量>=2倍 且 当日价跌>=1%(出货信号)")
+    p("    - 连续3日开盘量递减且每日低于均量0.8倍")
+    p("    - 天量(>=4倍)之后次日跳空低开")
+    p("    - 量价背离累计>=2次"); p("")
+    p("  继续观望:")
+    p("    - 日量连续5日低于均量60%")
+    p("    - 各时段量能分布均匀(缺乏主力操作痕迹)"); p("")
+    p("以上为核心结论, 以下为详细分析过程."); p("")
+
+    p("---------------------------------------------------")
+    p("二、量能基准水位"); p("---------------------------------------------------"); p("")
+    mx=day_totals.max(); mn=day_totals.min(); mxd=day_totals.idxmax(); mnd=day_totals.idxmin()
+    p(f"30日平均日总量: {day_mean:,.0f} 手")
+    p(f"30日标准差: {day_std:,.0f} 手 (波动系数 {day_std/day_mean*100:.1f}%)")
+    p(f"近5日均量: {avg_5:,.0f} 手 (vs30日均 {(avg_5/day_mean-1)*100:+.1f}%)")
+    p(f"近10日均量: {avg_10:,.0f} 手 (vs30日均 {(avg_10/day_mean-1)*100:+.1f}%)")
+    p(f"30日最大日量: {mx:,.0f} 手 ({mxd}, 均量的 {mx/day_mean:.2f}倍)")
+    p(f"30日最小日量: {mn:,.0f} 手 ({mnd}, 均量的 {mn/day_mean:.2f}倍)"); p("")
+    if r5>1.3:   p("判断: 近5日量能明显高于均值(+30%以上), 市场活跃度高位.")
+    elif r5>1.1: p("判断: 近5日量能略高于均值, 温和放量.")
+    elif r5>0.9: p("判断: 近5日量能与均值持平, 量能稳定.")
+    elif r5>0.7: p("判断: 近5日量能低于均值, 温和缩量.")
+    else:        p("判断: 近5日量能明显低于均值, 流动性不足."); p("")
+
+    p("---------------------------------------------------")
+    p("三、极端量分析(2倍/4倍天量)"); p("---------------------------------------------------"); p("")
+    p(f"天量(>=4倍均量): {len(ed)} 次"); p(f"大量(2~4倍均量): {len(dd_)} 次")
+    p(f"显著缩量(<=60%均量): {len(shd)} 次")
+    if ed:
+        p(""); p("天量日期:")
+        for dx,vx in ed: p(f"  {dx}  {vx:,.0f}手 ({vx/day_mean:.1f}倍均量)")
+        p(""); p("天量含义: 价涨+天量=机构入场 | 价跌+天量=恐慌出货 | 震荡+天量=方向未定")
+    else: p("30日内无天量.")
+    if dd_:
+        p(""); p("大量日期:")
+        for dx,vx in dd_: p(f"  {dx}  {vx:,.0f}手 ({vx/day_mean:.1f}倍均量)")
+    p("")
+
+    p("---------------------------------------------------")
+    p("四、开盘30分钟量分析(前两根15min合计)"); p("---------------------------------------------------"); p("")
+    omx=max(ov) if ov else 0; omn=min(ov) if ov else 0
+    omd=dates[ov.index(omx)] if ov else None
+    p(f"30日开盘30min均量: {open_mean:,.0f} 手 (标准差={open_std:,.0f})")
+    if open_mean>0: p(f"最大值: {omx:,.0f} 手 ({omd}, 均量的{omx/open_mean:.1f}倍)")
+    p(f"最小值: {omn:,.0f} 手")
+    p(f"近5日: " + " -> ".join(f"{v:,.0f}" for v in r5o))
+    p(f"趋势: 上升{otu}次 / 下降{otd}次"); p("")
+    if lor>=CFG["open_extreme_ratio"]:   p(f"判断: 最新开盘极端放量({lor:.1f}倍均量). 价涨则强看多, 价跌则评估止损.")
+    elif lor>=CFG["open_surge_ratio"]:   p(f"判断: 最新开盘明显放量({lor:.1f}倍均量), 资金活跃.")
+    elif lor<=CFG["open_shrink_ratio"]:  p(f"判断: 最新开盘明显缩量({lor:.1f}倍均量), 关注度下降.")
+    else:                                p(f"判断: 最新开盘量正常({lor:.1f}倍均量).")
+    p(""); p("首根15分钟(9:30-9:45):")
+    fbm=float(fb["volume"].mean()) if len(fb)>0 else 0
+    fbr=fbl/fbm if fbm>0 else 1
+    p(f"  均量: {fbm:,.0f}手  最新: {fbl:,.0f}手 ({fbr:.2f}x均量)")
+    if len(fb)>=5: p(f"  近5日: " + " -> ".join(f"{int(v):,}" for v in fb["volume"].tail(5).tolist()))
+    if fbr>=CFG["bar_extreme_ratio"]:    p("  判断: 首根15分钟极端放量, 开盘抢筹信号极强.")
+    elif fbr>=CFG["bar_surge_ratio"]:    p("  判断: 首根15分钟放量, 开盘段资金活跃.")
+    elif fbr<=CFG["bar_shrink_ratio"]:   p("  判断: 首根15分钟缩量, 开盘段冷清.")
+    else:                                p("  判断: 首根15分钟量正常."); p("")
+
+    p("---------------------------------------------------")
+    p("五、量能趋势演变(30日三段对比)"); p("---------------------------------------------------"); p("")
+    p(f"前10日均量({dates[0]}~{dates[min(9,n_days-1)]}): {avg1:,.0f} 手")
+    if n_days>10: p(f"中10日均量({dates[10]}~{dates[min(19,n_days-1)]}): {avg2:,.0f} 手 (前->中 {trend_12:+.1f}%)")
+    if n_days>20: p(f"近10日均量({dates[20]}~{dates[-1]}): {avg3:,.0f} 手 (中->近 {trend_23:+.1f}%)")
+    p(f"整体趋势(前->近): {trend_13:+.1f}%"); p("")
+    if trend_13>30 and trend_23>0:    p("判断: 持续放量趋势, 维持持仓, 价格新高时可加仓.")
+    elif trend_13>10:                 p("判断: 温和放量趋势, 正常持仓观察.")
+    elif trend_13<-30 and trend_23<0: p("判断: 持续缩量趋势, 谨慎操作, 可逐步减仓.")
+    elif trend_13<-10:                p("判断: 温和缩量趋势, 按兵不动.")
+    else:                             p("判断: 量能震荡整理, 等待方向选择."); p("")
+
+    p("---------------------------------------------------")
+    p("六、量能时段分布结构(30日平均)"); p("---------------------------------------------------"); p("")
+    p(f"{'时间段':>24s}  {'均量(手)':>10s}  {'占比':>6s}")
+    for s in range(16):
+        sv=slot_means.get(s,0); pct=sp[s]
+        mark=" <-- 最大" if s==ms else ""
+        p(f"  {SLOT_DESCS[s]:>24s}  {sv:>8,.0f}  {pct:>5.1f}%{mark}")
+    p(""); p(f"开盘30min占比: {o2p:.1f}%{'  偏高' if o2p>18 else ''}")
+    p(f"尾盘30min占比: {t2p:.1f}%{'  偏高' if t2p>15 else ''}")
+    p(f"最大量时段: {SLOT_DESCS[ms]} ({sp[ms]:.1f}%)"); p("")
+
+    p("---------------------------------------------------")
+    p("七、尾盘30分钟量分析(后两根15min合计)"); p("---------------------------------------------------"); p("")
+    p(f"30日尾盘30min均量: {tail_mean:,.0f} 手")
+    p(f"近5日尾盘30min: " + " -> ".join(f"{v:,.0f}" for v in r5t))
+    p(f"尾盘放量(>=2倍)次数: {tsc} / {len(tv)} 个交易日"); p("")
+    if tsc>=5:   p("判断: 尾盘频繁放量, 主力有尾盘操作习惯.")
+    elif tsc>=2: p("判断: 尾盘偶有放量, 放量时观察价格方向.")
+    else:        p("判断: 近30日尾盘量整体平稳.")
+    if tail_mean>0 and lt/tail_mean>=CFG["tail_surge_ratio"]:
+        p(f"注意: 最近一日尾盘量是均量的 {lt/tail_mean:.1f}倍, 次日开盘重点关注."); p("")
+
+    p("---------------------------------------------------")
+    p("八、量价背离分析"); p("---------------------------------------------------"); p("")
+    p(f"30日内量价背离次数: {len(div)} 次")
+    if div:
+        for al in div: p(f"  [{al['date']}] {al['detail']}")
+        p(""); p("含义: 价涨量缩=上涨乏力 | 价跌量涨=砸盘出货? | 频繁背离=趋势不可信")
+    else: p("未出现量价背离, 量价配合较好."); p("")
+
+    p("---------------------------------------------------")
+    p("九、缩量特征分析"); p("---------------------------------------------------"); p("")
+    esh=[(d,v) for d,v in shd if v<=day_mean*0.3]
+    p(f"显著缩量日(<=60%均量): {len(shd)} 次"); p(f"极度缩量日(<=30%均量): {len(esh)} 次")
+    if esh:
+        for ds,vs in esh: p(f"  {ds}  {vs:,.0f}手 ({vs/day_mean*100:.0f}%均量)")
+    p("")
+    if len(shd)>=10:  p("判断: 缩量日过多, 市场参与度偏低.")
+    elif len(shd)>=5: p("判断: 若干缩量日, 属正常调整.")
+    else:             p("判断: 缩量日少, 量能活跃."); p("")
+
+    p("---------------------------------------------------")
+    p("十、异动事件时间线(近30日)"); p("---------------------------------------------------"); p("")
+    if alerts:
+        sa=sorted(alerts,key=lambda x:x["date"]); cd=None
+        for al in sa:
+            if al["date"]!=cd: cd=al["date"]; p(f"{cd}:")
+            p(f"  [{al.get('severity','中')}] {al['type']}  {al['detail']}")
+    else: p("30日内无明显异动."); p("")
+
+    p("---------------------------------------------------")
+    p("说明"); p("---------------------------------------------------")
+    p("- 手 = 1手 = 100股")
+    p("- 开盘30min = 前两根15min(09:30-09:45 + 09:45-10:00)合计")
+    p("- 尾盘30min = 后两根15min(14:30-14:45 + 14:45-15:00)合计")
+    p(f"- 数据区间: {dates[0]} ~ {dates[-1]}  共 {n_days} 个交易日")
+    p("- 本报告不构成投资建议, 据此操作风险自担")
+
+    return "\n".join(L)
+
+
+# ============================================================
+# 单只股票完整流程
+# ============================================================
+def process_one_stock(stock_info):
+    global _log_file
+    import pandas as pd
+
+    code   = stock_info["code"]
+    name   = stock_info["name"]
+    market = stock_info["market"]
+
+    stock_dir = os.path.join(DESKTOP, f"{name}_{code}_15min")
+    os.makedirs(stock_dir, exist_ok=True)
+
+    _log_file   = os.path.join(stock_dir, "run_log.txt")
+    csv_raw     = os.path.join(stock_dir, f"{code}_15min_raw.csv")
+    csv_day     = os.path.join(stock_dir, f"{code}_day_summary.csv")
+    report_file = os.path.join(stock_dir, f"{code}_15min_分析报告.txt")
+    alert_file  = os.path.join(stock_dir, f"{code}_异动预警.txt")
+    guide_file  = os.path.join(stock_dir, "成交量维度_操作指引.txt")
+
+    log(f"{'='*50}")
+    log(f"{name}({code}) 15分钟K线分析 开始")
+    log(f"{'='*50}")
+
+    start = (datetime.datetime.now() - datetime.timedelta(days=60)).strftime("%Y-%m-%d")
+
+    df = fetch_akshare(code, start)
+    if df is None:
+        df = fetch_eastmoney(code, market, start)
+    if df is None:
+        df = fetch_baostock(code, market, start)
+    if df is None:
+        log(f"  [{code}] 所有数据源失败, 跳过"); return False
+
+    df = clean_df(df)
+    log(f"  清洗后 {len(df)} 条")
+    df = keep_n_days(df, TRADE_DAYS)
+
+    df.to_csv(csv_raw, index=False, encoding="utf-8-sig")
+    log(f"  原始数据: {csv_raw}")
+
+    ds = build_day_summary(df)
+    ds.to_csv(csv_day, index=False, encoding="utf-8-sig")
+
+    report, alerts, stats = analyze(df, name, code)
+    with open(report_file, "w", encoding="utf-8") as f:
+        f.write(report)
+    log(f"  分析报告: {report_file}")
+
+    al_lines = [f"{name} 异动预警  {datetime.datetime.now():%Y-%m-%d %H:%M:%S}  共 {len(alerts)} 条",""]
+    for al in sorted(alerts, key=lambda x:x["date"], reverse=True):
+        al_lines.append(f"[{al['date']}] [{al.get('severity','中')}] {al['type']:<12s} {al['slot']:>6s}  {al['detail']}")
+    with open(alert_file, "w", encoding="utf-8") as f:
+        f.write("\n".join(al_lines))
+
+    guide = generate_guide(df, alerts, stats, name, code)
+    with open(guide_file, "w", encoding="utf-8") as f:
+        f.write(guide)
+    log(f"  操作指引: {guide_file}")
+
+    log(f"  {name}({code}) 完成!")
+    log(f"  输出目录: {stock_dir}")
+    return True
+
+
+# ============================================================
+# main
+# ============================================================
+def main():
+    ensure_packages()
+
+    print(f"A股15分钟K线成交量异动分析系统")
+    print(f"股票列表: {len(STOCK_LIST)} 只")
+    for s in STOCK_LIST:
+        print(f"  - {s['name']}({s['code']})")
+    print()
+
+    ok = 0; fail = 0
+    for stock in STOCK_LIST:
+        try:
+            if process_one_stock(stock):
+                ok += 1
+            else:
+                fail += 1
+        except Exception as e:
+            log(f"  {stock['name']}({stock['code']}) 异常: {e}")
+            traceback.print_exc()
+            fail += 1
+        print()
+
+    print(f"全部完成: 成功 {ok} 只, 失败 {fail} 只")
+    print(f"输出位置: {DESKTOP}")
+    for s in STOCK_LIST:
+        d = os.path.join(DESKTOP, f"{s['name']}_{s['code']}_15min")
+        if os.path.exists(d):
+            print(f"  {d}")
+
+
+if __name__ == "__main__":
+    main()

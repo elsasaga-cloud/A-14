@@ -1,0 +1,37 @@
+Customer Project Topology
+80km FO from Site Ato Site B, Distribution to 3 Sites
+a = eS                                                          Site C
+一一一 80km Fiber Optic (Pulling)                                                                                                                      (Remote Site 1)
+一 一一 Wireless PTP Link                                                                                                    )    oT.
+-
+[本    Transmission Equipment        |                                                                Se
+(DWDM/ONT)                     |                                                                     ett                            =
+\                                                                                                            10)
+\                                          -/                                                           ga
+一
+一
+2
+一
+Cl
+»))
+Site A                                                          Site B                                                       Site D
+Headend}                                                                   "                                                         (Remote Site 2)
+ee                         80kmFO                        3      |              Pointto Point
+=       站       人) -人
+(Pulling)                                         |
+DWDM/ONT                                                          DWDM/ONT                                                                2
+By                                                    g
+@                  s
+S \ Point to Point
+i                                                 和
+HN                             =
+s
+a                             [Se                Site E
+a                                                 Sie            (Remote Site 3)
+~s
+人    |
+Link                      Type                   Distance                               Description
+Site A — Site B            Fiber Optic (Pulling)                80 km              DWDM/ONT transmission over 80km FO.
+Site B — Site C               Wireless PTP                    TBD               Point to Point wireless link
+Site C — Site D                Wireless PTP                     TBD               Point to Point wireless link
+Site D — Site E              Wireless PTP                   TBD             Point to Point wireless link

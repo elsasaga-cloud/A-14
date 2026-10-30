@@ -1,0 +1,19 @@
+Product Classification Table
+t
+Supplier Part          Product                Export                 License          CCATS | Tariff/ HTS | Country
+Number           Name and      Classification (e.g. | Exception / EU                 Code/ GTip    of Origin
+Description      ECCN, EU Dual- | GEA (e.g. NLR,                  (in Turkish)
+Use Code, USML         ENC(b)(1))
+Number)
+No license
+required for non-
+sanctioned
+countries.
+:                                                               Not
+Industrial                                                                  -
+STI-488DGGPM- |  “Ethemet | EAR99                    NLR (No             amped /                         China
+2BT                                            -                      Not
+Switch                                     License                    ‘lable
+Required)             avan
+NLR per EAR
+§734
