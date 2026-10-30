@@ -1,0 +1,416 @@
+{
+  "conversation_metadata": {
+    "conversation_id": "69fc1336-f6a0-8322-b89d-09c99e1a966d",
+    "conversation_template_id": null,
+    "create_time": 1778127686.707502,
+    "current_node": "637c8486-b7b5-4f22-bcf8-9f5e6a9bc8a4",
+    "default_model_slug": "auto",
+    "id": "69fc1336-f6a0-8322-b89d-09c99e1a966d",
+    "is_archived": false,
+    "is_do_not_remember": false,
+    "is_read_only": null,
+    "is_starred": null,
+    "is_study_mode": false,
+    "memory_scope": "global_enabled",
+    "pinned_time": null,
+    "plugin_ids": null,
+    "title": "下载问题排查指南",
+    "update_time": 1778133088.082121,
+    "voice": null
+  },
+  "selection_unit": "message",
+  "selected_nodes": [
+    {
+      "node_id": "107199ad-1be5-4cf1-83bf-3a71efb463a1",
+      "selection_reason": "stock-keyword",
+      "matched_terms": [
+        "股票"
+      ],
+      "node": {
+        "id": "107199ad-1be5-4cf1-83bf-3a71efb463a1",
+        "message": {
+          "author": {
+            "name": null,
+            "role": "assistant"
+          },
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "很好，这一步已经**彻底成功了**，你现在 Python 环境其实已经“救活了”。\n\n---\n\n# 你现在的状态（关键结论）\n\n## ✅ Python 已正常\n## ✅ pip 已安装成功\n## ⚠️ 只有一个“小问题”：PATH 没配\n\n你看到这个：\n\n```text id=\"k9v2xw\"\nScripts is not on PATH\n```\n\n意思是：\n\n> 你可以用 pip，但不能直接在命令行打 `pip`\n\n---\n\n# 但注意：这不是问题，是“设计如此”\n\n你现在这个 Python 是：\n\n> Embeddable / 便携式结构\n\n它本来就不推荐改 PATH。\n\n---\n\n# ✔️ 正确使用方式（以后永远这样）\n\n## ❌ 不要用：\n\n```cmd id=\"p3q8ld\"\npip install requests\n```\n\n---\n\n## ✅ 要用：\n\n```powershell id=\"r9xq2s\"\nD:\\Python312\\python.exe -m pip install requests\n```\n\n---\n\n# 现在你可以做3件事\n\n---\n\n## ✅ 1. 验证 pip 正常\n\n```powershell id=\"x2k8hd\"\nD:\\Python312\\python.exe -m pip --version\n```\n\n---\n\n## ✅ 2. 安装你需要的库（比如 Selenium）\n\n```powershell id=\"q7m1pa\"\nD:\\Python312\\python.exe -m pip install selenium webdriver-manager requests pandas\n```\n\n---\n\n## ✅ 3. 测试 Python\n\n```powershell id=\"v3n9tj\"\nD:\\Python312\\python.exe\n```\n\n然后输入：\n\n```python id=\"c8p0wx\"\nprint(\"ok\")\n```\n\n---\n\n# ⚠️ 重要建议（帮你避免以后再乱）\n\n你现在已经经历过：\n\n- Python 装乱\n- MSI 出错\n- PATH 冲突\n- Installer 崩\n- 下载问题\n\n说明你电脑属于：\n\n> “工具链污染型环境”\n\n---\n\n# ✔️ 我给你一个长期稳定方案\n\n以后只做一件事：\n\n## 👉 所有 Python 都统一用这一条：\n\n```text id=\"d8f2ka\"\nD:\\Python312\\python.exe\n```\n\n---\n\n# ❌ 不要再做这些：\n\n- 不要再装 Microsoft Store Python\n- 不要再装多个 Python\n- 不要用 pip 直接命令\n- 不要改 PATH\n- 不要用 MSI 修复\n\n---\n\n# 🚀 下一步你可以直接做\n\n你现在可以直接执行：\n\n```powershell id=\"s1v9m2\"\nD:\\Python312\\python.exe -m pip install selenium\n```\n\n然后告诉我你下一步要干什么（比如：\n\n- 自动化\n- 爬数据\n- 股票脚本\n- API调用\n- VSCode接入\n\n我可以帮你把这个 Python 直接变成“生产级工具链”。"
+            ]
+          },
+          "create_time": 1778128554.036446,
+          "id": "107199ad-1be5-4cf1-83bf-3a71efb463a1",
+          "metadata": {
+            "code_blocks": {
+              "0": {
+                "edited": false,
+                "id": "7z44ds",
+                "preview_language": null,
+                "previewable": false
+              },
+              "1": {
+                "edited": false,
+                "id": "kc24fy",
+                "preview_language": null,
+                "previewable": false
+              },
+              "2": {
+                "edited": false,
+                "id": "xlmkhm",
+                "preview_language": null,
+                "previewable": false
+              },
+              "3": {
+                "edited": false,
+                "id": "ohcgrh",
+                "preview_language": null,
+                "previewable": false
+              },
+              "4": {
+                "edited": false,
+                "id": "h14omw",
+                "preview_language": null,
+                "previewable": false
+              },
+              "5": {
+                "edited": false,
+                "id": "8ffoam",
+                "preview_language": null,
+                "previewable": false
+              },
+              "6": {
+                "edited": false,
+                "id": "jdgl57",
+                "preview_language": null,
+                "previewable": false
+              },
+              "7": {
+                "edited": false,
+                "id": "kkkpd0",
+                "preview_language": null,
+                "previewable": false
+              },
+              "8": {
+                "edited": false,
+                "id": "9w3jyo",
+                "preview_language": null,
+                "previewable": false
+              }
+            },
+            "content_references": [],
+            "model_slug": "gpt-5-3-mini",
+            "parent_id": "fcd7b77e-f6ea-4c57-b6bd-a93e185c7987"
+          }
+        },
+        "parent": "fe9577ae-f2d4-4eff-8146-d109d7a85d51"
+      }
+    },
+    {
+      "node_id": "7423f6ab-19e3-4b83-b265-e3d5e9cfe18b",
+      "selection_reason": "stock-keyword",
+      "matched_terms": [
+        "股票"
+      ],
+      "node": {
+        "id": "7423f6ab-19e3-4b83-b265-e3d5e9cfe18b",
+        "message": {
+          "author": {
+            "name": null,
+            "role": "assistant"
+          },
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "对，**就是这个意思，你理解已经到位了**。\n\n---\n\n# 🧠 现在的真实状态是：\n\n你刚刚在 VS Code 里做的设置，本质是：\n\n> ✔️ 把“默认 Python 解释器”从旧路径  \n> 改成了新的：\n\n```text id=\"p7m2qp\"\nD:\\Python312\\python.exe\n```\n\n---\n\n# 🚀 结果就是：\n\n## ✔️ VS Code 现在做这些事时：\n\n- 运行代码（Run Python File）\n- 调试（Debug）\n- 识别 import\n- 自动补全\n- pip install 提示\n\n都会统一用：\n\n```text id=\"k2m9qp\"\nD:\\Python312\\python.exe\n```\n\n---\n\n# 🧠 一句话理解\n\n## 以前：\n\nVS Code → 找旧 Python（找不到）❌\n\n## 现在：\n\nVS Code → 找新 Python（正常）✔️\n\n---\n\n# ⚠️ 关键点（很多人会误会）\n\n你只是改了“运行入口”，不是改代码。\n\n所以：\n\n## ❌ 不需要改所有项目代码\n\n## ❌ 不需要重写 import\n\n## ❌ 不需要重新写脚本\n\n---\n\n# 🧪 你现在可以这样验证\n\n在 VS Code 里运行：\n\n```python id=\"m9x2qp\"\nimport sys\nprint(sys.executable)\n```\n\n---\n\n## 如果输出：\n\n```text id=\"v8m2qp\"\nD:\\Python312\\python.exe\n```\n\n说明：\n\n✔️ VS Code 已完全绑定新环境\n\n---\n\n# 🧭 你现在的状态总结\n\n你已经完成了一个很关键的升级：\n\n## 🔧 从“混乱Python环境”\n\n→ 变成：\n\n## 🧼 “单一稳定Python环境”\n\n---\n\n# 🚀 下一步你可以做什么（可选升级）\n\n现在你已经可以进入真正有用阶段了，比如：\n\n- Selenium 自动化登录网站\n- 自动下载文件\n- API 脚本\n- 数据抓取\n- 定时任务（任务调度）\n- 股票/外贸自动化工具\n\n---\n\n如果你下一步想继续升级，我可以帮你直接搭：\n\n> 👉 一个“自动化脚手架模板”（开箱即用）\n\n比如：\n\n- 一键打开浏览器\n- 自动登录\n- 自动下载\n- 自动保存日志\n- 错误自动重试\n\n直接从“环境修复”进入“生产力工具阶段”。"
+            ]
+          },
+          "create_time": 1778129133.204959,
+          "id": "7423f6ab-19e3-4b83-b265-e3d5e9cfe18b",
+          "metadata": {
+            "code_blocks": {
+              "0": {
+                "edited": false,
+                "id": "7z702y",
+                "preview_language": null,
+                "previewable": false
+              },
+              "1": {
+                "edited": false,
+                "id": "cwxg5b",
+                "preview_language": null,
+                "previewable": false
+              },
+              "2": {
+                "edited": false,
+                "id": "ug0ng6",
+                "preview_language": null,
+                "previewable": false
+              },
+              "3": {
+                "edited": false,
+                "id": "z46jqu",
+                "preview_language": null,
+                "previewable": false
+              }
+            },
+            "content_references": [
+              {
+                "alt": "一键打开浏览器",
+                "prompt_text": "帮我实现一键打开浏览器",
+                "type": "followup_a"
+              },
+              {
+                "alt": "自动登录",
+                "prompt_text": "帮我实现自动登录",
+                "type": "followup_a"
+              },
+              {
+                "alt": "自动下载",
+                "prompt_text": "帮我实现自动下载",
+                "type": "followup_a"
+              },
+              {
+                "alt": "自动保存日志",
+                "prompt_text": "帮我实现自动保存日志",
+                "type": "followup_a"
+              },
+              {
+                "alt": "错误自动重试",
+                "prompt_text": "帮我实现错误自动重试",
+                "type": "followup_a"
+              }
+            ],
+            "model_slug": "gpt-5-3-mini",
+            "parent_id": "676f55cb-3b2b-44a6-96b2-57b7efe684f5"
+          }
+        },
+        "parent": "676f55cb-3b2b-44a6-96b2-57b7efe684f5"
+      }
+    },
+    {
+      "node_id": "1ad41e13-4e66-440e-833f-d1f085744d5e",
+      "selection_reason": "stock-keyword",
+      "matched_terms": [
+        "股票"
+      ],
+      "node": {
+        "id": "1ad41e13-4e66-440e-833f-d1f085744d5e",
+        "message": {
+          "author": {
+            "name": null,
+            "role": "assistant"
+          },
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "对，这一步你做对了：**能跑就先停手，这是正确思路**。\n\n---\n\n# 🧠 你现在的真实状态（我帮你定性一下）\n\n你现在是：\n\n- Python 能运行 ✔️\n- pip 能用 ✔️\n- selenium 已装 ✔️\n- VS Code 已绑定 ✔️\n- 脚本可以执行 ✔️\n\n---\n\n# ⚠️ 关于你看到的“3.13 / 3.12混乱”\n\n先说一句关键结论：\n\n> ❗这个问题“存在，但不影响你现在写代码和跑脚本”\n\n只要你：\n\n```powershell id=\"k1m9qp\"\nD:\\Python312\\python.exe xxx.py\n```\n\n一切都是稳定的。\n\n---\n\n# 🧠 为什么我也建议你“先别动了”\n\n因为你现在已经进入一种很典型状态：\n\n## ❌ 过度修复风险阶段\n\n继续折腾会变成：\n\n- PATH越改越乱\n- 版本越装越多\n- VSCode配置越来越碎\n- 最后反而不确定哪个能用\n\n---\n\n# ✔️ 正确策略（你现在应该这样做）\n\n## 👉 1. 停止所有系统级修复\n\n不做：\n\n- 不卸载Python\n- 不清PATH\n- 不重装MSI\n- 不动系统服务\n\n---\n\n## 👉 2. 只认一个入口（这个最重要）\n\n以后只用这一条：\n\n```powershell id=\"p8m2qp\"\nD:\\Python312\\python.exe\n```\n\n---\n\n## 👉 3. VS Code已经OK了\n\n你现在 VS Code 已经绑定好了，就不要再改 interpreter。\n\n---\n\n## 👉 4. 忽略“系统里还有几个Python”\n\n这个阶段可以当作：\n\n> 背景噪音（不用管）\n\n---\n\n# 🧠 给你一个更重要的认知\n\n很多人卡在 Python 的原因不是技术，而是：\n\n> ❗试图“把环境修到完美”\n\n但现实是：\n\n## ✔️ Python 只需要“一个能用的入口”\n\n---\n\n# 🚀 你现在其实已经进入正确阶段了\n\n你现在可以做的是：\n\n### ✔️ 写自动化脚本\n### ✔️ 做 Selenium\n### ✔️ 做数据抓取\n### ✔️ 做 API 工具\n### ✔️ 做你外贸/股票/自动化系统\n\n---\n\n# 💡 我帮你总结一句最重要的话\n\n## 👉 “环境不需要完美，只需要稳定入口”\n\n---\n\n# 👍 你现在的状态评价\n\n你已经从：\n\n> ❌ 环境混乱 + 安装地狱\n\n变成：\n\n> ✔️ 可运行的稳定开发环境\n\n---\n\n# 🚀 如果你下一步想提升\n\n我可以帮你直接做这个升级：\n\n- Selenium 自动登录模板\n- 自动下载系统\n- API脚本框架\n- 定时任务结构\n- 外贸/数据自动化工具架构\n\n直接从“能跑”升级到“能赚钱用”。"
+            ]
+          },
+          "create_time": 1778129508.408715,
+          "id": "1ad41e13-4e66-440e-833f-d1f085744d5e",
+          "metadata": {
+            "code_blocks": {
+              "0": {
+                "edited": false,
+                "id": "1eztew",
+                "preview_language": null,
+                "previewable": false
+              },
+              "1": {
+                "edited": false,
+                "id": "tgwcal",
+                "preview_language": null,
+                "previewable": false
+              }
+            },
+            "content_references": [
+              {
+                "alt": "Selenium 自动登录模板",
+                "prompt_text": "给我一个 Selenium 自动登录模板",
+                "type": "followup_a"
+              },
+              {
+                "alt": "自动下载系统",
+                "prompt_text": "给我一个自动下载系统",
+                "type": "followup_a"
+              },
+              {
+                "alt": "API脚本框架",
+                "prompt_text": "给我一个 API脚本框架",
+                "type": "followup_a"
+              },
+              {
+                "alt": "定时任务结构",
+                "prompt_text": "给我一个定时任务结构",
+                "type": "followup_a"
+              },
+              {
+                "alt": "外贸/数据自动化工具架构",
+                "prompt_text": "给我一个外贸/数据自动化工具架构",
+                "type": "followup_a"
+              }
+            ],
+            "model_slug": "gpt-5-3-mini",
+            "parent_id": "e96931dd-7e3c-4b1a-98a3-bf96f0d1999b"
+          }
+        },
+        "parent": "e96931dd-7e3c-4b1a-98a3-bf96f0d1999b"
+      }
+    },
+    {
+      "node_id": "68b51d05-42f8-4fc9-b008-f2199a554ee7",
+      "selection_reason": "stock-keyword",
+      "matched_terms": [
+        "HLA",
+        "K线",
+        "MA20",
+        "MA40",
+        "stock",
+        "STOCK",
+        "交易所",
+        "吸筹",
+        "均线",
+        "成交量",
+        "抄底",
+        "换手率",
+        "收盘",
+        "股价",
+        "股票",
+        "量能"
+      ],
+      "node": {
+        "id": "68b51d05-42f8-4fc9-b008-f2199a554ee7",
+        "message": {
+          "author": {
+            "name": null,
+            "role": "user"
+          },
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "# -*- coding: utf-8 -*-\r\n\r\nimport json\r\nimport os\r\nimport re\r\nimport sys\r\nimport time\r\nfrom urllib.request import Request, urlopen\r\n\r\nfrom selenium import webdriver\r\nfrom selenium.webdriver.chrome.service import Service\r\nfrom selenium.webdriver.common.by import By\r\nfrom selenium.webdriver.chrome.options import Options\r\nfrom selenium.webdriver.support.ui import WebDriverWait\r\nfrom selenium.webdriver.support import expected_conditions as EC\r\nfrom selenium.common.exceptions import (\r\n    StaleElementReferenceException,\r\n    TimeoutException,\r\n    WebDriverException,\r\n)\r\n\r\n\r\n# =========================\r\n# 控制台编码修正（Windows）\r\n# =========================\r\nif sys.platform == \"win32\":\r\n    try:\r\n        sys.stdout.reconfigure(encoding=\"utf-8\", errors=\"replace\")\r\n        sys.stderr.reconfigure(encoding=\"utf-8\", errors=\"replace\")\r\n    except:\r\n        pass\r\n\r\n\r\n# =========================\r\n# 路径配置\r\n# =========================\r\nDESKTOP = os.path.join(os.path.expanduser(\"~\"), \"Desktop\")\r\nSTOCK_LIST_FILE = os.path.join(DESKTOP, \"HLA.txt\")\r\nOUTPUT_DIR = os.path.join(DESKTOP, \"stockSpider_output\")\r\nQA_DIR = os.path.join(DESKTOP, \"stockSpider_QA\")\r\nDEBUG_DIR = os.path.join(OUTPUT_DIR, \"debug\")\r\nRUN_STATUS_FILE = os.path.join(OUTPUT_DIR, \"HLA_run_status.log\")\r\n\r\nCHROMEDRIVER_PATH = r\"C:\\Users\\simon\\Desktop\\chromedriver-win64\\chromedriver.exe\"\r\n\r\nos.makedirs(OUTPUT_DIR, exist_ok=True)\r\nos.makedirs(QA_DIR, exist_ok=True)\r\nos.makedirs(DEBUG_DIR, exist_ok=True)\r\n\r\n\r\n# =========================\r\n# 基础工具\r\n# =========================\r\nclass BlockCollector:\r\n    \"\"\"\r\n    先把当天抓取内容暂存到内存里，成功后一次性落盘。\r\n    避免半截数据写进 log，导致当天状态误判。\r\n    \"\"\"\r\n    def __init__(self, echo=True):\r\n        self.lines = []\r\n        self.echo = echo\r\n\r\n    def writeln(self, text=\"\"):\r\n        s = \"\" if text is None else str(text)\r\n        self.lines.append(s)\r\n        if self.echo:\r\n            try:\r\n                sys.__stdout__.write(s + \"\\n\")\r\n                sys.__stdout__.flush()\r\n            except:\r\n                pass\r\n\r\n    def get_text(self):\r\n        return \"\\n\".join(self.lines).rstrip() + \"\\n\"\r\n\r\n\r\ndef write_run_status(msg):\r\n    ts = time.strftime(\"%Y-%m-%d %H:%M:%S\", time.localtime())\r\n    line = f\"[{ts}] {msg}\"\r\n    print(line)\r\n    try:\r\n        with open(RUN_STATUS_FILE, \"a\", encoding=\"utf-8\") as f:\r\n            f.write(line + \"\\n\")\r\n    except:\r\n        pass\r\n\r\n\r\ndef read_text(path):\r\n    try:\r\n        with open(path, \"r\", encoding=\"utf-8\") as f:\r\n            return f.read()\r\n    except:\r\n        return \"\"\r\n\r\n\r\ndef write_text(path, text):\r\n    with open(path, \"w\", encoding=\"utf-8\") as f:\r\n        f.write(text)\r\n\r\n\r\ndef append_block_text(path, block_text):\r\n    block_text = (block_text or \"\").rstrip() + \"\\n\"\r\n    with open(path, \"a+\", encoding=\"utf-8\") as f:\r\n        f.seek(0, os.SEEK_END)\r\n        if f.tell() > 0:\r\n            f.write(\"\\n\")\r\n        f.write(block_text)\r\n\r\n\r\ndef safe_filename(name: str):\r\n    invalid_chars = r'<>:\"/\\|?*'\r\n    for c in invalid_chars:\r\n        name = name.replace(c, \"_\")\r\n    name = name.strip()\r\n    return name if name else \"unknown_stock\"\r\n\r\n\r\ndef format_num(v, nd=2):\r\n    if v is None:\r\n        return \"-\"\r\n    return f\"{v:.{nd}f}\"\r\n\r\n\r\ndef normalize_space(text):\r\n    if text is None:\r\n        return \"\"\r\n    return re.sub(r\"\\s+\", \" \", str(text)).strip()\r\n\r\n\r\ndef wait_body(driver, timeout=20):\r\n    return WebDriverWait(driver, timeout).until(\r\n        EC.presence_of_element_located((By.TAG_NAME, \"body\"))\r\n    )\r\n\r\n\r\ndef remove_masks(driver):\r\n    js = \"\"\"\r\n    try {\r\n        const nodes = document.querySelectorAll('div,section,aside');\r\n        nodes.forEach(el => {\r\n            try {\r\n                const s = window.getComputedStyle(el);\r\n                const zi = parseInt(s.zIndex || '0', 10);\r\n                const pos = s.position;\r\n                const w = el.offsetWidth || 0;\r\n                const h = el.offsetHeight || 0;\r\n                if (\r\n                    zi >= 9999 &&\r\n                    (pos === 'fixed' || pos === 'absolute') &&\r\n                    w >= 200 &&\r\n                    h >= 120\r\n                ) {\r\n                    el.remove();\r\n                }\r\n            } catch(e) {}\r\n        });\r\n    } catch(e) {}\r\n    \"\"\"\r\n    try:\r\n        driver.execute_script(js)\r\n    except:\r\n        pass\r\n\r\n\r\ndef save_debug(driver, stockID, tag):\r\n    ts = time.strftime(\"%Y%m%d_%H%M%S\", time.localtime())\r\n    png_path = os.path.join(DEBUG_DIR, f\"{stockID}_{tag}_{ts}.png\")\r\n    html_path = os.path.join(DEBUG_DIR, f\"{stockID}_{tag}_{ts}.html\")\r\n\r\n    try:\r\n        driver.save_screenshot(png_path)\r\n    except:\r\n        pass\r\n\r\n    try:\r\n        with open(html_path, \"w\", encoding=\"utf-8\") as f:\r\n            f.write(driver.page_source)\r\n    except:\r\n        pass\r\n\r\n\r\ndef click_with_retry(driver, xpaths, timeout=10, retry=3):\r\n    for _ in range(retry):\r\n        remove_masks(driver)\r\n        for xp in xpaths:\r\n            try:\r\n                WebDriverWait(driver, timeout).until(\r\n                    lambda d: len(d.find_elements(By.XPATH, xp)) > 0\r\n                )\r\n                elements = driver.find_elements(By.XPATH, xp)\r\n\r\n                target = None\r\n                for el in elements:\r\n                    try:\r\n                        if el.is_displayed():\r\n                            target = el\r\n                            break\r\n                    except:\r\n                        continue\r\n\r\n                if target is None and elements:\r\n                    target = elements[0]\r\n\r\n                if target is None:\r\n                    continue\r\n\r\n                driver.execute_script(\"arguments[0].scrollIntoView({block:'center'});\", target)\r\n                time.sleep(0.4)\r\n\r\n                try:\r\n                    target.click()\r\n                except:\r\n                    driver.execute_script(\"arguments[0].click();\", target)\r\n\r\n                time.sleep(1)\r\n                return True\r\n            except:\r\n                continue\r\n        time.sleep(1)\r\n    return False\r\n\r\n\r\ndef parse_float(text):\r\n    if text is None:\r\n        return None\r\n    s = str(text).strip().replace(\",\", \"\").replace(\"\\t\", \" \").replace(\" \", \"\")\r\n    if not s or s == \"-\":\r\n        return None\r\n    m = re.search(r\"[+-]?\\d+(?:\\.\\d+)?\", s)\r\n    if not m:\r\n        return None\r\n    try:\r\n        return float(m.group())\r\n    except:\r\n        return None\r\n\r\n\r\ndef sign_diff(diff, ma):\r\n    if ma in (None, 0):\r\n        return 0\r\n    if abs(diff) / ma <= 0.003:\r\n        return 0\r\n    return 1 if diff > 0 else -1\r\n\r\n\r\ndef split_blocks(text):\r\n    arr = re.split(r'(?=Date:\\s*\\d{4}-\\d{2}-\\d{2})', text)\r\n    return [x.strip() for x in arr if x.strip()]\r\n\r\n\r\ndef today_str_dash():\r\n    return time.strftime(\"%Y-%m-%d\", time.localtime())\r\n\r\n\r\ndef today_str_compact():\r\n    return time.strftime(\"%Y%m%d\", time.localtime())\r\n\r\n\r\n# =========================\r\n# Chrome Driver\r\n# =========================\r\ndef create_driver(headless=False):\r\n    if not os.path.exists(CHROMEDRIVER_PATH):\r\n        raise FileNotFoundError(f\"未找到本地ChromeDriver: {CHROMEDRIVER_PATH}\")\r\n\r\n    options = Options()\r\n    options.page_load_strategy = \"eager\"\r\n\r\n    if headless:\r\n        options.add_argument(\"--headless=new\")\r\n        options.add_argument(\"--window-size=1920,1080\")\r\n    else:\r\n        options.add_argument(\"--start-maximized\")\r\n\r\n    options.add_argument(\"--disable-gpu\")\r\n    options.add_argument(\"--no-sandbox\")\r\n    options.add_argument(\"--disable-dev-shm-usage\")\r\n    options.add_argument(\"--disable-blink-features=AutomationControlled\")\r\n    options.add_argument(\"--disable-features=AutomationControlled\")\r\n    options.add_argument(\"--disable-renderer-backgrounding\")\r\n    options.add_argument(\"--disable-background-timer-throttling\")\r\n    options.add_argument(\"--log-level=3\")\r\n    options.add_argument(\"--disable-extensions\")\r\n    options.add_argument(\"--disable-infobars\")\r\n    options.add_argument(\"--lang=zh-CN\")\r\n    options.add_argument(\"--window-size=1920,1080\")\r\n    options.add_argument(\r\n        \"--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 \"\r\n        \"(KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36\"\r\n    )\r\n    options.add_experimental_option(\"excludeSwitches\", [\"enable-logging\", \"enable-automation\"])\r\n    options.add_experimental_option(\"useAutomationExtension\", False)\r\n\r\n    prefs = {\r\n        \"profile.default_content_setting_values.notifications\": 2,\r\n        \"intl.accept_languages\": \"zh-CN,zh\",\r\n    }\r\n    options.add_experimental_option(\"prefs\", prefs)\r\n\r\n    service = Service(CHROMEDRIVER_PATH)\r\n\r\n    driver = webdriver.Chrome(service=service, options=options)\r\n    driver.set_page_load_timeout(30)\r\n    driver.set_script_timeout(45)\r\n\r\n    try:\r\n        driver.set_window_size(1920, 1080)\r\n    except:\r\n        pass\r\n\r\n    try:\r\n        driver.execute_script(\r\n            \"Object.defineProperty(navigator, 'webdriver', {get: () => undefined})\"\r\n        )\r\n    except:\r\n        pass\r\n\r\n    return driver\r\n\r\n\r\n# =========================\r\n# 代码与市场识别\r\n# =========================\r\ndef detect_market(stockID: str):\r\n    if stockID.startswith((\"600\", \"601\", \"603\", \"605\", \"688\", \"689\")):\r\n        return 1\r\n    elif stockID.startswith((\"000\", \"001\", \"002\", \"003\", \"300\", \"301\")):\r\n        return 0\r\n    else:\r\n        raise ValueError(f\"无法判断交易所，请手动确认股票代码: {stockID}\")\r\n\r\n\r\ndef load_stock_list(file_path):\r\n    stock_list = []\r\n    seen = set()\r\n\r\n    if not os.path.exists(file_path):\r\n        raise FileNotFoundError(f\"股票列表文件不存在: {file_path}\")\r\n\r\n    with open(file_path, \"r\", encoding=\"utf-8\") as f:\r\n        for line in f:\r\n            code = line.strip()\r\n            if code and code.isdigit() and code not in seen:\r\n                stock_list.append(code)\r\n                seen.add(code)\r\n    return stock_list\r\n\r\n\r\ndef get_stock_name(driver, stockID):\r\n    xpaths = [\r\n        \"/html/body/div[1]/div/div[3]/div[1]/div[1]/span[1]\",\r\n        \"//span[contains(@class,'name')]\",\r\n        \"//h1\",\r\n        \"//title\",\r\n    ]\r\n\r\n    for xp in xpaths:\r\n        try:\r\n            els = driver.find_elements(By.XPATH, xp)\r\n            for el in els:\r\n                txt = el.text.strip()\r\n                if txt and txt != \"-\":\r\n                    cleaned = (\r\n                        txt.replace(stockID, \"\")\r\n                        .replace(\"(\", \"\")\r\n                        .replace(\")\", \"\")\r\n                        .replace(\"（\", \"\")\r\n                        .replace(\"）\", \"\")\r\n                        .strip()\r\n                    )\r\n                    cleaned = normalize_space(cleaned)\r\n                    if cleaned:\r\n                        return cleaned\r\n        except:\r\n            continue\r\n\r\n    return f\"unknown_stock_{stockID}\"\r\n\r\n\r\n# =========================\r\n# 页面抓取：基本行情\r\n# =========================\r\ndef extract_basic_info_structured(driver):\r\n    result = {\r\n        \"close\": None,\r\n        \"change_pct\": None,\r\n        \"open\": None,\r\n        \"prev_close\": None,\r\n        \"high\": None,\r\n        \"low\": None,\r\n        \"turnover_rate\": None,\r\n        \"volume_ratio\": None,\r\n        \"volume\": None,\r\n        \"amount\": None,\r\n    }\r\n\r\n    close_xps = [\r\n        \"/html/body/div[1]/div/div[3]/div[2]/div[1]/div[1]/span[1]/span\",\r\n        \"//div[contains(@class,'price')]//span\",\r\n    ]\r\n    pct_xps = [\r\n        \"/html/body/div[1]/div/div[3]/div[2]/div[1]/div[2]/span[1]/span/span\",\r\n        \"//span[contains(text(),'%')]\",\r\n    ]\r\n\r\n    for xp in close_xps:\r\n        try:\r\n            el = driver.find_element(By.XPATH, xp)\r\n            result[\"close\"] = parse_float(el.text.strip())\r\n            if result[\"close\"] is not None:\r\n                break\r\n        except:\r\n            continue\r\n\r\n    for xp in pct_xps:\r\n        try:\r\n            el = driver.find_element(By.XPATH, xp)\r\n            result[\"change_pct\"] = parse_float(el.text.strip())\r\n            if result[\"change_pct\"] is not None:\r\n                break\r\n        except:\r\n            continue\r\n\r\n    panel_candidates = [\r\n        \"/html/body/div[1]/div/div[3]/div[2]/div[2]\",\r\n        \"//*[contains(text(),'今开') and contains(text(),'昨收')]\",\r\n        \"//*[contains(text(),'换手率') and contains(text(),'量比')]\",\r\n    ]\r\n\r\n    panel_text = \"\"\r\n    for xp in panel_candidates:\r\n        try:\r\n            el = driver.find_element(By.XPATH, xp)\r\n            txt = el.text.strip()\r\n            if txt:\r\n                panel_text = txt\r\n                break\r\n        except:\r\n            continue\r\n\r\n    if panel_text:\r\n        pairs = {\r\n            \"open\": r\"今开[:：]?\\s*([0-9.\\-]+)\",\r\n            \"prev_close\": r\"昨收[:：]?\\s*([0-9.\\-]+)\",\r\n            \"high\": r\"最高价[:：]?\\s*([0-9.\\-]+)\",\r\n            \"low\": r\"最低价[:：]?\\s*([0-9.\\-]+)\",\r\n            \"turnover_rate\": r\"换手率[:：]?\\s*([0-9.\\-]+)%\",\r\n            \"volume_ratio\": r\"量比[:：]?\\s*([0-9.\\-]+)\",\r\n            \"volume\": r\"成交量[:：]?\\s*([0-9.\\-]+)万\",\r\n            \"amount\": r\"成交额[:：]?\\s*([0-9.\\-]+)亿\",\r\n        }\r\n        for k, p in pairs.items():\r\n            m = re.search(p, panel_text)\r\n            if m:\r\n                result[k] = parse_float(m.group(1))\r\n\r\n    return result\r\n\r\n\r\ndef panel_text_to_lines(panel_text):\r\n    if not panel_text:\r\n        return []\r\n\r\n    arr = [x.strip() for x in panel_text.splitlines() if x.strip()]\r\n    if not arr:\r\n        return []\r\n\r\n    pairs = []\r\n    i = 0\r\n    while i < len(arr):\r\n        if i + 1 < len(arr):\r\n            pairs.append(f\"{arr[i]}: {arr[i + 1]}\")\r\n            i += 2\r\n        else:\r\n            pairs.append(arr[i])\r\n            i += 1\r\n\r\n    lines = []\r\n    for j in range(0, len(pairs), 4):\r\n        lines.append(\"\\t\".join(pairs[j:j + 4]))\r\n    return lines\r\n\r\n\r\ndef extract_basic_info_bundle(driver):\r\n    info = extract_basic_info_structured(driver)\r\n\r\n    close_text = \"\"\r\n    pct_text = \"\"\r\n    panel_text = \"\"\r\n\r\n    close_xps = [\r\n        \"/html/body/div[1]/div/div[3]/div[2]/div[1]/div[1]/span[1]/span\",\r\n        \"//div[contains(@class,'price')]//span\",\r\n    ]\r\n    pct_xps = [\r\n        \"/html/body/div[1]/div/div[3]/div[2]/div[1]/div[2]/span[1]/span/span\",\r\n        \"//span[contains(text(),'%')]\",\r\n    ]\r\n    panel_xps = [\r\n        \"/html/body/div[1]/div/div[3]/div[2]/div[2]\",\r\n        \"//*[contains(text(),'今开') and contains(text(),'昨收')]\",\r\n        \"//*[contains(text(),'换手率') and contains(text(),'量比')]\",\r\n    ]\r\n\r\n    for xp in close_xps:\r\n        try:\r\n            el = driver.find_element(By.XPATH, xp)\r\n            txt = el.text.strip()\r\n            if txt:\r\n                close_text = txt\r\n                break\r\n        except:\r\n            continue\r\n\r\n    for xp in pct_xps:\r\n        try:\r\n            el = driver.find_element(By.XPATH, xp)\r\n            txt = el.text.strip()\r\n            if txt:\r\n                pct_text = txt\r\n                break\r\n        except:\r\n            continue\r\n\r\n    for xp in panel_xps:\r\n        try:\r\n            el = driver.find_element(By.XPATH, xp)\r\n            txt = el.text.strip()\r\n            if txt:\r\n                panel_text = txt\r\n                break\r\n        except:\r\n            continue\r\n\r\n    if not close_text and info.get(\"close\") is not None:\r\n        close_text = format_num(info[\"close\"])\r\n    if not pct_text and info.get(\"change_pct\") is not None:\r\n        pct_text = f\"{format_num(info['change_pct'])}%\"\r\n\r\n    panel_lines = panel_text_to_lines(panel_text)\r\n    return close_text, pct_text, panel_lines, info\r\n\r\n\r\ndef is_valid_basic_info(info):\r\n    if not info:\r\n        return False\r\n    if info.get(\"close\") is None:\r\n        return False\r\n\r\n    core_count = 0\r\n    for k in [\"open\", \"prev_close\", \"high\", \"low\"]:\r\n        if info.get(k) is not None:\r\n            core_count += 1\r\n\r\n    return core_count >= 2\r\n\r\n\r\ndef wait_basic_info_ready(driver, timeout=35):\r\n    start = time.time()\r\n    last_info = None\r\n\r\n    while time.time() - start < timeout:\r\n        remove_masks(driver)\r\n        last_info = extract_basic_info_structured(driver)\r\n        if is_valid_basic_info(last_info):\r\n            return True, last_info\r\n        time.sleep(1)\r\n\r\n    return False, last_info\r\n\r\n\r\n# =========================\r\n# 页面抓取：筹码\r\n# =========================\r\ndef extract_chip_distribution_strict(driver):\r\n    candidate_xpaths = [\r\n        \"/html/body/div[1]/div/div[5]/div[1]/div/div[3]/div/div[4]\",\r\n        \"/html/body/div[1]/div/div[5]/div[1]/div/div[3]/div/div[4]/div\",\r\n        \"/html/body/div[1]/div/div[5]/div[1]/div/div[3]/div/div[4]/div/table\",\r\n        \"/html/body/div[1]/div/div[5]/div[1]/div/div[3]/div/div[4]/div/table/tbody\",\r\n        \"//*[contains(text(),'获利比例') and contains(text(),'平均成本')]\",\r\n        \"//*[contains(text(),'90%成本') and contains(text(),'70%成本')]\",\r\n        \"//*[contains(text(),'获利比例') and contains(text(),'集中度')]\",\r\n    ]\r\n\r\n    keywords = [\"获利比例\", \"平均成本\", \"90%成本\", \"70%成本\", \"集中度\"]\r\n\r\n\r\n    ctx = {}\r\n    if today.get(\"avg_cost\") is not None and today.get(\"close\") is not None and today[\"avg_cost\"] != 0:\r\n        ctx[\"under_avg\"] = today[\"close\"] < today[\"avg_cost\"]\r\n        ctx[\"above_avg\"] = today[\"close\"] > today[\"avg_cost\"]\r\n        ctx[\"premium\"] = (today[\"close\"] / today[\"avg_cost\"] - 1) * 100\r\n\r\n    if today.get(\"profit_ratio\") is not None:\r\n        ctx[\"profit_low\"] = today[\"profit_ratio\"] < 10\r\n        ctx[\"profit_mid\"] = 10 <= today[\"profit_ratio\"] <= 40\r\n        ctx[\"profit_high\"] = today[\"profit_ratio\"] > 40\r\n\r\n    if prev and today.get(\"conc_70\") is not None and prev.get(\"conc_70\") is not None:\r\n        ctx[\"conc70_change\"] = today[\"conc_70\"] - prev[\"conc_70\"]\r\n        ctx[\"conc_more_focus\"] = today[\"conc_70\"] < prev[\"conc_70\"]\r\n        ctx[\"conc_loosen\"] = today[\"conc_70\"] > prev[\"conc_70\"]\r\n\r\n    if prev and today.get(\"conc_90\") is not None and prev.get(\"conc_90\") is not None:\r\n        ctx[\"conc90_change\"] = today[\"conc_90\"] - prev[\"conc_90\"]\r\n\r\n    if today.get(\"cost_70_low\") is not None and today.get(\"cost_70_high\") is not None and today.get(\"close\") is not None:\r\n        low = today[\"cost_70_low\"]\r\n        high = today[\"cost_70_high\"]\r\n        if high != low:\r\n            pen = (today[\"close\"] - low) / (high - low) * 100\r\n            ctx[\"penetration\"] = pen\r\n            ctx[\"pen_weak\"] = pen < 15\r\n            ctx[\"pen_good\"] = 20 <= pen <= 60\r\n            ctx[\"pen_hot\"] = pen > 80\r\n\r\n    return ctx\r\n\r\n\r\ndef classify_regime(today, prev, history, state, sub_state, easy_action, diff_res, threeway, tag):\r\n    mctx = ma_cluster_stats(today)\r\n    vctx = volume_context(history)\r\n\r\n    if easy_action.startswith(\"❌\") and diff_res[\"score\"] <= -2:\r\n        return \"deep_weak\"\r\n\r\n    if state in [\"3+\", 3]:\r\n        if vctx.get(\"is_shrink\") and diff_res[\"score\"] >= 1:\r\n            return \"strong_trend_consolidation\"\r\n        return \"strong_trend\"\r\n\r\n    if state == 2 and sub_state == \"2B-Compress\":\r\n        return \"compress_launch_zone\"\r\n\r\n    if state == 2 and sub_state == \"2B-EarlyBull\":\r\n        return \"early_bull_probe\"\r\n\r\n    if mctx and mctx[\"very_tight\"] and vctx.get(\"is_deep_shrink\"):\r\n        return \"shrink_wash_repair\"\r\n\r\n    if threeway == \"粘合才观\" and diff_res[\"state\"] in [\"短暂反弹\", \"临界状态\", \"弱空头或粘合\"]:\r\n        return \"weak_repair\"\r\n\r\n    if state == 1:\r\n        return \"rebound_not_reverse\"\r\n\r\n    if tag == \"无趋势\":\r\n        return \"flat_wait\"\r\n\r\n    return \"neutral_repair\"\r\n\r\n\r\ndef get_penetration(today):\r\n    if today.get(\"cost_70_low\") is None or today.get(\"cost_70_high\") is None:\r\n        return None\r\n    low = today[\"cost_70_low\"]\r\n    high = today[\"cost_70_high\"]\r\n    if high == low or today.get(\"close\") is None:\r\n        return None\r\n    return (today[\"close\"] - low) / (high - low) * 100\r\n\r\n\r\ndef get_premium(today):\r\n    if today.get(\"avg_cost\") in (None, 0) or today.get(\"close\") is None:\r\n        return None\r\n    return (today[\"close\"] / today[\"avg_cost\"] - 1) * 100\r\n\r\n\r\ndef get_support_pressure(today):\r\n    support_low = today[\"cost_70_low\"] if today.get(\"cost_70_low\") is not None else today.get(\"MA60\")\r\n    support_high = today.get(\"MA60\")\r\n\r\n    arr = [today.get(\"avg_cost\"), today.get(\"MA20\"), today.get(\"MA30\")]\r\n    valid = [x for x in arr if x is not None]\r\n    pressure_low = max(valid) if valid else None\r\n\r\n    pressure_high = today[\"cost_70_high\"] if today.get(\"cost_70_high\") is not None else today.get(\"MA10\")\r\n    return support_low, support_high, pressure_low, pressure_high\r\n\r\n\r\ndef get_volume_ratio_5(history):\r\n    if len(history) < 6:\r\n        return None\r\n    today = history[-1]\r\n    prev5 = history[-6:-1]\r\n    vols = [x[\"volume\"] for x in prev5 if x.get(\"volume\") is not None]\r\n    if not vols or today.get(\"volume\") is None:\r\n        return None\r\n    avg5 = sum(vols) / len(vols)\r\n    if avg5 == 0:\r\n        return None\r\n    return today[\"volume\"] / avg5\r\n\r\n\r\ndef get_ma_cross_bias(today):\r\n    if today.get(\"MA5\") is None or today.get(\"MA10\") is None or today[\"MA10\"] == 0:\r\n        return None\r\n    diff = today[\"MA5\"] - today[\"MA10\"]\r\n    if abs(diff) / today[\"MA10\"] <= 0.002:\r\n        return \"MA5与MA10处于粘合状态\"\r\n    return \"MA5位于MA10上方\" if diff > 0 else \"MA5位于MA10下方\"\r\n\r\n\r\ndef make_trigger_sentence(today):\r\n    support_low, support_high, pressure_low, pressure_high = get_support_pressure(today)\r\n    arr = []\r\n\r\n    if pressure_high is not None:\r\n        arr.append(f\"向上若放量突破 {format_num(pressure_high)}\")\r\n    elif pressure_low is not None:\r\n        arr.append(f\"向上若有效突破 {format_num(pressure_low)}\")\r\n\r\n    if support_low is not None:\r\n        arr.append(f\"向下若有效跌破 {format_num(support_low)}\")\r\n    elif support_high is not None:\r\n        arr.append(f\"向下若失守 {format_num(support_high)}\")\r\n\r\n    return \"；\".join(arr) if arr else \"等待关键价位突破后确认方向\"\r\n\r\n\r\ndef aei_event_summary(history, topn=2):\r\n    aei = calc_aei(history)\r\n    rows = []\r\n    for i, x in enumerate(aei):\r\n        if i == 0:\r\n            continue\r\n        rows.append((x[\"date\"], x[\"AEI\"]))\r\n    rows.sort(key=lambda t: t[1], reverse=True)\r\n    rows = [x for x in rows if x[1] > 0][:topn]\r\n    if not rows:\r\n        return \"近阶段未观察到特别突出的AEI爆发点\"\r\n    return \"、\".join([f\"{d}(AEI={format_num(v, 2)})\" for d, v in rows])\r\n\r\n\r\n# =========================\r\n# 研究式问答层\r\n# =========================\r\ndef q1_dynamic(today, prev, history, state, sub_state, easy_action, diff_res, threeway, tag):\r\n    regime = classify_regime(today, prev, history, state, sub_state, easy_action, diff_res, threeway, tag)\r\n    mctx = ma_cluster_stats(today)\r\n    vratio5 = get_volume_ratio_5(history)\r\n    cctx = chip_context(today, prev)\r\n    penetration = get_penetration(today)\r\n    premium = get_premium(today)\r\n\r\n    if regime in [\"strong_trend\", \"strong_trend_consolidation\"]:\r\n        head = \"这票现在整体是健康的，而且偏强。\"\r\n    elif regime in [\"compress_launch_zone\", \"shrink_wash_repair\"]:\r\n        head = \"这票现在我更愿意定义成“健康但还在蓄势”。\"\r\n    elif regime in [\"early_bull_probe\", \"neutral_repair\"]:\r\n        head = \"这票现在属于中性偏强，已经在修复，但还没到彻底放飞的时候。\"\r\n    elif regime in [\"weak_repair\", \"rebound_not_reverse\", \"flat_wait\"]:\r\n        head = \"这票现在只能算中性，偏修复，不算真正走强。\"\r\n    else:\r\n        head = \"这票现在整体还不健康，结构上还是有明显压制。\"\r\n\r\n    parts = [head]\r\n\r\n    if mctx:\r\n        if mctx[\"very_tight\"]:\r\n            parts.append(\r\n                f\"从均线看，MA30到MA90已经压得非常紧，基本收在 {format_num(min(mctx['vals']))}-{format_num(max(mctx['vals']))} 这一小段里。\"\r\n                \" 这种状态通常说明市场分歧已经收得很厉害，后面不会永远横着，迟早要选方向。\"\r\n            )\r\n        elif mctx[\"tight\"]:\r\n            parts.append(\r\n                f\"中长期均线已经明显收敛，MA30~MA90的总跨度大概只有 {format_num(mctx['span'], 2)} 元，\"\r\n                \"说明中期成本差正在缩小，结构比前面健康。\"\r\n            )\r\n        else:\r\n            parts.append(\r\n                f\"不过中长期均线还没有完全拧成一股绳，MA30~MA90之间还有大约 {format_num(mctx['span'], 2)} 元的跨度，\"\r\n                \"所以还不能说结构已经彻底统一。\"\r\n            )\r\n\r\n    if vratio5 is not None:\r\n        if vratio5 < 0.65:\r\n            parts.append(\"量能这边明显缩下来了，如果价格又没跟着破位，这通常更像洗盘或者锁仓，不太像恐慌出逃。\")\r\n        elif vratio5 < 0.85:\r\n            parts.append(\"量能比前几天是收敛的，说明短线抛压已经没前面那么重。\")\r\n        elif vratio5 > 1.2:\r\n            parts.append(\"量能开始放出来了，说明分歧和换手都在上升，市场已经开始为后面的方向选择做准备。\")\r\n\r\n    if cctx.get(\"under_avg\"):\r\n        parts.append(f\"但有一点要注意，价格现在还在平均成本 {format_num(today['avg_cost'])} 下边，所以严格说，它还处在修复过程里，不算彻底翻身。\")\r\n    elif cctx.get(\"above_avg\"):\r\n        parts.append(f\"好的一点是，价格已经重新回到平均成本 {format_num(today['avg_cost'])} 上方，这对结构修复是明显加分项。\")\r\n\r\n    if penetration is not None:\r\n        if penetration < 15:\r\n            parts.append(\"从70%筹码带的位置看，价格现在还偏防守，说明它离真正进入主筹码优势区还有一点距离。\")\r\n        elif 20 <= penetration <= 60:\r\n            parts.append(\"从70%筹码带穿透位置看，现在的位置其实还不错，属于比较稳健的中段区域。\")\r\n        elif penetration > 80:\r\n            parts.append(\"从70%筹码带的位置看，已经接近上沿了，这种地方如果再硬冲，就要注意短线兑现压力。\")\r\n\r\n    if premium is not None:\r\n        if premium <= -2:\r\n            parts.append(\"而且当前仍然在平均成本下方，说明这波修复还没完全越过主力成本线。\")\r\n        elif premium >= 2:\r\n            parts.append(\"现在已经开始对平均成本形成正溢价，这说明价格正在慢慢拿回主动权。\")\r\n\r\n    return \" \".join(parts)\r\n\r\n\r\ndef q2_dynamic(today, prev, history, state, sub_state, easy_action, diff_res, threeway, tag):\r\n    support_low, support_high, pressure_low, pressure_high = get_support_pressure(today)\r\n\r\n    if state == 0:\r\n        return (\r\n            \"State 0，这种就不用美化了，标准结构性空头。\"\r\n            \" 这种票最大的问题不是短线会不会反弹，而是中期结构根本没放行。\"\r\n            \" 操作上最合理的做法就是不参与，等它先把中期均线关系修好再说。\"\r\n        )\r\n\r\n    if state == 1:\r\n        return (\r\n            \"State 1，说明它现在属于“会反，但还没反过来”的阶段。\"\r\n            \" 也就是说，短线有修复弹性，但中期结构还没真正转多。\"\r\n            f\" 所以这里更适合盯着看，不适合太早下重手，至少得先看它能不能站稳 {format_num(pressure_low)} 这一类关键位。\"\r\n        )\r\n\r\n    if state == 2 and sub_state == \"2B-Compress\":\r\n        return (\r\n            \"State 2B-Compress，这个位置其实很有意思。\"\r\n            \" 它不是强趋势已经走出来了，而是均线和成本开始高度压缩，属于那种一旦选对方向，弹性会比较大的区间。\"\r\n            f\" 所以操作上可以偏积极一点看，但前提还是要等它后续确认，比如放量突破 {format_num(pressure_high)} 附近。\"\r\n        )\r\n\r\n    if state == 2 and sub_state == \"2B-EarlyBull\":\r\n        return (\r\n            \"State 2B-EarlyBull，说明它已经从纯粘合往轻多头过渡了。\"\r\n            \" 这种票一般不是最肥的起爆点，但已经开始出现顺势价值。\"\r\n            \" 操作上可以轻一点跟着走，不适合情绪化重仓。\"\r\n        )\r\n\r\n    if state == 2 and sub_state == \"2A\":\r\n        return (\r\n            \"State 2A，这种就属于结构在改善，但还没到你可以放心开枪的位置。\"\r\n            \" 它比空头好一点，但又没有到多头确认，最适合继续观察。\"\r\n        )\r\n\r\n    if state == 3:\r\n        return (\r\n            \"State 3，结构性多头。\"\r\n            \" 这种票最大的特点就是均线关系已经开始偏健康，市场在允许它走趋势。\"\r\n            \" 操作上更适合顺着它，而不是总想着抄底或者猜顶。\"\r\n        )\r\n\r\n    if state == \"3+\":\r\n        return (\r\n            \"State 3+，这是高阶多头。\"\r\n            \" 这种结构说明市场对它的中短期成本抬升已经比较一致。\"\r\n            \" 但越强的地方越要防一个问题：不是不能买，而是别在最热的时候追着买。\"\r\n        )\r\n\r\n    return (\r\n        \"State X。\"\r\n        \" 这个状态的意思不是说它一定很差，而是说它现在不属于标准的多头、空头或者典型起爆结构。\"\r\n        \" 所以最好的做法通常不是急着判断方向，而是继续等它自己把结构讲清楚。\"\r\n    )\r\n\r\n\r\ndef q3_dynamic(today, prev, history, state, sub_state, easy_action, diff_res, threeway, tag):\r\n    trigger = make_trigger_sentence(today)\r\n    cross_bias = get_ma_cross_bias(today)\r\n    support_low, support_high, pressure_low, pressure_high = get_support_pressure(today)\r\n\r\n    if state == 2 and sub_state == \"2B-Compress\":\r\n        return (\r\n            f\"短线我更倾向于把它看成“横住等变盘”。现在大概率还会围绕 {format_num(support_high)}-{format_num(pressure_high)} 这一带继续磨，\"\r\n            f\"{cross_bias if cross_bias else '短均线还在整理'}，所以节奏上不会特别痛快。\"\r\n            \" 但这种票一旦均线压缩到极致，通常不会一直磨下去，后面更可能是突然给方向。\"\r\n            f\" 触发点你就盯住：{trigger}。\"\r\n        )\r\n\r\n    if state in [3, \"3+\"]:\r\n        return (\r\n            \"后面的走势更像趋势里的正常整理，而不是大级别转弱。\"\r\n            \" 只要MA10、MA20不被有效破坏，中期还是可以按偏多思路去看。\"\r\n            \" 如果后面量能重新接上，价格大概率还有继续往上拓展的机会。\"\r\n        )\r\n\r\n    if state == 1:\r\n        return (\r\n            \"后面更像边修边试压的过程。\"\r\n            \" 这种阶段最怕的是你把反弹看成反转，所以关键不是它能不能涨两天，而是能不能把中期压制位真正踩过去。\"\r\n            f\" 如果只是冲到 {format_num(pressure_low)} 一带又掉下来，那还是按弱修复看。\"\r\n        )\r\n\r\n    if easy_action.startswith(\"❌\"):\r\n        return (\r\n            \"后面的核心不是直接看主升，而是先看它能不能把中长均线压制慢慢拆掉。\"\r\n            \" 在没有重新站稳关键均线之前，就算有反弹，也更像修复，不像趋势反转。\"\r\n        )\r\n\r\n    return (\r\n        f\"我现在更倾向于把它看成“整理中等方向”。后面重点看它能不能在 {format_num(support_high)}-{format_num(pressure_high)} 这个区域完成换手，然后再向上试压。\"\r\n        f\" 真正的关键信号还是：{trigger}。\"\r\n    )\r\n\r\n\r\ndef q4_dynamic(today, prev, history, state, sub_state, threeway, aei5sum):\r\n    vratio5 = get_volume_ratio_5(history)\r\n    cross_bias = get_ma_cross_bias(today)\r\n\r\n    if state == 2 and sub_state == \"2B-Compress\":\r\n        if vratio5 is not None and vratio5 < 0.8:\r\n            return (\r\n                \"我偏向看 5 到 8 个交易日。\"\r\n                \" 原因很简单：量能已经有收缩迹象，结构也已经压得比较紧，但短均线还需要一点时间去走平、拐头。\"\r\n                f\" 一旦后面出现 {cross_bias if cross_bias else '短均线修复'}，再配合量能回暖，变盘就很快了。\"\r\n            )\r\n        return (\r\n            \"大致看 3 到 8 个交易日。\"\r\n            \" 这种压缩结构本身不会拖特别久，后面就差市场给一个明确的量价态度。\"\r\n        )\r\n\r\n    if state == 2 and sub_state == \"2B-EarlyBull\":\r\n        return (\r\n            \"我更倾向于看 1 到 2 周。\"\r\n            \" 因为它已经不是纯粘合了，但又还没完全进入强趋势，所以通常还需要一点时间确认到底是继续走强，还是只是试探一下。\"\r\n        )\r\n\r\n    if state in [3, \"3+\"]:\r\n        return (\r\n            \"如果没有明显破位，这种结构通常不用震太久，快一点的话 3 到 5 个交易日，慢一点也就是一周左右。\"\r\n        )\r\n\r\n    if state == 1:\r\n        return (\r\n            \"这种我一般按 2 到 4 周看。\"\r\n            \" 因为它当前主要任务不是起飞，而是先把上方成本和中期均线慢慢修掉。\"\r\n        )\r\n\r\n    return (\r\n        \"按现在这个状态，我还是倾向于看 1 到 3 周。\"\r\n        \" 它现在更像在做换手和结构确认，真正想启动，得等均线、筹码和量能重新拧到一起。\"\r\n    )\r\n\r\n\r\ndef q5_dynamic(today, prev, history, aei_trend, aei_today, aei5sum, penetration, premium, trend):\r\n    event_text = aei_event_summary(history, topn=2)\r\n\r\n    if aei5sum > 4.5:\r\n        return (\r\n            \"我的判断是：有，而且已经不算弱了。\"\r\n            f\" 近阶段比较突出的AEI节点出现在 {event_text}，这说明不是单日脉冲，而是资金确实有过比较成体系的承接动作。\"\r\n            \" 如果后面在缩量背景下，集中度还能继续往好的方向走，那基本可以把它理解成主力没走，还在做锁仓和收筹。\"\r\n        )\r\n\r\n    if 2.5 <= aei5sum <= 4.5:\r\n        return (\r\n            \"我的判断是：有低位收集迹象，但力度还没有强到特别确定。\"\r\n            f\" 从AEI看，像 {event_text} 这种阶段确实出现过承接动作，说明资金不是完全没管它。\"\r\n            \" 但从持续性看，它更像边洗边接，而不是已经进入特别强的控盘式吸筹。\"\r\n        )\r\n\r\n    return (\r\n        \"我的判断是：目前还不能说主力在做特别高质量的低位收集。\"\r\n        f\" AEI这边虽然也有阶段性异动，比如 {event_text}，但整体延续性还不够强。\"\r\n        \" 所以更稳妥的理解还是：普通换手里夹杂着一些承接，而不是特别明确的主升前吸筹。\"\r\n    )\r\n\r\n\r\ndef q6_dynamic(today, prev, history, state, sub_state, penetration, premium, trend, aei_today, aei5sum):\r\n    support_low, support_high, pressure_low, pressure_high = get_support_pressure(today)\r\n\r\n    if state == 2 and sub_state == \"2B-Compress\":\r\n        if penetration is not None and penetration < 15:\r\n            return (\r\n                \"我更倾向于说：已经接近了，但还差最后一脚。\"\r\n                f\" 现在穿透率大概只有 {format_num(penetration, 2)}%，说明价格还在主筹码区边缘活动，真正往上打的动作还没完全出来。\"\r\n                f\" 但这种结构本身已经很像起爆前夜了，只要后面能带量越过 {format_num(today['avg_cost']) if today.get('avg_cost') is not None else format_num(pressure_low)} 附近的平均成本/关键压力区，就很容易进入启动节奏。\"\r\n            )\r\n        return (\r\n            \"我会说：已经很接近拉升准备区了，但市场还没正式按下按钮。\"\r\n            \" 结构弹性已经出来了，现在差的是一根有说服力的量价确认。\"\r\n        )\r\n\r\n    if state in [3, \"3+\"] and trend:\r\n        return (\r\n            \"从结构角度看，它已经具备拉升前提。\"\r\n            \" 现在不是有没有条件的问题，而是后面量能愿不愿意继续配合。\"\r\n        )\r\n\r\n    if trend is False:\r\n        return (\r\n            \"我暂时不会说它已经准备拉升。\"\r\n            \" 因为股价还没真正站回平均成本之上，这意味着上方筹码压力还没有完全消化完。\"\r\n            \" 更准确地说，它现在还是蓄势后段，不是正式起飞前夜。\"\r\n        )\r\n\r\n    return (\r\n        f\"我的判断是：正在准备，但还没完成。\"\r\n        f\" 真正的确认点还是看它能不能有效突破 {format_num(pressure_high) if pressure_high is not None else format_num(pressure_low)} 一带，\"\r\n        \"而且突破后不能马上缩回去。\"\r\n    )\r\n\r\n\r\n# =========================\r\n# QA生成\r\n# =========================\r\ndef build_qa(history, stock_name, stock_code):\r\n    history = filter_valid_history(history)\r\n    if len(history) < 2:\r\n        raise ValueError(\"有效历史不足2天，无法生成QA\")\r\n\r\n    today = history[-1]\r\n    prev = history[-2] if len(history) >= 2 else None\r\n    prev5 = history[-6] if len(history) >= 6 else None\r\n\r\n    easy_action, easy_desc, gap60, gap90, slope60, slope90 = calc_easy_mode(\r\n        today[\"close\"], today[\"MA60\"], today[\"MA90\"],\r\n        prev[\"MA60\"] if prev else None,\r\n        prev[\"MA90\"] if prev else None,\r\n    )\r\n\r\n    diff_res = calc_price_diff_method(today[\"close\"], today)\r\n    threeway = calc_three_way(today)\r\n    state, sub_state = calc_state_quant(today)\r\n    chip_score, ma_score, vol_score, total_score = score_dimension(today, prev)\r\n    tag = trend_tag(today, prev)\r\n\r\n    aei = calc_aei(history)\r\n    aei20 = aei[-20:] if len(aei) >= 20 else aei[:]\r\n    aei5sum = sum(x[\"AEI\"] for x in aei[-5:]) if len(aei) >= 5 else sum(x[\"AEI\"] for x in aei)\r\n    aei_today = aei[-1] if aei else None\r\n\r\n    penetration = get_penetration(today)\r\n    premium = get_premium(today)\r\n\r\n    trend = None\r\n    if today[\"avg_cost\"] is not None and today[\"avg_cost\"] != 0:\r\n        trend = today[\"close\"] > today[\"avg_cost\"]\r\n\r\n    signal = \"HOLD\"\r\n    desc = \"震荡/观察\"\r\n    if trend and penetration is not None and (20 <= penetration <= 80) and today[\"volume_ratio\"] is not None and today[\"volume_ratio\"] >= 1.0:\r\n        signal = \"BUY\"\r\n        desc = \"趋势启动，放量突破\"\r\n    elif (trend is False) and ((penetration is not None and penetration < 10) or (premium is not None and premium < -3.0)):\r\n        signal = \"SELL\"\r\n        desc = \"趋势破位，筹码溃散\"\r\n    else:\r\n        signal = \"HOLD\"\r\n        if trend and penetration is not None and penetration > 80:\r\n            desc = \"高位锁仓 (只卖不买)\"\r\n        elif trend is False:\r\n            desc = \"水下蓄势 (未破位)\"\r\n        else:\r\n            desc = \"中继震荡\"\r\n\r\n    if aei_today:\r\n        if aei_today[\"AEI\"] > 3.0:\r\n            aei_desc = \"极强\"\r\n        elif aei_today[\"AEI\"] >= 1.5:\r\n            aei_desc = \"强\"\r\n        elif aei_today[\"AEI\"] >= 0.5:\r\n            aei_desc = \"中等\"\r\n        elif aei_today[\"AEI\"] == 0:\r\n            aei_desc = \"中性/锁仓\"\r\n        else:\r\n            aei_desc = \"弱\"\r\n    else:\r\n        aei_desc = \"数据不足\"\r\n\r\n    if aei5sum > 4.5:\r\n        aei_trend = \"真吸筹趋势\"\r\n    elif 2.5 <= aei5sum <= 4.5:\r\n        aei_trend = \"弱真\"\r\n    else:\r\n        aei_trend = \"假吸筹/中性\"\r\n\r\n    ma5_slope = None\r\n    ma10_slope = None\r\n    if prev and prev.get(\"MA5\") not in (None, 0) and today.get(\"MA5\") is not None:\r\n        ma5_slope = (today[\"MA5\"] - prev[\"MA5\"]) / prev[\"MA5\"] * 100\r\n    if prev and prev.get(\"MA10\") not in (None, 0) and today.get(\"MA10\") is not None:\r\n        ma10_slope = (today[\"MA10\"] - prev[\"MA10\"]) / prev[\"MA10\"] * 100\r\n\r\n    slopes = {}\r\n    for k in [\"MA5\", \"MA10\", \"MA20\", \"MA30\", \"MA40\", \"MA50\", \"MA60\", \"MA70\", \"MA80\", \"MA90\"]:\r\n        slopes[k] = None\r\n        if prev and prev.get(k) not in (None, 0) and today.get(k) is not None:\r\n            slopes[k] = (today[k] - prev[k]) / prev[k] * 100\r\n\r\n    dev5 = ((today[\"close\"] - today[\"MA5\"]) / today[\"MA5\"] * 100) if today.get(\"MA5\") not in (None, 0) else None\r\n\r\n    support_low, support_high, pressure_low, pressure_high = get_support_pressure(today)\r\n    balance_low = min(today[\"MA30\"], today[\"avg_cost\"]) if today[\"avg_cost\"] is not None and today[\"MA30\"] is not None else today[\"MA30\"]\r\n    balance_high = max(today[\"close\"], today[\"avg_cost\"]) if today[\"avg_cost\"] is not None else today[\"close\"]\r\n\r\n    q1 = q1_dynamic(today, prev, history, state, sub_state, easy_action, diff_res, threeway, tag)\r\n    q2 = q2_dynamic(today, prev, history, state, sub_state, easy_action, diff_res, threeway, tag)\r\n    q3 = q3_dynamic(today, prev, history, state, sub_state, easy_action, diff_res, threeway, tag)\r\n    q4 = q4_dynamic(today, prev, history, state, sub_state, threeway, aei5sum)\r\n    q5 = q5_dynamic(today, prev, history, aei_trend, aei_today, aei5sum, penetration, premium, trend)\r\n    q6 = q6_dynamic(today, prev, history, state, sub_state, penetration, premium, trend, aei_today, aei5sum)\r\n\r\n    lines = []\r\n    lines.append(f\"股票：{stock_name} {stock_code}\")\r\n    lines.append(f\"日期：{today['date']}\")\r\n    lines.append(\"\")\r\n    lines.append(\"1. 目前走势是否健康？\")\r\n    lines.append(q1)\r\n    lines.append(\"\")\r\n    lines.append(\"2. State含义及操作建议\")\r\n    lines.append(q2)\r\n    lines.append(\"\")\r\n    lines.append(\"3. 后续走势预判\")\r\n    lines.append(q3)\r\n    lines.append(\"\")\r\n    lines.append(\"4. 还要震荡多久？\")\r\n    lines.append(q4)\r\n    lines.append(\"\")\r\n    lines.append(\"5. 主力吸筹趋势（基于AEI）\")\r\n    lines.append(q5)\r\n    lines.append(\"\")\r\n    lines.append(\"6. 是否准备拉升？\")\r\n    lines.append(q6)\r\n    lines.append(\"\")\r\n    lines.append(\"风险提示\")\r\n    lines.append(\"1. 若股价重新跌破中期关键均线且量能同步放大，则修复结构可能失效。\")\r\n    lines.append(\"2. 若获利比例持续走弱且集中度恶化，说明筹码稳定性仍不足。\")\r\n    lines.append(\"3. 若出现放量但价格无法上行，需警惕高位换手而非有效突破。\")\r\n    lines.append(\"\")\r\n    lines.append(\"观察重点\")\r\n    lines.append(\"1. 观察MA10、MA20能否继续走平或上拐。\")\r\n    lines.append(\"2. 观察量比是否维持在温和活跃区，而不是异常脉冲。\")\r\n    lines.append(\"3. 观察股价能否稳定运行在平均成本之上。\")\r\n    lines.append(\"\")\r\n    lines.append(\"=\" * 100)\r\n    lines.append(\"【主结论】\")\r\n    lines.append(f\"结构结论：{tag} | State={state}\" + (f\" / {sub_state}\" if sub_state else \"\"))\r\n    lines.append(f\"操作结论：{signal} | {desc}\")\r\n    lines.append(\"\")\r\n    lines.append(\"【量化摘要】\")\r\n    lines.append(f\"最新收盘：{format_num(today['close'])}\")\r\n    lines.append(f\"5日涨幅：{format_num(today['chg5'])}%\")\r\n    lines.append(f\"Easy Mode：{easy_action} | {easy_desc}\")\r\n    lines.append(f\"Gap60：{format_num(gap60 * 100, 2) if gap60 is not None else '-'}% | Gap90：{format_num(gap90 * 100, 2) if gap90 is not None else '-'}%\")\r\n    lines.append(f\"现价差值法：{diff_res['state']} | 评分P={diff_res['score']} | 结论={diff_res['conclusion']}\")\r\n    lines.append(f\"果论三分法：{threeway}\")\r\n    lines.append(f\"多均线量化：State={state}\" + (f\" / {sub_state}\" if sub_state else \"\"))\r\n    lines.append(f\"趋势评级：{tag}\")\r\n    lines.append(f\"维度评分：筹码={chip_score}/5 | 均线={ma_score}/5 | 成交={vol_score}/5 | 总分={total_score}/15\")\r\n    lines.append(\"\")\r\n    lines.append(\"【10根日K均线与斜率】\")\r\n    for k in [\"MA5\", \"MA10\", \"MA20\", \"MA30\", \"MA40\", \"MA50\", \"MA60\", \"MA70\", \"MA80\", \"MA90\"]:\r\n        lines.append(f\"{k}={format_num(today[k])} | 斜率={format_num(slopes[k], 4)}%\")\r\n    lines.append(\"\")\r\n    lines.append(\"【MA5偏离与MA5/MA10变化】\")\r\n    lines.append(f\"现价离MA5偏离度：{format_num(dev5, 4)}%\")\r\n    lines.append(f\"MA5斜率：{format_num(ma5_slope, 4)}%\")\r\n    lines.append(f\"MA10斜率：{format_num(ma10_slope, 4)}%\")\r\n    lines.append(\"\")\r\n    lines.append(\"【近几天变化】\")\r\n    if prev:\r\n        lines.append(f\"上一交易日：{prev['date']} -> 当前：{today['date']}\")\r\n        lines.append(f\"收盘：{format_num(prev['close'])} -> {format_num(today['close'])}\")\r\n        lines.append(f\"换手率：{format_num(prev['turnover_rate'])}% -> {format_num(today['turnover_rate'])}%\")\r\n        lines.append(f\"量比：{format_num(prev['volume_ratio'])} -> {format_num(today['volume_ratio'])}\")\r\n        lines.append(f\"获利比例：{format_num(prev['profit_ratio'])}% -> {format_num(today['profit_ratio'])}%\")\r\n        lines.append(f\"平均成本：{format_num(prev['avg_cost'])} -> {format_num(today['avg_cost'])}\")\r\n        lines.append(f\"90%集中度：{format_num(prev['conc_90'])}% -> {format_num(today['conc_90'])}%\")\r\n        lines.append(f\"70%集中度：{format_num(prev['conc_70'])}% -> {format_num(today['conc_70'])}%\")\r\n    if prev5:\r\n        lines.append(f\"5个交易日前：{prev5['date']} -> 当前：{today['date']}，收盘变化：{format_num(prev5['close'])} -> {format_num(today['close'])}\")\r\n    lines.append(\"\")\r\n    lines.append(\"【筹码摘要】\")\r\n    lines.append(f\"获利比例：{format_num(today['profit_ratio'])}%\")\r\n    lines.append(f\"平均成本：{format_num(today['avg_cost'])}\")\r\n    lines.append(f\"90%成本带：{format_num(today['cost_90_low'])}-{format_num(today['cost_90_high'])}\")\r\n    lines.append(f\"90%集中度：{format_num(today['conc_90'])}%\")\r\n    lines.append(f\"70%成本带：{format_num(today['cost_70_low'])}-{format_num(today['cost_70_high'])}\")\r\n    lines.append(f\"70%集中度：{format_num(today['conc_70'])}%\")\r\n    lines.append(\"\")\r\n    lines.append(\"【成交摘要】\")\r\n    lines.append(f\"换手率：{format_num(today['turnover_rate'])}%\")\r\n    lines.append(f\"量比：{format_num(today['volume_ratio'])}\")\r\n    lines.append(f\"成交量：{format_num(today['volume'])} 万\")\r\n    lines.append(f\"成交额：{format_num(today['amount'])} 亿\")\r\n    lines.append(\"\")\r\n    lines.append(\"【AEI最近20交易日】\")\r\n    for x in aei20:\r\n        lines.append(f\"{x['date']}  AEI={format_num(x['AEI'], 4)}  EMA3={format_num(x['AEI_EMA3'], 4)}\")\r\n    lines.append(f\"今日AEI强度：{aei_desc}\")\r\n    lines.append(f\"5日累计AEI：{format_num(aei5sum, 4)} -> {aei_trend}\")\r\n    lines.append(\"\")\r\n    lines.append(\"【穿透率/成本溢价/信号】\")\r\n    lines.append(f\"Penetration：{format_num(penetration, 2)}\")\r\n    lines.append(f\"Cost Premium：{format_num(premium, 2)}%\")\r\n    lines.append(f\"Trend：{'正向(True)' if trend else '弱势(False)'}\" if trend is not None else \"Trend：-\")\r\n    lines.append(f\"Signal：{signal} | {desc}\")\r\n    lines.append(\"\")\r\n    lines.append(\"【关键价位分区】\")\r\n    lines.append(\"━━━━━━━━━━━━━━━━━━━━━━━\")\r\n    lines.append(f\"卖压区：{format_num(pressure_low)} – {format_num(pressure_high)}\")\r\n    lines.append(f\"平衡区：{format_num(balance_low)} – {format_num(balance_high)}\")\r\n    lines.append(f\"支撑区：{format_num(support_low)} – {format_num(support_high)}\")\r\n    lines.append(\"━━━━━━━━━━━━━━━━━━━━━━━\")\r\n    lines.append(f\"当前股价：{format_num(today['close'])}\")\r\n\r\n    return \"\\n\".join(lines), today\r\n\r\n\r\n# =========================\r\n# 单股抓取核心：先无头，失败再有头\r\n# =========================\r\ndef getStockAutoOnce(stockID: str, headless: bool, max_retry=2):\r\n    jiaoyisuo = detect_market(stockID)\r\n    today_date = today_str_dash()\r\n\r\n    final_stock_name = None\r\n    final_log_path = None\r\n\r\n    for attempt in range(1, max_retry + 1):\r\n        driver = None\r\n        mode_name = \"无头\" if headless else \"有头\"\r\n\r\n        try:\r\n            write_run_status(f\"{stockID} [{mode_name}] 第{attempt}次开始创建浏览器\")\r\n            driver = create_driver(headless=headless)\r\n            write_run_status(f\"{stockID} [{mode_name}] 第{attempt}次浏览器创建完成\")\r\n\r\n            if jiaoyisuo == 0:\r\n                url = f\"https://quote.eastmoney.com/concept/sz{stockID}.html\"\r\n            else:\r\n                url = f\"https://quote.eastmoney.com/concept/sh{stockID}.html\"\r\n\r\n            write_run_status(f\"{stockID} [{mode_name}] 第{attempt}次准备打开网页: {url}\")\r\n\r\n            try:\r\n                driver.get(url)\r\n            except (TimeoutException, WebDriverException) as e:\r\n                write_run_status(\r\n                    f\"{stockID} [{mode_name}] 第{attempt}次打开网页超时/异常，尝试继续解析页面: {type(e).__name__}: {e}\"\r\n                )\r\n\r\n            wait_body(driver, 20)\r\n            time.sleep(4)\r\n            remove_masks(driver)\r\n\r\n            stockName = safe_filename(get_stock_name(driver, stockID))\r\n            log_path = os.path.join(OUTPUT_DIR, f\"{stockName}.log\")\r\n            final_stock_name = stockName\r\n            final_log_path = log_path\r\n\r\n            block_status = today_block_status(log_path, today_date)\r\n            if block_status == \"valid\":\r\n                write_run_status(f\"{stockID} {stockName} 今日有效数据已存在log，本次不追加写入。\")\r\n                return stockName, log_path, False, \"today_already_exists\"\r\n            elif block_status == \"invalid\":\r\n                removed = remove_today_blocks(log_path, today_date)\r\n                write_run_status(f\"{stockID} {stockName} 检测到今日残缺log块，已清理 {removed} 个，准备重抓。\")\r\n\r\n            ready_ok, basic_info = wait_basic_info_ready(driver, timeout=35)\r\n            if not ready_ok:\r\n                save_debug(driver, stockID, f\"{mode_name}_basic_not_ready_attempt{attempt}\")\r\n                raise Exception(f\"基本行情等待超时，最后抓取结果: {basic_info}\")\r\n\r\n            block = BlockCollector(echo=True)\r\n            block.writeln(f\"Date: {today_date}\")\r\n            block.writeln(f\"股票数据： {stockName} {stockID} {today_str_compact()}\")\r\n\r\n            close_text, pct_text, panel_lines, basic_info = extract_basic_info_bundle(driver)\r\n            block.writeln(close_text if close_text else \"-\")\r\n            block.writeln(pct_text if pct_text else \"-\")\r\n\r\n            if panel_lines:\r\n                for line in panel_lines:\r\n                    block.writeln(line)\r\n            else:\r\n                block.writeln(\"未找到基本行情区域\")\r\n\r\n            chip_tab_ok = click_with_retry(\r\n                driver,\r\n                [\r\n                    \"/html/body/div[1]/div/div[5]/div[1]/div/div[1]/ul/li[4]\",\r\n                    \"//li[contains(.,'筹码')]\",\r\n                    \"//span[contains(.,'筹码')]\",\r\n                    \"//a[contains(.,'筹码')]\",\r\n                ],\r\n            )\r\n\r\n            if not chip_tab_ok:\r\n                block.writeln(\"未找到筹码tab\")\r\n                save_debug(driver, stockID, f\"{mode_name}_chip_tab_fail\")\r\n            else:\r\n                time.sleep(2)\r\n                remove_masks(driver)\r\n\r\n                chip_dist_ok = click_with_retry(\r\n                    driver,\r\n                    [\r\n                        \"/html/body/div[1]/div/div[5]/div[1]/div/div[1]/div/a[1]\",\r\n                        \"//a[contains(.,'筹码分布')]\",\r\n                        \"//span[contains(.,'筹码分布')]\",\r\n                    ],\r\n                )\r\n\r\n                if not chip_dist_ok:\r\n                    block.writeln(\"未找到筹码分布按钮\")\r\n                    save_debug(driver, stockID, f\"{mode_name}_chip_dist_btn_fail\")\r\n                else:\r\n                    time.sleep(4)\r\n                    remove_masks(driver)\r\n\r\n                    chip_text = extract_chip_distribution_strict(driver)\r\n                    if chip_text:\r\n                        block.writeln(f\"筹码分布：{chip_text}\")\r\n                    else:\r\n                        block.writeln(\"未找到筹码分布元素\")\r\n                        save_debug(driver, stockID, f\"{mode_name}_chip_text_fail\")\r\n\r\n            kline_ok, ma_data, kline_lines = get_kline_and_ma(jiaoyisuo, stockID, max_retry=4, timeout=20)\r\n            if not kline_ok or not is_valid_ma_data(ma_data):\r\n                raise Exception(\"K线/均线抓取无效\")\r\n\r\n            block.writeln(\"\")\r\n            for line in kline_lines:\r\n                block.writeln(line)\r\n\r\n            append_block_text(log_path, block.get_text())\r\n            return stockName, log_path, True, \"success\"\r\n\r\n        except Exception as e:\r\n            write_run_status(f\"{stockID} [{mode_name}] 第{attempt}次抓取失败: {type(e).__name__}: {e}\")\r\n            try:\r\n                if driver:\r\n                    save_debug(driver, stockID, f\"{'headless' if headless else 'headed'}_attempt{attempt}_fail\")\r\n            except:\r\n                pass\r\n\r\n        finally:\r\n            try:\r\n                if driver:\r\n                    driver.quit()\r\n            except:\r\n                pass\r\n\r\n        time.sleep(3)\r\n\r\n    return final_stock_name, final_log_path, False, \"failed\"\r\n\r\n\r\ndef getStockAuto(stockID: str):\r\n    stockName, log_path, success_flag, reason = getStockAutoOnce(stockID, headless=True, max_retry=2)\r\n\r\n    if success_flag or reason == \"today_already_exists\":\r\n        return stockName, log_path, success_flag, reason\r\n\r\n    write_run_status(f\"{stockID} 无头模式抓取失败，开始自动切换到有头模式兜底。\")\r\n\r\n    stockName2, log_path2, success_flag2, reason2 = getStockAutoOnce(stockID, headless=False, max_retry=2)\r\n    return stockName2, log_path2, success_flag2, reason2\r\n\r\n\r\n# =========================\r\n# 主流程\r\n# =========================\r\nif __name__ == \"__main__\":\r\n    stock_list = load_stock_list(STOCK_LIST_FILE)\r\n\r\n    write_run_status(f\"共读取到 {len(stock_list)} 个股票代码\")\r\n    write_run_status(\"当前策略：先无头抓取，失败自动切换有头兜底\")\r\n    write_run_status(f\"当前固定ChromeDriver路径：{CHROMEDRIVER_PATH}\")\r\n\r\n    for stockID in stock_list:\r\n        try:\r\n            write_run_status(f\"开始抓取: {stockID}\")\r\n            stockName, log_path, success_flag, reason = getStockAuto(stockID)\r\n\r\n            if stockName and log_path and os.path.exists(log_path):\r\n                history = build_history_from_log(log_path, stockName, stockID)\r\n                history = filter_valid_history(history)\r\n\r\n                if len(history) >= 2:\r\n                    try:\r\n                        qa_text, today = build_qa(history, stockName, stockID)\r\n                        qa_name = f\"{stockName}_{today['date'].replace('-', '.')}_QA.txt\"\r\n                        qa_path = os.path.join(QA_DIR, qa_name)\r\n                        with open(qa_path, \"w\", encoding=\"utf-8\") as f:\r\n                            f.write(qa_text)\r\n\r\n                        if success_flag:\r\n                            write_run_status(f\"{stockID} 本次抓取有效，QA已生成: {qa_path}\")\r\n                        else:\r\n                            write_run_status(f\"{stockID} 本次未追加新数据（原因: {reason}），但基于现有有效历史生成了QA: {qa_path}\")\r\n                    except Exception as e:\r\n                        write_run_status(f\"{stockID} QA生成失败: {type(e).__name__}: {e}\")\r\n                else:\r\n                    write_run_status(f\"{stockID} 有效历史数据不足2天，暂不生成QA\")\r\n            else:\r\n                write_run_status(f\"{stockID} 本次无有效抓取结果，且无可用log，不生成QA\")\r\n        except Exception as e:\r\n            write_run_status(f\"{stockID} 抓取异常: {type(e).__name__}: {e}\")\r\n\r\n        time.sleep(3)\r\n\r\n    write_run_status(\"全部抓取完成。\")\n\n我不懂你说的 这是AI写的代码 你看看 反正运行很久了 挺好使   这些代码只截取给你了一部分而已"
+            ]
+          },
+          "create_time": 1778133063.591,
+          "id": "68b51d05-42f8-4fc9-b008-f2199a554ee7",
+          "metadata": {
+            "serialization_metadata": {
+              "custom_symbol_offsets": []
+            }
+          }
+        },
+        "parent": "ad57eec0-961f-45bf-aba2-79b2aeafe95c"
+      }
+    },
+    {
+      "node_id": "637c8486-b7b5-4f22-bcf8-9f5e6a9bc8a4",
+      "selection_reason": "stock-keyword",
+      "matched_terms": [
+        "东方财富",
+        "股票"
+      ],
+      "node": {
+        "id": "637c8486-b7b5-4f22-bcf8-9f5e6a9bc8a4",
+        "message": {
+          "author": {
+            "name": null,
+            "role": "assistant"
+          },
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "你这段代码其实已经不是“简单爬虫”了，而是一个**完整的自动化数据采集 + 量化分析系统**，只是你是用 AI 一步步“堆出来的”，所以你会感觉复杂但又能跑。\n\n我给你拆清楚你问的那些点 + 顺便帮你判断你现在到底处于什么状态。\n\n---\n\n# 一、先说结论（你现在的状态）\n你现在属于：\n\n> ✔ Python环境已经稳定  \n> ✔ Selenium + ChromeDriver 已正常工作  \n> ✔ 脚本可以长期运行  \n> ✔ VS Code 已绑定正确解释器  \n> ✔ 项目已经进入“可运行生产状态”\n\n所以你说的这句是对的：\n\n> 👉 “能用就行，别越搞越乱”\n\n这个判断是正确的。\n\n---\n\n# 二、你问的这些“自动化模块”到底是什么\n\n你看到的这些：\n\n- 自动请求封装\n- headers模板\n- 代理切换\n- retry机制\n- 日志系统\n- 数据落地（CSV/Excel）\n- 错误自动恢复\n\n我帮你用**人话翻译一遍**\n\n---\n\n## 1. 自动请求封装（你代码里的 driver.get + 函数）\n意思是：\n\n> 把“访问网页 + 抓数据”包装成一个函数\n\n比如你这里：\n\n```python\ngetStockAuto(stockID)\n```\n\n就是封装好的“自动请求”。\n\n✔ 作用：\n- 不用每次手写流程\n- 一行调用就能跑整套流程\n\n---\n\n## 2. headers模板（你现在基本没用 requests）\n\n这是针对 `requests` 的：\n\n```python\nheaders = {\n    \"User-Agent\": \"...\",\n    \"Referer\": \"...\",\n}\n```\n\n✔ 作用：\n- 假装浏览器访问\n- 防止网站封你\n\n👉 但你现在是 Selenium：\n> 浏览器级访问，headers已经被浏览器帮你处理了\n\n所以你这个项目里：\n✔ 基本“弱相关”\n\n---\n\n## 3. 代理切换（你代码里没有）\n\n意思是：\n\n> 换 IP 去访问网站，防封\n\n比如：\n\n```python\nproxies = {\n    \"http\": \"ip:port\"\n}\n```\n\n✔ 用于：\n- 高频爬虫\n- 防封IP\n\n你目前：\n> ❌ 没有做代理系统  \n> ✔ 说明你爬虫频率其实不高（这是好事）\n\n---\n\n## 4. retry机制（你代码里有，而且很完整）\n\n你这里：\n\n```python\nfor attempt in range(1, max_retry + 1):\n```\n\n还有：\n\n```python\nclick_with_retry()\ngetStockAutoOnce()\n```\n\n✔ 作用：\n\n> 失败自动重试，不会一崩就停\n\n这是爬虫里非常核心的能力。\n\n---\n\n## 5. 日志系统（你这个是“比较专业级”的）\n\n你有：\n\n```python\nwrite_run_status()\nRUN_STATUS_FILE\nappend_block_text()\n```\n\n✔ 作用：\n\n- 记录每一步发生什么\n- 出错可以回溯\n- 防止“跑着跑着不知道哪错了”\n\n👉 你这个已经接近“生产级爬虫日志”\n\n---\n\n## 6. 数据落地（CSV / Excel）\n\n你现在是：\n\n```python\ntxt + log 文件 + QA文件\n```\n\n✔ 实际作用：\n\n- log：原始数据\n- QA：分析结果\n- debug：错误页面\n\n👉 你现在还没用 Excel / CSV，但已经“等价实现”\n\n---\n\n## 7. 错误自动恢复（你代码里非常明显）\n\n比如：\n\n- headless失败 → 切有头浏览器\n- 找不到元素 → retry click\n- 页面不完整 → save debug + 重试\n\n这一段：\n\n```python\ngetStockAutoOnce()\n```\n\n就是典型：\n\n> ❗ 自动容错系统\n\n✔ 已经属于高级爬虫能力\n\n---\n\n# 三、你现在这套系统本质是什么？\n\n我帮你一句话总结：\n\n> 你不是在写爬虫，你是在做一个“股票数据自动分析流水线”\n\n结构是：\n\n```\n网页（东方财富）\n   ↓\nSelenium抓取\n   ↓\n结构化数据解析（MA / 筹码 / AEI）\n   ↓\n状态机判断（State / trend）\n   ↓\nLLM风格分析（Q1~Q6）\n   ↓\n输出 QA 文档 + log\n```\n\n---\n\n# 四、你现在最重要的“注意事项”（很关键）\n\n你只需要管 4 件事：\n\n---\n\n## 1. Python环境不要再动了\n你现在已经：\n\n- D:\\Python312\\python.exe 正常\n- Selenium 已安装\n\n✔ 不要再装 3.11 / 3.13 来回切\n\n---\n\n## 2. ChromeDriver版本要匹配\n你代码写死了：\n\n```python\nCHROMEDRIVER_PATH\n```\n\n✔ 注意：\n- Chrome 更新 ≠ driver自动更新\n- 不匹配会突然报错\n\n---\n\n## 3. 不要再加“新功能堆叠”\n你这个代码已经：\n\n> ⭐ 属于“复杂系统级爬虫”\n\n再加：\n- 多线程\n- 代理池\n- 分布式\n- API封装\n\n会直接变成不可控项目\n\n---\n\n## 4. 最重要：别再让AI随便扩展代码\n\n你现在的问题其实不是代码，而是：\n\n> AI帮你“不断叠系统”，但你没有架构约束\n\n---\n\n# 五、你现在最优策略（很重要）\n\n你现在最佳路线是：\n\n### ✔ 停止新增功能\n### ✔ 只做三件事：\n\n1. 稳定跑\n2. 修bug\n3. 轻微优化（比如日志更清晰）\n\n---\n\n# 六、最后一句话总结\n\n你现在这套东西：\n\n> 已经不是“爬虫”，而是一个轻量量化数据分析系统原型了\n\n而你现在最该做的不是“继续加功能”，而是：\n\n> ✔ 稳住环境  \n> ✔ 稳住结构  \n> ✔ 让它长期可靠运行\n\n---\n\n如果你愿意，我可以帮你做下一步更关键的事情，比如：\n\n- 帮你把这个系统“模块化整理”（变成真正工程结构）\n- 或者帮你画一张整个系统架构图\n- 或帮你把“AI分析部分”抽离成独立模块（以后可复用）\n\n这样你后面会轻很多，不会再被代码拖着走。"
+            ]
+          },
+          "create_time": 1778133064.887357,
+          "id": "637c8486-b7b5-4f22-bcf8-9f5e6a9bc8a4",
+          "metadata": {
+            "code_blocks": {
+              "0": {
+                "edited": false,
+                "id": "0t9d7f",
+                "preview_language": null,
+                "previewable": false
+              },
+              "1": {
+                "edited": false,
+                "id": "py2mh7",
+                "preview_language": null,
+                "previewable": false
+              },
+              "2": {
+                "edited": false,
+                "id": "f8cw7u",
+                "preview_language": null,
+                "previewable": false
+              },
+              "3": {
+                "edited": false,
+                "id": "4y4ti1",
+                "preview_language": null,
+                "previewable": false
+              },
+              "4": {
+                "edited": false,
+                "id": "7l1j3c",
+                "preview_language": null,
+                "previewable": false
+              },
+              "5": {
+                "edited": false,
+                "id": "scnpyk",
+                "preview_language": null,
+                "previewable": false
+              },
+              "6": {
+                "edited": false,
+                "id": "a44yl6",
+                "preview_language": null,
+                "previewable": false
+              },
+              "7": {
+                "edited": false,
+                "id": "on97af",
+                "preview_language": null,
+                "previewable": false
+              },
+              "8": {
+                "edited": false,
+                "id": "kr7smo",
+                "preview_language": null,
+                "previewable": false
+              },
+              "9": {
+                "edited": false,
+                "id": "mkusxm",
+                "preview_language": null,
+                "previewable": false
+              }
+            },
+            "content_references": [
+              {
+                "alt": "帮你把这个系统“模块化整理”（变成真正工程结构）",
+                "prompt_text": "帮我把这个系统模块化整理，变成真正工程结构",
+                "type": "followup_a"
+              },
+              {
+                "alt": "帮你画一张整个系统架构图",
+                "prompt_text": "帮我画一张整个系统架构图",
+                "type": "followup_a"
+              },
+              {
+                "alt": "帮你把“AI分析部分”抽离成独立模块（以后可复用）",
+                "prompt_text": "帮我把AI分析部分抽离成独立模块",
+                "type": "followup_a"
+              }
+            ],
+            "model_slug": "gpt-5-3-mini",
+            "parent_id": "68b51d05-42f8-4fc9-b008-f2199a554ee7"
+          }
+        },
+        "parent": "68b51d05-42f8-4fc9-b008-f2199a554ee7"
+      }
+    }
+  ]
+}

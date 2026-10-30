@@ -1,7 +1,7 @@
 {
   "schema": "gpt-stock-archive-v1",
   "title": "ChatGPT 股票相关记录（2026-10-29 导出）",
-  "generated_utc": "2026-10-30T11:27:41.714105+00:00",
+  "generated_utc": "2026-10-30T11:32:42.992977+00:00",
   "source": {
     "name": "153awyFG7sOMEwl9GI2BL3XU_rCvOvbev.zip",
     "bytes": 115267786,
@@ -21,14 +21,14 @@
   "counts": {
     "total_conversations": 341,
     "total_messages_in_source_conversations": 4715,
-    "selected_conversations": 165,
-    "unselected_conversations": 176,
-    "selected_messages": 1419,
-    "selected_message_characters": 2778640,
+    "selected_conversations": 158,
+    "unselected_conversations": 183,
+    "selected_messages": 1358,
+    "selected_message_characters": 2683648,
     "standalone_files_scanned": 226,
-    "attachments_archived": 60,
+    "attachments_archived": 59,
     "errors": 0,
-    "missing_asset_references": 32
+    "missing_asset_references": 28
   },
   "conversations": [
     {
@@ -177,8 +177,8 @@
       "matched_terms": [
         "AAPL",
         "Earnings",
-        "Meta",
         "META",
+        "Meta",
         "NVDA",
         "stock",
         "投资",
@@ -186,7 +186,7 @@
         "证券交易",
         "财报"
       ],
-      "raw_sha256": "7a58972d7262e400c478f9647b86f41c3f7afdbef96e5b21d209b53067437127"
+      "raw_sha256": "3f2cb7c0eebe51b7d6af278c97cf88fce50a3c70b0750b220ee462de7dc51ecf"
     },
     {
       "conversation_id": "68ef10d9-9b38-8320-a2af-fe337189fad1",
@@ -235,9 +235,9 @@
         "ETF",
         "GOOGL",
         "MA20",
+        "META",
         "Meta",
         "meta",
-        "META",
         "MSFT",
         "NFLX",
         "NVDA",
@@ -287,16 +287,16 @@
         "跌停",
         "道琼斯"
       ],
-      "raw_sha256": "69e726314c12b63db6e4ed7b76c942e231ed1edfb7500544123dc99954aaa129"
+      "raw_sha256": "6fe4979f09b63844c28679ac78f06fd26e67d8ba44966f89471d891d2dafcb72"
     },
     {
       "conversation_id": "6916d1f6-6318-8324-97f0-99e31a9df371",
       "title": "513500",
       "raw_file": "股票消息原始JSON/0006_513500_6916d1f6-6318-8324.json",
       "text_file": "股票消息全文/0006_513500_6916d1f6-6318-8324.md",
-      "message_count": 135,
+      "message_count": 132,
       "source_message_count": 181,
-      "text_chars": 247284,
+      "text_chars": 242771,
       "matched_terms": [
         "600398",
         "AAPL",
@@ -305,10 +305,10 @@
         "Equity",
         "ETF",
         "HLA",
-        "MA20",
         "ma20",
-        "MA40",
+        "MA20",
         "ma40",
+        "MA40",
         "META",
         "MSFT",
         "NVDA",
@@ -378,16 +378,16 @@
         "追涨",
         "量能"
       ],
-      "raw_sha256": "390f0f6bfdecaa51a9a70cfbc2d71900f77363bd359411bd6bcfa87386cb49a2"
+      "raw_sha256": "fa03f5b956cad5fdd20e78434a66636a36a32692c7a8e07118b8d729fab9ff14"
     },
     {
       "conversation_id": "692edb4e-f8b8-832c-b951-9f8084c13f81",
       "title": "Netas",
       "raw_file": "股票消息原始JSON/0007_Netas_692edb4e-f8b8-832c.json",
       "text_file": "股票消息全文/0007_Netas_692edb4e-f8b8-832c.md",
-      "message_count": 6,
+      "message_count": 4,
       "source_message_count": 108,
-      "text_chars": 9933,
+      "text_chars": 3700,
       "matched_terms": [
         "POC",
         "仓位",
@@ -397,20 +397,16 @@
         "分红",
         "加仓",
         "大盘",
-        "定投",
         "市值",
         "投资",
         "招商银行",
         "杀跌",
         "格力电器",
-        "涨停",
         "清仓",
-        "股东",
         "股价",
-        "股票",
-        "营收"
+        "股票"
       ],
-      "raw_sha256": "a2c6567517a3d70621ee8c552c80a9c024e5d03c12d2f08515d3dada460b6100"
+      "raw_sha256": "13f8e1943977e4c8804a6cbe550a3fa5eb293f36346e92a7d0532ad7b54b9e07"
     },
     {
       "conversation_id": "694563e8-dcb8-8324-8be4-7d5dc879ca37",
@@ -446,15 +442,15 @@
       "title": "纳指100与电子奴隶制",
       "raw_file": "股票消息原始JSON/0009_纳指100与电子奴隶制_694c8f8e-b130-8323.json",
       "text_file": "股票消息全文/0009_纳指100与电子奴隶制_694c8f8e-b130-8323.md",
-      "message_count": 99,
+      "message_count": 97,
       "source_message_count": 132,
-      "text_chars": 148353,
+      "text_chars": 142578,
       "matched_terms": [
         "000651",
         "600600",
         "A股",
-        "ETF",
         "etf",
+        "ETF",
         "K线",
         "Meta",
         "PB",
@@ -528,16 +524,16 @@
         "跌停",
         "追涨"
       ],
-      "raw_sha256": "e911c3c9a7299d7be4187a11643c3ce979d15410098eec9b2879a4bedec9119c"
+      "raw_sha256": "0cbd6f26823e7795f28f08516e61111e6fa60071cbc1267ac82f642674c31f3d"
     },
     {
       "conversation_id": "69560ab9-d3d0-8321-a6bd-a6b461d2c3bd",
       "title": "挪威模式投资思维",
       "raw_file": "股票消息原始JSON/0010_挪威模式投资思维_69560ab9-d3d0-8321.json",
       "text_file": "股票消息全文/0010_挪威模式投资思维_69560ab9-d3d0-8321.md",
-      "message_count": 25,
+      "message_count": 23,
       "source_message_count": 28,
-      "text_chars": 28347,
+      "text_chars": 23741,
       "matched_terms": [
         "A股",
         "ETF",
@@ -573,7 +569,7 @@
         "资产配置",
         "阿里巴巴"
       ],
-      "raw_sha256": "5c0db3c20b6266b155ab840d57807345df96431742b7d1b34236a4558941dced"
+      "raw_sha256": "f3afacd59effa473267381ee7fa6773bc41d7987d8ec29f38a0276c16826f74a"
     },
     {
       "conversation_id": "695bc472-3a6c-8320-975e-33291b71f782",
@@ -584,8 +580,8 @@
       "source_message_count": 48,
       "text_chars": 18965,
       "matched_terms": [
-        "dps",
         "DPS",
+        "dps",
         "ETF",
         "HLA",
         "仓位",
@@ -690,9 +686,9 @@
       "title": "人际与精力管理",
       "raw_file": "股票消息原始JSON/0014_人际与精力管理_69997d8f-5588-8332.json",
       "text_file": "股票消息全文/0014_人际与精力管理_69997d8f-5588-8332.md",
-      "message_count": 6,
+      "message_count": 5,
       "source_message_count": 12,
-      "text_chars": 6846,
+      "text_chars": 5426,
       "matched_terms": [
         "仓位",
         "复盘",
@@ -700,7 +696,7 @@
         "清仓",
         "股票"
       ],
-      "raw_sha256": "29705d97312897a7193f15c89ebbc7c37af30ff36c85423233c474ec5bf22177"
+      "raw_sha256": "2f3be8e91f174c52f8c1d99c6257e1377e7fddbbd69fd1e7106d88ad5e1dc454"
     },
     {
       "conversation_id": "69a2b3ed-d29c-8390-ad47-e965364ce119",
@@ -713,8 +709,8 @@
       "matched_terms": [
         "Dividend",
         "Equity",
-        "etf",
         "ETF",
+        "etf",
         "Stock",
         "仓位",
         "分红",
@@ -723,7 +719,7 @@
         "股息",
         "股票"
       ],
-      "raw_sha256": "efc6a318209cb28b55134c119c46ce20d92436cf1a5da6c5bf50b9c1fa56a47b"
+      "raw_sha256": "86dad2528ff681e7f32511d839a0ff7f6b301f48cccf16273e3f535b9fcf67de"
     },
     {
       "conversation_id": "69a43728-c2a4-8327-9f00-06e68b2ddf40",
@@ -774,8 +770,8 @@
       "matched_terms": [
         "Dividend",
         "Equity",
-        "ETF",
         "etf",
+        "ETF",
         "ROE",
         "Stock",
         "仓位",
@@ -792,7 +788,7 @@
         "股息",
         "股票"
       ],
-      "raw_sha256": "d96cabfb219406be35fd07da1950da773b0e0339365b2547c03065d4042e006e"
+      "raw_sha256": "89a6eaf64e23b2042b08d500e8e1d7b9ada4c4bd9d8c9cbf75dff6bb9e32414c"
     },
     {
       "conversation_id": "69a6e020-2330-832e-b438-dad0fb74754a",
@@ -1038,7 +1034,7 @@
         "贵州茅台",
         "跌停"
       ],
-      "raw_sha256": "23a590144e5157e96533ab4ca379205dbdc520774764026ddb8ad0b6d4da9fea"
+      "raw_sha256": "9c732c60cbd23161f32c8bbc11056fc68fc7445390fd8d5251e9dfdf42e9cf40"
     },
     {
       "conversation_id": "69b1484b-c660-832e-b81b-2d355aa1c49a",
@@ -1164,7 +1160,7 @@
         "证券",
         "资产配置"
       ],
-      "raw_sha256": "1e79c31fd328de733374527aea21ea85c4965d5d313bf07d07315c21936585e1"
+      "raw_sha256": "fcef69d16ae49146d700f58320e1190baef3b2e5997eba637cc30cb75a8bb4f7"
     },
     {
       "conversation_id": "69b75de9-bc64-838c-84e1-a56e6479b050",
@@ -1329,7 +1325,7 @@
         "谷歌",
         "量能"
       ],
-      "raw_sha256": "589e675deee12755aa95da4f1509ca14ee1a4cc4813567c2eee88f5e1257e9e9"
+      "raw_sha256": "373dcdecf6d484b55a4eafadef7dc8e560e31113c2bbd915f8097f50ccc390eb"
     },
     {
       "conversation_id": "69bfa441-1a14-8387-b3b1-95005435356c",
@@ -1817,8 +1813,8 @@
         "dividend",
         "Dividend",
         "Equity",
-        "ETF",
         "etf",
+        "ETF",
         "MA20",
         "ROE",
         "stock",
@@ -1843,7 +1839,7 @@
         "股价",
         "股息"
       ],
-      "raw_sha256": "dad5a74453b36c951426beae72f478151243741de288e65a93d149a2d0a8ae72"
+      "raw_sha256": "1f8f9a49f97dd873436511eb465c7d17f6bf47cba238288a7e1ff912753c8194"
     },
     {
       "conversation_id": "69c78612-dd20-832f-a129-11b00bf2e01b",
@@ -1856,8 +1852,8 @@
       "matched_terms": [
         "Dividend",
         "Equity",
-        "ETF",
         "etf",
+        "ETF",
         "K线",
         "portfolio",
         "Portfolio",
@@ -1875,7 +1871,7 @@
         "股息",
         "股票"
       ],
-      "raw_sha256": "ed6708092bfa8f212efa23cddd2d22a5286da4e801029d32f6a229f0cbb451cf"
+      "raw_sha256": "1e7bea3edf78f327df5c9e3cdfd4c05fcf6b971756f551a309ff8949602e3dbb"
     },
     {
       "conversation_id": "69c78f9d-49d8-838d-8f7d-a8c5ae0a541d",
@@ -1913,7 +1909,7 @@
         "谷歌",
         "资产配置"
       ],
-      "raw_sha256": "72c6b8f448566a9158b88f1d1a6dbea9655b471214060bb4743e3fc7ded232e0"
+      "raw_sha256": "f50eff12959b09ae57b7db036d06eb57d9cb9079f7ebfa9bafb877f32a95eec7"
     },
     {
       "conversation_id": "69cb9bd2-2f30-832a-8e76-993b3ab97d00",
@@ -2003,44 +1999,10 @@
       "raw_sha256": "c7c89359456b55760f9b6f2cbf3f1d4e551e1cebcb895a8002bcdd1547ffc161"
     },
     {
-      "conversation_id": "69d34587-adec-832b-92c8-f1533cbd31ca",
-      "title": "时间增益行为模型",
-      "raw_file": "股票消息原始JSON/0042_时间增益行为模型_69d34587-adec-832b.json",
-      "text_file": "股票消息全文/0042_时间增益行为模型_69d34587-adec-832b.md",
-      "message_count": 1,
-      "source_message_count": 2,
-      "text_chars": 2323,
-      "matched_terms": [
-        "003816",
-        "600863",
-        "stock",
-        "分红",
-        "投资",
-        "股票"
-      ],
-      "raw_sha256": "b5d47ff7dccc126de1ca77cb325347c6176651551a326186f7209acd6c9c61bd"
-    },
-    {
-      "conversation_id": "69d46b48-d254-8325-84e8-f023a015772c",
-      "title": "饮食系统构建指南",
-      "raw_file": "股票消息原始JSON/0043_饮食系统构建指南_69d46b48-d254-8325.json",
-      "text_file": "股票消息全文/0043_饮食系统构建指南_69d46b48-d254-8325.md",
-      "message_count": 1,
-      "source_message_count": 18,
-      "text_chars": 1936,
-      "matched_terms": [
-        "仓位",
-        "分红",
-        "投资",
-        "股票"
-      ],
-      "raw_sha256": "87896de764923e51f30e4d504beebc4e2f3630e3b537d9148417be6185cf6ee7"
-    },
-    {
       "conversation_id": "69d4c057-39c4-8326-9aad-4d0ddf44d468",
       "title": "股票纯粹性分析",
-      "raw_file": "股票消息原始JSON/0044_股票纯粹性分析_69d4c057-39c4-8326.json",
-      "text_file": "股票消息全文/0044_股票纯粹性分析_69d4c057-39c4-8326.md",
+      "raw_file": "股票消息原始JSON/0042_股票纯粹性分析_69d4c057-39c4-8326.json",
+      "text_file": "股票消息全文/0042_股票纯粹性分析_69d4c057-39c4-8326.md",
       "message_count": 10,
       "source_message_count": 10,
       "text_chars": 43317,
@@ -2074,8 +2036,8 @@
     {
       "conversation_id": "69d7150c-823c-832c-b2cd-a0b9ac2c3026",
       "title": "Daily",
-      "raw_file": "股票消息原始JSON/0045_Daily_69d7150c-823c-832c.json",
-      "text_file": "股票消息全文/0045_Daily_69d7150c-823c-832c.md",
+      "raw_file": "股票消息原始JSON/0043_Daily_69d7150c-823c-832c.json",
+      "text_file": "股票消息全文/0043_Daily_69d7150c-823c-832c.md",
       "message_count": 18,
       "source_message_count": 79,
       "text_chars": 19728,
@@ -2112,8 +2074,8 @@
     {
       "conversation_id": "69d77719-0c30-8333-b482-123765081658",
       "title": "四大行 vs 长电",
-      "raw_file": "股票消息原始JSON/0046_四大行_vs_长电_69d77719-0c30-8333.json",
-      "text_file": "股票消息全文/0046_四大行_vs_长电_69d77719-0c30-8333.md",
+      "raw_file": "股票消息原始JSON/0044_四大行_vs_长电_69d77719-0c30-8333.json",
+      "text_file": "股票消息全文/0044_四大行_vs_长电_69d77719-0c30-8333.md",
       "message_count": 6,
       "source_message_count": 6,
       "text_chars": 17982,
@@ -2146,8 +2108,8 @@
     {
       "conversation_id": "69d9d83b-1d84-8330-a2c9-7b0144c39e72",
       "title": "不死配置与财富路径",
-      "raw_file": "股票消息原始JSON/0047_不死配置与财富路径_69d9d83b-1d84-8330.json",
-      "text_file": "股票消息全文/0047_不死配置与财富路径_69d9d83b-1d84-8330.md",
+      "raw_file": "股票消息原始JSON/0045_不死配置与财富路径_69d9d83b-1d84-8330.json",
+      "text_file": "股票消息全文/0045_不死配置与财富路径_69d9d83b-1d84-8330.md",
       "message_count": 2,
       "source_message_count": 2,
       "text_chars": 4290,
@@ -2170,8 +2132,8 @@
     {
       "conversation_id": "69db544c-26b8-8329-903d-2017c00f1365",
       "title": "AI驱动客户资产",
-      "raw_file": "股票消息原始JSON/0048_AI驱动客户资产_69db544c-26b8-8329.json",
-      "text_file": "股票消息全文/0048_AI驱动客户资产_69db544c-26b8-8329.md",
+      "raw_file": "股票消息原始JSON/0046_AI驱动客户资产_69db544c-26b8-8329.json",
+      "text_file": "股票消息全文/0046_AI驱动客户资产_69db544c-26b8-8329.md",
       "message_count": 5,
       "source_message_count": 10,
       "text_chars": 5733,
@@ -2201,8 +2163,8 @@
     {
       "conversation_id": "69dbc8bd-3918-8330-8565-4e549fbf7dde",
       "title": "生产资料与财富路径",
-      "raw_file": "股票消息原始JSON/0049_生产资料与财富路径_69dbc8bd-3918-8330.json",
-      "text_file": "股票消息全文/0049_生产资料与财富路径_69dbc8bd-3918-8330.md",
+      "raw_file": "股票消息原始JSON/0047_生产资料与财富路径_69dbc8bd-3918-8330.json",
+      "text_file": "股票消息全文/0047_生产资料与财富路径_69dbc8bd-3918-8330.md",
       "message_count": 8,
       "source_message_count": 8,
       "text_chars": 26171,
@@ -2231,8 +2193,8 @@
     {
       "conversation_id": "69dc4726-da08-8333-9646-a17ae5bf5a28",
       "title": "网结构优化策略",
-      "raw_file": "股票消息原始JSON/0050_网结构优化策略_69dc4726-da08-8333.json",
-      "text_file": "股票消息全文/0050_网结构优化策略_69dc4726-da08-8333.md",
+      "raw_file": "股票消息原始JSON/0048_网结构优化策略_69dc4726-da08-8333.json",
+      "text_file": "股票消息全文/0048_网结构优化策略_69dc4726-da08-8333.md",
       "message_count": 2,
       "source_message_count": 2,
       "text_chars": 2309,
@@ -2249,8 +2211,8 @@
     {
       "conversation_id": "69dc4f9c-459c-832e-97dc-4ca522be1a87",
       "title": "多均线健康度分析",
-      "raw_file": "股票消息原始JSON/0051_多均线健康度分析_69dc4f9c-459c-832e.json",
-      "text_file": "股票消息全文/0051_多均线健康度分析_69dc4f9c-459c-832e.md",
+      "raw_file": "股票消息原始JSON/0049_多均线健康度分析_69dc4f9c-459c-832e.json",
+      "text_file": "股票消息全文/0049_多均线健康度分析_69dc4f9c-459c-832e.md",
       "message_count": 8,
       "source_message_count": 10,
       "text_chars": 16537,
@@ -2274,8 +2236,8 @@
     {
       "conversation_id": "69dde1d9-84d4-8333-b400-f98ece63e083",
       "title": "中行股性分析与操作",
-      "raw_file": "股票消息原始JSON/0052_中行股性分析与操作_69dde1d9-84d4-8333.json",
-      "text_file": "股票消息全文/0052_中行股性分析与操作_69dde1d9-84d4-8333.md",
+      "raw_file": "股票消息原始JSON/0050_中行股性分析与操作_69dde1d9-84d4-8333.json",
+      "text_file": "股票消息全文/0050_中行股性分析与操作_69dde1d9-84d4-8333.md",
       "message_count": 3,
       "source_message_count": 4,
       "text_chars": 14131,
@@ -2321,8 +2283,8 @@
     {
       "conversation_id": "69df0283-54ec-832f-88e5-d830a2f490f7",
       "title": "投资决策框架分析",
-      "raw_file": "股票消息原始JSON/0053_投资决策框架分析_69df0283-54ec-832f.json",
-      "text_file": "股票消息全文/0053_投资决策框架分析_69df0283-54ec-832f.md",
+      "raw_file": "股票消息原始JSON/0051_投资决策框架分析_69df0283-54ec-832f.json",
+      "text_file": "股票消息全文/0051_投资决策框架分析_69df0283-54ec-832f.md",
       "message_count": 4,
       "source_message_count": 4,
       "text_chars": 8124,
@@ -2355,30 +2317,30 @@
     {
       "conversation_id": "69df1767-ee60-8392-bf9a-27674a5a95a7",
       "title": "美股芯片巨头分析",
-      "raw_file": "股票消息原始JSON/0054_美股芯片巨头分析_69df1767-ee60-8392.json",
-      "text_file": "股票消息全文/0054_美股芯片巨头分析_69df1767-ee60-8392.md",
+      "raw_file": "股票消息原始JSON/0052_美股芯片巨头分析_69df1767-ee60-8392.json",
+      "text_file": "股票消息全文/0052_美股芯片巨头分析_69df1767-ee60-8392.md",
       "message_count": 6,
       "source_message_count": 6,
       "text_chars": 6706,
       "matched_terms": [
         "AMD",
-        "etf",
         "ETF",
+        "etf",
         "NVDA",
         "台积电",
         "持仓",
         "美股"
       ],
-      "raw_sha256": "34e27a022ca56c429cf54347ec40143d433a4f05abeddd6cdd3af129459d4c0a"
+      "raw_sha256": "bba2b7f3e1c8de53c8c21fa6a1b71fca8acdfcc9a5297c3a1c0759284c91e121"
     },
     {
       "conversation_id": "69df41cf-0774-832f-90cd-a3a39386907a",
       "title": "通胀与普通人生活",
-      "raw_file": "股票消息原始JSON/0055_通胀与普通人生活_69df41cf-0774-832f.json",
-      "text_file": "股票消息全文/0055_通胀与普通人生活_69df41cf-0774-832f.md",
-      "message_count": 5,
+      "raw_file": "股票消息原始JSON/0053_通胀与普通人生活_69df41cf-0774-832f.json",
+      "text_file": "股票消息全文/0053_通胀与普通人生活_69df41cf-0774-832f.md",
+      "message_count": 4,
       "source_message_count": 6,
-      "text_chars": 5614,
+      "text_chars": 3582,
       "matched_terms": [
         "A股",
         "做T",
@@ -2389,16 +2351,16 @@
         "投资",
         "股票"
       ],
-      "raw_sha256": "b4ac58fd6c1f5d6f51f4f545b0e45c6637f60e598b224b5f4941b7b2a2a0f785"
+      "raw_sha256": "9ce49f7b5acc49dd89496d235a0266cc6002b6d927793511a16bc24a1c02caf5"
     },
     {
       "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
       "title": "世界公民配置升级",
-      "raw_file": "股票消息原始JSON/0056_世界公民配置升级_69e04575-5a6c-832d.json",
-      "text_file": "股票消息全文/0056_世界公民配置升级_69e04575-5a6c-832d.md",
-      "message_count": 12,
+      "raw_file": "股票消息原始JSON/0054_世界公民配置升级_69e04575-5a6c-832d.json",
+      "text_file": "股票消息全文/0054_世界公民配置升级_69e04575-5a6c-832d.md",
+      "message_count": 11,
       "source_message_count": 57,
-      "text_chars": 19974,
+      "text_chars": 17608,
       "matched_terms": [
         "A股",
         "ETF",
@@ -2412,16 +2374,15 @@
         "港股",
         "美股",
         "股票",
-        "股票账户",
         "资产配置"
       ],
-      "raw_sha256": "a8ab45ff5013805374966f66587c68a84ddf21a2b7efbb445f4eebb9a75bca8a"
+      "raw_sha256": "4fca19df132fce33b609412bd9df4e9b390ee7be01ee70a9b7fa8aed5b24ffc2"
     },
     {
       "conversation_id": "69e04e65-5df0-8331-a9f2-8485439eb09c",
       "title": "韩国QDII与半导体配置",
-      "raw_file": "股票消息原始JSON/0057_韩国QDII与半导体配置_69e04e65-5df0-8331.json",
-      "text_file": "股票消息全文/0057_韩国QDII与半导体配置_69e04e65-5df0-8331.md",
+      "raw_file": "股票消息原始JSON/0055_韩国QDII与半导体配置_69e04e65-5df0-8331.json",
+      "text_file": "股票消息全文/0055_韩国QDII与半导体配置_69e04e65-5df0-8331.md",
       "message_count": 17,
       "source_message_count": 18,
       "text_chars": 16342,
@@ -2448,13 +2409,13 @@
         "股票",
         "资产配置"
       ],
-      "raw_sha256": "9f41f934953f77ad0fbe2b635d5d69b9bfd695626ab56546a027383916a779b8"
+      "raw_sha256": "019e869c3c5c7d1abdd641a8a8c947d1a59885ee594256a5c05d00461a29dc9d"
     },
     {
       "conversation_id": "69e08915-d6d0-8329-a9e1-a603c639bdec",
       "title": "机会型交易系统分析",
-      "raw_file": "股票消息原始JSON/0058_机会型交易系统分析_69e08915-d6d0-8329.json",
-      "text_file": "股票消息全文/0058_机会型交易系统分析_69e08915-d6d0-8329.md",
+      "raw_file": "股票消息原始JSON/0056_机会型交易系统分析_69e08915-d6d0-8329.json",
+      "text_file": "股票消息全文/0056_机会型交易系统分析_69e08915-d6d0-8329.md",
       "message_count": 6,
       "source_message_count": 8,
       "text_chars": 10057,
@@ -2486,8 +2447,8 @@
     {
       "conversation_id": "69e1dab5-50b4-8333-b742-36d453350565",
       "title": "财商与系统培育",
-      "raw_file": "股票消息原始JSON/0059_财商与系统培育_69e1dab5-50b4-8333.json",
-      "text_file": "股票消息全文/0059_财商与系统培育_69e1dab5-50b4-8333.md",
+      "raw_file": "股票消息原始JSON/0057_财商与系统培育_69e1dab5-50b4-8333.json",
+      "text_file": "股票消息全文/0057_财商与系统培育_69e1dab5-50b4-8333.md",
       "message_count": 10,
       "source_message_count": 12,
       "text_chars": 17495,
@@ -2517,8 +2478,8 @@
     {
       "conversation_id": "69e45f6c-2c28-8331-a68e-4eb167dc02a0",
       "title": "股评维度升级建议",
-      "raw_file": "股票消息原始JSON/0060_股评维度升级建议_69e45f6c-2c28-8331.json",
-      "text_file": "股票消息全文/0060_股评维度升级建议_69e45f6c-2c28-8331.md",
+      "raw_file": "股票消息原始JSON/0058_股评维度升级建议_69e45f6c-2c28-8331.json",
+      "text_file": "股票消息全文/0058_股评维度升级建议_69e45f6c-2c28-8331.md",
       "message_count": 10,
       "source_message_count": 12,
       "text_chars": 17526,
@@ -2550,8 +2511,8 @@
     {
       "conversation_id": "69e4cc32-1764-832a-9784-19521ed50545",
       "title": "GLP-1 渗透率分析",
-      "raw_file": "股票消息原始JSON/0061_GLP-1_渗透率分析_69e4cc32-1764-832a.json",
-      "text_file": "股票消息全文/0061_GLP-1_渗透率分析_69e4cc32-1764-832a.md",
+      "raw_file": "股票消息原始JSON/0059_GLP-1_渗透率分析_69e4cc32-1764-832a.json",
+      "text_file": "股票消息全文/0059_GLP-1_渗透率分析_69e4cc32-1764-832a.md",
       "message_count": 2,
       "source_message_count": 2,
       "text_chars": 3685,
@@ -2570,8 +2531,8 @@
     {
       "conversation_id": "69e4f23c-b4b8-8326-a44d-441fb79c30a5",
       "title": "内脏脂肪测试方法",
-      "raw_file": "股票消息原始JSON/0062_内脏脂肪测试方法_69e4f23c-b4b8-8326.json",
-      "text_file": "股票消息全文/0062_内脏脂肪测试方法_69e4f23c-b4b8-8326.md",
+      "raw_file": "股票消息原始JSON/0060_内脏脂肪测试方法_69e4f23c-b4b8-8326.json",
+      "text_file": "股票消息全文/0060_内脏脂肪测试方法_69e4f23c-b4b8-8326.md",
       "message_count": 2,
       "source_message_count": 6,
       "text_chars": 2885,
@@ -2588,21 +2549,21 @@
     {
       "conversation_id": "69e589d8-ea94-832b-9ca0-95692e81d28a",
       "title": "婚姻决策与风险",
-      "raw_file": "股票消息原始JSON/0063_婚姻决策与风险_69e589d8-ea94-832b.json",
-      "text_file": "股票消息全文/0063_婚姻决策与风险_69e589d8-ea94-832b.md",
-      "message_count": 2,
+      "raw_file": "股票消息原始JSON/0061_婚姻决策与风险_69e589d8-ea94-832b.json",
+      "text_file": "股票消息全文/0061_婚姻决策与风险_69e589d8-ea94-832b.md",
+      "message_count": 1,
       "source_message_count": 8,
-      "text_chars": 16694,
+      "text_chars": 14485,
       "matched_terms": [
         "止损"
       ],
-      "raw_sha256": "e5921fb73c5efb1929d305c0d7291a27bf1af249045602f6e20d487864f7aa9b"
+      "raw_sha256": "baac80a51661d04ff823812b541ace1f134ca4dc318e703a482b3a44c537b912"
     },
     {
       "conversation_id": "69e5e9db-bd48-832c-8720-0d7334095e0c",
       "title": "百兆光模块芯片推荐",
-      "raw_file": "股票消息原始JSON/0064_百兆光模块芯片推荐_69e5e9db-bd48-832c.json",
-      "text_file": "股票消息全文/0064_百兆光模块芯片推荐_69e5e9db-bd48-832c.md",
+      "raw_file": "股票消息原始JSON/0062_百兆光模块芯片推荐_69e5e9db-bd48-832c.json",
+      "text_file": "股票消息全文/0062_百兆光模块芯片推荐_69e5e9db-bd48-832c.md",
       "message_count": 2,
       "source_message_count": 8,
       "text_chars": 2264,
@@ -2611,8 +2572,8 @@
         "Dividend",
         "Equity",
         "ETF",
-        "stock",
         "Stock",
+        "stock",
         "仓位",
         "分红",
         "定投",
@@ -2626,13 +2587,13 @@
         "资产配置",
         "追涨"
       ],
-      "raw_sha256": "77ac67e5edcdbab1090353743baab5b9f6d086ba7bf25125715fc5feb3d4ca20"
+      "raw_sha256": "ea8a718acaf2ef86af4493746a0df7867001b08908bcbe9120182ae4e0909639"
     },
     {
       "conversation_id": "69e64d09-1f7c-8326-958c-70a904dc966c",
       "title": "HPQ投资策略分析",
-      "raw_file": "股票消息原始JSON/0065_HPQ投资策略分析_69e64d09-1f7c-8326.json",
-      "text_file": "股票消息全文/0065_HPQ投资策略分析_69e64d09-1f7c-8326.md",
+      "raw_file": "股票消息原始JSON/0063_HPQ投资策略分析_69e64d09-1f7c-8326.json",
+      "text_file": "股票消息全文/0063_HPQ投资策略分析_69e64d09-1f7c-8326.md",
       "message_count": 2,
       "source_message_count": 2,
       "text_chars": 5992,
@@ -2661,8 +2622,8 @@
     {
       "conversation_id": "69e6f38d-be44-832c-86c7-4379f611869b",
       "title": "A股长牛成长股分析",
-      "raw_file": "股票消息原始JSON/0066_A股长牛成长股分析_69e6f38d-be44-832c.json",
-      "text_file": "股票消息全文/0066_A股长牛成长股分析_69e6f38d-be44-832c.md",
+      "raw_file": "股票消息原始JSON/0064_A股长牛成长股分析_69e6f38d-be44-832c.json",
+      "text_file": "股票消息全文/0064_A股长牛成长股分析_69e6f38d-be44-832c.md",
       "message_count": 2,
       "source_message_count": 2,
       "text_chars": 3900,
@@ -2684,8 +2645,8 @@
     {
       "conversation_id": "69e7475b-329c-8331-a28a-b74013102ed1",
       "title": "财商教育重要性",
-      "raw_file": "股票消息原始JSON/0067_财商教育重要性_69e7475b-329c-8331.json",
-      "text_file": "股票消息全文/0067_财商教育重要性_69e7475b-329c-8331.md",
+      "raw_file": "股票消息原始JSON/0065_财商教育重要性_69e7475b-329c-8331.json",
+      "text_file": "股票消息全文/0065_财商教育重要性_69e7475b-329c-8331.md",
       "message_count": 1,
       "source_message_count": 2,
       "text_chars": 2150,
@@ -2706,11 +2667,11 @@
     {
       "conversation_id": "69e8390c-f9b8-8332-a094-6c053f15a61e",
       "title": "TCAI ETF分析",
-      "raw_file": "股票消息原始JSON/0068_TCAI_ETF分析_69e8390c-f9b8-8332.json",
-      "text_file": "股票消息全文/0068_TCAI_ETF分析_69e8390c-f9b8-8332.md",
-      "message_count": 20,
+      "raw_file": "股票消息原始JSON/0066_TCAI_ETF分析_69e8390c-f9b8-8332.json",
+      "text_file": "股票消息全文/0066_TCAI_ETF分析_69e8390c-f9b8-8332.md",
+      "message_count": 19,
       "source_message_count": 21,
-      "text_chars": 23655,
+      "text_chars": 23373,
       "matched_terms": [
         "A股",
         "ETF",
@@ -2722,7 +2683,6 @@
         "仓位",
         "估值",
         "分红",
-        "券商",
         "定投",
         "微软",
         "投资",
@@ -2733,13 +2693,13 @@
         "英伟达",
         "资产配置"
       ],
-      "raw_sha256": "15ba5b93aab3e72e870b4547a9b6af8e1ff672f20bd97875f9c53dbfd760d740"
+      "raw_sha256": "0cd397c4e4f4cee9a9f24215c314a19b9f6798fea8e50b2d35320d488aed703a"
     },
     {
       "conversation_id": "69e9b213-9cbc-8327-8046-dae6e39748f7",
       "title": "BOC A股乖离阈值分析",
-      "raw_file": "股票消息原始JSON/0069_BOC_A股乖离阈值分析_69e9b213-9cbc-8327.json",
-      "text_file": "股票消息全文/0069_BOC_A股乖离阈值分析_69e9b213-9cbc-8327.md",
+      "raw_file": "股票消息原始JSON/0067_BOC_A股乖离阈值分析_69e9b213-9cbc-8327.json",
+      "text_file": "股票消息全文/0067_BOC_A股乖离阈值分析_69e9b213-9cbc-8327.md",
       "message_count": 8,
       "source_message_count": 8,
       "text_chars": 18845,
@@ -2780,8 +2740,8 @@
     {
       "conversation_id": "69e9dd21-5418-8328-8ef1-9bf7c5984d72",
       "title": "PoEスイッチIM-WP054GW",
-      "raw_file": "股票消息原始JSON/0070_PoEスイッチIM-WP054GW_69e9dd21-5418-8328.json",
-      "text_file": "股票消息全文/0070_PoEスイッチIM-WP054GW_69e9dd21-5418-8328.md",
+      "raw_file": "股票消息原始JSON/0068_PoEスイッチIM-WP054GW_69e9dd21-5418-8328.json",
+      "text_file": "股票消息全文/0068_PoEスイッチIM-WP054GW_69e9dd21-5418-8328.md",
       "message_count": 2,
       "source_message_count": 6,
       "text_chars": 3341,
@@ -2803,8 +2763,8 @@
     {
       "conversation_id": "69ead5e7-949c-8326-a516-f1fb0f65727e",
       "title": "AI PC发展趋势",
-      "raw_file": "股票消息原始JSON/0071_AI_PC发展趋势_69ead5e7-949c-8326.json",
-      "text_file": "股票消息全文/0071_AI_PC发展趋势_69ead5e7-949c-8326.md",
+      "raw_file": "股票消息原始JSON/0069_AI_PC发展趋势_69ead5e7-949c-8326.json",
+      "text_file": "股票消息全文/0069_AI_PC发展趋势_69ead5e7-949c-8326.md",
       "message_count": 2,
       "source_message_count": 4,
       "text_chars": 4334,
@@ -2822,8 +2782,8 @@
     {
       "conversation_id": "69eae3f9-3b00-832e-a63c-a3490e7c4a89",
       "title": "A股周期换算与操作",
-      "raw_file": "股票消息原始JSON/0072_A股周期换算与操作_69eae3f9-3b00-832e.json",
-      "text_file": "股票消息全文/0072_A股周期换算与操作_69eae3f9-3b00-832e.md",
+      "raw_file": "股票消息原始JSON/0070_A股周期换算与操作_69eae3f9-3b00-832e.json",
+      "text_file": "股票消息全文/0070_A股周期换算与操作_69eae3f9-3b00-832e.md",
       "message_count": 2,
       "source_message_count": 2,
       "text_chars": 5045,
@@ -2857,8 +2817,8 @@
     {
       "conversation_id": "69eb028f-91f4-832d-b809-e51aa456df46",
       "title": "AI ETF配置策略",
-      "raw_file": "股票消息原始JSON/0073_AI_ETF配置策略_69eb028f-91f4-832d.json",
-      "text_file": "股票消息全文/0073_AI_ETF配置策略_69eb028f-91f4-832d.md",
+      "raw_file": "股票消息原始JSON/0071_AI_ETF配置策略_69eb028f-91f4-832d.json",
+      "text_file": "股票消息全文/0071_AI_ETF配置策略_69eb028f-91f4-832d.md",
       "message_count": 7,
       "source_message_count": 8,
       "text_chars": 8367,
@@ -2881,8 +2841,8 @@
     {
       "conversation_id": "69eb2381-f7ac-8327-86d1-e6de5f18cdb8",
       "title": "资金回报率与组合优化",
-      "raw_file": "股票消息原始JSON/0074_资金回报率与组合优化_69eb2381-f7ac-8327.json",
-      "text_file": "股票消息全文/0074_资金回报率与组合优化_69eb2381-f7ac-8327.md",
+      "raw_file": "股票消息原始JSON/0072_资金回报率与组合优化_69eb2381-f7ac-8327.json",
+      "text_file": "股票消息全文/0072_资金回报率与组合优化_69eb2381-f7ac-8327.md",
       "message_count": 6,
       "source_message_count": 6,
       "text_chars": 8974,
@@ -2910,8 +2870,8 @@
     {
       "conversation_id": "69ec3588-382c-8328-afcc-a3e4872aea8d",
       "title": "WU分红可持续性分析",
-      "raw_file": "股票消息原始JSON/0075_WU分红可持续性分析_69ec3588-382c-8328.json",
-      "text_file": "股票消息全文/0075_WU分红可持续性分析_69ec3588-382c-8328.md",
+      "raw_file": "股票消息原始JSON/0073_WU分红可持续性分析_69ec3588-382c-8328.json",
+      "text_file": "股票消息全文/0073_WU分红可持续性分析_69ec3588-382c-8328.md",
       "message_count": 12,
       "source_message_count": 12,
       "text_chars": 65892,
@@ -2947,13 +2907,13 @@
         "股票",
         "财报"
       ],
-      "raw_sha256": "e5bbcccfa7aeb79a1bb78f353735acc0a9fd4ac961fbf92d9de53a7debdd8868"
+      "raw_sha256": "66545b80c1ff0d23ce29ede4b17d5565bbb8d82b6638ea148adfaf450411b745"
     },
     {
       "conversation_id": "69ecc89c-4758-8328-a5d2-220bd1d1a907",
       "title": "Marvell接入层芯片分析",
-      "raw_file": "股票消息原始JSON/0076_Marvell接入层芯片分析_69ecc89c-4758-8328.json",
-      "text_file": "股票消息全文/0076_Marvell接入层芯片分析_69ecc89c-4758-8328.md",
+      "raw_file": "股票消息原始JSON/0074_Marvell接入层芯片分析_69ecc89c-4758-8328.json",
+      "text_file": "股票消息全文/0074_Marvell接入层芯片分析_69ecc89c-4758-8328.md",
       "message_count": 2,
       "source_message_count": 12,
       "text_chars": 2166,
@@ -2972,14 +2932,14 @@
     {
       "conversation_id": "69edacf4-f9cc-8330-8bd5-dc32ea9bf142",
       "title": "股权与分红解析",
-      "raw_file": "股票消息原始JSON/0077_股权与分红解析_69edacf4-f9cc-8330.json",
-      "text_file": "股票消息全文/0077_股权与分红解析_69edacf4-f9cc-8330.md",
+      "raw_file": "股票消息原始JSON/0075_股权与分红解析_69edacf4-f9cc-8330.json",
+      "text_file": "股票消息全文/0075_股权与分红解析_69edacf4-f9cc-8330.md",
       "message_count": 4,
       "source_message_count": 4,
       "text_chars": 15719,
       "matched_terms": [
-        "ETF",
         "etf",
+        "ETF",
         "ROE",
         "估值",
         "净利润",
@@ -2998,13 +2958,13 @@
         "资产配置",
         "追涨"
       ],
-      "raw_sha256": "111ff8c6b2c566a467a4cc0e582d846bd59900b8856eb2db92c7d74034e33abd"
+      "raw_sha256": "b508ec17bba0c7d637af39ef250a396ad27049c0b4fbd1759dedba101abe2856"
     },
     {
       "conversation_id": "69f5ed45-40b0-83eb-bc0a-e44caa2c5518",
       "title": "软件ETF推荐",
-      "raw_file": "股票消息原始JSON/0078_软件ETF推荐_69f5ed45-40b0-83eb.json",
-      "text_file": "股票消息全文/0078_软件ETF推荐_69f5ed45-40b0-83eb.md",
+      "raw_file": "股票消息原始JSON/0076_软件ETF推荐_69f5ed45-40b0-83eb.json",
+      "text_file": "股票消息全文/0076_软件ETF推荐_69f5ed45-40b0-83eb.md",
       "message_count": 2,
       "source_message_count": 2,
       "text_chars": 1379,
@@ -3021,8 +2981,8 @@
     {
       "conversation_id": "69f784ba-baa8-8327-a975-c6f68d24a7f8",
       "title": "东方财富数据抓取代码",
-      "raw_file": "股票消息原始JSON/0079_东方财富数据抓取代码_69f784ba-baa8-8327.json",
-      "text_file": "股票消息全文/0079_东方财富数据抓取代码_69f784ba-baa8-8327.md",
+      "raw_file": "股票消息原始JSON/0077_东方财富数据抓取代码_69f784ba-baa8-8327.json",
+      "text_file": "股票消息全文/0077_东方财富数据抓取代码_69f784ba-baa8-8327.md",
       "message_count": 10,
       "source_message_count": 14,
       "text_chars": 71488,
@@ -3051,13 +3011,13 @@
         "股票",
         "量能"
       ],
-      "raw_sha256": "12c45018e5354fd5aa38beb9cc959249e57e13ddfa748c85800229ccaf917c3d"
+      "raw_sha256": "e719e8702a5ea3cdb4981bc2e50ef745a8bfdc88e6cb63b76c553710886fad2d"
     },
     {
       "conversation_id": "69fa99a6-2220-8320-9c10-710b27099e0c",
       "title": "持续买入与策略结合",
-      "raw_file": "股票消息原始JSON/0080_持续买入与策略结合_69fa99a6-2220-8320.json",
-      "text_file": "股票消息全文/0080_持续买入与策略结合_69fa99a6-2220-8320.md",
+      "raw_file": "股票消息原始JSON/0078_持续买入与策略结合_69fa99a6-2220-8320.json",
+      "text_file": "股票消息全文/0078_持续买入与策略结合_69fa99a6-2220-8320.md",
       "message_count": 9,
       "source_message_count": 16,
       "text_chars": 7902,
@@ -3102,8 +3062,8 @@
     {
       "conversation_id": "69fc1336-f6a0-8322-b89d-09c99e1a966d",
       "title": "下载问题排查指南",
-      "raw_file": "股票消息原始JSON/0081_下载问题排查指南_69fc1336-f6a0-8322.json",
-      "text_file": "股票消息全文/0081_下载问题排查指南_69fc1336-f6a0-8322.md",
+      "raw_file": "股票消息原始JSON/0079_下载问题排查指南_69fc1336-f6a0-8322.json",
+      "text_file": "股票消息全文/0079_下载问题排查指南_69fc1336-f6a0-8322.md",
       "message_count": 5,
       "source_message_count": 44,
       "text_chars": 54516,
@@ -3112,8 +3072,8 @@
         "K线",
         "MA20",
         "MA40",
-        "STOCK",
         "stock",
+        "STOCK",
         "东方财富",
         "交易所",
         "吸筹",
@@ -3126,13 +3086,13 @@
         "股票",
         "量能"
       ],
-      "raw_sha256": "ac85de15dd4f34b42570a2d1092c5453093e8716ff789da0726c51d68eae571f"
+      "raw_sha256": "e7a6c45723c3a2900e2ebdcc5906e20236215010e95f6ef51237ce8868e1bfc7"
     },
     {
       "conversation_id": "69fc30e9-133c-8320-9165-dcedf33c1208",
       "title": "自动化运行Python文件",
-      "raw_file": "股票消息原始JSON/0082_自动化运行Python文件_69fc30e9-133c-8320.json",
-      "text_file": "股票消息全文/0082_自动化运行Python文件_69fc30e9-133c-8320.md",
+      "raw_file": "股票消息原始JSON/0080_自动化运行Python文件_69fc30e9-133c-8320.json",
+      "text_file": "股票消息全文/0080_自动化运行Python文件_69fc30e9-133c-8320.md",
       "message_count": 11,
       "source_message_count": 28,
       "text_chars": 16783,
@@ -3173,8 +3133,8 @@
     {
       "conversation_id": "69fd839a-e954-83ec-bd8c-cbd58f378cf8",
       "title": "Python模板需求细化",
-      "raw_file": "股票消息原始JSON/0083_Python模板需求细化_69fd839a-e954-83ec.json",
-      "text_file": "股票消息全文/0083_Python模板需求细化_69fd839a-e954-83ec.md",
+      "raw_file": "股票消息原始JSON/0081_Python模板需求细化_69fd839a-e954-83ec.json",
+      "text_file": "股票消息全文/0081_Python模板需求细化_69fd839a-e954-83ec.md",
       "message_count": 3,
       "source_message_count": 4,
       "text_chars": 5039,
@@ -3202,8 +3162,8 @@
     {
       "conversation_id": "69ff489d-f690-83ec-9504-7b236843429d",
       "title": "SCHG与HPE加仓策略",
-      "raw_file": "股票消息原始JSON/0084_SCHG与HPE加仓策略_69ff489d-f690-83ec.json",
-      "text_file": "股票消息全文/0084_SCHG与HPE加仓策略_69ff489d-f690-83ec.md",
+      "raw_file": "股票消息原始JSON/0082_SCHG与HPE加仓策略_69ff489d-f690-83ec.json",
+      "text_file": "股票消息全文/0082_SCHG与HPE加仓策略_69ff489d-f690-83ec.md",
       "message_count": 2,
       "source_message_count": 2,
       "text_chars": 4775,
@@ -3231,8 +3191,8 @@
     {
       "conversation_id": "6a014c95-88b0-83ec-8536-e9aee8cf56a5",
       "title": "李嘉诚与芒格思维",
-      "raw_file": "股票消息原始JSON/0085_李嘉诚与芒格思维_6a014c95-88b0-83ec.json",
-      "text_file": "股票消息全文/0085_李嘉诚与芒格思维_6a014c95-88b0-83ec.md",
+      "raw_file": "股票消息原始JSON/0083_李嘉诚与芒格思维_6a014c95-88b0-83ec.json",
+      "text_file": "股票消息全文/0083_李嘉诚与芒格思维_6a014c95-88b0-83ec.md",
       "message_count": 2,
       "source_message_count": 4,
       "text_chars": 7332,
@@ -3251,8 +3211,8 @@
     {
       "conversation_id": "6a015335-45ec-83ec-ad18-b2b65d5dd984",
       "title": "SCHG vs SCHB选择",
-      "raw_file": "股票消息原始JSON/0086_SCHG_vs_SCHB选择_6a015335-45ec-83ec.json",
-      "text_file": "股票消息全文/0086_SCHG_vs_SCHB选择_6a015335-45ec-83ec.md",
+      "raw_file": "股票消息原始JSON/0084_SCHG_vs_SCHB选择_6a015335-45ec-83ec.json",
+      "text_file": "股票消息全文/0084_SCHG_vs_SCHB选择_6a015335-45ec-83ec.md",
       "message_count": 2,
       "source_message_count": 2,
       "text_chars": 1998,
@@ -3273,11 +3233,11 @@
     {
       "conversation_id": "6a01f6fe-0de8-83ec-a251-30032c325b27",
       "title": "Playwright 1.59.0 安装解决方案",
-      "raw_file": "股票消息原始JSON/0087_Playwright_1.59.0_安装解决方案_6a01f6fe-0de8-83ec.json",
-      "text_file": "股票消息全文/0087_Playwright_1.59.0_安装解决方案_6a01f6fe-0de8-83ec.md",
-      "message_count": 13,
+      "raw_file": "股票消息原始JSON/0085_Playwright_1.59.0_安装解决方案_6a01f6fe-0de8-83ec.json",
+      "text_file": "股票消息全文/0085_Playwright_1.59.0_安装解决方案_6a01f6fe-0de8-83ec.md",
+      "message_count": 10,
       "source_message_count": 26,
-      "text_chars": 85974,
+      "text_chars": 80461,
       "matched_terms": [
         "AAPL",
         "AMD",
@@ -3286,8 +3246,8 @@
         "ETF",
         "GOOG",
         "GOOGL",
-        "MA20",
         "ma20",
+        "MA20",
         "META",
         "MSFT",
         "NVDA",
@@ -3295,30 +3255,16 @@
         "减仓",
         "加仓",
         "定投",
-        "微软",
         "持仓",
         "股票"
       ],
-      "raw_sha256": "e2b76d23f8879c9bc1da1b545fdfc5313ce4466381e62a00d10e2429fbd2c2dd"
-    },
-    {
-      "conversation_id": "6a027e0d-d7cc-83ec-9901-006228029a79",
-      "title": "A2A时代外贸自动化",
-      "raw_file": "股票消息原始JSON/0088_A2A时代外贸自动化_6a027e0d-d7cc-83ec.json",
-      "text_file": "股票消息全文/0088_A2A时代外贸自动化_6a027e0d-d7cc-83ec.md",
-      "message_count": 1,
-      "source_message_count": 2,
-      "text_chars": 2307,
-      "matched_terms": [
-        "股票"
-      ],
-      "raw_sha256": "36db90c0eeee354c9878d08b2e9cb4f877809b0cb91187c9b9408bddea4c2245"
+      "raw_sha256": "7b2fa7d875398e0736eab7c884a07a5268abe3be9b1c06ce46e540b32689520e"
     },
     {
       "conversation_id": "6a02c3a7-0e80-83ec-a125-14373905273f",
       "title": "行业ETF趋势分析",
-      "raw_file": "股票消息原始JSON/0089_行业ETF趋势分析_6a02c3a7-0e80-83ec.json",
-      "text_file": "股票消息全文/0089_行业ETF趋势分析_6a02c3a7-0e80-83ec.md",
+      "raw_file": "股票消息原始JSON/0086_行业ETF趋势分析_6a02c3a7-0e80-83ec.json",
+      "text_file": "股票消息全文/0086_行业ETF趋势分析_6a02c3a7-0e80-83ec.md",
       "message_count": 6,
       "source_message_count": 6,
       "text_chars": 9540,
@@ -3366,8 +3312,8 @@
     {
       "conversation_id": "6a03e98e-d66c-83ec-9f24-ca25deabda20",
       "title": "美股事件驱动分析",
-      "raw_file": "股票消息原始JSON/0090_美股事件驱动分析_6a03e98e-d66c-83ec.json",
-      "text_file": "股票消息全文/0090_美股事件驱动分析_6a03e98e-d66c-83ec.md",
+      "raw_file": "股票消息原始JSON/0087_美股事件驱动分析_6a03e98e-d66c-83ec.json",
+      "text_file": "股票消息全文/0087_美股事件驱动分析_6a03e98e-d66c-83ec.md",
       "message_count": 2,
       "source_message_count": 2,
       "text_chars": 1775,
@@ -3394,8 +3340,8 @@
     {
       "conversation_id": "6a05459f-0410-83ec-a987-3baefaae04fe",
       "title": "CBRS AI芯片上市",
-      "raw_file": "股票消息原始JSON/0091_CBRS_AI芯片上市_6a05459f-0410-83ec.json",
-      "text_file": "股票消息全文/0091_CBRS_AI芯片上市_6a05459f-0410-83ec.md",
+      "raw_file": "股票消息原始JSON/0088_CBRS_AI芯片上市_6a05459f-0410-83ec.json",
+      "text_file": "股票消息全文/0088_CBRS_AI芯片上市_6a05459f-0410-83ec.md",
       "message_count": 11,
       "source_message_count": 12,
       "text_chars": 10077,
@@ -3428,8 +3374,8 @@
     {
       "conversation_id": "6a059ba3-ef70-83ec-b6bf-88078a331ff0",
       "title": "投资组合优化分析",
-      "raw_file": "股票消息原始JSON/0092_投资组合优化分析_6a059ba3-ef70-83ec.json",
-      "text_file": "股票消息全文/0092_投资组合优化分析_6a059ba3-ef70-83ec.md",
+      "raw_file": "股票消息原始JSON/0089_投资组合优化分析_6a059ba3-ef70-83ec.json",
+      "text_file": "股票消息全文/0089_投资组合优化分析_6a059ba3-ef70-83ec.md",
       "message_count": 2,
       "source_message_count": 2,
       "text_chars": 12283,
@@ -3468,8 +3414,8 @@
     {
       "conversation_id": "6a05bae9-339c-83ec-b832-2545b763dc24",
       "title": "Figure机器人上市情况",
-      "raw_file": "股票消息原始JSON/0093_Figure机器人上市情况_6a05bae9-339c-83ec.json",
-      "text_file": "股票消息全文/0093_Figure机器人上市情况_6a05bae9-339c-83ec.md",
+      "raw_file": "股票消息原始JSON/0090_Figure机器人上市情况_6a05bae9-339c-83ec.json",
+      "text_file": "股票消息全文/0090_Figure机器人上市情况_6a05bae9-339c-83ec.md",
       "message_count": 1,
       "source_message_count": 2,
       "text_chars": 1440,
@@ -3484,8 +3430,8 @@
     {
       "conversation_id": "6a069c60-8048-83ec-9107-7316ac7f74fb",
       "title": "A股顶级赛道分析",
-      "raw_file": "股票消息原始JSON/0094_A股顶级赛道分析_6a069c60-8048-83ec.json",
-      "text_file": "股票消息全文/0094_A股顶级赛道分析_6a069c60-8048-83ec.md",
+      "raw_file": "股票消息原始JSON/0091_A股顶级赛道分析_6a069c60-8048-83ec.json",
+      "text_file": "股票消息全文/0091_A股顶级赛道分析_6a069c60-8048-83ec.md",
       "message_count": 4,
       "source_message_count": 4,
       "text_chars": 4664,
@@ -3511,26 +3457,13 @@
       "raw_sha256": "ddda1eecdd20da233e374f937f367ab85d0a7400f921ffbc98da8651fe1abac7"
     },
     {
-      "conversation_id": "6a06d935-1b30-83ec-9000-1187ae358a6c",
-      "title": "注意力边界与社交",
-      "raw_file": "股票消息原始JSON/0095_注意力边界与社交_6a06d935-1b30-83ec.json",
-      "text_file": "股票消息全文/0095_注意力边界与社交_6a06d935-1b30-83ec.md",
-      "message_count": 1,
-      "source_message_count": 6,
-      "text_chars": 668,
-      "matched_terms": [
-        "止损"
-      ],
-      "raw_sha256": "31924944feebf9747e4841e6aeff681d8582629dd7a23abb4a8398a053015a0c"
-    },
-    {
       "conversation_id": "6a092505-9628-83ec-8fd7-26bac6db9db6",
       "title": "EUV ETF持仓分析",
-      "raw_file": "股票消息原始JSON/0096_EUV_ETF持仓分析_6a092505-9628-83ec.json",
-      "text_file": "股票消息全文/0096_EUV_ETF持仓分析_6a092505-9628-83ec.md",
-      "message_count": 10,
+      "raw_file": "股票消息原始JSON/0092_EUV_ETF持仓分析_6a092505-9628-83ec.json",
+      "text_file": "股票消息全文/0092_EUV_ETF持仓分析_6a092505-9628-83ec.md",
+      "message_count": 9,
       "source_message_count": 10,
-      "text_chars": 10321,
+      "text_chars": 8027,
       "matched_terms": [
         "AMD",
         "ETF",
@@ -3547,16 +3480,15 @@
         "持仓",
         "特斯拉",
         "股价",
-        "股票",
         "英伟达"
       ],
-      "raw_sha256": "bc03e2bd52a7bd71ea0d62a4a751ef4f789332b29574df5811d56e8fbcad0a67"
+      "raw_sha256": "71b7cddfb8aa387d2748b4a14143f193a6eddf881ff41ae685bc524e55c44aa1"
     },
     {
       "conversation_id": "6a09cb77-fe68-83ec-a63d-d7ba368a48c6",
       "title": "家族资产系统框架",
-      "raw_file": "股票消息原始JSON/0097_家族资产系统框架_6a09cb77-fe68-83ec.json",
-      "text_file": "股票消息全文/0097_家族资产系统框架_6a09cb77-fe68-83ec.md",
+      "raw_file": "股票消息原始JSON/0093_家族资产系统框架_6a09cb77-fe68-83ec.json",
+      "text_file": "股票消息全文/0093_家族资产系统框架_6a09cb77-fe68-83ec.md",
       "message_count": 1,
       "source_message_count": 2,
       "text_chars": 1962,
@@ -3571,8 +3503,8 @@
     {
       "conversation_id": "6a0acdd4-6aac-83ec-a44b-28a6acda45b3",
       "title": "海澜之家股评分析",
-      "raw_file": "股票消息原始JSON/0098_海澜之家股评分析_6a0acdd4-6aac-83ec.json",
-      "text_file": "股票消息全文/0098_海澜之家股评分析_6a0acdd4-6aac-83ec.md",
+      "raw_file": "股票消息原始JSON/0094_海澜之家股评分析_6a0acdd4-6aac-83ec.json",
+      "text_file": "股票消息全文/0094_海澜之家股评分析_6a0acdd4-6aac-83ec.md",
       "message_count": 9,
       "source_message_count": 9,
       "text_chars": 39507,
@@ -3616,8 +3548,8 @@
     {
       "conversation_id": "6a0bcae2-bf50-83ec-9045-8682e2d3e092",
       "title": "老钱筹码分析",
-      "raw_file": "股票消息原始JSON/0099_老钱筹码分析_6a0bcae2-bf50-83ec.json",
-      "text_file": "股票消息全文/0099_老钱筹码分析_6a0bcae2-bf50-83ec.md",
+      "raw_file": "股票消息原始JSON/0095_老钱筹码分析_6a0bcae2-bf50-83ec.json",
+      "text_file": "股票消息全文/0095_老钱筹码分析_6a0bcae2-bf50-83ec.md",
       "message_count": 12,
       "source_message_count": 14,
       "text_chars": 21735,
@@ -3670,8 +3602,8 @@
     {
       "conversation_id": "6a0c2944-7bf4-83ec-b003-bfc91621e40f",
       "title": "升值 增值 内生性增值解释",
-      "raw_file": "股票消息原始JSON/0100_升值_增值_内生性增值解释_6a0c2944-7bf4-83ec.json",
-      "text_file": "股票消息全文/0100_升值_增值_内生性增值解释_6a0c2944-7bf4-83ec.md",
+      "raw_file": "股票消息原始JSON/0096_升值_增值_内生性增值解释_6a0c2944-7bf4-83ec.json",
+      "text_file": "股票消息全文/0096_升值_增值_内生性增值解释_6a0c2944-7bf4-83ec.md",
       "message_count": 1,
       "source_message_count": 2,
       "text_chars": 2416,
@@ -3689,8 +3621,8 @@
     {
       "conversation_id": "6a0c3696-63ac-83ec-93df-d07c1e49d4d6",
       "title": "美股分红机器分析",
-      "raw_file": "股票消息原始JSON/0101_美股分红机器分析_6a0c3696-63ac-83ec.json",
-      "text_file": "股票消息全文/0101_美股分红机器分析_6a0c3696-63ac-83ec.md",
+      "raw_file": "股票消息原始JSON/0097_美股分红机器分析_6a0c3696-63ac-83ec.json",
+      "text_file": "股票消息全文/0097_美股分红机器分析_6a0c3696-63ac-83ec.md",
       "message_count": 10,
       "source_message_count": 10,
       "text_chars": 10198,
@@ -3717,8 +3649,8 @@
     {
       "conversation_id": "6a0e60f2-91e0-8322-8f7a-ac1d3cbde0d8",
       "title": "果论交易决策体系",
-      "raw_file": "股票消息原始JSON/0102_果论交易决策体系_6a0e60f2-91e0-8322.json",
-      "text_file": "股票消息全文/0102_果论交易决策体系_6a0e60f2-91e0-8322.md",
+      "raw_file": "股票消息原始JSON/0098_果论交易决策体系_6a0e60f2-91e0-8322.json",
+      "text_file": "股票消息全文/0098_果论交易决策体系_6a0e60f2-91e0-8322.md",
       "message_count": 7,
       "source_message_count": 12,
       "text_chars": 22098,
@@ -3766,8 +3698,8 @@
     {
       "conversation_id": "6a0ecd32-4c58-8324-9e94-e3ec260b16b1",
       "title": "阶级跃迁与资产配置",
-      "raw_file": "股票消息原始JSON/0103_阶级跃迁与资产配置_6a0ecd32-4c58-8324.json",
-      "text_file": "股票消息全文/0103_阶级跃迁与资产配置_6a0ecd32-4c58-8324.md",
+      "raw_file": "股票消息原始JSON/0099_阶级跃迁与资产配置_6a0ecd32-4c58-8324.json",
+      "text_file": "股票消息全文/0099_阶级跃迁与资产配置_6a0ecd32-4c58-8324.md",
       "message_count": 6,
       "source_message_count": 6,
       "text_chars": 6496,
@@ -3793,11 +3725,11 @@
     {
       "conversation_id": "6a0ed2f9-a5a8-8324-8e71-bfcd6e7f4748",
       "title": "苹果礼品卡有效期",
-      "raw_file": "股票消息原始JSON/0104_苹果礼品卡有效期_6a0ed2f9-a5a8-8324.json",
-      "text_file": "股票消息全文/0104_苹果礼品卡有效期_6a0ed2f9-a5a8-8324.md",
-      "message_count": 3,
+      "raw_file": "股票消息原始JSON/0100_苹果礼品卡有效期_6a0ed2f9-a5a8-8324.json",
+      "text_file": "股票消息全文/0100_苹果礼品卡有效期_6a0ed2f9-a5a8-8324.md",
+      "message_count": 2,
       "source_message_count": 14,
-      "text_chars": 4500,
+      "text_chars": 3335,
       "matched_terms": [
         "分红",
         "券商",
@@ -3805,13 +3737,13 @@
         "美股",
         "股票"
       ],
-      "raw_sha256": "2f1a981b4b83f59192174912119390517bfad294225d3f8b7f09114f7c8036c0"
+      "raw_sha256": "dd5e6a30a422330a14fbb792ef440aa7764e6fefb6a329988096a21b19296ed7"
     },
     {
       "conversation_id": "6a114320-41b4-83ec-a8c6-786fae7d53ca",
       "title": "量化抓取优化建议",
-      "raw_file": "股票消息原始JSON/0105_量化抓取优化建议_6a114320-41b4-83ec.json",
-      "text_file": "股票消息全文/0105_量化抓取优化建议_6a114320-41b4-83ec.md",
+      "raw_file": "股票消息原始JSON/0101_量化抓取优化建议_6a114320-41b4-83ec.json",
+      "text_file": "股票消息全文/0101_量化抓取优化建议_6a114320-41b4-83ec.md",
       "message_count": 5,
       "source_message_count": 8,
       "text_chars": 13129,
@@ -3844,16 +3776,16 @@
         "财报",
         "贵州茅台"
       ],
-      "raw_sha256": "c1b5ff0e6796baac14e820aa8b29726af00b9f0e11d910d06f22ec2c9aefadca"
+      "raw_sha256": "c0c577133dcf7ca69eb81caea33ef0f80da10d5173773130cf6b66a1d9e793d0"
     },
     {
       "conversation_id": "6a11a08d-916c-83ec-ac23-da75f4390723",
       "title": "HSBC App Store问题",
-      "raw_file": "股票消息原始JSON/0106_HSBC_App_Store问题_6a11a08d-916c-83ec.json",
-      "text_file": "股票消息全文/0106_HSBC_App_Store问题_6a11a08d-916c-83ec.md",
-      "message_count": 7,
+      "raw_file": "股票消息原始JSON/0102_HSBC_App_Store问题_6a11a08d-916c-83ec.json",
+      "text_file": "股票消息全文/0102_HSBC_App_Store问题_6a11a08d-916c-83ec.md",
+      "message_count": 6,
       "source_message_count": 13,
-      "text_chars": 11047,
+      "text_chars": 9770,
       "matched_terms": [
         "A股",
         "Stocks",
@@ -3868,13 +3800,13 @@
         "证券",
         "资产配置"
       ],
-      "raw_sha256": "49704504354f63b1b5ce06d26057268b15fb9a0bca49e3bcc4d56a446363d836"
+      "raw_sha256": "44d1b009126e29e0351148a5b8fa1ece19f877d3016ddafc18df6f381c8a121a"
     },
     {
       "conversation_id": "6a13007a-9710-83ec-b492-320e0a16c515",
       "title": "脚本同时运行问题",
-      "raw_file": "股票消息原始JSON/0107_脚本同时运行问题_6a13007a-9710-83ec.json",
-      "text_file": "股票消息全文/0107_脚本同时运行问题_6a13007a-9710-83ec.md",
+      "raw_file": "股票消息原始JSON/0103_脚本同时运行问题_6a13007a-9710-83ec.json",
+      "text_file": "股票消息全文/0103_脚本同时运行问题_6a13007a-9710-83ec.md",
       "message_count": 2,
       "source_message_count": 6,
       "text_chars": 2900,
@@ -3889,17 +3821,17 @@
     {
       "conversation_id": "6a141cf7-3788-83ec-a22d-b3e1e6e2f0db",
       "title": "公司背景疑问",
-      "raw_file": "股票消息原始JSON/0108_公司背景疑问_6a141cf7-3788-83ec.json",
-      "text_file": "股票消息全文/0108_公司背景疑问_6a141cf7-3788-83ec.md",
-      "message_count": 14,
+      "raw_file": "股票消息原始JSON/0104_公司背景疑问_6a141cf7-3788-83ec.json",
+      "text_file": "股票消息全文/0104_公司背景疑问_6a141cf7-3788-83ec.md",
+      "message_count": 13,
       "source_message_count": 18,
-      "text_chars": 16631,
+      "text_chars": 16520,
       "matched_terms": [
         "A股",
         "EPS",
         "ETF",
-        "Meta",
         "META",
+        "Meta",
         "NVDA",
         "PE",
         "stock",
@@ -3927,13 +3859,13 @@
         "财报",
         "追涨"
       ],
-      "raw_sha256": "27553c43a451aa4378622d92fa797e4238621f823d79606e44eac5f753f1d7b2"
+      "raw_sha256": "b4a6577d5c537f3862f681fb02827863a4ed6a24a28c57e7dd604a1b1be44952"
     },
     {
       "conversation_id": "6a17bdf6-b088-83ec-bf41-b1940e87b321",
       "title": "适合普通人的资产",
-      "raw_file": "股票消息原始JSON/0109_适合普通人的资产_6a17bdf6-b088-83ec.json",
-      "text_file": "股票消息全文/0109_适合普通人的资产_6a17bdf6-b088-83ec.md",
+      "raw_file": "股票消息原始JSON/0105_适合普通人的资产_6a17bdf6-b088-83ec.json",
+      "text_file": "股票消息全文/0105_适合普通人的资产_6a17bdf6-b088-83ec.md",
       "message_count": 2,
       "source_message_count": 2,
       "text_chars": 2732,
@@ -3959,8 +3891,8 @@
     {
       "conversation_id": "6a19517f-67f4-83ec-8a12-611874421c35",
       "title": "股市与消费循环分析",
-      "raw_file": "股票消息原始JSON/0110_股市与消费循环分析_6a19517f-67f4-83ec.json",
-      "text_file": "股票消息全文/0110_股市与消费循环分析_6a19517f-67f4-83ec.md",
+      "raw_file": "股票消息原始JSON/0106_股市与消费循环分析_6a19517f-67f4-83ec.json",
+      "text_file": "股票消息全文/0106_股市与消费循环分析_6a19517f-67f4-83ec.md",
       "message_count": 2,
       "source_message_count": 2,
       "text_chars": 2381,
@@ -3981,8 +3913,8 @@
     {
       "conversation_id": "6a195e19-019c-83ec-8b67-a0e3160dd723",
       "title": "GPT token收费标准",
-      "raw_file": "股票消息原始JSON/0111_GPT_token收费标准_6a195e19-019c-83ec.json",
-      "text_file": "股票消息全文/0111_GPT_token收费标准_6a195e19-019c-83ec.md",
+      "raw_file": "股票消息原始JSON/0107_GPT_token收费标准_6a195e19-019c-83ec.json",
+      "text_file": "股票消息全文/0107_GPT_token收费标准_6a195e19-019c-83ec.md",
       "message_count": 4,
       "source_message_count": 18,
       "text_chars": 4541,
@@ -3997,8 +3929,8 @@
     {
       "conversation_id": "6a227fe3-cca8-83ec-81a7-74e647e429b9",
       "title": "股权与价格区别",
-      "raw_file": "股票消息原始JSON/0112_股权与价格区别_6a227fe3-cca8-83ec.json",
-      "text_file": "股票消息全文/0112_股权与价格区别_6a227fe3-cca8-83ec.md",
+      "raw_file": "股票消息原始JSON/0108_股权与价格区别_6a227fe3-cca8-83ec.json",
+      "text_file": "股票消息全文/0108_股权与价格区别_6a227fe3-cca8-83ec.md",
       "message_count": 2,
       "source_message_count": 2,
       "text_chars": 2039,
@@ -4018,8 +3950,8 @@
     {
       "conversation_id": "6a22820c-7fcc-83ec-8507-9b9ea2d7e339",
       "title": "SCHG持仓规则解析",
-      "raw_file": "股票消息原始JSON/0113_SCHG持仓规则解析_6a22820c-7fcc-83ec.json",
-      "text_file": "股票消息全文/0113_SCHG持仓规则解析_6a22820c-7fcc-83ec.md",
+      "raw_file": "股票消息原始JSON/0109_SCHG持仓规则解析_6a22820c-7fcc-83ec.json",
+      "text_file": "股票消息全文/0109_SCHG持仓规则解析_6a22820c-7fcc-83ec.md",
       "message_count": 8,
       "source_message_count": 8,
       "text_chars": 16339,
@@ -4034,8 +3966,8 @@
         "ETF",
         "GOOG",
         "GOOGL",
-        "Meta",
         "META",
+        "Meta",
         "MSFT",
         "NFLX",
         "NVDA",
@@ -4068,13 +4000,13 @@
         "财报",
         "道琼斯"
       ],
-      "raw_sha256": "931d3f8351e5f800dd32e8c3c85cc03c89948e19999f327756932491029419b1"
+      "raw_sha256": "26e79e6286c33ed98224e8971d22db6d88f776f09c8e7327d0da688a4f6fda5c"
     },
     {
       "conversation_id": "6a22c8ec-8ad0-83ec-b1f1-e9ab45bd210e",
       "title": "A股波段股推荐",
-      "raw_file": "股票消息原始JSON/0114_A股波段股推荐_6a22c8ec-8ad0-83ec.json",
-      "text_file": "股票消息全文/0114_A股波段股推荐_6a22c8ec-8ad0-83ec.md",
+      "raw_file": "股票消息原始JSON/0110_A股波段股推荐_6a22c8ec-8ad0-83ec.json",
+      "text_file": "股票消息全文/0110_A股波段股推荐_6a22c8ec-8ad0-83ec.md",
       "message_count": 22,
       "source_message_count": 25,
       "text_chars": 41096,
@@ -4142,8 +4074,8 @@
     {
       "conversation_id": "6a250230-8140-83ec-87e5-8718b956e271",
       "title": "长期视角下的需求",
-      "raw_file": "股票消息原始JSON/0115_长期视角下的需求_6a250230-8140-83ec.json",
-      "text_file": "股票消息全文/0115_长期视角下的需求_6a250230-8140-83ec.md",
+      "raw_file": "股票消息原始JSON/0111_长期视角下的需求_6a250230-8140-83ec.json",
+      "text_file": "股票消息全文/0111_长期视角下的需求_6a250230-8140-83ec.md",
       "message_count": 5,
       "source_message_count": 8,
       "text_chars": 6094,
@@ -4159,8 +4091,8 @@
     {
       "conversation_id": "6a253474-ec9c-83ec-ace5-98af23d2b518",
       "title": "报告分析与优化建议",
-      "raw_file": "股票消息原始JSON/0116_报告分析与优化建议_6a253474-ec9c-83ec.json",
-      "text_file": "股票消息全文/0116_报告分析与优化建议_6a253474-ec9c-83ec.md",
+      "raw_file": "股票消息原始JSON/0112_报告分析与优化建议_6a253474-ec9c-83ec.json",
+      "text_file": "股票消息全文/0112_报告分析与优化建议_6a253474-ec9c-83ec.md",
       "message_count": 3,
       "source_message_count": 6,
       "text_chars": 4014,
@@ -4188,8 +4120,8 @@
     {
       "conversation_id": "6a291050-faf0-83ec-9c73-aef68e73ac20",
       "title": "铝价分析与投资逻辑",
-      "raw_file": "股票消息原始JSON/0117_铝价分析与投资逻辑_6a291050-faf0-83ec.json",
-      "text_file": "股票消息全文/0117_铝价分析与投资逻辑_6a291050-faf0-83ec.md",
+      "raw_file": "股票消息原始JSON/0113_铝价分析与投资逻辑_6a291050-faf0-83ec.json",
+      "text_file": "股票消息全文/0113_铝价分析与投资逻辑_6a291050-faf0-83ec.md",
       "message_count": 3,
       "source_message_count": 6,
       "text_chars": 4375,
@@ -4210,15 +4142,15 @@
     {
       "conversation_id": "6a2a63de-dc18-83ec-9a91-64cde723167c",
       "title": "港股分红ETF推荐",
-      "raw_file": "股票消息原始JSON/0118_港股分红ETF推荐_6a2a63de-dc18-83ec.json",
-      "text_file": "股票消息全文/0118_港股分红ETF推荐_6a2a63de-dc18-83ec.md",
+      "raw_file": "股票消息原始JSON/0114_港股分红ETF推荐_6a2a63de-dc18-83ec.json",
+      "text_file": "股票消息全文/0114_港股分红ETF推荐_6a2a63de-dc18-83ec.md",
       "message_count": 4,
       "source_message_count": 4,
       "text_chars": 3266,
       "matched_terms": [
         "Equity",
-        "etf",
         "ETF",
+        "etf",
         "仓位",
         "分红",
         "大盘",
@@ -4237,8 +4169,8 @@
     {
       "conversation_id": "6a2a6f2d-d694-83ec-a625-4b78f51d93e1",
       "title": "SpaceX投资分析",
-      "raw_file": "股票消息原始JSON/0119_SpaceX投资分析_6a2a6f2d-d694-83ec.json",
-      "text_file": "股票消息全文/0119_SpaceX投资分析_6a2a6f2d-d694-83ec.md",
+      "raw_file": "股票消息原始JSON/0115_SpaceX投资分析_6a2a6f2d-d694-83ec.json",
+      "text_file": "股票消息全文/0115_SpaceX投资分析_6a2a6f2d-d694-83ec.md",
       "message_count": 5,
       "source_message_count": 5,
       "text_chars": 2805,
@@ -4262,8 +4194,8 @@
     {
       "conversation_id": "6a2a757b-7a20-83ec-a4cc-f58f2cb64684",
       "title": "澳门旅行必做事项",
-      "raw_file": "股票消息原始JSON/0120_澳门旅行必做事项_6a2a757b-7a20-83ec.json",
-      "text_file": "股票消息全文/0120_澳门旅行必做事项_6a2a757b-7a20-83ec.md",
+      "raw_file": "股票消息原始JSON/0116_澳门旅行必做事项_6a2a757b-7a20-83ec.json",
+      "text_file": "股票消息全文/0116_澳门旅行必做事项_6a2a757b-7a20-83ec.md",
       "message_count": 1,
       "source_message_count": 2,
       "text_chars": 1174,
@@ -4279,8 +4211,8 @@
     {
       "conversation_id": "6a2a7e9f-1e3c-83ec-8625-70865c508a51",
       "title": "HPE AI转型分析",
-      "raw_file": "股票消息原始JSON/0121_HPE_AI转型分析_6a2a7e9f-1e3c-83ec.json",
-      "text_file": "股票消息全文/0121_HPE_AI转型分析_6a2a7e9f-1e3c-83ec.md",
+      "raw_file": "股票消息原始JSON/0117_HPE_AI转型分析_6a2a7e9f-1e3c-83ec.json",
+      "text_file": "股票消息全文/0117_HPE_AI转型分析_6a2a7e9f-1e3c-83ec.md",
       "message_count": 5,
       "source_message_count": 8,
       "text_chars": 3390,
@@ -4297,8 +4229,8 @@
     {
       "conversation_id": "6a2b7ce7-842c-83ec-a9fe-943f8424481c",
       "title": "股市市值与资金",
-      "raw_file": "股票消息原始JSON/0122_股市市值与资金_6a2b7ce7-842c-83ec.json",
-      "text_file": "股票消息全文/0122_股市市值与资金_6a2b7ce7-842c-83ec.md",
+      "raw_file": "股票消息原始JSON/0118_股市市值与资金_6a2b7ce7-842c-83ec.json",
+      "text_file": "股票消息全文/0118_股市市值与资金_6a2b7ce7-842c-83ec.md",
       "message_count": 2,
       "source_message_count": 2,
       "text_chars": 2700,
@@ -4323,11 +4255,11 @@
     {
       "conversation_id": "6a2cbc1f-9144-83ec-9d39-717da5b85009",
       "title": "强股分析与思考",
-      "raw_file": "股票消息原始JSON/0123_强股分析与思考_6a2cbc1f-9144-83ec.json",
-      "text_file": "股票消息全文/0123_强股分析与思考_6a2cbc1f-9144-83ec.md",
-      "message_count": 18,
+      "raw_file": "股票消息原始JSON/0119_强股分析与思考_6a2cbc1f-9144-83ec.json",
+      "text_file": "股票消息全文/0119_强股分析与思考_6a2cbc1f-9144-83ec.md",
+      "message_count": 17,
       "source_message_count": 18,
-      "text_chars": 20099,
+      "text_chars": 19627,
       "matched_terms": [
         "EPS",
         "K线",
@@ -4362,13 +4294,13 @@
         "股票",
         "财报"
       ],
-      "raw_sha256": "ac659f066b5d7b1aec4b7fd2e70804fed49be78c594d5717f213aec6d0c8a634"
+      "raw_sha256": "1642bb8ba1da5eb992bef35b226649d405d1ab8de1d15e0d89a07e9585c82fc9"
     },
     {
       "conversation_id": "6a2cf2ae-8ed0-83ec-b4d1-9eb653b1b191",
       "title": "美股做T技巧",
-      "raw_file": "股票消息原始JSON/0124_美股做T技巧_6a2cf2ae-8ed0-83ec.json",
-      "text_file": "股票消息全文/0124_美股做T技巧_6a2cf2ae-8ed0-83ec.md",
+      "raw_file": "股票消息原始JSON/0120_美股做T技巧_6a2cf2ae-8ed0-83ec.json",
+      "text_file": "股票消息全文/0120_美股做T技巧_6a2cf2ae-8ed0-83ec.md",
       "message_count": 4,
       "source_message_count": 4,
       "text_chars": 3351,
@@ -4403,22 +4335,22 @@
     {
       "conversation_id": "6a2f75ae-66d8-83ec-8ad5-f2d34308f43d",
       "title": "买房争论分析",
-      "raw_file": "股票消息原始JSON/0125_买房争论分析_6a2f75ae-66d8-83ec.json",
-      "text_file": "股票消息全文/0125_买房争论分析_6a2f75ae-66d8-83ec.md",
-      "message_count": 10,
+      "raw_file": "股票消息原始JSON/0121_买房争论分析_6a2f75ae-66d8-83ec.json",
+      "text_file": "股票消息全文/0121_买房争论分析_6a2f75ae-66d8-83ec.md",
+      "message_count": 9,
       "source_message_count": 16,
-      "text_chars": 11089,
+      "text_chars": 9286,
       "matched_terms": [
         "AAPL",
-        "AMD",
         "amd",
+        "AMD",
         "AMZN",
         "AVGO",
         "ETF",
         "GOOGL",
+        "META",
         "Meta",
         "meta",
-        "META",
         "MSFT",
         "NFLX",
         "NVDA",
@@ -4429,13 +4361,13 @@
         "美股",
         "股票"
       ],
-      "raw_sha256": "ac0cd33246532eccc517d881f79aaa9712f896916b66dffca005b6cb111217d7"
+      "raw_sha256": "ed44d982aefcaa583a5330f0189f22c05e2fb173dbbf4fb07c26ad63ff58c7e7"
     },
     {
       "conversation_id": "6a2ffb40-05f8-83ec-b8d2-937a088a1b97",
       "title": "美股科技股代码",
-      "raw_file": "股票消息原始JSON/0126_美股科技股代码_6a2ffb40-05f8-83ec.json",
-      "text_file": "股票消息全文/0126_美股科技股代码_6a2ffb40-05f8-83ec.md",
+      "raw_file": "股票消息原始JSON/0122_美股科技股代码_6a2ffb40-05f8-83ec.json",
+      "text_file": "股票消息全文/0122_美股科技股代码_6a2ffb40-05f8-83ec.md",
       "message_count": 2,
       "source_message_count": 2,
       "text_chars": 1260,
@@ -4460,8 +4392,8 @@
     {
       "conversation_id": "6a3111e2-b6bc-83ec-bd1a-6c5097ae0d01",
       "title": "HPE 区间收益系统",
-      "raw_file": "股票消息原始JSON/0127_HPE_区间收益系统_6a3111e2-b6bc-83ec.json",
-      "text_file": "股票消息全文/0127_HPE_区间收益系统_6a3111e2-b6bc-83ec.md",
+      "raw_file": "股票消息原始JSON/0123_HPE_区间收益系统_6a3111e2-b6bc-83ec.json",
+      "text_file": "股票消息全文/0123_HPE_区间收益系统_6a3111e2-b6bc-83ec.md",
       "message_count": 6,
       "source_message_count": 6,
       "text_chars": 6901,
@@ -4480,8 +4412,8 @@
     {
       "conversation_id": "6a312121-acb0-83ec-9429-fbda7d23f086",
       "title": "ETF选择与覆盖度分析",
-      "raw_file": "股票消息原始JSON/0128_ETF选择与覆盖度分析_6a312121-acb0-83ec.json",
-      "text_file": "股票消息全文/0128_ETF选择与覆盖度分析_6a312121-acb0-83ec.md",
+      "raw_file": "股票消息原始JSON/0124_ETF选择与覆盖度分析_6a312121-acb0-83ec.json",
+      "text_file": "股票消息全文/0124_ETF选择与覆盖度分析_6a312121-acb0-83ec.md",
       "message_count": 2,
       "source_message_count": 2,
       "text_chars": 1701,
@@ -4501,8 +4433,8 @@
     {
       "conversation_id": "6a35557c-b9e4-83ec-b6a9-576c4debb6ac",
       "title": "AI驱动存储超级周期",
-      "raw_file": "股票消息原始JSON/0129_AI驱动存储超级周期_6a35557c-b9e4-83ec.json",
-      "text_file": "股票消息全文/0129_AI驱动存储超级周期_6a35557c-b9e4-83ec.md",
+      "raw_file": "股票消息原始JSON/0125_AI驱动存储超级周期_6a35557c-b9e4-83ec.json",
+      "text_file": "股票消息全文/0125_AI驱动存储超级周期_6a35557c-b9e4-83ec.md",
       "message_count": 1,
       "source_message_count": 2,
       "text_chars": 3606,
@@ -4516,8 +4448,8 @@
     {
       "conversation_id": "6a379c06-0220-83ec-9efb-763a92b04a1f",
       "title": "实用散户投资策略",
-      "raw_file": "股票消息原始JSON/0130_实用散户投资策略_6a379c06-0220-83ec.json",
-      "text_file": "股票消息全文/0130_实用散户投资策略_6a379c06-0220-83ec.md",
+      "raw_file": "股票消息原始JSON/0126_实用散户投资策略_6a379c06-0220-83ec.json",
+      "text_file": "股票消息全文/0126_实用散户投资策略_6a379c06-0220-83ec.md",
       "message_count": 2,
       "source_message_count": 2,
       "text_chars": 1945,
@@ -4537,8 +4469,8 @@
     {
       "conversation_id": "6a37cf43-9910-83ec-8677-5259f6782ff9",
       "title": "波动率收益分析",
-      "raw_file": "股票消息原始JSON/0131_波动率收益分析_6a37cf43-9910-83ec.json",
-      "text_file": "股票消息全文/0131_波动率收益分析_6a37cf43-9910-83ec.md",
+      "raw_file": "股票消息原始JSON/0127_波动率收益分析_6a37cf43-9910-83ec.json",
+      "text_file": "股票消息全文/0127_波动率收益分析_6a37cf43-9910-83ec.md",
       "message_count": 1,
       "source_message_count": 8,
       "text_chars": 2221,
@@ -4554,8 +4486,8 @@
     {
       "conversation_id": "6a55f412-d800-83ec-aeaa-583819acf550",
       "title": "投资建议与分析",
-      "raw_file": "股票消息原始JSON/0132_投资建议与分析_6a55f412-d800-83ec.json",
-      "text_file": "股票消息全文/0132_投资建议与分析_6a55f412-d800-83ec.md",
+      "raw_file": "股票消息原始JSON/0128_投资建议与分析_6a55f412-d800-83ec.json",
+      "text_file": "股票消息全文/0128_投资建议与分析_6a55f412-d800-83ec.md",
       "message_count": 16,
       "source_message_count": 16,
       "text_chars": 26170,
@@ -4591,8 +4523,8 @@
     {
       "conversation_id": "6a599352-dc3c-83ec-a3ef-14421fe2df0d",
       "title": "资本流动与价格形成",
-      "raw_file": "股票消息原始JSON/0133_资本流动与价格形成_6a599352-dc3c-83ec.json",
-      "text_file": "股票消息全文/0133_资本流动与价格形成_6a599352-dc3c-83ec.md",
+      "raw_file": "股票消息原始JSON/0129_资本流动与价格形成_6a599352-dc3c-83ec.json",
+      "text_file": "股票消息全文/0129_资本流动与价格形成_6a599352-dc3c-83ec.md",
       "message_count": 28,
       "source_message_count": 31,
       "text_chars": 53398,
@@ -4602,11 +4534,11 @@
         "A股",
         "ETF",
         "K线",
-        "MA20",
         "ma20",
+        "MA20",
         "MA40",
-        "Meta",
         "META",
+        "Meta",
         "MSFT",
         "NVDA",
         "PE",
@@ -4638,13 +4570,13 @@
         "财报",
         "量能"
       ],
-      "raw_sha256": "94d58531e2a0dd3ba084dc50b120eb07abeabc0643d2a160c504ea3ba074547a"
+      "raw_sha256": "a8b471e9278d41e36db92ce12cbd0ac5d0e9a491cb8bf772234f00d2d142cd84"
     },
     {
       "conversation_id": "6a59ed29-13b8-83ec-b7c0-296bb5d9dfdf",
       "title": "富人圈子玩法",
-      "raw_file": "股票消息原始JSON/0134_富人圈子玩法_6a59ed29-13b8-83ec.json",
-      "text_file": "股票消息全文/0134_富人圈子玩法_6a59ed29-13b8-83ec.md",
+      "raw_file": "股票消息原始JSON/0130_富人圈子玩法_6a59ed29-13b8-83ec.json",
+      "text_file": "股票消息全文/0130_富人圈子玩法_6a59ed29-13b8-83ec.md",
       "message_count": 3,
       "source_message_count": 4,
       "text_chars": 8361,
@@ -4667,8 +4599,8 @@
     {
       "conversation_id": "6a5a077c-196c-83ec-96cc-30b614d7d3fe",
       "title": "A股投资策略分析",
-      "raw_file": "股票消息原始JSON/0135_A股投资策略分析_6a5a077c-196c-83ec.json",
-      "text_file": "股票消息全文/0135_A股投资策略分析_6a5a077c-196c-83ec.md",
+      "raw_file": "股票消息原始JSON/0131_A股投资策略分析_6a5a077c-196c-83ec.json",
+      "text_file": "股票消息全文/0131_A股投资策略分析_6a5a077c-196c-83ec.md",
       "message_count": 8,
       "source_message_count": 8,
       "text_chars": 13850,
@@ -4725,8 +4657,8 @@
     {
       "conversation_id": "6a5b1e07-3590-83ec-a4c9-b87b4e833cbc",
       "title": "世界公民实操指南",
-      "raw_file": "股票消息原始JSON/0136_世界公民实操指南_6a5b1e07-3590-83ec.json",
-      "text_file": "股票消息全文/0136_世界公民实操指南_6a5b1e07-3590-83ec.md",
+      "raw_file": "股票消息原始JSON/0132_世界公民实操指南_6a5b1e07-3590-83ec.json",
+      "text_file": "股票消息全文/0132_世界公民实操指南_6a5b1e07-3590-83ec.md",
       "message_count": 1,
       "source_message_count": 2,
       "text_chars": 2605,
@@ -4745,8 +4677,8 @@
     {
       "conversation_id": "6a5b35e5-4520-83ec-9e6a-989b801b5eaa",
       "title": "孩子教育逻辑探讨",
-      "raw_file": "股票消息原始JSON/0137_孩子教育逻辑探讨_6a5b35e5-4520-83ec.json",
-      "text_file": "股票消息全文/0137_孩子教育逻辑探讨_6a5b35e5-4520-83ec.md",
+      "raw_file": "股票消息原始JSON/0133_孩子教育逻辑探讨_6a5b35e5-4520-83ec.json",
+      "text_file": "股票消息全文/0133_孩子教育逻辑探讨_6a5b35e5-4520-83ec.md",
       "message_count": 1,
       "source_message_count": 2,
       "text_chars": 3531,
@@ -4761,8 +4693,8 @@
     {
       "conversation_id": "6a5c5c46-3280-83ec-b676-4ad70dbda95c",
       "title": "普通人股权意识",
-      "raw_file": "股票消息原始JSON/0138_普通人股权意识_6a5c5c46-3280-83ec.json",
-      "text_file": "股票消息全文/0138_普通人股权意识_6a5c5c46-3280-83ec.md",
+      "raw_file": "股票消息原始JSON/0134_普通人股权意识_6a5c5c46-3280-83ec.json",
+      "text_file": "股票消息全文/0134_普通人股权意识_6a5c5c46-3280-83ec.md",
       "message_count": 2,
       "source_message_count": 2,
       "text_chars": 2967,
@@ -4780,11 +4712,11 @@
     {
       "conversation_id": "6a5c82ce-0cc0-83ec-8672-c8aa35c8a057",
       "title": "轻FIRE模式可行性分析",
-      "raw_file": "股票消息原始JSON/0139_轻FIRE模式可行性分析_6a5c82ce-0cc0-83ec.json",
-      "text_file": "股票消息全文/0139_轻FIRE模式可行性分析_6a5c82ce-0cc0-83ec.md",
-      "message_count": 8,
+      "raw_file": "股票消息原始JSON/0135_轻FIRE模式可行性分析_6a5c82ce-0cc0-83ec.json",
+      "text_file": "股票消息全文/0135_轻FIRE模式可行性分析_6a5c82ce-0cc0-83ec.md",
+      "message_count": 6,
       "source_message_count": 9,
-      "text_chars": 15999,
+      "text_chars": 13295,
       "matched_terms": [
         "ETF",
         "估值",
@@ -4799,13 +4731,13 @@
         "财报",
         "资产配置"
       ],
-      "raw_sha256": "933152ba433a4310a3ceaff78062017eddc9d855ed07f050e2bafc14136dd3a7"
+      "raw_sha256": "27633a6e24d938fee9ce1c8880a0c21a871dbf5846e502a14835efbfaedcf9de"
     },
     {
       "conversation_id": "6a5cc303-9bac-83ec-a2fa-f3838317a116",
       "title": "Arena 模型下架原因",
-      "raw_file": "股票消息原始JSON/0140_Arena_模型下架原因_6a5cc303-9bac-83ec.json",
-      "text_file": "股票消息全文/0140_Arena_模型下架原因_6a5cc303-9bac-83ec.md",
+      "raw_file": "股票消息原始JSON/0136_Arena_模型下架原因_6a5cc303-9bac-83ec.json",
+      "text_file": "股票消息全文/0136_Arena_模型下架原因_6a5cc303-9bac-83ec.md",
       "message_count": 1,
       "source_message_count": 4,
       "text_chars": 2818,
@@ -4818,8 +4750,8 @@
     {
       "conversation_id": "6a5d9259-c538-83ec-899a-2bd4cb0b38a2",
       "title": "仓位管理与投资成功",
-      "raw_file": "股票消息原始JSON/0141_仓位管理与投资成功_6a5d9259-c538-83ec.json",
-      "text_file": "股票消息全文/0141_仓位管理与投资成功_6a5d9259-c538-83ec.md",
+      "raw_file": "股票消息原始JSON/0137_仓位管理与投资成功_6a5d9259-c538-83ec.json",
+      "text_file": "股票消息全文/0137_仓位管理与投资成功_6a5d9259-c538-83ec.md",
       "message_count": 4,
       "source_message_count": 4,
       "text_chars": 6939,
@@ -4855,8 +4787,8 @@
     {
       "conversation_id": "6a5dcfef-8838-83ec-947f-3cd633688657",
       "title": "美国AI战略分析",
-      "raw_file": "股票消息原始JSON/0142_美国AI战略分析_6a5dcfef-8838-83ec.json",
-      "text_file": "股票消息全文/0142_美国AI战略分析_6a5dcfef-8838-83ec.md",
+      "raw_file": "股票消息原始JSON/0138_美国AI战略分析_6a5dcfef-8838-83ec.json",
+      "text_file": "股票消息全文/0138_美国AI战略分析_6a5dcfef-8838-83ec.md",
       "message_count": 1,
       "source_message_count": 2,
       "text_chars": 3737,
@@ -4870,23 +4802,10 @@
       "raw_sha256": "dbd3b638044fd352881bb2b4c4a2288134b4ee9e6bd36cd784ab9534506c83ac"
     },
     {
-      "conversation_id": "6a5f05a9-f7e8-83ec-8013-92b6e57b32dc",
-      "title": "Mikrotik vs 交换机价值分析",
-      "raw_file": "股票消息原始JSON/0143_Mikrotik_vs_交换机价值分析_6a5f05a9-f7e8-83ec.json",
-      "text_file": "股票消息全文/0143_Mikrotik_vs_交换机价值分析_6a5f05a9-f7e8-83ec.md",
-      "message_count": 1,
-      "source_message_count": 54,
-      "text_chars": 4494,
-      "matched_terms": [
-        "股票"
-      ],
-      "raw_sha256": "4012a15bf14087dcc91556da9280a96024bb0e4d2875fc96a8185bee5f4a9b44"
-    },
-    {
       "conversation_id": "6a5f109b-53cc-83ec-bbd0-88d90b83408d",
       "title": "收益矩阵与投资策略",
-      "raw_file": "股票消息原始JSON/0144_收益矩阵与投资策略_6a5f109b-53cc-83ec.json",
-      "text_file": "股票消息全文/0144_收益矩阵与投资策略_6a5f109b-53cc-83ec.md",
+      "raw_file": "股票消息原始JSON/0139_收益矩阵与投资策略_6a5f109b-53cc-83ec.json",
+      "text_file": "股票消息全文/0139_收益矩阵与投资策略_6a5f109b-53cc-83ec.md",
       "message_count": 18,
       "source_message_count": 18,
       "text_chars": 23199,
@@ -4917,8 +4836,8 @@
     {
       "conversation_id": "6a602eed-f354-83ec-946a-ea97d7667e7b",
       "title": "Claude Prompt技巧总结",
-      "raw_file": "股票消息原始JSON/0145_Claude_Prompt技巧总结_6a602eed-f354-83ec.json",
-      "text_file": "股票消息全文/0145_Claude_Prompt技巧总结_6a602eed-f354-83ec.md",
+      "raw_file": "股票消息原始JSON/0140_Claude_Prompt技巧总结_6a602eed-f354-83ec.json",
+      "text_file": "股票消息全文/0140_Claude_Prompt技巧总结_6a602eed-f354-83ec.md",
       "message_count": 1,
       "source_message_count": 2,
       "text_chars": 3209,
@@ -4935,29 +4854,29 @@
     {
       "conversation_id": "6a605dca-a52c-83ec-8934-2d92f217453e",
       "title": "AI增强型技术用户",
-      "raw_file": "股票消息原始JSON/0146_AI增强型技术用户_6a605dca-a52c-83ec.json",
-      "text_file": "股票消息全文/0146_AI增强型技术用户_6a605dca-a52c-83ec.md",
+      "raw_file": "股票消息原始JSON/0141_AI增强型技术用户_6a605dca-a52c-83ec.json",
+      "text_file": "股票消息全文/0141_AI增强型技术用户_6a605dca-a52c-83ec.md",
       "message_count": 1,
       "source_message_count": 2,
       "text_chars": 3317,
       "matched_terms": [
         "NVDA",
         "PE",
-        "stock",
         "Stock",
+        "stock",
         "stocks",
         "东方财富",
         "估值",
         "投资",
         "股票"
       ],
-      "raw_sha256": "36b60e2d7ceb4708a8a0e8a3fcd001fbe377b181f8b237a0cb956b45c96f28ae"
+      "raw_sha256": "e1a6d01af8ebf62ee677f69d5138112533e51efdcd1eb9d25fec092e72b33378"
     },
     {
       "conversation_id": "6a62c896-4bfc-83ec-971a-4d006bb15e61",
       "title": "果论颗粒度分析",
-      "raw_file": "股票消息原始JSON/0147_果论颗粒度分析_6a62c896-4bfc-83ec.json",
-      "text_file": "股票消息全文/0147_果论颗粒度分析_6a62c896-4bfc-83ec.md",
+      "raw_file": "股票消息原始JSON/0142_果论颗粒度分析_6a62c896-4bfc-83ec.json",
+      "text_file": "股票消息全文/0142_果论颗粒度分析_6a62c896-4bfc-83ec.md",
       "message_count": 8,
       "source_message_count": 10,
       "text_chars": 10682,
@@ -4989,8 +4908,8 @@
     {
       "conversation_id": "6a66049f-e178-83ec-be1e-09a6aec6c72e",
       "title": "显示VS Code运行按钮",
-      "raw_file": "股票消息原始JSON/0148_显示VS_Code运行按钮_6a66049f-e178-83ec.json",
-      "text_file": "股票消息全文/0148_显示VS_Code运行按钮_6a66049f-e178-83ec.md",
+      "raw_file": "股票消息原始JSON/0143_显示VS_Code运行按钮_6a66049f-e178-83ec.json",
+      "text_file": "股票消息全文/0143_显示VS_Code运行按钮_6a66049f-e178-83ec.md",
       "message_count": 14,
       "source_message_count": 33,
       "text_chars": 36513,
@@ -4999,16 +4918,16 @@
         "600000",
         "AAPL",
         "A股",
-        "ETF",
         "etf",
+        "ETF",
         "HLA",
         "hla",
         "K线",
         "MA20",
         "MACD",
         "MSFT",
-        "NVDA",
         "nvda",
+        "NVDA",
         "pe",
         "RSI",
         "stock",
@@ -5030,13 +4949,13 @@
         "股票",
         "财报"
       ],
-      "raw_sha256": "6ca2d983aca886bebdf71bce70eeb986a6396c3b25be2113b2551fff0675014f"
+      "raw_sha256": "9b6dffc231ba6dfc798c063f4f92a7cbdc050c9e6980d33454ea5f8588d11670"
     },
     {
       "conversation_id": "6a6b3aae-8284-83ec-b35c-26a08da0727d",
       "title": "ETF投资框架分析",
-      "raw_file": "股票消息原始JSON/0149_ETF投资框架分析_6a6b3aae-8284-83ec.json",
-      "text_file": "股票消息全文/0149_ETF投资框架分析_6a6b3aae-8284-83ec.md",
+      "raw_file": "股票消息原始JSON/0144_ETF投资框架分析_6a6b3aae-8284-83ec.json",
+      "text_file": "股票消息全文/0144_ETF投资框架分析_6a6b3aae-8284-83ec.md",
       "message_count": 7,
       "source_message_count": 7,
       "text_chars": 25711,
@@ -5052,11 +4971,11 @@
         "600809",
         "603369",
         "A股",
-        "ETF",
         "etf",
+        "ETF",
         "K线",
-        "MA20",
         "ma20",
+        "MA20",
         "PB",
         "PE",
         "pe",
@@ -5090,13 +5009,13 @@
         "量能",
         "阿里巴巴"
       ],
-      "raw_sha256": "1b78bc9ab03acef76e1bf2e47b2908a7a3b3f74a99e500605894f7133a4a01d2"
+      "raw_sha256": "d1039dfc381409acf23df4d5b693a247b2fd21ae5f5bbebd747decbc22d09579"
     },
     {
       "conversation_id": "6a6e1a40-40a0-83ec-a24b-146998aec5b5",
       "title": "节省token技巧大全",
-      "raw_file": "股票消息原始JSON/0150_节省token技巧大全_6a6e1a40-40a0-83ec.json",
-      "text_file": "股票消息全文/0150_节省token技巧大全_6a6e1a40-40a0-83ec.md",
+      "raw_file": "股票消息原始JSON/0145_节省token技巧大全_6a6e1a40-40a0-83ec.json",
+      "text_file": "股票消息全文/0145_节省token技巧大全_6a6e1a40-40a0-83ec.md",
       "message_count": 1,
       "source_message_count": 2,
       "text_chars": 4515,
@@ -5109,31 +5028,18 @@
       "raw_sha256": "47fd3c3b30d0f41b6f7921f4427cbd4a684466a92746e87fb59f6aea11128b6b"
     },
     {
-      "conversation_id": "6a71b663-112c-83ec-911a-cce3ae76e69f",
-      "title": "Trueno Group 匹配度分析",
-      "raw_file": "股票消息原始JSON/0151_Trueno_Group_匹配度分析_6a71b663-112c-83ec.json",
-      "text_file": "股票消息全文/0151_Trueno_Group_匹配度分析_6a71b663-112c-83ec.md",
-      "message_count": 1,
-      "source_message_count": 12,
-      "text_chars": 2136,
-      "matched_terms": [
-        "财报"
-      ],
-      "raw_sha256": "2bce3f88ac431e7b86e9c8d6158a17e044797c4145b1b8775e2e6612de1b76fc"
-    },
-    {
       "conversation_id": "6a7749a6-b7f0-83ec-9b52-5186f990f18e",
       "title": "投资逻辑与文明叙事",
-      "raw_file": "股票消息原始JSON/0152_投资逻辑与文明叙事_6a7749a6-b7f0-83ec.json",
-      "text_file": "股票消息全文/0152_投资逻辑与文明叙事_6a7749a6-b7f0-83ec.md",
+      "raw_file": "股票消息原始JSON/0146_投资逻辑与文明叙事_6a7749a6-b7f0-83ec.json",
+      "text_file": "股票消息全文/0146_投资逻辑与文明叙事_6a7749a6-b7f0-83ec.md",
       "message_count": 10,
       "source_message_count": 10,
       "text_chars": 10536,
       "matched_terms": [
         "IPO",
         "K线",
-        "NVDA",
         "nvda",
+        "NVDA",
         "PE",
         "亚马逊",
         "仓位",
@@ -5156,8 +5062,8 @@
     {
       "conversation_id": "6a79c432-749c-83ec-9a8f-cefe51b82309",
       "title": "财富积累与消费",
-      "raw_file": "股票消息原始JSON/0153_财富积累与消费_6a79c432-749c-83ec.json",
-      "text_file": "股票消息全文/0153_财富积累与消费_6a79c432-749c-83ec.md",
+      "raw_file": "股票消息原始JSON/0147_财富积累与消费_6a79c432-749c-83ec.json",
+      "text_file": "股票消息全文/0147_财富积累与消费_6a79c432-749c-83ec.md",
       "message_count": 1,
       "source_message_count": 4,
       "text_chars": 3278,
@@ -5171,8 +5077,8 @@
     {
       "conversation_id": "6a7ae315-0214-83ec-8a3c-b5832861c68f",
       "title": "资产配置调整分析",
-      "raw_file": "股票消息原始JSON/0154_资产配置调整分析_6a7ae315-0214-83ec.json",
-      "text_file": "股票消息全文/0154_资产配置调整分析_6a7ae315-0214-83ec.md",
+      "raw_file": "股票消息原始JSON/0148_资产配置调整分析_6a7ae315-0214-83ec.json",
+      "text_file": "股票消息全文/0148_资产配置调整分析_6a7ae315-0214-83ec.md",
       "message_count": 18,
       "source_message_count": 18,
       "text_chars": 49211,
@@ -5237,8 +5143,8 @@
     {
       "conversation_id": "6a7d4267-4ef4-83ec-a73a-3b1598a37cd2",
       "title": "投资框架分析",
-      "raw_file": "股票消息原始JSON/0155_投资框架分析_6a7d4267-4ef4-83ec.json",
-      "text_file": "股票消息全文/0155_投资框架分析_6a7d4267-4ef4-83ec.md",
+      "raw_file": "股票消息原始JSON/0149_投资框架分析_6a7d4267-4ef4-83ec.json",
+      "text_file": "股票消息全文/0149_投资框架分析_6a7d4267-4ef4-83ec.md",
       "message_count": 5,
       "source_message_count": 6,
       "text_chars": 5276,
@@ -5266,8 +5172,8 @@
     {
       "conversation_id": "6a7da4c0-ba70-83ec-b125-593dcec58fb0",
       "title": "CHPS ETF意见反馈",
-      "raw_file": "股票消息原始JSON/0156_CHPS_ETF意见反馈_6a7da4c0-ba70-83ec.json",
-      "text_file": "股票消息全文/0156_CHPS_ETF意见反馈_6a7da4c0-ba70-83ec.md",
+      "raw_file": "股票消息原始JSON/0150_CHPS_ETF意见反馈_6a7da4c0-ba70-83ec.json",
+      "text_file": "股票消息全文/0150_CHPS_ETF意见反馈_6a7da4c0-ba70-83ec.md",
       "message_count": 2,
       "source_message_count": 2,
       "text_chars": 3393,
@@ -5297,8 +5203,8 @@
     {
       "conversation_id": "6a8146e5-aae4-83ec-a8d4-c194e597d22d",
       "title": "美股特点分析",
-      "raw_file": "股票消息原始JSON/0157_美股特点分析_6a8146e5-aae4-83ec.json",
-      "text_file": "股票消息全文/0157_美股特点分析_6a8146e5-aae4-83ec.md",
+      "raw_file": "股票消息原始JSON/0151_美股特点分析_6a8146e5-aae4-83ec.json",
+      "text_file": "股票消息全文/0151_美股特点分析_6a8146e5-aae4-83ec.md",
       "message_count": 7,
       "source_message_count": 8,
       "text_chars": 6824,
@@ -5330,14 +5236,14 @@
     {
       "conversation_id": "6a8b9b67-9b94-83ec-9fcd-4b9e2cf36a93",
       "title": "代码审查建议",
-      "raw_file": "股票消息原始JSON/0158_代码审查建议_6a8b9b67-9b94-83ec.json",
-      "text_file": "股票消息全文/0158_代码审查建议_6a8b9b67-9b94-83ec.md",
+      "raw_file": "股票消息原始JSON/0152_代码审查建议_6a8b9b67-9b94-83ec.json",
+      "text_file": "股票消息全文/0152_代码审查建议_6a8b9b67-9b94-83ec.md",
       "message_count": 1,
       "source_message_count": 4,
       "text_chars": 2645,
       "matched_terms": [
-        "etf",
         "ETF",
+        "etf",
         "Portfolio",
         "stock",
         "微软",
@@ -5346,26 +5252,13 @@
       "raw_sha256": "5a045b1d28b2cb098d25ebdc9263bb1ad456e364353fdf02bbe3fa53cf8cabb5"
     },
     {
-      "conversation_id": "6a9918c1-4cf4-83ec-bd90-776f77cb4dab",
-      "title": "减少注意力损耗",
-      "raw_file": "股票消息原始JSON/0159_减少注意力损耗_6a9918c1-4cf4-83ec.json",
-      "text_file": "股票消息全文/0159_减少注意力损耗_6a9918c1-4cf4-83ec.md",
-      "message_count": 1,
-      "source_message_count": 2,
-      "text_chars": 2642,
-      "matched_terms": [
-        "股票"
-      ],
-      "raw_sha256": "9771401c86844bfec0309847e09efe6418fbab0df394362a6ce389db1ad556e3"
-    },
-    {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
       "title": "Saga模式",
-      "raw_file": "股票消息原始JSON/0160_Saga模式_6aafa174-33ec-83ec.json",
-      "text_file": "股票消息全文/0160_Saga模式_6aafa174-33ec-83ec.md",
-      "message_count": 25,
+      "raw_file": "股票消息原始JSON/0153_Saga模式_6aafa174-33ec-83ec.json",
+      "text_file": "股票消息全文/0153_Saga模式_6aafa174-33ec-83ec.md",
+      "message_count": 21,
       "source_message_count": 41,
-      "text_chars": 50953,
+      "text_chars": 48569,
       "matched_terms": [
         "A股",
         "ETF",
@@ -5394,13 +5287,13 @@
         "股票",
         "资产配置"
       ],
-      "raw_sha256": "82a60e5634bf84ef5605a0db38df7b5c424d96e008213d54a8e45a9919b8c657"
+      "raw_sha256": "05ed8200e89445c6a2d5f0ed64bd1b7819663f28799329ffafd75b0e9844fc52"
     },
     {
       "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
       "title": "普通人被动收入方式",
-      "raw_file": "股票消息原始JSON/0161_普通人被动收入方式_6ac7380d-e67c-83ec.json",
-      "text_file": "股票消息全文/0161_普通人被动收入方式_6ac7380d-e67c-83ec.md",
+      "raw_file": "股票消息原始JSON/0154_普通人被动收入方式_6ac7380d-e67c-83ec.json",
+      "text_file": "股票消息全文/0154_普通人被动收入方式_6ac7380d-e67c-83ec.md",
       "message_count": 21,
       "source_message_count": 29,
       "text_chars": 33709,
@@ -5434,11 +5327,11 @@
     {
       "conversation_id": "6ac900e3-5b04-83ec-8bf2-48bdf3ea649f",
       "title": "手机安全建议",
-      "raw_file": "股票消息原始JSON/0162_手机安全建议_6ac900e3-5b04-83ec.json",
-      "text_file": "股票消息全文/0162_手机安全建议_6ac900e3-5b04-83ec.md",
-      "message_count": 7,
+      "raw_file": "股票消息原始JSON/0155_手机安全建议_6ac900e3-5b04-83ec.json",
+      "text_file": "股票消息全文/0155_手机安全建议_6ac900e3-5b04-83ec.md",
+      "message_count": 6,
       "source_message_count": 26,
-      "text_chars": 9558,
+      "text_chars": 7783,
       "matched_terms": [
         "ETF",
         "券商",
@@ -5449,58 +5342,52 @@
         "股票",
         "证券"
       ],
-      "raw_sha256": "ba537408ea5cac48c19073b71073bd72b472aea79e6e2f8715650dbae98a7e32"
+      "raw_sha256": "2e93c04e01fc9a5f2d32a24d0f81ecafcd8850afb39fce9b1c74fa31a61edfdd"
     },
     {
       "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
       "title": "GLW-GPT",
-      "raw_file": "股票消息原始JSON/0163_GLW-GPT_6acbabed-7570-83ec.json",
-      "text_file": "股票消息全文/0163_GLW-GPT_6acbabed-7570-83ec.md",
-      "message_count": 28,
+      "raw_file": "股票消息原始JSON/0156_GLW-GPT_6acbabed-7570-83ec.json",
+      "text_file": "股票消息全文/0156_GLW-GPT_6acbabed-7570-83ec.md",
+      "message_count": 6,
       "source_message_count": 117,
-      "text_chars": 36334,
+      "text_chars": 7555,
       "matched_terms": [
         "AMD",
-        "GTC",
-        "Meta",
-        "NVDA",
-        "微软",
         "投资",
-        "股票",
-        "财报"
+        "股票"
       ],
-      "raw_sha256": "18c2efb8d46488de7fa2334ef1dacd7063cfd2cfed34593eb275f06f7e92da82"
+      "raw_sha256": "7bcafb027511e7c84ed21605cbc97273f6c2b4a30151ccd61f461c2522bf42cc"
     },
     {
       "conversation_id": "6ace2230-0b20-83ec-8e8b-7b863ad8e268",
       "title": "交换机租赁模式探索",
-      "raw_file": "股票消息原始JSON/0164_交换机租赁模式探索_6ace2230-0b20-83ec.json",
-      "text_file": "股票消息全文/0164_交换机租赁模式探索_6ace2230-0b20-83ec.md",
-      "message_count": 2,
+      "raw_file": "股票消息原始JSON/0157_交换机租赁模式探索_6ace2230-0b20-83ec.json",
+      "text_file": "股票消息全文/0157_交换机租赁模式探索_6ace2230-0b20-83ec.md",
+      "message_count": 1,
       "source_message_count": 16,
-      "text_chars": 3123,
+      "text_chars": 2920,
       "matched_terms": [
         "股票"
       ],
-      "raw_sha256": "eb181bfcb650deaafd3c134b8cdcfaf486d77dbf35d7eb22390773cbc81225eb"
+      "raw_sha256": "6b45bb8bfe8735ccadf76954471781555f1398e0f35ea8ba2f3d9275569d1f88"
     },
     {
       "conversation_id": "a006014f-d4bd-4c72-a394-4fef8bed514a",
       "title": "Learn English Words",
-      "raw_file": "股票消息原始JSON/0165_Learn_English_Words_a006014f-d4bd-4c72.json",
-      "text_file": "股票消息全文/0165_Learn_English_Words_a006014f-d4bd-4c72.md",
-      "message_count": 2,
+      "raw_file": "股票消息原始JSON/0158_Learn_English_Words_a006014f-d4bd-4c72.json",
+      "text_file": "股票消息全文/0158_Learn_English_Words_a006014f-d4bd-4c72.md",
+      "message_count": 1,
       "source_message_count": 150,
-      "text_chars": 3030,
+      "text_chars": 2460,
       "matched_terms": [
         "dividends",
         "Portfolio",
         "portfolio",
         "stock",
-        "stocks",
-        "贵州茅台"
+        "stocks"
       ],
-      "raw_sha256": "17d71b358e40a5bf252982126f7adc9c5acc5d991f4b112b905772857ad50ec8"
+      "raw_sha256": "fac6af809e89e5cf2e08ae310b56d7d17add455a3d20d2588ce4b2d12309c9ed"
     }
   ],
   "attachments": [
@@ -5684,7 +5571,7 @@
       "file": "附加文件/file_000000001e1082079e043287c75c4bae.dat",
       "bytes": 60348,
       "sha256": "7dc1624bcfe1befc05c1386cd5808cf66de9f34baa76f908cd8df1f77bb9d48b",
-      "reason": "selected conversation attachment",
+      "reason": "standalone stock content",
       "extraction_method": "text",
       "original_filename": "GLW-Claude.md",
       "text_file": "附加文件/file_000000001e1082079e043287c75c4bae.dat.txt",
@@ -6023,7 +5910,7 @@
       "file": "附加文件/file_00000000bcbc81f59eecaba0194cb3b6.dat",
       "bytes": 29253,
       "sha256": "33be05a55307bd7808835b8956e46eb680d8b212a26688e560657d78a3b8d51e",
-      "reason": "selected conversation attachment",
+      "reason": "standalone stock content",
       "extraction_method": "text",
       "original_filename": "Pasted markdown.md",
       "text_file": "附加文件/file_00000000bcbc81f59eecaba0194cb3b6.dat.txt",
@@ -6039,17 +5926,6 @@
       "original_filename": "Pasted code.py",
       "text_file": "附加文件/file_00000000c67082118587012f8074706e.dat.txt",
       "text_chars": 64791
-    },
-    {
-      "source_path": "file_00000000cb20820990574cf5e7c5fa4d.dat",
-      "file": "附加文件/file_00000000cb20820990574cf5e7c5fa4d.dat",
-      "bytes": 11335,
-      "sha256": "1084834c0ff0f4e5a4d732ee74677a041a022c93259dde13c8f0f88e545e1755",
-      "reason": "standalone stock content",
-      "extraction_method": "text",
-      "original_filename": "8c535386-9069-4c60-8421-2b64d21058c2.md",
-      "text_file": "附加文件/file_00000000cb20820990574cf5e7c5fa4d.dat.txt",
-      "text_chars": 5123
     },
     {
       "source_path": "file_00000000cd987208beaf9adc0d5d5507.dat",
@@ -6164,13 +6040,9 @@
   "errors": [],
   "missing_asset_references": [
     "file-9Z5mzGQjXRcf9udAqg5gGW",
-    "file-service://file-AKt3nkBdse9YtZA9GHgsmi",
-    "file-service://file-J7CG2p4UCRSRDKtNdG5NaP",
     "file_00000000b5807207b32871e4aa59216a",
     "file_00000000d2e871fa933ca7260bf91ca2",
     "file_00000000f3287206997a137fb91dd398",
-    "file_0641c800952481918fdca25a2be6693d",
-    "file_0cd3d06cc09c819190553c53971c64c7",
     "file_1c576b06b5188191a0c570191f38a276",
     "file_2b87aa3998fc81918d261e9832f22f6f",
     "file_3208954957848191859445b1a3ffcabe",
