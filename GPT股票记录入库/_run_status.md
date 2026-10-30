@@ -1,0 +1,3 @@
+- 2026-10-30T11:06:24Z START ChatGPT 股票相关记录（2026-10-29 导出）
+- 2026-10-30T11:06:29Z SOURCE bfd890ec316bef8267e3b24172ce1db1a69da98984f92d5210481ef166455b43-2026-10-29-07-50-02-d3d39666dc294690a1db24001bf2e794.zip；115267786 bytes
+- 2026-10-30T11:06:36Z **ABORT (exit 4)**：no conversations.json found; refusing to substitute a partial HTML extraction
