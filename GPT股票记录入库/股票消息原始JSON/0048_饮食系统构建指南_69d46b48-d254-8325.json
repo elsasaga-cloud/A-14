@@ -1,0 +1,88 @@
+{
+  "conversation_metadata": {
+    "conversation_id": "69d46b48-d254-8325-84e8-f023a015772c",
+    "conversation_template_id": null,
+    "create_time": 1775528778.038757,
+    "current_node": "21f306e3-f57c-4015-8a25-38f6102dcd11",
+    "default_model_slug": "auto",
+    "id": "69d46b48-d254-8325-84e8-f023a015772c",
+    "is_archived": false,
+    "is_do_not_remember": false,
+    "is_read_only": null,
+    "is_starred": null,
+    "is_study_mode": false,
+    "memory_scope": "global_enabled",
+    "pinned_time": null,
+    "plugin_ids": null,
+    "title": "饮食系统构建指南",
+    "update_time": 1775531543.93096,
+    "voice": null
+  },
+  "selection_unit": "message",
+  "selected_nodes": [
+    {
+      "node_id": "f7e43c4a-3a0d-440a-835f-f2552d999ce9",
+      "selection_reason": "stock-keyword",
+      "matched_terms": [
+        "仓位",
+        "分红",
+        "投资",
+        "股票"
+      ],
+      "node": {
+        "id": "f7e43c4a-3a0d-440a-835f-f2552d999ce9",
+        "message": {
+          "author": {
+            "name": null,
+            "role": "assistant"
+          },
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "你这个方向是对的，而且是典型的**“时间增益行为”+“资产化生活方式”**——  \n一旦建立好规则，之后基本是“自动复利”。\n\n但我先帮你把一个关键点掰正👇  \n👉 不是“学某种饮食”，而是**建立一个长期可执行的饮食系统**  \n（C罗、地中海饮食，本质只是“模板”）\n\n---\n\n## 一、先拆你说的两个参考模型\n\n### 1️⃣ entity[\"athlete\",\"Cristiano Ronaldo\",\"Portuguese footballer\"] 饮食核心（你真正要学的）\n\n不是鸡胸肉，而是这几个原则：\n\n- **极高蛋白 + 高质量碳水**\n- **极低加工食品**\n- **极强规律性（时间固定）**\n- **少量多餐（稳定能量）**\n- **长期一致性（几十年如一日）**\n\n👉 本质一句话：\n> “控制变量 + 高执行力”\n\n---\n\n### 2️⃣ entity[\"diet\",\"Mediterranean diet\",\"traditional dietary pattern\"] 核心\n\n- 橄榄油（健康脂肪）\n- 鱼类（Omega-3）\n- 蔬菜 + 水果\n- 全谷物\n- 少红肉、少加工食品\n\n👉 本质一句话：\n> “降低炎症 + 提升长期健康”\n\n---\n\n## 二、你真正该建立的：饮食系统（不是菜单）\n\n我给你一个**适合长期执行 + 不折腾的版本（结合你现实情况）**\n\n---\n\n## 🧠 核心结构（最重要）\n\n### 1️⃣ 食物分层（像你做投资一样）\n\n#### 【底仓（每天必须吃）】\n稳定、健康、长期复利\n\n- 鸡蛋\n- 燕麦 / 糙米\n- 蔬菜（西兰花、菠菜等）\n- 水果（香蕉、蓝莓）\n- 坚果\n- 橄榄油\n\n👉 类似你“国家命脉股”  \n**不做波段，天天存在**\n\n---\n\n#### 【主力仓（高性价比蛋白）】\n\n- 鸡胸肉\n- 鱼（尤其深海鱼）\n- 牛肉（适量）\n- 酸奶\n\n👉 类似你“果弹体系核心仓位”  \n**决定身体质量**\n\n---\n\n#### 【调味仓（快乐 & 可持续）】\n\n- 面条\n- 米饭升级版（炒饭、拌饭）\n- 少量甜食\n- 偶尔外卖\n\n👉 类似“波段仓”  \n**不然你坚持不了**\n\n---\n\n---\n\n## 三、执行策略（关键）\n\n### ① 不搞复杂：只做“组合模板”\n\n你不需要每天想吃什么  \n👉 直接固定3~5个组合\n\n比如👇\n\n**早餐模板（轮换）**\n- 燕麦 + 牛奶 + 香蕉 + 坚果\n- 鸡蛋 + 全麦面包 + 酸奶\n\n**午餐模板**\n- 米饭 + 鸡胸肉 + 西兰花\n- 米饭 + 牛肉 + 青菜\n\n**晚餐模板**\n- 鱼 + 蔬菜 + 少量碳水\n\n👉 本质：\n**减少决策成本（这点极其关键）**\n\n---\n\n### ② 80/20原则（长期关键）\n\n- 80%：干净饮食\n- 20%：随便吃（但不过量）\n\n👉 不然你一定崩\n\n---\n\n### ③ 时间策略（C罗精髓）\n\n- 固定吃饭时间\n- 不暴饮暴食\n- 不极端节食\n\n👉 你的身体喜欢“稳定输入”\n\n---\n\n### ④ 补充一点现实主义（很重要）\n\n你不是职业运动员  \n👉 不需要那么“干净”\n\n你要的是：\n\n> **“能执行10年的方案” > “完美但坚持不了的方案”**\n\n---\n\n## 四、给你一个“终极版本”（可以直接用）\n\n### 🧩 日常结构（极简版）\n\n- 早餐：碳水 + 蛋白 + 脂肪\n- 午餐：碳水 + 高蛋白 + 蔬菜\n- 晚餐：蛋白 + 蔬菜 + 少碳水\n- 加餐：水果 / 坚果\n\n---\n\n## 五、再帮你拔高一层（你会喜欢这个）\n\n你这个其实已经不是“饮食问题”了\n\n而是：\n\n> **如何把“身体管理”做成一个长期现金流系统**\n\n对应你现在的人生模型👇\n\n| 维度 | 资产 |\n|------|------|\n| 股票 | 分红 |\n| 外贸 | 现金流 |\n| 饮食 | 健康复利（精力、寿命、状态） |\n\n👉 饮食 = **你的底层生产力系统**\n\n---\n\n## 六、我给你一个建议（下一步）\n\n如果你要把这个做到“真正成系统”，建议你再往前走一步：\n\n👉 我可以帮你做一个：\n\n**《个人饮食操作手册（长期执行版）》**\n\n包含：\n\n- 一周标准菜单（可替换）\n- 食材采购清单（极简）\n- 外卖选择策略（很关键）\n- 出差/应酬应对方案\n- 偶尔放纵的边界规则\n\n---\n\n你现在这个思路已经很对了，但还差一步：\n\n> 从“理念” → “操作系统”\n\n你要不要我帮你把这个直接做成一个**你可以长期执行的版本（甚至有点像SOP）**？"
+            ]
+          },
+          "create_time": 1775528777.938528,
+          "id": "f7e43c4a-3a0d-440a-835f-f2552d999ce9",
+          "metadata": {
+            "content_references": [
+              {
+                "alt": "Cristiano Ronaldo",
+                "entity_data": null,
+                "entity_index": null,
+                "extra_params": {
+                  "disambiguation": "Portuguese footballer"
+                },
+                "id": null,
+                "metadata": null,
+                "name": "Cristiano Ronaldo",
+                "notes": null,
+                "prefix": null,
+                "prompt_text": "Cristiano Ronaldo",
+                "type": "entity"
+              },
+              {
+                "alt": "Mediterranean diet",
+                "entity_data": null,
+                "entity_index": null,
+                "extra_params": {
+                  "disambiguation": "traditional dietary pattern"
+                },
+                "id": null,
+                "metadata": null,
+                "name": "Mediterranean diet",
+                "notes": null,
+                "prefix": null,
+                "prompt_text": "Mediterranean diet",
+                "type": "entity"
+              }
+            ],
+            "model_slug": "gpt-5-3",
+            "parent_id": "e54fdc2a-6cde-49b2-9561-e5e1c8851166"
+          }
+        },
+        "parent": "92aa757d-766a-45f2-9da0-4891143f0694"
+      }
+    }
+  ]
+}

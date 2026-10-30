@@ -1,6 +1,0 @@
-= Auto-adaptive speed, seamless connection with 10/100M devices
-= DC12V/DC24V/DC48V dual input, Din35 mounted, 6KV surge protection
-= Rich model choice, PoE or Managed version
-= Good for Industrial Automation&/IP-based Communication/Vehicle Network Solution
-                        ii
-(Unmanaged,              (Unmanaged,               802.3bt PoE                Managed PoE

@@ -1,0 +1,353 @@
+{
+  "conversation_metadata": {
+    "conversation_id": "6a6e1a40-40a0-83ec-a24b-146998aec5b5",
+    "conversation_template_id": null,
+    "create_time": 1785600577.0392,
+    "current_node": "0bf5f14f-a68b-4161-9cea-f73a9b379f1e",
+    "default_model_slug": "auto",
+    "id": "6a6e1a40-40a0-83ec-a24b-146998aec5b5",
+    "is_archived": false,
+    "is_do_not_remember": false,
+    "is_read_only": null,
+    "is_starred": null,
+    "is_study_mode": false,
+    "memory_scope": "global_enabled",
+    "pinned_time": null,
+    "plugin_ids": null,
+    "title": "节省token技巧大全",
+    "update_time": 1785600685.844822,
+    "voice": null
+  },
+  "selection_unit": "message",
+  "selected_nodes": [
+    {
+      "node_id": "0bf5f14f-a68b-4161-9cea-f73a9b379f1e",
+      "selection_reason": "stock-keyword",
+      "matched_terms": [
+        "300000",
+        "成交量",
+        "投资",
+        "股票"
+      ],
+      "node": {
+        "id": "0bf5f14f-a68b-4161-9cea-f73a9b379f1e",
+        "message": {
+          "author": {
+            "name": null,
+            "role": "assistant"
+          },
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Claude 的回答整体方向是对的，但还可以进一步优化，尤其结合你这种**高频 AI 使用场景（技术文档、SEO、客户资料、代码、投资分析、产品图、PDF报告）**，重点不是单纯“省 token”，而是：\n\n> **最大化单位 token 的信息价值（Information Density / Token Efficiency）**\n\n下面我整理成一个更实战化版本。\n\n# AI Token 优化完全指南（实战版）\n\n---\n\n# 0. 先理解：Token 到底花在哪里？\n\n一次 AI 对话实际消耗：\n\n```\n总 Token =\n系统规则\n+\n历史对话\n+\n当前输入\n+\n上传文件\n+\n工具返回内容\n+\nAI输出\n```\n\n很多人误解：\n\n> “我这次只问一句，为什么还是很耗？”\n\n原因：\n\n因为长对话中，AI 每次回答都需要参考历史上下文。\n\n例如：\n\n```\n第1轮：\n上传100页PDF\n\n第20轮：\n问一个小问题\n```\n\n实际不是：\n\n```\n你的问题 = 10 token\n```\n\n而可能是：\n\n```\n历史上下文 50000 token\n+\n你的问题 10 token\n+\n回答 1000 token\n```\n\n所以优化核心：\n\n## 减少无效上下文进入模型。\n\n---\n\n# 一、文件格式优化（影响最大）\n\n## 排名：\n\n```\n纯文本 Markdown / TXT\n        ↓\nCSV / JSON\n        ↓\nExcel XLSX\n        ↓\nWord DOCX\n        ↓\n文字PDF\n        ↓\n图片PDF / 截图\n```\n\n---\n\n# 1. 文字内容：优先 Markdown / TXT\n\n比如：\n\n你有一个产品规格：\n\n错误：\n\n截图：\n\n```\n产品规格截图.jpg\n```\n\n里面：\n\n- 型号\n- 电压\n- 功率\n- 尺寸\n- 特性\n\n这种视觉信息其实不是必须。\n\n最好：\n\n```\nmodel: IM-FP21008GW\n\nPower:\nDC48-57V\n\nPoE:\n8*1000Mbps\n240W budget\n\nFeatures:\nERPS\nVLAN\nIGMP Snooping\n```\n\n优势：\n\n- token少\n- AI理解准确\n- 后续修改方便\n\n\n---\n\n# 2. 表格数据：\n\n推荐：\n\n## 第一：\n\nCSV\n\n例如：\n\n股票数据：\n\n不要：\n\nExcel截图：\n\n|日期|价格|成交量|\n|-|-|-|\n\n图片里面的信息需要视觉解析。\n\n最好：\n\n```csv\ndate,close,volume\n2026-07-01,10.5,300000\n2026-07-02,10.8,450000\n```\n\n优势：\n\n- 极高信息密度\n- AI容易处理\n- 可以直接进入代码分析\n\n\n---\n\n## 第二：\n\nXLSX\n\n适合：\n\n- 多sheet\n- 大量数据\n- 需要保留格式\n\n\n例如：\n\n客户列表：\n\n```\nSheet1:\nCustomer\n\nSheet2:\nSales record\n\nSheet3:\nProduct requirement\n```\n\n这种 Excel 比 CSV 更好。\n\n---\n\n# 3. PDF：\n\nPDF 是 AI 最容易踩坑的格式。\n\n优先级：\n\n```\nMarkdown\n >\nTXT\n >\nDOCX\n >\n正常PDF\n >\n扫描PDF\n```\n\n---\n\n## 为什么扫描PDF差？\n\n例如：\n\n一个合同：\n\n实际：\n\n```\n文字：\n10000 tokens\n```\n\n扫描：\n\n```\n图片\n+\nOCR\n+\n布局理解\n```\n\n可能：\n\n```\n30000 tokens+\n```\n\n而且错误率更高。\n\n---\n\n# 二、图片使用原则\n\n不是：\n\n> 图片一定浪费token\n\n而是：\n\n## 图片只用于“视觉信息”\n\n适合：\n\n✅ 产品外观\n\n比如：\n\n- 交换机图片\n- PCB\n- 接口布局\n\n---\n\n✅ 网络拓扑\n\n比如：\n\n```\nCamera\n |\nPoE Switch\n |\nCore Switch\n |\nServer\n```\n\n图比文字有效。\n\n---\n\n✅ UI设计\n\n比如：\n\n网页截图。\n\n---\n\n不适合：\n\n❌ 文字截图\n\n例如：\n\n聊天记录：\n\n错误：\n\n截图微信聊天\n\n正确：\n\n复制文字。\n\n---\n\n❌ Datasheet截图\n\n错误：\n\n拍PDF页面\n\n正确：\n\n复制规格。\n\n---\n\n# 三、上传文件 vs 粘贴文字\n\n这是非常重要的一点。\n\n\n## 小内容：\n\n直接贴：\n\n```\n<1000字\n```\n\n即可。\n\n\n---\n\n## 大内容：\n\n上传文件。\n\n例如：\n\n500页报告：\n\n错误：\n\n复制：\n\n```\n全文粘贴\n```\n\n因为：\n\n全部进入上下文。\n\n\n正确：\n\n上传：\n\n```\nReport.pdf\n```\n\n然后：\n\n> 分析第5章关于网络架构部分\n\n\nAI可以：\n\n- 搜索\n- 定位\n- 提取\n\n\n---\n\n# 四、不要重复发送相同信息\n\n很多人浪费最大：\n\n不是文件。\n\n而是：\n\n重复。\n\n\n例如：\n\n第一次：\n\n```\n我是做交换机出口贸易\n产品：\nPoE\nL3\nMarvell\nCentec\n```\n\n第二次：\n\n```\n重新介绍一下我的公司背景...\n```\n\n浪费。\n\n\n正确：\n\n第一次建立：\n\n```\nProject Context\n```\n\n后续：\n\n引用即可：\n\n> 按之前Saga Telecom定位\n\n\n---\n\n# 五、长对话管理\n\n这是你这种长期项目最重要。\n\n\n## 不要：\n\n一个聊天：\n\n半年。\n\n\n例如：\n\n```\nSaga Telecom SEO\n+\n股票系统\n+\n客户分析\n+\nAI工具\n```\n\n全部混一起。\n\n\n问题：\n\n历史越来越长：\n\n- token增加\n- AI注意力下降\n- 主题污染\n\n\n---\n\n正确：\n\n项目分开：\n\n```\nChat 1:\nSaga SEO\n\nChat 2:\n产品技术\n\nChat 3:\n股票系统\n\nChat 4:\n投资策略\n```\n\n\n---\n\n长期项目：\n\n每隔一段时间：\n\n生成：\n\n```\nProject Summary.md\n```\n\n然后新开窗口。\n\n\n例如：\n\n```\nSaga Telecom Project Summary\n\nCurrent status:\n\nCompleted:\nxxx\n\nPending:\nxxx\n\nRules:\nxxx\n```\n\n新窗口直接上传。\n\n---\n\n# 六、Prompt优化\n\n## 差 Prompt：\n\n```\n帮我分析这个客户\n```\n\nAI不知道：\n\n- 分析什么\n- 输出什么\n- 标准是什么\n\n\n会产生：\n\n大量无效内容。\n\n\n---\n\n## 好 Prompt：\n\n```\n背景：\n我是中国交换机出口商\n\n目标：\n判断客户价值\n\n分析维度：\n1 公司规模\n2 产品匹配\n3 市场\n4 成交概率\n\n输出：\n表格\n500字以内\n```\n\n一次给清楚。\n\n---\n\n# 七、减少AI输出浪费\n\n很多人只优化输入。\n\n其实输出也浪费。\n\n\n例如：\n\n你需要：\n\n```\n客户名单排序\n```\n\n不要：\n\n```\n详细解释2000字\n```\n\n告诉AI：\n\n```\n只输出：\n公司\n国家\n评分\n理由\n```\n\n---\n\n常用控制词：\n\n## 要短：\n\n```\n只给结论\n```\n\n```\n不要展开解释\n```\n\n```\n控制500字以内\n```\n\n\n## 要深：\n\n```\n完整分析\n```\n\n```\n考虑反例\n```\n\n```\n给决策框架\n```\n\n---\n\n# 八、代码场景优化（结合你的使用）\n\n你现在：\n\n> 不写代码，让AI写代码\n\n\n非常适合优化。\n\n\n错误：\n\n每次：\n\n```\n这是全部代码\n帮我修改\n```\n\n几百行重新传。\n\n\n---\n\n正确：\n\n项目结构：\n\n```\nproject/\n\nmain.py\n\ndata.py\n\nconfig.py\n\nREADME.md\n```\n\n\n修改：\n\n只给：\n\n```\n修改data.py\n实现xxx\n保持接口不变\n```\n\n---\n\n另外：\n\n让AI生成：\n\n```\nREADME.md\nCHANGELOG.md\n```\n\n以后恢复上下文。\n\n---\n\n# 九、搜索优化\n\n搜索也是token消耗大户。\n\n\n差：\n\n```\n帮我了解交换机市场\n```\n\n可能返回：\n\n大量泛资料。\n\n\n好：\n\n```\n2025-2026 Germany industrial ethernet switch distributor\nMarvell based switch\n```\n\n精准。\n\n\n---\n\n# 十、你的场景最佳实践\n\n结合你目前：\n\n## 1. Saga Telecom\n\n推荐：\n\n```\n产品资料\n↓\nMarkdown\n\n客户数据库\n↓\nCSV\n\n报价表\n↓\nXLSX\n\n产品图片\n↓\n图片\n```\n\n---\n\n## 2. SEO文章\n\n不要：\n\n上传网页截图。\n\n\n最好：\n\n```\n关键词列表.csv\n\n竞品文章.md\n\n产品信息.txt\n\n要求.md\n```\n\n\n---\n\n## 3. 股票系统\n\n最佳：\n\n```\n行情数据\nCSV\n\n策略说明\nMarkdown\n\n代码\n.py\n\n日志\ntxt\n```\n\n不要：\n\nExcel截图。\n\n\n---\n\n## 4. 技术分析PDF\n\n例如：\n\n交换机方案：\n\n流程：\n\nPDF\n\n↓\n\n转换\n\n↓\n\nMarkdown\n\n↓\n\nAI分析\n\n\n---\n\n# 十一、最高收益的10条规则（记住版）\n\n如果只记10条：\n\n## 1.\n文字不要截图，复制文本。\n\n## 2.\n表格不要截图，用CSV。\n\n## 3.\n大文件上传，不要复制粘贴。\n\n## 4.\n视觉信息才用图片。\n\n## 5.\n一个项目一个聊天。\n\n## 6.\n长项目定期生成Summary。\n\n## 7.\n一次Prompt说清楚背景+目标+输出格式。\n\n## 8.\n不要让AI重复全文。\n\n## 9.\n控制输出长度。\n\n## 10.\n追求信息密度，不追求信息少。\n\n\n---\n\n# 最终原则\n\n真正高手不是：\n\n> 少给AI信息。\n\n而是：\n\n> **用最低 token，把最高价值的信息送进去。**\n\n可以理解为：\n\n```\n普通用户：\n大量原始信息\n        ↓\nAI筛选\n\n高手：\n结构化信息\n        ↓\nAI推理\n```\n\nAI最擅长的是：\n\n**思考、总结、生成、比较。**\n\n不要浪费 token 让 AI 做 OCR、找格式、整理垃圾信息。\n\n把信息整理成机器友好的形式，你和 AI 的效率会提升一个数量级。你目前的使用方式（Saga、代码、投资框架、SEO）其实非常适合采用这一套。"
+            ]
+          },
+          "create_time": 1785600576.961938,
+          "id": "0bf5f14f-a68b-4161-9cea-f73a9b379f1e",
+          "metadata": {
+            "code_blocks": {
+              "0": {
+                "edited": false,
+                "id": "iv4ejp",
+                "preview_language": null,
+                "previewable": false
+              },
+              "1": {
+                "edited": false,
+                "id": "nrpkpn",
+                "preview_language": null,
+                "previewable": false
+              },
+              "10": {
+                "edited": false,
+                "id": "pa7s8m",
+                "preview_language": null,
+                "previewable": false
+              },
+              "11": {
+                "edited": false,
+                "id": "p3gkdy",
+                "preview_language": null,
+                "previewable": false
+              },
+              "12": {
+                "edited": false,
+                "id": "zoi13p",
+                "preview_language": null,
+                "previewable": false
+              },
+              "13": {
+                "edited": false,
+                "id": "hhhq73",
+                "preview_language": null,
+                "previewable": false
+              },
+              "14": {
+                "edited": false,
+                "id": "6goyyu",
+                "preview_language": null,
+                "previewable": false
+              },
+              "15": {
+                "edited": false,
+                "id": "4s1m32",
+                "preview_language": null,
+                "previewable": false
+              },
+              "16": {
+                "edited": false,
+                "id": "7uft8j",
+                "preview_language": null,
+                "previewable": false
+              },
+              "17": {
+                "edited": false,
+                "id": "rjz0na",
+                "preview_language": null,
+                "previewable": false
+              },
+              "18": {
+                "edited": false,
+                "id": "iorumx",
+                "preview_language": null,
+                "previewable": false
+              },
+              "19": {
+                "edited": false,
+                "id": "rtkape",
+                "preview_language": null,
+                "previewable": false
+              },
+              "2": {
+                "edited": false,
+                "id": "b05lup",
+                "preview_language": null,
+                "previewable": false
+              },
+              "20": {
+                "edited": false,
+                "id": "8quwk0",
+                "preview_language": null,
+                "previewable": false
+              },
+              "21": {
+                "edited": false,
+                "id": "4rcxlq",
+                "preview_language": null,
+                "previewable": false
+              },
+              "22": {
+                "edited": false,
+                "id": "jfuq6t",
+                "preview_language": null,
+                "previewable": false
+              },
+              "23": {
+                "edited": false,
+                "id": "86d9ys",
+                "preview_language": null,
+                "previewable": false
+              },
+              "24": {
+                "edited": false,
+                "id": "qez6t9",
+                "preview_language": null,
+                "previewable": false
+              },
+              "25": {
+                "edited": false,
+                "id": "6pyoyx",
+                "preview_language": null,
+                "previewable": false
+              },
+              "26": {
+                "edited": false,
+                "id": "838hbm",
+                "preview_language": null,
+                "previewable": false
+              },
+              "27": {
+                "edited": false,
+                "id": "nr5jlh",
+                "preview_language": null,
+                "previewable": false
+              },
+              "28": {
+                "edited": false,
+                "id": "2owdxm",
+                "preview_language": null,
+                "previewable": false
+              },
+              "29": {
+                "edited": false,
+                "id": "ahak7e",
+                "preview_language": null,
+                "previewable": false
+              },
+              "3": {
+                "edited": false,
+                "id": "p4k1ae",
+                "preview_language": null,
+                "previewable": false
+              },
+              "30": {
+                "edited": false,
+                "id": "bcdz9q",
+                "preview_language": null,
+                "previewable": false
+              },
+              "31": {
+                "edited": false,
+                "id": "2bisnl",
+                "preview_language": null,
+                "previewable": false
+              },
+              "32": {
+                "edited": false,
+                "id": "0a14aj",
+                "preview_language": null,
+                "previewable": false
+              },
+              "33": {
+                "edited": false,
+                "id": "cwq1im",
+                "preview_language": null,
+                "previewable": false
+              },
+              "34": {
+                "edited": false,
+                "id": "malgph",
+                "preview_language": null,
+                "previewable": false
+              },
+              "35": {
+                "edited": false,
+                "id": "oehcc0",
+                "preview_language": null,
+                "previewable": false
+              },
+              "36": {
+                "edited": false,
+                "id": "2c4yeq",
+                "preview_language": null,
+                "previewable": false
+              },
+              "37": {
+                "edited": false,
+                "id": "6opraz",
+                "preview_language": null,
+                "previewable": false
+              },
+              "38": {
+                "edited": false,
+                "id": "3fq3yq",
+                "preview_language": null,
+                "previewable": false
+              },
+              "39": {
+                "edited": false,
+                "id": "qjo4xt",
+                "preview_language": null,
+                "previewable": false
+              },
+              "4": {
+                "edited": false,
+                "id": "4rz9y3",
+                "preview_language": null,
+                "previewable": false
+              },
+              "40": {
+                "edited": false,
+                "id": "d8fl33",
+                "preview_language": null,
+                "previewable": false
+              },
+              "41": {
+                "edited": false,
+                "id": "qezdjn",
+                "preview_language": null,
+                "previewable": false
+              },
+              "42": {
+                "edited": false,
+                "id": "k5lx4f",
+                "preview_language": null,
+                "previewable": false
+              },
+              "43": {
+                "edited": false,
+                "id": "r25kww",
+                "preview_language": null,
+                "previewable": false
+              },
+              "44": {
+                "edited": false,
+                "id": "19erng",
+                "preview_language": null,
+                "previewable": false
+              },
+              "5": {
+                "edited": false,
+                "id": "khauz7",
+                "preview_language": null,
+                "previewable": false
+              },
+              "6": {
+                "edited": false,
+                "id": "xu7cb9",
+                "preview_language": null,
+                "previewable": false
+              },
+              "7": {
+                "edited": false,
+                "id": "adp7hb",
+                "preview_language": null,
+                "previewable": false
+              },
+              "8": {
+                "edited": false,
+                "id": "km3wvb",
+                "preview_language": null,
+                "previewable": false
+              },
+              "9": {
+                "edited": false,
+                "id": "cih54y",
+                "preview_language": null,
+                "previewable": false
+              }
+            },
+            "content_references": [],
+            "conversation_context_citation_metadata": [
+              {
+                "citation": {
+                  "alt": null,
+                  "attribution": "Memory",
+                  "citation_uuid": "f0683708-c471-4cf2-95ac-dfb5c5296cd6",
+                  "conversation_context_type": "general_memory",
+                  "end_idx": -1,
+                  "index": 6,
+                  "matched_text": "",
+                  "prompt_text": null,
+                  "reason": "You have a high-frequency AI usage pattern across SEO writing, product imagery/specs, and stock/investment analysis, which the assistant uses to tailor the token-optimization advice.",
+                  "refs": [],
+                  "snippet": "• SEO content prompt: Asked for English SEO article. • Product imagery request: asked for optimized product diagram IM-FP21008GW. • Stock analysis script output included: 白酒ETF 512690 共振分析 v6.4 (2026-07-30) showing missing data and refusal to score. Also included 513050 中概互联ETF 持仓追踪 v1.3 (2026-07-30) metrics.",
+                  "start_idx": -1,
+                  "title": "You have a high-frequency AI usage pattern across SEO writing, product imagery/specs, and stock/investment analysis, which the assistant uses to tailor the token-optimization advice.",
+                  "type": "conversation_context_citation",
+                  "url": "#settings/Personalization"
+                },
+                "citation_uuid": "f0683708-c471-4cf2-95ac-dfb5c5296cd6",
+                "deleted": false,
+                "feedback": null
+              }
+            ],
+            "model_slug": "gpt-5-5",
+            "parent_id": "610fc6ec-f643-43b0-b31e-80320f74a59e"
+          }
+        },
+        "parent": "bc468933-c045-4480-810b-45ad4d32ae52"
+      }
+    }
+  ]
+}

@@ -1,7 +1,0 @@
-ERPS Ring Application&Bypass
-Location A                   Location B
- | Switch 1     Switch 4 |
-Managed Switch                                                           Managed Switch
-Switch 3
-Switch 2 | |             | |             j   Switch 5
-3  |      Olycom Bypass Switch

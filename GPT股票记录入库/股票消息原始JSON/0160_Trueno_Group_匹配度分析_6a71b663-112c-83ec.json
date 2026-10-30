@@ -1,0 +1,426 @@
+{
+  "conversation_metadata": {
+    "conversation_id": "6a71b663-112c-83ec-911a-cce3ae76e69f",
+    "conversation_template_id": null,
+    "create_time": 1785837156.062125,
+    "current_node": "4c53efa6-56a6-4487-8648-7f63919f803c",
+    "default_model_slug": "auto",
+    "id": "6a71b663-112c-83ec-911a-cce3ae76e69f",
+    "is_archived": false,
+    "is_do_not_remember": false,
+    "is_read_only": null,
+    "is_starred": null,
+    "is_study_mode": false,
+    "memory_scope": "global_enabled",
+    "pinned_time": null,
+    "plugin_ids": null,
+    "title": "Trueno Group 匹配度分析",
+    "update_time": 1785837557.455578,
+    "voice": null
+  },
+  "selection_unit": "message",
+  "selected_nodes": [
+    {
+      "node_id": "4c53efa6-56a6-4487-8648-7f63919f803c",
+      "selection_reason": "stock-keyword",
+      "matched_terms": [
+        "财报"
+      ],
+      "node": {
+        "id": "4c53efa6-56a6-4487-8648-7f63919f803c",
+        "message": {
+          "author": {
+            "name": null,
+            "role": "assistant"
+          },
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "我查了一下 Trueno Group（trgr.ru）的公开信息。这个公司**不是小贸易商，但也不像俄罗斯大型 IT 集团那种千人规模公司**。更准确定位：\n\n> **中型系统集成商（SI），具备项目能力，但规模可能在几十人级别。**\n\nciteturn0search0turn0search3\n\n下面拆一下。\n\n---\n\n# 1. 公司年限\n\n官网宣传：\n\n- **15+ years experience**\n- 500+ completed projects\n- 全俄罗斯业务覆盖\n\nciteturn0search0\n\n这个说明：\n\n他们不是刚成立的小公司。\n\n但是注意：\n\n工商信息显示：\n\n> ООО \"Труено групп\" 当前法人实体注册时间较新（2025年）\n\nciteturn0search10\n\n这里俄罗斯很常见：\n\n可能存在：\n\n- 老团队经验\n- 新法人主体\n- 品牌重新包装\n- 业务主体迁移\n\n所以不能简单按工商注册年份判断。\n\n我的判断：\n\n**团队经验可信度较高，但法人主体历史需要进一步确认。**\n\n---\n\n# 2. 人员规模\n\n公开没有找到明确员工数量。\n\n不过从业务范围推测：\n\n他们不像：\n\n### 小贸易公司\n\n特点：\n\n1-5人\n\n只报价。\n\n\n也不像：\n\n### 大型SI\n\n例如：\n\n500-5000人。\n\n\n更可能：\n\n## 20-100人左右\n\n理由：\n\n他们业务覆盖：\n\n- 系统集成\n- 网络\n- 服务器\n- 存储\n- 信息安全\n- 7×24技术支持\n\nciteturn0search3\n\n\n这种业务如果真的运营：\n\n至少需要：\n\n- 销售\n- 售前工程师\n- 网络工程师\n- 安全工程师\n- 项目经理\n\n---\n\n# 3. 项目能力\n\n这个是比较重要的。\n\n官网给出的数据：\n\n- 500+ 项目\n- 200+ 政府合同\n- 2000+ 长期客户\n- 8500+ 直接合同\n\nciteturn0search0turn0search3\n\n\n这些数字需要打一点折扣（很多企业官网营销数字会放大）。\n\n但是即使打5折：\n\n仍然说明：\n\n他们不是普通采购商。\n\n---\n\n# 4. 销售额规模估计\n\n公开没有找到可靠财务数据。\n\n但是可以估算。\n\n他们业务：\n\n不是纯软件。\n\n包括：\n\n- Dell/HP/Lenovo设备\n- Server\n- Storage\n- Network equipment\n- Security solution\n\nciteturn0search0\n\n\n俄罗斯这种中型SI：\n\n一般收入结构：\n\n## 小型SI\n\n年销售：\n100-500万美元\n\n\n## 中型SI\n\n500万-3000万美元\n\n\n## 大型SI\n\n5000万美元以上\n\n\n我估计 Trueno：\n\n更可能：\n\n> **年业务规模：500万～2000万美元区间**\n\n当然这是行业推测，不是公开财报。\n\n---\n\n# 5. 供应链能力\n\n这个比较关键。\n\n官网提到：\n\n合作品牌：\n\n- Dell\n- HP\n- Lenovo\n\n并且有认证/授权能力。citeturn0search0\n\n\n说明：\n\n他们不是只卖杂牌。\n\n他们应该有：\n\n- 供应商体系\n- 企业客户资源\n- 项目采购经验\n\n\n所以如果合作：\n\n更可能：\n\n不是：\n\n\"我要买1000台交换机卖\"\n\n而是：\n\n\"我的客户项目需要一个替代方案\"\n\n---\n\n# 6. 对 Saga 的价值判断\n\n我重新调整：\n\n## 公司实力\n\n| 项目 | 判断 |\n|-|-|\n|成立时间|★★★★☆|\n|团队能力|★★★★☆|\n|项目能力|★★★★☆|\n|资金实力|★★★☆|\n|渠道能力|★★★★|\n|采购规模潜力|★★★★|\n\n综合：\n\n**7.5-8/10**\n\n---\n\n# 7. 和 Saga 的合作模式\n\n我觉得最可能不是：\n\n❌ Distributor\n\n而是：\n\n✅ Solution Partner\n\n\n类似：\n\n他们：\n\n拿项目\n\n↓\n\n找 Saga\n\n↓\n\nSaga提供：\n\n- Edge switch\n- PoE\n- Industrial Ethernet\n- OEM\n\n\n---\n\n# 8. 我会怎么管理这个客户\n\n如果我是你：\n\nCRM等级：\n\n```\nRussia\n\nTrueno Group\n\nType:\nSystem Integrator\n\nLevel:\nA-\n\nPotential:\nStrategic Partner\n\nExpected:\nProject based orders\n\nTimeline:\n6-12 months\n```\n\n投入：\n\n高于普通询盘。\n\n但是不要：\n\n马上投入大量定制开发。\n\n\n---\n\n我的最终判断：\n\n**这个公司实力在俄罗斯网络行业里属于“靠谱中型玩家”，不是巨头，但已经达到值得 Saga 长期培养的级别。**\n\n尤其关键点：\n\n> 他主动找到你 + 做系统集成 + 做网络基础设施\n\n这三个条件叠加，比你之前开发的大部分俄罗斯贸易客户质量高。"
+            ]
+          },
+          "create_time": 1785837549.124586,
+          "id": "4c53efa6-56a6-4487-8648-7f63919f803c",
+          "metadata": {
+            "code_blocks": {
+              "0": {
+                "edited": false,
+                "id": "acsyyo",
+                "preview_language": null,
+                "previewable": false
+              }
+            },
+            "content_references": [
+              {
+                "alt": "([Trueno Group](https://trgr.ru/?utm_source=chatgpt.com))",
+                "fallback_items": null,
+                "items": [
+                  {
+                    "attribution": "Trueno Group",
+                    "attribution_segments": null,
+                    "attributions": null,
+                    "hue": null,
+                    "pub_date": null,
+                    "refs": [
+                      {
+                        "ref_index": 0,
+                        "ref_type": "search",
+                        "turn_index": 0
+                      },
+                      {
+                        "ref_index": 3,
+                        "ref_type": "search",
+                        "turn_index": 0
+                      }
+                    ],
+                    "snippet": "",
+                    "supporting_websites": [
+                      {
+                        "attribution": "Trueno Group",
+                        "pub_date": null,
+                        "snippet": "",
+                        "title": "Trueno Group",
+                        "url": "https://trgr.ru/solutions?utm_source=chatgpt.com"
+                      }
+                    ],
+                    "title": "Trueno Group",
+                    "url": "https://trgr.ru/?utm_source=chatgpt.com"
+                  }
+                ],
+                "prefix": null,
+                "prompt_text": null,
+                "type": "grouped_webpages"
+              },
+              {
+                "alt": "([Trueno Group](https://trgr.ru/?utm_source=chatgpt.com))",
+                "fallback_items": null,
+                "items": [
+                  {
+                    "attribution": "Trueno Group",
+                    "attribution_segments": null,
+                    "attributions": null,
+                    "hue": null,
+                    "pub_date": null,
+                    "refs": [
+                      {
+                        "ref_index": 0,
+                        "ref_type": "search",
+                        "turn_index": 0
+                      }
+                    ],
+                    "snippet": "",
+                    "supporting_websites": [],
+                    "title": "Trueno Group",
+                    "url": "https://trgr.ru/?utm_source=chatgpt.com"
+                  }
+                ],
+                "prefix": null,
+                "prompt_text": null,
+                "type": "grouped_webpages"
+              },
+              {
+                "alt": "([Reputation](https://reputation.ru/ogrn/1257700416093?utm_source=chatgpt.com))",
+                "fallback_items": null,
+                "items": [
+                  {
+                    "attribution": "Reputation",
+                    "attribution_segments": null,
+                    "attributions": null,
+                    "hue": null,
+                    "pub_date": 1775433600.0,
+                    "refs": [
+                      {
+                        "ref_index": 10,
+                        "ref_type": "search",
+                        "turn_index": 0
+                      }
+                    ],
+                    "snippet": "",
+                    "supporting_websites": [],
+                    "title": "ООО Труено Групп, Москва, ИНН 9715516350",
+                    "url": "https://reputation.ru/ogrn/1257700416093?utm_source=chatgpt.com"
+                  }
+                ],
+                "prefix": null,
+                "prompt_text": null,
+                "type": "grouped_webpages"
+              },
+              {
+                "alt": "([Trueno Group](https://trgr.ru/solutions?utm_source=chatgpt.com))",
+                "fallback_items": null,
+                "items": [
+                  {
+                    "attribution": "Trueno Group",
+                    "attribution_segments": null,
+                    "attributions": null,
+                    "hue": null,
+                    "pub_date": null,
+                    "refs": [
+                      {
+                        "ref_index": 3,
+                        "ref_type": "search",
+                        "turn_index": 0
+                      }
+                    ],
+                    "snippet": "",
+                    "supporting_websites": [],
+                    "title": "Trueno Group",
+                    "url": "https://trgr.ru/solutions?utm_source=chatgpt.com"
+                  }
+                ],
+                "prefix": null,
+                "prompt_text": null,
+                "type": "grouped_webpages"
+              },
+              {
+                "alt": "([Trueno Group](https://trgr.ru/?utm_source=chatgpt.com))",
+                "fallback_items": null,
+                "items": [
+                  {
+                    "attribution": "Trueno Group",
+                    "attribution_segments": null,
+                    "attributions": null,
+                    "hue": null,
+                    "pub_date": null,
+                    "refs": [
+                      {
+                        "ref_index": 0,
+                        "ref_type": "search",
+                        "turn_index": 0
+                      },
+                      {
+                        "ref_index": 3,
+                        "ref_type": "search",
+                        "turn_index": 0
+                      }
+                    ],
+                    "snippet": "",
+                    "supporting_websites": [
+                      {
+                        "attribution": "Trueno Group",
+                        "pub_date": null,
+                        "snippet": "",
+                        "title": "Trueno Group",
+                        "url": "https://trgr.ru/solutions?utm_source=chatgpt.com"
+                      }
+                    ],
+                    "title": "Trueno Group",
+                    "url": "https://trgr.ru/?utm_source=chatgpt.com"
+                  }
+                ],
+                "prefix": null,
+                "prompt_text": null,
+                "type": "grouped_webpages"
+              },
+              {
+                "alt": "([Trueno Group](https://trgr.ru/?utm_source=chatgpt.com))",
+                "fallback_items": null,
+                "items": [
+                  {
+                    "attribution": "Trueno Group",
+                    "attribution_segments": null,
+                    "attributions": null,
+                    "hue": null,
+                    "pub_date": null,
+                    "refs": [
+                      {
+                        "ref_index": 0,
+                        "ref_type": "search",
+                        "turn_index": 0
+                      }
+                    ],
+                    "snippet": "",
+                    "supporting_websites": [],
+                    "title": "Trueno Group",
+                    "url": "https://trgr.ru/?utm_source=chatgpt.com"
+                  }
+                ],
+                "prefix": null,
+                "prompt_text": null,
+                "type": "grouped_webpages"
+              },
+              {
+                "alt": "([Trueno Group](https://trgr.ru/?utm_source=chatgpt.com))",
+                "fallback_items": null,
+                "items": [
+                  {
+                    "attribution": "Trueno Group",
+                    "attribution_segments": null,
+                    "attributions": null,
+                    "hue": null,
+                    "pub_date": null,
+                    "refs": [
+                      {
+                        "ref_index": 0,
+                        "ref_type": "search",
+                        "turn_index": 0
+                      }
+                    ],
+                    "snippet": "",
+                    "supporting_websites": [],
+                    "title": "Trueno Group",
+                    "url": "https://trgr.ru/?utm_source=chatgpt.com"
+                  }
+                ],
+                "prefix": null,
+                "prompt_text": null,
+                "type": "grouped_webpages"
+              },
+              {
+                "alt": "",
+                "has_images": false,
+                "prefix": null,
+                "prompt_text": null,
+                "sources": [
+                  {
+                    "attribution": "Trueno Group",
+                    "title": "Trueno Group",
+                    "url": "https://trgr.ru/?utm_source=chatgpt.com"
+                  },
+                  {
+                    "attribution": "Reputation",
+                    "title": "ООО Труено Групп, Москва, ИНН 9715516350",
+                    "url": "https://reputation.ru/ogrn/1257700416093?utm_source=chatgpt.com"
+                  }
+                ],
+                "type": "sources_footnote"
+              }
+            ],
+            "model_slug": "gpt-5-5",
+            "parent_id": "ef4deb8d-f1d2-4dea-aee6-67447df9c49a",
+            "search_result_groups": [
+              {
+                "domain": "trgr.ru",
+                "entries": [
+                  {
+                    "attribution": "trgr.ru",
+                    "snippet": "ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ ЯНДЕКС  Политика в отношении обработки персональных данных с использованием Яндекс.Метрики  [Button: Получить консультацию][Button: Наши решения]  1. ОБЩИЕ ПОЛОЖЕНИЯ  1.1....",
+                    "title": "Trueno Group",
+                    "url": "https://trgr.ru/yandex-privacy-policy?utm_source=chatgpt.com"
+                  },
+                  {
+                    "attribution": "trgr.ru",
+                    "snippet": "ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ  Политика в отношении обработки персональных данных  [Button: Получить консультацию][Button: Наши решения]  1. ОБЩИЕ ПОЛОЖЕНИЯ  1.1. Настоящая Политика в отношении обработ...",
+                    "title": "Trueno Group",
+                    "url": "https://trgr.ru/privacy-policy?utm_source=chatgpt.com"
+                  },
+                  {
+                    "attribution": "trgr.ru",
+                    "snippet": "НОВОСТИ  Будьте в курсе последних новостей и событий в области информационной безопасности.  20 ФЕВРАЛЬ 2026  ПАМЯТКА ПО ПРИКАЗУ ФСТЭК №117  С 1 марта 2026 года вступает в силу приказ ФСТЭК России №...",
+                    "title": "Новости | Trueno Group",
+                    "url": "https://trgr.ru/news?utm_source=chatgpt.com"
+                  },
+                  {
+                    "attribution": "trgr.ru",
+                    "snippet": "ИНФОРМАЦИОННАЯ БЕЗОПАСНОСТЬ  Комплексная защита вашего бизнеса от киберугроз. Современные решения для информационной безопасности.  [Button: Получить консультацию][Button: Наши решения]  НАШИ УСЛУГИ...",
+                    "title": "Trueno Group • IT-решения",
+                    "url": "https://www.trgr.ru/security?utm_source=chatgpt.com"
+                  },
+                  {
+                    "attribution": "trgr.ru",
+                    "snippet": "8 (800) 550-64-95  mail@trgr.ru   ПАРТНЕРЫ  Мы работаем с ведущими российскими и мировыми партнерами, предоставляя надежные и проверенные решения для вашего бизнеса.  [Button: Получить консультацию][...",
+                    "title": "Trueno Group",
+                    "url": "https://trgr.ru/partners?utm_source=chatgpt.com"
+                  },
+                  {
+                    "attribution": "trgr.ru",
+                    "snippet": "ПРОИЗВОДИТЕЛИ  Каталог товаров в категории Производители  [Button: Получить консультацию][Button: Наши решения]  [Input: Поиск товаров...][Button: Поиск]  ОСНОВНЫЕ КАТЕГОРИИ  [Button: Все категории][...",
+                    "title": "Производители | Trueno Group",
+                    "url": "https://trgr.ru/catalog/vendors?utm_source=chatgpt.com"
+                  },
+                  {
+                    "attribution": "trgr.ru",
+                    "snippet": "МЕЖСЕТЕВОЙ ЭКРАН  Каталог товаров в категории Решения / Межсетевой экран  [Button: Получить консультацию][Button: Наши решения]  Каталог/Решения/Межсетевой экран  [Input: Поиск товаров...][Button: По...",
+                    "title": "Межсетевой экран | Решения | Trueno Group",
+                    "url": "https://trgr.ru/catalog/products/%D0%BC%D0%B5%D0%B6%D1%81%D0%B5%D1%82%D0%B5%D0%B2%D0%BE%D0%B9-%D1%8D%D0%BA%D1%80%D0%B0%D0%BD?utm_source=chatgpt.com"
+                  },
+                  {
+                    "attribution": "trgr.ru",
+                    "snippet": "8 (800) 550-64-95  mail@trgr.ru   КОММУТАТОРЫ ДОСТУПА POE  Каталог товаров в категории Решения / Коммутаторы доступа PoE  [Button: Получить консультацию][Button: Наши решения]  Каталог/Решения/Коммут...",
+                    "title": "Коммутаторы доступа PoE | Решения | Trueno Group",
+                    "url": "https://trgr.ru/catalog/products/%D0%BA%D0%BE%D0%BC%D0%BC%D1%83%D1%82%D0%B0%D1%82%D0%BE%D1%80%D1%8B-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0-poe?utm_source=chatgpt.com"
+                  },
+                  {
+                    "attribution": "trgr.ru",
+                    "snippet": "КОММУТАТОР ДОСТУПА MES2420D-24DP  EltexКоммутаторыКоммутаторы доступа PoE  ЦЕНА  Цена по запросу  [Button: Запросить спецификацию]  ОПИСАНИЕ  Коммутатор MES2420D-24DP осуществляет подключение конечны...",
+                    "title": "Коммутатор доступа MES2420D-24DP | Trueno Group",
+                    "url": "https://trgr.ru/product/%D0%BA%D0%BE%D0%BC%D0%BC%D1%83%D1%82%D0%B0%D1%82%D0%BE%D1%80-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0-mes2420d-24dp?utm_source=chatgpt.com"
+                  },
+                  {
+                    "attribution": "trgr.ru",
+                    "snippet": "КОММУТАТОР ДОСТУПА MES2300-08P  EltexКоммутаторыКоммутаторы доступа PoE  ЦЕНА  Цена по запросу  [Button: Запросить спецификацию]  ОПИСАНИЕ  Новое поколение коммутаторов доступа MES2300-08P осуществля...",
+                    "title": "Коммутатор доступа MES2300-08P | Trueno Group",
+                    "url": "https://trgr.ru/product/%D0%BA%D0%BE%D0%BC%D0%BC%D1%83%D1%82%D0%B0%D1%82%D0%BE%D1%80-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0-mes2300-08p?utm_source=chatgpt.com"
+                  }
+                ]
+              },
+              {
+                "domain": "tbank.ru",
+                "entries": [
+                  {
+                    "attribution": "tbank.ru",
+                    "snippet": "ООО \"ТРГРУПП\"  Действующая организация  ОГРН  1207700092038  Дата регистрации  02.03.2020  ИНН  7708375377  КПП  772101001  Главное  Виды деятельности  Последние изменения  Факты  Бух. отчетность...",
+                    "title": "ООО ТРГРУПП ИНН 7708375377 Москва | Реквизиты, адрес, контакты",
+                    "url": "https://www.tbank.ru/business/contractor/legal/1207700092038/?utm_source=chatgpt.com"
+                  },
+                  {
+                    "attribution": "tbank.ru",
+                    "snippet": "ООО \"ТР ГРУППА\"  Действующая организация  ОГРН  1185958013328  Дата регистрации  18.04.2018  ИНН  5904361948  КПП  771601001  Главное  Виды деятельности  Последние изменения  Факты  Бух. отчетность...",
+                    "title": "ООО ТР ГРУППА ИНН 5904361948 Москва | Реквизиты, адрес, контакты",
+                    "url": "https://www.tbank.ru/business/contractor/legal/1185958013328/?utm_source=chatgpt.com"
+                  }
+                ]
+              },
+              {
+                "domain": "ttgrupp.ru",
+                "entries": [
+                  {
+                    "attribution": "ttgrupp.ru",
+                    "snippet": "ТТ ГРУПП — КТО МЫ И ЧЕМ ОТЛИЧАЕМСЯ ОТ ДРУГИХ ПОДРЯДЧИКОВ  ТТ ТТ ГРУПП · Металлоконструкции Автор: Тимур Шевченко, основатель ТТ ГРУПП · 32 читали · 2 июля 2026 · 16 мин  Работаем с 2014 года. №1 сред...",
+                    "title": "ТТ ГРУПП: кто мы, чем отличаемся и как работаем",
+                    "url": "https://ttgrupp.ru/blog/metallokonstrukcii/chem-otlichaetsya-tt-grupp/?utm_source=chatgpt.com"
+                  }
+                ]
+              },
+              {
+                "domain": "rbc.ru",
+                "entries": [
+                  {
+                    "attribution": "rbc.ru",
+                    "snippet": "Действует Обновлено, 06.04.2026  ООО «ТР-ГРУПП»  Компания ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ «ТР-ГРУПП» зарегистрирована 06.04.2026 г. по адресу г. Москва, вн.тер. г. муниципальный округ Пресне...",
+                    "title": "ООО «ТР-ГРУПП» — Москва — ОГРН 1267700119697, ИНН 9703244261 — юридический адрес, контакты, телефон, гендиректор | РБК Компании",
+                    "url": "https://companies.rbc.ru/id/1267700119697-ooo-tr-grupp/?utm_source=chatgpt.com"
+                  },
+                  {
+                    "attribution": "rbc.ru",
+                    "snippet": "ООО «ТРГРУПП»  Дата регистрации 02.03.2020  Уставной капитал 10 000 ₽  Юридический адрес г. Москва, вн.тер.г. Муниципальный округ Выхино-Жулебино, пр-д Сормовский, д. 11, стр. 1  ОГРН 1207700092038...",
+                    "title": "ООО «ТРГРУПП» — Москва — ОГРН 1207700092038, ИНН 7708375377 — юридический адрес, контакты, телефон, гендиректор | РБК Компании",
+                    "url": "https://companies.rbc.ru/amp/ogrn/1207700092038/?utm_source=chatgpt.com"
+                  },
+                  {
+                    "attribution": "rbc.ru",
+                    "snippet": "Ликвидирована Обновлено, 02.01.2022  ООО «ТР-ГРУПП»  Компания ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ «ТР-ГРУПП» зарегистрирована 17.11.2014 г. по адресу 117292, г Москва, Академический р-н, ул Кржи...",
+                    "title": "ООО «ТР-ГРУПП» — Москва — ОГРН 5147746352078, ИНН 7707849200 — юридический адрес, контакты, телефон, гендиректор | РБК Компании",
+                    "url": "https://companies.rbc.ru/id/5147746352078-ooo-tr-grupp/?utm_source=chatgpt.com"
+                  }
+                ]
+              },
+              {
+                "domain": "tl-group.ru",
+                "entries": [
+                  {
+                    "attribution": "tl-group.ru",
+                    "snippet": "TL-GROUP - ДРАЙВЕР РАЗВИТИЯ БИЗНЕСА  * * *  * 120 Image  * * *  Человек в штате  КОМПАНИЯ TL GROUP ОСНОВАНА В 1999 ГОДУ, ГЛАВНЫЙ ОФИС РАСПОЛОЖЕН В САНКТ-ПЕТЕРБУРГЕ.  Мы работаем с Центрами электронно...",
+                    "title": "Компания — TL GROUP (Группа Компаний ТЛ)",
+                    "url": "https://tl-group.ru/about/?utm_source=chatgpt.com"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "parent": "ef4deb8d-f1d2-4dea-aee6-67447df9c49a"
+      }
+    }
+  ]
+}
