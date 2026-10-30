@@ -503,6 +503,39 @@ def referenced_path(path: Path, refs: set[str]) -> bool:
 
 def extract_document(path: Path) -> tuple[str, str]:
     ext = path.suffix.lower()
+    if ext == ".dat":
+        # ChatGPT exports often store attachments as extensionless .dat files.
+        head = path.open("rb").read(16)
+        if head.startswith(b"\x89PNG"):
+            ext = ".png"
+        elif head.startswith(b"\xff\xd8\xff"):
+            ext = ".jpg"
+        elif head.startswith((b"GIF87a", b"GIF89a")):
+            ext = ".gif"
+        elif head.startswith(b"RIFF") and head[8:12] == b"WEBP":
+            ext = ".webp"
+        elif head.startswith(b"%PDF"):
+            ext = ".pdf"
+        elif head.startswith(b"PK"):
+            try:
+                with zipfile.ZipFile(path) as z:
+                    names = z.namelist()
+                if any(x.startswith("word/") for x in names):
+                    ext = ".docx"
+                elif any(x.startswith("xl/") for x in names):
+                    ext = ".xlsx"
+                elif any(x.startswith("ppt/") for x in names):
+                    ext = ".pptx"
+            except Exception:
+                pass
+        else:
+            # Textual .dat attachments are still fully inspected.
+            try:
+                sample = path.read_bytes()
+                sample.decode("utf-8")
+                ext = ".txt"
+            except UnicodeDecodeError:
+                pass
     if ext in {".txt", ".md", ".csv", ".tsv", ".json", ".xml", ".yaml", ".yml", ".log", ".py", ".js", ".html", ".htm"}:
         if ext in {".html", ".htm"}:
             try:
@@ -689,7 +722,7 @@ def archive_other_files(refs: set[str], conversation_paths: list[Path]) -> tuple
             continue
         relative_path = source.relative_to(UNPACK)
         relative = str(relative_path).replace("\\", "/")
-        if relative.startswith("__MACOSX/") or source.name in {"chat.html", "user.json", "message_feedback.json"}:
+        if relative.startswith("__MACOSX/") or source.name in {"chat.html", "user.json", "message_feedback.json", "ads.json", "conversation_asset_file_names.json"}:
             continue
         scanned += 1
         referenced = referenced_path(source, refs)
@@ -811,8 +844,9 @@ def main():
     backup_source(source_name, source)
     member_count = unzip_source(source)
     conversation_paths = sorted(UNPACK.rglob("conversations.json"))
+    conversation_paths += [p for p in sorted(UNPACK.rglob("conversations-*.json")) if p not in conversation_paths]
     if not conversation_paths:
-        abort(4, "no conversations.json found; refusing to substitute a partial HTML extraction")
+        abort(4, "no conversations.json or conversations-*.json found; refusing to substitute a partial HTML extraction")
     conversations = load_conversations(conversation_paths)
     if not conversations:
         abort(4, "conversations.json decoded but contained no conversation objects")
@@ -828,6 +862,8 @@ def main():
         if not any(token in str(p.relative_to(UNPACK)) for p in UNPACK.rglob("*") if p.is_file()):
             MISSING_ASSETS.append(ref)
     write_reports(source_name, source, member_count, len(conversations), total_messages, records, attachments, scanned)
+    # The member listing is only a diagnostic for format failures, not archive content.
+    (OUT / "_zip_listing.txt").unlink(missing_ok=True)
     status_note(f"DONE selected {len(records)}/{len(conversations)} conversations; {sum(r['message_count'] for r in records)} messages; attachments {len(attachments)}; errors {len(ERRORS)}")
     total_bytes = sum(p.stat().st_size for p in OUT.rglob("*") if p.is_file())
     log("output", total_bytes, "bytes", "files", sum(1 for p in OUT.rglob("*") if p.is_file()))
