@@ -51,6 +51,7 @@ os.environ["TMPDIR"] = str(TMP)
 T0 = time.time()
 ERRORS: list[str] = []
 MISSING_ASSETS: list[str] = []
+ASSET_NAME_MAP: dict[str, str] = {}
 
 
 def log(*args):
@@ -444,13 +445,15 @@ STRONG_TERMS = [
 STRONG_TERMS = sorted(set(STRONG_TERMS), key=len, reverse=True)
 def _term_pattern(term: str) -> str:
     # ASCII acronyms such as PE/ROE must not match inside ordinary English words.
+    if term == "做T":
+        return r"(?<![A-Za-z])做[Tt](?![A-Za-z])"
     if re.fullmatch(r"[A-Za-z0-9/.\-]+", term):
         return r"(?<![A-Za-z0-9])" + re.escape(term) + r"(?![A-Za-z0-9])"
     return re.escape(term)
 
 TERM_RE = re.compile("|".join(_term_pattern(x) for x in STRONG_TERMS), re.IGNORECASE)
 TICKER_RE = re.compile(r"(?<!\d)(?:000|001|002|003|300|301|600|601|603|605|688|689|830|831|832|833|834|835|836|837|838|839|870|871|872|873|874|875|876|877|878|879|920)\d{3}(?!\d)")
-EN_TICKER_RE = re.compile(r"(?<![A-Za-z0-9])(?:GOOG|GOOGL|AAPL|MSFT|NVDA|TSLA|AMZN|META|AMD|AVGO|NFLX|TSM|HLA|SLA)(?![A-Za-z0-9])")
+EN_TICKER_RE = re.compile(r"(?<![A-Za-z0-9])(?:GOOG|GOOGL|AAPL|MSFT|NVDA|TSLA|AMZN|META|AMD|AVGO|NFLX|TSM)(?![A-Za-z0-9])")
 
 
 def stock_hits(text: str) -> list[str]:
@@ -461,12 +464,12 @@ def stock_hits(text: str) -> list[str]:
 
 
 CORE_TERMS = [
-    "股票", "股市", "股价", "股息", "分红", "派息", "股东", "股票账户", "证券交易", "证券", "券商", "交易所",
+    "股票", "股市", "股价", "股息", "分红", "派息", "股票账户", "证券交易", "证券", "券商", "交易所",
     "A股", "港股", "美股", "港股通", "沪深", "纳斯达克", "标普", "道琼斯", "ETF", "IPO", "涨停", "跌停",
     "做T", "持仓", "建仓", "加仓", "减仓", "清仓", "仓位", "K线", "日线", "周线", "月线", "均线", "成交量",
     "换手率", "市盈率", "市净率", "估值", "财报", "归母", "扣非", "业绩预告", "吸筹", "主力资金", "北向资金",
     "融资融券", "交割单", "大盘", "牛市", "熊市", "浮盈", "浮亏", "止损", "止盈", "套牢", "抄底", "追涨",
-    "杀跌", "支撑位", "压力位", "收息", "定投", "价值投资", "投资组合", "资产配置", "市值", "回购", "盘前",
+    "杀跌", "支撑位", "压力位", "收息", "定投", "价值投资", "投资组合", "市值", "回购", "盘前",
     "盘后", "收盘", "开盘", "看盘", "量能", "dividend", "dividends", "buyback", "repurchase", "earnings",
     "海澜之家", "海尔智家", "格力电器", "云铝股份", "五粮液", "顺丰控股", "汇川技术", "迈瑞医疗", "江西铜业",
     "华能蒙电", "工业富联", "中国铝业", "紫金矿业", "中国银行", "泸州老窖", "美的集团", "贵州茅台", "宁德时代",
@@ -474,7 +477,7 @@ CORE_TERMS = [
     "中际旭创", "新易盛", "沪电股份", "立讯精密", "恒瑞医药", "药明康德", "中国中免", "台积电",
 ]
 SUPPORT_TERMS = [
-    "投资", "营收", "净利润", "年报", "季报", "复盘", "板块", "成本价", "stock", "stocks", "portfolio", "equity",
+    "投资", "营收", "净利润", "年报", "季报", "复盘", "板块", "成本价", "股东", "资产配置", "stock", "stocks", "portfolio", "equity",
     "POC", "PoC", "SLA", "Meta", "PE", "PB", "ROE", "EPS", "DPS", "GTC", "MA20", "MA40", "MACD", "RSI", "KDJ",
     "SAR", "HLA", "GOOG", "GOOGL", "AAPL", "MSFT", "NVDA", "TSLA", "AMZN", "META", "AMD", "AVGO", "NFLX", "TSM",
     "谷歌", "微软", "英伟达", "特斯拉", "亚马逊", "阿里巴巴", "海澜", "海尔", "美团", "福特",
@@ -483,6 +486,8 @@ CORE_RE = re.compile("|".join(_term_pattern(x) for x in sorted(set(CORE_TERMS), 
 SUPPORT_RE = re.compile("|".join(_term_pattern(x) for x in sorted(set(SUPPORT_TERMS), key=len, reverse=True)), re.IGNORECASE)
 TITLE_RE = re.compile(r"股票|股市|股价|ETF|美股|港股|A股|投资|分红|收息|股权|持仓|仓位|估值|财报|QDII|SCHG|SCHB|HPQ|HPE|NVO|DOW|BOC|GLW|TCAI|CHPS|EUV|CBRS|长牛|多头|空头|波段|财富|财商|FIRE|被动收入|资产配置|美团|福特|四大行|长电|海澜|海尔|五粮液|铝价|强股|资本流动", re.IGNORECASE)
 NONSTOCK_CONTEXT_RE = re.compile(r"PoE|DWDM|SEO|交换机|路由器|光模块|客户|报价|出口|增值税|健康|饮食|尿道|婚姻|孩子|旅行|WhatsApp|Playwright|Selenium|HTML|CSS|token|Claude|Arena|Steam|英语|域名|账号|FIPS|认证|无人机|光纤|MSTP|Centec|Marvell|Olycom|Netas|Saga|Sales Engineer|领英|LinkedIn|FAQ|产品规格|宣传文案", re.IGNORECASE)
+NONSTOCK_MESSAGE_RE = re.compile(r"PoE|DWDM|SEO|交换机|路由器|光模块|光通信|NDAA|consignment|授权|供应商|订单|军工|出口|税务|法律|客户|无人机|光纤|MSTP|Centec|Marvell|Olycom|Netas|Saga|Sales Engineer|领英|LinkedIn|WhatsApp|饮食|尿道|婚姻|孩子|旅行|域名|账号|Steam|Playwright|Claude|Arena|HTML|CSS|token|英语|FAQ|报价|采购|库存", re.IGNORECASE)
+HARD_MARKET_RE = re.compile(r"股票|股市|股价|股息|持仓|建仓|加仓|减仓|清仓|涨停|跌停|K线|均线|成交量|换手率|市盈率|市净率|吸筹|主力资金|北向资金|融资融券|交割单|做[Tt](?![A-Za-z])|止损|止盈|浮盈|浮亏|牛市|熊市|大盘|美股|港股|A股|ETF|IPO|纳斯达克|道琼斯|标普|证券|券商|交易所|收息|定投|价值投资|归母|扣非|财报|股票账户|证券交易", re.IGNORECASE)
 
 
 def relevance(text: str, title: str = "") -> tuple[bool, list[str]]:
@@ -491,6 +496,8 @@ def relevance(text: str, title: str = "") -> tuple[bool, list[str]]:
     tickers = {m.group(0) for m in TICKER_RE.finditer(text)}
     tickers.update(m.group(0) for m in EN_TICKER_RE.finditer(text))
     hits = sorted(core | support | tickers, key=str.lower)
+    if NONSTOCK_MESSAGE_RE.search(text) and not HARD_MARKET_RE.search(text):
+        return False, hits
     if core:
         return True, hits
     title_stock = bool(TITLE_RE.search(title) or TICKER_RE.fullmatch(title.strip()) or EN_TICKER_RE.fullmatch(title.strip()))
@@ -520,12 +527,64 @@ def asset_refs(value, refs: set[str], key: str = ""):
         for v in value:
             asset_refs(v, refs, key)
     elif isinstance(value, str):
-        if key in {"asset_pointer", "file_id", "attachment_id", "filename", "file_name"}:
-            refs.add(value)
-        elif key in {"url", "download_url"} and ("file" in value or "asset" in value or "sediment" in value):
+        if key in {"asset_pointer", "file_id", "attachment_id"}:
+            if not value.startswith(("http://", "https://")) and value not in {"file_path", "file-service"}:
+                refs.add(value)
+        elif key in {"filename", "file_name"}:
+            if not value.startswith(("http://", "https://")) and value not in {"file_path", "file-service"}:
+                refs.add(value)
+        elif key in {"url", "download_url"} and value.startswith(("sediment://", "file-service://")):
             refs.add(value)
         for match in re.finditer(r"(?:file[-_][A-Za-z0-9_-]+|sediment://[^\s\"'<>]+|file-service://[^\s\"'<>]+)", value):
             refs.add(match.group(0))
+
+
+def load_asset_name_map():
+    path = UNPACK / "conversation_asset_file_names.json"
+    if not path.is_file():
+        return
+    try:
+        data = json.loads(read_text(path))
+    except Exception as exc:
+        ERRORS.append(f"conversation_asset_file_names.json: {type(exc).__name__}: {exc}")
+        return
+
+    def walk(value, hint=""):
+        if isinstance(value, dict):
+            local_id = next((value[k] for k in ("file_id", "asset_pointer", "attachment_id", "id") if isinstance(value.get(k), str)), hint)
+            local_name = next((value[k] for k in ("file_name", "filename", "name", "original_filename") if isinstance(value.get(k), str)), "")
+            if local_id and local_name and re.search(r"file[_-][A-Za-z0-9_-]+", local_id):
+                ASSET_NAME_MAP[local_id] = local_name
+            for key, child in value.items():
+                if isinstance(child, str) and re.search(r"file[_-][A-Za-z0-9_-]+", str(key)):
+                    ASSET_NAME_MAP[str(key)] = child
+                walk(child, str(key))
+        elif isinstance(value, list):
+            for child in value:
+                walk(child, hint)
+
+    walk(data)
+    log("asset filename mappings", len(ASSET_NAME_MAP))
+
+
+def mapped_asset_name(ref: str) -> str:
+    candidates = [ref, ref.rsplit("/", 1)[-1]]
+    match = re.search(r"file[_-][A-Za-z0-9_-]+", ref)
+    if match:
+        candidates.append(match.group(0))
+    for candidate in candidates:
+        if candidate in ASSET_NAME_MAP:
+            return ASSET_NAME_MAP[candidate]
+    return ""
+
+
+def asset_name_for_path(path: Path) -> str:
+    name = path.name
+    for key, value in ASSET_NAME_MAP.items():
+        token = key.rsplit("/", 1)[-1]
+        if token and (token in name or token in str(path)):
+            return value
+    return ""
 
 
 def referenced_path(path: Path, refs: set[str]) -> bool:
@@ -538,6 +597,9 @@ def referenced_path(path: Path, refs: set[str]) -> bool:
         if not token:
             continue
         if token in rel or token in base or ref in rel:
+            return True
+        mapped = mapped_asset_name(ref)
+        if mapped and (mapped in rel or Path(mapped).name in base):
             return True
         # Export asset pointers sometimes omit an extension or use a UUID only.
         stem = Path(token).stem
@@ -609,13 +671,14 @@ def extract_document(path: Path) -> tuple[str, str]:
         return "\n".join(out), "python-docx"
     if ext in {".xlsx", ".xlsm"}:
         import openpyxl
+        out = []
         with path.open("rb") as workbook_file:
             workbook = openpyxl.load_workbook(workbook_file, read_only=True, data_only=False)
-        out = []
-        for sheet in workbook.worksheets:
-            out.append(f"## sheet: {sheet.title} ({sheet.sheet_state})")
-            for row in sheet.iter_rows(values_only=True):
-                out.append("\t".join("" if v is None else str(v) for v in row))
+            for sheet in workbook.worksheets:
+                out.append(f"## sheet: {sheet.title} ({sheet.sheet_state})")
+                for row in sheet.iter_rows(values_only=True):
+                    out.append("\t".join("" if v is None else str(v) for v in row))
+            workbook.close()
         return "\n".join(out), "openpyxl"
     if ext == ".xls":
         import xlrd
@@ -683,6 +746,9 @@ def copy_attachment(source: Path, relative: str, text: str, method: str, reason:
         "reason": reason,
         "extraction_method": method,
     }
+    original_name = asset_name_for_path(source)
+    if original_name:
+        record["original_filename"] = original_name
     if text:
         text_path = destination.with_name(destination.name + ".txt")
         text_path.write_text(text, encoding="utf-8")
@@ -818,7 +884,8 @@ def archive_other_files(refs: set[str], conversation_paths: list[Path]) -> tuple
             ERRORS.append(f"{relative}: {type(exc).__name__}: {str(exc)[:240]}")
             if not referenced:
                 continue
-        related = referenced or is_stock_text(relative + "\n" + text)
+        original_name = asset_name_for_path(source)
+        related = referenced or is_stock_text(relative + "\n" + original_name + "\n" + text)
         if not related:
             continue
         records.append(copy_attachment(source, relative, text, method, "selected conversation attachment" if referenced else "standalone stock content"))
@@ -920,6 +987,7 @@ def main():
     status_note(f"SOURCE {source_name}；{source.stat().st_size} bytes")
     backup_source(source_name, source)
     member_count = unzip_source(source)
+    load_asset_name_map()
     conversation_paths = sorted(UNPACK.rglob("conversations.json"))
     conversation_paths += [p for p in sorted(UNPACK.rglob("conversations-*.json")) if p not in conversation_paths]
     if not conversation_paths:
@@ -932,11 +1000,15 @@ def main():
     log("selected conversations", len(records), "asset refs", len(refs))
     attachments, scanned = archive_other_files(refs, conversation_paths)
     # Check references only for diagnostics; raw selected JSON still retains every pointer.
+    all_unpack_files = [p for p in UNPACK.rglob("*") if p.is_file()]
     for ref in sorted(refs):
-        token = ref.rsplit("/", 1)[-1].split("?", 1)[0]
-        if len(token) < 8:
+        if ref.startswith(("http://", "https://")) or ref in {"file_path", "file-service"}:
             continue
-        if not any(token in str(p.relative_to(UNPACK)) for p in UNPACK.rglob("*") if p.is_file()):
+        match = re.search(r"file[_-][A-Za-z0-9_-]+", ref)
+        if not match:
+            continue
+        token = match.group(0)
+        if not any(token in str(p.relative_to(UNPACK)) for p in all_unpack_files):
             MISSING_ASSETS.append(ref)
     write_reports(source_name, source, member_count, len(conversations), total_messages, records, attachments, scanned)
     # The member listing is only a diagnostic for format failures, not archive content.
