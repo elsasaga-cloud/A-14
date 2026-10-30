@@ -486,8 +486,10 @@ CORE_RE = re.compile("|".join(_term_pattern(x) for x in sorted(set(CORE_TERMS), 
 SUPPORT_RE = re.compile("|".join(_term_pattern(x) for x in sorted(set(SUPPORT_TERMS), key=len, reverse=True)), re.IGNORECASE)
 TITLE_RE = re.compile(r"股票|股市|股价|ETF|美股|港股|A股|投资|分红|收息|股权|持仓|仓位|估值|财报|QDII|SCHG|SCHB|HPQ|HPE|NVO|DOW|BOC|GLW|TCAI|CHPS|EUV|CBRS|长牛|多头|空头|波段|财富|财商|FIRE|被动收入|资产配置|美团|福特|四大行|长电|海澜|海尔|五粮液|铝价|强股|资本流动", re.IGNORECASE)
 NONSTOCK_CONTEXT_RE = re.compile(r"PoE|DWDM|SEO|交换机|路由器|光模块|客户|报价|出口|增值税|健康|饮食|尿道|婚姻|孩子|旅行|WhatsApp|Playwright|Selenium|HTML|CSS|token|Claude|Arena|Steam|英语|域名|账号|FIPS|认证|无人机|光纤|MSTP|Centec|Marvell|Olycom|Netas|Saga|Sales Engineer|领英|LinkedIn|FAQ|产品规格|宣传文案", re.IGNORECASE)
-NONSTOCK_MESSAGE_RE = re.compile(r"PoE|DWDM|SEO|交换机|路由器|光模块|光通信|NDAA|consignment|授权|供应商|订单|军工|出口|税务|法律|客户|无人机|光纤|MSTP|Centec|Marvell|Olycom|Netas|Saga|Sales Engineer|领英|LinkedIn|WhatsApp|饮食|尿道|婚姻|孩子|旅行|域名|账号|Steam|Playwright|Claude|Arena|HTML|CSS|token|英语|FAQ|报价|采购|库存", re.IGNORECASE)
+NONSTOCK_MESSAGE_RE = re.compile(r"PoE|DWDM|SEO|交换机|路由器|光模块|光通信|NDAA|consignment|授权|供应商|订单|军工|出口|税务|法律|客户|无人机|光纤|MSTP|Centec|Marvell|Olycom|Netas|Saga|Sales Engineer|领英|LinkedIn|WhatsApp|饮食|尿道|婚姻|孩子|旅行|域名|账号|Steam|Playwright|Claude|Arena|HTML|CSS|token|英语|FAQ|报价|采购|库存|白酒|茅台酒|酿造|酒精|礼品卡", re.IGNORECASE)
 HARD_MARKET_RE = re.compile(r"股票|股市|股价|股息|持仓|建仓|加仓|减仓|清仓|涨停|跌停|K线|均线|成交量|换手率|市盈率|市净率|吸筹|主力资金|北向资金|融资融券|交割单|做[Tt](?![A-Za-z])|止损|止盈|浮盈|浮亏|牛市|熊市|大盘|美股|港股|A股|ETF|IPO|纳斯达克|道琼斯|标普|证券|券商|交易所|收息|定投|价值投资|归母|扣非|财报|股票账户|证券交易", re.IGNORECASE)
+EXPLICIT_STOCK_RE = re.compile(r"股价|股息率|股票投资|股票分红|买股票|股票分析|股票研究|股票策略|股票交易|股票市场|A股|港股|美股|ETF|IPO|纳斯达克|道琼斯|标普", re.IGNORECASE)
+COMPANY_CONTEXT_RE = re.compile(r"海澜之家|海尔智家|格力电器|云铝股份|五粮液|顺丰控股|汇川技术|迈瑞医疗|江西铜业|华能蒙电|工业富联|中国铝业|紫金矿业|中国银行|泸州老窖|美的集团|贵州茅台|宁德时代|比亚迪|腾讯控股|东方财富|同花顺|招商银行|中国平安|中国神华|中远海控|中芯国际|中际旭创|新易盛|沪电股份|立讯精密|恒瑞医药|药明康德|中国中免")
 
 
 def relevance(text: str, title: str = "") -> tuple[bool, list[str]]:
@@ -496,8 +498,10 @@ def relevance(text: str, title: str = "") -> tuple[bool, list[str]]:
     tickers = {m.group(0) for m in TICKER_RE.finditer(text)}
     tickers.update(m.group(0) for m in EN_TICKER_RE.finditer(text))
     hits = sorted(core | support | tickers, key=str.lower)
-    if NONSTOCK_MESSAGE_RE.search(text) and not HARD_MARKET_RE.search(text):
-        return False, hits
+    if NONSTOCK_MESSAGE_RE.search(text):
+        market_score = len(HARD_MARKET_RE.findall(text)) + (1 if COMPANY_CONTEXT_RE.search(text) else 0)
+        if not EXPLICIT_STOCK_RE.search(text) and market_score < 2:
+            return False, hits
     if core:
         return True, hits
     title_stock = bool(TITLE_RE.search(title) or TICKER_RE.fullmatch(title.strip()) or EN_TICKER_RE.fullmatch(title.strip()))
@@ -1004,7 +1008,8 @@ def main():
     for ref in sorted(refs):
         if ref.startswith(("http://", "https://")) or ref in {"file_path", "file-service"}:
             continue
-        match = re.search(r"file[_-][A-Za-z0-9_-]+", ref)
+        candidate = ref.rsplit("/", 1)[-1].split("?", 1)[0]
+        match = re.search(r"file_(?:[A-Za-z0-9_-]+)|file-(?!service\b)[A-Za-z0-9_-]+", candidate)
         if not match:
             continue
         token = match.group(0)
