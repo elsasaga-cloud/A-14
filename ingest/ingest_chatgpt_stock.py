@@ -30,6 +30,7 @@ OUT = Path(OUT_REL) if os.path.isabs(OUT_REL) else ROOT / OUT_REL
 OUT_REL = os.path.relpath(OUT, ROOT) if OUT.is_relative_to(ROOT) else str(OUT)
 SOURCE_IDS = [x.strip() for x in os.environ.get("SOURCE_IDS", "").split(",") if x.strip()]
 SOURCE_MD5 = [x.strip().lower() for x in os.environ.get("SOURCE_MD5", "").split(",")]
+SOURCE_RELEASE = os.environ.get("SOURCE_RELEASE", "").strip()
 LOCAL_FILES = [x.strip() for x in os.environ.get("LOCAL_FILES", "").split(",") if x.strip()]
 BACKUP = os.environ.get("BACKUP", "1") == "1"
 OCR = os.environ.get("OCR", "1") == "1"
@@ -231,8 +232,25 @@ def resolve_source() -> tuple[str, Path]:
         if not source.is_file():
             abort(1, f"LOCAL_FILES not found: {source}")
         return source.name, source
+    if SOURCE_RELEASE:
+        release_dir = RAW / "release"
+        shutil.rmtree(release_dir, ignore_errors=True)
+        release_dir.mkdir(parents=True, exist_ok=True)
+        result = run(["gh", "release", "download", SOURCE_RELEASE, "-D", str(release_dir), "--clobber"], cwd=ROOT, timeout=7200)
+        if result.returncode != 0:
+            abort(3, f"Release download failed: {(result.stderr or result.stdout)[-300:]}")
+        sources = [p for p in release_dir.iterdir() if p.is_file()]
+        if not sources:
+            abort(3, "Release contained no source file")
+        source = sources[0]
+        if SOURCE_MD5 and re.fullmatch(r"[0-9a-f]{32}", SOURCE_MD5[0] or ""):
+            actual = md5_file(source)
+            log("MD5", actual)
+            if actual != SOURCE_MD5[0]:
+                abort(3, f"MD5 mismatch: {actual} != {SOURCE_MD5[0]}")
+        return source.name, source
     if not SOURCE_IDS:
-        abort(1, "SOURCE_IDS is required")
+        abort(1, "SOURCE_IDS or SOURCE_RELEASE is required")
     fid = SOURCE_IDS[0]
     dest = RAW / (fid + ".zip")
     name, error = drive_download(fid, dest)
@@ -247,6 +265,8 @@ def resolve_source() -> tuple[str, Path]:
 
 
 def backup_source(name: str, source: Path):
+    if SOURCE_RELEASE:
+        return  # The source is already in this Release; do not upload it again.
     if not (BACKUP and IN_ACTIONS and shutil.which("gh")):
         return
     if run(["gh", "release", "view", RELEASE_TAG], cwd=ROOT).returncode != 0:
@@ -280,6 +300,7 @@ def unzip_source(source: Path) -> int:
     shutil.rmtree(UNPACK, ignore_errors=True)
     UNPACK.mkdir(parents=True)
     count = 0
+    listing = []
     with zipfile.ZipFile(source) as archive:
         for info in archive.infolist():
             name = fixed_name(info).replace("\\", "/")
@@ -294,6 +315,8 @@ def unzip_source(source: Path) -> int:
             with archive.open(info) as src, target.open("wb") as dst:
                 shutil.copyfileobj(src, dst, 2 << 20)
             count += 1
+            listing.append(f"{name}\t{info.file_size}")
+    (OUT / "_zip_listing.txt").write_text("\n".join(listing) + "\n", encoding="utf-8")
     log("unpacked members", count)
     return count
 
