@@ -1,7 +1,7 @@
 {
   "schema": "gpt-stock-archive-v1",
   "title": "ChatGPT 股票相关记录（2026-10-29 导出）",
-  "generated_utc": "2026-10-30T11:32:42.992977+00:00",
+  "generated_utc": "2026-10-30T11:37:03.561150+00:00",
   "source": {
     "name": "153awyFG7sOMEwl9GI2BL3XU_rCvOvbev.zip",
     "bytes": 115267786,
@@ -28,7 +28,7 @@
     "standalone_files_scanned": 226,
     "attachments_archived": 59,
     "errors": 0,
-    "missing_asset_references": 28
+    "missing_asset_references": 4
   },
   "conversations": [
     {
@@ -235,9 +235,9 @@
         "ETF",
         "GOOGL",
         "MA20",
+        "meta",
         "META",
         "Meta",
-        "meta",
         "MSFT",
         "NFLX",
         "NVDA",
@@ -287,7 +287,7 @@
         "跌停",
         "道琼斯"
       ],
-      "raw_sha256": "6fe4979f09b63844c28679ac78f06fd26e67d8ba44966f89471d891d2dafcb72"
+      "raw_sha256": "f114977dd1557bab5879d96f4c8093c46bca297ccdb40a1beb261a02b5dbbfb5"
     },
     {
       "conversation_id": "6916d1f6-6318-8324-97f0-99e31a9df371",
@@ -307,15 +307,15 @@
         "HLA",
         "ma20",
         "MA20",
-        "ma40",
         "MA40",
+        "ma40",
         "META",
         "MSFT",
         "NVDA",
         "Portfolio",
         "ROE",
-        "Stock",
         "stock",
+        "Stock",
         "东方财富",
         "主力资金",
         "亚马逊",
@@ -709,8 +709,8 @@
       "matched_terms": [
         "Dividend",
         "Equity",
-        "ETF",
         "etf",
+        "ETF",
         "Stock",
         "仓位",
         "分红",
@@ -990,8 +990,8 @@
         "ETF",
         "HLA",
         "PE",
-        "Stock",
         "stock",
+        "Stock",
         "中国神华",
         "中国铝业",
         "云铝股份",
@@ -1134,8 +1134,8 @@
         "ETF",
         "HLA",
         "K线",
-        "stock",
         "Stock",
+        "stock",
         "亚马逊",
         "仓位",
         "估值",
@@ -1293,8 +1293,8 @@
         "Meta",
         "NVDA",
         "PE",
-        "stock",
         "Stock",
+        "stock",
         "亚马逊",
         "仓位",
         "估值",
@@ -1839,7 +1839,7 @@
         "股价",
         "股息"
       ],
-      "raw_sha256": "1f8f9a49f97dd873436511eb465c7d17f6bf47cba238288a7e1ff912753c8194"
+      "raw_sha256": "a6b216ebac342a361bffac8cfa470a6d60bb3afbf47b47ba10371224116ff227"
     },
     {
       "conversation_id": "69c78612-dd20-832f-a129-11b00bf2e01b",
@@ -1871,7 +1871,7 @@
         "股息",
         "股票"
       ],
-      "raw_sha256": "1e7bea3edf78f327df5c9e3cdfd4c05fcf6b971756f551a309ff8949602e3dbb"
+      "raw_sha256": "dc820c20c7bead8fd475a2c27c595652ae78ab0cbedc0f7c8d99dbab2c6da236"
     },
     {
       "conversation_id": "69c78f9d-49d8-838d-8f7d-a8c5ae0a541d",
@@ -1886,8 +1886,8 @@
         "Dividend",
         "Equity",
         "ETF",
-        "stock",
         "Stock",
+        "stock",
         "亚马逊",
         "仓位",
         "估值",
@@ -2324,14 +2324,14 @@
       "text_chars": 6706,
       "matched_terms": [
         "AMD",
-        "ETF",
         "etf",
+        "ETF",
         "NVDA",
         "台积电",
         "持仓",
         "美股"
       ],
-      "raw_sha256": "bba2b7f3e1c8de53c8c21fa6a1b71fca8acdfcc9a5297c3a1c0759284c91e121"
+      "raw_sha256": "34e27a022ca56c429cf54347ec40143d433a4f05abeddd6cdd3af129459d4c0a"
     },
     {
       "conversation_id": "69df41cf-0774-832f-90cd-a3a39386907a",
@@ -2389,8 +2389,8 @@
       "matched_terms": [
         "A股",
         "ETF",
-        "stock",
         "Stock",
+        "stock",
         "仓位",
         "估值",
         "分红",
@@ -2958,7 +2958,7 @@
         "资产配置",
         "追涨"
       ],
-      "raw_sha256": "b508ec17bba0c7d637af39ef250a396ad27049c0b4fbd1759dedba101abe2856"
+      "raw_sha256": "111ff8c6b2c566a467a4cc0e582d846bd59900b8856eb2db92c7d74034e33abd"
     },
     {
       "conversation_id": "69f5ed45-40b0-83eb-bc0a-e44caa2c5518",
@@ -2993,8 +2993,8 @@
         "K线",
         "MA20",
         "MA40",
-        "stock",
         "STOCK",
+        "stock",
         "东方财富",
         "吸筹",
         "均线",
@@ -3011,7 +3011,7 @@
         "股票",
         "量能"
       ],
-      "raw_sha256": "e719e8702a5ea3cdb4981bc2e50ef745a8bfdc88e6cb63b76c553710886fad2d"
+      "raw_sha256": "12c45018e5354fd5aa38beb9cc959249e57e13ddfa748c85800229ccaf917c3d"
     },
     {
       "conversation_id": "69fa99a6-2220-8320-9c10-710b27099e0c",
@@ -3072,8 +3072,8 @@
         "K线",
         "MA20",
         "MA40",
-        "stock",
         "STOCK",
+        "stock",
         "东方财富",
         "交易所",
         "吸筹",
@@ -3086,7 +3086,7 @@
         "股票",
         "量能"
       ],
-      "raw_sha256": "e7a6c45723c3a2900e2ebdcc5906e20236215010e95f6ef51237ce8868e1bfc7"
+      "raw_sha256": "ac85de15dd4f34b42570a2d1092c5453093e8716ff789da0726c51d68eae571f"
     },
     {
       "conversation_id": "69fc30e9-133c-8320-9165-dcedf33c1208",
@@ -3258,7 +3258,7 @@
         "持仓",
         "股票"
       ],
-      "raw_sha256": "7b2fa7d875398e0736eab7c884a07a5268abe3be9b1c06ce46e540b32689520e"
+      "raw_sha256": "9e5d6fa64684267d5f2e7521476005b3b08bd806bb55ec58ecaa465a8f57d877"
     },
     {
       "conversation_id": "6a02c3a7-0e80-83ec-a125-14373905273f",
@@ -3352,8 +3352,8 @@
         "IPO",
         "K线",
         "PE",
-        "stock",
         "Stock",
+        "stock",
         "估值",
         "市值",
         "开盘",
@@ -3758,8 +3758,8 @@
         "PE",
         "pe",
         "ROE",
-        "stock",
         "STOCK",
+        "stock",
         "东方财富",
         "估值",
         "分红",
@@ -3776,7 +3776,7 @@
         "财报",
         "贵州茅台"
       ],
-      "raw_sha256": "c0c577133dcf7ca69eb81caea33ef0f80da10d5173773130cf6b66a1d9e793d0"
+      "raw_sha256": "c1b5ff0e6796baac14e820aa8b29726af00b9f0e11d910d06f22ec2c9aefadca"
     },
     {
       "conversation_id": "6a11a08d-916c-83ec-ac23-da75f4390723",
@@ -4149,8 +4149,8 @@
       "text_chars": 3266,
       "matched_terms": [
         "Equity",
-        "ETF",
         "etf",
+        "ETF",
         "仓位",
         "分红",
         "大盘",
@@ -4342,15 +4342,15 @@
       "text_chars": 9286,
       "matched_terms": [
         "AAPL",
-        "amd",
         "AMD",
+        "amd",
         "AMZN",
         "AVGO",
         "ETF",
         "GOOGL",
+        "meta",
         "META",
         "Meta",
-        "meta",
         "MSFT",
         "NFLX",
         "NVDA",
@@ -4361,7 +4361,7 @@
         "美股",
         "股票"
       ],
-      "raw_sha256": "ed44d982aefcaa583a5330f0189f22c05e2fb173dbbf4fb07c26ad63ff58c7e7"
+      "raw_sha256": "c34c0441a0d701d2a25577c507a92fd5d1859f3d9b0865ab4d66e1d6ecdeaa9d"
     },
     {
       "conversation_id": "6a2ffb40-05f8-83ec-b8d2-937a088a1b97",
@@ -4534,8 +4534,8 @@
         "A股",
         "ETF",
         "K线",
-        "ma20",
         "MA20",
+        "ma20",
         "MA40",
         "META",
         "Meta",
@@ -4920,19 +4920,19 @@
         "A股",
         "etf",
         "ETF",
-        "HLA",
         "hla",
+        "HLA",
         "K线",
         "MA20",
         "MACD",
         "MSFT",
-        "nvda",
         "NVDA",
+        "nvda",
         "pe",
         "RSI",
-        "stock",
         "Stock",
         "STOCK",
+        "stock",
         "stocks",
         "东方财富",
         "估值",
@@ -4974,8 +4974,8 @@
         "etf",
         "ETF",
         "K线",
-        "ma20",
         "MA20",
+        "ma20",
         "PB",
         "PE",
         "pe",
@@ -5009,7 +5009,7 @@
         "量能",
         "阿里巴巴"
       ],
-      "raw_sha256": "d1039dfc381409acf23df4d5b693a247b2fd21ae5f5bbebd747decbc22d09579"
+      "raw_sha256": "3b9decaeec9785c48b40d71e4636b46dabd6c465e91684b574dcfdf4d096e4df"
     },
     {
       "conversation_id": "6a6e1a40-40a0-83ec-a24b-146998aec5b5",
@@ -5038,8 +5038,8 @@
       "matched_terms": [
         "IPO",
         "K线",
-        "nvda",
         "NVDA",
+        "nvda",
         "PE",
         "亚马逊",
         "仓位",
@@ -5242,8 +5242,8 @@
       "source_message_count": 4,
       "text_chars": 2645,
       "matched_terms": [
-        "ETF",
         "etf",
+        "ETF",
         "Portfolio",
         "stock",
         "微软",
@@ -5382,8 +5382,8 @@
       "text_chars": 2460,
       "matched_terms": [
         "dividends",
-        "Portfolio",
         "portfolio",
+        "Portfolio",
         "stock",
         "stocks"
       ],
@@ -6042,30 +6042,6 @@
     "file-9Z5mzGQjXRcf9udAqg5gGW",
     "file_00000000b5807207b32871e4aa59216a",
     "file_00000000d2e871fa933ca7260bf91ca2",
-    "file_00000000f3287206997a137fb91dd398",
-    "file_1c576b06b5188191a0c570191f38a276",
-    "file_2b87aa3998fc81918d261e9832f22f6f",
-    "file_3208954957848191859445b1a3ffcabe",
-    "file_39c1fcc983288191b42f162a943ee9a7",
-    "file_3c7ee4764228819184794c67837d8347",
-    "file_3e71c104b19c81919a8a15dfc7c1d130",
-    "file_4217f7e704d081918958ce05f8ff0f20",
-    "file_4734f087bf4c8191987c2366f9afc780",
-    "file_5225a42ca7008191bdef7b1350b3e372",
-    "file_70c19873ba4881918a2b142b8b79cc27",
-    "file_87196071a7a88191b9fd5bd66f048c5f",
-    "file_877562238d908191b04c9feb399d8e89",
-    "file_887c80ce29f4819192d5ef1fb350bde1",
-    "file_8c2944c4eacc8191b4ea6c2fd4f71f98",
-    "file_a3b0371af84881918463b65b606b6403",
-    "file_a3ef75e78c2481919ce23312e7771198",
-    "file_a5db900e94688191b23d256d31857b5b",
-    "file_ae24598cf33481919a2906fa4c6f43e6",
-    "file_b4b8cfe8d34881918aac9abcdaa86e39",
-    "file_bd08ae2cf90c8191b014e5cbc9ba3dd8",
-    "file_d1495394a7908191a603a4eb1dacbebd",
-    "file_d95e0a80426481919b17e1a0d5dc4152",
-    "file_efd2eea3aabc8191aab6d8d79208a168",
-    "file_f6b568d1cbbc81918d50e08bb2e4ffa5"
+    "file_00000000f3287206997a137fb91dd398"
   ]
 }
