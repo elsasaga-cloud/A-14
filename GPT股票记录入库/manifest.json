@@ -1,7 +1,7 @@
 {
   "schema": "gpt-stock-archive-v1",
   "title": "ChatGPT 股票相关记录（2026-10-29 导出）",
-  "generated_utc": "2026-10-30T11:37:03.561150+00:00",
+  "generated_utc": "2026-10-30T11:41:25.271142+00:00",
   "source": {
     "name": "153awyFG7sOMEwl9GI2BL3XU_rCvOvbev.zip",
     "bytes": 115267786,
@@ -177,8 +177,8 @@
       "matched_terms": [
         "AAPL",
         "Earnings",
-        "META",
         "Meta",
+        "META",
         "NVDA",
         "stock",
         "投资",
@@ -186,7 +186,7 @@
         "证券交易",
         "财报"
       ],
-      "raw_sha256": "3f2cb7c0eebe51b7d6af278c97cf88fce50a3c70b0750b220ee462de7dc51ecf"
+      "raw_sha256": "7a58972d7262e400c478f9647b86f41c3f7afdbef96e5b21d209b53067437127"
     },
     {
       "conversation_id": "68ef10d9-9b38-8320-a2af-fe337189fad1",
@@ -235,9 +235,9 @@
         "ETF",
         "GOOGL",
         "MA20",
-        "meta",
         "META",
         "Meta",
+        "meta",
         "MSFT",
         "NFLX",
         "NVDA",
@@ -287,7 +287,7 @@
         "跌停",
         "道琼斯"
       ],
-      "raw_sha256": "f114977dd1557bab5879d96f4c8093c46bca297ccdb40a1beb261a02b5dbbfb5"
+      "raw_sha256": "6fe4979f09b63844c28679ac78f06fd26e67d8ba44966f89471d891d2dafcb72"
     },
     {
       "conversation_id": "6916d1f6-6318-8324-97f0-99e31a9df371",
@@ -305,10 +305,10 @@
         "Equity",
         "ETF",
         "HLA",
-        "ma20",
         "MA20",
-        "MA40",
+        "ma20",
         "ma40",
+        "MA40",
         "META",
         "MSFT",
         "NVDA",
@@ -524,7 +524,7 @@
         "跌停",
         "追涨"
       ],
-      "raw_sha256": "0cbd6f26823e7795f28f08516e61111e6fa60071cbc1267ac82f642674c31f3d"
+      "raw_sha256": "11f120f08086a504674da0f9ee42d8df5aadbf76c523aa9c325ac497cbc80b92"
     },
     {
       "conversation_id": "69560ab9-d3d0-8321-a6bd-a6b461d2c3bd",
@@ -580,8 +580,8 @@
       "source_message_count": 48,
       "text_chars": 18965,
       "matched_terms": [
-        "DPS",
         "dps",
+        "DPS",
         "ETF",
         "HLA",
         "仓位",
@@ -788,7 +788,7 @@
         "股息",
         "股票"
       ],
-      "raw_sha256": "89a6eaf64e23b2042b08d500e8e1d7b9ada4c4bd9d8c9cbf75dff6bb9e32414c"
+      "raw_sha256": "d96cabfb219406be35fd07da1950da773b0e0339365b2547c03065d4042e006e"
     },
     {
       "conversation_id": "69a6e020-2330-832e-b438-dad0fb74754a",
@@ -1034,7 +1034,7 @@
         "贵州茅台",
         "跌停"
       ],
-      "raw_sha256": "9c732c60cbd23161f32c8bbc11056fc68fc7445390fd8d5251e9dfdf42e9cf40"
+      "raw_sha256": "23a590144e5157e96533ab4ca379205dbdc520774764026ddb8ad0b6d4da9fea"
     },
     {
       "conversation_id": "69b1484b-c660-832e-b81b-2d355aa1c49a",
@@ -1134,8 +1134,8 @@
         "ETF",
         "HLA",
         "K线",
-        "Stock",
         "stock",
+        "Stock",
         "亚马逊",
         "仓位",
         "估值",
@@ -1160,7 +1160,7 @@
         "证券",
         "资产配置"
       ],
-      "raw_sha256": "fcef69d16ae49146d700f58320e1190baef3b2e5997eba637cc30cb75a8bb4f7"
+      "raw_sha256": "1e79c31fd328de733374527aea21ea85c4965d5d313bf07d07315c21936585e1"
     },
     {
       "conversation_id": "69b75de9-bc64-838c-84e1-a56e6479b050",
@@ -1293,8 +1293,8 @@
         "Meta",
         "NVDA",
         "PE",
-        "Stock",
         "stock",
+        "Stock",
         "亚马逊",
         "仓位",
         "估值",
@@ -1325,7 +1325,7 @@
         "谷歌",
         "量能"
       ],
-      "raw_sha256": "373dcdecf6d484b55a4eafadef7dc8e560e31113c2bbd915f8097f50ccc390eb"
+      "raw_sha256": "f64ec79506d6ebc541306a733603be890cb566fade4ba92042b7ec98357d60cb"
     },
     {
       "conversation_id": "69bfa441-1a14-8387-b3b1-95005435356c",
@@ -1810,8 +1810,8 @@
       "text_chars": 61036,
       "matched_terms": [
         "A股",
-        "dividend",
         "Dividend",
+        "dividend",
         "Equity",
         "etf",
         "ETF",
@@ -1871,7 +1871,7 @@
         "股息",
         "股票"
       ],
-      "raw_sha256": "dc820c20c7bead8fd475a2c27c595652ae78ab0cbedc0f7c8d99dbab2c6da236"
+      "raw_sha256": "ed6708092bfa8f212efa23cddd2d22a5286da4e801029d32f6a229f0cbb451cf"
     },
     {
       "conversation_id": "69c78f9d-49d8-838d-8f7d-a8c5ae0a541d",
@@ -1886,8 +1886,8 @@
         "Dividend",
         "Equity",
         "ETF",
-        "Stock",
         "stock",
+        "Stock",
         "亚马逊",
         "仓位",
         "估值",
@@ -1909,7 +1909,7 @@
         "谷歌",
         "资产配置"
       ],
-      "raw_sha256": "f50eff12959b09ae57b7db036d06eb57d9cb9079f7ebfa9bafb877f32a95eec7"
+      "raw_sha256": "72c6b8f448566a9158b88f1d1a6dbea9655b471214060bb4743e3fc7ded232e0"
     },
     {
       "conversation_id": "69cb9bd2-2f30-832a-8e76-993b3ab97d00",
@@ -2389,8 +2389,8 @@
       "matched_terms": [
         "A股",
         "ETF",
-        "Stock",
         "stock",
+        "Stock",
         "仓位",
         "估值",
         "分红",
@@ -2409,7 +2409,7 @@
         "股票",
         "资产配置"
       ],
-      "raw_sha256": "019e869c3c5c7d1abdd641a8a8c947d1a59885ee594256a5c05d00461a29dc9d"
+      "raw_sha256": "c6b263859f85d80a6f4bbfbc9b49e544a65a05da12fcc013e3d0bf6546ab6d7e"
     },
     {
       "conversation_id": "69e08915-d6d0-8329-a9e1-a603c639bdec",
@@ -2572,8 +2572,8 @@
         "Dividend",
         "Equity",
         "ETF",
-        "Stock",
         "stock",
+        "Stock",
         "仓位",
         "分红",
         "定投",
@@ -2587,7 +2587,7 @@
         "资产配置",
         "追涨"
       ],
-      "raw_sha256": "ea8a718acaf2ef86af4493746a0df7867001b08908bcbe9120182ae4e0909639"
+      "raw_sha256": "77ac67e5edcdbab1090353743baab5b9f6d086ba7bf25125715fc5feb3d4ca20"
     },
     {
       "conversation_id": "69e64d09-1f7c-8326-958c-70a904dc966c",
@@ -2876,8 +2876,8 @@
       "source_message_count": 12,
       "text_chars": 65892,
       "matched_terms": [
-        "dividend",
         "Dividend",
+        "dividend",
         "EPS",
         "ETF",
         "NVDA",
@@ -2907,7 +2907,7 @@
         "股票",
         "财报"
       ],
-      "raw_sha256": "66545b80c1ff0d23ce29ede4b17d5565bbb8d82b6638ea148adfaf450411b745"
+      "raw_sha256": "d87ce2f97bbb64b57758340a8134c382dd6f2ef92955166dd02fbe996be843cc"
     },
     {
       "conversation_id": "69ecc89c-4758-8328-a5d2-220bd1d1a907",
@@ -3011,7 +3011,7 @@
         "股票",
         "量能"
       ],
-      "raw_sha256": "12c45018e5354fd5aa38beb9cc959249e57e13ddfa748c85800229ccaf917c3d"
+      "raw_sha256": "e719e8702a5ea3cdb4981bc2e50ef745a8bfdc88e6cb63b76c553710886fad2d"
     },
     {
       "conversation_id": "69fa99a6-2220-8320-9c10-710b27099e0c",
@@ -3072,8 +3072,8 @@
         "K线",
         "MA20",
         "MA40",
-        "STOCK",
         "stock",
+        "STOCK",
         "东方财富",
         "交易所",
         "吸筹",
@@ -3086,7 +3086,7 @@
         "股票",
         "量能"
       ],
-      "raw_sha256": "ac85de15dd4f34b42570a2d1092c5453093e8716ff789da0726c51d68eae571f"
+      "raw_sha256": "e7a6c45723c3a2900e2ebdcc5906e20236215010e95f6ef51237ce8868e1bfc7"
     },
     {
       "conversation_id": "69fc30e9-133c-8320-9165-dcedf33c1208",
@@ -3352,8 +3352,8 @@
         "IPO",
         "K线",
         "PE",
-        "Stock",
         "stock",
+        "Stock",
         "估值",
         "市值",
         "开盘",
@@ -3753,10 +3753,10 @@
         "dividend",
         "ETF",
         "K线",
-        "PB",
         "pb",
-        "PE",
+        "PB",
         "pe",
+        "PE",
         "ROE",
         "STOCK",
         "stock",
@@ -3776,7 +3776,7 @@
         "财报",
         "贵州茅台"
       ],
-      "raw_sha256": "c1b5ff0e6796baac14e820aa8b29726af00b9f0e11d910d06f22ec2c9aefadca"
+      "raw_sha256": "dd33a2a3bb25adedcb3284bdaba07c80ffc48f769e6cc992bb8019ae904dbcf8"
     },
     {
       "conversation_id": "6a11a08d-916c-83ec-ac23-da75f4390723",
@@ -4348,9 +4348,9 @@
         "AVGO",
         "ETF",
         "GOOGL",
-        "meta",
         "META",
         "Meta",
+        "meta",
         "MSFT",
         "NFLX",
         "NVDA",
@@ -4361,7 +4361,7 @@
         "美股",
         "股票"
       ],
-      "raw_sha256": "c34c0441a0d701d2a25577c507a92fd5d1859f3d9b0865ab4d66e1d6ecdeaa9d"
+      "raw_sha256": "c78efe60a9facf99cf46758bdd4dd3686c128d15f16f7d5ad3a2daa402f1b3c2"
     },
     {
       "conversation_id": "6a2ffb40-05f8-83ec-b8d2-937a088a1b97",
@@ -4570,7 +4570,7 @@
         "财报",
         "量能"
       ],
-      "raw_sha256": "a8b471e9278d41e36db92ce12cbd0ac5d0e9a491cb8bf772234f00d2d142cd84"
+      "raw_sha256": "300f32bc7ebf86b27b1d2fafe958cfb5fd6547f09762a4140c207ebe3ccaf405"
     },
     {
       "conversation_id": "6a59ed29-13b8-83ec-b7c0-296bb5d9dfdf",
@@ -4862,15 +4862,15 @@
       "matched_terms": [
         "NVDA",
         "PE",
-        "Stock",
         "stock",
+        "Stock",
         "stocks",
         "东方财富",
         "估值",
         "投资",
         "股票"
       ],
-      "raw_sha256": "e1a6d01af8ebf62ee677f69d5138112533e51efdcd1eb9d25fec092e72b33378"
+      "raw_sha256": "36b60e2d7ceb4708a8a0e8a3fcd001fbe377b181f8b237a0cb956b45c96f28ae"
     },
     {
       "conversation_id": "6a62c896-4bfc-83ec-971a-4d006bb15e61",
@@ -4930,9 +4930,9 @@
         "nvda",
         "pe",
         "RSI",
-        "Stock",
         "STOCK",
         "stock",
+        "Stock",
         "stocks",
         "东方财富",
         "估值",
@@ -4949,7 +4949,7 @@
         "股票",
         "财报"
       ],
-      "raw_sha256": "9b6dffc231ba6dfc798c063f4f92a7cbdc050c9e6980d33454ea5f8588d11670"
+      "raw_sha256": "970e8bd9d0793ca350cef17db2fe046971160177c004e574cd864eec34f54a7a"
     },
     {
       "conversation_id": "6a6b3aae-8284-83ec-b35c-26a08da0727d",
@@ -4977,8 +4977,8 @@
         "MA20",
         "ma20",
         "PB",
-        "PE",
         "pe",
+        "PE",
         "ROE",
         "stock",
         "stocks",
@@ -5009,7 +5009,7 @@
         "量能",
         "阿里巴巴"
       ],
-      "raw_sha256": "3b9decaeec9785c48b40d71e4636b46dabd6c465e91684b574dcfdf4d096e4df"
+      "raw_sha256": "d260ec12f4bd8701e0d54b4ef949fb2da10a80e8e35aa1e5f1bfe62cb7550cbf"
     },
     {
       "conversation_id": "6a6e1a40-40a0-83ec-a24b-146998aec5b5",
@@ -5382,8 +5382,8 @@
       "text_chars": 2460,
       "matched_terms": [
         "dividends",
-        "portfolio",
         "Portfolio",
+        "portfolio",
         "stock",
         "stocks"
       ],
