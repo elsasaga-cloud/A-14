@@ -539,7 +539,7 @@ def asset_refs(value, refs: set[str], key: str = ""):
                 refs.add(value)
         elif key in {"url", "download_url"} and value.startswith(("sediment://", "file-service://")):
             refs.add(value)
-        for match in re.finditer(r"(?:file[-_][A-Za-z0-9_-]+|sediment://[^\s\"'<>]+|file-service://[^\s\"'<>]+)", value):
+        for match in re.finditer(r"(?<![A-Za-z0-9])(?:file_(?:[A-Za-z0-9_-]+)|file-(?!service\b)[A-Za-z0-9_-]+|sediment://[^\s\"'<>]+|file-service://[^\s\"'<>]+)", value):
             refs.add(match.group(0))
 
 
