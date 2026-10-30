@@ -382,6 +382,7 @@ def message_rows(conversation: dict) -> list[dict]:
             author = message.get("author") or {}
             rows.append({
                 "node_id": node_id,
+                "node": node,
                 "message": message,
                 "role": author.get("role", "unknown") if isinstance(author, dict) else str(author),
                 "time": message.get("create_time") or 0,
@@ -394,6 +395,7 @@ def message_rows(conversation: dict) -> list[dict]:
             author = message.get("author") or {}
             rows.append({
                 "node_id": str(message.get("id", order)),
+                "node": {"message": message},
                 "message": message,
                 "role": author.get("role", message.get("role", "unknown")) if isinstance(author, dict) else str(author),
                 "time": message.get("create_time") or 0,
@@ -458,8 +460,51 @@ def stock_hits(text: str) -> list[str]:
     return sorted(hits, key=str.lower)
 
 
+CORE_TERMS = [
+    "股票", "股市", "股价", "股息", "分红", "派息", "股东", "股票账户", "证券交易", "证券", "券商", "交易所",
+    "A股", "港股", "美股", "港股通", "沪深", "纳斯达克", "标普", "道琼斯", "ETF", "IPO", "涨停", "跌停",
+    "做T", "持仓", "建仓", "加仓", "减仓", "清仓", "仓位", "K线", "日线", "周线", "月线", "均线", "成交量",
+    "换手率", "市盈率", "市净率", "估值", "财报", "归母", "扣非", "业绩预告", "吸筹", "主力资金", "北向资金",
+    "融资融券", "交割单", "大盘", "牛市", "熊市", "浮盈", "浮亏", "止损", "止盈", "套牢", "抄底", "追涨",
+    "杀跌", "支撑位", "压力位", "收息", "定投", "价值投资", "投资组合", "资产配置", "市值", "回购", "盘前",
+    "盘后", "收盘", "开盘", "看盘", "量能", "dividend", "dividends", "buyback", "repurchase", "earnings",
+    "海澜之家", "海尔智家", "格力电器", "云铝股份", "五粮液", "顺丰控股", "汇川技术", "迈瑞医疗", "江西铜业",
+    "华能蒙电", "工业富联", "中国铝业", "紫金矿业", "中国银行", "泸州老窖", "美的集团", "贵州茅台", "宁德时代",
+    "比亚迪", "腾讯控股", "东方财富", "同花顺", "招商银行", "中国平安", "中国神华", "中远海控", "中芯国际",
+    "中际旭创", "新易盛", "沪电股份", "立讯精密", "恒瑞医药", "药明康德", "中国中免", "台积电",
+]
+SUPPORT_TERMS = [
+    "投资", "营收", "净利润", "年报", "季报", "复盘", "板块", "成本价", "stock", "stocks", "portfolio", "equity",
+    "POC", "PoC", "SLA", "Meta", "PE", "PB", "ROE", "EPS", "DPS", "GTC", "MA20", "MA40", "MACD", "RSI", "KDJ",
+    "SAR", "HLA", "GOOG", "GOOGL", "AAPL", "MSFT", "NVDA", "TSLA", "AMZN", "META", "AMD", "AVGO", "NFLX", "TSM",
+    "谷歌", "微软", "英伟达", "特斯拉", "亚马逊", "阿里巴巴", "海澜", "海尔", "美团", "福特",
+]
+CORE_RE = re.compile("|".join(_term_pattern(x) for x in sorted(set(CORE_TERMS), key=len, reverse=True)), re.IGNORECASE)
+SUPPORT_RE = re.compile("|".join(_term_pattern(x) for x in sorted(set(SUPPORT_TERMS), key=len, reverse=True)), re.IGNORECASE)
+TITLE_RE = re.compile(r"股票|股市|股价|ETF|美股|港股|A股|投资|分红|收息|股权|持仓|仓位|估值|财报|QDII|SCHG|SCHB|HPQ|HPE|NVO|DOW|BOC|GLW|TCAI|CHPS|EUV|CBRS|长牛|多头|空头|波段|财富|财商|FIRE|被动收入|资产配置|美团|福特|四大行|长电|海澜|海尔|五粮液|铝价|强股|资本流动", re.IGNORECASE)
+NONSTOCK_CONTEXT_RE = re.compile(r"PoE|DWDM|SEO|交换机|路由器|光模块|客户|报价|出口|增值税|健康|饮食|尿道|婚姻|孩子|旅行|WhatsApp|Playwright|Selenium|HTML|CSS|token|Claude|Arena|Steam|英语|域名|账号|FIPS|认证|无人机|光纤|MSTP|Centec|Marvell|Olycom|Netas|Saga|Sales Engineer|领英|LinkedIn|FAQ|产品规格|宣传文案", re.IGNORECASE)
+
+
+def relevance(text: str, title: str = "") -> tuple[bool, list[str]]:
+    core = {m.group(0) for m in CORE_RE.finditer(text)}
+    support = {m.group(0) for m in SUPPORT_RE.finditer(text)}
+    tickers = {m.group(0) for m in TICKER_RE.finditer(text)}
+    tickers.update(m.group(0) for m in EN_TICKER_RE.finditer(text))
+    hits = sorted(core | support | tickers, key=str.lower)
+    if core:
+        return True, hits
+    title_stock = bool(TITLE_RE.search(title) or TICKER_RE.fullmatch(title.strip()) or EN_TICKER_RE.fullmatch(title.strip()))
+    invest = {x.lower() for x in support} & {"投资", "stock", "stocks", "portfolio", "equity", "资产配置", "投资组合"}
+    finance = {x.lower() for x in support} & {"净利润", "年报", "季报", "pe", "pb", "roe", "eps", "dps"}
+    if tickers and (title_stock or invest or finance):
+        return True, hits
+    if invest and finance:
+        return True, hits
+    return False, hits
+
+
 def is_stock_text(text: str) -> bool:
-    return bool(stock_hits(text))
+    return relevance(text)[0]
 
 
 def safe_name(value: str, limit=90) -> str:
@@ -505,7 +550,8 @@ def extract_document(path: Path) -> tuple[str, str]:
     ext = path.suffix.lower()
     if ext == ".dat":
         # ChatGPT exports often store attachments as extensionless .dat files.
-        head = path.open("rb").read(16)
+        with path.open("rb") as head_file:
+            head = head_file.read(16)
         if head.startswith(b"\x89PNG"):
             ext = ".png"
         elif head.startswith(b"\xff\xd8\xff"):
@@ -563,7 +609,8 @@ def extract_document(path: Path) -> tuple[str, str]:
         return "\n".join(out), "python-docx"
     if ext in {".xlsx", ".xlsm"}:
         import openpyxl
-        workbook = openpyxl.load_workbook(path, read_only=True, data_only=False)
+        with path.open("rb") as workbook_file:
+            workbook = openpyxl.load_workbook(workbook_file, read_only=True, data_only=False)
         out = []
         for sheet in workbook.worksheets:
             out.append(f"## sheet: {sheet.title} ({sheet.sheet_state})")
@@ -667,47 +714,77 @@ def load_conversations(paths: list[Path]) -> list[dict]:
 
 
 def archive_conversations(conversations: list[dict]) -> tuple[list[dict], set[str], int]:
-    selected = []
+    records = []
     all_message_count = 0
     refs: set[str] = set()
     for conversation in conversations:
         rows = message_rows(conversation)
         all_message_count += len(rows)
-        hits = stock_hits(conversation_search_text(conversation))
-        if not hits:
-            continue
-        selected.append((conversation, rows, hits))
-        asset_refs(conversation, refs)
-    records = []
-    for index, (conversation, rows, hits) in enumerate(selected, 1):
-        cid = str(conversation.get("conversation_id") or conversation.get("id") or f"conversation-{index}")
+        cid = str(conversation.get("conversation_id") or conversation.get("id") or f"conversation-{len(records) + 1}")
         title = str(conversation.get("title") or "untitled")
-        base = f"{index:04d}_{safe_name(title, 65)}_{safe_name(cid, 18)}"
-        raw_path = OUT / "会话原始JSON" / (base + ".json")
-        text_path = OUT / "会话全文" / (base + ".md")
-        # The original object is serialized without deleting or rewriting any fields.
-        write_json(raw_path, conversation)
+        title_stock = bool(TITLE_RE.search(title) or TICKER_RE.fullmatch(title.strip()) or EN_TICKER_RE.fullmatch(title.strip()))
+        chosen = []
+        for index, row in enumerate(rows):
+            text = message_content(row["message"])
+            related, hits = relevance(text, title)
+            if related:
+                chosen.append((index, row, "stock-keyword", hits))
+        # Only a stock-titled conversation can supply short, clearly non-offtopic
+        # context (e.g. "继续" or a brief follow-up) without importing the whole chat.
+        if title_stock and chosen:
+            chosen_indices = {x[0] for x in chosen}
+            for index, row in enumerate(rows):
+                if index in chosen_indices:
+                    continue
+                text = message_content(row["message"])
+                if len(text) > 800 or NONSTOCK_CONTEXT_RE.search(text):
+                    continue
+                neighbours = [rows[j] for j in (index - 1, index + 1) if 0 <= j < len(rows)]
+                if any(relevance(message_content(n["message"]), title)[0] for n in neighbours):
+                    chosen.append((index, row, "stock-title-context", stock_hits(text)))
+        if not chosen:
+            continue
+        chosen.sort(key=lambda x: x[0])
+        for _, row, _, _ in chosen:
+            asset_refs(row["node"], refs)
+        all_hits = sorted({term for _, _, _, hits in chosen for term in hits}, key=str.lower)
+        base = f"{len(records) + 1:04d}_{safe_name(title, 65)}_{safe_name(cid, 18)}"
+        raw_path = OUT / "股票消息原始JSON" / (base + ".json")
+        text_path = OUT / "股票消息全文" / (base + ".md")
+        raw_object = {
+            "conversation_metadata": {k: v for k, v in conversation.items() if k not in ("mapping", "messages")},
+            "selection_unit": "message",
+            "selected_nodes": [
+                {
+                    "node_id": row["node_id"],
+                    "selection_reason": reason,
+                    "matched_terms": hits,
+                    "node": row["node"],
+                }
+                for _, row, reason, hits in chosen
+            ],
+        }
+        write_json(raw_path, raw_object)
         text_path.parent.mkdir(parents=True, exist_ok=True)
         with text_path.open("w", encoding="utf-8") as out:
             out.write(f"# {title}\n\n")
-            out.write(f"- 会话ID：`{cid}`\n- 选中原因：{', '.join(hits)}\n- 原始消息数：{len(rows)}\n")
-            out.write("- 保留范围：该命中会话的全部 mapping 分支、全部角色消息；原始字段见同名 JSON。\n\n")
-            for number, row in enumerate(rows, 1):
+            out.write(f"- 会话ID：`{cid}`\n- 源会话消息数：{len(rows)}\n- 本次入库股票消息数：{len(chosen)}\n")
+            out.write("- 保留范围：仅股票相关消息节点；节点原始字段未删减，正文未截断。\n\n")
+            for number, (_, row, reason, hits) in enumerate(chosen, 1):
                 message = row["message"]
                 mid = str(message.get("id", row["node_id"]))
-                role = row["role"]
-                content = message_content(message)
-                out.write(f"\n===== MESSAGE {number} | role={role} | id={mid} | node={row['node_id']} =====\n")
-                out.write(content)
+                out.write(f"\n===== MESSAGE {number} | role={row['role']} | id={mid} | node={row['node_id']} | reason={reason} =====\n")
+                out.write(message_content(message))
                 out.write(f"\n===== END MESSAGE {number} =====\n")
         records.append({
             "conversation_id": cid,
             "title": title,
             "raw_file": str(raw_path.relative_to(OUT)).replace("\\", "/"),
             "text_file": str(text_path.relative_to(OUT)).replace("\\", "/"),
-            "message_count": len(rows),
-            "text_chars": sum(len(message_content(r["message"])) for r in rows),
-            "matched_terms": hits,
+            "message_count": len(chosen),
+            "source_message_count": len(rows),
+            "text_chars": sum(len(message_content(row["message"])) for _, row, _, _ in chosen),
+            "matched_terms": all_hits,
             "raw_sha256": sha256_file(raw_path),
         })
     return records, refs, all_message_count
@@ -764,12 +841,12 @@ def write_reports(source_name: str, source: Path, member_count: int, total_conve
             "backup_release": RELEASE_TAG if BACKUP else None,
         },
         "selection": {
-            "unit": "conversation",
-            "rule": "Any high-recall stock/investment term, stock company name, or stock ticker in title/message/metadata selects the complete conversation. Unmatched conversations are not archived.",
-            "context_preserved": True,
+            "unit": "message",
+            "rule": "Strict stock/investment relevance per message; ambiguous portfolio/stock/POC/Meta/SLA/acronym matches alone are excluded. Stock-titled conversations may add only short adjacent context without obvious non-stock topics.",
+            "context_preserved": "original parent/children/node fields and short stock-title context only",
             "raw_json_fields_preserved": True,
             "text_truncated": False,
-            "all_mapping_branches_included": True,
+            "all_mapping_branches_included": "all branches are scanned; only selected nodes are archived",
         },
         "counts": {
             "total_conversations": total_conversations,
@@ -797,7 +874,7 @@ def write_reports(source_name: str, source: Path, member_count: int, total_conve
         f"- 命中并完整入库会话：**{len(records):,}**；未命中会话：{total_conversations - len(records):,}",
         f"- 入库消息：**{selected_messages:,}**；消息正文字符：{sum(r['text_chars'] for r in records):,}",
         f"- 其他文件扫描：{scanned:,}；股票相关附件/文件入库：{len(attachments):,}",
-        f"- 原始 JSON：逐会话保存，字段不删减；全文 Markdown：逐消息保存；未使用字符截断。",
+        f"- 原始 JSON：按消息节点保存，节点字段不删减；全文 Markdown：逐条股票消息保存；未使用字符截断。",
         f"- 抽取错误：{len(ERRORS)}；缺失附件引用：{len(MISSING_ASSETS)}", "",
         "## 逐会话核对", "",
         "| # | 会话ID | 消息数 | 正文字符 | 原始JSON | 全文 |",
@@ -812,19 +889,19 @@ def write_reports(source_name: str, source: Path, member_count: int, total_conve
     (OUT / "_coverage.md").write_text("\n".join(coverage) + "\n", encoding="utf-8")
     readme = f"""# GPT 股票相关记录入库
 
-来源：ChatGPT 完整导出 ZIP（{source_name}）。本目录只接收命中股票/证券投资主题的会话及其关联附件；未命中会话不复制到本目录。
+来源：ChatGPT 完整导出 ZIP（{source_name}）。本目录只接收命中股票/证券投资主题的消息及其关联附件；未命中消息不复制到本目录。
 
 ## 目录
 
-- `会话原始JSON/`：每个命中会话的完整原始对象，保留所有字段、所有 mapping 分支、全部角色消息和工具内容。
-- `会话全文/`：同一会话的逐消息可读全文；消息正文不截断，原始 JSON 是字段级权威底稿。
-- `附加文件/`：命中会话引用的附件，以及独立扫描后命中股票主题的文件；原始字节复制，能抽取文字的旁边附 `.txt`。
-- `manifest.json`：来源 MD5/SHA256、逐会话路径、消息数、字符数、附件哈希和选择命中词。
-- `_coverage.md`：总量与逐会话完整性核对。
+- `股票消息原始JSON/`：按对话分文件保存股票相关消息节点；原始节点字段、父子关系、角色和附件指针不删减。
+- `股票消息全文/`：对应的逐条股票消息可读全文；正文不截断，原始 JSON 是字段级权威底稿。
+- `附加文件/`：命中消息引用的附件，以及独立扫描后命中股票主题的文件；原始字节复制，能抽取文字的旁边附 `.txt`。
+- `manifest.json`：来源 MD5/SHA256、逐对话路径、入选/源消息数、字符数、附件哈希和选择命中词。
+- `_coverage.md`：总量与逐对话完整性核对。
 
 ## 选择口径
 
-以**完整会话**为最小保留单位：标题、任意消息或会话元数据命中股票/证券投资词、公司名称或股票代码，即将该会话全部消息保留。这样不会把“继续”“按刚才说的做”等没有重复关键词的后续上下文删掉。完全不命中的会话不入库。独立文件只有在文件内容/OCR命中，或被命中会话引用时才入库。
+以**消息**为基本筛选单位，不把命中对话里的工作、健康、SEO 等无关内容一并带入。股票/证券投资核心词直接入选；portfolio、stock、POC、Meta、SLA、PE/PB/ROE 等歧义词单独出现时不入选；代码须结合投资语境。股票标题下只补入与命中消息相邻、简短且无明显无关主题的上下文。所有 mapping 分支都会扫描，原始节点完整保留，正文不截断。独立文件只有在内容/OCR命中，或被命中消息引用时才入库。
 
 这是一份原始资料归档，不是摘要，也不是投资建议。后续分析引用时应回到具体会话 JSON/Markdown 和本目录的持仓事实卡核对时点。
 
