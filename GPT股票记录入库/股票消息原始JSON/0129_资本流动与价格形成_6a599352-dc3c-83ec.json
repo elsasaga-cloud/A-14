@@ -227,8 +227,8 @@
         "AVGO",
         "A股",
         "ETF",
-        "Meta",
         "META",
+        "Meta",
         "MSFT",
         "NVDA",
         "吸筹"
@@ -925,8 +925,8 @@
       "node_id": "8abe7832-ef3d-4726-a47c-56d6e86d51ad",
       "selection_reason": "stock-keyword",
       "matched_terms": [
-        "ma20",
         "MA20",
+        "ma20",
         "减仓",
         "吸筹",
         "均线",
