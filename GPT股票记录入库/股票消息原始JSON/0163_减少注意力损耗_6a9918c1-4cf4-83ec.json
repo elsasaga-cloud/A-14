@@ -1,0 +1,74 @@
+{
+  "conversation_metadata": {
+    "conversation_id": "6a9918c1-4cf4-83ec-bd90-776f77cb4dab",
+    "conversation_template_id": null,
+    "create_time": 1788418254.747974,
+    "current_node": "79d2db5b-4d3a-415f-a7ff-f0c692d7b117",
+    "default_model_slug": "auto",
+    "id": "6a9918c1-4cf4-83ec-bd90-776f77cb4dab",
+    "is_archived": false,
+    "is_do_not_remember": false,
+    "is_read_only": null,
+    "is_starred": null,
+    "is_study_mode": false,
+    "memory_scope": "global_enabled",
+    "pinned_time": null,
+    "plugin_ids": null,
+    "title": "减少注意力损耗",
+    "update_time": 1788418281.57116,
+    "voice": null
+  },
+  "selection_unit": "message",
+  "selected_nodes": [
+    {
+      "node_id": "79d2db5b-4d3a-415f-a7ff-f0c692d7b117",
+      "selection_reason": "audit-hard",
+      "matched_terms": [
+        "股票"
+      ],
+      "node": {
+        "id": "79d2db5b-4d3a-415f-a7ff-f0c692d7b117",
+        "message": {
+          "author": {
+            "name": null,
+            "role": "assistant"
+          },
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "你这个问题，我建议不要从「提高专注力」开始思考，而是从**减少注意力损耗（Attention Leakage）**开始。\n\n因为对于成年人来说，真正的问题不是每天只有8小时，而是：\n\n> 明明工作了10小时，但真正有价值的深度思考可能只有2小时。\n\n我自己更喜欢把一天看成：\n\n> **每天拥有固定数量的\"高质量认知能量（Cognitive Budget）\"。**\n\n你的目标不是把预算变多，而是**减少浪费**。\n\n---\n\n## 第一层：减少环境损耗（最快见效）\n\n很多人一天的注意力不是工作消耗的，而是环境偷走的。\n\n例如：\n\n> 微信响一下\n\n切出去\n\n看到朋友圈\n\n回复一句\n\n又看到新闻\n\n再回复客户\n\n回来以后\n\n重新进入状态需要5~15分钟。\n\n一次中断可能损失20分钟。\n\n所以：\n\n### 手机尽量远离\n\n我更建议：\n\n工作时\n\n手机放另一张桌子。\n\n而不是桌面。\n\n---\n\n### 浏览器不要开30个标签\n\n只保留：\n\n- 当前项目\n- 邮箱\n- ChatGPT\n- Github\n\n其它全部关掉。\n\n我自己的原则：\n\n> 一个页面 = 一个任务。\n\n---\n\n### 通知全部关闭\n\n除了：\n\n- 电话\n- 重要客户\n\n其它：\n\n- 微信群\n- QQ群\n- 邮件提醒\n- 新闻推送\n\n全部关闭。\n\n消息不会消失。\n\n但注意力会。\n\n---\n\n# 第二层：减少任务切换\n\n这是最大的注意力杀手。\n\n例如：\n\n上午\n\n客户A\n\n↓\n\n突然回复客户B\n\n↓\n\n去查规格书\n\n↓\n\n老板问事情\n\n↓\n\nGithub报错\n\n↓\n\n回来报价\n\n其实你一天根本没有完成任何事情。\n\n---\n\n所以我建议：\n\n按类别处理。\n\n例如：\n\n上午：\n\n> 全部报价\n\n下午：\n\n> 全部开发客户\n\n晚上：\n\n> 全部学习\n\n而不是：\n\n报价→SEO→股票→报价→Github→报价。\n\n---\n\n## 第三层：减少决策次数\n\n很多注意力其实花在：\n\n> 我现在干什么？\n\n而不是：\n\n干事情。\n\n所以我建议：\n\n每天晚上就决定：\n\n明天：\n\n9:00\n\n写文章\n\n10:30\n\n报价\n\n13:30\n\nGithub\n\n16:00\n\n客户开发\n\n到时间直接开始。\n\n不要思考。\n\n---\n\n## 第四层：减少信息输入\n\n现代人的问题：\n\n不是知道太少。\n\n而是知道太多。\n\n例如：\n\n知乎\n\nB站\n\nX\n\nReddit\n\n公众号\n\n微信群\n\nYouTube\n\n一天看100篇。\n\n最后什么也没做。\n\n---\n\n建议建立：\n\n**输入预算。**\n\n例如：\n\n每天：\n\n30分钟学习。\n\n剩下全部输出。\n\n例如：\n\n今天看了一篇SEO。\n\n马上：\n\n写：\n\n```\n/knowledge/seo/\n\n2026-09-03-seo.md\n```\n\n输入结束。\n\n开始输出。\n\n---\n\n## 第五层：建立\"第二大脑\"\n\n这一点和你最近在做的事情非常契合。\n\n你最近一直在强调：\n\n> MD + Git 化自己的工作和认知。\n\n这是一个很好的方向。\n\n因为：\n\n人的大脑：\n\n适合：\n\n- 思考\n- 创造\n- 判断\n\n不适合：\n\n- 记忆\n- 存档\n- 检索\n\n所以：\n\n所有：\n\n客户经验\n\n报价经验\n\n芯片知识\n\nSEO\n\n供应商\n\n全部：\n\nMarkdown。\n\nGit。\n\n以后：\n\n不用记。\n\n搜索。\n\n注意力释放出来了。\n\n---\n\n## 第六层：减少未完成事项\n\n心理学叫：\n\n**蔡格尼克效应（Zeigarnik Effect）**\n\n没完成的事情会一直占用你的后台。\n\n例如：\n\n今天：\n\n客户A\n\n没回复。\n\nGithub\n\n有Bug。\n\n网站\n\n还有TODO。\n\n脑子一直：\n\n\"别忘了\"\n\n其实一直在占CPU。\n\n所以：\n\n建立：\n\nInbox。\n\n例如：\n\n```\nTODO\n\n[ ] 回复Frank\n\n[ ] 改规格书\n\n[ ] 上传网站\n\n[ ] 问供应商\n```\n\n写下来。\n\n大脑就不用一直记着。\n\n---\n\n## 第七层：固定流程\n\n任何重复事情：\n\n不要思考。\n\n例如：\n\n客户询盘。\n\n不要：\n\n每次重新写。\n\n而是：\n\n```\n收到询盘\n\n↓\n\nCRM\n\n↓\n\n产品库\n\n↓\n\n报价模板\n\n↓\n\n发送\n\n↓\n\nFollow-up\n```\n\n流程化。\n\n甚至AI化。\n\n这样几乎不用消耗注意力。\n\n---\n\n## 第八层：限制每天目标\n\n很多人一天：\n\nTodo：\n\n18件。\n\n最后：\n\n完成4件。\n\n焦虑一天。\n\n建议：\n\n每天：\n\n真正重要：\n\n最多：\n\n3件。\n\n完成：\n\n今天就是成功。\n\n---\n\n# 第九层：控制\"多巴胺\"\n\n注意：\n\n短视频不是浪费时间。\n\n真正的问题是：\n\n它提高了刺激阈值。\n\n于是：\n\n工作：\n\n觉得无聊。\n\n学习：\n\n觉得无聊。\n\n写代码：\n\n觉得无聊。\n\n所以：\n\n建议：\n\n娱乐：\n\n集中。\n\n例如：\n\n晚上：\n\n30分钟。\n\n不要：\n\n工作过程中：\n\n刷一分钟。\n\n因为：\n\n一分钟不是一分钟。\n\n而是：\n\n后续30分钟的注意力恢复成本。\n\n---\n\n# 第十层：保护黄金时间\n\n观察自己：\n\n什么时候脑子最好。\n\n有人：\n\n早晨。\n\n有人：\n\n晚上。\n\n把：\n\n最重要：\n\n最需要思考：\n\n最需要创造的工作。\n\n放进去。\n\n不要：\n\n黄金时间：\n\n回微信。\n\n---\n\n## 最后，我觉得有一个原则特别重要\n\n如果把一天的注意力看成 **100 点认知预算**，那么你的目标不是把它用满，而是**把它花在最有复利的事情上**。\n\n结合你之前一直在推进的方向（Saga Telecom、网站、GitHub、知识库、MD/Git 方法论），我会把每天的高质量注意力优先投入到这几类能持续积累的事情：\n\n- **资产建设**：写 Markdown 知识、维护 GitHub、完善网站内容。\n- **高价值工作**：客户沟通、解决复杂技术问题、商业决策。\n- **系统优化**：把重复工作变成模板、流程或 AI 自动化。\n- **学习**：只学习能立即沉淀到知识库或工作流中的内容。\n\n可以把每天问自己的一句话改成：\n\n> **\"这30分钟，是在消耗注意力，还是在把注意力转化为未来还能反复产生价值的资产？\"**\n\n当你持续把注意力从\"应付事务\"转向\"建设资产\"，长期来看，认知负担会越来越轻，而产出会越来越高。"
+            ]
+          },
+          "create_time": 1788418253.970468,
+          "id": "79d2db5b-4d3a-415f-a7ff-f0c692d7b117",
+          "metadata": {
+            "code_blocks": {
+              "0": {
+                "edited": false,
+                "id": "muk482",
+                "preview_language": null,
+                "previewable": false
+              },
+              "1": {
+                "edited": false,
+                "id": "oa04b6",
+                "preview_language": null,
+                "previewable": false
+              },
+              "2": {
+                "edited": false,
+                "id": "kr2w55",
+                "preview_language": null,
+                "previewable": false
+              }
+            },
+            "content_references": [],
+            "model_slug": "gpt-5-6",
+            "parent_id": "9d703970-8644-4d3b-8ae9-3df0bc87a93f"
+          }
+        },
+        "parent": "f2c2caf0-af1e-4ea2-95c2-6f79304b0008"
+      }
+    }
+  ]
+}

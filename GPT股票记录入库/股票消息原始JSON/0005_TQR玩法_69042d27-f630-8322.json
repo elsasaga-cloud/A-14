@@ -145,8 +145,8 @@
       "selection_reason": "stock-keyword",
       "matched_terms": [
         "A股",
-        "meta",
         "Meta",
+        "meta",
         "仓位",
         "分红",
         "加仓",
@@ -197,8 +197,8 @@
       "selection_reason": "stock-keyword",
       "matched_terms": [
         "A股",
-        "META",
         "Meta",
+        "META",
         "MSFT",
         "NVDA",
         "TSM",
@@ -360,8 +360,8 @@
       "node_id": "6d8f74a9-53fc-44de-828f-2b1cf3f0dd91",
       "selection_reason": "stock-keyword",
       "matched_terms": [
-        "META",
         "Meta",
+        "META",
         "NVDA",
         "仓位",
         "均线",
@@ -651,6 +651,36 @@
           }
         },
         "parent": "8383c218-b285-4d10-b4f9-7d645677c4df"
+      }
+    },
+    {
+      "node_id": "8383c218-b285-4d10-b4f9-7d645677c4df",
+      "selection_reason": "audit-hard",
+      "matched_terms": [
+        "期权"
+      ],
+      "node": {
+        "id": "8383c218-b285-4d10-b4f9-7d645677c4df",
+        "message": {
+          "author": {
+            "name": null,
+            "role": "user"
+          },
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "还有其他玩法补充吗 简单一些的 不要那种期权复杂组合的"
+            ]
+          },
+          "create_time": 1764149334.309,
+          "id": "8383c218-b285-4d10-b4f9-7d645677c4df",
+          "metadata": {
+            "serialization_metadata": {
+              "custom_symbol_offsets": []
+            }
+          }
+        },
+        "parent": "de584423-91e1-4bfd-a9c8-058855b0acee"
       }
     },
     {
