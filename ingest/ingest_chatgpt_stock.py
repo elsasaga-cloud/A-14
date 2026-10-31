@@ -37,6 +37,7 @@ OCR = os.environ.get("OCR", "1") == "1"
 OCR_MIN_KB = float(os.environ.get("OCR_MIN_KB", "8"))
 WORKERS = int(os.environ.get("WORKERS", "2"))  # kept in RUN for pipeline compatibility
 CHECKPOINT_MIN = float(os.environ.get("CHECKPOINT_MIN", "10"))
+AUDIT_INCLUDE_HARD = os.environ.get("AUDIT_INCLUDE_HARD", "0") == "1"
 TITLE = os.environ.get("TITLE", "ChatGPT 股票相关记录")
 GIT_REF = os.environ.get("GIT_REF", "")
 IN_ACTIONS = bool(os.environ.get("GITHUB_ACTIONS"))
@@ -798,8 +799,15 @@ def archive_conversations(conversations: list[dict]) -> tuple[list[dict], set[st
         for index, row in enumerate(rows):
             text = message_content(row["message"])
             related, hits = relevance(text, title)
+            reason = "stock-keyword"
+            if not related and AUDIT_INCLUDE_HARD:
+                audit_hits = sorted({m.group(0) for m in AUDIT_HARD_RE.finditer(text)} | {m.group(0) for m in EN_TICKER_RE.finditer(text)}, key=str.lower)
+                if audit_hits:
+                    related = True
+                    reason = "audit-hard"
+                    hits = sorted(set(hits) | set(audit_hits), key=str.lower)
             if related:
-                chosen.append((index, row, "stock-keyword", hits))
+                chosen.append((index, row, reason, hits))
         # Only a stock-titled conversation can supply short, clearly non-offtopic
         # context (e.g. "继续" or a brief follow-up) without importing the whole chat.
         if title_stock and chosen:
@@ -898,7 +906,7 @@ def archive_other_files(refs: set[str], conversation_paths: list[Path]) -> tuple
 
 
 AUDIT_HARD_RE = re.compile(
-    r"股票|股市|股价|股息|分红|派息|持仓|建仓|加仓|减仓|清仓|涨停|跌停|K线|均线|成交量|换手率|市盈率|市净率|吸筹|主力资金|北向资金|融资融券|交割单|做[Tt](?![A-Za-z])|止损|止盈|浮盈|浮亏|牛市|熊市|大盘|美股|港股|A股|ETF|IPO|QDII|纳斯达克|道琼斯|标普|证券|券商|交易所|收息|定投|归母|扣非|财报|基金|期权|期货|筹码|股息率|派息率|"
+    r"股票|股市|股价|股息|分红|派息|持仓|建仓|加仓|减仓|清仓|涨停|跌停|K线|均线|成交量|换手率|市盈率|市净率|吸筹|主力资金|北向资金|融资融券|交割单|做[Tt](?![A-Za-z])|止损|止盈|浮盈|浮亏|牛市|熊市|大盘|美股|港股|A股|(?<![A-Za-z0-9])ETF(?![A-Za-z0-9])|(?<![A-Za-z0-9])IPO(?![A-Za-z0-9])|(?<![A-Za-z0-9])QDII(?![A-Za-z0-9])|纳斯达克|道琼斯|标普|证券|券商|交易所|收息|定投|归母|扣非|财报|基金|期权|期货|筹码|股息率|派息率|"
     r"海澜之家|海尔智家|格力电器|云铝股份|五粮液|顺丰控股|汇川技术|迈瑞医疗|江西铜业|华能蒙电|工业富联|中国铝业|紫金矿业|中国银行|泸州老窖|美的集团|贵州茅台|宁德时代|比亚迪|腾讯控股|东方财富|同花顺|招商银行|中国平安|中国神华|中远海控|中芯国际|中际旭创|新易盛|沪电股份|立讯精密|恒瑞医药|药明康德|中国中免|"
     r"stock market|dividend|dividends|buyback|repurchase|nasdaq|nyse|hkex",
     re.IGNORECASE,
