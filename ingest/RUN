@@ -8,5 +8,6 @@ OCR=1
 OCR_MIN_KB=8
 WORKERS=2
 CHECKPOINT_MIN=10
+# Final selection uses the fixed node-level review allowlist/exclusions.
 AUDIT_INCLUDE_HARD=0
 RELEASE_TAG=files-gpt-stock-archive-2026-10-30
