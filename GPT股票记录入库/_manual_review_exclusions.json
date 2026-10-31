@@ -607,5 +607,257 @@
     "title": "GLW-GPT",
     "stage": "context",
     "reason": "人工复核：GPT thoughts 内部搜索元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "e56bef6b-3a5d-4c71-8677-4b72ca95a822",
+    "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+    "title": "世界公民配置升级",
+    "stage": "baseline",
+    "reason": "人工复核：泛世界公民/身份、支付与生活清单，股票账户仅作为其中一项，非股票正文"
+  },
+  {
+    "node_id": "76a4b163-7cfc-4a1d-81e8-4961fa9530f0",
+    "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+    "title": "世界公民配置升级",
+    "stage": "baseline",
+    "reason": "人工复核：泛世界公民/身份、支付与生活清单，股票账户仅作为其中一项，非股票正文"
+  },
+  {
+    "node_id": "673fb7a6-70e1-47c6-9368-18b669bc7ca5",
+    "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+    "title": "世界公民配置升级",
+    "stage": "baseline",
+    "reason": "人工复核：泛世界公民/身份、支付与生活清单，股票账户仅作为其中一项，非股票正文"
+  },
+  {
+    "node_id": "d1c0514f-070e-4f2a-9ab3-846dffa54f5a",
+    "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+    "title": "世界公民配置升级",
+    "stage": "baseline",
+    "reason": "人工复核：泛世界公民/身份、支付与生活清单，股票账户仅作为其中一项，非股票正文"
+  },
+  {
+    "node_id": "ca4648cc-d6ee-4d6b-83e4-c9c4bc5e509a",
+    "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+    "title": "世界公民配置升级",
+    "stage": "baseline",
+    "reason": "人工复核：泛世界公民/身份、支付与生活清单，股票账户仅作为其中一项，非股票正文"
+  },
+  {
+    "node_id": "add7a9b0-29ca-4917-b1ee-1eb316f28710",
+    "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+    "title": "世界公民配置升级",
+    "stage": "baseline",
+    "reason": "人工复核：泛世界公民/身份、支付与生活清单，股票账户仅作为其中一项，非股票正文"
+  },
+  {
+    "node_id": "9e94990b-f5d2-4f54-9154-d5b4aada965b",
+    "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+    "title": "世界公民配置升级",
+    "stage": "baseline",
+    "reason": "人工复核：泛世界公民/身份、支付与生活清单，股票账户仅作为其中一项，非股票正文"
+  },
+  {
+    "node_id": "e1372f0b-687d-408d-b101-430c6ba251b5",
+    "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+    "title": "世界公民配置升级",
+    "stage": "baseline",
+    "reason": "人工复核：泛世界公民/身份、支付与生活清单，股票账户仅作为其中一项，非股票正文"
+  },
+  {
+    "node_id": "bc3a96c4-ced4-4af6-9d8d-93a49e0e9ef8",
+    "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+    "title": "世界公民配置升级",
+    "stage": "baseline",
+    "reason": "人工复核：泛世界公民/身份、支付与生活清单，股票账户仅作为其中一项，非股票正文"
+  },
+  {
+    "node_id": "efa3597a-66d2-4bc6-8cfe-35f00de3dd7b",
+    "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+    "title": "世界公民配置升级",
+    "stage": "baseline",
+    "reason": "人工复核：泛世界公民/身份、支付与生活清单，股票账户仅作为其中一项，非股票正文"
+  },
+  {
+    "node_id": "27dd6348-8cf8-439c-ab3b-4a42731eded4",
+    "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+    "title": "世界公民配置升级",
+    "stage": "baseline",
+    "reason": "人工复核：泛世界公民/身份、支付与生活清单，股票账户仅作为其中一项，非股票正文"
+  },
+  {
+    "node_id": "24fafec3-53e2-47ad-898e-055a995abbfa",
+    "conversation_id": "69e4f23c-b4b8-8326-a44d-441fb79c30a5",
+    "title": "内脏脂肪测试方法",
+    "stage": "baseline",
+    "reason": "人工复核：健康与体脂测量，K线/均线/投资仅作比喻"
+  },
+  {
+    "node_id": "baa5cd1d-e495-4a0b-80f0-a12fc5166023",
+    "conversation_id": "69e4f23c-b4b8-8326-a44d-441fb79c30a5",
+    "title": "内脏脂肪测试方法",
+    "stage": "baseline",
+    "reason": "人工复核：健康与体脂测量，K线/均线/投资仅作比喻"
+  },
+  {
+    "node_id": "bab88a41-6b22-4ae8-962e-16ffccc33d60",
+    "conversation_id": "69e589d8-ea94-832b-9ca0-95692e81d28a",
+    "title": "婚姻决策与风险",
+    "stage": "baseline",
+    "reason": "人工复核：婚姻关系决策，止损仅作比喻"
+  },
+  {
+    "node_id": "c81c792d-784e-4826-9671-c792c4fccc52",
+    "conversation_id": "6a0ed2f9-a5a8-8324-8e71-bfcd6e7f4748",
+    "title": "苹果礼品卡有效期",
+    "stage": "baseline",
+    "reason": "人工复核：跨境生活与金融清单，非股票投资正文"
+  },
+  {
+    "node_id": "9b16aeff-d7d6-4b81-8efb-0ce69119eddd",
+    "conversation_id": "6a0ed2f9-a5a8-8324-8e71-bfcd6e7f4748",
+    "title": "苹果礼品卡有效期",
+    "stage": "baseline",
+    "reason": "人工复核：跨境生活与金融清单，非股票投资正文"
+  },
+  {
+    "node_id": "efda3e3a-69cc-4c78-a5e4-3f484afed126",
+    "conversation_id": "6a2a757b-7a20-83ec-a4cc-f58f2cb64684",
+    "title": "澳门旅行必做事项",
+    "stage": "baseline",
+    "reason": "人工复核：澳门旅行、手机号和钱包安排，证券账户仅为可选顺带事项"
+  },
+  {
+    "node_id": "1ec5555a-babf-4711-b6af-5ce669f64947",
+    "conversation_id": "6a5b1e07-3590-83ec-a4c9-b87b4e833cbc",
+    "title": "世界公民实操指南",
+    "stage": "baseline",
+    "reason": "人工复核：跨国身份与生活能力总览，股票仅为资产配置例子"
+  },
+  {
+    "node_id": "df2db51f-fa5d-488b-8326-de7e43f03690",
+    "conversation_id": "6a5b35e5-4520-83ec-9e6a-989b801b5eaa",
+    "title": "孩子教育逻辑探讨",
+    "stage": "baseline",
+    "reason": "人工复核：教育体系讨论，股票/资产配置仅作类比"
+  },
+  {
+    "node_id": "f5639f67-3f29-4d76-abda-bfc221a98caf",
+    "conversation_id": "6a5cc303-9bac-83ec-a2fa-f3838317a116",
+    "title": "Arena 模型下架原因",
+    "stage": "baseline",
+    "reason": "人工复核：AI模型平台与算力商业化，非股票投资内容"
+  },
+  {
+    "node_id": "06bf9756-942d-4870-bace-cfba43bf1d69",
+    "conversation_id": "6a602eed-f354-83ec-946a-ea97d7667e7b",
+    "title": "Claude Prompt技巧总结",
+    "stage": "baseline",
+    "reason": "人工复核：Prompt使用技巧，股票仅为任务示例"
+  },
+  {
+    "node_id": "0bf5f14f-a68b-4161-9cea-f73a9b379f1e",
+    "conversation_id": "6a6e1a40-40a0-83ec-a24b-146998aec5b5",
+    "title": "节省token技巧大全",
+    "stage": "baseline",
+    "reason": "人工复核：AI token优化，投资分析仅为使用场景示例"
+  },
+  {
+    "node_id": "59f52906-64b9-4cb6-9c31-14445c85d67a",
+    "conversation_id": "6ac900e3-5b04-83ec-8bf2-48bdf3ea649f",
+    "title": "手机安全建议",
+    "stage": "baseline",
+    "reason": "人工复核：手机与银行安全防范，招商银行/止损/投资账户只是语境，不是股票内容"
+  },
+  {
+    "node_id": "a49c32e3-b207-4edd-ac1c-d8cd69a224ef",
+    "conversation_id": "6ac900e3-5b04-83ec-8bf2-48bdf3ea649f",
+    "title": "手机安全建议",
+    "stage": "baseline",
+    "reason": "人工复核：手机与银行安全防范，招商银行/止损/投资账户只是语境，不是股票内容"
+  },
+  {
+    "node_id": "4427202b-c0d9-4da4-97c3-ddf03464c061",
+    "conversation_id": "6ac900e3-5b04-83ec-8bf2-48bdf3ea649f",
+    "title": "手机安全建议",
+    "stage": "baseline",
+    "reason": "人工复核：手机与银行安全防范，招商银行/止损/投资账户只是语境，不是股票内容"
+  },
+  {
+    "node_id": "cec05133-7194-404f-8e32-4ca0d5a14a90",
+    "conversation_id": "6ac900e3-5b04-83ec-8bf2-48bdf3ea649f",
+    "title": "手机安全建议",
+    "stage": "baseline",
+    "reason": "人工复核：手机与银行安全防范，招商银行/止损/投资账户只是语境，不是股票内容"
+  },
+  {
+    "node_id": "8133757b-9c82-445a-b68c-f397122e2d9e",
+    "conversation_id": "6ac900e3-5b04-83ec-8bf2-48bdf3ea649f",
+    "title": "手机安全建议",
+    "stage": "baseline",
+    "reason": "人工复核：手机与银行安全防范，招商银行/止损/投资账户只是语境，不是股票内容"
+  },
+  {
+    "node_id": "9cd334cb-be2a-45a3-86bf-eefc52bbfedf",
+    "conversation_id": "6ac900e3-5b04-83ec-8bf2-48bdf3ea649f",
+    "title": "手机安全建议",
+    "stage": "baseline",
+    "reason": "人工复核：手机与银行安全防范，招商银行/止损/投资账户只是语境，不是股票内容"
+  },
+  {
+    "node_id": "3c3be327-ef8a-45d9-b157-10ff9d74f0ae",
+    "conversation_id": "6ace2230-0b20-83ec-8e8b-7b863ad8e268",
+    "title": "交换机租赁模式探索",
+    "stage": "baseline",
+    "reason": "人工复核：通信品牌/OEM业务布局，正文明确不是讨论GLW股票"
+  },
+  {
+    "node_id": "94a673f2-309b-47fa-af8e-ec4a364bc847",
+    "conversation_id": "69d7150c-823c-832c-b2cd-a0b9ac2c3026",
+    "title": "Daily",
+    "stage": "baseline",
+    "reason": "人工复核：大学两性/社交结构，股票仅作比喻"
+  },
+  {
+    "node_id": "66eea0f6-1b4d-4b77-85d5-0c19601bb130",
+    "conversation_id": "69997d8f-5588-8332-ae3b-1dd2681cb6d3",
+    "title": "人际与精力管理",
+    "stage": "baseline",
+    "reason": "人工复核：人生方向与朋友关系，股票仅作为生活规划的一项"
+  },
+  {
+    "node_id": "4a718daf-8cc9-4649-9f1b-1495aff3fe22",
+    "conversation_id": "69997d8f-5588-8332-ae3b-1dd2681cb6d3",
+    "title": "人际与精力管理",
+    "stage": "baseline",
+    "reason": "人工复核：人际关系分叉，股票仅作为生活规划的一项"
+  },
+  {
+    "node_id": "08c26690-8f69-4121-b549-ec3596fee060",
+    "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
+    "title": "普通人被动收入方式",
+    "stage": "baseline",
+    "reason": "人工复核：AI科研体系与模型竞争，非股票投资正文"
+  },
+  {
+    "node_id": "e03ca290-db96-409c-9678-506d8d3d0e09",
+    "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
+    "title": "普通人被动收入方式",
+    "stage": "baseline",
+    "reason": "人工复核：AI工作流与知识库，股票脚本仅为一个使用例子"
+  },
+  {
+    "node_id": "dfd779fe-2425-4c1c-aeb2-69ebf255ded1",
+    "conversation_id": "6a195e19-019c-83ec-8b67-a0e3160dd723",
+    "title": "GPT token收费标准",
+    "stage": "baseline",
+    "reason": "人工复核：香港手机号与Claude/网络出口，港股规划不是正文主题"
+  },
+  {
+    "node_id": "588d6c3d-57f8-4b42-ab13-32bfac6f0f36",
+    "conversation_id": "6a195e19-019c-83ec-8b67-a0e3160dd723",
+    "title": "GPT token收费标准",
+    "stage": "baseline",
+    "reason": "人工复核：签证与居住证办理，港股仅为未来生活规划例子"
   }
 ]

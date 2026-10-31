@@ -2,14 +2,14 @@
 
 本报告只记录审计元数据，不复制未入选消息正文。hard 为独立的高召回股票信号扫描，broad 为较宽的股票词扫描；命中不等于必然应入库，需结合主题判断。
 
-- 源会话：341；源消息节点：4715；已入库节点：1426
+- 源会话：341；源消息节点：4715；已入库节点：1390
 - 入库节点在源会话中找不到：0
-- 源消息 hard 股票信号：1302；其中未入库：28；尚未人工复核：**0**
+- 源消息 hard 股票信号：1302；其中未入库：64；尚未人工复核：**0**
 - 未入库但仅有 broad 股票信号：6；尚未人工复核：**0**
-- 股票标题下、邻近入选消息但未入库的短上下文：39；尚未人工复核：**0**
-- 人工复核决定：补入 208 条；排除 87 条（仅保存节点 ID/理由，不保存被排除正文）
-- 已入库但含非股票语境词的消息（供误收复核）：**413**
-- 未入库 hard 消息引用且 ZIP 中实际存在的附件：**0**
+- 股票标题下、邻近入选消息但未入库的短上下文：38；尚未人工复核：**0**
+- 人工复核决定：补入 208 条；排除 123 条（仅保存节点 ID/理由，不保存被排除正文）
+- 已入库但含非股票语境词的消息（供误收复核）：**383**
+- 未入库 hard 消息引用且 ZIP 中实际存在的附件：**2**
 
 ## 未入库 hard 信号消息（逐条复核清单）
 
@@ -18,30 +18,66 @@
 | Netas | `f93256b2-c649-43bf-8573-9853e00888ad` | assistant | 3,004 | 分红, 涨停 | 分红, 涨停, 股东, 营收 | excluded |
 | Netas | `94573ff2-d8ed-48fa-ab10-aa581fb0078a` | user | 3,229 | 定投 | 定投 | excluded |
 | Netas | `e296a243-2f43-4da1-b777-978a1a169735` | assistant | 1,441 | 筹码 |  | excluded |
+| 人际与精力管理 | `66eea0f6-1b4d-4b77-85d5-0c19601bb130` | user | 626 | 股票 | 股票 | excluded |
+| 人际与精力管理 | `4a718daf-8cc9-4649-9f1b-1495aff3fe22` | assistant | 1,792 | 股票 | 投资, 股票 | excluded |
 | 深圳长期发展布局 | `da211a13-4a2a-4983-9c1f-dab6f124cf6c` | assistant | 2,375 | 分红 | 分红 | excluded |
 | 通信行业长期发展 | `9ab2ccbd-ee6d-4740-80ef-a0554e4528a4` | user | 55,435 | 分红 | 分红, 复盘, 投资 | excluded |
 | MSTP设备分析 | `d7fe35fc-f03e-4de8-b5fc-8407a8c91d77` | assistant | 2,146 | TSM | TSM | excluded |
 | MSTP设备分析 | `eeee50ad-e4e7-402c-8d66-0c1667a02bd1` | assistant | 1,864 | TSM | TSM | excluded |
 | 饮食系统构建指南 | `f7e43c4a-3a0d-440a-835f-f2552d999ce9` | assistant | 1,936 | 分红, 股票 | 仓位, 分红, 投资, 股票 | excluded |
+| Daily | `94a673f2-309b-47fa-af8e-ec4a364bc847` | assistant | 1,288 | 持仓, 股票 | 投资, 持仓, 股票 | excluded |
 | 通胀与普通人生活 | `43861c5d-876e-470d-895d-b2dd45927c39` | assistant | 1,773 | 海澜之家 | 投资, 海澜, 海澜之家, 资产配置 | excluded |
+| 世界公民配置升级 | `e56bef6b-3a5d-4c71-8677-4b72ca95a822` | user | 148 | 美股 | 美股 | excluded |
+| 世界公民配置升级 | `76a4b163-7cfc-4a1d-81e8-4961fa9530f0` | assistant | 2,710 | 券商, 海澜之家, 美股 | 券商, 投资, 海澜, 海澜之家, 美股 | excluded |
+| 世界公民配置升级 | `673fb7a6-70e1-47c6-9368-18b669bc7ca5` | user | 367 | 分红, 美股 | 分红, 美股 | excluded |
 | 世界公民配置升级 | `cff984dc-9efe-4445-80bb-415b5f2e2bc9` | assistant | 2,366 | 股票 | 投资, 股票账户 | excluded |
+| 世界公民配置升级 | `d1c0514f-070e-4f2a-9ab3-846dffa54f5a` | user | 1,115 | 分红, 基金, 美股, 股票 | 分红, 投资, 美股, 股票 | excluded |
 | 世界公民配置升级 | `c1501c81-12c6-474b-93a4-0d8c819d608c` | assistant | 1,949 | 分红 | 分红, 投资 | excluded |
+| 世界公民配置升级 | `ca4648cc-d6ee-4d6b-83e4-c9c4bc5e509a` | assistant | 1,966 | A股, ETF, 交易所, 美股 | A股, ETF, 交易所, 投资, 美股 | excluded |
+| 世界公民配置升级 | `add7a9b0-29ca-4917-b1ee-1eb316f28710` | user | 1,631 | 分红, 券商, 基金, 美股, 股票 | 分红, 券商, 投资, 美股, 股票 | excluded |
+| 世界公民配置升级 | `9e94990b-f5d2-4f54-9154-d5b4aada965b` | assistant | 2,096 | 港股, 美股, 股票 | 港股, 美股, 股票, 资产配置 | excluded |
+| 世界公民配置升级 | `e1372f0b-687d-408d-b101-430c6ba251b5` | assistant | 1,299 | 券商, 美股 | 券商, 美股 | excluded |
+| 世界公民配置升级 | `bc3a96c4-ced4-4af6-9d8d-93a49e0e9ef8` | assistant | 2,040 | 港股, 美股, 股票 | Portfolio, 港股, 美股, 股票 | excluded |
+| 世界公民配置升级 | `efa3597a-66d2-4bc6-8cfe-35f00de3dd7b` | user | 2,409 | ETF, 分红, 美股, 股票 | ETF, 分红, 投资, 美股, 股票 | excluded |
+| 世界公民配置升级 | `27dd6348-8cf8-439c-ab3b-4a42731eded4` | assistant | 1,827 | 港股, 美股 | 港股, 美股 | excluded |
+| 内脏脂肪测试方法 | `24fafec3-53e2-47ad-898e-055a995abbfa` | assistant | 1,571 | 均线, 股票 | 均线, 投资, 股票, 量能 | excluded |
+| 内脏脂肪测试方法 | `baa5cd1d-e495-4a0b-80f0-a12fc5166023` | assistant | 1,314 | K线, 均线 | K线, 均线, 投资, 看盘, 量能 | excluded |
+| 婚姻决策与风险 | `bab88a41-6b22-4ae8-962e-16ffccc33d60` | user | 14,485 | 止损 | 止损 | excluded |
 | 婚姻决策与风险 | `3188cf0d-ad76-4f1e-ab6f-2ce3441e414a` | assistant | 2,209 | 止损 | 止损 | excluded |
 | Playwright 1.59.0 安装解决方案 | `ee4fd22b-3039-4104-90af-f833ae73505f` | assistant | 1,661 | 股票 | 微软, 股票 | excluded |
 | A2A时代外贸自动化 | `27f69760-ce75-4841-8228-c5287cd4b7d2` | assistant | 2,307 | 股票 | 股票 | excluded |
 | 注意力边界与社交 | `ae0a304c-750d-4724-be88-a84b95af5be6` | user | 668 | 止损 | 止损 | excluded |
 | 苹果礼品卡有效期 | `90266ae9-d196-4bd3-884d-fe81e822d2b2` | assistant | 1,165 | 券商 | 券商 | excluded |
+| 苹果礼品卡有效期 | `c81c792d-784e-4826-9671-c792c4fccc52` | user | 1,370 | 分红, 券商, 基金, 美股, 股票 | 分红, 券商, 投资, 美股, 股票 | excluded |
+| 苹果礼品卡有效期 | `9b16aeff-d7d6-4b81-8efb-0ce69119eddd` | assistant | 1,965 | 券商 | 券商, 投资 | excluded |
 | HSBC App Store问题 | `4c601335-fd4d-4109-bf1e-df412a07e062` | assistant | 1,277 | 证券 | 投资, 证券, 资产配置 | excluded |
 | 金升阳模块对应分析 | `8ffaa7eb-7189-4f18-98b4-f12d6d2b1b6d` | assistant | 3,387 | AMD | AMD | excluded |
+| GPT token收费标准 | `dfd779fe-2425-4c1c-aeb2-69ebf255ded1` | assistant | 1,322 | 港股 | 港股 | excluded |
+| GPT token收费标准 | `588d6c3d-57f8-4b42-ab13-32bfac6f0f36` | assistant | 909 | 券商, 港股 | 券商, 港股 | excluded |
+| 澳门旅行必做事项 | `efda3e3a-69cc-4c78-a5e4-3f484afed126` | assistant | 1,174 | ETF, 券商, 港股, 美股, 证券 | ETF, 券商, 港股, 美股, 证券 | excluded |
 | 买房争论分析 | `e2716a56-93f1-49a5-b93d-17782f0efff7` | assistant | 1,803 | 股票 | 投资, 股票 | excluded |
+| 世界公民实操指南 | `1ec5555a-babf-4711-b6af-5ce669f64947` | assistant | 2,605 | NVDA, 中国银行, 券商, 基金, 美股, 股票, 财报 | NVDA, 中国银行, 券商, 投资, 美股, 股票, 财报, 资产配置 | excluded |
+| 孩子教育逻辑探讨 | `df2db51f-fa5d-488b-8326-de7e43f03690` | assistant | 3,531 | ETF, 股票 | ETF, 投资, 股票, 资产配置 | excluded |
 | 轻FIRE模式可行性分析 | `178f1bc7-ff90-460e-9d9a-c4fc69fe88f3` | user | 754 | 股票 | 投资, 股票 | excluded |
 | 轻FIRE模式可行性分析 | `f75d9edc-fd9f-42c8-8ab6-3739bd66f0e1` | assistant | 1,950 | 股票 | 投资, 股票 | excluded |
+| Arena 模型下架原因 | `f5639f67-3f29-4d76-abda-bfc221a98caf` | assistant | 2,818 | 股票 | 投资, 股票 | excluded |
 | 美国AI战略分析 | `13aa80e7-45ac-4a82-8710-7af5855ec508` | user | 2,148 | 基金 | 亚马逊, 微软, 投资, 英伟达, 谷歌 | excluded |
 | Mikrotik vs 交换机价值分析 | `67bd39a0-7686-4d15-9548-4f8c51077d13` | assistant | 4,494 | 股票 | 股票 | excluded |
+| Claude Prompt技巧总结 | `06bf9756-942d-4870-bace-cfba43bf1d69` | assistant | 3,209 | 定投, 股价, 财报 | 价值投资, 估值, 定投, 投资, 股价, 财报 | excluded |
+| 节省token技巧大全 | `0bf5f14f-a68b-4161-9cea-f73a9b379f1e` | assistant | 4,515 | 成交量, 股票 | 300000, 成交量, 投资, 股票 | excluded |
 | Trueno Group 匹配度分析 | `4c53efa6-56a6-4487-8648-7f63919f803c` | assistant | 2,136 | 财报 | 财报 | excluded |
 | 减少注意力损耗 | `79d2db5b-4d3a-415f-a7ff-f0c692d7b117` | assistant | 2,642 | 股票 | 股票 | excluded |
+| 普通人被动收入方式 | `08c26690-8f69-4121-b549-ec3596fee060` | assistant | 2,074 | 股票 | 投资, 股票 | excluded |
+| 普通人被动收入方式 | `e03ca290-db96-409c-9678-506d8d3d0e09` | assistant | 1,685 | 股票 | 投资, 股票 | excluded |
+| 手机安全建议 | `59f52906-64b9-4cb6-9c31-14445c85d67a` | user | 65 | 招商银行 | 招商银行 | excluded |
+| 手机安全建议 | `a49c32e3-b207-4edd-ac1c-d8cd69a224ef` | assistant | 1,026 | 招商银行 | 招商银行 | excluded |
+| 手机安全建议 | `4427202b-c0d9-4da4-97c3-ddf03464c061` | assistant | 1,066 | 招商银行 | 招商银行 | excluded |
+| 手机安全建议 | `cec05133-7194-404f-8e32-4ca0d5a14a90` | assistant | 908 | 止损 | 止损 | excluded |
 | 手机安全建议 | `a513aa4d-126e-4566-a863-aad8722fe0d7` | assistant | 1,775 | 止损 | 止损 | excluded |
+| 手机安全建议 | `8133757b-9c82-445a-b68c-f397122e2d9e` | assistant | 1,875 | 券商, 股票 | 券商, 投资, 股票 | excluded |
+| 手机安全建议 | `9cd334cb-be2a-45a3-86bf-eefc52bbfedf` | assistant | 2,843 | ETF, 基金, 股息, 股票, 证券 | ETF, 投资, 股息, 股票, 证券 | excluded |
 | 交换机租赁模式探索 | `f95c2855-178d-4ecf-af9d-0e34f8f1c29e` | user | 203 | 股票 | 股票 | excluded |
+| 交换机租赁模式探索 | `3c3be327-ef8a-45d9-b157-10ff9d74f0ae` | assistant | 2,920 | 股票 | 股票 | excluded |
 | Learn English Words | `e70cb948-6300-417f-a301-5271f324207e` | assistant | 570 | 贵州茅台 | 贵州茅台 | excluded |
 
 ## 短上下文候选
@@ -64,7 +100,6 @@
 - 投资框架分析 / `c24276a1-5c40-4103-a3e5-074db124123d` / 78 字符
 - 美股特点分析 / `52c25ce6-08df-49ab-862a-0c267b89f639` / 78 字符
 - 美股特点分析 / `8c1571d8-c729-401c-b89c-d208394a4a1d` / 77 字符
-- 普通人被动收入方式 / `7c06e56d-5401-45c6-9acb-6da2e6e8f3f8` / 26 字符
 - 普通人被动收入方式 / `388655cb-6cd9-475b-bb58-c6ece4b378a5` / 119 字符
 - 普通人被动收入方式 / `dd4cc825-00cf-4742-909b-b1d35f7c9d76` / 61 字符
 - GLW-GPT / `b36b7896-def9-44b2-b918-3862e748db20` / 77 字符
@@ -150,10 +185,13 @@
 | 举铁与健康寿命 | 12 | 0 | 0 |
 | WS-C3650-48FQ-E停产分析 | 2 | 0 | 0 |
 | 设备类型与需求差异 | 8 | 0 | 0 |
+| 世界公民配置升级 | 57 | 13 | 0 |
 | 韩国安全认证需求分析 | 11 | 0 | 0 |
 | 英文三段论结构 | 2 | 0 | 0 |
 | 找类似Larch Networks公司 | 12 | 0 | 0 |
 | OBM定义与客户询问 | 4 | 0 | 0 |
+| 内脏脂肪测试方法 | 6 | 2 | 0 |
+| 婚姻决策与风险 | 8 | 2 | 0 |
 | VSC7428 SNMP温度监控 | 2 | 0 | 0 |
 | Power Without Limits | 1 | 0 | 0 |
 | 单位换算与存储对比 | 4 | 0 | 0 |
@@ -189,6 +227,7 @@
 | Saga交换机ERPS支持分析 | 8 | 0 | 0 |
 | 城域环网方案分析 | 3 | 0 | 0 |
 | PayPal 付款失败原因 | 4 | 0 | 0 |
+| 苹果礼品卡有效期 | 14 | 3 | 0 |
 | FIPS 140-3 认证设备 | 4 | 0 | 0 |
 | 金升阳模块对应分析 | 16 | 1 | 0 |
 | 400G/800G DCI Solution | 9 | 0 | 0 |
@@ -209,6 +248,7 @@
 | OEM光纤测试设备 | 2 | 0 | 0 |
 | 股东证明材料处理 | 4 | 0 | 0 |
 | UAV Fiber Optic Solution | 4 | 0 | 0 |
+| 澳门旅行必做事项 | 2 | 1 | 0 |
 | E-Mark交换机推广策略 | 2 | 0 | 0 |
 | 英文领英宣传文案 | 10 | 0 | 0 |
 | 排版换行技巧 | 2 | 0 | 0 |
@@ -231,8 +271,12 @@
 | OTN DWDM Transmission Network | 8 | 0 | 0 |
 | 客户测试开关回复 | 2 | 0 | 0 |
 | Claude 账号限制分析 | 32 | 0 | 0 |
+| 世界公民实操指南 | 2 | 1 | 0 |
+| 孩子教育逻辑探讨 | 2 | 1 | 0 |
+| Arena 模型下架原因 | 4 | 1 | 0 |
 | Angora | 16 | 0 | 0 |
 | Mikrotik vs 交换机价值分析 | 54 | 1 | 0 |
+| Claude Prompt技巧总结 | 2 | 1 | 0 |
 | 捷克客户评估 | 6 | 0 | 0 |
 | 东南亚客户评估 | 4 | 0 | 0 |
 | RTL8372N 扩展端口方案 | 4 | 0 | 0 |
@@ -243,6 +287,7 @@
 | 应用图优化建议 | 8 | 0 | 0 |
 | 应用图优化要求 | 2 | 0 | 0 |
 | Saga Telecom SEO 路线图 | 2 | 0 | 0 |
+| 节省token技巧大全 | 2 | 1 | 0 |
 | Q4规格书框架建议 | 2 | 0 | 0 |
 | 应用图优化要求 | 1 | 0 | 0 |
 | LinkedIn SEO 内容写作 | 4 | 0 | 0 |
@@ -265,6 +310,8 @@
 | A-069 | 14 | 0 | 0 |
 | A-311 | 4 | 0 | 0 |
 | 域名选择与注册查询 | 58 | 0 | 0 |
+| 手机安全建议 | 26 | 7 | 0 |
+| 交换机租赁模式探索 | 16 | 2 | 0 |
 | EDFA 设备用户手册 | 94 | 0 | 0 |
 | 光开关特性 | 60 | 0 | 0 |
 | 20 slots: 1/19. | 42 | 0 | 0 |

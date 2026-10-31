@@ -1,18 +1,18 @@
 {
   "source_conversations": 341,
   "source_messages": 4715,
-  "archived_nodes": 1426,
+  "archived_nodes": 1390,
   "selected_nodes_not_found_in_source": [],
   "hard_signal_messages_in_source": 1302,
-  "hard_signal_messages_not_archived": 28,
+  "hard_signal_messages_not_archived": 64,
   "hard_signal_messages_unreviewed_not_archived": 0,
   "broad_signal_messages_not_archived": 6,
   "broad_signal_messages_unreviewed_not_archived": 0,
-  "short_stock_title_context_not_archived": 39,
+  "short_stock_title_context_not_archived": 38,
   "short_stock_title_context_unreviewed_not_archived": 0,
   "manual_review_inclusions": 208,
-  "manual_review_exclusions": 87,
-  "archived_messages_with_nonstock_context_terms": 413,
+  "manual_review_exclusions": 123,
+  "archived_messages_with_nonstock_context_terms": 383,
   "hard_unselected": [
     {
       "conversation_id": "692edb4e-f8b8-832c-b951-9f8084c13f81",
@@ -67,6 +67,43 @@
       ],
       "broad_hits": [],
       "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69997d8f-5588-8332-ae3b-1dd2681cb6d3",
+      "title": "人际与精力管理",
+      "node_id": "66eea0f6-1b4d-4b77-85d5-0c19601bb130",
+      "role": "user",
+      "text_chars": 626,
+      "text_sha256": "8c137fdb2ce91cc1292f02485c03a749788e816c05a344d28820ad3908f940d0",
+      "hard_hits": [
+        "股票"
+      ],
+      "broad_hits": [
+        "股票"
+      ],
+      "relevance_hits": [
+        "股票"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69997d8f-5588-8332-ae3b-1dd2681cb6d3",
+      "title": "人际与精力管理",
+      "node_id": "4a718daf-8cc9-4649-9f1b-1495aff3fe22",
+      "role": "assistant",
+      "text_chars": 1792,
+      "text_sha256": "9d847808337752002e2e8136e17faa83c1863512de365e28988dcaf3774f0689",
+      "hard_hits": [
+        "股票"
+      ],
+      "broad_hits": [
+        "股票"
+      ],
+      "relevance_hits": [
+        "投资",
+        "股票"
+      ],
       "review_action": "excluded"
     },
     {
@@ -164,6 +201,28 @@
       "review_action": "excluded"
     },
     {
+      "conversation_id": "69d7150c-823c-832c-b2cd-a0b9ac2c3026",
+      "title": "Daily",
+      "node_id": "94a673f2-309b-47fa-af8e-ec4a364bc847",
+      "role": "assistant",
+      "text_chars": 1288,
+      "text_sha256": "362e5366ed9425f71b3b0c02a8eb6d1d05f962b37c77cb971785fdced64f7129",
+      "hard_hits": [
+        "持仓",
+        "股票"
+      ],
+      "broad_hits": [
+        "持仓",
+        "股票"
+      ],
+      "relevance_hits": [
+        "投资",
+        "持仓",
+        "股票"
+      ],
+      "review_action": "excluded"
+    },
+    {
       "conversation_id": "69df41cf-0774-832f-90cd-a3a39386907a",
       "title": "通胀与普通人生活",
       "node_id": "43861c5d-876e-470d-895d-b2dd45927c39",
@@ -181,6 +240,71 @@
         "海澜",
         "海澜之家",
         "资产配置"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+      "title": "世界公民配置升级",
+      "node_id": "e56bef6b-3a5d-4c71-8677-4b72ca95a822",
+      "role": "user",
+      "text_chars": 148,
+      "text_sha256": "292c5cdae86298b1384b5affad2dcef0d45f158e60a9147200f12631762891e2",
+      "hard_hits": [
+        "美股"
+      ],
+      "broad_hits": [
+        "美股"
+      ],
+      "relevance_hits": [
+        "美股"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+      "title": "世界公民配置升级",
+      "node_id": "76a4b163-7cfc-4a1d-81e8-4961fa9530f0",
+      "role": "assistant",
+      "text_chars": 2710,
+      "text_sha256": "358cc9c1be71232d4b38b5960a54f7873c9c904be27f6885edaefac00a7a0edc",
+      "hard_hits": [
+        "券商",
+        "海澜之家",
+        "美股"
+      ],
+      "broad_hits": [
+        "券商",
+        "海澜之家",
+        "美股"
+      ],
+      "relevance_hits": [
+        "券商",
+        "投资",
+        "海澜",
+        "海澜之家",
+        "美股"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+      "title": "世界公民配置升级",
+      "node_id": "673fb7a6-70e1-47c6-9368-18b669bc7ca5",
+      "role": "user",
+      "text_chars": 367,
+      "text_sha256": "6c49eb88864df2eb0d6a5a677ea125ad3e6b5a37627e13860c573ebaa805f7ea",
+      "hard_hits": [
+        "分红",
+        "美股"
+      ],
+      "broad_hits": [
+        "分红",
+        "美股"
+      ],
+      "relevance_hits": [
+        "分红",
+        "美股"
       ],
       "review_action": "excluded"
     },
@@ -206,6 +330,32 @@
     {
       "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
       "title": "世界公民配置升级",
+      "node_id": "d1c0514f-070e-4f2a-9ab3-846dffa54f5a",
+      "role": "user",
+      "text_chars": 1115,
+      "text_sha256": "c60049fb4005fe7e0d352f1dc4f36502309e9c73484b8a2aea8e6ccbd1ef23f9",
+      "hard_hits": [
+        "分红",
+        "基金",
+        "美股",
+        "股票"
+      ],
+      "broad_hits": [
+        "分红",
+        "美股",
+        "股票"
+      ],
+      "relevance_hits": [
+        "分红",
+        "投资",
+        "美股",
+        "股票"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+      "title": "世界公民配置升级",
       "node_id": "c1501c81-12c6-474b-93a4-0d8c819d608c",
       "role": "assistant",
       "text_chars": 1949,
@@ -219,6 +369,251 @@
       "relevance_hits": [
         "分红",
         "投资"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+      "title": "世界公民配置升级",
+      "node_id": "ca4648cc-d6ee-4d6b-83e4-c9c4bc5e509a",
+      "role": "assistant",
+      "text_chars": 1966,
+      "text_sha256": "5ae7562079fa68c62351d994f8c4bbf300c6dc9c63a0af0848698b2fe54c5311",
+      "hard_hits": [
+        "A股",
+        "ETF",
+        "交易所",
+        "美股"
+      ],
+      "broad_hits": [
+        "A股",
+        "ETF",
+        "交易所",
+        "美股"
+      ],
+      "relevance_hits": [
+        "A股",
+        "ETF",
+        "交易所",
+        "投资",
+        "美股"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+      "title": "世界公民配置升级",
+      "node_id": "add7a9b0-29ca-4917-b1ee-1eb316f28710",
+      "role": "user",
+      "text_chars": 1631,
+      "text_sha256": "ea9c11d35350c58e83fcecd5df678fc687284046dfee49d3d40b1f0832c5f97f",
+      "hard_hits": [
+        "分红",
+        "券商",
+        "基金",
+        "美股",
+        "股票"
+      ],
+      "broad_hits": [
+        "分红",
+        "券商",
+        "美股",
+        "股票"
+      ],
+      "relevance_hits": [
+        "分红",
+        "券商",
+        "投资",
+        "美股",
+        "股票"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+      "title": "世界公民配置升级",
+      "node_id": "9e94990b-f5d2-4f54-9154-d5b4aada965b",
+      "role": "assistant",
+      "text_chars": 2096,
+      "text_sha256": "1e004df3fe87c695d1a906651f9ae5bac989f997fe5397a175a8b88fa4f4c0b7",
+      "hard_hits": [
+        "港股",
+        "美股",
+        "股票"
+      ],
+      "broad_hits": [
+        "港股",
+        "美股",
+        "股票"
+      ],
+      "relevance_hits": [
+        "港股",
+        "美股",
+        "股票",
+        "资产配置"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+      "title": "世界公民配置升级",
+      "node_id": "e1372f0b-687d-408d-b101-430c6ba251b5",
+      "role": "assistant",
+      "text_chars": 1299,
+      "text_sha256": "89023133fcd34d9c8bbba7a808292205e6cb29eb7a7d9828d2908c4f9178475c",
+      "hard_hits": [
+        "券商",
+        "美股"
+      ],
+      "broad_hits": [
+        "券商",
+        "美股"
+      ],
+      "relevance_hits": [
+        "券商",
+        "美股"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+      "title": "世界公民配置升级",
+      "node_id": "bc3a96c4-ced4-4af6-9d8d-93a49e0e9ef8",
+      "role": "assistant",
+      "text_chars": 2040,
+      "text_sha256": "c7d0c53fc97fb6c9c35aff5d37e49753b2ed6f51b9abf809afd6b353a5b25806",
+      "hard_hits": [
+        "港股",
+        "美股",
+        "股票"
+      ],
+      "broad_hits": [
+        "港股",
+        "美股",
+        "股票"
+      ],
+      "relevance_hits": [
+        "Portfolio",
+        "港股",
+        "美股",
+        "股票"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+      "title": "世界公民配置升级",
+      "node_id": "efa3597a-66d2-4bc6-8cfe-35f00de3dd7b",
+      "role": "user",
+      "text_chars": 2409,
+      "text_sha256": "4a98c2f2a2848fbe08a0472d0f52afe589b0ce77b8b563614a62af78f9d5d85f",
+      "hard_hits": [
+        "ETF",
+        "分红",
+        "美股",
+        "股票"
+      ],
+      "broad_hits": [
+        "ETF",
+        "分红",
+        "美股",
+        "股票"
+      ],
+      "relevance_hits": [
+        "ETF",
+        "分红",
+        "投资",
+        "美股",
+        "股票"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+      "title": "世界公民配置升级",
+      "node_id": "27dd6348-8cf8-439c-ab3b-4a42731eded4",
+      "role": "assistant",
+      "text_chars": 1827,
+      "text_sha256": "14a6d84fee8a123cccc71af968a030b71ad5731e4db35ad157818b6940327bad",
+      "hard_hits": [
+        "港股",
+        "美股"
+      ],
+      "broad_hits": [
+        "港股",
+        "美股"
+      ],
+      "relevance_hits": [
+        "港股",
+        "美股"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69e4f23c-b4b8-8326-a44d-441fb79c30a5",
+      "title": "内脏脂肪测试方法",
+      "node_id": "24fafec3-53e2-47ad-898e-055a995abbfa",
+      "role": "assistant",
+      "text_chars": 1571,
+      "text_sha256": "d94b3a98174812ddd84c038b7361ca0a7aa22e031ed0b8317f4fdd4c07676c2f",
+      "hard_hits": [
+        "均线",
+        "股票"
+      ],
+      "broad_hits": [
+        "均线",
+        "股票",
+        "量能"
+      ],
+      "relevance_hits": [
+        "均线",
+        "投资",
+        "股票",
+        "量能"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69e4f23c-b4b8-8326-a44d-441fb79c30a5",
+      "title": "内脏脂肪测试方法",
+      "node_id": "baa5cd1d-e495-4a0b-80f0-a12fc5166023",
+      "role": "assistant",
+      "text_chars": 1314,
+      "text_sha256": "8b33c3fdfb4e245d76b27e6e4376e744ba1830fefe54641456b090ce1f50d463",
+      "hard_hits": [
+        "K线",
+        "均线"
+      ],
+      "broad_hits": [
+        "K线",
+        "均线",
+        "看盘",
+        "量能"
+      ],
+      "relevance_hits": [
+        "K线",
+        "均线",
+        "投资",
+        "看盘",
+        "量能"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69e589d8-ea94-832b-9ca0-95692e81d28a",
+      "title": "婚姻决策与风险",
+      "node_id": "bab88a41-6b22-4ae8-962e-16ffccc33d60",
+      "role": "user",
+      "text_chars": 14485,
+      "text_sha256": "97e8b1447d32ac0bd556a312b3e23f6f30688983ca0d90c4be8e75bc97cf4864",
+      "hard_hits": [
+        "止损"
+      ],
+      "broad_hits": [
+        "止损"
+      ],
+      "relevance_hits": [
+        "止损"
       ],
       "review_action": "excluded"
     },
@@ -314,6 +709,54 @@
       "review_action": "excluded"
     },
     {
+      "conversation_id": "6a0ed2f9-a5a8-8324-8e71-bfcd6e7f4748",
+      "title": "苹果礼品卡有效期",
+      "node_id": "c81c792d-784e-4826-9671-c792c4fccc52",
+      "role": "user",
+      "text_chars": 1370,
+      "text_sha256": "cff7d717b0374813fca423e7e3c632941274c32cd4b6d55e614ecfca53bad92b",
+      "hard_hits": [
+        "分红",
+        "券商",
+        "基金",
+        "美股",
+        "股票"
+      ],
+      "broad_hits": [
+        "分红",
+        "券商",
+        "美股",
+        "股票"
+      ],
+      "relevance_hits": [
+        "分红",
+        "券商",
+        "投资",
+        "美股",
+        "股票"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a0ed2f9-a5a8-8324-8e71-bfcd6e7f4748",
+      "title": "苹果礼品卡有效期",
+      "node_id": "9b16aeff-d7d6-4b81-8efb-0ce69119eddd",
+      "role": "assistant",
+      "text_chars": 1965,
+      "text_sha256": "828ba16f3a285eeb043cc22e98af8472366b6c5106e554f67a01a878705e13d8",
+      "hard_hits": [
+        "券商"
+      ],
+      "broad_hits": [
+        "券商"
+      ],
+      "relevance_hits": [
+        "券商",
+        "投资"
+      ],
+      "review_action": "excluded"
+    },
+    {
       "conversation_id": "6a11a08d-916c-83ec-ac23-da75f4390723",
       "title": "HSBC App Store问题",
       "node_id": "4c601335-fd4d-4109-bf1e-df412a07e062",
@@ -350,6 +793,75 @@
       "review_action": "excluded"
     },
     {
+      "conversation_id": "6a195e19-019c-83ec-8b67-a0e3160dd723",
+      "title": "GPT token收费标准",
+      "node_id": "dfd779fe-2425-4c1c-aeb2-69ebf255ded1",
+      "role": "assistant",
+      "text_chars": 1322,
+      "text_sha256": "c37038a79285b3a5fffb100bb579c2546057d24fffc3f26c1b7344d60dfbf84a",
+      "hard_hits": [
+        "港股"
+      ],
+      "broad_hits": [
+        "港股"
+      ],
+      "relevance_hits": [
+        "港股"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a195e19-019c-83ec-8b67-a0e3160dd723",
+      "title": "GPT token收费标准",
+      "node_id": "588d6c3d-57f8-4b42-ab13-32bfac6f0f36",
+      "role": "assistant",
+      "text_chars": 909,
+      "text_sha256": "bd2bbe19e57cee87eefb785d6d9db47c5278fa5b917c1d33147d2ee727b50502",
+      "hard_hits": [
+        "券商",
+        "港股"
+      ],
+      "broad_hits": [
+        "券商",
+        "港股"
+      ],
+      "relevance_hits": [
+        "券商",
+        "港股"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a2a757b-7a20-83ec-a4cc-f58f2cb64684",
+      "title": "澳门旅行必做事项",
+      "node_id": "efda3e3a-69cc-4c78-a5e4-3f484afed126",
+      "role": "assistant",
+      "text_chars": 1174,
+      "text_sha256": "6f22ac9e54ab3ecbfdb2f068fb132be75c03e669168038f32662f317b60ba78e",
+      "hard_hits": [
+        "ETF",
+        "券商",
+        "港股",
+        "美股",
+        "证券"
+      ],
+      "broad_hits": [
+        "ETF",
+        "券商",
+        "港股",
+        "美股",
+        "证券"
+      ],
+      "relevance_hits": [
+        "ETF",
+        "券商",
+        "港股",
+        "美股",
+        "证券"
+      ],
+      "review_action": "excluded"
+    },
+    {
       "conversation_id": "6a2f75ae-66d8-83ec-8ad5-f2d34308f43d",
       "title": "买房争论分析",
       "node_id": "e2716a56-93f1-49a5-b93d-17782f0efff7",
@@ -365,6 +877,64 @@
       "relevance_hits": [
         "投资",
         "股票"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a5b1e07-3590-83ec-a4c9-b87b4e833cbc",
+      "title": "世界公民实操指南",
+      "node_id": "1ec5555a-babf-4711-b6af-5ce669f64947",
+      "role": "assistant",
+      "text_chars": 2605,
+      "text_sha256": "cae7a5b5adb771b0207631d42057e9cbdd5ff20c4ed049daebb8e0a5bf0b2f4f",
+      "hard_hits": [
+        "NVDA",
+        "中国银行",
+        "券商",
+        "基金",
+        "美股",
+        "股票",
+        "财报"
+      ],
+      "broad_hits": [
+        "中国银行",
+        "券商",
+        "美股",
+        "股票",
+        "财报"
+      ],
+      "relevance_hits": [
+        "NVDA",
+        "中国银行",
+        "券商",
+        "投资",
+        "美股",
+        "股票",
+        "财报",
+        "资产配置"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a5b35e5-4520-83ec-9e6a-989b801b5eaa",
+      "title": "孩子教育逻辑探讨",
+      "node_id": "df2db51f-fa5d-488b-8326-de7e43f03690",
+      "role": "assistant",
+      "text_chars": 3531,
+      "text_sha256": "2f004524a6f1cddfe0244451acc36134b3c87b07eb9697c5ad024eaacb623a1c",
+      "hard_hits": [
+        "ETF",
+        "股票"
+      ],
+      "broad_hits": [
+        "ETF",
+        "股票"
+      ],
+      "relevance_hits": [
+        "ETF",
+        "投资",
+        "股票",
+        "资产配置"
       ],
       "review_action": "excluded"
     },
@@ -394,6 +964,25 @@
       "role": "assistant",
       "text_chars": 1950,
       "text_sha256": "e341627ca384e4d78deb04fd33be31aa3fca7a4b3812673c6605b37c31be29b7",
+      "hard_hits": [
+        "股票"
+      ],
+      "broad_hits": [
+        "股票"
+      ],
+      "relevance_hits": [
+        "投资",
+        "股票"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a5cc303-9bac-83ec-a2fa-f3838317a116",
+      "title": "Arena 模型下架原因",
+      "node_id": "f5639f67-3f29-4d76-abda-bfc221a98caf",
+      "role": "assistant",
+      "text_chars": 2818,
+      "text_sha256": "9318e47d12537d16601c0cc005c1fdc3c9066ab819df20f8335974bfe81d2e3d",
       "hard_hits": [
         "股票"
       ],
@@ -445,6 +1034,59 @@
       "review_action": "excluded"
     },
     {
+      "conversation_id": "6a602eed-f354-83ec-946a-ea97d7667e7b",
+      "title": "Claude Prompt技巧总结",
+      "node_id": "06bf9756-942d-4870-bace-cfba43bf1d69",
+      "role": "assistant",
+      "text_chars": 3209,
+      "text_sha256": "8785c2dbba9a8c03e303c44853b75e7000a26f6c5fd5250fd10e8aa60d315d5d",
+      "hard_hits": [
+        "定投",
+        "股价",
+        "财报"
+      ],
+      "broad_hits": [
+        "价值投资",
+        "估值",
+        "定投",
+        "股价",
+        "财报"
+      ],
+      "relevance_hits": [
+        "价值投资",
+        "估值",
+        "定投",
+        "投资",
+        "股价",
+        "财报"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a6e1a40-40a0-83ec-a24b-146998aec5b5",
+      "title": "节省token技巧大全",
+      "node_id": "0bf5f14f-a68b-4161-9cea-f73a9b379f1e",
+      "role": "assistant",
+      "text_chars": 4515,
+      "text_sha256": "f93c2d760fef209e61988d9687539546e14984c2cd639a8896a1d69260c47a66",
+      "hard_hits": [
+        "成交量",
+        "股票"
+      ],
+      "broad_hits": [
+        "300000",
+        "成交量",
+        "股票"
+      ],
+      "relevance_hits": [
+        "300000",
+        "成交量",
+        "投资",
+        "股票"
+      ],
+      "review_action": "excluded"
+    },
+    {
       "conversation_id": "6a71b663-112c-83ec-911a-cce3ae76e69f",
       "title": "Trueno Group 匹配度分析",
       "node_id": "4c53efa6-56a6-4487-8648-7f63919f803c",
@@ -481,6 +1123,116 @@
       "review_action": "excluded"
     },
     {
+      "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
+      "title": "普通人被动收入方式",
+      "node_id": "08c26690-8f69-4121-b549-ec3596fee060",
+      "role": "assistant",
+      "text_chars": 2074,
+      "text_sha256": "fbc2db0bef92d09e949932709d6d5c5586a3d102563a2d0d4f9773d096b557d2",
+      "hard_hits": [
+        "股票"
+      ],
+      "broad_hits": [
+        "股票"
+      ],
+      "relevance_hits": [
+        "投资",
+        "股票"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
+      "title": "普通人被动收入方式",
+      "node_id": "e03ca290-db96-409c-9678-506d8d3d0e09",
+      "role": "assistant",
+      "text_chars": 1685,
+      "text_sha256": "09fdff624c36ca3bcafda58b4079efa158ee17ad43c8a6e48c61b9e6f9e08ec1",
+      "hard_hits": [
+        "股票"
+      ],
+      "broad_hits": [
+        "股票"
+      ],
+      "relevance_hits": [
+        "投资",
+        "股票"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6ac900e3-5b04-83ec-8bf2-48bdf3ea649f",
+      "title": "手机安全建议",
+      "node_id": "59f52906-64b9-4cb6-9c31-14445c85d67a",
+      "role": "user",
+      "text_chars": 65,
+      "text_sha256": "a1645705e14159f21cb546d7b3f984e1046902a8660531f16e5aedc81d9ce189",
+      "hard_hits": [
+        "招商银行"
+      ],
+      "broad_hits": [
+        "招商银行"
+      ],
+      "relevance_hits": [
+        "招商银行"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6ac900e3-5b04-83ec-8bf2-48bdf3ea649f",
+      "title": "手机安全建议",
+      "node_id": "a49c32e3-b207-4edd-ac1c-d8cd69a224ef",
+      "role": "assistant",
+      "text_chars": 1026,
+      "text_sha256": "af8e59c6278952068ecc251d17f1b405adae387dc69d976dd72abee0d6708468",
+      "hard_hits": [
+        "招商银行"
+      ],
+      "broad_hits": [
+        "招商银行"
+      ],
+      "relevance_hits": [
+        "招商银行"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6ac900e3-5b04-83ec-8bf2-48bdf3ea649f",
+      "title": "手机安全建议",
+      "node_id": "4427202b-c0d9-4da4-97c3-ddf03464c061",
+      "role": "assistant",
+      "text_chars": 1066,
+      "text_sha256": "f54b0b9bee18924bbe06f88bfe33d09515c483cbe806f2c10922190e48d1f83c",
+      "hard_hits": [
+        "招商银行"
+      ],
+      "broad_hits": [
+        "招商银行"
+      ],
+      "relevance_hits": [
+        "招商银行"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6ac900e3-5b04-83ec-8bf2-48bdf3ea649f",
+      "title": "手机安全建议",
+      "node_id": "cec05133-7194-404f-8e32-4ca0d5a14a90",
+      "role": "assistant",
+      "text_chars": 908,
+      "text_sha256": "0f3e96c0fe58b6d701f57976ad6e513aec3e0630dce2e90267894e67e93dc2c7",
+      "hard_hits": [
+        "止损"
+      ],
+      "broad_hits": [
+        "止损"
+      ],
+      "relevance_hits": [
+        "止损"
+      ],
+      "review_action": "excluded"
+    },
+    {
       "conversation_id": "6ac900e3-5b04-83ec-8bf2-48bdf3ea649f",
       "title": "手机安全建议",
       "node_id": "a513aa4d-126e-4566-a863-aad8722fe0d7",
@@ -499,12 +1251,81 @@
       "review_action": "excluded"
     },
     {
+      "conversation_id": "6ac900e3-5b04-83ec-8bf2-48bdf3ea649f",
+      "title": "手机安全建议",
+      "node_id": "8133757b-9c82-445a-b68c-f397122e2d9e",
+      "role": "assistant",
+      "text_chars": 1875,
+      "text_sha256": "d97899a5ff8ee7ed79c1fc78be8bc17f50fc31c3b7277498500b4078fa86edb4",
+      "hard_hits": [
+        "券商",
+        "股票"
+      ],
+      "broad_hits": [
+        "券商",
+        "股票"
+      ],
+      "relevance_hits": [
+        "券商",
+        "投资",
+        "股票"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6ac900e3-5b04-83ec-8bf2-48bdf3ea649f",
+      "title": "手机安全建议",
+      "node_id": "9cd334cb-be2a-45a3-86bf-eefc52bbfedf",
+      "role": "assistant",
+      "text_chars": 2843,
+      "text_sha256": "b64f96f8627685925b93d9e3b1767e2550debf00457d899adbbc86c85e04c774",
+      "hard_hits": [
+        "ETF",
+        "基金",
+        "股息",
+        "股票",
+        "证券"
+      ],
+      "broad_hits": [
+        "ETF",
+        "股息",
+        "股票",
+        "证券"
+      ],
+      "relevance_hits": [
+        "ETF",
+        "投资",
+        "股息",
+        "股票",
+        "证券"
+      ],
+      "review_action": "excluded"
+    },
+    {
       "conversation_id": "6ace2230-0b20-83ec-8e8b-7b863ad8e268",
       "title": "交换机租赁模式探索",
       "node_id": "f95c2855-178d-4ecf-af9d-0e34f8f1c29e",
       "role": "user",
       "text_chars": 203,
       "text_sha256": "1803cdc0b9bf2d4607a137c3f742e2995936ca195d091f1e7bace0e70abb6d3e",
+      "hard_hits": [
+        "股票"
+      ],
+      "broad_hits": [
+        "股票"
+      ],
+      "relevance_hits": [
+        "股票"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6ace2230-0b20-83ec-8e8b-7b863ad8e268",
+      "title": "交换机租赁模式探索",
+      "node_id": "3c3be327-ef8a-45d9-b157-10ff9d74f0ae",
+      "role": "assistant",
+      "text_chars": 2920,
+      "text_sha256": "338e5070bc232e5ad97d9c755418093f7ff0ef8bfd613ddffca167fcd0d7ac7e",
       "hard_hits": [
         "股票"
       ],
@@ -848,18 +1669,6 @@
       "role": "assistant",
       "text_chars": 77,
       "text_sha256": "f8e487d222f53b490030ccde4c034c02d25e06b90d3fa42c8d1a93af1c9437a0",
-      "hard_hits": [],
-      "broad_hits": [],
-      "relevance_hits": [],
-      "review_action": "excluded"
-    },
-    {
-      "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
-      "title": "普通人被动收入方式",
-      "node_id": "7c06e56d-5401-45c6-9acb-6da2e6e8f3f8",
-      "role": "user",
-      "text_chars": 26,
-      "text_sha256": "20339466405efa6d0d36ac75dac844376992c48ea5f5bd3e0b12532c53b393fe",
       "hard_hits": [],
       "broad_hits": [],
       "relevance_hits": [],
@@ -3003,43 +3812,6 @@
       "review_action": "included"
     },
     {
-      "conversation_id": "69997d8f-5588-8332-ae3b-1dd2681cb6d3",
-      "title": "人际与精力管理",
-      "node_id": "66eea0f6-1b4d-4b77-85d5-0c19601bb130",
-      "role": "user",
-      "text_chars": 626,
-      "text_sha256": "8c137fdb2ce91cc1292f02485c03a749788e816c05a344d28820ad3908f940d0",
-      "hard_hits": [
-        "股票"
-      ],
-      "broad_hits": [
-        "股票"
-      ],
-      "relevance_hits": [
-        "股票"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
-      "conversation_id": "69997d8f-5588-8332-ae3b-1dd2681cb6d3",
-      "title": "人际与精力管理",
-      "node_id": "4a718daf-8cc9-4649-9f1b-1495aff3fe22",
-      "role": "assistant",
-      "text_chars": 1792,
-      "text_sha256": "9d847808337752002e2e8136e17faa83c1863512de365e28988dcaf3774f0689",
-      "hard_hits": [
-        "股票"
-      ],
-      "broad_hits": [
-        "股票"
-      ],
-      "relevance_hits": [
-        "投资",
-        "股票"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
       "conversation_id": "69a43728-c2a4-8327-9f00-06e68b2ddf40",
       "title": "跨境QDII投资调整",
       "node_id": "0e2a2be8-ecf1-4191-a753-6b9748233801",
@@ -3189,8 +3961,8 @@
       "text_sha256": "9218692b76ab396e6cd86dc19fa3a1844a85dfe96e9c7c2afa0fc5317ec9b9f2",
       "hard_hits": [
         "Dividend",
-        "ETF",
         "etf",
+        "ETF",
         "nyse",
         "分红",
         "收息",
@@ -3200,8 +3972,8 @@
       ],
       "broad_hits": [
         "Dividend",
-        "ETF",
         "etf",
+        "ETF",
         "仓位",
         "估值",
         "分红",
@@ -3214,8 +3986,8 @@
       "relevance_hits": [
         "Dividend",
         "Equity",
-        "etf",
         "ETF",
+        "etf",
         "ROE",
         "Stock",
         "仓位",
@@ -5017,8 +5789,8 @@
       "hard_hits": [
         "Dividend",
         "dividend",
-        "ETF",
         "etf",
+        "ETF",
         "分红",
         "加仓",
         "吸筹",
@@ -5029,8 +5801,8 @@
       "broad_hits": [
         "Dividend",
         "dividend",
-        "ETF",
         "etf",
+        "ETF",
         "估值",
         "分红",
         "加仓",
@@ -5043,8 +5815,8 @@
         "Dividend",
         "dividend",
         "Equity",
-        "ETF",
         "etf",
+        "ETF",
         "stock",
         "估值",
         "分红",
@@ -6027,274 +6799,6 @@
       "review_action": "included"
     },
     {
-      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
-      "title": "世界公民配置升级",
-      "node_id": "e56bef6b-3a5d-4c71-8677-4b72ca95a822",
-      "role": "user",
-      "text_chars": 148,
-      "text_sha256": "292c5cdae86298b1384b5affad2dcef0d45f158e60a9147200f12631762891e2",
-      "hard_hits": [
-        "美股"
-      ],
-      "broad_hits": [
-        "美股"
-      ],
-      "relevance_hits": [
-        "美股"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
-      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
-      "title": "世界公民配置升级",
-      "node_id": "76a4b163-7cfc-4a1d-81e8-4961fa9530f0",
-      "role": "assistant",
-      "text_chars": 2710,
-      "text_sha256": "358cc9c1be71232d4b38b5960a54f7873c9c904be27f6885edaefac00a7a0edc",
-      "hard_hits": [
-        "券商",
-        "海澜之家",
-        "美股"
-      ],
-      "broad_hits": [
-        "券商",
-        "海澜之家",
-        "美股"
-      ],
-      "relevance_hits": [
-        "券商",
-        "投资",
-        "海澜",
-        "海澜之家",
-        "美股"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
-      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
-      "title": "世界公民配置升级",
-      "node_id": "673fb7a6-70e1-47c6-9368-18b669bc7ca5",
-      "role": "user",
-      "text_chars": 367,
-      "text_sha256": "6c49eb88864df2eb0d6a5a677ea125ad3e6b5a37627e13860c573ebaa805f7ea",
-      "hard_hits": [
-        "分红",
-        "美股"
-      ],
-      "broad_hits": [
-        "分红",
-        "美股"
-      ],
-      "relevance_hits": [
-        "分红",
-        "美股"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
-      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
-      "title": "世界公民配置升级",
-      "node_id": "d1c0514f-070e-4f2a-9ab3-846dffa54f5a",
-      "role": "user",
-      "text_chars": 1115,
-      "text_sha256": "c60049fb4005fe7e0d352f1dc4f36502309e9c73484b8a2aea8e6ccbd1ef23f9",
-      "hard_hits": [
-        "分红",
-        "基金",
-        "美股",
-        "股票"
-      ],
-      "broad_hits": [
-        "分红",
-        "美股",
-        "股票"
-      ],
-      "relevance_hits": [
-        "分红",
-        "投资",
-        "美股",
-        "股票"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
-      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
-      "title": "世界公民配置升级",
-      "node_id": "ca4648cc-d6ee-4d6b-83e4-c9c4bc5e509a",
-      "role": "assistant",
-      "text_chars": 1966,
-      "text_sha256": "5ae7562079fa68c62351d994f8c4bbf300c6dc9c63a0af0848698b2fe54c5311",
-      "hard_hits": [
-        "A股",
-        "ETF",
-        "交易所",
-        "美股"
-      ],
-      "broad_hits": [
-        "A股",
-        "ETF",
-        "交易所",
-        "美股"
-      ],
-      "relevance_hits": [
-        "A股",
-        "ETF",
-        "交易所",
-        "投资",
-        "美股"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
-      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
-      "title": "世界公民配置升级",
-      "node_id": "add7a9b0-29ca-4917-b1ee-1eb316f28710",
-      "role": "user",
-      "text_chars": 1631,
-      "text_sha256": "ea9c11d35350c58e83fcecd5df678fc687284046dfee49d3d40b1f0832c5f97f",
-      "hard_hits": [
-        "分红",
-        "券商",
-        "基金",
-        "美股",
-        "股票"
-      ],
-      "broad_hits": [
-        "分红",
-        "券商",
-        "美股",
-        "股票"
-      ],
-      "relevance_hits": [
-        "分红",
-        "券商",
-        "投资",
-        "美股",
-        "股票"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
-      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
-      "title": "世界公民配置升级",
-      "node_id": "9e94990b-f5d2-4f54-9154-d5b4aada965b",
-      "role": "assistant",
-      "text_chars": 2096,
-      "text_sha256": "1e004df3fe87c695d1a906651f9ae5bac989f997fe5397a175a8b88fa4f4c0b7",
-      "hard_hits": [
-        "港股",
-        "美股",
-        "股票"
-      ],
-      "broad_hits": [
-        "港股",
-        "美股",
-        "股票"
-      ],
-      "relevance_hits": [
-        "港股",
-        "美股",
-        "股票",
-        "资产配置"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
-      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
-      "title": "世界公民配置升级",
-      "node_id": "e1372f0b-687d-408d-b101-430c6ba251b5",
-      "role": "assistant",
-      "text_chars": 1299,
-      "text_sha256": "89023133fcd34d9c8bbba7a808292205e6cb29eb7a7d9828d2908c4f9178475c",
-      "hard_hits": [
-        "券商",
-        "美股"
-      ],
-      "broad_hits": [
-        "券商",
-        "美股"
-      ],
-      "relevance_hits": [
-        "券商",
-        "美股"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
-      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
-      "title": "世界公民配置升级",
-      "node_id": "bc3a96c4-ced4-4af6-9d8d-93a49e0e9ef8",
-      "role": "assistant",
-      "text_chars": 2040,
-      "text_sha256": "c7d0c53fc97fb6c9c35aff5d37e49753b2ed6f51b9abf809afd6b353a5b25806",
-      "hard_hits": [
-        "港股",
-        "美股",
-        "股票"
-      ],
-      "broad_hits": [
-        "港股",
-        "美股",
-        "股票"
-      ],
-      "relevance_hits": [
-        "Portfolio",
-        "港股",
-        "美股",
-        "股票"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
-      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
-      "title": "世界公民配置升级",
-      "node_id": "efa3597a-66d2-4bc6-8cfe-35f00de3dd7b",
-      "role": "user",
-      "text_chars": 2409,
-      "text_sha256": "4a98c2f2a2848fbe08a0472d0f52afe589b0ce77b8b563614a62af78f9d5d85f",
-      "hard_hits": [
-        "ETF",
-        "分红",
-        "美股",
-        "股票"
-      ],
-      "broad_hits": [
-        "ETF",
-        "分红",
-        "美股",
-        "股票"
-      ],
-      "relevance_hits": [
-        "ETF",
-        "分红",
-        "投资",
-        "美股",
-        "股票"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
-      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
-      "title": "世界公民配置升级",
-      "node_id": "27dd6348-8cf8-439c-ab3b-4a42731eded4",
-      "role": "assistant",
-      "text_chars": 1827,
-      "text_sha256": "14a6d84fee8a123cccc71af968a030b71ad5731e4db35ad157818b6940327bad",
-      "hard_hits": [
-        "港股",
-        "美股"
-      ],
-      "broad_hits": [
-        "港股",
-        "美股"
-      ],
-      "relevance_hits": [
-        "港股",
-        "美股"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
       "conversation_id": "69e04e65-5df0-8331-a9f2-8485439eb09c",
       "title": "韩国QDII与半导体配置",
       "node_id": "b03a03ab-0758-4a61-9888-b1356da5cc07",
@@ -6332,8 +6836,8 @@
       ],
       "relevance_hits": [
         "ETF",
-        "stock",
         "Stock",
+        "stock",
         "仓位",
         "加仓",
         "定投",
@@ -6527,74 +7031,6 @@
         "仓位",
         "持仓",
         "美团"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
-      "conversation_id": "69e4f23c-b4b8-8326-a44d-441fb79c30a5",
-      "title": "内脏脂肪测试方法",
-      "node_id": "24fafec3-53e2-47ad-898e-055a995abbfa",
-      "role": "assistant",
-      "text_chars": 1571,
-      "text_sha256": "d94b3a98174812ddd84c038b7361ca0a7aa22e031ed0b8317f4fdd4c07676c2f",
-      "hard_hits": [
-        "均线",
-        "股票"
-      ],
-      "broad_hits": [
-        "均线",
-        "股票",
-        "量能"
-      ],
-      "relevance_hits": [
-        "均线",
-        "投资",
-        "股票",
-        "量能"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
-      "conversation_id": "69e4f23c-b4b8-8326-a44d-441fb79c30a5",
-      "title": "内脏脂肪测试方法",
-      "node_id": "baa5cd1d-e495-4a0b-80f0-a12fc5166023",
-      "role": "assistant",
-      "text_chars": 1314,
-      "text_sha256": "8b33c3fdfb4e245d76b27e6e4376e744ba1830fefe54641456b090ce1f50d463",
-      "hard_hits": [
-        "K线",
-        "均线"
-      ],
-      "broad_hits": [
-        "K线",
-        "均线",
-        "看盘",
-        "量能"
-      ],
-      "relevance_hits": [
-        "K线",
-        "均线",
-        "投资",
-        "看盘",
-        "量能"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
-      "conversation_id": "69e589d8-ea94-832b-9ca0-95692e81d28a",
-      "title": "婚姻决策与风险",
-      "node_id": "bab88a41-6b22-4ae8-962e-16ffccc33d60",
-      "role": "user",
-      "text_chars": 14485,
-      "text_sha256": "97e8b1447d32ac0bd556a312b3e23f6f30688983ca0d90c4be8e75bc97cf4864",
-      "hard_hits": [
-        "止损"
-      ],
-      "broad_hits": [
-        "止损"
-      ],
-      "relevance_hits": [
-        "止损"
       ],
       "review_action": "unreviewed"
     },
@@ -7263,8 +7699,8 @@
         "K线",
         "MA20",
         "MA40",
-        "STOCK",
         "stock",
+        "STOCK",
         "东方财富",
         "吸筹",
         "均线",
@@ -7374,8 +7810,8 @@
         "K线",
         "MA20",
         "MA40",
-        "STOCK",
         "stock",
+        "STOCK",
         "交易所",
         "吸筹",
         "均线",
@@ -8733,54 +9169,6 @@
       "review_action": "unreviewed"
     },
     {
-      "conversation_id": "6a0ed2f9-a5a8-8324-8e71-bfcd6e7f4748",
-      "title": "苹果礼品卡有效期",
-      "node_id": "c81c792d-784e-4826-9671-c792c4fccc52",
-      "role": "user",
-      "text_chars": 1370,
-      "text_sha256": "cff7d717b0374813fca423e7e3c632941274c32cd4b6d55e614ecfca53bad92b",
-      "hard_hits": [
-        "分红",
-        "券商",
-        "基金",
-        "美股",
-        "股票"
-      ],
-      "broad_hits": [
-        "分红",
-        "券商",
-        "美股",
-        "股票"
-      ],
-      "relevance_hits": [
-        "分红",
-        "券商",
-        "投资",
-        "美股",
-        "股票"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
-      "conversation_id": "6a0ed2f9-a5a8-8324-8e71-bfcd6e7f4748",
-      "title": "苹果礼品卡有效期",
-      "node_id": "9b16aeff-d7d6-4b81-8efb-0ce69119eddd",
-      "role": "assistant",
-      "text_chars": 1965,
-      "text_sha256": "828ba16f3a285eeb043cc22e98af8472366b6c5106e554f67a01a878705e13d8",
-      "hard_hits": [
-        "券商"
-      ],
-      "broad_hits": [
-        "券商"
-      ],
-      "relevance_hits": [
-        "券商",
-        "投资"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
       "conversation_id": "6a114320-41b4-83ec-a8c6-786fae7d53ca",
       "title": "量化抓取优化建议",
       "node_id": "b766f3d4-d745-461f-89c2-d8e735c6f7e5",
@@ -9487,45 +9875,6 @@
         "券商",
         "港股",
         "美股"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
-      "conversation_id": "6a195e19-019c-83ec-8b67-a0e3160dd723",
-      "title": "GPT token收费标准",
-      "node_id": "dfd779fe-2425-4c1c-aeb2-69ebf255ded1",
-      "role": "assistant",
-      "text_chars": 1322,
-      "text_sha256": "c37038a79285b3a5fffb100bb579c2546057d24fffc3f26c1b7344d60dfbf84a",
-      "hard_hits": [
-        "港股"
-      ],
-      "broad_hits": [
-        "港股"
-      ],
-      "relevance_hits": [
-        "港股"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
-      "conversation_id": "6a195e19-019c-83ec-8b67-a0e3160dd723",
-      "title": "GPT token收费标准",
-      "node_id": "588d6c3d-57f8-4b42-ab13-32bfac6f0f36",
-      "role": "assistant",
-      "text_chars": 909,
-      "text_sha256": "bd2bbe19e57cee87eefb785d6d9db47c5278fa5b917c1d33147d2ee727b50502",
-      "hard_hits": [
-        "券商",
-        "港股"
-      ],
-      "broad_hits": [
-        "券商",
-        "港股"
-      ],
-      "relevance_hits": [
-        "券商",
-        "港股"
       ],
       "review_action": "unreviewed"
     },
@@ -10915,8 +11264,8 @@
         "AMZN",
         "AVGO",
         "GOOGL",
-        "meta",
         "META",
+        "meta",
         "Meta",
         "MSFT",
         "NFLX",
@@ -11339,8 +11688,8 @@
         "AVGO",
         "A股",
         "ETF",
-        "META",
         "Meta",
+        "META",
         "MSFT",
         "NVDA",
         "吸筹"
@@ -11812,64 +12161,6 @@
       "review_action": "unreviewed"
     },
     {
-      "conversation_id": "6a5b1e07-3590-83ec-a4c9-b87b4e833cbc",
-      "title": "世界公民实操指南",
-      "node_id": "1ec5555a-babf-4711-b6af-5ce669f64947",
-      "role": "assistant",
-      "text_chars": 2605,
-      "text_sha256": "cae7a5b5adb771b0207631d42057e9cbdd5ff20c4ed049daebb8e0a5bf0b2f4f",
-      "hard_hits": [
-        "NVDA",
-        "中国银行",
-        "券商",
-        "基金",
-        "美股",
-        "股票",
-        "财报"
-      ],
-      "broad_hits": [
-        "中国银行",
-        "券商",
-        "美股",
-        "股票",
-        "财报"
-      ],
-      "relevance_hits": [
-        "NVDA",
-        "中国银行",
-        "券商",
-        "投资",
-        "美股",
-        "股票",
-        "财报",
-        "资产配置"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
-      "conversation_id": "6a5b35e5-4520-83ec-9e6a-989b801b5eaa",
-      "title": "孩子教育逻辑探讨",
-      "node_id": "df2db51f-fa5d-488b-8326-de7e43f03690",
-      "role": "assistant",
-      "text_chars": 3531,
-      "text_sha256": "2f004524a6f1cddfe0244451acc36134b3c87b07eb9697c5ad024eaacb623a1c",
-      "hard_hits": [
-        "ETF",
-        "股票"
-      ],
-      "broad_hits": [
-        "ETF",
-        "股票"
-      ],
-      "relevance_hits": [
-        "ETF",
-        "投资",
-        "股票",
-        "资产配置"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
       "conversation_id": "6a5c5c46-3280-83ec-b676-4ad70dbda95c",
       "title": "普通人股权意识",
       "node_id": "7ed6d7dc-1227-4eda-adb2-f88a4048400d",
@@ -12008,25 +12299,6 @@
         "股票",
         "财报",
         "资产配置"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
-      "conversation_id": "6a5cc303-9bac-83ec-a2fa-f3838317a116",
-      "title": "Arena 模型下架原因",
-      "node_id": "f5639f67-3f29-4d76-abda-bfc221a98caf",
-      "role": "assistant",
-      "text_chars": 2818,
-      "text_sha256": "9318e47d12537d16601c0cc005c1fdc3c9066ab819df20f8335974bfe81d2e3d",
-      "hard_hits": [
-        "股票"
-      ],
-      "broad_hits": [
-        "股票"
-      ],
-      "relevance_hits": [
-        "投资",
-        "股票"
       ],
       "review_action": "unreviewed"
     },
@@ -12184,35 +12456,6 @@
       "review_action": "unreviewed"
     },
     {
-      "conversation_id": "6a602eed-f354-83ec-946a-ea97d7667e7b",
-      "title": "Claude Prompt技巧总结",
-      "node_id": "06bf9756-942d-4870-bace-cfba43bf1d69",
-      "role": "assistant",
-      "text_chars": 3209,
-      "text_sha256": "8785c2dbba9a8c03e303c44853b75e7000a26f6c5fd5250fd10e8aa60d315d5d",
-      "hard_hits": [
-        "定投",
-        "股价",
-        "财报"
-      ],
-      "broad_hits": [
-        "价值投资",
-        "估值",
-        "定投",
-        "股价",
-        "财报"
-      ],
-      "relevance_hits": [
-        "价值投资",
-        "估值",
-        "定投",
-        "投资",
-        "股价",
-        "财报"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
       "conversation_id": "6a605dca-a52c-83ec-8934-2d92f217453e",
       "title": "AI增强型技术用户",
       "node_id": "6638232b-2b85-4d8b-b4e9-6776c4fce61d",
@@ -12232,8 +12475,8 @@
       "relevance_hits": [
         "NVDA",
         "PE",
-        "stock",
         "Stock",
+        "stock",
         "stocks",
         "东方财富",
         "估值",
@@ -12336,8 +12579,8 @@
       "hard_hits": [
         "AAPL",
         "A股",
-        "ETF",
         "etf",
+        "ETF",
         "K线",
         "MSFT",
         "NVDA",
@@ -12348,8 +12591,8 @@
       ],
       "broad_hits": [
         "A股",
-        "ETF",
         "etf",
+        "ETF",
         "K线",
         "估值",
         "成交量",
@@ -12359,8 +12602,8 @@
       "relevance_hits": [
         "AAPL",
         "A股",
-        "etf",
         "ETF",
+        "etf",
         "K线",
         "MACD",
         "MSFT",
@@ -12629,8 +12872,8 @@
       "text_chars": 11442,
       "text_sha256": "6ddc1a304d8e3924ebb171e8457edeb0f7083c3b1b62af1c8bf5ef1346f1751c",
       "hard_hits": [
-        "etf",
         "ETF",
+        "etf",
         "主力资金",
         "五粮液",
         "加仓",
@@ -12658,8 +12901,8 @@
         "600600",
         "600809",
         "603369",
-        "etf",
         "ETF",
+        "etf",
         "主力资金",
         "五粮液",
         "估值",
@@ -12687,8 +12930,8 @@
         "600600",
         "600809",
         "603369",
-        "etf",
         "ETF",
+        "etf",
         "MA20",
         "PE",
         "主力资金",
@@ -12828,8 +13071,8 @@
       "text_chars": 4256,
       "text_sha256": "744f263c50c92cbcf0bdde680f650f3d7aa5573df058d939f785aec96f4ab980",
       "hard_hits": [
-        "ETF",
         "etf",
+        "ETF",
         "K线",
         "加仓",
         "基金",
@@ -12841,8 +13084,8 @@
         "000568",
         "000858",
         "600519",
-        "ETF",
         "etf",
+        "ETF",
         "K线",
         "估值",
         "加仓",
@@ -12854,12 +13097,12 @@
         "000568",
         "000858",
         "600519",
-        "ETF",
         "etf",
+        "ETF",
         "K线",
         "ma20",
-        "pe",
         "PE",
+        "pe",
         "stock",
         "stocks",
         "估值",
@@ -12880,16 +13123,16 @@
       "text_chars": 2950,
       "text_sha256": "04bd6dee87c632f028c5536780e4d974227299fb2c72ad5fbae8f8dc7434c288",
       "hard_hits": [
-        "ETF",
         "etf",
+        "ETF",
         "加仓",
         "基金",
         "持仓",
         "股票"
       ],
       "broad_hits": [
-        "ETF",
         "etf",
+        "ETF",
         "估值",
         "加仓",
         "持仓",
@@ -12897,8 +13140,8 @@
         "股票"
       ],
       "relevance_hits": [
-        "ETF",
         "etf",
+        "ETF",
         "MA20",
         "PE",
         "估值",
@@ -12906,30 +13149,6 @@
         "持仓",
         "日线",
         "板块",
-        "股票"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
-      "conversation_id": "6a6e1a40-40a0-83ec-a24b-146998aec5b5",
-      "title": "节省token技巧大全",
-      "node_id": "0bf5f14f-a68b-4161-9cea-f73a9b379f1e",
-      "role": "assistant",
-      "text_chars": 4515,
-      "text_sha256": "f93c2d760fef209e61988d9687539546e14984c2cd639a8896a1d69260c47a66",
-      "hard_hits": [
-        "成交量",
-        "股票"
-      ],
-      "broad_hits": [
-        "300000",
-        "成交量",
-        "股票"
-      ],
-      "relevance_hits": [
-        "300000",
-        "成交量",
-        "投资",
         "股票"
       ],
       "review_action": "unreviewed"
@@ -13627,16 +13846,16 @@
       "text_chars": 2645,
       "text_sha256": "6dd6e32c0780df3a69683b2e4d978d1761026be1c3f9c91712814de5eb8f32f5",
       "hard_hits": [
-        "ETF",
-        "etf"
+        "etf",
+        "ETF"
       ],
       "broad_hits": [
-        "ETF",
-        "etf"
+        "etf",
+        "ETF"
       ],
       "relevance_hits": [
-        "ETF",
         "etf",
+        "ETF",
         "Portfolio",
         "stock",
         "微软",
@@ -14250,44 +14469,6 @@
     {
       "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
       "title": "普通人被动收入方式",
-      "node_id": "08c26690-8f69-4121-b549-ec3596fee060",
-      "role": "assistant",
-      "text_chars": 2074,
-      "text_sha256": "fbc2db0bef92d09e949932709d6d5c5586a3d102563a2d0d4f9773d096b557d2",
-      "hard_hits": [
-        "股票"
-      ],
-      "broad_hits": [
-        "股票"
-      ],
-      "relevance_hits": [
-        "投资",
-        "股票"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
-      "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
-      "title": "普通人被动收入方式",
-      "node_id": "e03ca290-db96-409c-9678-506d8d3d0e09",
-      "role": "assistant",
-      "text_chars": 1685,
-      "text_sha256": "09fdff624c36ca3bcafda58b4079efa158ee17ad43c8a6e48c61b9e6f9e08ec1",
-      "hard_hits": [
-        "股票"
-      ],
-      "broad_hits": [
-        "股票"
-      ],
-      "relevance_hits": [
-        "投资",
-        "股票"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
-      "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
-      "title": "普通人被动收入方式",
       "node_id": "45790a7b-c5d5-4d0e-90ff-8bf537684414",
       "role": "assistant",
       "text_chars": 2155,
@@ -14657,57 +14838,6 @@
       "review_action": "unreviewed"
     },
     {
-      "conversation_id": "6ac900e3-5b04-83ec-8bf2-48bdf3ea649f",
-      "title": "手机安全建议",
-      "node_id": "8133757b-9c82-445a-b68c-f397122e2d9e",
-      "role": "assistant",
-      "text_chars": 1875,
-      "text_sha256": "d97899a5ff8ee7ed79c1fc78be8bc17f50fc31c3b7277498500b4078fa86edb4",
-      "hard_hits": [
-        "券商",
-        "股票"
-      ],
-      "broad_hits": [
-        "券商",
-        "股票"
-      ],
-      "relevance_hits": [
-        "券商",
-        "投资",
-        "股票"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
-      "conversation_id": "6ac900e3-5b04-83ec-8bf2-48bdf3ea649f",
-      "title": "手机安全建议",
-      "node_id": "9cd334cb-be2a-45a3-86bf-eefc52bbfedf",
-      "role": "assistant",
-      "text_chars": 2843,
-      "text_sha256": "b64f96f8627685925b93d9e3b1767e2550debf00457d899adbbc86c85e04c774",
-      "hard_hits": [
-        "ETF",
-        "基金",
-        "股息",
-        "股票",
-        "证券"
-      ],
-      "broad_hits": [
-        "ETF",
-        "股息",
-        "股票",
-        "证券"
-      ],
-      "relevance_hits": [
-        "ETF",
-        "投资",
-        "股息",
-        "股票",
-        "证券"
-      ],
-      "review_action": "unreviewed"
-    },
-    {
       "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
       "title": "GLW-GPT",
       "node_id": "be8d6974-3311-4750-92cc-60fa8de2b656",
@@ -15015,24 +15145,6 @@
         "财报"
       ],
       "review_action": "included"
-    },
-    {
-      "conversation_id": "6ace2230-0b20-83ec-8e8b-7b863ad8e268",
-      "title": "交换机租赁模式探索",
-      "node_id": "3c3be327-ef8a-45d9-b157-10ff9d74f0ae",
-      "role": "assistant",
-      "text_chars": 2920,
-      "text_sha256": "338e5070bc232e5ad97d9c755418093f7ff0ef8bfd613ddffca167fcd0d7ac7e",
-      "hard_hits": [
-        "股票"
-      ],
-      "broad_hits": [
-        "股票"
-      ],
-      "relevance_hits": [
-        "股票"
-      ],
-      "review_action": "unreviewed"
     }
   ],
   "unselected_conversations": [
@@ -15457,6 +15569,13 @@
       "broad_only_signal_messages": 0
     },
     {
+      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+      "title": "世界公民配置升级",
+      "source_messages": 57,
+      "hard_signal_messages": 13,
+      "broad_only_signal_messages": 0
+    },
+    {
       "conversation_id": "69e0af7f-ec1c-8329-95a2-6974e24cb397",
       "title": "韩国安全认证需求分析",
       "source_messages": 11,
@@ -15482,6 +15601,20 @@
       "title": "OBM定义与客户询问",
       "source_messages": 4,
       "hard_signal_messages": 0,
+      "broad_only_signal_messages": 0
+    },
+    {
+      "conversation_id": "69e4f23c-b4b8-8326-a44d-441fb79c30a5",
+      "title": "内脏脂肪测试方法",
+      "source_messages": 6,
+      "hard_signal_messages": 2,
+      "broad_only_signal_messages": 0
+    },
+    {
+      "conversation_id": "69e589d8-ea94-832b-9ca0-95692e81d28a",
+      "title": "婚姻决策与风险",
+      "source_messages": 8,
+      "hard_signal_messages": 2,
       "broad_only_signal_messages": 0
     },
     {
@@ -15730,6 +15863,13 @@
       "broad_only_signal_messages": 0
     },
     {
+      "conversation_id": "6a0ed2f9-a5a8-8324-8e71-bfcd6e7f4748",
+      "title": "苹果礼品卡有效期",
+      "source_messages": 14,
+      "hard_signal_messages": 3,
+      "broad_only_signal_messages": 0
+    },
+    {
       "conversation_id": "6a0efda9-3c18-8322-8b1a-80118ad29be9",
       "title": "FIPS 140-3 认证设备",
       "source_messages": 4,
@@ -15867,6 +16007,13 @@
       "title": "UAV Fiber Optic Solution",
       "source_messages": 4,
       "hard_signal_messages": 0,
+      "broad_only_signal_messages": 0
+    },
+    {
+      "conversation_id": "6a2a757b-7a20-83ec-a4cc-f58f2cb64684",
+      "title": "澳门旅行必做事项",
+      "source_messages": 2,
+      "hard_signal_messages": 1,
       "broad_only_signal_messages": 0
     },
     {
@@ -16024,6 +16171,27 @@
       "broad_only_signal_messages": 0
     },
     {
+      "conversation_id": "6a5b1e07-3590-83ec-a4c9-b87b4e833cbc",
+      "title": "世界公民实操指南",
+      "source_messages": 2,
+      "hard_signal_messages": 1,
+      "broad_only_signal_messages": 0
+    },
+    {
+      "conversation_id": "6a5b35e5-4520-83ec-9e6a-989b801b5eaa",
+      "title": "孩子教育逻辑探讨",
+      "source_messages": 2,
+      "hard_signal_messages": 1,
+      "broad_only_signal_messages": 0
+    },
+    {
+      "conversation_id": "6a5cc303-9bac-83ec-a2fa-f3838317a116",
+      "title": "Arena 模型下架原因",
+      "source_messages": 4,
+      "hard_signal_messages": 1,
+      "broad_only_signal_messages": 0
+    },
+    {
       "conversation_id": "6a5db28d-a440-83ec-9365-37d18ba717a6",
       "title": "Angora",
       "source_messages": 16,
@@ -16034,6 +16202,13 @@
       "conversation_id": "6a5f05a9-f7e8-83ec-8013-92b6e57b32dc",
       "title": "Mikrotik vs 交换机价值分析",
       "source_messages": 54,
+      "hard_signal_messages": 1,
+      "broad_only_signal_messages": 0
+    },
+    {
+      "conversation_id": "6a602eed-f354-83ec-946a-ea97d7667e7b",
+      "title": "Claude Prompt技巧总结",
+      "source_messages": 2,
       "hard_signal_messages": 1,
       "broad_only_signal_messages": 0
     },
@@ -16105,6 +16280,13 @@
       "title": "Saga Telecom SEO 路线图",
       "source_messages": 2,
       "hard_signal_messages": 0,
+      "broad_only_signal_messages": 0
+    },
+    {
+      "conversation_id": "6a6e1a40-40a0-83ec-a24b-146998aec5b5",
+      "title": "节省token技巧大全",
+      "source_messages": 2,
+      "hard_signal_messages": 1,
       "broad_only_signal_messages": 0
     },
     {
@@ -16262,6 +16444,20 @@
       "broad_only_signal_messages": 0
     },
     {
+      "conversation_id": "6ac900e3-5b04-83ec-8bf2-48bdf3ea649f",
+      "title": "手机安全建议",
+      "source_messages": 26,
+      "hard_signal_messages": 7,
+      "broad_only_signal_messages": 0
+    },
+    {
+      "conversation_id": "6ace2230-0b20-83ec-8e8b-7b863ad8e268",
+      "title": "交换机租赁模式探索",
+      "source_messages": 16,
+      "hard_signal_messages": 2,
+      "broad_only_signal_messages": 0
+    },
+    {
       "conversation_id": "8520c7ec-4ec0-451f-89fa-bdbb9cb16c3a",
       "title": "EDFA 设备用户手册",
       "source_messages": 94,
@@ -16304,5 +16500,20 @@
       "broad_only_signal_messages": 0
     }
   ],
-  "present_zip_attachments_on_unselected_hard_messages": []
+  "present_zip_attachments_on_unselected_hard_messages": [
+    {
+      "reference": "file_0000000013f8820785d222763ea0182c",
+      "zip_members": [
+        "file_0000000013f8820785d222763ea0182c.dat"
+      ],
+      "already_archived": false
+    },
+    {
+      "reference": "file_0000000085608207b784388236ad45f6",
+      "zip_members": [
+        "file_0000000085608207b784388236ad45f6.dat"
+      ],
+      "already_archived": false
+    }
+  ]
 }

@@ -466,8 +466,8 @@
       "matched_terms": [
         "A股",
         "ETF",
-        "stock",
         "Stock",
+        "stock",
         "市值",
         "持仓",
         "港股",
@@ -919,8 +919,8 @@
       "selection_reason": "stock-keyword",
       "matched_terms": [
         "ETF",
-        "Stock",
         "stock",
+        "Stock",
         "微软"
       ],
       "node": {
@@ -1091,8 +1091,8 @@
       "selection_reason": "stock-keyword",
       "matched_terms": [
         "ETF",
-        "stock",
         "Stock",
+        "stock",
         "仓位",
         "加仓",
         "定投",
@@ -1172,8 +1172,8 @@
       "selection_reason": "stock-keyword",
       "matched_terms": [
         "ETF",
-        "Stock",
         "stock",
+        "Stock",
         "仓位",
         "估值",
         "定投",
