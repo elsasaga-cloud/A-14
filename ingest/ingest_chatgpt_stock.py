@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Download a ChatGPT export from Drive and archive only stock-related material.
 
-The runner, rather than the Agent, handles the large ZIP.  A stock-related
-conversation is archived as a complete conversation (all mapping branches and
-all message objects), so short follow-up messages cannot be lost by keyword
-filtering.  Raw selected JSON is retained alongside readable transcripts.
-No source text is truncated.  The source ZIP is optionally backed up to a
-Release, never committed to Git.
+The runner, rather than the Agent, handles the large ZIP.  Every mapping
+branch and message object is scanned, but only stock-related message nodes
+(and explicitly reviewed short follow-ups) are archived.  Raw selected JSON
+is retained alongside readable transcripts, so filtering never truncates or
+rewrites a selected source node.  The source ZIP is optionally backed up to
+a Release, never committed to Git.
 """
 from __future__ import annotations
 
@@ -53,6 +53,34 @@ T0 = time.time()
 ERRORS: list[str] = []
 MISSING_ASSETS: list[str] = []
 ASSET_NAME_MAP: dict[str, str] = {}
+
+
+def load_review_decisions(filename: str) -> dict[str, dict]:
+    """Load stable, node-level human review decisions without copying source text."""
+    path = ROOT / "ingest" / filename
+    if not path.exists():
+        return {}
+    entries = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(entries, list):
+        raise ValueError(f"{filename} must contain a list")
+    result = {}
+    for entry in entries:
+        if not isinstance(entry, dict) or not entry.get("node_id"):
+            raise ValueError(f"invalid review entry in {filename}")
+        node_id = str(entry["node_id"])
+        if node_id in result:
+            raise ValueError(f"duplicate review node_id in {filename}: {node_id}")
+        result[node_id] = entry
+    return result
+
+
+# The second-pass audit was intentionally over-inclusive.  These two files
+# freeze the subsequent human decisions so the final run no longer needs the
+# audit switch and cannot silently reintroduce rejected non-stock messages.
+REVIEW_INCLUSIONS = load_review_decisions("stock_review_inclusions.json")
+REVIEW_EXCLUSIONS = load_review_decisions("stock_review_exclusions.json")
+if set(REVIEW_INCLUSIONS) & set(REVIEW_EXCLUSIONS):
+    raise ValueError("a node cannot be both reviewed-included and reviewed-excluded")
 
 
 def log(*args):
@@ -797,6 +825,8 @@ def archive_conversations(conversations: list[dict]) -> tuple[list[dict], set[st
         title_stock = bool(TITLE_RE.search(title) or TICKER_RE.fullmatch(title.strip()) or EN_TICKER_RE.fullmatch(title.strip()))
         chosen = []
         for index, row in enumerate(rows):
+            if row["node_id"] in REVIEW_EXCLUSIONS:
+                continue
             text = message_content(row["message"])
             related, hits = relevance(text, title)
             reason = "stock-keyword"
@@ -807,6 +837,11 @@ def archive_conversations(conversations: list[dict]) -> tuple[list[dict], set[st
                     related = True
                     reason = "audit-hard" if audit_hits else "audit-broad"
                     hits = sorted(set(hits) | set(audit_hits) | set(broad_hits), key=str.lower)
+            reviewed = REVIEW_INCLUSIONS.get(row["node_id"])
+            if not related and reviewed:
+                related = True
+                reason = "reviewed-" + str(reviewed.get("stage", "stock"))
+                hits = sorted(set(hits) | set(stock_hits(text)), key=str.lower)
             if related:
                 chosen.append((index, row, reason, hits))
         # Only a stock-titled conversation can supply short, clearly non-offtopic
@@ -814,12 +849,12 @@ def archive_conversations(conversations: list[dict]) -> tuple[list[dict], set[st
         if title_stock and chosen:
             chosen_indices = {x[0] for x in chosen}
             for index, row in enumerate(rows):
-                if index in chosen_indices:
+                if index in chosen_indices or row["node_id"] in REVIEW_EXCLUSIONS:
                     continue
                 text = message_content(row["message"])
                 if len(text) > 800 or NONSTOCK_CONTEXT_RE.search(text):
                     continue
-                neighbours = [rows[j] for j in (index - 1, index + 1) if 0 <= j < len(rows)]
+                neighbours = [rows[j] for j in (index - 1, index + 1) if 0 <= j < len(rows) and rows[j]["node_id"] not in REVIEW_EXCLUSIONS]
                 neighbour_hit = any(relevance(message_content(n["message"]), title)[0] for n in neighbours)
                 if AUDIT_INCLUDE_HARD:
                     neighbour_hit = neighbour_hit or any((cid, n["node_id"]) in {(cid, r["node_id"]) for _, r, _, _ in chosen} for n in neighbours)
@@ -946,6 +981,7 @@ def write_crosscheck(conversations: list[dict], records: list[dict], attachments
             "hard_hits": hard_hits,
             "broad_hits": broad_hits,
             "relevance_hits": relevance(text, title)[1],
+            "review_action": "excluded" if row["node_id"] in REVIEW_EXCLUSIONS else ("included" if row["node_id"] in REVIEW_INCLUSIONS else "unreviewed"),
         }
 
     for conversation in conversations:
@@ -1001,6 +1037,9 @@ def write_crosscheck(conversations: list[dict], records: list[dict], attachments
         if present:
             present_hard_refs.append({"reference": ref, "zip_members": [str(p.relative_to(UNPACK)) for p in present], "already_archived": any(str(p.relative_to(UNPACK)) in archived_paths for p in present)})
 
+    hard_unreviewed = [x for x in hard_unselected if x["review_action"] == "unreviewed"]
+    broad_unreviewed = [x for x in broad_unselected if x["review_action"] == "unreviewed"]
+    context_unreviewed = [x for x in context_candidates if x["review_action"] == "unreviewed"]
     report = {
         "source_conversations": len(conversations),
         "source_messages": len(source_keys),
@@ -1008,33 +1047,45 @@ def write_crosscheck(conversations: list[dict], records: list[dict], attachments
         "selected_nodes_not_found_in_source": sorted([list(k) for k in selected_keys - source_keys]),
         "hard_signal_messages_in_source": hard_total,
         "hard_signal_messages_not_archived": len(hard_unselected),
+        "hard_signal_messages_unreviewed_not_archived": len(hard_unreviewed),
         "broad_signal_messages_not_archived": len(broad_unselected),
+        "broad_signal_messages_unreviewed_not_archived": len(broad_unreviewed),
         "short_stock_title_context_not_archived": len(context_candidates),
+        "short_stock_title_context_unreviewed_not_archived": len(context_unreviewed),
+        "manual_review_inclusions": len(REVIEW_INCLUSIONS),
+        "manual_review_exclusions": len(REVIEW_EXCLUSIONS),
         "archived_messages_with_nonstock_context_terms": len(selected_nonstock),
         "hard_unselected": hard_unselected,
         "broad_unselected": broad_unselected,
         "context_candidates": context_candidates,
+        "hard_unreviewed": hard_unreviewed,
+        "broad_unreviewed": broad_unreviewed,
+        "context_unreviewed": context_unreviewed,
         "selected_nonstock": selected_nonstock,
         "unselected_conversations": unselected_titles,
         "present_zip_attachments_on_unselected_hard_messages": present_hard_refs,
     }
     write_json(OUT / "crosscheck.json", report)
+    # Keep the archive self-auditing without copying rejected message bodies.
+    write_json(OUT / "_manual_review_inclusions.json", list(REVIEW_INCLUSIONS.values()))
+    write_json(OUT / "_manual_review_exclusions.json", list(REVIEW_EXCLUSIONS.values()))
     lines = [
         "# 源 ZIP 反向交叉检查", "",
         "本报告只记录审计元数据，不复制未入选消息正文。hard 为独立的高召回股票信号扫描，broad 为较宽的股票词扫描；命中不等于必然应入库，需结合主题判断。", "",
         f"- 源会话：{len(conversations)}；源消息节点：{len(source_keys)}；已入库节点：{len(selected_keys)}",
         f"- 入库节点在源会话中找不到：{len(report['selected_nodes_not_found_in_source'])}",
-        f"- 源消息 hard 股票信号：{hard_total}；其中未入库：**{len(hard_unselected)}**",
-        f"- 未入库但仅有 broad 股票信号：**{len(broad_unselected)}**",
-        f"- 股票标题下、邻近入选消息但未入库的短上下文：**{len(context_candidates)}**",
+        f"- 源消息 hard 股票信号：{hard_total}；其中未入库：{len(hard_unselected)}；尚未人工复核：**{len(hard_unreviewed)}**",
+        f"- 未入库但仅有 broad 股票信号：{len(broad_unselected)}；尚未人工复核：**{len(broad_unreviewed)}**",
+        f"- 股票标题下、邻近入选消息但未入库的短上下文：{len(context_candidates)}；尚未人工复核：**{len(context_unreviewed)}**",
+        f"- 人工复核决定：补入 {len(REVIEW_INCLUSIONS)} 条；排除 {len(REVIEW_EXCLUSIONS)} 条（仅保存节点 ID/理由，不保存被排除正文）",
         f"- 已入库但含非股票语境词的消息（供误收复核）：**{len(selected_nonstock)}**",
         f"- 未入库 hard 消息引用且 ZIP 中实际存在的附件：**{len(present_hard_refs)}**", "",
         "## 未入库 hard 信号消息（逐条复核清单）", "",
-        "| 会话 | 节点ID | 角色 | 字符数 | hard 命中 | 当前分类器命中 |",
-        "|---|---|---|---:|---|---|",
+        "| 会话 | 节点ID | 角色 | 字符数 | hard 命中 | 当前分类器命中 | 复核状态 |",
+        "|---|---|---|---:|---|---|---|",
     ]
     for item in hard_unselected:
-        lines.append(f"| {item['title']} | `{item['node_id']}` | {item['role']} | {item['text_chars']:,} | {', '.join(item['hard_hits'])} | {', '.join(item['relevance_hits'])} |")
+        lines.append(f"| {item['title']} | `{item['node_id']}` | {item['role']} | {item['text_chars']:,} | {', '.join(item['hard_hits'])} | {', '.join(item['relevance_hits'])} | {item['review_action']} |")
     lines += ["", "## 短上下文候选", ""]
     for item in context_candidates:
         lines.append(f"- {item['title']} / `{item['node_id']}` / {item['text_chars']} 字符")
@@ -1062,8 +1113,10 @@ def write_reports(source_name: str, source: Path, member_count: int, total_conve
         },
         "selection": {
             "unit": "message",
-            "rule": "Strict stock/investment relevance per message; ambiguous portfolio/stock/POC/Meta/SLA/acronym matches alone are excluded. Stock-titled conversations may add only short adjacent context without obvious non-stock topics.",
-            "context_preserved": "original parent/children/node fields and short stock-title context only",
+            "rule": "Strict stock/investment relevance per message; ambiguous portfolio/stock/POC/Meta/SLA/acronym matches alone are excluded. Stock-titled conversations may add only short adjacent context without obvious non-stock topics. The second-pass high-recall audit is resolved by explicit node-level human review allowlist/exclusions.",
+            "manual_review_inclusions": len(REVIEW_INCLUSIONS),
+            "manual_review_exclusions": len(REVIEW_EXCLUSIONS),
+            "context_preserved": "original parent/children/node fields and reviewed short stock-title context only",
             "raw_json_fields_preserved": True,
             "text_truncated": False,
             "all_mapping_branches_included": "all branches are scanned; only selected nodes are archived",
@@ -1119,10 +1172,11 @@ def write_reports(source_name: str, source: Path, member_count: int, total_conve
 - `manifest.json`：来源 MD5/SHA256、逐对话路径、入选/源消息数、字符数、附件哈希和选择命中词。
 - `_coverage.md`：总量与逐对话完整性核对。
 - `_crosscheck.md` / `crosscheck.json`：从源 ZIP 反向扫描的漏收、上下文和附件引用审计元数据。
+- `_manual_review_inclusions.json` / `_manual_review_exclusions.json`：第二轮高召回候选的人工复核决定，仅含节点 ID、会话信息和理由，不含被排除正文。
 
 ## 选择口径
 
-以**消息**为基本筛选单位，不把命中对话里的工作、健康、SEO 等无关内容一并带入。股票/证券投资核心词直接入选；portfolio、stock、POC、Meta、SLA、PE/PB/ROE 等歧义词单独出现时不入选；代码须结合投资语境。股票标题下只补入与命中消息相邻、简短且无明显无关主题的上下文。所有 mapping 分支都会扫描，原始节点完整保留，正文不截断。独立文件只有在内容/OCR命中，或被命中消息引用时才入库。
+以**消息**为基本筛选单位，不把命中对话里的工作、健康、SEO 等无关内容一并带入。股票/证券投资核心词直接入选；portfolio、stock、POC、Meta、SLA、PE/PB/ROE 等歧义词单独出现时不入选；代码须结合投资语境。股票标题下只补入与命中消息相邻、简短且无明显无关主题的上下文。第二轮对 hard、broad 和短上下文候选逐条人工复核，确认的节点通过固定白名单补入，排除的节点通过固定名单剔除；最终运行不开启临时高召回审计。所有 mapping 分支都会扫描，原始节点完整保留，正文不截断。独立文件只有在内容/OCR命中，或被命中消息引用时才入库。
 
 这是一份原始资料归档，不是摘要，也不是投资建议。后续分析引用时应回到具体会话 JSON/Markdown 和本目录的持仓事实卡核对时点。
 

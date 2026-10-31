@@ -1,0 +1,611 @@
+[
+  {
+    "node_id": "f93256b2-c649-43bf-8573-9853e00888ad",
+    "conversation_id": "692edb4e-f8b8-832c-b951-9f8084c13f81",
+    "title": "Netas",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "94573ff2-d8ed-48fa-ab10-aa581fb0078a",
+    "conversation_id": "692edb4e-f8b8-832c-b951-9f8084c13f81",
+    "title": "Netas",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "e296a243-2f43-4da1-b777-978a1a169735",
+    "conversation_id": "692edb4e-f8b8-832c-b951-9f8084c13f81",
+    "title": "Netas",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "da211a13-4a2a-4983-9c1f-dab6f124cf6c",
+    "conversation_id": "6999a608-db94-832c-9751-bc78759924a9",
+    "title": "深圳长期发展布局",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "9ab2ccbd-ee6d-4740-80ef-a0554e4528a4",
+    "conversation_id": "699ad474-d034-832e-8d95-518e60a79bce",
+    "title": "通信行业长期发展",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "d7fe35fc-f03e-4de8-b5fc-8407a8c91d77",
+    "conversation_id": "69bca27a-272c-832a-9ee1-27daf0acb410",
+    "title": "MSTP设备分析",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "eeee50ad-e4e7-402c-8d66-0c1667a02bd1",
+    "conversation_id": "69bca27a-272c-832a-9ee1-27daf0acb410",
+    "title": "MSTP设备分析",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "f7e43c4a-3a0d-440a-835f-f2552d999ce9",
+    "conversation_id": "69d46b48-d254-8325-84e8-f023a015772c",
+    "title": "饮食系统构建指南",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "43861c5d-876e-470d-895d-b2dd45927c39",
+    "conversation_id": "69df41cf-0774-832f-90cd-a3a39386907a",
+    "title": "通胀与普通人生活",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "cff984dc-9efe-4445-80bb-415b5f2e2bc9",
+    "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+    "title": "世界公民配置升级",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "c1501c81-12c6-474b-93a4-0d8c819d608c",
+    "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+    "title": "世界公民配置升级",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "3188cf0d-ad76-4f1e-ab6f-2ce3441e414a",
+    "conversation_id": "69e589d8-ea94-832b-9ca0-95692e81d28a",
+    "title": "婚姻决策与风险",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "ee4fd22b-3039-4104-90af-f833ae73505f",
+    "conversation_id": "6a01f6fe-0de8-83ec-a251-30032c325b27",
+    "title": "Playwright 1.59.0 安装解决方案",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "27f69760-ce75-4841-8228-c5287cd4b7d2",
+    "conversation_id": "6a027e0d-d7cc-83ec-9901-006228029a79",
+    "title": "A2A时代外贸自动化",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "ae0a304c-750d-4724-be88-a84b95af5be6",
+    "conversation_id": "6a06d935-1b30-83ec-9000-1187ae358a6c",
+    "title": "注意力边界与社交",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "90266ae9-d196-4bd3-884d-fe81e822d2b2",
+    "conversation_id": "6a0ed2f9-a5a8-8324-8e71-bfcd6e7f4748",
+    "title": "苹果礼品卡有效期",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "4c601335-fd4d-4109-bf1e-df412a07e062",
+    "conversation_id": "6a11a08d-916c-83ec-ac23-da75f4390723",
+    "title": "HSBC App Store问题",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "8ffaa7eb-7189-4f18-98b4-f12d6d2b1b6d",
+    "conversation_id": "6a13a6ad-6bd0-83ec-b8bb-9fac9b510154",
+    "title": "金升阳模块对应分析",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "e2716a56-93f1-49a5-b93d-17782f0efff7",
+    "conversation_id": "6a2f75ae-66d8-83ec-8ad5-f2d34308f43d",
+    "title": "买房争论分析",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "178f1bc7-ff90-460e-9d9a-c4fc69fe88f3",
+    "conversation_id": "6a5c82ce-0cc0-83ec-8672-c8aa35c8a057",
+    "title": "轻FIRE模式可行性分析",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "f75d9edc-fd9f-42c8-8ab6-3739bd66f0e1",
+    "conversation_id": "6a5c82ce-0cc0-83ec-8672-c8aa35c8a057",
+    "title": "轻FIRE模式可行性分析",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "13aa80e7-45ac-4a82-8710-7af5855ec508",
+    "conversation_id": "6a5dcfef-8838-83ec-947f-3cd633688657",
+    "title": "美国AI战略分析",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "67bd39a0-7686-4d15-9548-4f8c51077d13",
+    "conversation_id": "6a5f05a9-f7e8-83ec-8013-92b6e57b32dc",
+    "title": "Mikrotik vs 交换机价值分析",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "4c53efa6-56a6-4487-8648-7f63919f803c",
+    "conversation_id": "6a71b663-112c-83ec-911a-cce3ae76e69f",
+    "title": "Trueno Group 匹配度分析",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "79d2db5b-4d3a-415f-a7ff-f0c692d7b117",
+    "conversation_id": "6a9918c1-4cf4-83ec-bd90-776f77cb4dab",
+    "title": "减少注意力损耗",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "a513aa4d-126e-4566-a863-aad8722fe0d7",
+    "conversation_id": "6ac900e3-5b04-83ec-8bf2-48bdf3ea649f",
+    "title": "手机安全建议",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "f95c2855-178d-4ecf-af9d-0e34f8f1c29e",
+    "conversation_id": "6ace2230-0b20-83ec-8e8b-7b863ad8e268",
+    "title": "交换机租赁模式探索",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "e70cb948-6300-417f-a301-5271f324207e",
+    "conversation_id": "a006014f-d4bd-4c72-a394-4fef8bed514a",
+    "title": "Learn English Words",
+    "stage": "hard",
+    "reason": "人工复核：股票词仅为比喻、型号/技术语境或非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "66dcabe2-7e19-48d6-8e61-7f38d18c521f",
+    "conversation_id": "69997d8f-5588-8332-ae3b-1dd2681cb6d3",
+    "title": "人际与精力管理",
+    "stage": "broad",
+    "reason": "人工复核：宽关键词命中但正文为非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "26fe1647-8e4f-47b6-b278-31a1859cf127",
+    "conversation_id": "69c4a523-d858-8330-b4bb-afe5fda296e9",
+    "title": "国外采购商整理",
+    "stage": "broad",
+    "reason": "人工复核：宽关键词命中但正文为非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "b39c4fb7-8433-4ea0-abaa-1b98cf430bab",
+    "conversation_id": "69c4a523-d858-8330-b4bb-afe5fda296e9",
+    "title": "国外采购商整理",
+    "stage": "broad",
+    "reason": "人工复核：宽关键词命中但正文为非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "967658c8-0e5a-43f5-b213-286244592e0c",
+    "conversation_id": "6a067c3f-6828-83ec-ab9b-00d57ec48fc9",
+    "title": "OCM卡全称及功能",
+    "stage": "broad",
+    "reason": "人工复核：宽关键词命中但正文为非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "4283a8d5-227c-4098-859e-af01e70ddcfb",
+    "conversation_id": "6a30bf55-acd8-83ec-bcae-446254b95cbe",
+    "title": "生育观念与压力",
+    "stage": "broad",
+    "reason": "人工复核：宽关键词命中但正文为非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "c90a30e7-e72a-4d10-bab2-4e8a5e04d13f",
+    "conversation_id": "6aa8e0f6-e224-83ec-abfe-76ac5d0094e1",
+    "title": "Steam找回账号 सलाह",
+    "stage": "broad",
+    "reason": "人工复核：宽关键词命中但正文为非股票主题，不纳入股票原文归档"
+  },
+  {
+    "node_id": "6eea3464-95c0-4750-ae33-cbcb5a2e6bd4",
+    "conversation_id": "69be87d2-9fe0-8387-aa2f-b399f76e38e4",
+    "title": "NVO目标价与股权结构",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "5456b70e-df91-4b6c-b892-15b9aacc1647",
+    "conversation_id": "69c65b1d-6de8-832c-8859-07e1b39f9349",
+    "title": "惠普估值与期权策略",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "b36b7896-def9-44b2-b918-3862e748db20",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "58123ebc-ba2f-4fc9-a02f-fd234f075c24",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "f2fdd473-25e7-476f-ab8d-beb7b2da8688",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "bda55edd-72fa-452c-bbf1-23d6473efffd",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "f9ba36e8-a968-4380-bb84-fe267e5cf0bf",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "cdeddf66-aa5b-41ec-93bb-8eebf5b802f2",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "f910c311-7da5-44e7-851d-1b8f7e610c13",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "f21c5f8b-00d0-4500-817f-6a5c279c7b79",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "9b682868-052d-4162-a59c-401426fe754c",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "76326161-0596-4b9c-a148-46d9adf7d17c",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "0d791e35-a858-45fe-8fd2-1b910b2170f2",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "9b3f3564-76bb-4a14-9bc8-4bf75a8d17ba",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "ea7e661b-7a17-45e8-9c64-cc40822d0a2d",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "8dca6323-22b1-4143-9d45-c56774b4943a",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "2d4ee37e-9b2b-4b4a-b0a0-1549039e80c3",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "7290d91d-8b63-4471-aa61-a595d5fdb769",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "af6dc397-9b84-4283-8747-6569313ef668",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "4d2110ab-8f7d-4601-9634-054afe3a4a5e",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "d3241972-68e1-434c-bc4f-8d21bc6beafc",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "c8fcfa1a-3c97-4313-ab53-68c11daa14ca",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "b5076bb3-4be9-45b7-a2a7-8d1662feb961",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "3bbbd197-2fe0-4b87-82ba-a9c15d3eeeaa",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "cf24f340-b721-4f2b-8f28-f665bdca0040",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "15b3ebd7-da72-4d02-a5a3-e1e637482ad6",
+    "conversation_id": "6a22c8ec-8ad0-83ec-b1f1-e9ab45bd210e",
+    "title": "A股波段股推荐",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "03f6f28d-37dc-4a73-b1a4-53efcc5a5d05",
+    "conversation_id": "6a2a6f2d-d694-83ec-a625-4b78f51d93e1",
+    "title": "SpaceX投资分析",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "3365b774-cdad-4f1c-8416-70e4f006eace",
+    "conversation_id": "6a599352-dc3c-83ec-a3ef-14421fe2df0d",
+    "title": "资本流动与价格形成",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "87b70ccd-061e-4c3b-a1fb-e35ff0aa05c6",
+    "conversation_id": "6a599352-dc3c-83ec-a3ef-14421fe2df0d",
+    "title": "资本流动与价格形成",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "cbb65c41-271c-486f-8e0d-e8053c1b3ae4",
+    "conversation_id": "6a599352-dc3c-83ec-a3ef-14421fe2df0d",
+    "title": "资本流动与价格形成",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "9e35e467-068f-4147-9216-5e73bbfd288c",
+    "conversation_id": "6a599352-dc3c-83ec-a3ef-14421fe2df0d",
+    "title": "资本流动与价格形成",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "e72b5e2f-f111-4702-8082-a7ba4f9c496d",
+    "conversation_id": "6a599352-dc3c-83ec-a3ef-14421fe2df0d",
+    "title": "资本流动与价格形成",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "789fa52f-7875-46ed-9dea-62f5e0a9bb1a",
+    "conversation_id": "6a599352-dc3c-83ec-a3ef-14421fe2df0d",
+    "title": "资本流动与价格形成",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "7e1ec886-7093-40f0-8acf-695838e12068",
+    "conversation_id": "6a599352-dc3c-83ec-a3ef-14421fe2df0d",
+    "title": "资本流动与价格形成",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "7f973c3c-c61b-4c63-b64b-ce32290100a6",
+    "conversation_id": "6a7ae315-0214-83ec-8a3c-b5832861c68f",
+    "title": "资产配置调整分析",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "c24276a1-5c40-4103-a3e5-074db124123d",
+    "conversation_id": "6a7d4267-4ef4-83ec-a73a-3b1598a37cd2",
+    "title": "投资框架分析",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "91d9c4ef-de5e-4b7c-b40d-ba51e14109f3",
+    "conversation_id": "6a7d4267-4ef4-83ec-a73a-3b1598a37cd2",
+    "title": "投资框架分析",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "52c25ce6-08df-49ab-862a-0c267b89f639",
+    "conversation_id": "6a8146e5-aae4-83ec-a8d4-c194e597d22d",
+    "title": "美股特点分析",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "8c1571d8-c729-401c-b89c-d208394a4a1d",
+    "conversation_id": "6a8146e5-aae4-83ec-a8d4-c194e597d22d",
+    "title": "美股特点分析",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "388655cb-6cd9-475b-bb58-c6ece4b378a5",
+    "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
+    "title": "普通人被动收入方式",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "dd4cc825-00cf-4742-909b-b1d35f7c9d76",
+    "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
+    "title": "普通人被动收入方式",
+    "stage": "context",
+    "reason": "人工复核：GPT 内部推理/界面元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "76b7de6e-e83f-4e38-966a-e0b5fd1eee0e",
+    "conversation_id": "69bee22f-ec38-832f-8ff1-a83b32c8e961",
+    "title": "AI投资布局分析",
+    "stage": "context",
+    "reason": "人工复核：工作自动化，不是股票投资内容"
+  },
+  {
+    "node_id": "5f374c9f-6c15-4de2-8645-0722544bbcfa",
+    "conversation_id": "69cdead7-7c50-8332-9506-2bdcc88d3b56",
+    "title": "投资决策逻辑分析",
+    "stage": "context",
+    "reason": "人工复核：对话情绪争执，不是股票内容"
+  },
+  {
+    "node_id": "9570c635-bcc3-483a-b2c9-f6f9300ebd8e",
+    "conversation_id": "69ce35f8-69d0-8333-aa60-d4e714e7d19b",
+    "title": "长牛股筛选策略",
+    "stage": "context",
+    "reason": "人工复核：与股票无关的情绪表达"
+  },
+  {
+    "node_id": "187b58f0-c511-4faf-860b-cbe0ecfede9d",
+    "conversation_id": "69ce35f8-69d0-8333-aa60-d4e714e7d19b",
+    "title": "长牛股筛选策略",
+    "stage": "context",
+    "reason": "人工复核：对话道歉元信息，不是股票内容"
+  },
+  {
+    "node_id": "d7ee5abe-89ac-4923-ad62-b974c08030d9",
+    "conversation_id": "69ce35f8-69d0-8333-aa60-d4e714e7d19b",
+    "title": "长牛股筛选策略",
+    "stage": "context",
+    "reason": "人工复核：对话管理，不是股票内容"
+  },
+  {
+    "node_id": "7c06e56d-5401-45c6-9acb-6da2e6e8f3f8",
+    "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
+    "title": "普通人被动收入方式",
+    "stage": "context",
+    "reason": "人工复核：AI 一般性讨论，不是股票内容"
+  },
+  {
+    "node_id": "1f595cfa-ab7e-47ef-828b-727a5a69c361",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT thoughts 内部搜索元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "2be41850-80c9-4551-890e-9bf2dfab79ee",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT thoughts 内部搜索元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "349807f3-2121-4633-9074-4744461ac268",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT thoughts 内部搜索元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "63afe9b1-f632-4b9c-b645-c14706690471",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT thoughts 内部搜索元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "9a840be7-ee39-46ad-971c-29487b764ce5",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT thoughts 内部搜索元数据，不作为股票聊天正文入库"
+  },
+  {
+    "node_id": "fb252b71-c7b7-4176-a069-8fa4acb809cd",
+    "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+    "title": "GLW-GPT",
+    "stage": "context",
+    "reason": "人工复核：GPT thoughts 内部搜索元数据，不作为股票聊天正文入库"
+  }
+]
