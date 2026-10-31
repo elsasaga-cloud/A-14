@@ -802,10 +802,11 @@ def archive_conversations(conversations: list[dict]) -> tuple[list[dict], set[st
             reason = "stock-keyword"
             if not related and AUDIT_INCLUDE_HARD:
                 audit_hits = sorted({m.group(0) for m in AUDIT_HARD_RE.finditer(text)} | {m.group(0) for m in EN_TICKER_RE.finditer(text)}, key=str.lower)
-                if audit_hits:
+                broad_hits = sorted({m.group(0) for m in CORE_RE.finditer(text)} | {m.group(0) for m in TICKER_RE.finditer(text)}, key=str.lower)
+                if audit_hits or broad_hits:
                     related = True
-                    reason = "audit-hard"
-                    hits = sorted(set(hits) | set(audit_hits), key=str.lower)
+                    reason = "audit-hard" if audit_hits else "audit-broad"
+                    hits = sorted(set(hits) | set(audit_hits) | set(broad_hits), key=str.lower)
             if related:
                 chosen.append((index, row, reason, hits))
         # Only a stock-titled conversation can supply short, clearly non-offtopic
@@ -819,8 +820,11 @@ def archive_conversations(conversations: list[dict]) -> tuple[list[dict], set[st
                 if len(text) > 800 or NONSTOCK_CONTEXT_RE.search(text):
                     continue
                 neighbours = [rows[j] for j in (index - 1, index + 1) if 0 <= j < len(rows)]
-                if any(relevance(message_content(n["message"]), title)[0] for n in neighbours):
-                    chosen.append((index, row, "stock-title-context", stock_hits(text)))
+                neighbour_hit = any(relevance(message_content(n["message"]), title)[0] for n in neighbours)
+                if AUDIT_INCLUDE_HARD:
+                    neighbour_hit = neighbour_hit or any((cid, n["node_id"]) in {(cid, r["node_id"]) for _, r, _, _ in chosen} for n in neighbours)
+                if neighbour_hit:
+                    chosen.append((index, row, "audit-context" if AUDIT_INCLUDE_HARD else "stock-title-context", stock_hits(text)))
         if not chosen:
             continue
         chosen.sort(key=lambda x: x[0])
