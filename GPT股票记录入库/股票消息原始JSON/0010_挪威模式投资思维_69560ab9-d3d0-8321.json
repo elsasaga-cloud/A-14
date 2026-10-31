@@ -306,7 +306,7 @@
     },
     {
       "node_id": "66a337ff-6ec5-49ab-92bf-b9b84c03e74b",
-      "selection_reason": "stock-title-context",
+      "selection_reason": "audit-context",
       "matched_terms": [],
       "node": {
         "id": "66a337ff-6ec5-49ab-92bf-b9b84c03e74b",
@@ -593,7 +593,7 @@
     },
     {
       "node_id": "1f0f4daf-2246-4bcc-9113-936f280b35e8",
-      "selection_reason": "stock-title-context",
+      "selection_reason": "audit-context",
       "matched_terms": [],
       "node": {
         "id": "1f0f4daf-2246-4bcc-9113-936f280b35e8",
@@ -757,7 +757,7 @@
     },
     {
       "node_id": "67af2be5-552b-484a-854c-d4a65186cdc0",
-      "selection_reason": "stock-title-context",
+      "selection_reason": "audit-context",
       "matched_terms": [],
       "node": {
         "id": "67af2be5-552b-484a-854c-d4a65186cdc0",
@@ -819,7 +819,7 @@
     },
     {
       "node_id": "e553d866-7175-4be7-8be4-c5a15b3669e3",
-      "selection_reason": "stock-title-context",
+      "selection_reason": "audit-context",
       "matched_terms": [
         "投资"
       ],

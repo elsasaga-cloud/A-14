@@ -22,7 +22,7 @@
   "selected_nodes": [
     {
       "node_id": "b0a123a7-2bbf-4718-9804-8cebd5665c8b",
-      "selection_reason": "stock-title-context",
+      "selection_reason": "audit-context",
       "matched_terms": [],
       "node": {
         "id": "b0a123a7-2bbf-4718-9804-8cebd5665c8b",
@@ -551,8 +551,8 @@
         "ETF",
         "Meta",
         "NVDA",
-        "stock",
         "Stock",
+        "stock",
         "仓位",
         "券商",
         "均线",
@@ -688,7 +688,7 @@
     },
     {
       "node_id": "4d9a58a0-69ba-46f7-92d5-a1f00c78ac73",
-      "selection_reason": "stock-title-context",
+      "selection_reason": "audit-context",
       "matched_terms": [
         "板块"
       ],
@@ -722,8 +722,8 @@
       "matched_terms": [
         "A股",
         "ETF",
-        "stock",
         "Stock",
+        "stock",
         "仓位",
         "估值",
         "加仓",
@@ -815,7 +815,7 @@
     },
     {
       "node_id": "7f70b010-284c-4bd0-99e8-fb61d67cc68a",
-      "selection_reason": "stock-title-context",
+      "selection_reason": "audit-context",
       "matched_terms": [],
       "node": {
         "id": "7f70b010-284c-4bd0-99e8-fb61d67cc68a",
@@ -1031,7 +1031,7 @@
     },
     {
       "node_id": "1a592864-c49c-43be-9745-517401ee46de",
-      "selection_reason": "stock-title-context",
+      "selection_reason": "audit-context",
       "matched_terms": [],
       "node": {
         "id": "1a592864-c49c-43be-9745-517401ee46de",
@@ -1154,8 +1154,8 @@
       "selection_reason": "stock-keyword",
       "matched_terms": [
         "ETF",
-        "Stock",
         "stock",
+        "Stock",
         "分红",
         "均线"
       ],
@@ -1891,8 +1891,8 @@
       "selection_reason": "stock-keyword",
       "matched_terms": [
         "ETF",
-        "Stock",
         "stock",
+        "Stock",
         "仓位",
         "分红"
       ],
@@ -2723,7 +2723,7 @@
     },
     {
       "node_id": "ba17100e-f724-4194-a8df-649a2697b4ca",
-      "selection_reason": "stock-title-context",
+      "selection_reason": "audit-context",
       "matched_terms": [],
       "node": {
         "id": "ba17100e-f724-4194-a8df-649a2697b4ca",
@@ -3076,7 +3076,7 @@
     },
     {
       "node_id": "f58baafe-3829-4f2a-b6cc-a1e899d27d71",
-      "selection_reason": "stock-title-context",
+      "selection_reason": "audit-context",
       "matched_terms": [],
       "node": {
         "id": "f58baafe-3829-4f2a-b6cc-a1e899d27d71",
@@ -3468,7 +3468,7 @@
     },
     {
       "node_id": "76b7de6e-e83f-4e38-966a-e0b5fd1eee0e",
-      "selection_reason": "stock-title-context",
+      "selection_reason": "audit-context",
       "matched_terms": [],
       "node": {
         "id": "76b7de6e-e83f-4e38-966a-e0b5fd1eee0e",

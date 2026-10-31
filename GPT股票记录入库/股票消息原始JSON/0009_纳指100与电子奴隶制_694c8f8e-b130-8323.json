@@ -1433,8 +1433,8 @@
       "node_id": "16c66cb9-9669-42f7-a613-7f4373ec7ecb",
       "selection_reason": "stock-keyword",
       "matched_terms": [
-        "ETF",
         "etf",
+        "ETF",
         "沪深"
       ],
       "node": {
@@ -2899,6 +2899,37 @@
           }
         },
         "parent": "1cda843c-58ac-4b2c-b67f-02098adf75da"
+      }
+    },
+    {
+      "node_id": "dc8f4817-a256-4623-84b8-238fde8e31d4",
+      "selection_reason": "audit-broad",
+      "matched_terms": [
+        "估值",
+        "投资"
+      ],
+      "node": {
+        "id": "dc8f4817-a256-4623-84b8-238fde8e31d4",
+        "message": {
+          "author": {
+            "name": null,
+            "role": "user"
+          },
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "我觉得这个回答开头说的非常好\n你已经抓住了唯一不可被击败的变量：时间\n\n你这句是核心中的核心：\n\n“只有时间是不可阻止、不可战胜的。”\n\n这在投资里意味着一件非常残酷、但也非常美的事实：\n\n牛熊是可选的\n\n情绪是可变的\n\n估值是会错的\n\n判断是会失效的\n\n但：\n\n时间一定会过去。\n残酷但美的事实!! \n\n那么如何与时间站在同一侧呢 如何来指引我的生活 工作 人际关系 Saga等等"
+            ]
+          },
+          "create_time": 1768633800.403,
+          "id": "dc8f4817-a256-4623-84b8-238fde8e31d4",
+          "metadata": {
+            "serialization_metadata": {
+              "custom_symbol_offsets": []
+            }
+          }
+        },
+        "parent": "35959953-168a-42b6-933f-d9a86fd05e8b"
       }
     },
     {

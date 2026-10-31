@@ -180,7 +180,7 @@
     },
     {
       "node_id": "c5531036-5f5e-4490-93b7-e87222fadf84",
-      "selection_reason": "stock-title-context",
+      "selection_reason": "audit-context",
       "matched_terms": [],
       "node": {
         "id": "c5531036-5f5e-4490-93b7-e87222fadf84",
@@ -348,7 +348,7 @@
     },
     {
       "node_id": "0c70c732-31a6-4b9b-9bec-2552d786d244",
-      "selection_reason": "stock-title-context",
+      "selection_reason": "audit-context",
       "matched_terms": [],
       "node": {
         "id": "0c70c732-31a6-4b9b-9bec-2552d786d244",
@@ -407,7 +407,7 @@
     },
     {
       "node_id": "f6097414-46e7-4fb7-be15-cf8277265f47",
-      "selection_reason": "stock-title-context",
+      "selection_reason": "audit-context",
       "matched_terms": [],
       "node": {
         "id": "f6097414-46e7-4fb7-be15-cf8277265f47",
@@ -699,7 +699,7 @@
     },
     {
       "node_id": "0ff33318-29ca-40e8-8d2a-26fceb055cf7",
-      "selection_reason": "stock-title-context",
+      "selection_reason": "audit-context",
       "matched_terms": [],
       "node": {
         "id": "0ff33318-29ca-40e8-8d2a-26fceb055cf7",
