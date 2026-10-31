@@ -897,6 +897,142 @@ def archive_other_files(refs: set[str], conversation_paths: list[Path]) -> tuple
     return records, scanned
 
 
+AUDIT_HARD_RE = re.compile(
+    r"股票|股市|股价|股息|分红|派息|持仓|建仓|加仓|减仓|清仓|涨停|跌停|K线|均线|成交量|换手率|市盈率|市净率|吸筹|主力资金|北向资金|融资融券|交割单|做[Tt](?![A-Za-z])|止损|止盈|浮盈|浮亏|牛市|熊市|大盘|美股|港股|A股|ETF|IPO|QDII|纳斯达克|道琼斯|标普|证券|券商|交易所|收息|定投|归母|扣非|财报|基金|期权|期货|筹码|股息率|派息率|"
+    r"海澜之家|海尔智家|格力电器|云铝股份|五粮液|顺丰控股|汇川技术|迈瑞医疗|江西铜业|华能蒙电|工业富联|中国铝业|紫金矿业|中国银行|泸州老窖|美的集团|贵州茅台|宁德时代|比亚迪|腾讯控股|东方财富|同花顺|招商银行|中国平安|中国神华|中远海控|中芯国际|中际旭创|新易盛|沪电股份|立讯精密|恒瑞医药|药明康德|中国中免|"
+    r"stock market|dividend|dividends|buyback|repurchase|nasdaq|nyse|hkex",
+    re.IGNORECASE,
+)
+
+
+def write_crosscheck(conversations: list[dict], records: list[dict], attachments: list[dict]):
+    """Audit source nodes without copying rejected message bodies into the archive."""
+    selected_keys = set()
+    for record in records:
+        raw = json.loads((OUT / record["raw_file"]).read_text(encoding="utf-8"))
+        for item in raw.get("selected_nodes", []):
+            selected_keys.add((record["conversation_id"], item["node_id"]))
+
+    hard_unselected = []
+    broad_unselected = []
+    context_candidates = []
+    selected_nonstock = []
+    unselected_hard_refs = set()
+    source_keys = set()
+    unselected_titles = []
+    hard_total = 0
+    broad_total = 0
+
+    def item_for(conversation_id, title, row, text, hard_hits, broad_hits):
+        return {
+            "conversation_id": conversation_id,
+            "title": title,
+            "node_id": row["node_id"],
+            "role": row["role"],
+            "text_chars": len(text),
+            "text_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+            "hard_hits": hard_hits,
+            "broad_hits": broad_hits,
+            "relevance_hits": relevance(text, title)[1],
+        }
+
+    for conversation in conversations:
+        rows = message_rows(conversation)
+        cid = str(conversation.get("conversation_id") or conversation.get("id") or "")
+        title = str(conversation.get("title") or "untitled")
+        title_stock = bool(TITLE_RE.search(title) or TICKER_RE.fullmatch(title.strip()) or EN_TICKER_RE.fullmatch(title.strip()))
+        selected_indices = {i for i, row in enumerate(rows) if (cid, row["node_id"]) in selected_keys}
+        hard_in_unselected_conversation = 0
+        broad_in_unselected_conversation = 0
+        for index, row in enumerate(rows):
+            key = (cid, row["node_id"])
+            source_keys.add(key)
+            text = message_content(row["message"])
+            hard_hits = sorted({m.group(0) for m in AUDIT_HARD_RE.finditer(text)} | {m.group(0) for m in EN_TICKER_RE.finditer(text)}, key=str.lower)
+            broad_hits = sorted({m.group(0) for m in CORE_RE.finditer(text)} | {m.group(0) for m in TICKER_RE.finditer(text)}, key=str.lower)
+            if hard_hits:
+                hard_total += 1
+            if broad_hits:
+                broad_total += 1
+            if key not in selected_keys:
+                if hard_hits:
+                    hard_in_unselected_conversation += 1
+                    hard_unselected.append(item_for(cid, title, row, text, hard_hits, broad_hits))
+                    asset_refs(row["node"], unselected_hard_refs)
+                elif broad_hits:
+                    broad_in_unselected_conversation += 1
+                    broad_unselected.append(item_for(cid, title, row, text, hard_hits, broad_hits))
+                if title_stock and len(text) <= 800 and not NONSTOCK_CONTEXT_RE.search(text):
+                    neighbours = [rows[j] for j in (index - 1, index + 1) if 0 <= j < len(rows)]
+                    if any((cid, n["node_id"]) in selected_keys for n in neighbours):
+                        context_candidates.append(item_for(cid, title, row, text, hard_hits, broad_hits))
+            elif NONSTOCK_MESSAGE_RE.search(text):
+                selected_nonstock.append(item_for(cid, title, row, text, hard_hits, broad_hits))
+        if not selected_indices:
+            unselected_titles.append({
+                "conversation_id": cid,
+                "title": title,
+                "source_messages": len(rows),
+                "hard_signal_messages": hard_in_unselected_conversation,
+                "broad_only_signal_messages": broad_in_unselected_conversation,
+            })
+
+    archived_paths = {a["source_path"] for a in attachments}
+    present_hard_refs = []
+    for ref in sorted(unselected_hard_refs):
+        candidate = ref.rsplit("/", 1)[-1].split("?", 1)[0]
+        match = re.search(r"file_(?:[A-Za-z0-9_-]+)|file-(?!service\b)[A-Za-z0-9_-]+", candidate)
+        if not match:
+            continue
+        token = match.group(0)
+        present = [p for p in UNPACK.rglob("*") if p.is_file() and token in str(p.relative_to(UNPACK))]
+        if present:
+            present_hard_refs.append({"reference": ref, "zip_members": [str(p.relative_to(UNPACK)) for p in present], "already_archived": any(str(p.relative_to(UNPACK)) in archived_paths for p in present)})
+
+    report = {
+        "source_conversations": len(conversations),
+        "source_messages": len(source_keys),
+        "archived_nodes": len(selected_keys),
+        "selected_nodes_not_found_in_source": sorted([list(k) for k in selected_keys - source_keys]),
+        "hard_signal_messages_in_source": hard_total,
+        "hard_signal_messages_not_archived": len(hard_unselected),
+        "broad_signal_messages_not_archived": len(broad_unselected),
+        "short_stock_title_context_not_archived": len(context_candidates),
+        "archived_messages_with_nonstock_context_terms": len(selected_nonstock),
+        "hard_unselected": hard_unselected,
+        "broad_unselected": broad_unselected,
+        "context_candidates": context_candidates,
+        "selected_nonstock": selected_nonstock,
+        "unselected_conversations": unselected_titles,
+        "present_zip_attachments_on_unselected_hard_messages": present_hard_refs,
+    }
+    write_json(OUT / "crosscheck.json", report)
+    lines = [
+        "# 源 ZIP 反向交叉检查", "",
+        "本报告只记录审计元数据，不复制未入选消息正文。hard 为独立的高召回股票信号扫描，broad 为较宽的股票词扫描；命中不等于必然应入库，需结合主题判断。", "",
+        f"- 源会话：{len(conversations)}；源消息节点：{len(source_keys)}；已入库节点：{len(selected_keys)}",
+        f"- 入库节点在源会话中找不到：{len(report['selected_nodes_not_found_in_source'])}",
+        f"- 源消息 hard 股票信号：{hard_total}；其中未入库：**{len(hard_unselected)}**",
+        f"- 未入库但仅有 broad 股票信号：**{len(broad_unselected)}**",
+        f"- 股票标题下、邻近入选消息但未入库的短上下文：**{len(context_candidates)}**",
+        f"- 已入库但含非股票语境词的消息（供误收复核）：**{len(selected_nonstock)}**",
+        f"- 未入库 hard 消息引用且 ZIP 中实际存在的附件：**{len(present_hard_refs)}**", "",
+        "## 未入库 hard 信号消息（逐条复核清单）", "",
+        "| 会话 | 节点ID | 角色 | 字符数 | hard 命中 | 当前分类器命中 |",
+        "|---|---|---|---:|---|---|",
+    ]
+    for item in hard_unselected:
+        lines.append(f"| {item['title']} | `{item['node_id']}` | {item['role']} | {item['text_chars']:,} | {', '.join(item['hard_hits'])} | {', '.join(item['relevance_hits'])} |")
+    lines += ["", "## 短上下文候选", ""]
+    for item in context_candidates:
+        lines.append(f"- {item['title']} / `{item['node_id']}` / {item['text_chars']} 字符")
+    lines += ["", "## 未入库会话标题与信号计数", "", "| 会话 | 源消息数 | hard 未入库 | broad-only 未入库 |", "|---|---:|---:|---:|"]
+    for item in unselected_titles:
+        lines.append(f"| {item['title']} | {item['source_messages']} | {item['hard_signal_messages']} | {item['broad_only_signal_messages']} |")
+    (OUT / "_crosscheck.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    log("crosscheck", "hard unselected", len(hard_unselected), "broad unselected", len(broad_unselected), "context", len(context_candidates))
+
+
 def write_reports(source_name: str, source: Path, member_count: int, total_conversations: int,
                   total_messages: int, records: list[dict], attachments: list[dict], scanned: int):
     selected_messages = sum(r["message_count"] for r in records)
@@ -970,6 +1106,7 @@ def write_reports(source_name: str, source: Path, member_count: int, total_conve
 - `附加文件/`：命中消息引用的附件，以及独立扫描后命中股票主题的文件；原始字节复制，能抽取文字的旁边附 `.txt`。
 - `manifest.json`：来源 MD5/SHA256、逐对话路径、入选/源消息数、字符数、附件哈希和选择命中词。
 - `_coverage.md`：总量与逐对话完整性核对。
+- `_crosscheck.md` / `crosscheck.json`：从源 ZIP 反向扫描的漏收、上下文和附件引用审计元数据。
 
 ## 选择口径
 
@@ -1016,6 +1153,7 @@ def main():
         token = match.group(0)
         if not any(token in str(p.relative_to(UNPACK)) for p in all_unpack_files):
             MISSING_ASSETS.append(ref)
+    write_crosscheck(conversations, records, attachments)
     write_reports(source_name, source, member_count, len(conversations), total_messages, records, attachments, scanned)
     # The member listing is only a diagnostic for format failures, not archive content.
     (OUT / "_zip_listing.txt").unlink(missing_ok=True)
