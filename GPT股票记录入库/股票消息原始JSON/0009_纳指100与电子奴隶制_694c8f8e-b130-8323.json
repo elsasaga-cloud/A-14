@@ -1433,8 +1433,8 @@
       "node_id": "16c66cb9-9669-42f7-a613-7f4373ec7ecb",
       "selection_reason": "stock-keyword",
       "matched_terms": [
-        "etf",
         "ETF",
+        "etf",
         "沪深"
       ],
       "node": {
@@ -1804,7 +1804,7 @@
     },
     {
       "node_id": "6fddbb9c-8364-4921-a1d2-fd13d159aced",
-      "selection_reason": "audit-hard",
+      "selection_reason": "reviewed-hard",
       "matched_terms": [
         "中国银行",
         "分红",
@@ -1837,7 +1837,7 @@
     },
     {
       "node_id": "124edcac-56d3-4583-8b06-99d9ec9e472d",
-      "selection_reason": "audit-hard",
+      "selection_reason": "reviewed-hard",
       "matched_terms": [
         "分红"
       ],
@@ -1867,7 +1867,7 @@
     },
     {
       "node_id": "d4fe635d-4fbc-43c2-b221-d7e9b636f24b",
-      "selection_reason": "audit-hard",
+      "selection_reason": "reviewed-hard",
       "matched_terms": [
         "分红"
       ],
@@ -1897,7 +1897,7 @@
     },
     {
       "node_id": "e275f061-af70-4b7a-bc3e-5dbaf8a8851f",
-      "selection_reason": "audit-hard",
+      "selection_reason": "reviewed-hard",
       "matched_terms": [
         "分红"
       ],
@@ -1927,7 +1927,7 @@
     },
     {
       "node_id": "8380dbe8-610f-48f2-998d-e6ee2c5840df",
-      "selection_reason": "audit-hard",
+      "selection_reason": "reviewed-hard",
       "matched_terms": [
         "中国银行",
         "分红",
@@ -2565,7 +2565,7 @@
     },
     {
       "node_id": "526a7606-04eb-4b8e-9852-0de21f3666d5",
-      "selection_reason": "audit-hard",
+      "selection_reason": "reviewed-hard",
       "matched_terms": [
         "中国银行",
         "分红",
@@ -2903,7 +2903,7 @@
     },
     {
       "node_id": "dc8f4817-a256-4623-84b8-238fde8e31d4",
-      "selection_reason": "audit-broad",
+      "selection_reason": "reviewed-broad",
       "matched_terms": [
         "估值",
         "投资"
@@ -2934,7 +2934,7 @@
     },
     {
       "node_id": "ab154d7f-35b1-4f38-bf47-90673e9fa472",
-      "selection_reason": "audit-hard",
+      "selection_reason": "reviewed-hard",
       "matched_terms": [
         "分红",
         "投资"
@@ -3005,7 +3005,7 @@
     },
     {
       "node_id": "d5663737-9291-4719-ac21-eb3cc6829f1c",
-      "selection_reason": "audit-hard",
+      "selection_reason": "reviewed-hard",
       "matched_terms": [
         "分红",
         "投资",
@@ -3103,11 +3103,10 @@
     },
     {
       "node_id": "c866c575-9d5c-4487-acfb-956685d1d2cb",
-      "selection_reason": "audit-hard",
+      "selection_reason": "reviewed-hard",
       "matched_terms": [
         "分红",
-        "投资",
-        "期权"
+        "投资"
       ],
       "node": {
         "id": "c866c575-9d5c-4487-acfb-956685d1d2cb",
@@ -3135,7 +3134,7 @@
     },
     {
       "node_id": "4e299930-9642-4d23-b95f-2c26671ca40a",
-      "selection_reason": "audit-hard",
+      "selection_reason": "reviewed-hard",
       "matched_terms": [
         "分红",
         "投资"
@@ -3232,12 +3231,10 @@
     },
     {
       "node_id": "c499b392-9375-465d-9d67-fb8b7f4192f7",
-      "selection_reason": "audit-hard",
+      "selection_reason": "reviewed-hard",
       "matched_terms": [
         "分红",
-        "基金",
-        "投资",
-        "期权"
+        "投资"
       ],
       "node": {
         "id": "c499b392-9375-465d-9d67-fb8b7f4192f7",
@@ -3265,11 +3262,9 @@
     },
     {
       "node_id": "1e10999f-e324-44ba-b243-d8bf2504db3f",
-      "selection_reason": "audit-hard",
+      "selection_reason": "reviewed-hard",
       "matched_terms": [
-        "分红",
-        "期权",
-        "筹码"
+        "分红"
       ],
       "node": {
         "id": "1e10999f-e324-44ba-b243-d8bf2504db3f",
@@ -3297,10 +3292,9 @@
     },
     {
       "node_id": "98c69eaf-899e-4066-bf57-4334135b9504",
-      "selection_reason": "audit-hard",
+      "selection_reason": "reviewed-hard",
       "matched_terms": [
-        "分红",
-        "期权"
+        "分红"
       ],
       "node": {
         "id": "98c69eaf-899e-4066-bf57-4334135b9504",
@@ -3328,12 +3322,11 @@
     },
     {
       "node_id": "1aed3887-4859-4666-bf4b-1312f091089d",
-      "selection_reason": "audit-hard",
+      "selection_reason": "reviewed-hard",
       "matched_terms": [
         "分红",
         "投资",
-        "浮盈",
-        "筹码"
+        "浮盈"
       ],
       "node": {
         "id": "1aed3887-4859-4666-bf4b-1312f091089d",
@@ -3361,7 +3354,7 @@
     },
     {
       "node_id": "bc7ae2ce-bdd0-4af0-81cc-19c0ea61c42c",
-      "selection_reason": "audit-hard",
+      "selection_reason": "reviewed-hard",
       "matched_terms": [
         "分红",
         "投资"

@@ -1,105 +1,1114 @@
 {
   "source_conversations": 341,
   "source_messages": 4715,
-  "archived_nodes": 1505,
+  "archived_nodes": 1426,
   "selected_nodes_not_found_in_source": [],
   "hard_signal_messages_in_source": 1302,
-  "hard_signal_messages_not_archived": 0,
-  "broad_signal_messages_not_archived": 0,
-  "short_stock_title_context_not_archived": 8,
-  "archived_messages_with_nonstock_context_terms": 447,
-  "hard_unselected": [],
-  "broad_unselected": [],
+  "hard_signal_messages_not_archived": 28,
+  "hard_signal_messages_unreviewed_not_archived": 0,
+  "broad_signal_messages_not_archived": 6,
+  "broad_signal_messages_unreviewed_not_archived": 0,
+  "short_stock_title_context_not_archived": 39,
+  "short_stock_title_context_unreviewed_not_archived": 0,
+  "manual_review_inclusions": 208,
+  "manual_review_exclusions": 87,
+  "archived_messages_with_nonstock_context_terms": 413,
+  "hard_unselected": [
+    {
+      "conversation_id": "692edb4e-f8b8-832c-b951-9f8084c13f81",
+      "title": "Netas",
+      "node_id": "f93256b2-c649-43bf-8573-9853e00888ad",
+      "role": "assistant",
+      "text_chars": 3004,
+      "text_sha256": "dca587286f1d7fa6de19830ee54879129a488a7708b04640e7dece5e038dd58d",
+      "hard_hits": [
+        "分红",
+        "涨停"
+      ],
+      "broad_hits": [
+        "分红",
+        "涨停"
+      ],
+      "relevance_hits": [
+        "分红",
+        "涨停",
+        "股东",
+        "营收"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "692edb4e-f8b8-832c-b951-9f8084c13f81",
+      "title": "Netas",
+      "node_id": "94573ff2-d8ed-48fa-ab10-aa581fb0078a",
+      "role": "user",
+      "text_chars": 3229,
+      "text_sha256": "e07e38b5c91366923c6624551c929aaec4ad9fc66bb2f32c84f69afacefe48a7",
+      "hard_hits": [
+        "定投"
+      ],
+      "broad_hits": [
+        "定投"
+      ],
+      "relevance_hits": [
+        "定投"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "692edb4e-f8b8-832c-b951-9f8084c13f81",
+      "title": "Netas",
+      "node_id": "e296a243-2f43-4da1-b777-978a1a169735",
+      "role": "assistant",
+      "text_chars": 1441,
+      "text_sha256": "432e6256c27820de81d2d8288cf0e53852a39f8ae5d88a8940d82d34fb9201a7",
+      "hard_hits": [
+        "筹码"
+      ],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6999a608-db94-832c-9751-bc78759924a9",
+      "title": "深圳长期发展布局",
+      "node_id": "da211a13-4a2a-4983-9c1f-dab6f124cf6c",
+      "role": "assistant",
+      "text_chars": 2375,
+      "text_sha256": "cd920c7c78b28a33349f3967f4cae269b188ae320caff8a242df764c307c6040",
+      "hard_hits": [
+        "分红"
+      ],
+      "broad_hits": [
+        "分红"
+      ],
+      "relevance_hits": [
+        "分红"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "699ad474-d034-832e-8d95-518e60a79bce",
+      "title": "通信行业长期发展",
+      "node_id": "9ab2ccbd-ee6d-4740-80ef-a0554e4528a4",
+      "role": "user",
+      "text_chars": 55435,
+      "text_sha256": "cf72922aa93cf0b30fa9ec5a171c997caabbe38e2cdc177b78b2cd064c15e11a",
+      "hard_hits": [
+        "分红"
+      ],
+      "broad_hits": [
+        "分红"
+      ],
+      "relevance_hits": [
+        "分红",
+        "复盘",
+        "投资"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69bca27a-272c-832a-9ee1-27daf0acb410",
+      "title": "MSTP设备分析",
+      "node_id": "d7fe35fc-f03e-4de8-b5fc-8407a8c91d77",
+      "role": "assistant",
+      "text_chars": 2146,
+      "text_sha256": "27a4b9f3f3af4e5ab27d6a1a2e9ff90417fa322f3729868a245508a19c7e04a8",
+      "hard_hits": [
+        "TSM"
+      ],
+      "broad_hits": [],
+      "relevance_hits": [
+        "TSM"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69bca27a-272c-832a-9ee1-27daf0acb410",
+      "title": "MSTP设备分析",
+      "node_id": "eeee50ad-e4e7-402c-8d66-0c1667a02bd1",
+      "role": "assistant",
+      "text_chars": 1864,
+      "text_sha256": "d578c982a0ce0bea293d3ff5461579a517c39399e4867e8c41d7dffc446b7f95",
+      "hard_hits": [
+        "TSM"
+      ],
+      "broad_hits": [],
+      "relevance_hits": [
+        "TSM"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69d46b48-d254-8325-84e8-f023a015772c",
+      "title": "饮食系统构建指南",
+      "node_id": "f7e43c4a-3a0d-440a-835f-f2552d999ce9",
+      "role": "assistant",
+      "text_chars": 1936,
+      "text_sha256": "13c6344244f698de3310cc4241a565cce2988a731be1a3187002dc669672468a",
+      "hard_hits": [
+        "分红",
+        "股票"
+      ],
+      "broad_hits": [
+        "仓位",
+        "分红",
+        "股票"
+      ],
+      "relevance_hits": [
+        "仓位",
+        "分红",
+        "投资",
+        "股票"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69df41cf-0774-832f-90cd-a3a39386907a",
+      "title": "通胀与普通人生活",
+      "node_id": "43861c5d-876e-470d-895d-b2dd45927c39",
+      "role": "assistant",
+      "text_chars": 1773,
+      "text_sha256": "1d18b06e5defec74676d3b527e13664f27ee482c561610a7ad947b148a025054",
+      "hard_hits": [
+        "海澜之家"
+      ],
+      "broad_hits": [
+        "海澜之家"
+      ],
+      "relevance_hits": [
+        "投资",
+        "海澜",
+        "海澜之家",
+        "资产配置"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+      "title": "世界公民配置升级",
+      "node_id": "cff984dc-9efe-4445-80bb-415b5f2e2bc9",
+      "role": "assistant",
+      "text_chars": 2366,
+      "text_sha256": "8500671997e2f74327e988afcec016eb2834952770800df142cbbeffce404662",
+      "hard_hits": [
+        "股票"
+      ],
+      "broad_hits": [
+        "股票账户"
+      ],
+      "relevance_hits": [
+        "投资",
+        "股票账户"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
+      "title": "世界公民配置升级",
+      "node_id": "c1501c81-12c6-474b-93a4-0d8c819d608c",
+      "role": "assistant",
+      "text_chars": 1949,
+      "text_sha256": "d017c83acb24f5d4bf7007950950a692fa0117788baa0fbbe0ebd1e9f5378289",
+      "hard_hits": [
+        "分红"
+      ],
+      "broad_hits": [
+        "分红"
+      ],
+      "relevance_hits": [
+        "分红",
+        "投资"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69e589d8-ea94-832b-9ca0-95692e81d28a",
+      "title": "婚姻决策与风险",
+      "node_id": "3188cf0d-ad76-4f1e-ab6f-2ce3441e414a",
+      "role": "assistant",
+      "text_chars": 2209,
+      "text_sha256": "23b8df1cb3f71bc113e171c5a78e9d24dee0066db5c3511e82bb8941ed0ecc1e",
+      "hard_hits": [
+        "止损"
+      ],
+      "broad_hits": [
+        "止损"
+      ],
+      "relevance_hits": [
+        "止损"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a01f6fe-0de8-83ec-a251-30032c325b27",
+      "title": "Playwright 1.59.0 安装解决方案",
+      "node_id": "ee4fd22b-3039-4104-90af-f833ae73505f",
+      "role": "assistant",
+      "text_chars": 1661,
+      "text_sha256": "accf8feb260b28f9891960c82011b5135c921e7eec2b64372b0dd68e8e73c7cf",
+      "hard_hits": [
+        "股票"
+      ],
+      "broad_hits": [
+        "股票"
+      ],
+      "relevance_hits": [
+        "微软",
+        "股票"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a027e0d-d7cc-83ec-9901-006228029a79",
+      "title": "A2A时代外贸自动化",
+      "node_id": "27f69760-ce75-4841-8228-c5287cd4b7d2",
+      "role": "assistant",
+      "text_chars": 2307,
+      "text_sha256": "08b92c23e54783de0ac3795580dc5c18689bfbb560831598d7a0463c0a20ea81",
+      "hard_hits": [
+        "股票"
+      ],
+      "broad_hits": [
+        "股票"
+      ],
+      "relevance_hits": [
+        "股票"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a06d935-1b30-83ec-9000-1187ae358a6c",
+      "title": "注意力边界与社交",
+      "node_id": "ae0a304c-750d-4724-be88-a84b95af5be6",
+      "role": "user",
+      "text_chars": 668,
+      "text_sha256": "7eb1c0c8e60f7c98aad1a9a4eba13f3cc8af4bab01c742753ee8a09a1bbe9076",
+      "hard_hits": [
+        "止损"
+      ],
+      "broad_hits": [
+        "止损"
+      ],
+      "relevance_hits": [
+        "止损"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a0ed2f9-a5a8-8324-8e71-bfcd6e7f4748",
+      "title": "苹果礼品卡有效期",
+      "node_id": "90266ae9-d196-4bd3-884d-fe81e822d2b2",
+      "role": "assistant",
+      "text_chars": 1165,
+      "text_sha256": "7f070f9ef2a73e06076859272f7011e58f1d3452602626b0284333f5adc94585",
+      "hard_hits": [
+        "券商"
+      ],
+      "broad_hits": [
+        "券商"
+      ],
+      "relevance_hits": [
+        "券商"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a11a08d-916c-83ec-ac23-da75f4390723",
+      "title": "HSBC App Store问题",
+      "node_id": "4c601335-fd4d-4109-bf1e-df412a07e062",
+      "role": "assistant",
+      "text_chars": 1277,
+      "text_sha256": "5934dffacd6c55d3cd6faf35fe057789359613a097e1c00b8018ea56c4425b6b",
+      "hard_hits": [
+        "证券"
+      ],
+      "broad_hits": [
+        "证券"
+      ],
+      "relevance_hits": [
+        "投资",
+        "证券",
+        "资产配置"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a13a6ad-6bd0-83ec-b8bb-9fac9b510154",
+      "title": "金升阳模块对应分析",
+      "node_id": "8ffaa7eb-7189-4f18-98b4-f12d6d2b1b6d",
+      "role": "assistant",
+      "text_chars": 3387,
+      "text_sha256": "c314fc740aaea36cfad032d25d8395cf3adc9726fb069c7ae6d3b18f96b3bf45",
+      "hard_hits": [
+        "AMD"
+      ],
+      "broad_hits": [],
+      "relevance_hits": [
+        "AMD"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a2f75ae-66d8-83ec-8ad5-f2d34308f43d",
+      "title": "买房争论分析",
+      "node_id": "e2716a56-93f1-49a5-b93d-17782f0efff7",
+      "role": "assistant",
+      "text_chars": 1803,
+      "text_sha256": "55b84df512175839f7aecb0ee536419df9e5f2624528b6ab4f0c5ec9129ae4bf",
+      "hard_hits": [
+        "股票"
+      ],
+      "broad_hits": [
+        "股票"
+      ],
+      "relevance_hits": [
+        "投资",
+        "股票"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a5c82ce-0cc0-83ec-8672-c8aa35c8a057",
+      "title": "轻FIRE模式可行性分析",
+      "node_id": "178f1bc7-ff90-460e-9d9a-c4fc69fe88f3",
+      "role": "user",
+      "text_chars": 754,
+      "text_sha256": "7e3f7d9583aed51103057ab89c59ebde057d21fe073cb166d49a394d3f27e34d",
+      "hard_hits": [
+        "股票"
+      ],
+      "broad_hits": [
+        "股票"
+      ],
+      "relevance_hits": [
+        "投资",
+        "股票"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a5c82ce-0cc0-83ec-8672-c8aa35c8a057",
+      "title": "轻FIRE模式可行性分析",
+      "node_id": "f75d9edc-fd9f-42c8-8ab6-3739bd66f0e1",
+      "role": "assistant",
+      "text_chars": 1950,
+      "text_sha256": "e341627ca384e4d78deb04fd33be31aa3fca7a4b3812673c6605b37c31be29b7",
+      "hard_hits": [
+        "股票"
+      ],
+      "broad_hits": [
+        "股票"
+      ],
+      "relevance_hits": [
+        "投资",
+        "股票"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a5dcfef-8838-83ec-947f-3cd633688657",
+      "title": "美国AI战略分析",
+      "node_id": "13aa80e7-45ac-4a82-8710-7af5855ec508",
+      "role": "user",
+      "text_chars": 2148,
+      "text_sha256": "2bd2eaa7111e7d005b0d521bb57402854f69a126a1817a7f0a974e629700e96d",
+      "hard_hits": [
+        "基金"
+      ],
+      "broad_hits": [],
+      "relevance_hits": [
+        "亚马逊",
+        "微软",
+        "投资",
+        "英伟达",
+        "谷歌"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a5f05a9-f7e8-83ec-8013-92b6e57b32dc",
+      "title": "Mikrotik vs 交换机价值分析",
+      "node_id": "67bd39a0-7686-4d15-9548-4f8c51077d13",
+      "role": "assistant",
+      "text_chars": 4494,
+      "text_sha256": "5158a49dde5ae11439d996fce84cf121b592571e46ed60b332217d936318b5cc",
+      "hard_hits": [
+        "股票"
+      ],
+      "broad_hits": [
+        "股票"
+      ],
+      "relevance_hits": [
+        "股票"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a71b663-112c-83ec-911a-cce3ae76e69f",
+      "title": "Trueno Group 匹配度分析",
+      "node_id": "4c53efa6-56a6-4487-8648-7f63919f803c",
+      "role": "assistant",
+      "text_chars": 2136,
+      "text_sha256": "be812d6980ed5de0c419fd7339d2aea708b3386b5b66eb5e1b1f0be0b33f30a7",
+      "hard_hits": [
+        "财报"
+      ],
+      "broad_hits": [
+        "财报"
+      ],
+      "relevance_hits": [
+        "财报"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a9918c1-4cf4-83ec-bd90-776f77cb4dab",
+      "title": "减少注意力损耗",
+      "node_id": "79d2db5b-4d3a-415f-a7ff-f0c692d7b117",
+      "role": "assistant",
+      "text_chars": 2642,
+      "text_sha256": "03cd81ecd71b33b3d8d6ea7eca254ab171709dcf4491607467d814b08d8097c4",
+      "hard_hits": [
+        "股票"
+      ],
+      "broad_hits": [
+        "股票"
+      ],
+      "relevance_hits": [
+        "股票"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6ac900e3-5b04-83ec-8bf2-48bdf3ea649f",
+      "title": "手机安全建议",
+      "node_id": "a513aa4d-126e-4566-a863-aad8722fe0d7",
+      "role": "assistant",
+      "text_chars": 1775,
+      "text_sha256": "25795b9f7ee72bfb2e31385f58bc979a02cabf65116276f463f530bac9785b27",
+      "hard_hits": [
+        "止损"
+      ],
+      "broad_hits": [
+        "止损"
+      ],
+      "relevance_hits": [
+        "止损"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6ace2230-0b20-83ec-8e8b-7b863ad8e268",
+      "title": "交换机租赁模式探索",
+      "node_id": "f95c2855-178d-4ecf-af9d-0e34f8f1c29e",
+      "role": "user",
+      "text_chars": 203,
+      "text_sha256": "1803cdc0b9bf2d4607a137c3f742e2995936ca195d091f1e7bace0e70abb6d3e",
+      "hard_hits": [
+        "股票"
+      ],
+      "broad_hits": [
+        "股票"
+      ],
+      "relevance_hits": [
+        "股票"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "a006014f-d4bd-4c72-a394-4fef8bed514a",
+      "title": "Learn English Words",
+      "node_id": "e70cb948-6300-417f-a301-5271f324207e",
+      "role": "assistant",
+      "text_chars": 570,
+      "text_sha256": "cd2ebbc2c1ecdaba5f8a9b0ffec528d0b176daa514bc843f522b69397fbd8628",
+      "hard_hits": [
+        "贵州茅台"
+      ],
+      "broad_hits": [
+        "贵州茅台"
+      ],
+      "relevance_hits": [
+        "贵州茅台"
+      ],
+      "review_action": "excluded"
+    }
+  ],
+  "broad_unselected": [
+    {
+      "conversation_id": "69997d8f-5588-8332-ae3b-1dd2681cb6d3",
+      "title": "人际与精力管理",
+      "node_id": "66dcabe2-7e19-48d6-8e61-7f38d18c521f",
+      "role": "assistant",
+      "text_chars": 1778,
+      "text_sha256": "002490a25472d2a308cd25b2ad2ff90d9f3060ccca84b784d51d73dd21994d3d",
+      "hard_hits": [],
+      "broad_hits": [
+        "仓位"
+      ],
+      "relevance_hits": [
+        "仓位",
+        "投资"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69c4a523-d858-8330-b4bb-afe5fda296e9",
+      "title": "国外采购商整理",
+      "node_id": "26fe1647-8e4f-47b6-b278-31a1859cf127",
+      "role": "assistant",
+      "text_chars": 1946,
+      "text_sha256": "635212b0370d94be80d4f6c609194a889d3f1b53cf06006ea81c78aa2027473c",
+      "hard_hits": [],
+      "broad_hits": [
+        "量能"
+      ],
+      "relevance_hits": [
+        "量能"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69c4a523-d858-8330-b4bb-afe5fda296e9",
+      "title": "国外采购商整理",
+      "node_id": "b39c4fb7-8433-4ea0-abaa-1b98cf430bab",
+      "role": "assistant",
+      "text_chars": 1525,
+      "text_sha256": "057a615cbec1a555f6e750a12e755e9a0dbc344a0e70f92c0f54df779e4823d7",
+      "hard_hits": [],
+      "broad_hits": [
+        "量能"
+      ],
+      "relevance_hits": [
+        "量能"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a067c3f-6828-83ec-ab9b-00d57ec48fc9",
+      "title": "OCM卡全称及功能",
+      "node_id": "967658c8-0e5a-43f5-b213-286244592e0c",
+      "role": "assistant",
+      "text_chars": 1500,
+      "text_sha256": "fec867a875988f5a7294d3e7075b948e389b981d8289c51c400ea78e8e677bd2",
+      "hard_hits": [],
+      "broad_hits": [
+        "300386"
+      ],
+      "relevance_hits": [
+        "300386"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a30bf55-acd8-83ec-bcae-446254b95cbe",
+      "title": "生育观念与压力",
+      "node_id": "4283a8d5-227c-4098-859e-af01e70ddcfb",
+      "role": "assistant",
+      "text_chars": 1064,
+      "text_sha256": "4558cf9111e09cdb70a6bcbc15344c5dacd590638befa2b9522f3e564bd2784f",
+      "hard_hits": [],
+      "broad_hits": [
+        "回购"
+      ],
+      "relevance_hits": [
+        "回购"
+      ],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6aa8e0f6-e224-83ec-abfe-76ac5d0094e1",
+      "title": "Steam找回账号 सलाह",
+      "node_id": "c90a30e7-e72a-4d10-bab2-4e8a5e04d13f",
+      "role": "user",
+      "text_chars": 4575,
+      "text_sha256": "3b46c7087966d67097080d359b6cd9d1abfc0237cdcb4f9f13dc735278d8ba7d",
+      "hard_hits": [],
+      "broad_hits": [
+        "689012"
+      ],
+      "relevance_hits": [
+        "689012"
+      ],
+      "review_action": "excluded"
+    }
+  ],
   "context_candidates": [
     {
       "conversation_id": "69be87d2-9fe0-8387-aa2f-b399f76e38e4",
       "title": "NVO目标价与股权结构",
-      "node_id": "41b8b33f-2c32-4d42-8b30-5f58f21ee40b",
+      "node_id": "6eea3464-95c0-4750-ae33-cbcb5a2e6bd4",
+      "role": "assistant",
+      "text_chars": 12,
+      "text_sha256": "94f484571c6bbf8783101a0e1bb39b00553de4ef76dd33441dc98e9b50ecb6a0",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69bee22f-ec38-832f-8ff1-a83b32c8e961",
+      "title": "AI投资布局分析",
+      "node_id": "76b7de6e-e83f-4e38-966a-e0b5fd1eee0e",
       "role": "user",
-      "text_chars": 45,
-      "text_sha256": "e99146852cf70f77d90630dfb0458ff8de87d00835a8a3c9674a82c2bf18d1d2",
+      "text_chars": 28,
+      "text_sha256": "0fec424a7071b4790d358595854d41381c71cb0c57b4c4fc9bdf7fe7053f208e",
       "hard_hits": [],
       "broad_hits": [],
-      "relevance_hits": []
+      "relevance_hits": [],
+      "review_action": "excluded"
     },
     {
-      "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
-      "title": "GLW-GPT",
-      "node_id": "49b06ddb-f988-421e-9a8f-a474cc16ff73",
+      "conversation_id": "69c65b1d-6de8-832c-8859-07e1b39f9349",
+      "title": "惠普估值与期权策略",
+      "node_id": "5456b70e-df91-4b6c-b892-15b9aacc1647",
+      "role": "assistant",
+      "text_chars": 12,
+      "text_sha256": "0377c411da529c276e4078b94cf59ca45b13e7c6f24ee00aa012056d3960835a",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69cdead7-7c50-8332-9506-2bdcc88d3b56",
+      "title": "投资决策逻辑分析",
+      "node_id": "5f374c9f-6c15-4de2-8645-0722544bbcfa",
       "role": "user",
-      "text_chars": 2,
-      "text_sha256": "61c2910abdd34032170d58c741aa24042d779e006222037b746b0ed1b84a11bf",
+      "text_chars": 53,
+      "text_sha256": "eedf19f890d58765285019206c5b8e757fb7478d23f17b1ec57404c0cf29cac7",
       "hard_hits": [],
       "broad_hits": [],
-      "relevance_hits": []
+      "relevance_hits": [],
+      "review_action": "excluded"
     },
     {
-      "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
-      "title": "GLW-GPT",
-      "node_id": "fb252b71-c7b7-4176-a069-8fa4acb809cd",
+      "conversation_id": "69ce35f8-69d0-8333-aa60-d4e714e7d19b",
+      "title": "长牛股筛选策略",
+      "node_id": "9570c635-bcc3-483a-b2c9-f6f9300ebd8e",
+      "role": "user",
+      "text_chars": 14,
+      "text_sha256": "c3506084b720a0356c7825af67cc006ea7cf7608fcc8eb85aacd4d97b4f642b2",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "69ce35f8-69d0-8333-aa60-d4e714e7d19b",
+      "title": "长牛股筛选策略",
+      "node_id": "d7ee5abe-89ac-4923-ad62-b974c08030d9",
+      "role": "user",
+      "text_chars": 37,
+      "text_sha256": "ef2e06f6156a73f6eb659c4e934a2e5331cdc2c837afbd4635dcb72ac23051a8",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a22c8ec-8ad0-83ec-b1f1-e9ab45bd210e",
+      "title": "A股波段股推荐",
+      "node_id": "15b3ebd7-da72-4d02-a5a3-e1e637482ad6",
       "role": "assistant",
-      "text_chars": 76,
-      "text_sha256": "da33a9217fdc5756b385e6eb71e877427b375be323043dda0b14c06edf627146",
+      "text_chars": 57,
+      "text_sha256": "5176892824ee2bff940d6b2579b4bce0b5f3b188362300bba9359f718e6d1aa1",
       "hard_hits": [],
       "broad_hits": [],
-      "relevance_hits": []
+      "relevance_hits": [],
+      "review_action": "excluded"
     },
     {
-      "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
-      "title": "GLW-GPT",
-      "node_id": "9a840be7-ee39-46ad-971c-29487b764ce5",
+      "conversation_id": "6a2a6f2d-d694-83ec-a625-4b78f51d93e1",
+      "title": "SpaceX投资分析",
+      "node_id": "03f6f28d-37dc-4a73-b1a4-53efcc5a5d05",
       "role": "assistant",
-      "text_chars": 76,
-      "text_sha256": "da33a9217fdc5756b385e6eb71e877427b375be323043dda0b14c06edf627146",
+      "text_chars": 61,
+      "text_sha256": "1d1fa975883ce90324ee3cf6a14a23d1ef39aa60e9393eba8be98d12c1d17747",
       "hard_hits": [],
       "broad_hits": [],
-      "relevance_hits": []
+      "relevance_hits": [],
+      "review_action": "excluded"
     },
     {
-      "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
-      "title": "GLW-GPT",
-      "node_id": "1f595cfa-ab7e-47ef-828b-727a5a69c361",
+      "conversation_id": "6a599352-dc3c-83ec-a3ef-14421fe2df0d",
+      "title": "资本流动与价格形成",
+      "node_id": "3365b774-cdad-4f1c-8416-70e4f006eace",
       "role": "assistant",
-      "text_chars": 76,
-      "text_sha256": "da33a9217fdc5756b385e6eb71e877427b375be323043dda0b14c06edf627146",
+      "text_chars": 122,
+      "text_sha256": "b50f6168589b93381c3a9398d70503872600bb04c25aaaa795858ababb32996d",
       "hard_hits": [],
       "broad_hits": [],
-      "relevance_hits": []
+      "relevance_hits": [
+        "stock"
+      ],
+      "review_action": "excluded"
     },
     {
-      "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
-      "title": "GLW-GPT",
-      "node_id": "349807f3-2121-4633-9074-4744461ac268",
+      "conversation_id": "6a599352-dc3c-83ec-a3ef-14421fe2df0d",
+      "title": "资本流动与价格形成",
+      "node_id": "87b70ccd-061e-4c3b-a1fb-e35ff0aa05c6",
+      "role": "assistant",
+      "text_chars": 61,
+      "text_sha256": "bdc84d96733586074c854ea0cf3a6533993ac7ef6ace6a58befc2e165c19aa22",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a599352-dc3c-83ec-a3ef-14421fe2df0d",
+      "title": "资本流动与价格形成",
+      "node_id": "cbb65c41-271c-486f-8e0d-e8053c1b3ae4",
       "role": "assistant",
       "text_chars": 77,
-      "text_sha256": "f073e17325009f92b97686ff65c7bc27db8360e5c14e1cd96f150fc0990fba4d",
+      "text_sha256": "7567fbde42cb66bdbc6eb1407717b1412fd4fb2d90236a5328cc4c4d08ed5690",
       "hard_hits": [],
       "broad_hits": [],
-      "relevance_hits": []
+      "relevance_hits": [],
+      "review_action": "excluded"
     },
     {
-      "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
-      "title": "GLW-GPT",
-      "node_id": "63afe9b1-f632-4b9c-b645-c14706690471",
+      "conversation_id": "6a599352-dc3c-83ec-a3ef-14421fe2df0d",
+      "title": "资本流动与价格形成",
+      "node_id": "9e35e467-068f-4147-9216-5e73bbfd288c",
       "role": "assistant",
-      "text_chars": 76,
-      "text_sha256": "019c1ef604a308a6fec079e5be1da8b6afdd9ffbc142e35fa0128157d268d4b6",
+      "text_chars": 60,
+      "text_sha256": "1f9be5041b29f4af50ab6718009109194572e7edeeae65a0b3dbe5afa1584c19",
       "hard_hits": [],
       "broad_hits": [],
-      "relevance_hits": []
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a599352-dc3c-83ec-a3ef-14421fe2df0d",
+      "title": "资本流动与价格形成",
+      "node_id": "e72b5e2f-f111-4702-8082-a7ba4f9c496d",
+      "role": "assistant",
+      "text_chars": 77,
+      "text_sha256": "838ca9542f826a52131ce0b7b0982eb0152373da3762793299b954bee68ac656",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a599352-dc3c-83ec-a3ef-14421fe2df0d",
+      "title": "资本流动与价格形成",
+      "node_id": "789fa52f-7875-46ed-9dea-62f5e0a9bb1a",
+      "role": "assistant",
+      "text_chars": 101,
+      "text_sha256": "b82206826c9cb1eb51d999189befd8fb6530c77ff40680920079edb50e148a1b",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a7ae315-0214-83ec-8a3c-b5832861c68f",
+      "title": "资产配置调整分析",
+      "node_id": "7f973c3c-c61b-4c63-b64b-ce32290100a6",
+      "role": "assistant",
+      "text_chars": 77,
+      "text_sha256": "f8e487d222f53b490030ccde4c034c02d25e06b90d3fa42c8d1a93af1c9437a0",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a7d4267-4ef4-83ec-a73a-3b1598a37cd2",
+      "title": "投资框架分析",
+      "node_id": "c24276a1-5c40-4103-a3e5-074db124123d",
+      "role": "assistant",
+      "text_chars": 78,
+      "text_sha256": "01cef5557d0d1e01468b7444b7823de0c235904249e5d12dd728f3e86b03b076",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a8146e5-aae4-83ec-a8d4-c194e597d22d",
+      "title": "美股特点分析",
+      "node_id": "52c25ce6-08df-49ab-862a-0c267b89f639",
+      "role": "assistant",
+      "text_chars": 78,
+      "text_sha256": "9a139effff26cd444d145dfe3682fdcc7c9c7c38fd928431ff9869d4056c5f9d",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6a8146e5-aae4-83ec-a8d4-c194e597d22d",
+      "title": "美股特点分析",
+      "node_id": "8c1571d8-c729-401c-b89c-d208394a4a1d",
+      "role": "assistant",
+      "text_chars": 77,
+      "text_sha256": "f8e487d222f53b490030ccde4c034c02d25e06b90d3fa42c8d1a93af1c9437a0",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
+      "title": "普通人被动收入方式",
+      "node_id": "7c06e56d-5401-45c6-9acb-6da2e6e8f3f8",
+      "role": "user",
+      "text_chars": 26,
+      "text_sha256": "20339466405efa6d0d36ac75dac844376992c48ea5f5bd3e0b12532c53b393fe",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
+      "title": "普通人被动收入方式",
+      "node_id": "388655cb-6cd9-475b-bb58-c6ece4b378a5",
+      "role": "assistant",
+      "text_chars": 119,
+      "text_sha256": "a6cd3727fc8ad9f8f066ae4ded547412724d8720a9d7b120976c4df4b8e4d668",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
+      "title": "普通人被动收入方式",
+      "node_id": "dd4cc825-00cf-4742-909b-b1d35f7c9d76",
+      "role": "assistant",
+      "text_chars": 61,
+      "text_sha256": "a258af6c4bda315136713a4c15af1981de457b190a91084600de5477161afec4",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
     },
     {
       "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
       "title": "GLW-GPT",
-      "node_id": "2be41850-80c9-4551-890e-9bf2dfab79ee",
+      "node_id": "b36b7896-def9-44b2-b918-3862e748db20",
+      "role": "assistant",
+      "text_chars": 77,
+      "text_sha256": "f8e487d222f53b490030ccde4c034c02d25e06b90d3fa42c8d1a93af1c9437a0",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+      "title": "GLW-GPT",
+      "node_id": "58123ebc-ba2f-4fc9-a02f-fd234f075c24",
+      "role": "assistant",
+      "text_chars": 77,
+      "text_sha256": "45bf000c765d3adad8da01e7560cf6e519ca9b6057a47234130864017c2305a0",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+      "title": "GLW-GPT",
+      "node_id": "f2fdd473-25e7-476f-ab8d-beb7b2da8688",
+      "role": "assistant",
+      "text_chars": 71,
+      "text_sha256": "9d8c884bfc3783f34f8491acb3edd63914cc42480f4bedf9ad0c083f4404abc1",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+      "title": "GLW-GPT",
+      "node_id": "bda55edd-72fa-452c-bbf1-23d6473efffd",
       "role": "assistant",
       "text_chars": 77,
       "text_sha256": "9cce65d7053634483efcbed5c716529ecbedaa08c18432e0d5a389510038820c",
       "hard_hits": [],
       "broad_hits": [],
-      "relevance_hits": []
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+      "title": "GLW-GPT",
+      "node_id": "cdeddf66-aa5b-41ec-93bb-8eebf5b802f2",
+      "role": "assistant",
+      "text_chars": 77,
+      "text_sha256": "f8e487d222f53b490030ccde4c034c02d25e06b90d3fa42c8d1a93af1c9437a0",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+      "title": "GLW-GPT",
+      "node_id": "f910c311-7da5-44e7-851d-1b8f7e610c13",
+      "role": "assistant",
+      "text_chars": 76,
+      "text_sha256": "67830f73e23d3eb169e92f16e018246e0d17a5701375aa39c25b3f99f320338a",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+      "title": "GLW-GPT",
+      "node_id": "9b682868-052d-4162-a59c-401426fe754c",
+      "role": "assistant",
+      "text_chars": 77,
+      "text_sha256": "f8e487d222f53b490030ccde4c034c02d25e06b90d3fa42c8d1a93af1c9437a0",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+      "title": "GLW-GPT",
+      "node_id": "76326161-0596-4b9c-a148-46d9adf7d17c",
+      "role": "assistant",
+      "text_chars": 76,
+      "text_sha256": "da33a9217fdc5756b385e6eb71e877427b375be323043dda0b14c06edf627146",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+      "title": "GLW-GPT",
+      "node_id": "9b3f3564-76bb-4a14-9bc8-4bf75a8d17ba",
+      "role": "assistant",
+      "text_chars": 77,
+      "text_sha256": "f8e487d222f53b490030ccde4c034c02d25e06b90d3fa42c8d1a93af1c9437a0",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+      "title": "GLW-GPT",
+      "node_id": "ea7e661b-7a17-45e8-9c64-cc40822d0a2d",
+      "role": "assistant",
+      "text_chars": 77,
+      "text_sha256": "f073e17325009f92b97686ff65c7bc27db8360e5c14e1cd96f150fc0990fba4d",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+      "title": "GLW-GPT",
+      "node_id": "8dca6323-22b1-4143-9d45-c56774b4943a",
+      "role": "assistant",
+      "text_chars": 71,
+      "text_sha256": "9d8c884bfc3783f34f8491acb3edd63914cc42480f4bedf9ad0c083f4404abc1",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+      "title": "GLW-GPT",
+      "node_id": "2d4ee37e-9b2b-4b4a-b0a0-1549039e80c3",
+      "role": "assistant",
+      "text_chars": 71,
+      "text_sha256": "9d8c884bfc3783f34f8491acb3edd63914cc42480f4bedf9ad0c083f4404abc1",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+      "title": "GLW-GPT",
+      "node_id": "7290d91d-8b63-4471-aa61-a595d5fdb769",
+      "role": "assistant",
+      "text_chars": 77,
+      "text_sha256": "f073e17325009f92b97686ff65c7bc27db8360e5c14e1cd96f150fc0990fba4d",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+      "title": "GLW-GPT",
+      "node_id": "4d2110ab-8f7d-4601-9634-054afe3a4a5e",
+      "role": "assistant",
+      "text_chars": 60,
+      "text_sha256": "1f9be5041b29f4af50ab6718009109194572e7edeeae65a0b3dbe5afa1584c19",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+      "title": "GLW-GPT",
+      "node_id": "d3241972-68e1-434c-bc4f-8d21bc6beafc",
+      "role": "assistant",
+      "text_chars": 76,
+      "text_sha256": "0a2e075f925325c5c765c9e7e4dfed38a1014d2c69d4260b556a0b2be8208b8d",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+      "title": "GLW-GPT",
+      "node_id": "b5076bb3-4be9-45b7-a2a7-8d1662feb961",
+      "role": "assistant",
+      "text_chars": 60,
+      "text_sha256": "37278f23ae17001d5bfbef86f7605da2d084ae02d01e522cc82a497b6b513538",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+      "title": "GLW-GPT",
+      "node_id": "3bbbd197-2fe0-4b87-82ba-a9c15d3eeeaa",
+      "role": "assistant",
+      "text_chars": 76,
+      "text_sha256": "ea2ef02b7a70055764f0cc3cb9eec67372f40e2e46a8bd44ca1eba44b83f639d",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
+    },
+    {
+      "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
+      "title": "GLW-GPT",
+      "node_id": "cf24f340-b721-4f2b-8f28-f665bdca0040",
+      "role": "assistant",
+      "text_chars": 71,
+      "text_sha256": "9d8c884bfc3783f34f8491acb3edd63914cc42480f4bedf9ad0c083f4404abc1",
+      "hard_hits": [],
+      "broad_hits": [],
+      "relevance_hits": [],
+      "review_action": "excluded"
     }
   ],
+  "hard_unreviewed": [],
+  "broad_unreviewed": [],
+  "context_unreviewed": [],
   "selected_nonstock": [
     {
       "conversation_id": "6819de3d-37fc-8004-aaf0-7c4d864754e0",
@@ -130,7 +1139,8 @@
         "股价",
         "股市",
         "股息"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6819de3d-37fc-8004-aaf0-7c4d864754e0",
@@ -155,7 +1165,8 @@
         "股东",
         "股息",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6819de3d-37fc-8004-aaf0-7c4d864754e0",
@@ -193,7 +1204,8 @@
         "股票",
         "证券",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6819de3d-37fc-8004-aaf0-7c4d864754e0",
@@ -213,7 +1225,8 @@
       "relevance_hits": [
         "A股",
         "港股"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6819de3d-37fc-8004-aaf0-7c4d864754e0",
@@ -263,7 +1276,8 @@
         "股息",
         "股票",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6819de3d-37fc-8004-aaf0-7c4d864754e0",
@@ -345,7 +1359,8 @@
         "股票",
         "营收",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6819de3d-37fc-8004-aaf0-7c4d864754e0",
@@ -373,7 +1388,8 @@
         "板块",
         "股票",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6819de3d-37fc-8004-aaf0-7c4d864754e0",
@@ -394,7 +1410,8 @@
         "投资",
         "股价",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6819de3d-37fc-8004-aaf0-7c4d864754e0",
@@ -416,7 +1433,8 @@
         "投资",
         "股价",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69042d27-f630-8322-a1cc-ceb02fd03ad7",
@@ -466,7 +1484,8 @@
         "港股",
         "美股",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69042d27-f630-8322-a1cc-ceb02fd03ad7",
@@ -536,7 +1555,8 @@
         "股价",
         "股票",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69042d27-f630-8322-a1cc-ceb02fd03ad7",
@@ -590,7 +1610,8 @@
         "股息",
         "谷歌",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69042d27-f630-8322-a1cc-ceb02fd03ad7",
@@ -621,7 +1642,8 @@
         "持仓",
         "美股",
         "证券"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6916d1f6-6318-8324-97f0-99e31a9df371",
@@ -649,7 +1671,8 @@
         "定投",
         "美股",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6916d1f6-6318-8324-97f0-99e31a9df371",
@@ -695,7 +1718,8 @@
         "浮亏",
         "海澜",
         "海澜之家"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6916d1f6-6318-8324-97f0-99e31a9df371",
@@ -741,7 +1765,8 @@
         "日线",
         "标普",
         "看盘"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6916d1f6-6318-8324-97f0-99e31a9df371",
@@ -759,7 +1784,8 @@
       "relevance_hits": [
         "定投",
         "投资"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6916d1f6-6318-8324-97f0-99e31a9df371",
@@ -797,7 +1823,8 @@
         "投资",
         "股价",
         "股市"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6916d1f6-6318-8324-97f0-99e31a9df371",
@@ -832,7 +1859,8 @@
         "投资",
         "牛市",
         "股价"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6916d1f6-6318-8324-97f0-99e31a9df371",
@@ -869,7 +1897,8 @@
         "投资",
         "纳斯达克",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6916d1f6-6318-8324-97f0-99e31a9df371",
@@ -892,7 +1921,8 @@
         "ETF",
         "分红",
         "纳斯达克"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6916d1f6-6318-8324-97f0-99e31a9df371",
@@ -910,7 +1940,8 @@
       ],
       "relevance_hits": [
         "定投"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6916d1f6-6318-8324-97f0-99e31a9df371",
@@ -927,46 +1958,8 @@
       ],
       "relevance_hits": [
         "清仓"
-      ]
-    },
-    {
-      "conversation_id": "692edb4e-f8b8-832c-b951-9f8084c13f81",
-      "title": "Netas",
-      "node_id": "f93256b2-c649-43bf-8573-9853e00888ad",
-      "role": "assistant",
-      "text_chars": 3004,
-      "text_sha256": "dca587286f1d7fa6de19830ee54879129a488a7708b04640e7dece5e038dd58d",
-      "hard_hits": [
-        "分红",
-        "涨停"
       ],
-      "broad_hits": [
-        "分红",
-        "涨停"
-      ],
-      "relevance_hits": [
-        "分红",
-        "涨停",
-        "股东",
-        "营收"
-      ]
-    },
-    {
-      "conversation_id": "692edb4e-f8b8-832c-b951-9f8084c13f81",
-      "title": "Netas",
-      "node_id": "94573ff2-d8ed-48fa-ab10-aa581fb0078a",
-      "role": "user",
-      "text_chars": 3229,
-      "text_sha256": "e07e38b5c91366923c6624551c929aaec4ad9fc66bb2f32c84f69afacefe48a7",
-      "hard_hits": [
-        "定投"
-      ],
-      "broad_hits": [
-        "定投"
-      ],
-      "relevance_hits": [
-        "定投"
-      ]
+      "review_action": "included"
     },
     {
       "conversation_id": "692edb4e-f8b8-832c-b951-9f8084c13f81",
@@ -985,20 +1978,8 @@
         "POC",
         "投资",
         "股票"
-      ]
-    },
-    {
-      "conversation_id": "692edb4e-f8b8-832c-b951-9f8084c13f81",
-      "title": "Netas",
-      "node_id": "e296a243-2f43-4da1-b777-978a1a169735",
-      "role": "assistant",
-      "text_chars": 1441,
-      "text_sha256": "432e6256c27820de81d2d8288cf0e53852a39f8ae5d88a8940d82d34fb9201a7",
-      "hard_hits": [
-        "筹码"
       ],
-      "broad_hits": [],
-      "relevance_hits": []
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1018,7 +1999,8 @@
       "relevance_hits": [
         "格力电器",
         "证券"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1054,7 +2036,8 @@
         "股息",
         "股票",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1081,7 +2064,8 @@
         "投资",
         "格力电器",
         "股息"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1111,7 +2095,8 @@
         "分红",
         "格力电器",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1140,7 +2125,8 @@
         "标普",
         "沪深",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1164,7 +2150,8 @@
         "分红",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1186,7 +2173,8 @@
         "分红",
         "投资",
         "资产配置"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1203,7 +2191,8 @@
       ],
       "relevance_hits": [
         "分红"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1220,7 +2209,8 @@
       ],
       "relevance_hits": [
         "分红"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1237,7 +2227,8 @@
       ],
       "relevance_hits": [
         "分红"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1258,7 +2249,8 @@
         "中国银行",
         "分红",
         "投资"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1279,7 +2271,8 @@
       "relevance_hits": [
         "分红",
         "标普"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1305,7 +2298,8 @@
         "分红",
         "浮盈",
         "美股"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1334,7 +2328,8 @@
         "格力电器",
         "美股",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1355,7 +2350,8 @@
         "中国银行",
         "分红",
         "投资"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1393,7 +2389,8 @@
         "格力电器",
         "派息",
         "股息"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1409,7 +2406,8 @@
       "relevance_hits": [
         "估值",
         "投资"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1427,7 +2425,8 @@
       "relevance_hits": [
         "分红",
         "投资"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1470,7 +2469,8 @@
         "止损",
         "港股",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1491,7 +2491,8 @@
         "分红",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1510,7 +2511,8 @@
       "relevance_hits": [
         "分红",
         "投资"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1528,7 +2530,8 @@
       "relevance_hits": [
         "分红",
         "投资"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1555,7 +2558,8 @@
         "投资",
         "港股",
         "美股"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1575,7 +2579,8 @@
       "relevance_hits": [
         "分红",
         "投资"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1594,7 +2599,8 @@
       ],
       "relevance_hits": [
         "分红"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1612,7 +2618,8 @@
       ],
       "relevance_hits": [
         "分红"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1634,7 +2641,8 @@
         "分红",
         "投资",
         "浮盈"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1652,7 +2660,8 @@
       "relevance_hits": [
         "分红",
         "投资"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1676,7 +2685,8 @@
         "分红",
         "投资",
         "美股"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "694c8f8e-b130-8323-9a26-45fffa71dfa9",
@@ -1698,7 +2708,8 @@
         "投资",
         "美股",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69560ab9-d3d0-8321-a6bd-a6b461d2c3bd",
@@ -1716,7 +2727,8 @@
       "relevance_hits": [
         "投资",
         "美股"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69560ab9-d3d0-8321-a6bd-a6b461d2c3bd",
@@ -1759,7 +2771,8 @@
         "美股",
         "股东",
         "谷歌"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69560ab9-d3d0-8321-a6bd-a6b461d2c3bd",
@@ -1774,7 +2787,8 @@
       "broad_hits": [],
       "relevance_hits": [
         "投资"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "69560ab9-d3d0-8321-a6bd-a6b461d2c3bd",
@@ -1796,7 +2810,8 @@
         "分红",
         "投资",
         "美股"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69560ab9-d3d0-8321-a6bd-a6b461d2c3bd",
@@ -1834,7 +2849,8 @@
         "牛市",
         "股票",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69560ab9-d3d0-8321-a6bd-a6b461d2c3bd",
@@ -1854,7 +2870,8 @@
         "分红",
         "投资",
         "英伟达"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "69560ab9-d3d0-8321-a6bd-a6b461d2c3bd",
@@ -1879,7 +2896,8 @@
         "投资",
         "股票",
         "英伟达"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "69560ab9-d3d0-8321-a6bd-a6b461d2c3bd",
@@ -1902,7 +2920,8 @@
         "定投",
         "投资",
         "股东"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "698152a9-f7f8-832c-8d4b-c349b8b40ea6",
@@ -1943,23 +2962,8 @@
         "美团",
         "美股",
         "资产配置"
-      ]
-    },
-    {
-      "conversation_id": "69997d8f-5588-8332-ae3b-1dd2681cb6d3",
-      "title": "人际与精力管理",
-      "node_id": "66dcabe2-7e19-48d6-8e61-7f38d18c521f",
-      "role": "assistant",
-      "text_chars": 1778,
-      "text_sha256": "002490a25472d2a308cd25b2ad2ff90d9f3060ccca84b784d51d73dd21994d3d",
-      "hard_hits": [],
-      "broad_hits": [
-        "仓位"
       ],
-      "relevance_hits": [
-        "仓位",
-        "投资"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69997d8f-5588-8332-ae3b-1dd2681cb6d3",
@@ -1976,7 +2980,8 @@
       ],
       "relevance_hits": [
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69997d8f-5588-8332-ae3b-1dd2681cb6d3",
@@ -1994,7 +2999,8 @@
       "relevance_hits": [
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "69997d8f-5588-8332-ae3b-1dd2681cb6d3",
@@ -2011,7 +3017,8 @@
       ],
       "relevance_hits": [
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69997d8f-5588-8332-ae3b-1dd2681cb6d3",
@@ -2029,43 +3036,8 @@
       "relevance_hits": [
         "投资",
         "股票"
-      ]
-    },
-    {
-      "conversation_id": "6999a608-db94-832c-9751-bc78759924a9",
-      "title": "深圳长期发展布局",
-      "node_id": "da211a13-4a2a-4983-9c1f-dab6f124cf6c",
-      "role": "assistant",
-      "text_chars": 2375,
-      "text_sha256": "cd920c7c78b28a33349f3967f4cae269b188ae320caff8a242df764c307c6040",
-      "hard_hits": [
-        "分红"
       ],
-      "broad_hits": [
-        "分红"
-      ],
-      "relevance_hits": [
-        "分红"
-      ]
-    },
-    {
-      "conversation_id": "699ad474-d034-832e-8d95-518e60a79bce",
-      "title": "通信行业长期发展",
-      "node_id": "9ab2ccbd-ee6d-4740-80ef-a0554e4528a4",
-      "role": "user",
-      "text_chars": 55435,
-      "text_sha256": "cf72922aa93cf0b30fa9ec5a171c997caabbe38e2cdc177b78b2cd064c15e11a",
-      "hard_hits": [
-        "分红"
-      ],
-      "broad_hits": [
-        "分红"
-      ],
-      "relevance_hits": [
-        "分红",
-        "复盘",
-        "投资"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69a43728-c2a4-8327-9f00-06e68b2ddf40",
@@ -2137,7 +3109,8 @@
         "股息",
         "股票",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69a43728-c2a4-8327-9f00-06e68b2ddf40",
@@ -2167,7 +3140,8 @@
         "投资",
         "标普",
         "美股"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69a6a73d-10e8-8330-ab6c-db26fb1149d6",
@@ -2203,7 +3177,8 @@
         "美股",
         "股价",
         "股息"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69a6a73d-10e8-8330-ab6c-db26fb1149d6",
@@ -2214,8 +3189,8 @@
       "text_sha256": "9218692b76ab396e6cd86dc19fa3a1844a85dfe96e9c7c2afa0fc5317ec9b9f2",
       "hard_hits": [
         "Dividend",
-        "etf",
         "ETF",
+        "etf",
         "nyse",
         "分红",
         "收息",
@@ -2225,8 +3200,8 @@
       ],
       "broad_hits": [
         "Dividend",
-        "etf",
         "ETF",
+        "etf",
         "仓位",
         "估值",
         "分红",
@@ -2239,8 +3214,8 @@
       "relevance_hits": [
         "Dividend",
         "Equity",
-        "ETF",
         "etf",
+        "ETF",
         "ROE",
         "Stock",
         "仓位",
@@ -2253,7 +3228,8 @@
         "股价",
         "股息",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69a6e020-2330-832e-b438-dad0fb74754a",
@@ -2333,7 +3309,8 @@
         "股价",
         "股票",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69a7f9c3-0208-8325-bc0b-e2f67912e369",
@@ -2387,7 +3364,8 @@
         "股票",
         "营收",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69a7f9c3-0208-8325-bc0b-e2f67912e369",
@@ -2412,7 +3390,8 @@
         "浮盈",
         "牛市",
         "股价"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69a82629-2c08-8332-bb56-2cee9837e4f7",
@@ -2494,7 +3473,8 @@
         "股价",
         "股票",
         "量能"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69a82629-2c08-8332-bb56-2cee9837e4f7",
@@ -2578,7 +3558,8 @@
         "股价",
         "股票",
         "量能"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69abd7c3-5cc8-8332-b823-4d32f51f421d",
@@ -2615,7 +3596,8 @@
         "持仓",
         "股息",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69abd7c3-5cc8-8332-b823-4d32f51f421d",
@@ -2654,7 +3636,8 @@
         "收息",
         "股息",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69abd7c3-5cc8-8332-b823-4d32f51f421d",
@@ -2720,7 +3703,8 @@
         "海澜之家",
         "美的集团",
         "股价"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69abd7c3-5cc8-8332-b823-4d32f51f421d",
@@ -2731,7 +3715,8 @@
       "text_sha256": "d5cc4b73dfb6380535d35de4f976519ca786494e52a95f840cc0ad3573847851",
       "hard_hits": [],
       "broad_hits": [],
-      "relevance_hits": []
+      "relevance_hits": [],
+      "review_action": "included"
     },
     {
       "conversation_id": "69abd7c3-5cc8-8332-b823-4d32f51f421d",
@@ -2810,7 +3795,8 @@
         "紫金矿业",
         "股价",
         "贵州茅台"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69abd7c3-5cc8-8332-b823-4d32f51f421d",
@@ -2849,7 +3835,8 @@
         "牛市",
         "紫金矿业",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69abd7c3-5cc8-8332-b823-4d32f51f421d",
@@ -2887,7 +3874,8 @@
         "市值",
         "股价",
         "股息"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69abd7c3-5cc8-8332-b823-4d32f51f421d",
@@ -2945,7 +3933,8 @@
         "股息",
         "营收",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69b687c9-c260-832e-a427-c2ae6cd0a41f",
@@ -3002,7 +3991,8 @@
         "股票",
         "证券",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69b687c9-c260-832e-a427-c2ae6cd0a41f",
@@ -3036,8 +4026,8 @@
         "Dividend",
         "Equity",
         "ETF",
-        "Stock",
         "stock",
+        "Stock",
         "估值",
         "分红",
         "投资",
@@ -3045,7 +4035,8 @@
         "美股",
         "股息",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69b75de9-bc64-838c-84e1-a56e6479b050",
@@ -3079,7 +4070,8 @@
         "浮盈",
         "股票",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69b75de9-bc64-838c-84e1-a56e6479b050",
@@ -3125,37 +4117,8 @@
         "股息",
         "股票",
         "资产配置"
-      ]
-    },
-    {
-      "conversation_id": "69bca27a-272c-832a-9ee1-27daf0acb410",
-      "title": "MSTP设备分析",
-      "node_id": "d7fe35fc-f03e-4de8-b5fc-8407a8c91d77",
-      "role": "assistant",
-      "text_chars": 2146,
-      "text_sha256": "27a4b9f3f3af4e5ab27d6a1a2e9ff90417fa322f3729868a245508a19c7e04a8",
-      "hard_hits": [
-        "TSM"
       ],
-      "broad_hits": [],
-      "relevance_hits": [
-        "TSM"
-      ]
-    },
-    {
-      "conversation_id": "69bca27a-272c-832a-9ee1-27daf0acb410",
-      "title": "MSTP设备分析",
-      "node_id": "eeee50ad-e4e7-402c-8d66-0c1667a02bd1",
-      "role": "assistant",
-      "text_chars": 1864,
-      "text_sha256": "d578c982a0ce0bea293d3ff5461579a517c39399e4867e8c41d7dffc446b7f95",
-      "hard_hits": [
-        "TSM"
-      ],
-      "broad_hits": [],
-      "relevance_hits": [
-        "TSM"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69be87d2-9fe0-8387-aa2f-b399f76e38e4",
@@ -3241,7 +4204,8 @@
         "营收",
         "财报",
         "追涨"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69be87d2-9fe0-8387-aa2f-b399f76e38e4",
@@ -3269,7 +4233,8 @@
         "定投",
         "派息",
         "浮盈"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69be87d2-9fe0-8387-aa2f-b399f76e38e4",
@@ -3375,7 +4340,8 @@
         "跌停",
         "追涨",
         "量能"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69bfa441-1a14-8387-b3b1-95005435356c",
@@ -3490,7 +4456,8 @@
         "跌停",
         "追涨",
         "量能"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69c253c2-78d8-832e-b527-89e23371167b",
@@ -3583,7 +4550,8 @@
         "涨停",
         "股票",
         "跌停"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69c253c2-78d8-832e-b527-89e23371167b",
@@ -3614,7 +4582,8 @@
         "均线",
         "成交量",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69c253c2-78d8-832e-b527-89e23371167b",
@@ -3650,7 +4619,8 @@
         "K线",
         "均线",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69c253c2-78d8-832e-b527-89e23371167b",
@@ -3720,37 +4690,8 @@
         "东方财富",
         "均线",
         "股票"
-      ]
-    },
-    {
-      "conversation_id": "69c4a523-d858-8330-b4bb-afe5fda296e9",
-      "title": "国外采购商整理",
-      "node_id": "26fe1647-8e4f-47b6-b278-31a1859cf127",
-      "role": "assistant",
-      "text_chars": 1946,
-      "text_sha256": "635212b0370d94be80d4f6c609194a889d3f1b53cf06006ea81c78aa2027473c",
-      "hard_hits": [],
-      "broad_hits": [
-        "量能"
       ],
-      "relevance_hits": [
-        "量能"
-      ]
-    },
-    {
-      "conversation_id": "69c4a523-d858-8330-b4bb-afe5fda296e9",
-      "title": "国外采购商整理",
-      "node_id": "b39c4fb7-8433-4ea0-abaa-1b98cf430bab",
-      "role": "assistant",
-      "text_chars": 1525,
-      "text_sha256": "057a615cbec1a555f6e750a12e755e9a0dbc344a0e70f92c0f54df779e4823d7",
-      "hard_hits": [],
-      "broad_hits": [
-        "量能"
-      ],
-      "relevance_hits": [
-        "量能"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69c65b1d-6de8-832c-8859-07e1b39f9349",
@@ -3850,7 +4791,8 @@
         "营收",
         "财报",
         "追涨"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69c65b1d-6de8-832c-8859-07e1b39f9349",
@@ -3947,7 +4889,8 @@
         "营收",
         "财报",
         "追涨"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69c65b1d-6de8-832c-8859-07e1b39f9349",
@@ -3960,7 +4903,8 @@
         "筹码"
       ],
       "broad_hits": [],
-      "relevance_hits": []
+      "relevance_hits": [],
+      "review_action": "included"
     },
     {
       "conversation_id": "69c77c6c-38a8-8327-8845-610bddd093a1",
@@ -3994,7 +4938,8 @@
         "加仓",
         "持仓",
         "股息"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69c77c6c-38a8-8327-8845-610bddd093a1",
@@ -4059,7 +5004,8 @@
         "股东",
         "股价",
         "股息"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69c77c6c-38a8-8327-8845-610bddd093a1",
@@ -4069,10 +5015,10 @@
       "text_chars": 3041,
       "text_sha256": "7d06f38fa00f2eae320eda66e862800ee3acb1f37977a6f45b78d60c08e1a56a",
       "hard_hits": [
-        "dividend",
         "Dividend",
-        "etf",
+        "dividend",
         "ETF",
+        "etf",
         "分红",
         "加仓",
         "吸筹",
@@ -4081,10 +5027,10 @@
         "标普"
       ],
       "broad_hits": [
-        "dividend",
         "Dividend",
-        "etf",
+        "dividend",
         "ETF",
+        "etf",
         "估值",
         "分红",
         "加仓",
@@ -4094,11 +5040,11 @@
         "标普"
       ],
       "relevance_hits": [
-        "dividend",
         "Dividend",
+        "dividend",
         "Equity",
-        "etf",
         "ETF",
+        "etf",
         "stock",
         "估值",
         "分红",
@@ -4108,7 +5054,8 @@
         "持仓",
         "板块",
         "标普"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69c78612-dd20-832f-a129-11b00bf2e01b",
@@ -4158,7 +5105,8 @@
         "板块",
         "股息",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69c78f9d-49d8-838d-8f7d-a8c5ae0a541d",
@@ -4186,7 +5134,8 @@
         "减仓",
         "持仓",
         "股价"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69cb9bd2-2f30-832a-8e76-993b3ab97d00",
@@ -4217,7 +5166,8 @@
         "套牢",
         "抄底",
         "止损"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69ce35f8-69d0-8333-aa60-d4e714e7d19b",
@@ -4238,7 +5188,8 @@
         "分红",
         "板块",
         "美股"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69ce35f8-69d0-8333-aa60-d4e714e7d19b",
@@ -4267,7 +5218,8 @@
         "仓位",
         "估值",
         "分红"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69cfa9bf-1d4c-8328-be58-5f1f6648432a",
@@ -4299,7 +5251,8 @@
         "熊市",
         "美股",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69cfa9bf-1d4c-8328-be58-5f1f6648432a",
@@ -4321,7 +5274,8 @@
         "仓位",
         "分红",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69cfa9bf-1d4c-8328-be58-5f1f6648432a",
@@ -4340,7 +5294,8 @@
       "relevance_hits": [
         "仓位",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69cfa9bf-1d4c-8328-be58-5f1f6648432a",
@@ -4364,7 +5319,8 @@
         "投资",
         "股价",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69cfa9bf-1d4c-8328-be58-5f1f6648432a",
@@ -4387,7 +5343,8 @@
         "仓位",
         "分红",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69d34587-adec-832b-92c8-f1533cbd31ca",
@@ -4413,30 +5370,8 @@
         "分红",
         "投资",
         "股票"
-      ]
-    },
-    {
-      "conversation_id": "69d46b48-d254-8325-84e8-f023a015772c",
-      "title": "饮食系统构建指南",
-      "node_id": "f7e43c4a-3a0d-440a-835f-f2552d999ce9",
-      "role": "assistant",
-      "text_chars": 1936,
-      "text_sha256": "13c6344244f698de3310cc4241a565cce2988a731be1a3187002dc669672468a",
-      "hard_hits": [
-        "分红",
-        "股票"
       ],
-      "broad_hits": [
-        "仓位",
-        "分红",
-        "股票"
-      ],
-      "relevance_hits": [
-        "仓位",
-        "分红",
-        "投资",
-        "股票"
-      ]
+      "review_action": "included"
     },
     {
       "conversation_id": "69d4c057-39c4-8326-9aad-4d0ddf44d468",
@@ -4459,7 +5394,8 @@
         "分红",
         "股市",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69d4c057-39c4-8326-9aad-4d0ddf44d468",
@@ -4485,7 +5421,8 @@
         "分红",
         "持仓",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69d4c057-39c4-8326-9aad-4d0ddf44d468",
@@ -4516,7 +5453,8 @@
         "成交量",
         "杀跌",
         "股市"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69d4c057-39c4-8326-9aad-4d0ddf44d468",
@@ -4552,7 +5490,8 @@
         "投资",
         "股市",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69d4c057-39c4-8326-9aad-4d0ddf44d468",
@@ -4584,7 +5523,8 @@
         "定投",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69d4c057-39c4-8326-9aad-4d0ddf44d468",
@@ -4656,7 +5596,8 @@
         "财报",
         "资产配置",
         "追涨"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69d4c057-39c4-8326-9aad-4d0ddf44d468",
@@ -4684,7 +5625,8 @@
         "股东",
         "股票",
         "证券"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69d77719-0c30-8333-b482-123765081658",
@@ -4732,7 +5674,8 @@
         "股息",
         "营收",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69d9d83b-1d84-8330-a2c9-7b0144c39e72",
@@ -4765,7 +5708,8 @@
         "归母",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69dbc8bd-3918-8330-8565-4e549fbf7dde",
@@ -4815,7 +5759,8 @@
         "股息",
         "股票",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69dc4726-da08-8333-9646-a17ae5bf5a28",
@@ -4833,7 +5778,8 @@
       "relevance_hits": [
         "投资",
         "美股"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69dc4726-da08-8333-9646-a17ae5bf5a28",
@@ -4863,7 +5809,8 @@
         "持仓",
         "港股",
         "美股"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69dde1d9-84d4-8333-b400-f98ece63e083",
@@ -4947,7 +5894,8 @@
         "股息",
         "追涨",
         "量能"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69df0283-54ec-832f-88e5-d830a2f490f7",
@@ -5000,27 +5948,8 @@
         "英伟达",
         "财报",
         "追涨"
-      ]
-    },
-    {
-      "conversation_id": "69df41cf-0774-832f-90cd-a3a39386907a",
-      "title": "通胀与普通人生活",
-      "node_id": "43861c5d-876e-470d-895d-b2dd45927c39",
-      "role": "assistant",
-      "text_chars": 1773,
-      "text_sha256": "1d18b06e5defec74676d3b527e13664f27ee482c561610a7ad947b148a025054",
-      "hard_hits": [
-        "海澜之家"
       ],
-      "broad_hits": [
-        "海澜之家"
-      ],
-      "relevance_hits": [
-        "投资",
-        "海澜",
-        "海澜之家",
-        "资产配置"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69df41cf-0774-832f-90cd-a3a39386907a",
@@ -5043,7 +5972,8 @@
         "A股",
         "做T",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69df41cf-0774-832f-90cd-a3a39386907a",
@@ -5074,7 +6004,8 @@
         "定投",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69df41cf-0774-832f-90cd-a3a39386907a",
@@ -5092,7 +6023,8 @@
       "relevance_hits": [
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
@@ -5109,7 +6041,8 @@
       ],
       "relevance_hits": [
         "美股"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
@@ -5134,7 +6067,8 @@
         "海澜",
         "海澜之家",
         "美股"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
@@ -5154,25 +6088,8 @@
       "relevance_hits": [
         "分红",
         "美股"
-      ]
-    },
-    {
-      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
-      "title": "世界公民配置升级",
-      "node_id": "cff984dc-9efe-4445-80bb-415b5f2e2bc9",
-      "role": "assistant",
-      "text_chars": 2366,
-      "text_sha256": "8500671997e2f74327e988afcec016eb2834952770800df142cbbeffce404662",
-      "hard_hits": [
-        "股票"
       ],
-      "broad_hits": [
-        "股票账户"
-      ],
-      "relevance_hits": [
-        "投资",
-        "股票账户"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
@@ -5197,25 +6114,8 @@
         "投资",
         "美股",
         "股票"
-      ]
-    },
-    {
-      "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
-      "title": "世界公民配置升级",
-      "node_id": "c1501c81-12c6-474b-93a4-0d8c819d608c",
-      "role": "assistant",
-      "text_chars": 1949,
-      "text_sha256": "d017c83acb24f5d4bf7007950950a692fa0117788baa0fbbe0ebd1e9f5378289",
-      "hard_hits": [
-        "分红"
       ],
-      "broad_hits": [
-        "分红"
-      ],
-      "relevance_hits": [
-        "分红",
-        "投资"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
@@ -5242,7 +6142,8 @@
         "交易所",
         "投资",
         "美股"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
@@ -5270,7 +6171,8 @@
         "投资",
         "美股",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
@@ -5294,7 +6196,8 @@
         "美股",
         "股票",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
@@ -5314,7 +6217,8 @@
       "relevance_hits": [
         "券商",
         "美股"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
@@ -5338,7 +6242,8 @@
         "港股",
         "美股",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
@@ -5365,7 +6270,8 @@
         "投资",
         "美股",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e04575-5a6c-832d-9215-80e92e7c6746",
@@ -5385,7 +6291,8 @@
       "relevance_hits": [
         "港股",
         "美股"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e04e65-5df0-8331-a9f2-8485439eb09c",
@@ -5398,7 +6305,8 @@
         "QDII"
       ],
       "broad_hits": [],
-      "relevance_hits": []
+      "relevance_hits": [],
+      "review_action": "included"
     },
     {
       "conversation_id": "69e04e65-5df0-8331-a9f2-8485439eb09c",
@@ -5424,14 +6332,15 @@
       ],
       "relevance_hits": [
         "ETF",
-        "Stock",
         "stock",
+        "Stock",
         "仓位",
         "加仓",
         "定投",
         "美股",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e1dab5-50b4-8333-b742-36d453350565",
@@ -5471,7 +6380,8 @@
         "海澜",
         "海澜之家",
         "清仓"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e1dab5-50b4-8333-b742-36d453350565",
@@ -5505,7 +6415,8 @@
         "定投",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e1dab5-50b4-8333-b742-36d453350565",
@@ -5532,7 +6443,8 @@
         "海澜之家",
         "股东",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e1dab5-50b4-8333-b742-36d453350565",
@@ -5551,7 +6463,8 @@
       "relevance_hits": [
         "ETF",
         "投资"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e1dab5-50b4-8333-b742-36d453350565",
@@ -5569,7 +6482,8 @@
       "relevance_hits": [
         "分红",
         "投资"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "69e45f6c-2c28-8331-a68e-4eb167dc02a0",
@@ -5589,7 +6503,8 @@
       "relevance_hits": [
         "ETF",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e45f6c-2c28-8331-a68e-4eb167dc02a0",
@@ -5612,7 +6527,8 @@
         "仓位",
         "持仓",
         "美团"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e4f23c-b4b8-8326-a44d-441fb79c30a5",
@@ -5635,7 +6551,8 @@
         "投资",
         "股票",
         "量能"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e4f23c-b4b8-8326-a44d-441fb79c30a5",
@@ -5660,7 +6577,8 @@
         "投资",
         "看盘",
         "量能"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e589d8-ea94-832b-9ca0-95692e81d28a",
@@ -5677,24 +6595,8 @@
       ],
       "relevance_hits": [
         "止损"
-      ]
-    },
-    {
-      "conversation_id": "69e589d8-ea94-832b-9ca0-95692e81d28a",
-      "title": "婚姻决策与风险",
-      "node_id": "3188cf0d-ad76-4f1e-ab6f-2ce3441e414a",
-      "role": "assistant",
-      "text_chars": 2209,
-      "text_sha256": "23b8df1cb3f71bc113e171c5a78e9d24dee0066db5c3511e82bb8941ed0ecc1e",
-      "hard_hits": [
-        "止损"
       ],
-      "broad_hits": [
-        "止损"
-      ],
-      "relevance_hits": [
-        "止损"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e6f38d-be44-832c-86c7-4379f611869b",
@@ -5726,7 +6628,8 @@
         "投资",
         "特斯拉",
         "英伟达"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e6f38d-be44-832c-86c7-4379f611869b",
@@ -5755,7 +6658,8 @@
         "板块",
         "股市",
         "英伟达"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e7475b-329c-8331-a28a-b74013102ed1",
@@ -5791,7 +6695,8 @@
         "股票",
         "资产配置",
         "阿里巴巴"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e8390c-f9b8-8332-a094-6c053f15a61e",
@@ -5818,7 +6723,8 @@
         "仓位",
         "投资",
         "持仓"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e8390c-f9b8-8332-a094-6c053f15a61e",
@@ -5829,7 +6735,8 @@
       "text_sha256": "89e744f4d7ac2bf54b01e384d9f3335deef96d36f8a49f01c626fffd5ef6a1cc",
       "hard_hits": [],
       "broad_hits": [],
-      "relevance_hits": []
+      "relevance_hits": [],
+      "review_action": "included"
     },
     {
       "conversation_id": "69e8390c-f9b8-8332-a094-6c053f15a61e",
@@ -5847,7 +6754,8 @@
       "relevance_hits": [
         "券商",
         "投资"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "69e8390c-f9b8-8332-a094-6c053f15a61e",
@@ -5866,7 +6774,8 @@
       "relevance_hits": [
         "ETF",
         "投资"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e8390c-f9b8-8332-a094-6c053f15a61e",
@@ -5891,7 +6800,8 @@
         "定投",
         "投资",
         "持仓"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e8390c-f9b8-8332-a094-6c053f15a61e",
@@ -5911,7 +6821,8 @@
         "ETF",
         "stock",
         "仓位"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e8390c-f9b8-8332-a094-6c053f15a61e",
@@ -5933,7 +6844,8 @@
         "stock",
         "持仓",
         "英伟达"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e9dd21-5418-8328-8ef1-9bf7c5984d72",
@@ -5958,7 +6870,8 @@
         "投资",
         "股价",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69e9dd21-5418-8328-8ef1-9bf7c5984d72",
@@ -5991,7 +6904,8 @@
         "股东",
         "股价",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69eb028f-91f4-832d-b809-e51aa456df46",
@@ -6010,7 +6924,8 @@
         "ETF",
         "stock",
         "投资"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69eb028f-91f4-832d-b809-e51aa456df46",
@@ -6027,7 +6942,8 @@
       ],
       "relevance_hits": [
         "ETF"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69eb028f-91f4-832d-b809-e51aa456df46",
@@ -6048,7 +6964,8 @@
         "ETF",
         "stock",
         "投资"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69eb2381-f7ac-8327-86d1-e6de5f18cdb8",
@@ -6081,7 +6998,8 @@
         "浮盈",
         "股价",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69ec3588-382c-8328-afcc-a3e4872aea8d",
@@ -6127,7 +7045,8 @@
         "股价",
         "股息",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69ec3588-382c-8328-afcc-a3e4872aea8d",
@@ -6137,8 +7056,8 @@
       "text_chars": 18843,
       "text_sha256": "836aff69c95978783bbb3622e1b10a47a24f3193e57ffa5460999c63bd939a39",
       "hard_hits": [
-        "dividend",
         "Dividend",
+        "dividend",
         "repurchase",
         "分红",
         "收息",
@@ -6150,8 +7069,8 @@
         "财报"
       ],
       "broad_hits": [
-        "dividend",
         "Dividend",
+        "dividend",
         "仓位",
         "估值",
         "分红",
@@ -6167,8 +7086,8 @@
         "财报"
       ],
       "relevance_hits": [
-        "dividend",
         "Dividend",
+        "dividend",
         "EPS",
         "仓位",
         "估值",
@@ -6189,7 +7108,8 @@
         "股价",
         "股息",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69ecc89c-4758-8328-a5d2-220bd1d1a907",
@@ -6206,7 +7126,8 @@
       ],
       "relevance_hits": [
         "股价"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69ecc89c-4758-8328-a5d2-220bd1d1a907",
@@ -6221,7 +7142,8 @@
       ],
       "relevance_hits": [
         "估值"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "69edacf4-f9cc-8330-8bd5-dc32ea9bf142",
@@ -6269,7 +7191,8 @@
         "股票",
         "资产配置",
         "追涨"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69edacf4-f9cc-8330-8bd5-dc32ea9bf142",
@@ -6296,7 +7219,8 @@
         "股东",
         "股息",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69f784ba-baa8-8327-a975-c6f68d24a7f8",
@@ -6354,7 +7278,8 @@
         "股价",
         "股票",
         "量能"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69f784ba-baa8-8327-a975-c6f68d24a7f8",
@@ -6376,7 +7301,8 @@
         "均线",
         "海澜",
         "海澜之家"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69f784ba-baa8-8327-a975-c6f68d24a7f8",
@@ -6409,7 +7335,8 @@
         "海澜之家",
         "股票",
         "量能"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69fc1336-f6a0-8322-b89d-09c99e1a966d",
@@ -6459,7 +7386,8 @@
         "股价",
         "股票",
         "量能"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69ff489d-f690-83ec-9504-7b236843429d",
@@ -6510,7 +7438,8 @@
         "美股",
         "股息",
         "英伟达"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "69ff489d-f690-83ec-9504-7b236843429d",
@@ -6542,7 +7471,8 @@
         "分红",
         "投资",
         "持仓"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a014c95-88b0-83ec-8536-e9aee8cf56a5",
@@ -6569,7 +7499,8 @@
         "股票",
         "财报",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a014c95-88b0-83ec-8536-e9aee8cf56a5",
@@ -6595,25 +7526,8 @@
         "熊市",
         "牛市",
         "股票"
-      ]
-    },
-    {
-      "conversation_id": "6a01f6fe-0de8-83ec-a251-30032c325b27",
-      "title": "Playwright 1.59.0 安装解决方案",
-      "node_id": "ee4fd22b-3039-4104-90af-f833ae73505f",
-      "role": "assistant",
-      "text_chars": 1661,
-      "text_sha256": "accf8feb260b28f9891960c82011b5135c921e7eec2b64372b0dd68e8e73c7cf",
-      "hard_hits": [
-        "股票"
       ],
-      "broad_hits": [
-        "股票"
-      ],
-      "relevance_hits": [
-        "微软",
-        "股票"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a01f6fe-0de8-83ec-a251-30032c325b27",
@@ -6630,7 +7544,8 @@
       ],
       "relevance_hits": [
         "持仓"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6a01f6fe-0de8-83ec-a251-30032c325b27",
@@ -6681,7 +7596,8 @@
         "定投",
         "持仓",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a01f6fe-0de8-83ec-a251-30032c325b27",
@@ -6727,7 +7643,8 @@
         "加仓",
         "定投",
         "持仓"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a01f6fe-0de8-83ec-a251-30032c325b27",
@@ -6775,7 +7692,8 @@
         "加仓",
         "定投",
         "持仓"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a01f6fe-0de8-83ec-a251-30032c325b27",
@@ -6793,7 +7711,8 @@
       ],
       "relevance_hits": [
         "股票"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6a01f6fe-0de8-83ec-a251-30032c325b27",
@@ -6841,7 +7760,8 @@
         "加仓",
         "定投",
         "持仓"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a01f6fe-0de8-83ec-a251-30032c325b27",
@@ -6889,7 +7809,8 @@
         "加仓",
         "定投",
         "持仓"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a01f6fe-0de8-83ec-a251-30032c325b27",
@@ -6930,7 +7851,8 @@
         "NVDA",
         "TSLA",
         "持仓"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a01f6fe-0de8-83ec-a251-30032c325b27",
@@ -6951,24 +7873,8 @@
       "relevance_hits": [
         "ETF",
         "持仓"
-      ]
-    },
-    {
-      "conversation_id": "6a027e0d-d7cc-83ec-9901-006228029a79",
-      "title": "A2A时代外贸自动化",
-      "node_id": "27f69760-ce75-4841-8228-c5287cd4b7d2",
-      "role": "assistant",
-      "text_chars": 2307,
-      "text_sha256": "08b92c23e54783de0ac3795580dc5c18689bfbb560831598d7a0463c0a20ea81",
-      "hard_hits": [
-        "股票"
       ],
-      "broad_hits": [
-        "股票"
-      ],
-      "relevance_hits": [
-        "股票"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a02c3a7-0e80-83ec-a125-14373905273f",
@@ -7000,7 +7906,8 @@
         "板块",
         "泸州老窖",
         "股价"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a02c3a7-0e80-83ec-a125-14373905273f",
@@ -7055,7 +7962,8 @@
         "证券",
         "贵州茅台",
         "量能"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a02c3a7-0e80-83ec-a125-14373905273f",
@@ -7106,7 +8014,8 @@
         "美股",
         "股票",
         "英伟达"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a03e98e-d66c-83ec-9f24-ca25deabda20",
@@ -7157,7 +8066,8 @@
         "美股",
         "股票",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a05459f-0410-83ec-a987-3baefaae04fe",
@@ -7186,7 +8096,8 @@
         "股票",
         "英伟达",
         "营收"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a05459f-0410-83ec-a987-3baefaae04fe",
@@ -7203,7 +8114,8 @@
         "估值",
         "英伟达",
         "营收"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6a05459f-0410-83ec-a987-3baefaae04fe",
@@ -7235,7 +8147,8 @@
         "盘前",
         "美股",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a059ba3-ef70-83ec-b6bf-88078a331ff0",
@@ -7317,7 +8230,8 @@
         "英伟达",
         "财报",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a059ba3-ef70-83ec-b6bf-88078a331ff0",
@@ -7350,22 +8264,8 @@
         "投资",
         "浮盈",
         "资产配置"
-      ]
-    },
-    {
-      "conversation_id": "6a067c3f-6828-83ec-ab9b-00d57ec48fc9",
-      "title": "OCM卡全称及功能",
-      "node_id": "967658c8-0e5a-43f5-b213-286244592e0c",
-      "role": "assistant",
-      "text_chars": 1500,
-      "text_sha256": "fec867a875988f5a7294d3e7075b948e389b981d8289c51c400ea78e8e677bd2",
-      "hard_hits": [],
-      "broad_hits": [
-        "300386"
       ],
-      "relevance_hits": [
-        "300386"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a068d46-9b7c-83ec-bc88-f85f157808cd",
@@ -7382,7 +8282,8 @@
         "Meta",
         "估值",
         "英伟达"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6a069c60-8048-83ec-9107-7316ac7f74fb",
@@ -7441,7 +8342,8 @@
         "药明康德",
         "贵州茅台",
         "迈瑞医疗"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a069c60-8048-83ec-9107-7316ac7f74fb",
@@ -7497,7 +8399,8 @@
         "泸州老窖",
         "贵州茅台",
         "迈瑞医疗"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a069c60-8048-83ec-9107-7316ac7f74fb",
@@ -7508,7 +8411,8 @@
       "text_sha256": "3a810d034fed35dfce96640c9aeefb541d1f42a1353b1a42070172b77fa08c07",
       "hard_hits": [],
       "broad_hits": [],
-      "relevance_hits": []
+      "relevance_hits": [],
+      "review_action": "included"
     },
     {
       "conversation_id": "6a069c60-8048-83ec-9107-7316ac7f74fb",
@@ -7532,24 +8436,8 @@
         "ROE",
         "五粮液",
         "贵州茅台"
-      ]
-    },
-    {
-      "conversation_id": "6a06d935-1b30-83ec-9000-1187ae358a6c",
-      "title": "注意力边界与社交",
-      "node_id": "ae0a304c-750d-4724-be88-a84b95af5be6",
-      "role": "user",
-      "text_chars": 668,
-      "text_sha256": "7eb1c0c8e60f7c98aad1a9a4eba13f3cc8af4bab01c742753ee8a09a1bbe9076",
-      "hard_hits": [
-        "止损"
       ],
-      "broad_hits": [
-        "止损"
-      ],
-      "relevance_hits": [
-        "止损"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a092505-9628-83ec-8fd7-26bac6db9db6",
@@ -7575,7 +8463,8 @@
         "台积电",
         "持仓",
         "英伟达"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a092505-9628-83ec-8fd7-26bac6db9db6",
@@ -7602,7 +8491,8 @@
         "仓位",
         "投资",
         "持仓"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a092505-9628-83ec-8fd7-26bac6db9db6",
@@ -7620,7 +8510,8 @@
       "relevance_hits": [
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6a092505-9628-83ec-8fd7-26bac6db9db6",
@@ -7648,7 +8539,8 @@
         "市值",
         "投资",
         "股价"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a092505-9628-83ec-8fd7-26bac6db9db6",
@@ -7677,7 +8569,8 @@
         "市值",
         "投资",
         "特斯拉"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a09cb77-fe68-83ec-a63d-d7ba368a48c6",
@@ -7699,7 +8592,8 @@
         "投资",
         "股票",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a0bcae2-bf50-83ec-9045-8682e2d3e092",
@@ -7725,7 +8619,8 @@
         "港股",
         "股东",
         "英伟达"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a0bcae2-bf50-83ec-9045-8682e2d3e092",
@@ -7756,7 +8651,8 @@
         "股价",
         "股息",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a0bcae2-bf50-83ec-9045-8682e2d3e092",
@@ -7793,7 +8689,8 @@
         "浮盈",
         "美股",
         "股息"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a0bcae2-bf50-83ec-9045-8682e2d3e092",
@@ -7832,24 +8729,8 @@
         "板块",
         "股价",
         "股票"
-      ]
-    },
-    {
-      "conversation_id": "6a0ed2f9-a5a8-8324-8e71-bfcd6e7f4748",
-      "title": "苹果礼品卡有效期",
-      "node_id": "90266ae9-d196-4bd3-884d-fe81e822d2b2",
-      "role": "assistant",
-      "text_chars": 1165,
-      "text_sha256": "7f070f9ef2a73e06076859272f7011e58f1d3452602626b0284333f5adc94585",
-      "hard_hits": [
-        "券商"
       ],
-      "broad_hits": [
-        "券商"
-      ],
-      "relevance_hits": [
-        "券商"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a0ed2f9-a5a8-8324-8e71-bfcd6e7f4748",
@@ -7877,7 +8758,8 @@
         "投资",
         "美股",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a0ed2f9-a5a8-8324-8e71-bfcd6e7f4748",
@@ -7895,7 +8777,8 @@
       "relevance_hits": [
         "券商",
         "投资"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a114320-41b4-83ec-a8c6-786fae7d53ca",
@@ -7926,14 +8809,15 @@
         "dividend",
         "pb",
         "pe",
-        "STOCK",
         "stock",
+        "STOCK",
         "东方财富",
         "港股",
         "盘前",
         "美股",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a114320-41b4-83ec-a8c6-786fae7d53ca",
@@ -7950,7 +8834,8 @@
       ],
       "relevance_hits": [
         "东方财富"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6a114320-41b4-83ec-a8c6-786fae7d53ca",
@@ -7994,7 +8879,8 @@
         "港股",
         "美股",
         "股东"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a114320-41b4-83ec-a8c6-786fae7d53ca",
@@ -8050,7 +8936,8 @@
         "股票",
         "财报",
         "贵州茅台"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a114320-41b4-83ec-a8c6-786fae7d53ca",
@@ -8073,7 +8960,8 @@
         "东方财富",
         "成交量",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a11a08d-916c-83ec-ac23-da75f4390723",
@@ -8104,7 +8992,8 @@
         "美股",
         "股票",
         "证券"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a11a08d-916c-83ec-ac23-da75f4390723",
@@ -8123,26 +9012,8 @@
         "Stocks",
         "券商",
         "投资"
-      ]
-    },
-    {
-      "conversation_id": "6a11a08d-916c-83ec-ac23-da75f4390723",
-      "title": "HSBC App Store问题",
-      "node_id": "4c601335-fd4d-4109-bf1e-df412a07e062",
-      "role": "assistant",
-      "text_chars": 1277,
-      "text_sha256": "5934dffacd6c55d3cd6faf35fe057789359613a097e1c00b8018ea56c4425b6b",
-      "hard_hits": [
-        "证券"
       ],
-      "broad_hits": [
-        "证券"
-      ],
-      "relevance_hits": [
-        "投资",
-        "证券",
-        "资产配置"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a11a08d-916c-83ec-ac23-da75f4390723",
@@ -8168,7 +9039,8 @@
         "券商",
         "港股",
         "美股"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a13007a-9710-83ec-b492-320e0a16c515",
@@ -8189,7 +9061,8 @@
         "stock",
         "东方财富",
         "港股"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a13007a-9710-83ec-b492-320e0a16c515",
@@ -8213,22 +9086,8 @@
         "stock",
         "东方财富",
         "港股"
-      ]
-    },
-    {
-      "conversation_id": "6a13a6ad-6bd0-83ec-b8bb-9fac9b510154",
-      "title": "金升阳模块对应分析",
-      "node_id": "8ffaa7eb-7189-4f18-98b4-f12d6d2b1b6d",
-      "role": "assistant",
-      "text_chars": 3387,
-      "text_sha256": "c314fc740aaea36cfad032d25d8395cf3adc9726fb069c7ae6d3b18f96b3bf45",
-      "hard_hits": [
-        "AMD"
       ],
-      "broad_hits": [],
-      "relevance_hits": [
-        "AMD"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a141cf7-3788-83ec-a22d-b3e1e6e2f0db",
@@ -8267,7 +9126,8 @@
         "股票",
         "英伟达",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a141cf7-3788-83ec-a22d-b3e1e6e2f0db",
@@ -8302,7 +9162,8 @@
         "纳斯达克",
         "美股",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a141cf7-3788-83ec-a22d-b3e1e6e2f0db",
@@ -8330,7 +9191,8 @@
         "美股",
         "财报",
         "追涨"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a141cf7-3788-83ec-a22d-b3e1e6e2f0db",
@@ -8384,7 +9246,8 @@
         "股价",
         "股票",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a141cf7-3788-83ec-a22d-b3e1e6e2f0db",
@@ -8436,7 +9299,8 @@
         "股价",
         "股票",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a141cf7-3788-83ec-a22d-b3e1e6e2f0db",
@@ -8468,7 +9332,8 @@
         "纳斯达克",
         "股票",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a141cf7-3788-83ec-a22d-b3e1e6e2f0db",
@@ -8498,7 +9363,8 @@
         "美股",
         "股票",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a141cf7-3788-83ec-a22d-b3e1e6e2f0db",
@@ -8515,7 +9381,8 @@
       ],
       "relevance_hits": [
         "股票"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6a141cf7-3788-83ec-a22d-b3e1e6e2f0db",
@@ -8543,7 +9410,8 @@
         "仓位",
         "持仓",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a141cf7-3788-83ec-a22d-b3e1e6e2f0db",
@@ -8570,7 +9438,8 @@
         "市值",
         "盘后",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a195e19-019c-83ec-8b67-a0e3160dd723",
@@ -8594,7 +9463,8 @@
         "投资",
         "港股",
         "美股"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a195e19-019c-83ec-8b67-a0e3160dd723",
@@ -8617,7 +9487,8 @@
         "券商",
         "港股",
         "美股"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a195e19-019c-83ec-8b67-a0e3160dd723",
@@ -8634,7 +9505,8 @@
       ],
       "relevance_hits": [
         "港股"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a195e19-019c-83ec-8b67-a0e3160dd723",
@@ -8654,7 +9526,8 @@
       "relevance_hits": [
         "券商",
         "港股"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a227fe3-cca8-83ec-81a7-74e647e429b9",
@@ -8687,7 +9560,8 @@
         "股价",
         "股票",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a22820c-7fcc-83ec-8507-9b9ea2d7e339",
@@ -8734,7 +9608,8 @@
         "持仓",
         "股票",
         "营收"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a22820c-7fcc-83ec-8507-9b9ea2d7e339",
@@ -8786,7 +9661,8 @@
         "微软",
         "投资",
         "持仓"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a22c8ec-8ad0-83ec-b1f1-e9ab45bd210e",
@@ -8807,7 +9683,8 @@
         "A股",
         "HLA",
         "分红"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a22c8ec-8ad0-83ec-b1f1-e9ab45bd210e",
@@ -8852,7 +9729,8 @@
         "美的集团",
         "股价",
         "贵州茅台"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a22c8ec-8ad0-83ec-b1f1-e9ab45bd210e",
@@ -8886,7 +9764,8 @@
         "海澜",
         "海澜之家",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a22c8ec-8ad0-83ec-b1f1-e9ab45bd210e",
@@ -8966,7 +9845,8 @@
         "股息",
         "股票",
         "营收"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a22c8ec-8ad0-83ec-b1f1-e9ab45bd210e",
@@ -9003,7 +9883,8 @@
         "海澜之家",
         "股东",
         "贵州茅台"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a22c8ec-8ad0-83ec-b1f1-e9ab45bd210e",
@@ -9053,7 +9934,8 @@
         "股息",
         "营收",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a22c8ec-8ad0-83ec-b1f1-e9ab45bd210e",
@@ -9085,7 +9967,8 @@
         "泸州老窖",
         "海澜",
         "海澜之家"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6a22c8ec-8ad0-83ec-b1f1-e9ab45bd210e",
@@ -9140,7 +10023,8 @@
         "股票",
         "财报",
         "贵州茅台"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a22c8ec-8ad0-83ec-b1f1-e9ab45bd210e",
@@ -9179,7 +10063,8 @@
         "投资",
         "持仓",
         "股价"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a22c8ec-8ad0-83ec-b1f1-e9ab45bd210e",
@@ -9223,7 +10108,8 @@
         "紫金矿业",
         "迈瑞医疗",
         "顺丰控股"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6a22c8ec-8ad0-83ec-b1f1-e9ab45bd210e",
@@ -9248,7 +10134,8 @@
         "均线",
         "投资",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a22c8ec-8ad0-83ec-b1f1-e9ab45bd210e",
@@ -9271,7 +10158,8 @@
         "中国铝业",
         "江西铜业",
         "紫金矿业"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6a22c8ec-8ad0-83ec-b1f1-e9ab45bd210e",
@@ -9306,7 +10194,8 @@
         "海澜",
         "海澜之家",
         "股价"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a250230-8140-83ec-87e5-8718b956e271",
@@ -9328,7 +10217,8 @@
         "投资",
         "股票",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a250230-8140-83ec-87e5-8718b956e271",
@@ -9349,7 +10239,8 @@
         "分红",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a250230-8140-83ec-87e5-8718b956e271",
@@ -9370,7 +10261,8 @@
         "分红",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a250230-8140-83ec-87e5-8718b956e271",
@@ -9391,7 +10283,8 @@
         "股票",
         "股票账户",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a253474-ec9c-83ec-ace5-98af23d2b518",
@@ -9412,7 +10305,8 @@
         "分红",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a291050-faf0-83ec-9c73-aef68e73ac20",
@@ -9430,7 +10324,8 @@
       ],
       "relevance_hits": [
         "云铝股份"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6a291050-faf0-83ec-9c73-aef68e73ac20",
@@ -9459,7 +10354,8 @@
         "持仓",
         "海澜",
         "海澜之家"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a291050-faf0-83ec-9c73-aef68e73ac20",
@@ -9489,7 +10385,8 @@
         "投资",
         "海澜",
         "海澜之家"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a291050-faf0-83ec-9c73-aef68e73ac20",
@@ -9512,7 +10409,8 @@
         "海澜",
         "海澜之家",
         "股价"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a2a6f2d-d694-83ec-a625-4b78f51d93e1",
@@ -9548,7 +10446,8 @@
         "投资",
         "持仓",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a2a7e9f-1e3c-83ec-8625-70865c508a51",
@@ -9570,7 +10469,8 @@
         "微软",
         "营收",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a2cbc1f-9144-83ec-9d39-717da5b85009",
@@ -9625,7 +10525,8 @@
         "股市",
         "股票",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a2cbc1f-9144-83ec-9d39-717da5b85009",
@@ -9646,7 +10547,8 @@
       "relevance_hits": [
         "持仓",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a2cbc1f-9144-83ec-9d39-717da5b85009",
@@ -9692,7 +10594,8 @@
         "股价",
         "股票",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a2cbc1f-9144-83ec-9d39-717da5b85009",
@@ -9711,7 +10614,8 @@
       "relevance_hits": [
         "板块",
         "财报"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6a2cbc1f-9144-83ec-9d39-717da5b85009",
@@ -9751,7 +10655,8 @@
         "日线",
         "股票",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a2cbc1f-9144-83ec-9d39-717da5b85009",
@@ -9786,7 +10691,8 @@
         "美股",
         "股票",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a2cbc1f-9144-83ec-9d39-717da5b85009",
@@ -9814,7 +10720,8 @@
         "日线",
         "月线",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a2cbc1f-9144-83ec-9d39-717da5b85009",
@@ -9843,7 +10750,8 @@
         "成交量",
         "板块",
         "股价"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a2cbc1f-9144-83ec-9d39-717da5b85009",
@@ -9878,7 +10786,8 @@
         "美股",
         "股价",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a2cbc1f-9144-83ec-9d39-717da5b85009",
@@ -9918,7 +10827,8 @@
         "涨停",
         "股价",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a2cf2ae-8ed0-83ec-b4d1-9eb653b1b191",
@@ -9971,25 +10881,8 @@
         "股价",
         "股票",
         "财报"
-      ]
-    },
-    {
-      "conversation_id": "6a2f75ae-66d8-83ec-8ad5-f2d34308f43d",
-      "title": "买房争论分析",
-      "node_id": "e2716a56-93f1-49a5-b93d-17782f0efff7",
-      "role": "assistant",
-      "text_chars": 1803,
-      "text_sha256": "55b84df512175839f7aecb0ee536419df9e5f2624528b6ab4f0c5ec9129ae4bf",
-      "hard_hits": [
-        "股票"
       ],
-      "broad_hits": [
-        "股票"
-      ],
-      "relevance_hits": [
-        "投资",
-        "股票"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a2f75ae-66d8-83ec-8ad5-f2d34308f43d",
@@ -10022,8 +10915,8 @@
         "AMZN",
         "AVGO",
         "GOOGL",
-        "META",
         "meta",
+        "META",
         "Meta",
         "MSFT",
         "NFLX",
@@ -10031,22 +10924,8 @@
         "TSLA",
         "市值",
         "美股"
-      ]
-    },
-    {
-      "conversation_id": "6a30bf55-acd8-83ec-bcae-446254b95cbe",
-      "title": "生育观念与压力",
-      "node_id": "4283a8d5-227c-4098-859e-af01e70ddcfb",
-      "role": "assistant",
-      "text_chars": 1064,
-      "text_sha256": "4558cf9111e09cdb70a6bcbc15344c5dacd590638befa2b9522f3e564bd2784f",
-      "hard_hits": [],
-      "broad_hits": [
-        "回购"
       ],
-      "relevance_hits": [
-        "回购"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a3111e2-b6bc-83ec-bd1a-6c5097ae0d01",
@@ -10074,7 +10953,8 @@
         "减仓",
         "股价",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a3111e2-b6bc-83ec-bd1a-6c5097ae0d01",
@@ -10094,7 +10974,8 @@
       "relevance_hits": [
         "持仓",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a312121-acb0-83ec-9429-fbda7d23f086",
@@ -10105,7 +10986,8 @@
       "text_sha256": "a143b88341781a53077897503479be769e0ce58335b3b28f65c0972751cefc80",
       "hard_hits": [],
       "broad_hits": [],
-      "relevance_hits": []
+      "relevance_hits": [],
+      "review_action": "included"
     },
     {
       "conversation_id": "6a312121-acb0-83ec-9429-fbda7d23f086",
@@ -10139,7 +11021,8 @@
         "NVDA",
         "TSM",
         "纳斯达克"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a35557c-b9e4-83ec-b6a9-576c4debb6ac",
@@ -10160,7 +11043,8 @@
         "ETF",
         "估值",
         "英伟达"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a55f412-d800-83ec-aeaa-583819acf550",
@@ -10185,7 +11069,8 @@
         "熊市",
         "美股",
         "英伟达"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a55f412-d800-83ec-aeaa-583819acf550",
@@ -10215,7 +11100,8 @@
         "投资",
         "止盈",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a55f412-d800-83ec-aeaa-583819acf550",
@@ -10236,7 +11122,8 @@
         "NVDA",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a55f412-d800-83ec-aeaa-583819acf550",
@@ -10253,7 +11140,8 @@
       ],
       "relevance_hits": [
         "股价"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a55f412-d800-83ec-aeaa-583819acf550",
@@ -10280,7 +11168,8 @@
         "券商",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a55f412-d800-83ec-aeaa-583819acf550",
@@ -10321,7 +11210,8 @@
         "英伟达",
         "财报",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a55f412-d800-83ec-aeaa-583819acf550",
@@ -10351,7 +11241,8 @@
         "投资",
         "持仓",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a55f412-d800-83ec-aeaa-583819acf550",
@@ -10379,7 +11270,8 @@
         "投资",
         "止盈",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a599352-dc3c-83ec-a3ef-14421fe2df0d",
@@ -10416,7 +11308,8 @@
         "美股",
         "股票",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a599352-dc3c-83ec-a3ef-14421fe2df0d",
@@ -10446,12 +11339,13 @@
         "AVGO",
         "A股",
         "ETF",
-        "Meta",
         "META",
+        "Meta",
         "MSFT",
         "NVDA",
         "吸筹"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a599352-dc3c-83ec-a3ef-14421fe2df0d",
@@ -10486,7 +11380,8 @@
         "减仓",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a599352-dc3c-83ec-a3ef-14421fe2df0d",
@@ -10529,7 +11424,8 @@
         "股价",
         "股票",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a599352-dc3c-83ec-a3ef-14421fe2df0d",
@@ -10574,7 +11470,8 @@
         "收盘",
         "股价",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a599352-dc3c-83ec-a3ef-14421fe2df0d",
@@ -10612,7 +11509,8 @@
         "持仓",
         "牛市",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a59ed29-13b8-83ec-b7c0-296bb5d9dfdf",
@@ -10647,7 +11545,8 @@
         "股东",
         "股息",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a59ed29-13b8-83ec-b7c0-296bb5d9dfdf",
@@ -10673,7 +11572,8 @@
         "分红",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a59ed29-13b8-83ec-b7c0-296bb5d9dfdf",
@@ -10702,7 +11602,8 @@
         "投资组合",
         "股票",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a5a077c-196c-83ec-96cc-30b614d7d3fe",
@@ -10760,7 +11661,8 @@
         "美股",
         "股票",
         "证券"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a5a077c-196c-83ec-96cc-30b614d7d3fe",
@@ -10839,7 +11741,8 @@
         "证券",
         "贵州茅台",
         "追涨"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a5a077c-196c-83ec-96cc-30b614d7d3fe",
@@ -10905,7 +11808,8 @@
         "股票",
         "财报",
         "贵州茅台"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a5b1e07-3590-83ec-a4c9-b87b4e833cbc",
@@ -10939,7 +11843,8 @@
         "股票",
         "财报",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a5b35e5-4520-83ec-9e6a-989b801b5eaa",
@@ -10961,7 +11866,8 @@
         "投资",
         "股票",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a5c5c46-3280-83ec-b676-4ad70dbda95c",
@@ -10972,7 +11878,8 @@
       "text_sha256": "75358fd902065803cda1734e39d01814b554c726cea75ade1acd2dfe9c0cae64",
       "hard_hits": [],
       "broad_hits": [],
-      "relevance_hits": []
+      "relevance_hits": [],
+      "review_action": "included"
     },
     {
       "conversation_id": "6a5c5c46-3280-83ec-b676-4ad70dbda95c",
@@ -11000,25 +11907,8 @@
         "股东",
         "股票",
         "英伟达"
-      ]
-    },
-    {
-      "conversation_id": "6a5c82ce-0cc0-83ec-8672-c8aa35c8a057",
-      "title": "轻FIRE模式可行性分析",
-      "node_id": "178f1bc7-ff90-460e-9d9a-c4fc69fe88f3",
-      "role": "user",
-      "text_chars": 754,
-      "text_sha256": "7e3f7d9583aed51103057ab89c59ebde057d21fe073cb166d49a394d3f27e34d",
-      "hard_hits": [
-        "股票"
       ],
-      "broad_hits": [
-        "股票"
-      ],
-      "relevance_hits": [
-        "投资",
-        "股票"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a5c82ce-0cc0-83ec-8672-c8aa35c8a057",
@@ -11041,25 +11931,8 @@
         "投资",
         "股票",
         "营收"
-      ]
-    },
-    {
-      "conversation_id": "6a5c82ce-0cc0-83ec-8672-c8aa35c8a057",
-      "title": "轻FIRE模式可行性分析",
-      "node_id": "f75d9edc-fd9f-42c8-8ab6-3739bd66f0e1",
-      "role": "assistant",
-      "text_chars": 1950,
-      "text_sha256": "e341627ca384e4d78deb04fd33be31aa3fca7a4b3812673c6605b37c31be29b7",
-      "hard_hits": [
-        "股票"
       ],
-      "broad_hits": [
-        "股票"
-      ],
-      "relevance_hits": [
-        "投资",
-        "股票"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a5c82ce-0cc0-83ec-8672-c8aa35c8a057",
@@ -11086,7 +11959,8 @@
         "股票",
         "股票账户",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a5c82ce-0cc0-83ec-8672-c8aa35c8a057",
@@ -11108,7 +11982,8 @@
         "投资",
         "股票",
         "营收"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a5c82ce-0cc0-83ec-8672-c8aa35c8a057",
@@ -11133,7 +12008,8 @@
         "股票",
         "财报",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a5cc303-9bac-83ec-a2fa-f3838317a116",
@@ -11151,26 +12027,8 @@
       "relevance_hits": [
         "投资",
         "股票"
-      ]
-    },
-    {
-      "conversation_id": "6a5dcfef-8838-83ec-947f-3cd633688657",
-      "title": "美国AI战略分析",
-      "node_id": "13aa80e7-45ac-4a82-8710-7af5855ec508",
-      "role": "user",
-      "text_chars": 2148,
-      "text_sha256": "2bd2eaa7111e7d005b0d521bb57402854f69a126a1817a7f0a974e629700e96d",
-      "hard_hits": [
-        "基金"
       ],
-      "broad_hits": [],
-      "relevance_hits": [
-        "亚马逊",
-        "微软",
-        "投资",
-        "英伟达",
-        "谷歌"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a5dcfef-8838-83ec-947f-3cd633688657",
@@ -11194,24 +12052,8 @@
         "Meta",
         "投资",
         "股票"
-      ]
-    },
-    {
-      "conversation_id": "6a5f05a9-f7e8-83ec-8013-92b6e57b32dc",
-      "title": "Mikrotik vs 交换机价值分析",
-      "node_id": "67bd39a0-7686-4d15-9548-4f8c51077d13",
-      "role": "assistant",
-      "text_chars": 4494,
-      "text_sha256": "5158a49dde5ae11439d996fce84cf121b592571e46ed60b332217d936318b5cc",
-      "hard_hits": [
-        "股票"
       ],
-      "broad_hits": [
-        "股票"
-      ],
-      "relevance_hits": [
-        "股票"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a5f109b-53cc-83ec-bbd0-88d90b83408d",
@@ -11234,7 +12076,8 @@
         "投资",
         "股票",
         "英伟达"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a5f109b-53cc-83ec-bbd0-88d90b83408d",
@@ -11269,7 +12112,8 @@
         "股息",
         "股票",
         "英伟达"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a5f109b-53cc-83ec-bbd0-88d90b83408d",
@@ -11304,7 +12148,8 @@
         "美股",
         "股票",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a5f109b-53cc-83ec-bbd0-88d90b83408d",
@@ -11335,7 +12180,8 @@
         "美股",
         "股票",
         "股票账户"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a602eed-f354-83ec-946a-ea97d7667e7b",
@@ -11363,7 +12209,8 @@
         "投资",
         "股价",
         "财报"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a605dca-a52c-83ec-8934-2d92f217453e",
@@ -11385,14 +12232,15 @@
       "relevance_hits": [
         "NVDA",
         "PE",
-        "Stock",
         "stock",
+        "Stock",
         "stocks",
         "东方财富",
         "估值",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a66049f-e178-83ec-be1e-09a6aec6c72e",
@@ -11420,7 +12268,8 @@
         "成交量",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a66049f-e178-83ec-be1e-09a6aec6c72e",
@@ -11462,8 +12311,8 @@
         "K线",
         "MA20",
         "MACD",
-        "NVDA",
         "nvda",
+        "NVDA",
         "RSI",
         "东方财富",
         "估值",
@@ -11474,7 +12323,8 @@
         "持仓",
         "美股",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a66049f-e178-83ec-be1e-09a6aec6c72e",
@@ -11509,8 +12359,8 @@
       "relevance_hits": [
         "AAPL",
         "A股",
-        "ETF",
         "etf",
+        "ETF",
         "K线",
         "MACD",
         "MSFT",
@@ -11523,7 +12373,8 @@
         "投资",
         "美股",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a66049f-e178-83ec-be1e-09a6aec6c72e",
@@ -11547,7 +12398,8 @@
         "A股",
         "ETF",
         "美股"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a66049f-e178-83ec-be1e-09a6aec6c72e",
@@ -11565,7 +12417,8 @@
       ],
       "relevance_hits": [
         "ETF"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a66049f-e178-83ec-be1e-09a6aec6c72e",
@@ -11599,7 +12452,8 @@
         "投资",
         "美股",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a66049f-e178-83ec-be1e-09a6aec6c72e",
@@ -11612,7 +12466,8 @@
         "筹码"
       ],
       "broad_hits": [],
-      "relevance_hits": []
+      "relevance_hits": [],
+      "review_action": "included"
     },
     {
       "conversation_id": "6a66049f-e178-83ec-be1e-09a6aec6c72e",
@@ -11639,7 +12494,8 @@
         "成交量",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a66049f-e178-83ec-be1e-09a6aec6c72e",
@@ -11674,7 +12530,8 @@
         "港股",
         "股市",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a66049f-e178-83ec-be1e-09a6aec6c72e",
@@ -11717,7 +12574,8 @@
         "港股",
         "美股",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a66049f-e178-83ec-be1e-09a6aec6c72e",
@@ -11760,7 +12618,8 @@
         "港股",
         "美股",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a6b3aae-8284-83ec-b35c-26a08da0727d",
@@ -11770,8 +12629,8 @@
       "text_chars": 11442,
       "text_sha256": "6ddc1a304d8e3924ebb171e8457edeb0f7083c3b1b62af1c8bf5ef1346f1751c",
       "hard_hits": [
-        "ETF",
         "etf",
+        "ETF",
         "主力资金",
         "五粮液",
         "加仓",
@@ -11799,8 +12658,8 @@
         "600600",
         "600809",
         "603369",
-        "ETF",
         "etf",
+        "ETF",
         "主力资金",
         "五粮液",
         "估值",
@@ -11828,8 +12687,8 @@
         "600600",
         "600809",
         "603369",
-        "ETF",
         "etf",
+        "ETF",
         "MA20",
         "PE",
         "主力资金",
@@ -11850,7 +12709,8 @@
         "贵州茅台",
         "量能",
         "阿里巴巴"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a6b3aae-8284-83ec-b35c-26a08da0727d",
@@ -11914,7 +12774,8 @@
         "港股",
         "美股",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a6b3aae-8284-83ec-b35c-26a08da0727d",
@@ -11956,7 +12817,8 @@
         "日线",
         "板块",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a6b3aae-8284-83ec-b35c-26a08da0727d",
@@ -11966,8 +12828,8 @@
       "text_chars": 4256,
       "text_sha256": "744f263c50c92cbcf0bdde680f650f3d7aa5573df058d939f785aec96f4ab980",
       "hard_hits": [
-        "etf",
         "ETF",
+        "etf",
         "K线",
         "加仓",
         "基金",
@@ -11979,8 +12841,8 @@
         "000568",
         "000858",
         "600519",
-        "etf",
         "ETF",
+        "etf",
         "K线",
         "估值",
         "加仓",
@@ -11992,8 +12854,8 @@
         "000568",
         "000858",
         "600519",
-        "etf",
         "ETF",
+        "etf",
         "K线",
         "ma20",
         "pe",
@@ -12007,7 +12869,8 @@
         "日线",
         "板块",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a6b3aae-8284-83ec-b35c-26a08da0727d",
@@ -12017,16 +12880,16 @@
       "text_chars": 2950,
       "text_sha256": "04bd6dee87c632f028c5536780e4d974227299fb2c72ad5fbae8f8dc7434c288",
       "hard_hits": [
-        "etf",
         "ETF",
+        "etf",
         "加仓",
         "基金",
         "持仓",
         "股票"
       ],
       "broad_hits": [
-        "etf",
         "ETF",
+        "etf",
         "估值",
         "加仓",
         "持仓",
@@ -12034,8 +12897,8 @@
         "股票"
       ],
       "relevance_hits": [
-        "etf",
         "ETF",
+        "etf",
         "MA20",
         "PE",
         "估值",
@@ -12044,7 +12907,8 @@
         "日线",
         "板块",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a6e1a40-40a0-83ec-a24b-146998aec5b5",
@@ -12067,24 +12931,8 @@
         "成交量",
         "投资",
         "股票"
-      ]
-    },
-    {
-      "conversation_id": "6a71b663-112c-83ec-911a-cce3ae76e69f",
-      "title": "Trueno Group 匹配度分析",
-      "node_id": "4c53efa6-56a6-4487-8648-7f63919f803c",
-      "role": "assistant",
-      "text_chars": 2136,
-      "text_sha256": "be812d6980ed5de0c419fd7339d2aea708b3386b5b66eb5e1b1f0be0b33f30a7",
-      "hard_hits": [
-        "财报"
       ],
-      "broad_hits": [
-        "财报"
-      ],
-      "relevance_hits": [
-        "财报"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a7749a6-b7f0-83ec-9b52-5186f990f18e",
@@ -12114,7 +12962,8 @@
         "投资",
         "福特",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a7749a6-b7f0-83ec-9b52-5186f990f18e",
@@ -12143,7 +12992,8 @@
         "投资",
         "福特",
         "股价"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a79c432-749c-83ec-9a8f-cefe51b82309",
@@ -12165,7 +13015,8 @@
         "分红",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a7ae315-0214-83ec-8a3c-b5832861c68f",
@@ -12224,7 +13075,8 @@
         "股息",
         "股票",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a7ae315-0214-83ec-8a3c-b5832861c68f",
@@ -12276,7 +13128,8 @@
         "股东",
         "股息",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a7ae315-0214-83ec-8a3c-b5832861c68f",
@@ -12321,7 +13174,8 @@
         "股息",
         "股票",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a7ae315-0214-83ec-8a3c-b5832861c68f",
@@ -12368,7 +13222,8 @@
         "股价",
         "股息",
         "营收"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a7ae315-0214-83ec-8a3c-b5832861c68f",
@@ -12417,7 +13272,8 @@
         "海尔智家",
         "股息",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a7ae315-0214-83ec-8a3c-b5832861c68f",
@@ -12461,7 +13317,8 @@
         "美团",
         "股息",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a7ae315-0214-83ec-8a3c-b5832861c68f",
@@ -12524,7 +13381,8 @@
         "股票",
         "营收",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a7d4267-4ef4-83ec-a73a-3b1598a37cd2",
@@ -12564,7 +13422,8 @@
         "股东",
         "股票",
         "谷歌"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a7d4267-4ef4-83ec-a73a-3b1598a37cd2",
@@ -12595,7 +13454,8 @@
         "股价",
         "股票",
         "谷歌"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a7da4c0-ba70-83ec-b125-593dcec58fb0",
@@ -12647,7 +13507,8 @@
         "美股",
         "股票",
         "量能"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a8146e5-aae4-83ec-a8d4-c194e597d22d",
@@ -12699,7 +13560,8 @@
         "股票",
         "财报",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a8146e5-aae4-83ec-a8d4-c194e597d22d",
@@ -12729,7 +13591,8 @@
         "美股",
         "股票",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a8146e5-aae4-83ec-a8d4-c194e597d22d",
@@ -12753,7 +13616,8 @@
         "Meta",
         "仓位",
         "投资"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6a8b9b67-9b94-83ec-9fcd-4b9e2cf36a93",
@@ -12763,53 +13627,22 @@
       "text_chars": 2645,
       "text_sha256": "6dd6e32c0780df3a69683b2e4d978d1761026be1c3f9c91712814de5eb8f32f5",
       "hard_hits": [
-        "etf",
-        "ETF"
+        "ETF",
+        "etf"
       ],
       "broad_hits": [
-        "etf",
-        "ETF"
+        "ETF",
+        "etf"
       ],
       "relevance_hits": [
-        "etf",
         "ETF",
+        "etf",
         "Portfolio",
         "stock",
         "微软",
         "投资"
-      ]
-    },
-    {
-      "conversation_id": "6a9918c1-4cf4-83ec-bd90-776f77cb4dab",
-      "title": "减少注意力损耗",
-      "node_id": "79d2db5b-4d3a-415f-a7ff-f0c692d7b117",
-      "role": "assistant",
-      "text_chars": 2642,
-      "text_sha256": "03cd81ecd71b33b3d8d6ea7eca254ab171709dcf4491607467d814b08d8097c4",
-      "hard_hits": [
-        "股票"
       ],
-      "broad_hits": [
-        "股票"
-      ],
-      "relevance_hits": [
-        "股票"
-      ]
-    },
-    {
-      "conversation_id": "6aa8e0f6-e224-83ec-abfe-76ac5d0094e1",
-      "title": "Steam找回账号 सलाह",
-      "node_id": "c90a30e7-e72a-4d10-bab2-4e8a5e04d13f",
-      "role": "user",
-      "text_chars": 4575,
-      "text_sha256": "3b46c7087966d67097080d359b6cd9d1abfc0237cdcb4f9f13dc735278d8ba7d",
-      "hard_hits": [],
-      "broad_hits": [
-        "689012"
-      ],
-      "relevance_hits": [
-        "689012"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -12844,7 +13677,8 @@
         "美股",
         "股价",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -12869,7 +13703,8 @@
         "投资",
         "股票",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -12889,7 +13724,8 @@
       "relevance_hits": [
         "ETF",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -12914,7 +13750,8 @@
         "分红",
         "熊市",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -12935,7 +13772,8 @@
         "ETF",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -12953,7 +13791,8 @@
       "relevance_hits": [
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -12974,7 +13813,8 @@
         "分红",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -13001,7 +13841,8 @@
         "投资",
         "股息",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -13030,7 +13871,8 @@
         "投资",
         "涨停",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -13051,7 +13893,8 @@
         "ETF",
         "分红",
         "投资"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -13077,7 +13920,8 @@
         "投资",
         "股票",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -13096,7 +13940,8 @@
       "relevance_hits": [
         "ETF",
         "投资"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -13113,7 +13958,8 @@
       ],
       "relevance_hits": [
         "股票"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -13139,7 +13985,8 @@
         "分红",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -13156,7 +14003,8 @@
       ],
       "relevance_hits": [
         "股票"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -13177,7 +14025,8 @@
         "ETF",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -13202,7 +14051,8 @@
         "分红",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -13229,7 +14079,8 @@
         "投资",
         "股东",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -13250,7 +14101,8 @@
         "ETF",
         "Meta",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -13284,7 +14136,8 @@
         "海尔智家",
         "美股",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -13326,7 +14179,8 @@
         "股东",
         "股息",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -13345,7 +14199,8 @@
       "relevance_hits": [
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -13365,7 +14220,8 @@
         "投资",
         "看盘",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6aafa174-33ec-83ec-84d1-068d9fb6eaea",
@@ -13388,7 +14244,8 @@
         "分红",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
@@ -13406,7 +14263,8 @@
       "relevance_hits": [
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
@@ -13424,7 +14282,8 @@
       "relevance_hits": [
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
@@ -13445,7 +14304,8 @@
         "分红",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
@@ -13470,7 +14330,8 @@
         "美团",
         "股息",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
@@ -13498,7 +14359,8 @@
         "股息",
         "股票",
         "英伟达"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
@@ -13519,7 +14381,8 @@
         "ETF",
         "亚马逊",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
@@ -13540,7 +14403,8 @@
         "ETF",
         "分红",
         "投资"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
@@ -13582,7 +14446,8 @@
         "美股",
         "股息",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
@@ -13607,7 +14472,8 @@
         "微软",
         "股东",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
@@ -13660,7 +14526,8 @@
         "股息",
         "股票",
         "资产配置"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
@@ -13697,7 +14564,8 @@
         "持仓",
         "股票",
         "证券"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
@@ -13726,7 +14594,8 @@
         "股东",
         "股票",
         "证券交易"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
@@ -13749,7 +14618,8 @@
         "A股",
         "港股",
         "美股"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6ac7380d-e67c-83ec-8ccc-cde5d6412bb3",
@@ -13783,24 +14653,8 @@
         "股东",
         "股票",
         "证券"
-      ]
-    },
-    {
-      "conversation_id": "6ac900e3-5b04-83ec-8bf2-48bdf3ea649f",
-      "title": "手机安全建议",
-      "node_id": "a513aa4d-126e-4566-a863-aad8722fe0d7",
-      "role": "assistant",
-      "text_chars": 1775,
-      "text_sha256": "25795b9f7ee72bfb2e31385f58bc979a02cabf65116276f463f530bac9785b27",
-      "hard_hits": [
-        "止损"
       ],
-      "broad_hits": [
-        "止损"
-      ],
-      "relevance_hits": [
-        "止损"
-      ]
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6ac900e3-5b04-83ec-8bf2-48bdf3ea649f",
@@ -13821,7 +14675,8 @@
         "券商",
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6ac900e3-5b04-83ec-8bf2-48bdf3ea649f",
@@ -13849,7 +14704,8 @@
         "股息",
         "股票",
         "证券"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
@@ -13869,7 +14725,8 @@
         "微软",
         "投资",
         "财报"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
@@ -13893,7 +14750,8 @@
         "微软",
         "投资",
         "财报"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
@@ -13909,7 +14767,8 @@
       "relevance_hits": [
         "Meta",
         "投资"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
@@ -13927,7 +14786,8 @@
       "relevance_hits": [
         "投资",
         "财报"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
@@ -13944,7 +14804,8 @@
       ],
       "relevance_hits": [
         "财报"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
@@ -13961,7 +14822,8 @@
       ],
       "relevance_hits": [
         "财报"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
@@ -13978,7 +14840,8 @@
       ],
       "relevance_hits": [
         "股票"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
@@ -13998,7 +14861,8 @@
         "Earnings",
         "Meta",
         "投资"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
@@ -14016,7 +14880,8 @@
       "relevance_hits": [
         "投资",
         "股票"
-      ]
+      ],
+      "review_action": "unreviewed"
     },
     {
       "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
@@ -14027,7 +14892,8 @@
       "text_sha256": "196c5e62359f348ede3f347c076a0be8770153455b8c20c334fc53a52093cf07",
       "hard_hits": [],
       "broad_hits": [],
-      "relevance_hits": []
+      "relevance_hits": [],
+      "review_action": "included"
     },
     {
       "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
@@ -14044,7 +14910,8 @@
       ],
       "relevance_hits": [
         "财报"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
@@ -14062,7 +14929,8 @@
         "GTC",
         "Meta",
         "投资"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
@@ -14080,7 +14948,8 @@
         "GTC",
         "Meta",
         "投资"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
@@ -14103,7 +14972,8 @@
         "中际旭创",
         "投资",
         "新易盛"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
@@ -14120,7 +14990,8 @@
         "AMD",
         "Meta",
         "投资"
-      ]
+      ],
+      "review_action": "included"
     },
     {
       "conversation_id": "6acbabed-7570-83ec-bedf-74deacd44f1c",
@@ -14142,24 +15013,8 @@
         "Meta",
         "投资",
         "财报"
-      ]
-    },
-    {
-      "conversation_id": "6ace2230-0b20-83ec-8e8b-7b863ad8e268",
-      "title": "交换机租赁模式探索",
-      "node_id": "f95c2855-178d-4ecf-af9d-0e34f8f1c29e",
-      "role": "user",
-      "text_chars": 203,
-      "text_sha256": "1803cdc0b9bf2d4607a137c3f742e2995936ca195d091f1e7bace0e70abb6d3e",
-      "hard_hits": [
-        "股票"
       ],
-      "broad_hits": [
-        "股票"
-      ],
-      "relevance_hits": [
-        "股票"
-      ]
+      "review_action": "included"
     },
     {
       "conversation_id": "6ace2230-0b20-83ec-8e8b-7b863ad8e268",
@@ -14176,24 +15031,8 @@
       ],
       "relevance_hits": [
         "股票"
-      ]
-    },
-    {
-      "conversation_id": "a006014f-d4bd-4c72-a394-4fef8bed514a",
-      "title": "Learn English Words",
-      "node_id": "e70cb948-6300-417f-a301-5271f324207e",
-      "role": "assistant",
-      "text_chars": 570,
-      "text_sha256": "cd2ebbc2c1ecdaba5f8a9b0ffec528d0b176daa514bc843f522b69397fbd8628",
-      "hard_hits": [
-        "贵州茅台"
       ],
-      "broad_hits": [
-        "贵州茅台"
-      ],
-      "relevance_hits": [
-        "贵州茅台"
-      ]
+      "review_action": "unreviewed"
     }
   ],
   "unselected_conversations": [
@@ -14317,6 +15156,20 @@
       "broad_only_signal_messages": 0
     },
     {
+      "conversation_id": "6999a608-db94-832c-9751-bc78759924a9",
+      "title": "深圳长期发展布局",
+      "source_messages": 2,
+      "hard_signal_messages": 1,
+      "broad_only_signal_messages": 0
+    },
+    {
+      "conversation_id": "699ad474-d034-832e-8d95-518e60a79bce",
+      "title": "通信行业长期发展",
+      "source_messages": 8,
+      "hard_signal_messages": 1,
+      "broad_only_signal_messages": 0
+    },
+    {
       "conversation_id": "69a53638-702c-8333-9f37-fac94c147dbe",
       "title": "工业交换机布线图",
       "source_messages": 1,
@@ -14387,6 +15240,13 @@
       "broad_only_signal_messages": 0
     },
     {
+      "conversation_id": "69bca27a-272c-832a-9ee1-27daf0acb410",
+      "title": "MSTP设备分析",
+      "source_messages": 6,
+      "hard_signal_messages": 2,
+      "broad_only_signal_messages": 0
+    },
+    {
       "conversation_id": "69bcba54-3afc-838f-84a0-57f92f73726a",
       "title": "公司介绍重写与差异化",
       "source_messages": 10,
@@ -14413,6 +15273,13 @@
       "source_messages": 13,
       "hard_signal_messages": 0,
       "broad_only_signal_messages": 0
+    },
+    {
+      "conversation_id": "69c4a523-d858-8330-b4bb-afe5fda296e9",
+      "title": "国外采购商整理",
+      "source_messages": 9,
+      "hard_signal_messages": 0,
+      "broad_only_signal_messages": 2
     },
     {
       "conversation_id": "69c4dae7-2750-8331-9def-55653d0742ef",
@@ -14524,6 +15391,13 @@
       "title": "报价单优化建议",
       "source_messages": 4,
       "hard_signal_messages": 0,
+      "broad_only_signal_messages": 0
+    },
+    {
+      "conversation_id": "69d46b48-d254-8325-84e8-f023a015772c",
+      "title": "饮食系统构建指南",
+      "source_messages": 18,
+      "hard_signal_messages": 1,
       "broad_only_signal_messages": 0
     },
     {
@@ -14807,10 +15681,31 @@
       "broad_only_signal_messages": 0
     },
     {
+      "conversation_id": "6a027e0d-d7cc-83ec-9901-006228029a79",
+      "title": "A2A时代外贸自动化",
+      "source_messages": 2,
+      "hard_signal_messages": 1,
+      "broad_only_signal_messages": 0
+    },
+    {
       "conversation_id": "6a0671d8-c700-83ec-8289-387dac73353a",
       "title": "皮肤问题分析与建议",
       "source_messages": 21,
       "hard_signal_messages": 0,
+      "broad_only_signal_messages": 0
+    },
+    {
+      "conversation_id": "6a067c3f-6828-83ec-ab9b-00d57ec48fc9",
+      "title": "OCM卡全称及功能",
+      "source_messages": 14,
+      "hard_signal_messages": 0,
+      "broad_only_signal_messages": 1
+    },
+    {
+      "conversation_id": "6a06d935-1b30-83ec-9000-1187ae358a6c",
+      "title": "注意力边界与社交",
+      "source_messages": 6,
+      "hard_signal_messages": 1,
       "broad_only_signal_messages": 0
     },
     {
@@ -14839,6 +15734,13 @@
       "title": "FIPS 140-3 认证设备",
       "source_messages": 4,
       "hard_signal_messages": 0,
+      "broad_only_signal_messages": 0
+    },
+    {
+      "conversation_id": "6a13a6ad-6bd0-83ec-b8bb-9fac9b510154",
+      "title": "金升阳模块对应分析",
+      "source_messages": 16,
+      "hard_signal_messages": 1,
       "broad_only_signal_messages": 0
     },
     {
@@ -14996,6 +15898,13 @@
       "broad_only_signal_messages": 0
     },
     {
+      "conversation_id": "6a30bf55-acd8-83ec-bcae-446254b95cbe",
+      "title": "生育观念与压力",
+      "source_messages": 8,
+      "hard_signal_messages": 0,
+      "broad_only_signal_messages": 1
+    },
+    {
       "conversation_id": "6a30f904-71f8-83ec-8300-cfd914191ddd",
       "title": "注意力与人生提升",
       "source_messages": 4,
@@ -15122,6 +16031,13 @@
       "broad_only_signal_messages": 0
     },
     {
+      "conversation_id": "6a5f05a9-f7e8-83ec-8013-92b6e57b32dc",
+      "title": "Mikrotik vs 交换机价值分析",
+      "source_messages": 54,
+      "hard_signal_messages": 1,
+      "broad_only_signal_messages": 0
+    },
+    {
       "conversation_id": "6a646ba0-8e04-83ec-acfa-c33c146ae93c",
       "title": "捷克客户评估",
       "source_messages": 6,
@@ -15213,6 +16129,13 @@
       "broad_only_signal_messages": 0
     },
     {
+      "conversation_id": "6a71b663-112c-83ec-911a-cce3ae76e69f",
+      "title": "Trueno Group 匹配度分析",
+      "source_messages": 12,
+      "hard_signal_messages": 1,
+      "broad_only_signal_messages": 0
+    },
+    {
       "conversation_id": "6a754df4-201c-83ec-8ed2-17ae39d33af4",
       "title": "头脑风暴商业模式",
       "source_messages": 4,
@@ -15290,11 +16213,25 @@
       "broad_only_signal_messages": 0
     },
     {
+      "conversation_id": "6a9918c1-4cf4-83ec-bd90-776f77cb4dab",
+      "title": "减少注意力损耗",
+      "source_messages": 2,
+      "hard_signal_messages": 1,
+      "broad_only_signal_messages": 0
+    },
+    {
       "conversation_id": "6a9d442b-ec74-83ec-9614-c58d9a232a28",
       "title": "SEO评分分析",
       "source_messages": 8,
       "hard_signal_messages": 0,
       "broad_only_signal_messages": 0
+    },
+    {
+      "conversation_id": "6aa8e0f6-e224-83ec-abfe-76ac5d0094e1",
+      "title": "Steam找回账号 सलाह",
+      "source_messages": 15,
+      "hard_signal_messages": 0,
+      "broad_only_signal_messages": 1
     },
     {
       "conversation_id": "6aba4854-ff24-83ec-8d7c-632c64b95726",

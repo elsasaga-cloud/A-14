@@ -1,0 +1,288 @@
+{
+  "conversation_metadata": {
+    "conversation_id": "6a2cf2ae-8ed0-83ec-b4d1-9eb653b1b191",
+    "conversation_template_id": null,
+    "create_time": 1781330615.037292,
+    "current_node": "71ecd7ad-7429-4213-a3f7-fdb39f72a38e",
+    "default_model_slug": "auto",
+    "id": "6a2cf2ae-8ed0-83ec-b4d1-9eb653b1b191",
+    "is_archived": false,
+    "is_do_not_remember": false,
+    "is_read_only": null,
+    "is_starred": null,
+    "is_study_mode": false,
+    "memory_scope": "global_enabled",
+    "pinned_time": null,
+    "plugin_ids": null,
+    "title": "美股做T技巧",
+    "update_time": 1781330703.772136,
+    "voice": null
+  },
+  "selection_unit": "message",
+  "selected_nodes": [
+    {
+      "node_id": "84a1bf43-ee84-4ca2-a79d-b7538af4775b",
+      "selection_reason": "stock-keyword",
+      "matched_terms": [
+        "做T",
+        "美股"
+      ],
+      "node": {
+        "id": "84a1bf43-ee84-4ca2-a79d-b7538af4775b",
+        "message": {
+          "author": {
+            "name": null,
+            "role": "user"
+          },
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "美股一些热门股 做T 有啥技巧吗"
+            ]
+          },
+          "create_time": 1781330614.125,
+          "id": "84a1bf43-ee84-4ca2-a79d-b7538af4775b",
+          "metadata": {
+            "serialization_metadata": {
+              "custom_symbol_offsets": []
+            }
+          }
+        },
+        "parent": "client-created-root"
+      }
+    },
+    {
+      "node_id": "8dde008c-f9c1-463b-b606-816d8b05bfb7",
+      "selection_reason": "stock-keyword",
+      "matched_terms": [
+        "A股",
+        "仓位",
+        "做T",
+        "加仓",
+        "均线",
+        "开盘",
+        "成交量",
+        "投资",
+        "支撑位",
+        "日线",
+        "清仓",
+        "美股",
+        "股价",
+        "股票",
+        "财报"
+      ],
+      "node": {
+        "id": "8dde008c-f9c1-463b-b606-816d8b05bfb7",
+        "message": {
+          "author": {
+            "name": null,
+            "role": "assistant"
+          },
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "美股热门股做T（短线高抛低吸），其实和A股有很大区别。美股波动大、机构占比高、信息透明，**追求预测顶底往往很难，更多是顺势做波段和管理仓位**。\n\n我总结几个比较实用的技巧：\n\n---\n\n## 1. 不要满仓做T，留“子弹”是核心\n\n比如你持有：\n\n- 100股某热门股\n\n比较舒服的方式：\n\n- 70股长期底仓（不动）\n- 30股机动仓（做T）\n\n上涨：\n- 大涨5%~10%，卖出机动仓\n\n回调：\n- 回落到支撑位，再买回来\n\n这样不会因为卖飞而踏空大趋势。\n\n尤其美股很多超级牛股，一旦趋势形成，可能连续涨几个月。\n\n---\n\n## 2. 看关键均线，而不是猜高点\n\n比较常用：\n\n- 5日线：短期情绪\n- 10日线：短波趋势\n- 20日线：机构成本带\n- 50日线：中期生命线\n\n例如：\n\n股价远离20日线15%甚至20%以上：\n\n→ 可以考虑减一部分T仓\n\n回踩10/20日线，成交量萎缩：\n\n→ 可以考虑接回来\n\n---\n\n## 3. 利用财报后的剧烈波动\n\n美股热门股最大的机会之一就是财报。\n\n典型情况：\n\n### 好财报，高开15%\n\n不要急着追。\n\n很多时候：\n- 开盘冲高\n- 获利盘兑现\n- 回落到缺口附近\n\n会给低吸机会。\n\n\n### 好公司，但短期因为指引不及预期暴跌10%-20%\n\n如果长期逻辑没坏：\n\n这反而可能是比较好的加仓窗口。\n\n---\n\n## 4. 看成交量变化\n\n比较经典：\n\n上涨：\n- 放量突破 → 继续拿\n- 缩量上涨 → 注意风险\n\n下跌：\n- 放量暴跌 → 可能机构撤退\n- 缩量回调 → 更像洗盘\n\n当然要结合基本面。\n\n---\n\n## 5. 不要天天做T\n\n这是很多散户最大的问题。\n\n真正高质量的交易：\n\n一年可能只有几次。\n\n比如一只热门科技股：\n\n从100涨到160。\n\n很多人：\n- 110卖\n- 115买\n- 120卖\n- 125买\n\n来回折腾。\n\n最后只赚20%。\n\n而一直拿着的人赚60%。\n\n---\n\n## 6. 美股特别适合“阶梯卖出”\n\n例如：\n\n上涨：\n\n+10% 卖出20%\n\n+20% 再卖20%\n\n+30% 再卖20%\n\n而不是一次性清仓。\n\n因为美股强股经常出现：\n\n“看起来贵 → 继续涨 → 再创新高”。\n\n---\n\n## 7. 注意美股做T的成本\n\n几个隐形因素：\n\n- 短期资本利得税（如果你是美国税务居民尤其重要）\n- 买卖价差\n- 高频交易造成的心理失误\n- 错过超级趋势\n\n---\n\n## 我认为最适合普通投资者的模式\n\n不是日内T，而是：\n\n**核心仓长期持有 + 卫星仓做波段**\n\n比如：\n\n- 70%：永远持有，吃公司成长\n- 30%：利用财报、过热、恐慌波动做T\n\n这样既不会错过10倍股，又能提高资金效率。\n\n---\n\n如果针对现在美股最热门的一类股票（AI、半导体、软件、机器人等），我反而觉得**“跌的时候买，比涨的时候卖更重要”**。\n\n因为这些强势成长股最大的收益往往来自几次大的趋势段，而不是每天的几个百分点波动。"
+            ]
+          },
+          "create_time": 1781330614.982863,
+          "id": "8dde008c-f9c1-463b-b606-816d8b05bfb7",
+          "metadata": {
+            "content_references": [],
+            "conversation_context_citation_metadata": [
+              {
+                "citation": {
+                  "alt": null,
+                  "attribution": "Memory",
+                  "citation_uuid": "4792727d-6bbf-43dd-b4d6-fa52a9c84488",
+                  "conversation_context_type": "user_memory",
+                  "end_idx": -1,
+                  "index": 8,
+                  "matched_text": "",
+                  "memory_id": "b4da5006-afea-46d9-bca1-78c311c34dc1",
+                  "prompt_text": null,
+                  "reason": "你采用“底仓+波段+滚动套利”的高效策略",
+                  "refs": [],
+                  "snippet": "底仓+波段+滚动套利",
+                  "start_idx": -1,
+                  "title": "你采用“底仓+波段+滚动套利”的高效策略",
+                  "type": "conversation_context_citation",
+                  "url": "#settings/Personalization"
+                },
+                "citation_uuid": "4792727d-6bbf-43dd-b4d6-fa52a9c84488",
+                "deleted": false,
+                "feedback": null
+              }
+            ],
+            "model_slug": "gpt-5-5",
+            "parent_id": "2c023f1d-fec9-4cff-a3bf-4890162e69d1"
+          }
+        },
+        "parent": "84a1bf43-ee84-4ca2-a79d-b7538af4775b"
+      }
+    },
+    {
+      "node_id": "1cd13f97-0222-4e4e-950c-60007d693907",
+      "selection_reason": "reviewed-context",
+      "matched_terms": [
+        "板块"
+      ],
+      "node": {
+        "id": "1cd13f97-0222-4e4e-950c-60007d693907",
+        "message": {
+          "author": {
+            "name": null,
+            "role": "user"
+          },
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "结合板块热度 偏离MA5的程度 还有啥呢 搞一些实际可操作的"
+            ]
+          },
+          "create_time": 1781330684.539,
+          "id": "1cd13f97-0222-4e4e-950c-60007d693907",
+          "metadata": {
+            "serialization_metadata": {
+              "custom_symbol_offsets": []
+            }
+          }
+        },
+        "parent": "8dde008c-f9c1-463b-b606-816d8b05bfb7"
+      }
+    },
+    {
+      "node_id": "71ecd7ad-7429-4213-a3f7-fdb39f72a38e",
+      "selection_reason": "stock-keyword",
+      "matched_terms": [
+        "ETF",
+        "K线",
+        "MA20",
+        "RSI",
+        "stock",
+        "做T",
+        "减仓",
+        "建仓",
+        "成交量",
+        "持仓",
+        "板块",
+        "美股",
+        "股价",
+        "财报"
+      ],
+      "node": {
+        "id": "71ecd7ad-7429-4213-a3f7-fdb39f72a38e",
+        "message": {
+          "author": {
+            "name": null,
+            "role": "assistant"
+          },
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "如果你说的是**美股热门强势股做T**（比如AI、半导体、软件等），那确实可以更量化一些。核心不是“感觉涨多了”，而是找**过热 → 回归 → 再启动**的节奏。\n\n我给你一个比较实战的框架：\n\n---\n\n# 1. 板块热度（大环境）\n\n先看行业ETF：\n\nAI芯片：\n- entity[\"stock\",\"VanEck Semiconductor ETF (SMH)\",\"semiconductor ETF\"]\n- entity[\"stock\",\"iShares Semiconductor ETF (SOXX)\",\"semiconductor ETF\"]\n\n软件：\n- entity[\"stock\",\"Technology Select Sector SPDR Fund (XLK)\",\"technology sector ETF\"]\n\n判断：\n\n### 板块趋势向上：\n- MA20 > MA50\n- ETF不断创新高\n\n→ 允许积极做T，回调敢接。\n\n---\n\n### 板块破位：\n比如：\n- 跌破MA50\n- 放巨量下跌\n\n→ 少做接回，可能不是洗盘，而是资金撤退。\n\n---\n\n# 2. 个股偏离MA5 / MA10（短线过热）\n\n这是你提到的，很重要。\n\n经验值（热门成长股）：\n\n### 偏离MA5：\n\n|偏离程度|操作|\n|-|-|\n| +3%以内 | 正常 |\n| +5~8% | 注意减T仓 |\n| +10%以上 | 可以分批卖T仓 |\n\n比如：\n股价100美元\n\nMA5 = 90美元\n\n偏离11%\n\n如果当天：\n- 成交量放大\n- RSI很高\n\n就可以考虑卖一部分。\n\n---\n\n# 3. RSI（非常实用）\n\n看14日RSI：\n\n|RSI|含义|\n|-|-|\n| <30 | 超卖，观察低吸 |\n| 40~60 | 健康 |\n| 70以上 | 过热 |\n| 80以上 | 容易短期调整 |\n\n强股经常会RSI 80+。\n\n不要全卖。\n\n结合MA5偏离更有效。\n\n---\n\n# 4. 成交量（机构动作）\n\n上涨：\n\n### 放量突破：\n不要急着卖。\n\n说明：\n> 机构可能刚开始建仓。\n\n---\n\n### 放巨量长上影：\n危险信号。\n\n比如：\n\n涨8%，盘中涨15%，收涨3%。\n\n成交量是20日平均量3倍。\n\n可能机构借利好派发。\n\n适合卖T仓。\n\n---\n\n# 5. 与ATR比较（高手常用）\n\nATR = 平均真实波幅。\n\n例如：\n\n某股：\n\nATR = 4美元。\n\n当天上涨：\n\n+10美元。\n\n也就是：\n\n2.5倍ATR。\n\n这属于异常波动。\n\n可以考虑减仓。\n\n经验：\n\n- +2 ATR：开始警惕\n- +3 ATR：短期极端\n\n---\n\n# 6. 看K线位置\n\n### 连续3~5根大阳线\n\n比如：\n\n5天涨20%。\n\n同时：\n\n- 远离MA5\n- RSI > 75\n\n这是经典减T位置。\n\n---\n\n### 回踩：\n\n优先等：\n\n- MA5回踩\n- MA10回踩\n- 缩量调整\n\n再接。\n\n---\n\n# 7. 关注资金流（非常关键）\n\n美股热门股很多时候：\n\n不是财报出来才涨。\n\n而是：\n\n机构提前布局。\n\n可以看：\n\n- 大宗交易\n- 期权异动\n- 机构持仓变化\n\n但是这个偏中期。\n\n短线做T作用没MA、RSI直接。\n\n---\n\n# 8. 一个我认为很实用的“T评分”\n\n每项1分：\n\n### 卖出评分\n\n- 板块连续高潮（1）\n- 股价离MA5 > 8%（1）\n- RSI > 75（1）\n- 当天涨幅 > 2 ATR（1）\n- 成交量 > 2倍20日均量，且长上影（1）\n\n**≥3分：卖出20~30% T仓**\n\n---\n\n### 买回评分\n\n- 回踩MA5/MA10（1）\n- 缩量调整（1）\n- RSI回落至50~60（1）\n- 板块趋势仍强（1）\n- 出现止跌K线（1）\n\n**≥3分：接回T仓**\n\n---\n\n## 我觉得对美股热门股，最有效的组合其实是：\n\n> **板块趋势 + MA5偏离率 + RSI + ATR + 成交量结构**\n\n这是因为美股强股很少给你“便宜价格”。\n\n你卖了之后，经常发现它继续涨。\n\n所以不要追求卖最高点，而是：\n- 极度亢奋 → 卖20~30%\n- 正常回调 → 买回来\n\n这个框架尤其适合像entity[\"company\",\"NVIDIA Corporation\",\"AI semiconductor company\"]、entity[\"company\",\"Palantir Technologies\",\"AI software and data analytics company\"]、entity[\"company\",\"Tesla, Inc.\",\"electric vehicle and AI company\"]这类高波动热门股。"
+            ]
+          },
+          "create_time": 1781330685.471672,
+          "id": "71ecd7ad-7429-4213-a3f7-fdb39f72a38e",
+          "metadata": {
+            "content_references": [
+              {
+                "alt": "VanEck Semiconductor ETF (SMH)",
+                "entity_data": null,
+                "entity_index": null,
+                "extra_params": {
+                  "disambiguation": "semiconductor ETF"
+                },
+                "id": "RGqwjPCFvP6p1xFO",
+                "metadata": null,
+                "name": "VanEck Semiconductor ETF (SMH)",
+                "notes": null,
+                "prefix": null,
+                "prompt_text": "VanEck Semiconductor ETF (SMH)",
+                "type": "entity"
+              },
+              {
+                "alt": "iShares Semiconductor ETF (SOXX)",
+                "entity_data": null,
+                "entity_index": null,
+                "extra_params": {
+                  "disambiguation": "semiconductor ETF"
+                },
+                "id": "YIFCiipCF207fmZc",
+                "metadata": null,
+                "name": "iShares Semiconductor ETF (SOXX)",
+                "notes": null,
+                "prefix": null,
+                "prompt_text": "iShares Semiconductor ETF (SOXX)",
+                "type": "entity"
+              },
+              {
+                "alt": "Technology Select Sector SPDR Fund (XLK)",
+                "entity_data": null,
+                "entity_index": null,
+                "extra_params": {
+                  "disambiguation": "technology sector ETF"
+                },
+                "id": "p10XhZH1E9E7nOhS",
+                "metadata": null,
+                "name": "Technology Select Sector SPDR Fund (XLK)",
+                "notes": null,
+                "prefix": null,
+                "prompt_text": "Technology Select Sector SPDR Fund (XLK)",
+                "type": "entity"
+              },
+              {
+                "alt": "NVIDIA Corporation",
+                "entity_data": null,
+                "entity_index": null,
+                "extra_params": {
+                  "disambiguation": "AI semiconductor company"
+                },
+                "id": "d7mD5Ui7YUfZZdrP",
+                "metadata": null,
+                "name": "NVIDIA Corporation",
+                "notes": null,
+                "prefix": null,
+                "prompt_text": "NVIDIA Corporation",
+                "type": "entity"
+              },
+              {
+                "alt": "Palantir Technologies",
+                "entity_data": null,
+                "entity_index": null,
+                "extra_params": {
+                  "disambiguation": "AI software and data analytics company"
+                },
+                "id": "JheuTxKPH63-Qn_I",
+                "metadata": null,
+                "name": "Palantir Technologies",
+                "notes": null,
+                "prefix": null,
+                "prompt_text": "Palantir Technologies",
+                "type": "entity"
+              },
+              {
+                "alt": "Tesla, Inc.",
+                "entity_data": null,
+                "entity_index": null,
+                "extra_params": {
+                  "disambiguation": "electric vehicle and AI company"
+                },
+                "id": "OVDFPggCjLa061vJ",
+                "metadata": null,
+                "name": "Tesla, Inc.",
+                "notes": null,
+                "prefix": null,
+                "prompt_text": "Tesla, Inc.",
+                "type": "entity"
+              }
+            ],
+            "model_slug": "gpt-5-5",
+            "parent_id": "1cd13f97-0222-4e4e-950c-60007d693907"
+          }
+        },
+        "parent": "1cd13f97-0222-4e4e-950c-60007d693907"
+      }
+    }
+  ]
+}

@@ -1820,7 +1820,7 @@
     },
     {
       "node_id": "ad4a8e03-853a-47de-a17d-802824e202a7",
-      "selection_reason": "audit-hard",
+      "selection_reason": "reviewed-hard",
       "matched_terms": [
         "定投",
         "投资"
@@ -6071,9 +6071,8 @@
     },
     {
       "node_id": "7925c347-3144-4824-8805-fd050cff3e17",
-      "selection_reason": "audit-hard",
+      "selection_reason": "reviewed-hard",
       "matched_terms": [
-        "基金",
         "定投"
       ],
       "node": {
@@ -6102,7 +6101,7 @@
     },
     {
       "node_id": "9d295fef-10e3-40ea-881b-315f5688030a",
-      "selection_reason": "audit-hard",
+      "selection_reason": "reviewed-hard",
       "matched_terms": [
         "清仓"
       ],

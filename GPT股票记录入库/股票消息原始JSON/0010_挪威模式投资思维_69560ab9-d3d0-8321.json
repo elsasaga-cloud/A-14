@@ -95,9 +95,8 @@
     },
     {
       "node_id": "b101e180-d2ca-498a-a6a4-c754e98ddfc8",
-      "selection_reason": "audit-hard",
+      "selection_reason": "reviewed-hard",
       "matched_terms": [
-        "基金",
         "投资"
       ],
       "node": {
@@ -158,10 +157,8 @@
     },
     {
       "node_id": "10e81eab-5098-46d4-8b52-fe397bf089c6",
-      "selection_reason": "audit-hard",
-      "matched_terms": [
-        "基金"
-      ],
+      "selection_reason": "reviewed-hard",
+      "matched_terms": [],
       "node": {
         "id": "10e81eab-5098-46d4-8b52-fe397bf089c6",
         "message": {
@@ -306,7 +303,7 @@
     },
     {
       "node_id": "66a337ff-6ec5-49ab-92bf-b9b84c03e74b",
-      "selection_reason": "audit-context",
+      "selection_reason": "reviewed-context",
       "matched_terms": [],
       "node": {
         "id": "66a337ff-6ec5-49ab-92bf-b9b84c03e74b",
@@ -398,10 +395,9 @@
     },
     {
       "node_id": "5f87caea-9b15-46b3-899f-f45815a7805f",
-      "selection_reason": "audit-hard",
+      "selection_reason": "reviewed-hard",
       "matched_terms": [
         "分红",
-        "基金",
         "投资",
         "英伟达"
       ],
@@ -431,10 +427,8 @@
     },
     {
       "node_id": "63980e30-6762-4812-958f-c9fd20c04d20",
-      "selection_reason": "audit-hard",
-      "matched_terms": [
-        "基金"
-      ],
+      "selection_reason": "reviewed-hard",
+      "matched_terms": [],
       "node": {
         "id": "63980e30-6762-4812-958f-c9fd20c04d20",
         "message": {
@@ -530,10 +524,8 @@
     },
     {
       "node_id": "58c6b72c-a6b4-413c-a8d3-055f7d674fe3",
-      "selection_reason": "audit-hard",
-      "matched_terms": [
-        "基金"
-      ],
+      "selection_reason": "reviewed-hard",
+      "matched_terms": [],
       "node": {
         "id": "58c6b72c-a6b4-413c-a8d3-055f7d674fe3",
         "message": {
@@ -593,7 +585,7 @@
     },
     {
       "node_id": "1f0f4daf-2246-4bcc-9113-936f280b35e8",
-      "selection_reason": "audit-context",
+      "selection_reason": "reviewed-context",
       "matched_terms": [],
       "node": {
         "id": "1f0f4daf-2246-4bcc-9113-936f280b35e8",
@@ -657,11 +649,10 @@
     },
     {
       "node_id": "e60d26b0-36a7-4700-9423-ada037e3ca77",
-      "selection_reason": "audit-hard",
+      "selection_reason": "reviewed-hard",
       "matched_terms": [
         "估值",
         "分红",
-        "基金",
         "投资",
         "股票",
         "英伟达"
@@ -757,7 +748,7 @@
     },
     {
       "node_id": "67af2be5-552b-484a-854c-d4a65186cdc0",
-      "selection_reason": "audit-context",
+      "selection_reason": "reviewed-context",
       "matched_terms": [],
       "node": {
         "id": "67af2be5-552b-484a-854c-d4a65186cdc0",
@@ -819,7 +810,7 @@
     },
     {
       "node_id": "e553d866-7175-4be7-8be4-c5a15b3669e3",
-      "selection_reason": "audit-context",
+      "selection_reason": "reviewed-context",
       "matched_terms": [
         "投资"
       ],
@@ -945,9 +936,8 @@
     },
     {
       "node_id": "019a8103-5b73-4c31-ae17-d88dcaa5d024",
-      "selection_reason": "audit-hard",
+      "selection_reason": "reviewed-hard",
       "matched_terms": [
-        "基金",
         "投资"
       ],
       "node": {
@@ -976,10 +966,9 @@
     },
     {
       "node_id": "9c979b33-ea8e-4c19-9a3a-fec74a5f6ef3",
-      "selection_reason": "audit-hard",
+      "selection_reason": "reviewed-hard",
       "matched_terms": [
         "分红",
-        "基金",
         "定投",
         "投资",
         "股东"
